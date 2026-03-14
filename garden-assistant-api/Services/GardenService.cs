@@ -7,6 +7,7 @@ namespace GardenAssistant.Services;
 
 public class GardenService(AppDbContext dbContext)
 {
+    // TODO(auth): Filter by the authenticated user's ID from HttpContext.User claims.
     public async Task<IEnumerable<GardenDto>> GetAllAsync()
     {
         return await dbContext.Gardens
@@ -14,6 +15,7 @@ public class GardenService(AppDbContext dbContext)
             .ToListAsync();
     }
 
+    // TODO(auth): UserId should come from HttpContext.User claims, not the request body.
     public async Task<GardenDto> CreateAsync(CreateGardenRequest request)
     {
         var garden = new Garden
