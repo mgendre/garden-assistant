@@ -2,6 +2,7 @@ using GardenAssistant.DTOs;
 using GardenAssistant.Entities;
 using GardenAssistant.Services;
 using GardenAssistant.Tests.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Shouldly;
 
 namespace GardenAssistant.Tests.Gardens;
@@ -56,7 +57,7 @@ public class GardenServiceTests : DatabaseTestBase
         result.Name.ShouldBe("Rose Garden");
         result.Description.ShouldBe("Full of roses");
         result.UserId.ShouldBe(DefaultUserId);
-        DbContext.Gardens.Count().ShouldBe(1);
+        (await DbContext.Gardens.CountAsync()).ShouldBe(1);
     }
 
     [Fact]
@@ -91,7 +92,7 @@ public class GardenServiceTests : DatabaseTestBase
         var result = await _sut.DeleteAsync(gardenId);
 
         result.ShouldBeTrue();
-        DbContext.Gardens.Count().ShouldBe(0);
+        (await DbContext.Gardens.CountAsync()).ShouldBe(0);
     }
 
     [Fact]

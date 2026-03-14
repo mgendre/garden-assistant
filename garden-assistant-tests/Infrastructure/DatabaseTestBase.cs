@@ -34,5 +34,6 @@ public abstract class DatabaseTestBase : IDisposable
     {
         DbContext.Dispose();
         _connection.Dispose();
+        GC.SuppressFinalize(this);
     }
 }
