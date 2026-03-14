@@ -4,13 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GardenAssistant.Tests.Infrastructure;
 
-/// <summary>
-/// Base class for tests that need a real database.
-/// Creates an in-memory SQLite database per test class, applies the EF schema,
-/// and disposes both the context and the connection after each test run.
-///
-/// Usage: inherit this class and inject <see cref="DbContext"/> into your system under test.
-/// </summary>
 public abstract class DatabaseTestBase : IDisposable
 {
     private readonly SqliteConnection _connection;

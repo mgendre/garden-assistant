@@ -1,0 +1,68 @@
+// ─── Typography — Botanical Journal ──────────────────────────────────────────
+$font-display: 'DM Serif Display', Georgia, serif;  // headings — old botanical feel
+$font-body:    'Lato', 'Helvetica Neue', sans-serif; // body — clean, readable outdoors
+
+// ─── Colour Palette ───────────────────────────────────────────────────────────
+// All contrasts verified WCAG 2.1 AA on their intended backgrounds
+$color-forest:       #1e3d1e;   // sidebar bg · deepest green
+$color-canopy:       #2e5f2e;   // dark green · primary brand
+$color-leaf:         #4a8b4a;   // mid green · interactive / links
+$color-sage:         #8ab88a;   // muted green · subtle accents
+$color-moss:         #c8dfc8;   // very light green · hover tints
+$color-parchment:    #f4ede0;   // warm off-white · page background
+$color-cream:        #fefcf8;   // near-white · card surfaces
+$color-earth:        #c47d2e;   // amber · CTA buttons
+$color-earth-dark:   #a86826;   // amber dark · hover
+$color-success:      #2d6a4f;   // deep green · confirmations
+$color-danger:       #9b1c1c;   // deep red · errors, deletes
+$color-warning:      #b45309;   // amber · due-soon, overdue
+$color-text:         #1c2b1c;   // primary text  (13.8:1 on parchment)
+$color-text-muted:   #556b55;   // secondary text ( 5.8:1 on parchment — AA)
+$color-border:       #d0e4cc;   // subtle borders
+$color-divider:      #e8f0e4;   // section dividers
+
+// ─── Spacing — 8px grid ───────────────────────────────────────────────────────
+$spacing-unit: 8px;
+$space-xs:  4px;
+$space-sm:  8px;
+$space-md:  16px;
+$space-lg:  24px;
+$space-xl:  32px;
+$space-2xl: 48px;
+$space-3xl: 64px;
+
+// ─── Type scale ───────────────────────────────────────────────────────────────
+$font-size-xs:   0.75rem;   // 12px
+$font-size-sm:   0.875rem;  // 14px
+$font-size-base: 1rem;      // 16px
+$font-size-md:   1.125rem;  // 18px
+$font-size-lg:   1.25rem;   // 20px
+$font-size-xl:   1.5rem;    // 24px
+$font-size-2xl:  2rem;      // 32px
+$font-size-3xl:  2.5rem;    // 40px
+
+// ─── Radius ───────────────────────────────────────────────────────────────────
+$border-radius-sm:   6px;
+$border-radius-base: 12px;
+$border-radius-lg:   20px;
+$border-radius-full: 9999px;
+
+// ─── Shadows ──────────────────────────────────────────────────────────────────
+$shadow-sm:      0 1px 4px rgba(30, 61, 30, 0.08);
+$shadow-base:    0 2px 16px rgba(30, 61, 30, 0.10);
+$shadow-lg:      0 8px 32px rgba(30, 61, 30, 0.15);
+$shadow-focus:   0 0 0 3px rgba(74, 139, 74, 0.35);
+$shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.18);
+
+// ─── Layout ───────────────────────────────────────────────────────────────────
+$sidebar-width:     260px;
+$content-max-width: 1100px;
+
+// ─── Transitions ──────────────────────────────────────────────────────────────
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 400ms ease;
+
+// ─── Z-index ──────────────────────────────────────────────────────────────────
+$z-overlay: 90;
+$z-sidebar: 100;

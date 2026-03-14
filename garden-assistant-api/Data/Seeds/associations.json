@@ -1,0 +1,731 @@
+[
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Basilic",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le basilic repousse les pucerons et les thrips par ses huiles essentielles volatiles, et améliorerait la saveur des tomates."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Carotte",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les fleurs de carotte en ombelle attirent les parasitoïdes des chenilles ravageuses de la tomate."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Bourrache",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les pollinisateurs et repousse les sphinx de la tomate, améliore la pollinisation."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Fenouil",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le fenouil inhibe la croissance de la tomate par ses exsudats racinaires. À éviter à moins de 1 mètre."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Tagète",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les exsudats racinaires du tagète (alpha-terthienyl) réduisent significativement les populations de nématodes phytophages."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Céleri",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'association tomate-céleri perturberait les ravageurs communs par les odeurs croisées."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Pomme de terre",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Tomate et pomme de terre sont toutes deux des Solanacées partageant les mêmes maladies (mildiou, alternaria). Éviter."
+  },
+  {
+    "sourcePlantName": "Carotte",
+    "targetPlantName": "Poireau",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Association classique : l'odeur du poireau repousse la mouche de la carotte, celle de la carotte repousse la teigne du poireau."
+  },
+  {
+    "sourcePlantName": "Carotte",
+    "targetPlantName": "Ail",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail repousse la mouche de la carotte par ses composés soufrés volatils (allicine)."
+  },
+  {
+    "sourcePlantName": "Carotte",
+    "targetPlantName": "Oignon",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'oignon confond olfactivement les mouches des deux espèces, association classique en rang alternés."
+  },
+  {
+    "sourcePlantName": "Carotte",
+    "targetPlantName": "Romarin",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le romarin repousse la mouche de la carotte (Psila rosae) par ses huiles essentielles volatiles."
+  },
+  {
+    "sourcePlantName": "Carotte",
+    "targetPlantName": "Sauge officinale",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sauge repousse la mouche de la carotte, protection similaire au romarin."
+  },
+  {
+    "sourcePlantName": "Maïs",
+    "targetPlantName": "Haricot à rames",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Milpa : le haricot grimpe sur le maïs et fixe l'azote dont il bénéficie, réduisant les besoins en intrants."
+  },
+  {
+    "sourcePlantName": "Maïs",
+    "targetPlantName": "Courge",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les larges feuilles de courge couvrent le sol, limitant l'évaporation et les adventices sous le maïs."
+  },
+  {
+    "sourcePlantName": "Haricot à rames",
+    "targetPlantName": "Courge",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le haricot fixe l'azote atmosphérique qui bénéficie à la courge, gourmande en nutriments (trio des 3 Sœurs)."
+  },
+  {
+    "sourcePlantName": "Haricot nain",
+    "targetPlantName": "Pomme de terre",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot repousse le doryphore de la pomme de terre, la pomme de terre confuse la bruche du haricot."
+  },
+  {
+    "sourcePlantName": "Fève",
+    "targetPlantName": "Capucine",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine attire les pucerons noirs loin de la fève en servant de plante piège sacrificielle."
+  },
+  {
+    "sourcePlantName": "Pois",
+    "targetPlantName": "Laitue",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les pois procurent une ombre légère bénéfique à la laitue qui monte moins rapidement en graines."
+  },
+  {
+    "sourcePlantName": "Pois",
+    "targetPlantName": "Radis",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le radis peut servir de marqueur de rang pour les pois et améliore la structure du sol proche."
+  },
+  {
+    "sourcePlantName": "Trèfle blanc",
+    "targetPlantName": "Maïs",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le trèfle blanc semé en inter-rang fixe l'azote et couvre le sol, réduisant besoins en fertilisation du maïs."
+  },
+  {
+    "sourcePlantName": "Luzerne",
+    "targetPlantName": "Tournesol",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La luzerne enrichit le sol en azote disponible pour le tournesol, association productive en allée."
+  },
+  {
+    "sourcePlantName": "Lupin",
+    "targetPlantName": "Carotte",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le lupin fixe l'azote et ameublit le sol profondément, bénéficiant à la carotte semée en succession."
+  },
+  {
+    "sourcePlantName": "Consoude",
+    "targetPlantName": "Tomate",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude accumulatrice de potassium et azote enrichit le sol autour des tomates par ses feuilles compostées."
+  },
+  {
+    "sourcePlantName": "Consoude",
+    "targetPlantName": "Framboisier",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Classique de la forêt comestible : la consoude plantée au pied du framboisier en est le mulch vivant permanent."
+  },
+  {
+    "sourcePlantName": "Ortie",
+    "targetPlantName": "Tomate",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'ortie en bordure stimulerait la croissance de la tomate et renforcerait sa résistance aux maladies."
+  },
+  {
+    "sourcePlantName": "Achillée millefeuille",
+    "targetPlantName": "Laitue",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'achillée en bordure attire une grande diversité d'insectes auxiliaires protégeant la laitue."
+  },
+  {
+    "sourcePlantName": "Tagète",
+    "targetPlantName": "Tomate",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Tagetes patula exsude de l'alpha-terthienyl inhibant les nématodes Meloidogyne qui ravagent les racines de tomate."
+  },
+  {
+    "sourcePlantName": "Tagète",
+    "targetPlantName": "Pomme de terre",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Protection contre les nématodes du sol, ennemi fréquent des pommes de terre en culture intensive."
+  },
+  {
+    "sourcePlantName": "Tagète",
+    "targetPlantName": "Aubergine",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Protection nématicide bénéfique pour toutes les Solanacées, incluant l'aubergine."
+  },
+  {
+    "sourcePlantName": "Capucine",
+    "targetPlantName": "Courgette",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Capucine utilisée en bordure pour concentrer les pucerons éloignés de la courgette."
+  },
+  {
+    "sourcePlantName": "Souci",
+    "targetPlantName": "Tomate",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les racines du souci libèrent des substances répulsives contre les nématodes phytophages des tomates."
+  },
+  {
+    "sourcePlantName": "Souci",
+    "targetPlantName": "Carotte",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le souci attire les pollinisateurs généraux bénéficiant à la production de graines de carotte."
+  },
+  {
+    "sourcePlantName": "Lavande",
+    "targetPlantName": "Fraisier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La lavande repousserait les acariens et pucerons des fraisiers adjacents."
+  },
+  {
+    "sourcePlantName": "Phacélie",
+    "targetPlantName": "Tournesol",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Phacélie et tournesol combinés offrent un continuum de floraison attractif pour les abeilles."
+  },
+  {
+    "sourcePlantName": "Tanaisie",
+    "targetPlantName": "Pomme de terre",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La tanaisie repousse efficacement le doryphore de la pomme de terre (Leptinotarsa decemlineata)."
+  },
+  {
+    "sourcePlantName": "Fenouil",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le fenouil inhibe la germination et la croissance des haricots par ses exsudats racinaires."
+  },
+  {
+    "sourcePlantName": "Fenouil",
+    "targetPlantName": "Laitue",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le fenouil inhibe la croissance de la laitue, ne pas associer ces deux plantes."
+  },
+  {
+    "sourcePlantName": "Fenouil",
+    "targetPlantName": "Aneth",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Fenouil et aneth s'hybrident facilement et se nuisent mutuellement en termes de saveur et vigueur."
+  },
+  {
+    "sourcePlantName": "Menthe poivrée",
+    "targetPlantName": "Laitue",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La menthe sans contention envahit et inhibe les cultures basses comme la laitue par compétition racinaire."
+  },
+  {
+    "sourcePlantName": "Ail",
+    "targetPlantName": "Tomate",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail repousse les araignées rouges et certains pucerons des tomates par ses composés soufrés."
+  },
+  {
+    "sourcePlantName": "Ail",
+    "targetPlantName": "Fraisier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail intercalé protège les fraisiers contre les pucerons, les acariens et les champignons."
+  },
+  {
+    "sourcePlantName": "Ail",
+    "targetPlantName": "Framboisier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'ail planté au pied des framboisiers repousserait les pucerons et réduirait le botrytis."
+  },
+  {
+    "sourcePlantName": "Ail",
+    "targetPlantName": "Pois",
+    "mechanism": "AerialRepulsion",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail inhibe la nodulation bactérienne des légumineuses, réduisant leur fixation d'azote. Éviter."
+  },
+  {
+    "sourcePlantName": "Ail",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "AerialRepulsion",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Même effet inhibiteur que sur les pois, les alliacées réduisent la fixation d'azote des légumineuses."
+  },
+  {
+    "sourcePlantName": "Oignon",
+    "targetPlantName": "Fraisier",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'oignon intercalé en rang alterné repousserait les pucerons et les thrips du fraisier."
+  },
+  {
+    "sourcePlantName": "Ciboulette",
+    "targetPlantName": "Carotte",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La ciboulette repousse la mouche de la carotte, plus pratique que l'oignon grâce à sa forme compacte."
+  },
+  {
+    "sourcePlantName": "Ciboulette",
+    "targetPlantName": "Fraisier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Association très appréciée : la ciboulette réduit les attaques de pucerons et l'oïdium des fraisiers."
+  },
+  {
+    "sourcePlantName": "Sauge officinale",
+    "targetPlantName": "Carotte",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sauge repousse la mouche de la carotte, alternative au romarin."
+  },
+  {
+    "sourcePlantName": "Sauge officinale",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La sauge serait légèrement inhibitrice de la croissance des haricots, à garder à distance."
+  },
+  {
+    "sourcePlantName": "Romarin",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le romarin repousserait les pucerons noirs du haricot."
+  },
+  {
+    "sourcePlantName": "Thym",
+    "targetPlantName": "Courgette",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le thym en fleur attire les bourdons pollinisateurs indispensables à la fructification de la courgette."
+  },
+  {
+    "sourcePlantName": "Persil",
+    "targetPlantName": "Tomate",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le persil en fleur attire les parasitoïdes des ravageurs de tomate, compagnon classique du potager."
+  },
+  {
+    "sourcePlantName": "Persil",
+    "targetPlantName": "Asperge",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le persil et l'asperge sont décrits comme compagnons classiques se bénéficiant mutuellement."
+  },
+  {
+    "sourcePlantName": "Coriandre",
+    "targetPlantName": "Carotte",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La coriandre en fleur attire les parasitoïdes de la mouche de la carotte, même famille botanique."
+  },
+  {
+    "sourcePlantName": "Bourrache",
+    "targetPlantName": "Fraisier",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les abeilles et bourdons qui pollinisent également les fleurs du fraisier."
+  },
+  {
+    "sourcePlantName": "Bourrache",
+    "targetPlantName": "Courgette",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les pollinisateurs indispensables à la courgette, très recommandée en association."
+  },
+  {
+    "sourcePlantName": "Laitue",
+    "targetPlantName": "Radis",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Association classique : le radis pousse rapidement sous la laitue, utilisé comme brise-sol et marqueur de rang."
+  },
+  {
+    "sourcePlantName": "Laitue",
+    "targetPlantName": "Fraisier",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La laitue couvre le sol entre les fraisiers en début de saison, limitant les adventices."
+  },
+  {
+    "sourcePlantName": "Épinard",
+    "targetPlantName": "Fraisier",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'épinard couvre le sol entre les fraisiers en hiver et au printemps, limitant les adventices."
+  },
+  {
+    "sourcePlantName": "Betterave",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot fixe l'azote dont profite la betterave, association en bandes alternées recommandée."
+  },
+  {
+    "sourcePlantName": "Pissenlit",
+    "targetPlantName": "Luzerne",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Pissenlit et luzerne associés forment un mélange dynamique accumulateur très complet en minéraux."
+  },
+  {
+    "sourcePlantName": "Tournesol",
+    "targetPlantName": "Haricot à rames",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le tournesol robuste sert de tuteur naturel au haricot grimpant, alternative végétale aux piquets."
+  },
+  {
+    "sourcePlantName": "Topinambour",
+    "targetPlantName": "Courgette",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le topinambour crée une haie brise-vent protégeant la courgette des vents desséchants."
+  },
+  {
+    "sourcePlantName": "Framboisier",
+    "targetPlantName": "Consoude",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude plantée au pied du framboisier enrichit continuellement le sol de son paillis de feuilles."
+  },
+  {
+    "sourcePlantName": "Framboisier",
+    "targetPlantName": "Ail",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'ail intercalé au pied du framboisier réduirait les attaques fongiques et les pucerons."
+  },
+  {
+    "sourcePlantName": "Sureau noir",
+    "targetPlantName": "Pomme de terre",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le sureau repousserait les doryphores dans un rayon de quelques mètres."
+  },
+  {
+    "sourcePlantName": "Hysope",
+    "targetPlantName": "Vigne",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'hysope en pied de vigne attirerait les insectes bénéfiques et réduirait certains champignons par ses essences."
+  },
+  {
+    "sourcePlantName": "Lotier corniculé",
+    "targetPlantName": "Laitue",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le lotier corniculé en couvre-sol entre les laitues fixe l'azote et limite les adventices."
+  },
+  {
+    "sourcePlantName": "Trèfle rouge",
+    "targetPlantName": "Framboisier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le trèfle rouge en couvre-sol sous les framboisiers fixe l'azote et protège le sol de l'érosion."
+  },
+  {
+    "sourcePlantName": "Potiron",
+    "targetPlantName": "Maïs",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le potiron couvre le sol entre les pieds de maïs, réduisant l'évaporation et les mauvaises herbes (Milpa)."
+  },
+  {
+    "sourcePlantName": "Courgette",
+    "targetPlantName": "Capucine",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine piège les pucerons en bordure de la courgette."
+  },
+  {
+    "sourcePlantName": "Aubergine",
+    "targetPlantName": "Basilic",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le basilic repousse les thrips et les acariens qui s'attaquent à l'aubergine."
+  },
+  {
+    "sourcePlantName": "Poivron",
+    "targetPlantName": "Basilic",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le basilic repousse les pucerons et les thrips du poivron, association thermophile complémentaire."
+  },
+  {
+    "sourcePlantName": "Brocoli",
+    "targetPlantName": "Thym",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le thym en bordure du brocoli repousse la piéride du chou et les altises."
+  },
+  {
+    "sourcePlantName": "Navet",
+    "targetPlantName": "Ciboulette",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette repousserait les altises s'attaquant aux navets et aux autres Brassicacées."
+  },
+  {
+    "sourcePlantName": "Panais",
+    "targetPlantName": "Ciboulette",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette en rang alterné repousserait la mouche du panais comme elle repousse celle de la carotte."
+  },
+  {
+    "sourcePlantName": "Estragon",
+    "targetPlantName": "Aubergine",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'estragon planté en bordure repousserait les fourmis et les pucerons de l'aubergine."
+  },
+  {
+    "sourcePlantName": "Origan",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'origan attire les pollinisateurs favorisant une meilleure nouaison du haricot."
+  },
+  {
+    "sourcePlantName": "Fraisier",
+    "targetPlantName": "Ciboulette",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Association très documentée : la ciboulette intercalée réduit l'oïdium et les pucerons du fraisier."
+  },
+  {
+    "sourcePlantName": "Potiron",
+    "targetPlantName": "Haricot à rames",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le haricot grimpant fixe l'azote dont profite le potiron très gourmand en nutriments (Milpa complète)."
+  },
+  {
+    "sourcePlantName": "Courge",
+    "targetPlantName": "Consoude",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude en bordure de parcelle de courge apporte le potassium nécessaire à la fructification."
+  }
+]

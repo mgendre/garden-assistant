@@ -1,0 +1,20 @@
+<div class="px-1 pb-1">
+  <h2 mat-dialog-title class="!font-['DM_Serif_Display'] !text-2xl !text-[#1e3d1e]">
+    {{ data.title }}
+  </h2>
+
+  <mat-dialog-content>
+    <p class="text-sm leading-relaxed text-stone-600">{{ data.message }}</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="!flex !gap-3 !justify-end !px-0 !pb-0 !pt-4">
+    <button class="rounded-lg border border-stone-200 bg-white px-5 py-2 text-sm font-medium text-stone-600 transition-all duration-200 hover:border-stone-300 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-300"
+            (click)="cancel()">
+      {{ data.cancelLabel ?? 'Cancel' }}
+    </button>
+    <button class="rounded-lg bg-red-600 px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-red-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-offset-2"
+            (click)="confirm()">
+      {{ data.confirmLabel ?? 'Confirm' }}
+    </button>
+  </mat-dialog-actions>
+</div>

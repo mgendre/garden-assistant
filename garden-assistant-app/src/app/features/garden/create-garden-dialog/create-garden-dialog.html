@@ -1,0 +1,42 @@
+<div class="px-1 pb-1">
+  <h2 mat-dialog-title class="!font-['DM_Serif_Display'] !text-2xl !text-[#1e3d1e]">
+    Create Garden
+  </h2>
+
+  <mat-dialog-content>
+    <form [formGroup]="form" id="createGardenForm" (ngSubmit)="submit()" class="flex flex-col gap-4 pt-2">
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" maxlength="256" />
+        @if (form.controls.name.hasError('required') && form.controls.name.touched) {
+          <mat-error>Name is required</mat-error>
+        }
+        @if (form.controls.name.hasError('maxlength')) {
+          <mat-error>Name cannot exceed 256 characters</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="4" maxlength="2000"></textarea>
+        @if (form.controls.description.hasError('maxlength')) {
+          <mat-error>Description cannot exceed 2000 characters</mat-error>
+        }
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="!flex !gap-3 !justify-end !px-0 !pb-0 !pt-2">
+    <button class="rounded-lg border border-stone-200 bg-white px-5 py-2 text-sm font-medium text-stone-600 transition-all duration-200 hover:border-stone-300 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-300"
+            type="button"
+            (click)="cancel()">
+      Cancel
+    </button>
+    <button class="rounded-lg bg-[#6b4226] px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#5a3720] hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#6b4226] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            form="createGardenForm"
+            type="submit"
+            [disabled]="form.invalid">
+      Create Garden
+    </button>
+  </mat-dialog-actions>
+</div>

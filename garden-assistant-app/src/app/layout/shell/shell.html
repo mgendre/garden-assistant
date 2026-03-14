@@ -1,0 +1,71 @@
+<div class="flex min-h-screen">
+
+  <!-- Mobile overlay -->
+  @if (sidebarOpen()) {
+    <div class="fixed inset-0 z-20 bg-black/50 backdrop-blur-sm lg:hidden"
+         (click)="closeSidebar()"></div>
+  }
+
+  <!-- Sidebar -->
+  <aside class="fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-[#1e3d1e] transition-transform duration-300 ease-in-out lg:static lg:translate-x-0"
+         [class.-translate-x-full]="!sidebarOpen()"
+         [class.translate-x-0]="sidebarOpen()">
+
+    <!-- Brand -->
+    <div class="flex items-center gap-3 border-b border-white/10 px-6 py-7">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#4a7c3f] text-xl shadow-md">
+        🌿
+      </div>
+      <span class="font-['DM_Serif_Display'] text-lg tracking-wide text-white">
+        Garden Assistant
+      </span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex flex-1 flex-col gap-1 px-3 py-6">
+      @for (item of navItems; track item.route) {
+        <a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium text-white/60 transition-all duration-200 hover:bg-white/10 hover:text-white"
+           [routerLink]="item.route"
+           routerLinkActive="!bg-white/15 !text-white ring-1 ring-white/20"
+           (click)="closeSidebar()">
+          <span class="text-base leading-none transition-transform duration-200 group-hover:scale-110">{{ item.emoji }}</span>
+          <span>{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <!-- Footer -->
+    <div class="border-t border-white/10 px-6 py-5">
+      <p class="text-xs text-white/30">Cultivate your world</p>
+    </div>
+  </aside>
+
+  <!-- Main content (inert when sidebar overlay is open to trap focus inside sidebar) -->
+  <div class="flex min-w-0 flex-1 flex-col" [attr.inert]="sidebarOpen() || null">
+
+    <!-- Mobile topbar -->
+    <header class="flex items-center gap-4 border-b border-[#2d5a27]/20 bg-[#1e3d1e] px-4 py-4 shadow-sm lg:hidden">
+      <button class="flex h-9 w-9 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+              (click)="toggleSidebar()"
+              [attr.aria-label]="sidebarOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
+              [attr.aria-expanded]="sidebarOpen()">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <div class="flex flex-col">
+        <span class="font-['DM_Serif_Display'] text-base text-white leading-tight">Garden Assistant</span>
+        @if (activePageLabel()) {
+          <span class="text-xs text-white/60 leading-tight">{{ activePageLabel() }}</span>
+        }
+      </div>
+    </header>
+
+    <!-- Page content -->
+    <main class="flex-1 bg-[#f8f4ef]">
+      <div class="mx-auto max-w-5xl px-6 py-8 lg:px-10 lg:py-10">
+        <router-outlet />
+      </div>
+    </main>
+  </div>
+</div>

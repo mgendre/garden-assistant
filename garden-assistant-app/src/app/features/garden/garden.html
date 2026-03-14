@@ -1,0 +1,81 @@
+<!-- Page header -->
+<div class="mb-8 flex items-center justify-between">
+  <div>
+    <p class="text-xs font-semibold uppercase tracking-widest text-[#7aaa6e]">Manage</p>
+    <h1 class="font-['DM_Serif_Display'] text-3xl text-[#1e3d1e] lg:text-4xl">My Gardens</h1>
+  </div>
+
+  <button class="flex items-center gap-2 rounded-xl bg-[#6b4226] px-5 py-2.5 text-sm font-semibold text-white shadow-md ring-1 ring-[#6b4226] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#5a3720] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#6b4226] focus:ring-offset-2 focus:ring-offset-[#f8f4ef]"
+          (click)="openCreateDialog()">
+    <mat-icon class="!h-4 !w-4 !text-base !leading-none">add</mat-icon>
+    Add Garden
+  </button>
+</div>
+
+<!-- Loading state -->
+@if (loading()) {
+  <div class="flex flex-col items-center justify-center py-20 text-stone-400">
+    <mat-spinner diameter="44"></mat-spinner>
+    <p class="mt-5 text-sm">Loading your gardens…</p>
+  </div>
+}
+
+<!-- Empty state -->
+@else if (gardens().length === 0) {
+  <div class="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#4a7c3f]/30 bg-white/60 py-20 text-center">
+    <div class="mb-4 text-5xl">🌱</div>
+    <h2 class="font-['DM_Serif_Display'] text-2xl text-[#1e3d1e]">No gardens yet</h2>
+    <p class="mt-2 text-sm text-stone-500">Commencez à cultiver votre espace.</p>
+    <button class="mt-5 flex items-center gap-2 rounded-xl border border-[#4a7c3f] px-5 py-2.5 text-sm font-semibold text-[#4a7c3f] transition-all hover:bg-[#4a7c3f] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#4a7c3f] focus:ring-offset-2"
+            (click)="openCreateDialog()">
+      Créer mon premier jardin
+    </button>
+  </div>
+}
+
+<!-- Garden table -->
+@else {
+  <div class="overflow-hidden rounded-2xl border border-[#4a7c3f]/15 bg-white shadow-sm">
+    <table mat-table [dataSource]="gardens()" class="w-full">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef
+            class="!border-b !border-[#4a7c3f]/15 !bg-[#f8f4ef] !px-6 !py-3.5 !text-left !text-xs !font-semibold !uppercase !tracking-widest !text-[#4a7c3f]">
+          Name
+        </th>
+        <td mat-cell *matCellDef="let garden"
+            class="!border-b !border-stone-100 !px-6 !py-4 !font-medium !text-[#1e3d1e]">
+          {{ garden.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef
+            class="!border-b !border-[#4a7c3f]/15 !bg-[#f8f4ef] !px-6 !py-3.5 !text-left !text-xs !font-semibold !uppercase !tracking-widest !text-[#4a7c3f]">
+          Description
+        </th>
+        <td mat-cell *matCellDef="let garden"
+            class="!border-b !border-stone-100 !px-6 !py-4 !text-sm !text-stone-500">
+          {{ garden.description || '—' }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef
+            class="!border-b !border-[#4a7c3f]/15 !bg-[#f8f4ef] !px-6 !py-3.5 !w-16"></th>
+        <td mat-cell *matCellDef="let garden"
+            class="!border-b !border-stone-100 !px-6 !py-4">
+          <button class="flex h-11 w-11 items-center justify-center rounded-lg text-stone-400 transition-all duration-200 hover:bg-red-50 hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-red-300"
+                  (click)="deleteGarden(garden.id, garden.name)"
+                  [attr.aria-label]="'Supprimer ' + garden.name">
+            <mat-icon class="!h-4 !w-4 !text-base !leading-none">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+          class="transition-colors duration-150 hover:!bg-[#f8f4ef]/60"></tr>
+    </table>
+  </div>
+}
