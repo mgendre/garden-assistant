@@ -1,0 +1,82 @@
+<div class="panel center-panel">
+  @if (service.selectedPlants().length === 0) {
+    <div class="empty-state">
+      <div class="empty-icon">🌱</div>
+      <p [translate]="'Companions.SelectPlant'"></p>
+    </div>
+  } @else {
+    <div class="plants-scroll">
+      @for (plant of service.selectedPlants(); track plant.id) {
+        <div class="plant-detail" [class.collapsed]="!isExpanded(plant.id)">
+          <div class="detail-hero" (click)="toggleExpanded(plant.id)">
+            <div class="detail-icon-sm">{{ service.getPlantEmoji(plant) }}</div>
+            <div class="detail-hero-info">
+              <div class="detail-name-row">
+                <span class="detail-name">{{ plant.name }}</span>
+                <span class="detail-latin-inline">{{ plant.scientificName }}</span>
+              </div>
+              <div class="detail-badges">
+                @if (plant.family) {
+                  <span class="detail-badge" [class]="service.getFamilyClass(plant.family)">
+                    {{ plant.family }}
+                  </span>
+                }
+                @if (getSunKey(plant.sunRequirement); as key) {
+                  <span class="detail-badge badge-sun">{{ key | translate }}</span>
+                }
+                @if (getWaterKey(plant.waterNeeds); as key) {
+                  <span class="detail-badge badge-water">{{ key | translate }}</span>
+                }
+                @for (badgeKey of getBadgeKeys(plant); track badgeKey) {
+                  <span class="detail-badge badge-trait">{{ badgeKey | translate }}</span>
+                }
+              </div>
+            </div>
+            <div class="detail-actions">
+              <button
+                class="remove-btn"
+                (click)="service.removePlant(plant); $event.stopPropagation()"
+                [attr.aria-label]="'Companions.RemovePlant' | translate:{ name: plant.name }">
+                ✕
+              </button>
+              <span class="chevron" [class.expanded]="isExpanded(plant.id)">▾</span>
+            </div>
+          </div>
+
+          @if (isExpanded(plant.id)) {
+            <div class="detail-body">
+              @if (plant.description) {
+                <div class="detail-section">
+                  <div class="detail-section-title" [translate]="'Companions.DescriptionTitle'"></div>
+                  <p class="desc-text">{{ plant.description }}</p>
+                </div>
+              }
+
+              <div class="detail-section">
+                <div class="detail-section-title">{{ 'Companions.Characteristics' | translate }}</div>
+                <div class="info-grid">
+                  <div class="info-card">
+                    <div class="info-card-label">{{ 'Companions.Height' | translate }}</div>
+                    <div class="info-card-value">📏 {{ getHeightLabel(plant) }}</div>
+                  </div>
+                  <div class="info-card">
+                    <div class="info-card-label">{{ 'Companions.Season' | translate }}</div>
+                    <div class="info-card-value">📅 {{ getLifeCycleKey(plant.lifeCycle) | translate }}</div>
+                  </div>
+                  <div class="info-card">
+                    <div class="info-card-label">{{ 'Companions.Sun' | translate }}</div>
+                    <div class="info-card-value">{{ getSunKey(plant.sunRequirement) | translate }}</div>
+                  </div>
+                  <div class="info-card">
+                    <div class="info-card-label">{{ 'Companions.Water' | translate }}</div>
+                    <div class="info-card-value">{{ getWaterKey(plant.waterNeeds) | translate }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

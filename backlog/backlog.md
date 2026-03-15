@@ -88,6 +88,27 @@
 
 ---
 
+## E06 — Refonte UI permaculture (3 colonnes)
+
+> Reconstruire le frontend avec un layout 3 colonnes inspire de la maquette PermaGarden : catalogue de plantes a gauche, fiches detail multi-selection au centre, recommandations de compagnons et guildes a droite.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-033](epics/E06-refonte-ui-permaculture/US-033-app-shell-header-navigation.md) | App shell avec header et navigation | Must | 3 | A faire |
+| [US-034](epics/E06-refonte-ui-permaculture/US-034-page-associations-layout-trois-colonnes.md) | Page associations layout 3 colonnes | Must | 2 | A faire |
+| [US-035](epics/E06-refonte-ui-permaculture/US-035-catalogue-plantes-panneau-gauche.md) | Catalogue de plantes (panneau gauche) | Must | 3 | A faire |
+| [US-036](epics/E06-refonte-ui-permaculture/US-036-recherche-plantes-catalogue.md) | Recherche dans le catalogue | Must | 1 | A faire |
+| [US-037](epics/E06-refonte-ui-permaculture/US-037-tri-catalogue-plantes.md) | Trier le catalogue de plantes | Should | 1 | A faire |
+| [US-038](epics/E06-refonte-ui-permaculture/US-038-selection-multi-plantes-panneau-centre.md) | Selection multi-plantes (panneau centre) | Must | 5 | A faire |
+| [US-039](epics/E06-refonte-ui-permaculture/US-039-panneau-compagnons-recommandations.md) | Panneau de recommandations compagnons | Must | 5 | A faire |
+| [US-040](epics/E06-refonte-ui-permaculture/US-040-interactions-compagnons-et-guildes.md) | Ajouter depuis compagnons et guildes | Must | 3 | A faire |
+| [US-041](epics/E06-refonte-ui-permaculture/US-041-etats-vides-et-accueil.md) | Etats vides et messages d'accueil | Should | 1 | A faire |
+| [US-042](epics/E06-refonte-ui-permaculture/US-042-responsive-mobile-tablette.md) | Adaptation responsive mobile/tablette | Should | 3 | A faire |
+
+**Total E06 : 27 points (0 livres / 27 a faire)**
+
+---
+
 ## Recapitulatif
 
 | Epic | Points | Livre | A faire |
@@ -97,8 +118,9 @@
 | E03 — Outil graphique | 29 | 0 | 29 |
 | E04 — Rotations de culture | 30 | 0 | 30 |
 | E05 — Compagnonnage vegetal (refonte) | 19 | 19 | 0 |
-| **Total** | **100** | **26** | **74** |
+| E06 — Refonte UI permaculture (3 colonnes) | 27 | 0 | 27 |
+| **Total** | **127** | **26** | **101** |
 
 ---
 
-*Backlog gere par l'agent Product Owner -- derniere mise a jour : 2026-03-14*
+*Backlog gere par l'agent Product Owner -- derniere mise a jour : 2026-03-15*

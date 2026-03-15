@@ -1,0 +1,34 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+
+.companions-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem $space-md;
+
+  @include respond-to('md') {
+    padding: 1.5rem $space-2xl;
+  }
+}
+
+.page-header {
+  margin-bottom: 1.25rem;
+}
+
+.page-subtitle {
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+  margin-top: 0.25rem;
+}
+
+.three-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  @include respond-to('lg') {
+    display: grid;
+    grid-template-columns: 280px 1fr 320px;
+    align-items: start;
+  }
+}

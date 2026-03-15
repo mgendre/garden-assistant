@@ -1,0 +1,23 @@
+@use '../abstracts/variables' as *;
+
+@mixin panel {
+  background: #fff;
+  border-radius: 16px;
+  border: 1.5px solid rgba(45, 106, 79, 0.1);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(26, 58, 42, 0.05), 0 8px 24px rgba(26, 58, 42, 0.04);
+}
+
+@mixin family-badges {
+  .fam-solanum { background: #fce4ec; color: #c62828; }
+  .fam-lamiaceae { background: #f1f8e9; color: #558b2f; }
+  .fam-apiaceae { background: #e3f2fd; color: #1565c0; }
+  .fam-allium { background: #f3e5f5; color: #7b1fa2; }
+  .fam-legume { background: #e8f5e9; color: #388e3c; }
+  .fam-poaceae { background: #fff8e1; color: #f57f17; }
+  .fam-cucurbit { background: #fff3e0; color: #e65100; }
+  .fam-brassica { background: #e0f7fa; color: #00695c; }
+  .fam-asteraceae { background: #fffde7; color: #f57f17; }
+  .fam-rosaceae { background: #fce4ec; color: #ad1457; }
+  .fam-boraginaceae { background: #e8eaf6; color: #283593; }
+}

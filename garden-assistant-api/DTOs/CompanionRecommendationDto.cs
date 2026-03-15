@@ -1,3 +1,5 @@
+using GardenAssistant.Data.Entities.Enums;
+
 namespace GardenAssistant.DTOs;
 
 public record CompanionRecommendationDto(
@@ -5,5 +7,6 @@ public record CompanionRecommendationDto(
     string PlantName,
     string? ScientificName,
     double Score,
+    List<AssociationMechanism> Mechanisms,
     List<GuildInfoDto> Guilds
 );

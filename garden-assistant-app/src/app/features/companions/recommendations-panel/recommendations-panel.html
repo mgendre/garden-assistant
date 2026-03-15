@@ -1,0 +1,131 @@
+<div class="panel recommendations-panel">
+  @if (service.selectedPlants().length === 0) {
+    <div class="right-empty">
+      <div class="right-empty-icon">🤝</div>
+      <p [translate]="'Companions.EmptyDesc'"></p>
+    </div>
+  } @else if (service.loading()) {
+    <div class="right-empty">
+      <div class="right-empty-icon">⏳</div>
+      <p [translate]="'Companions.Loading'"></p>
+    </div>
+  } @else if (service.recommendations(); as recs) {
+    <div class="right-scroll">
+
+      @if (recs.selectedPlantConflicts?.length) {
+        <div class="companion-card sec-conflict">
+          <div class="companion-section-header">
+            <span>⚠️</span>
+            <span [translate]="'Companions.ConflictTitle'"></span>
+            <span class="stat-badge stat-red">{{ recs.selectedPlantConflicts!.length }}</span>
+          </div>
+          <div class="companion-list">
+            @for (conflict of recs.selectedPlantConflicts!; track $index) {
+              <div class="conflict-item">
+                <span class="conflict-icon">⚡</span>
+                <div>
+                  <div class="conflict-names">{{ conflict.plantAName }} & {{ conflict.plantBName }}</div>
+                  @if (conflict.mechanisms?.length) {
+                    <div class="conflict-mechanisms">
+                      @for (m of conflict.mechanisms; track $index) {
+                        <span class="mechanism-chip mechanism-red">{{ getMechanismTranslationKey(m) | translate }}</span>
+                      }
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      @if (uniqueGuilds().length) {
+        <div class="companion-card sec-guild">
+          <div class="companion-section-header">
+            <span>🌐</span>
+            <span [translate]="'Companions.GuildsSectionTitle'"></span>
+            <span class="stat-badge stat-orange">{{ uniqueGuilds().length }}</span>
+          </div>
+          <div class="guild-list">
+            @for (guild of uniqueGuilds(); track guild.id) {
+              <div class="guild-card">
+                <div class="guild-name">{{ guild.name }}</div>
+                @if (getGuildPlants(guild.id); as detail) {
+                  <div class="guild-plants">
+                    @for (gp of detail.plants ?? []; track gp.id) {
+                      <span class="guild-plant-chip" (click)="onGuildPlantClick(gp.id)">{{ getPlantEmojiByName(gp.name) }} {{ gp.name }}</span>
+                    }
+                  </div>
+                }
+                @if (guild.description) {
+                  <div class="guild-desc">{{ guild.description }}</div>
+                }
+                <button class="guild-add-btn" (click)="onGuildClick(guild)" [translate]="'Companions.AddGuild'"></button>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <div class="companion-card sec-beneficial">
+        <div class="companion-section-header">
+          <span>🤝</span>
+          <span [translate]="'Companions.GoodTitle'"></span>
+          <span class="stat-badge stat-green">{{ recs.goodCompanions?.length ?? 0 }}</span>
+        </div>
+        <div class="companion-list">
+          @if (recs.goodCompanions?.length) {
+            @for (companion of recs.goodCompanions; track companion.plantId) {
+              <div class="companion-item" (click)="onCompanionClick(companion)">
+                <span class="companion-icon">{{ getPlantEmojiById(companion.plantId) }}</span>
+                <div class="companion-info">
+                  <div class="companion-name">{{ companion.plantName }}</div>
+                  <div class="companion-latin">{{ companion.scientificName }}</div>
+                  @if (companion.mechanisms?.length) {
+                    <div class="companion-mechanisms">
+                      @for (m of companion.mechanisms; track $index) {
+                        <span class="mechanism-chip mechanism-green">{{ getMechanismTranslationKey(m) | translate }}</span>
+                      }
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          } @else {
+            <div class="companion-empty" [translate]="'Companions.GoodEmpty'"></div>
+          }
+        </div>
+      </div>
+
+      <div class="companion-card sec-avoid">
+        <div class="companion-section-header">
+          <span>⛔</span>
+          <span [translate]="'Companions.AvoidTitle'"></span>
+          <span class="stat-badge stat-red">{{ recs.plantsToAvoid?.length ?? 0 }}</span>
+        </div>
+        <div class="companion-list">
+          @if (recs.plantsToAvoid?.length) {
+            @for (avoid of recs.plantsToAvoid; track avoid.plantId) {
+              <div class="avoid-item">
+                <span class="avoid-icon">{{ getPlantEmojiById(avoid.plantId) }}</span>
+                <div class="avoid-info">
+                  <div class="avoid-name">{{ avoid.plantName }}</div>
+                  <div class="avoid-latin">{{ avoid.scientificName }}</div>
+                  @if (avoid.mechanisms?.length) {
+                    <div class="avoid-mechanisms">
+                      @for (m of avoid.mechanisms; track $index) {
+                        <span class="mechanism-chip mechanism-red">{{ getMechanismTranslationKey(m) | translate }}</span>
+                      }
+                    </div>
+                  }
+                </div>
+              </div>
+            }
+          } @else {
+            <div class="companion-empty">—</div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+</div>

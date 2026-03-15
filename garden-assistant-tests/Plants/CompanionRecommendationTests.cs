@@ -57,6 +57,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         result.GoodCompanions.ShouldBeEmpty();
         result.PlantsToAvoid.ShouldBeEmpty();
+        result.SelectedPlantConflicts.ShouldBeEmpty();
     }
 
     [Fact]
@@ -64,9 +65,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
     {
         var tomato = CreatePlant("Tomato");
         var basil = CreatePlant("Basil");
-        var fennel = CreatePlant("Fennel");
+        var neutral = CreatePlant("Neutral Plant");
         CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
-        CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful);
+        CreateAssociation(tomato.Id, neutral.Id, AssociationEffect.Neutral);
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
@@ -224,19 +225,19 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenHarmfulAssociationExists_ShouldReturnPlantsToAvoid()
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulAssociationExists_ShouldExcludeFromGoodCompanions()
     {
         var tomato = CreatePlant("Tomato");
         var fennel = CreatePlant("Fennel");
+        var basil = CreatePlant("Basil");
         CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.RootAllelopathy);
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.PlantsToAvoid.Count.ShouldBe(1);
-        result.PlantsToAvoid[0].PlantId.ShouldBe(fennel.Id);
-        result.PlantsToAvoid[0].PlantName.ShouldBe("Fennel");
-        result.PlantsToAvoid[0].Mechanisms.ShouldContain(AssociationMechanism.RootAllelopathy);
+        result.GoodCompanions.Select(c => c.PlantId).ShouldNotContain(fennel.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == basil.Id);
     }
 
     [Fact]
@@ -303,18 +304,155 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithMultipleMechanisms_ShouldListAll()
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithMultipleMechanisms_ShouldExcludeFromGoodCompanions()
     {
         var tomato = CreatePlant("Tomato");
         var fennel = CreatePlant("Fennel");
+        var basil = CreatePlant("Basil");
         CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.RootAllelopathy);
         CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.AerialRepulsion);
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.PlantsToAvoid[0].Mechanisms.Count.ShouldBe(2);
-        result.PlantsToAvoid[0].Mechanisms.ShouldContain(AssociationMechanism.RootAllelopathy);
-        result.PlantsToAvoid[0].Mechanisms.ShouldContain(AssociationMechanism.AerialRepulsion);
+        result.GoodCompanions.Select(c => c.PlantId).ShouldNotContain(fennel.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == basil.Id);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithAnySelectedPlant_ShouldExcludeFromGoodCompanions()
+    {
+        var tomato = CreatePlant("Tomato");
+        var carrot = CreatePlant("Carrot");
+        var fennel = CreatePlant("Fennel");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Beneficial);
+        CreateAssociation(carrot.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.RootAllelopathy);
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
+        CreateAssociation(carrot.Id, basil.Id, AssociationEffect.Beneficial);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, carrot.Id]);
+
+        result.GoodCompanions.Select(c => c.PlantId).ShouldNotContain(fennel.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == basil.Id);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenBeneficialMechanismsExist_ShouldIncludeMechanisms()
+    {
+        var tomato = CreatePlant("Tomato");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.OlfactoryConfusion);
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.PredatorAttraction);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.GoodCompanions[0].Mechanisms.Count.ShouldBe(2);
+        result.GoodCompanions[0].Mechanisms.ShouldContain(AssociationMechanism.OlfactoryConfusion);
+        result.GoodCompanions[0].Mechanisms.ShouldContain(AssociationMechanism.PredatorAttraction);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenNoBeneficialMechanisms_ShouldReturnEmptyMechanisms()
+    {
+        var tomato = CreatePlant("Tomato");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Neutral);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.GoodCompanions[0].Mechanisms.ShouldBeEmpty();
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenMixedEffects_ShouldOnlyCollectBeneficialMechanisms()
+    {
+        var tomato = CreatePlant("Tomato");
+        var carrot = CreatePlant("Carrot");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.OlfactoryConfusion);
+        CreateAssociation(carrot.Id, basil.Id, AssociationEffect.Neutral,
+            AssociationMechanism.NitrogenFixation);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, carrot.Id]);
+
+        var basilRec = result.GoodCompanions.First(c => c.PlantId == basil.Id);
+        basilRec.Mechanisms.Count.ShouldBe(1);
+        basilRec.Mechanisms.ShouldContain(AssociationMechanism.OlfactoryConfusion);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenBeneficialFromMultipleSelected_ShouldCollectAllMechanisms()
+    {
+        var tomato = CreatePlant("Tomato");
+        var carrot = CreatePlant("Carrot");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.OlfactoryConfusion);
+        CreateAssociation(carrot.Id, basil.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.NitrogenFixation);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, carrot.Id]);
+
+        var basilRec = result.GoodCompanions.First(c => c.PlantId == basil.Id);
+        basilRec.Mechanisms.Count.ShouldBe(2);
+        basilRec.Mechanisms.ShouldContain(AssociationMechanism.OlfactoryConfusion);
+        basilRec.Mechanisms.ShouldContain(AssociationMechanism.NitrogenFixation);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenDuplicateBeneficialMechanism_ShouldDeduplicateMechanisms()
+    {
+        var tomato = CreatePlant("Tomato");
+        var carrot = CreatePlant("Carrot");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.OlfactoryConfusion);
+        CreateAssociation(carrot.Id, basil.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.OlfactoryConfusion);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, carrot.Id]);
+
+        var basilRec = result.GoodCompanions.First(c => c.PlantId == basil.Id);
+        basilRec.Mechanisms.Count.ShouldBe(1);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenSelectedPlantsConflict_ShouldReturnSelectedPlantConflicts()
+    {
+        var tomato = CreatePlant("Tomato");
+        var fennel = CreatePlant("Fennel");
+        CreatePlant("Bystander");
+        CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.RootAllelopathy);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, fennel.Id]);
+
+        result.SelectedPlantConflicts.Count.ShouldBe(1);
+        result.SelectedPlantConflicts[0].Mechanisms.ShouldContain(AssociationMechanism.RootAllelopathy);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenSelectedPlantsDoNotConflict_ShouldReturnEmptyConflicts()
+    {
+        var tomato = CreatePlant("Tomato");
+        var basil = CreatePlant("Basil");
+        CreatePlant("Bystander");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, basil.Id]);
+
+        result.SelectedPlantConflicts.ShouldBeEmpty();
     }
 }

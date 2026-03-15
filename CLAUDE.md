@@ -25,6 +25,7 @@ Garden Assistant · Angular (frontend) · .NET 10 / ASP.NET Core (backend) · Po
 - **Never write comments** — code must be self-explanatory through clear naming
 - Name things precisely: variables, methods, and classes should read like prose
 - Delete dead code rather than commenting it out
+- **Always use `{ }` braces** on all control-flow blocks (`if`, `else`, `for`, `foreach`, `while`, `using`, etc.) — even single-line bodies. This applies to both C# and TypeScript
 
 ---
 

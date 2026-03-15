@@ -1189,6 +1189,7 @@ export interface CreatePlantAssociationRequest {
 export interface CompanionSearchResultDto {
     goodCompanions?: CompanionRecommendationDto[];
     plantsToAvoid?: PlantToAvoidDto[];
+    selectedPlantConflicts?: SelectedPlantConflictDto[];
 }
 
 export interface CompanionRecommendationDto {
@@ -1196,6 +1197,7 @@ export interface CompanionRecommendationDto {
     plantName?: string;
     scientificName?: string | undefined;
     score?: number;
+    mechanisms?: AssociationMechanism[];
     guilds?: GuildInfoDto[];
 }
 
@@ -1209,6 +1211,14 @@ export interface PlantToAvoidDto {
     plantId?: string;
     plantName?: string;
     scientificName?: string | undefined;
+    mechanisms?: AssociationMechanism[];
+}
+
+export interface SelectedPlantConflictDto {
+    plantAId?: string;
+    plantAName?: string;
+    plantBId?: string;
+    plantBName?: string;
     mechanisms?: AssociationMechanism[];
 }
 
