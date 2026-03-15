@@ -1825,5 +1825,320 @@
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
     "notes": "L'argousier, buisson épineux fixateur d'azote, protège les jeunes framboisiers du vent et du broutage tout en enrichissant le sol, servant de plante nourrice efficace."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "poivron",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les exsudats racinaires du fenouil (trans-anéthole) inhibent la croissance des Solanacées dont le poivron, réduisant la nouaison et le développement racinaire."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "aubergine",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Comme le poivron et la tomate, l'aubergine (Solanacée) est sensible aux composés allélopathiques racinaires du fenouil, qui freinent son développement végétatif."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "courgette",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le fenouil inhibe la germination et la croissance des Cucurbitacées. La courgette plantée à proximité montre un feuillage chlorotique et une production réduite."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "courge",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les Cucurbitacées comme la courge sont sensibles aux exsudats racinaires du fenouil, qui perturbent l'absorption minérale et ralentissent la croissance des tiges volubiles."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "carotte",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Bien qu'appartenant à la même famille (Apiacées), le fenouil entre en compétition allélopathique avec la carotte et risque une hybridation par pollinisation croisée."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "laitue",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les exsudats racinaires du tournesol (héliannuols, acide chlorogénique) inhibent la germination et la croissance de la laitue plantée à proximité."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "haricot-nain",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les composés allélopathiques du tournesol perturbent la nodulation du haricot et réduisent la fixation d'azote par les bactéries Rhizobium."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "pomme-de-terre",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La pomme de terre montre une croissance réduite et un feuillage chlorotique en présence de tournesol. Les résidus de tiges décomposés aggravent l'effet dans la saison suivante."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "betterave",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les isochlorogénates produits par le tournesol inhibent la germination des graines de betterave et ralentissent le développement des jeunes plants."
+  },
+  {
+    "sourcePlantKey": "topinambour",
+    "targetPlantKey": "laitue",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le topinambour, du même genre que le tournesol (Helianthus), produit des composés allélopathiques similaires qui inhibent la germination et la croissance de la laitue."
+  },
+  {
+    "sourcePlantKey": "topinambour",
+    "targetPlantKey": "tomate",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les exsudats racinaires du topinambour freinent le développement de la tomate. Sa nature rhizomateuse et envahissante aggrave la compétition racinaire et allélopathique."
+  },
+  {
+    "sourcePlantKey": "topinambour",
+    "targetPlantKey": "pomme-de-terre",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Topinambour et pomme de terre s'inhibent mutuellement : compétition racinaire intense et exsudats allélopathiques des deux côtés réduisent les rendements des deux cultures."
+  },
+  {
+    "sourcePlantKey": "rue-officinale",
+    "targetPlantKey": "sauge-officinale",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La rue officinale et la sauge sont antagonistes : les coumarines et alcaloïdes de la rue inhibent la croissance de la sauge et réduisent sa teneur en huiles essentielles."
+  },
+  {
+    "sourcePlantKey": "rue-officinale",
+    "targetPlantKey": "menthe-poivree",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les composés phénoliques de la rue officinale inhibent la menthe poivrée, réduisant son développement végétatif et sa production d'huiles essentielles."
+  },
+  {
+    "sourcePlantKey": "rue-officinale",
+    "targetPlantKey": "chou",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Bien que la rue soit traditionnellement conseillée contre certains ravageurs des Brassicacées, sa proximité directe inhibe la croissance du chou par allélopathie racinaire."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "haricot-a-rames",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Comme le haricot nain, le haricot à rames est sensible aux exsudats soufrés de l'ail. La nodulation est perturbée, réduisant la capacité de fixation d'azote de la légumineuse."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "feve",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La fève, légumineuse à nodules racinaires, est fortement impactée par les composés soufrés de l'ail qui perturbent la symbiose avec Rhizobium et réduisent la fixation d'azote."
+  },
+  {
+    "sourcePlantKey": "sarrasin",
+    "targetPlantKey": "laitue",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les résidus de sarrasin incorporés dans le sol libèrent de la fagopyrine et des composés phénoliques qui inhibent la germination de la laitue. Un délai de 3 semaines est nécessaire avant de semer."
+  },
+  {
+    "sourcePlantKey": "sarrasin",
+    "targetPlantKey": "carotte",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les résidus de sarrasin inhibent la germination des petites graines comme la carotte. Ne pas semer directement dans un sol ayant récemment incorporé du sarrasin en engrais vert."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "tomate",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'absinthine et les sesquiterpènes de l'absinthe inhibent fortement la croissance de la tomate : feuillage chétif, floraison réduite, sensibilité accrue aux maladies fongiques."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "haricot-nain",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'absinthe est l'une des plantes les plus allélopathiques du jardin. Ses exsudats racinaires inhibent la germination et la croissance du haricot nain dès un contact étroit."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "haricot-a-rames",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Comme tous les haricots, le haricot à rames est très sensible aux composés allélopathiques de l'absinthe (absinthine, artabsine) qui freinent son développement racinaire."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "pois",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les lactones sesquiterpéniques de l'absinthe inhibent la germination des pois et perturbent la symbiose avec Rhizobium, réduisant la fixation d'azote."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "feve",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La fève est très sensible à l'absinthe. Les exsudats racinaires freinent la germination et l'émergence des plants, particulièrement en sol lourd et humide."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "basilic",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le basilic est particulièrement sensible aux composés allélopathiques de l'absinthe, qui inhibent sa croissance et réduisent sa production d'huiles essentielles."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "fenouil",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Antagonisme mutuel entre deux plantes très allélopathiques : l'absinthe et le fenouil s'inhibent réciproquement par leurs exsudats racinaires respectifs."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "haricot-nain",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Field",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La juglone diffuse dans l'eau du sol dans un rayon de 15-20m autour du noyer. Les légumineuses comme le haricot sont modérément sensibles : feuillage jauni et croissance ralentie."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "haricot-a-rames",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Field",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le haricot à rames présente une sensibilité similaire au haricot nain vis-à-vis de la juglone du noyer, avec une inhibition de la nodulation et une croissance végétative réduite."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "fraisier",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Field",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le fraisier est l'une des plantes les plus sensibles à la juglone. Un dépérissement rapide est observé même à plusieurs mètres du noyer. À bannir absolument dans sa zone racinaire."
+  },
+  {
+    "sourcePlantKey": "seigle",
+    "targetPlantKey": "laitue",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les résidus de seigle incorporés libèrent des benzoxazinoïdes (DIMBOA) qui inhibent fortement la germination de la laitue. Attendre 3 semaines après enfouissement avant tout semis direct."
+  },
+  {
+    "sourcePlantKey": "seigle",
+    "targetPlantKey": "carotte",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les petites graines comme la carotte sont très vulnérables aux exsudats allélopathiques des résidus de seigle. Le semis direct dans un sol récemment travaillé au seigle est à éviter."
+  },
+  {
+    "sourcePlantKey": "seigle",
+    "targetPlantKey": "betterave",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La betterave est sensible à l'allélopathie résiduelle du seigle. Les benzoxazinoïdes issus de la décomposition des chaumes freinent la germination et l'établissement des plantules."
+  },
+  {
+    "sourcePlantKey": "moutarde-blanche",
+    "targetPlantKey": "haricot-nain",
+    "mechanism": "Biofumigation",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les isothiocyanates libérés lors de la décomposition des résidus de moutarde inhibent Rhizobium et perturbent la nodulation du haricot. Attendre 3 semaines après incorporation avant plantation."
+  },
+  {
+    "sourcePlantKey": "moutarde-blanche",
+    "targetPlantKey": "pois",
+    "mechanism": "Biofumigation",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Comme le haricot, le pois voit sa nodulation perturbée par les isothiocyanates de la moutarde blanche. Ne pas transplanter ou semer des pois dans un sol fraîchement biofumigé."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "epinard",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'épinard, plante à feuillage tendre et système racinaire peu profond, est particulièrement vulnérable aux exsudats allélopathiques du fenouil dans la rhizosphère."
   }
 ]

@@ -36,12 +36,6 @@
   border-bottom: 1px solid #ffe0b2;
 }
 
-// .stat-badge and variants are defined globally in _badges.scss
-
-.companion-list {
-  @apply py-1;
-}
-
 .companion-item {
   @apply flex items-start gap-2.5 relative cursor-pointer;
   padding: 0.6rem 1rem;

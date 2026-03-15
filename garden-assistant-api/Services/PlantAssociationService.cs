@@ -92,6 +92,7 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
             return new CompanionRecommendationDto(p.Id, p.Name, p.ScientificName, score, mechanisms, guilds);
         })
         .OrderByDescending(c => c.Score)
+        .ThenBy(c => c.PlantName, StringComparer.OrdinalIgnoreCase)
         .ToList();
 
         var plantsToAvoid = BuildPlantsToAvoid(allCandidates, selectedPlantIds, associations);
@@ -253,7 +254,7 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
                 var plant = candidateMap[kv.Key];
                 return new PlantToAvoidDto(plant.Id, plant.Name, plant.ScientificName, kv.Value.ToList());
             })
-            .OrderByDescending(p => p.Mechanisms.Count)
+            .OrderBy(p => p.PlantName, StringComparer.OrdinalIgnoreCase)
             .ToList();
     }
 

@@ -34,6 +34,13 @@
   </div>
 
   <div collapsible-body>
+    @if (plant().allelopathicRisk) {
+      <div class="allelopathic-warning">
+        <span class="allelopathic-warning-icon">⚠️</span>
+        <span [translate]="'Plant.AllelopathicWarning'"></span>
+      </div>
+    }
+
     @if (plant().description) {
       <div class="detail-section">
         <div class="detail-section-title" [translate]="'Plant.Description'"></div>

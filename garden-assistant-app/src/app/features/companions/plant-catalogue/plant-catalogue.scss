@@ -74,10 +74,6 @@
   }
 }
 
-.plant-list {
-  @apply py-2;
-}
-
 .plant-item {
   @apply flex items-center gap-3 relative cursor-pointer;
   padding: 0.6rem 1.25rem;

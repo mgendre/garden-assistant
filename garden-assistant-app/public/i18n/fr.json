@@ -84,6 +84,7 @@
     "Height": "Hauteur",
     "Season": "Cycle de vie",
     "Remove": "Retirer {{name}}",
+    "AllelopathicWarning": "Plante allélopathique — ses exsudats racinaires peuvent inhiber la croissance des plantes voisines. Isolez-la en bordure de jardin.",
     "Sun": {
       "Label": "Ensoleillement",
       "FullSun": "\u2600\ufe0f Plein soleil",

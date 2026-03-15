@@ -1559,7 +1559,7 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "nitrogenFixer": false,
-    "allelopathicRisk": false,
+    "allelopathicRisk": true,
     "pollinatorPlant": true,
     "maxAltitudeM": 1500
   },
