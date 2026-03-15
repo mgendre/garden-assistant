@@ -1,0 +1,120 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/components/panels' as *;
+@reference "tailwindcss";
+
+.panel {
+  @include panel;
+}
+
+.right-scroll {
+  @apply flex flex-col gap-4;
+}
+
+// .card is defined globally in _cards.scss
+
+.companion-section-header {
+  @apply flex items-center gap-2.5 text-xs font-bold uppercase;
+  padding: 0.75rem 1rem;
+  letter-spacing: 0.08em;
+}
+
+.sec-beneficial .companion-section-header {
+  background: #f0faf4;
+  color: #2d6a4f;
+  border-bottom: 1px solid #d8f3dc;
+}
+
+.sec-avoid .companion-section-header {
+  background: #fff5f5;
+  color: #c62828;
+  border-bottom: 1px solid #ffd7d7;
+}
+
+.sec-conflict .companion-section-header {
+  background: #fff8e1;
+  color: #e65100;
+  border-bottom: 1px solid #ffe0b2;
+}
+
+.companion-item {
+  @apply flex items-start gap-2.5 relative cursor-pointer;
+  padding: 0.6rem 1rem;
+  transition: background var(--transition-fast);
+  border-bottom: 1px solid #d8f3dc;
+
+  &:last-child { border-bottom: none; }
+
+  &:hover {
+    background: #d8f3dc;
+
+    &::before {
+      content: '';
+      @apply absolute left-0 top-0 bottom-0;
+      width: 3px;
+      background: #52b788;
+    }
+  }
+}
+
+.companion-icon,
+.avoid-icon,
+.conflict-icon {
+  @apply text-lg flex-shrink-0 text-center;
+  width: 28px;
+  padding-top: 0.1rem;
+}
+
+.companion-info,
+.avoid-info {
+  @apply min-w-0 flex-1;
+}
+
+.companion-name {
+  @apply text-sm font-medium;
+  color: var(--color-text);
+}
+
+.companion-latin,
+.avoid-latin {
+  @apply text-xs italic mt-0.5;
+  color: var(--color-text-muted);
+}
+
+.companion-mechanisms,
+.avoid-mechanisms,
+.conflict-mechanisms {
+  @apply flex flex-wrap gap-1 mt-1.5;
+}
+
+// .mechanism-chip and variants are defined globally in _badges.scss
+
+.avoid-item {
+  @apply flex items-start gap-2.5;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #ffd7d7;
+
+  &:last-child { border-bottom: none; }
+}
+
+.avoid-name {
+  @apply text-sm font-medium;
+  color: #c62828;
+}
+
+.conflict-item {
+  @apply flex items-start gap-2.5;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid #ffe0b2;
+
+  &:last-child { border-bottom: none; }
+}
+
+.conflict-names {
+  @apply text-sm font-semibold;
+  color: #e65100;
+}
+
+.companion-empty {
+  @apply p-2 text-sm;
+  color: var(--color-text-muted);
+}

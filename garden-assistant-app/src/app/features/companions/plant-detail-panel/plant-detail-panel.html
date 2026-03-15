@@ -1,0 +1,20 @@
+<div class="panel center-panel">
+  @if (store.selectedPlants().length === 0) {
+    <div class="empty-state">
+      <div class="empty-state-icon">🌱</div>
+      <p class="empty-state-text" [translate]="'Companions.SelectPlant'"></p>
+    </div>
+  } @else {
+    <div class="plants-scroll">
+      @for (plant of store.selectedPlants(); track plant.id) {
+        <div class="plant-detail">
+          <app-plant-card
+            [plant]="plant"
+            [removable]="true"
+            (remove)="store.removePlant(plant)">
+          </app-plant-card>
+        </div>
+      }
+    </div>
+  }
+</div>

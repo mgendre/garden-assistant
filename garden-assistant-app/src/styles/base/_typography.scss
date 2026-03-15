@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+
+body {
+  font-family: $font-body;
+  font-size: $font-size-base;
+  color: $color-text;
+  background-color: $color-parchment;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-display;
+  line-height: 1.2;
+  color: $color-forest;
+}
+
+h1 {
+  font-size: $font-size-xl;
+
+  @include respond-to('sm') { font-size: $font-size-2xl; }
+  @include respond-to('lg') { font-size: 2.25rem; }
+}
+
+h2 {
+  font-size: $font-size-lg;
+
+  @include respond-to('md') { font-size: $font-size-xl; }
+}
+
+h3 {
+  font-size: $font-size-base;
+
+  @include respond-to('md') { font-size: $font-size-lg; }
+}
+
+.brand {
+  font-family: $font-display;
+}
+
+p { line-height: 1.7; }

@@ -1,0 +1,33 @@
+@reference "tailwindcss";
+
+// ─── Pill button ──────────────────────────────────────────────────────────────
+// Small rounded pill button. Combine with a colour variant modifier.
+
+.btn-pill {
+  @apply text-xs font-semibold rounded-full border border-transparent cursor-pointer transition-all;
+  padding: 0.25rem 0.6rem;
+}
+
+.btn-pill-forest {
+  background: rgba(45, 106, 79, 0.1);
+  color: #2d6a4f;
+  border-color: rgba(45, 106, 79, 0.2);
+
+  &:hover { background: rgba(45, 106, 79, 0.2); }
+}
+
+.btn-pill-earth {
+  background: rgba(244, 132, 95, 0.15);
+  color: #c45f30;
+  border-color: rgba(244, 132, 95, 0.25);
+
+  &:hover { background: rgba(244, 132, 95, 0.3); }
+}
+
+.btn-pill-danger {
+  background: rgba(198, 40, 40, 0.08);
+  color: #c62828;
+  border-color: rgba(198, 40, 40, 0.2);
+
+  &:hover { background: rgba(198, 40, 40, 0.16); }
+}

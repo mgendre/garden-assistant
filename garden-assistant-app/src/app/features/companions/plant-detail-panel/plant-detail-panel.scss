@@ -1,0 +1,19 @@
+@use '../../../../styles/components/panels' as *;
+@reference "tailwindcss";
+
+.panel {
+  @include panel;
+}
+
+.plants-scroll {
+  @apply flex flex-col;
+}
+
+.plant-detail {
+  border-bottom: 1.5px solid #d8f3dc;
+  &:last-child { border-bottom: none; }
+}
+
+.collapsible-body {
+  @apply px-5 pb-5;
+}

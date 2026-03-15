@@ -1,0 +1,23 @@
+<div class="companions-page">
+  <div class="page-header">
+    <h1 [translate]="'Companions.Title'"></h1>
+    <p class="page-subtitle" [translate]="'Companions.Description'"></p>
+  </div>
+
+  <div class="three-col">
+    <app-plant-catalogue></app-plant-catalogue>
+    <div>
+      <app-plant-detail-panel></app-plant-detail-panel>
+      @if (store.guildsForSelectedPlants().length) {
+        <div class="guild-section">
+          <div class="guild-section-title">
+            <span>🌐</span>
+            <span [translate]="'Guilds.SectionTitle'"></span>
+          </div>
+          <app-guild-panel></app-guild-panel>
+        </div>
+      }
+    </div>
+    <app-recommendations-panel></app-recommendations-panel>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="garden-assistant-api/garden-assistant-api.csproj" />
+  <Project Path="garden-assistant-tests/garden-assistant-tests.csproj" />
+</Solution>

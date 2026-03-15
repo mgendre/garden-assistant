@@ -1,0 +1,65 @@
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title" [translate]="'Companions.Catalogue'"></span>
+    <span class="plant-count">{{ store.plants().length }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
+  </div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input
+      #searchInput
+      type="text"
+      [placeholder]="'Companions.SearchPlaceholder' | translate"
+      [value]="store.searchQuery()"
+      (input)="store.setSearch(searchInput.value)" />
+  </div>
+
+  <div class="sort-wrap">
+    <button
+      class="chip"
+      [class.active]="store.sortMode() === 'compat'"
+      (click)="store.setSort('compat')"
+      [translate]="'Companions.SortCompat'">
+    </button>
+    <button
+      class="chip"
+      [class.active]="store.sortMode() === 'alpha'"
+      (click)="store.setSort('alpha')"
+      [translate]="'Companions.SortAlpha'">
+    </button>
+    <button
+      class="chip"
+      [class.active]="store.sortMode() === 'family'"
+      (click)="store.setSort('family')"
+      [translate]="'Companions.SortFamily'">
+    </button>
+  </div>
+
+  <div class="plant-list">
+    @for (plant of store.filteredPlants(); track plant.id) {
+      <div
+        class="plant-item"
+        [class.selected]="store.isSelected(plant)"
+        [class.compat-good]="store.getCompatibility(plant.id) === 'good'"
+        [class.compat-avoid]="store.getCompatibility(plant.id) === 'avoid'"
+        (click)="store.addPlant(plant)">
+        <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
+        <div class="plant-info">
+          <div class="plant-name">{{ plant.name }}</div>
+          <div class="plant-latin">{{ plant.scientificName }}</div>
+        </div>
+        @if (!store.recommendations() && plant.family) {
+          <span class="family-badge" [class]="store.getFamilyClass(plant.family)">
+            {{ plant.family }}
+          </span>
+        }
+      </div>
+    }
+
+    @if (store.filteredPlants().length === 0 && !store.plantsLoading()) {
+      <div class="empty-state">
+        <p class="empty-state-text" [translate]="'Companions.NoResults'"></p>
+      </div>
+    }
+  </div>
+</div>

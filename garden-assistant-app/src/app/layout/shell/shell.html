@@ -1,0 +1,39 @@
+<header class="shell-header">
+  <div class="header-inner">
+    <a routerLink="/" class="logo" (click)="closeMobileMenu()">
+      <div class="logo-leaf">🌿</div>
+      <span class="logo-text">Perma<span class="logo-accent">Garden</span></span>
+    </a>
+
+    <nav class="desktop-nav" [attr.aria-label]="'Nav.MainNav' | translate">
+      <a routerLink="/companions" routerLinkActive="active" [translate]="'Nav.Companions'"></a>
+      <a routerLink="/guilds" routerLinkActive="active" [translate]="'Nav.Guilds'"></a>
+      <a routerLink="/garden" routerLinkActive="active" [translate]="'Nav.Garden'"></a>
+    </nav>
+
+    <button
+      class="hamburger"
+      (click)="toggleMobileMenu()"
+      [attr.aria-label]="(mobileMenuOpen() ? 'Nav.CloseMenu' : 'Nav.OpenMenu') | translate"
+      [attr.aria-expanded]="mobileMenuOpen()">
+      @if (mobileMenuOpen()) {
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 18L18 6M6 6l12 12"/></svg>
+      } @else {
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      }
+    </button>
+  </div>
+</header>
+
+@if (mobileMenuOpen()) {
+  <div class="mobile-overlay" (click)="closeMobileMenu()"></div>
+  <nav class="mobile-nav" [attr.aria-label]="'Nav.MobileNav' | translate">
+    <a routerLink="/companions" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.Companions'"></a>
+    <a routerLink="/guilds" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.Guilds'"></a>
+    <a routerLink="/garden" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.Garden'"></a>
+  </nav>
+}
+
+<main class="shell-content">
+  <router-outlet />
+</main>
