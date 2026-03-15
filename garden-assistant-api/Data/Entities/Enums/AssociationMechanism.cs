@@ -11,5 +11,11 @@ public enum AssociationMechanism
     PredatorAttraction,
     PhysicalSupport,
     SoilCover,
-    DynamicAccumulation
+    DynamicAccumulation,
+    MycorrhizalNetwork,
+    HydraulicLift,
+    MicroclimateModification,
+    WeedSuppression,
+    Biofumigation,
+    NursePlant
 }

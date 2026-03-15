@@ -6,7 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GardenAssistant.Services;
 
-public class PlantAssociationService(AppDbContext dbContext)
+public interface IPlantAssociationService
+{
+    Task<IEnumerable<PlantAssociationDto>> GetForPlantAsync(Guid plantId);
+    Task<CompanionSearchResultDto> GetCompanionRecommendationsAsync(List<Guid> selectedPlantIds);
+    Task<PlantAssociationDto> CreateAsync(CreatePlantAssociationRequest request);
+    Task<bool> DeleteAsync(Guid id);
+}
+
+public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociationService
 {
     private const int MaxRecommendations = 10;
     private const double BeneficialScore = 1.0;
@@ -22,7 +30,7 @@ public class PlantAssociationService(AppDbContext dbContext)
             .ToListAsync();
     }
 
-    public async Task<List<CompanionRecommendationDto>> GetCompanionRecommendationsAsync(
+    public async Task<CompanionSearchResultDto> GetCompanionRecommendationsAsync(
         List<Guid> selectedPlantIds)
     {
         var candidates = await dbContext.Plants
@@ -30,7 +38,7 @@ public class PlantAssociationService(AppDbContext dbContext)
             .ToListAsync();
 
         if (candidates.Count == 0)
-            return [];
+            return new CompanionSearchResultDto([], []);
 
         var allRelevantPlantIds = selectedPlantIds
             .Concat(candidates.Select(c => c.Id))
@@ -77,12 +85,20 @@ public class PlantAssociationService(AppDbContext dbContext)
             remaining.Remove(best!);
         }
 
-        return selected.Select(p => new CompanionRecommendationDto(
-            p.Id,
-            p.Name,
-            p.ScientificName,
-            Math.Round(baseScores[p.Id] + InterCandidateScore(p.Id, selected, associationLookup), 2)
-        )).ToList();
+        var guildLookup = await BuildGuildLookup(selected.Select(p => p.Id).ToList(), selectedPlantIds);
+
+        var goodCompanions = selected.Select(p =>
+        {
+            var score = Math.Round(baseScores[p.Id] + InterCandidateScore(p.Id, selected, associationLookup), 2);
+            var guilds = guildLookup.GetValueOrDefault(p.Id, []);
+            return new CompanionRecommendationDto(p.Id, p.Name, p.ScientificName, score, guilds);
+        })
+        .OrderByDescending(c => c.Score)
+        .ToList();
+
+        var plantsToAvoid = BuildPlantsToAvoid(candidates, selectedPlantIds, associations);
+
+        return new CompanionSearchResultDto(goodCompanions, plantsToAvoid);
     }
 
     public async Task<PlantAssociationDto> CreateAsync(CreatePlantAssociationRequest request)
@@ -114,6 +130,83 @@ public class PlantAssociationService(AppDbContext dbContext)
         await dbContext.SaveChangesAsync();
 
         return true;
+    }
+
+    private async Task<Dictionary<Guid, List<GuildInfoDto>>> BuildGuildLookup(
+        List<Guid> recommendedPlantIds, List<Guid> selectedPlantIds)
+    {
+        var allPlantIds = recommendedPlantIds.Concat(selectedPlantIds).ToList();
+
+        var guildPlants = await dbContext.GuildPlants
+            .Where(gp => allPlantIds.Contains(gp.PlantId))
+            .ToListAsync();
+
+        var guildIds = guildPlants.Select(gp => gp.GuildId).Distinct().ToList();
+        var guilds = await dbContext.Guilds
+            .Where(g => guildIds.Contains(g.Id))
+            .ToDictionaryAsync(g => g.Id);
+
+        var selectedGuildIds = guildPlants
+            .Where(gp => selectedPlantIds.Contains(gp.PlantId))
+            .Select(gp => gp.GuildId)
+            .ToHashSet();
+
+        var lookup = new Dictionary<Guid, List<GuildInfoDto>>();
+        foreach (var gp in guildPlants)
+        {
+            if (!recommendedPlantIds.Contains(gp.PlantId)) continue;
+            if (!selectedGuildIds.Contains(gp.GuildId)) continue;
+            if (!guilds.TryGetValue(gp.GuildId, out var guild)) continue;
+
+            if (!lookup.TryGetValue(gp.PlantId, out var guildList))
+            {
+                guildList = [];
+                lookup[gp.PlantId] = guildList;
+            }
+            guildList.Add(new GuildInfoDto(guild.Id, guild.Name, guild.Description));
+        }
+
+        return lookup;
+    }
+
+    private static List<PlantToAvoidDto> BuildPlantsToAvoid(
+        List<Plant> candidates,
+        List<Guid> selectedPlantIds,
+        List<PlantAssociation> associations)
+    {
+        var harmfulByPlant = new Dictionary<Guid, HashSet<AssociationMechanism>>();
+
+        foreach (var a in associations)
+        {
+            if (a.Effect != AssociationEffect.Harmful) continue;
+
+            Guid candidateId;
+            if (selectedPlantIds.Contains(a.SourcePlantId) && !selectedPlantIds.Contains(a.TargetPlantId))
+                candidateId = a.TargetPlantId;
+            else if (selectedPlantIds.Contains(a.TargetPlantId) && !selectedPlantIds.Contains(a.SourcePlantId))
+                candidateId = a.SourcePlantId;
+            else
+                continue;
+
+            if (!harmfulByPlant.TryGetValue(candidateId, out var mechanisms))
+            {
+                mechanisms = [];
+                harmfulByPlant[candidateId] = mechanisms;
+            }
+            mechanisms.Add(a.Mechanism);
+        }
+
+        var candidateMap = candidates.ToDictionary(c => c.Id);
+
+        return harmfulByPlant
+            .Where(kv => candidateMap.ContainsKey(kv.Key))
+            .Select(kv =>
+            {
+                var plant = candidateMap[kv.Key];
+                return new PlantToAvoidDto(plant.Id, plant.Name, plant.ScientificName, kv.Value.ToList());
+            })
+            .OrderByDescending(p => p.Mechanisms.Count)
+            .ToList();
     }
 
     private static double ScoreForEffect(AssociationEffect effect) => effect switch

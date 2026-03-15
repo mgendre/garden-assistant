@@ -12,6 +12,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<PlantAssociation> PlantAssociations => Set<PlantAssociation>();
     public DbSet<Planting> Plantings => Set<Planting>();
     public DbSet<PlantingEntry> PlantingEntries => Set<PlantingEntry>();
+    public DbSet<Guild> Guilds => Set<Guild>();
+    public DbSet<GuildPlant> GuildPlants => Set<GuildPlant>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -76,6 +78,20 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasKey(pe => pe.Id);
             entity.HasOne<Planting>().WithMany().HasForeignKey(pe => pe.PlantingId).OnDelete(DeleteBehavior.Cascade);
             entity.HasOne<Plant>().WithMany().HasForeignKey(pe => pe.PlantId).OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<Guild>(entity =>
+        {
+            entity.HasKey(g => g.Id);
+            entity.Property(g => g.Name).IsRequired().HasMaxLength(256);
+            entity.Property(g => g.Description).HasMaxLength(2000);
+        });
+
+        modelBuilder.Entity<GuildPlant>(entity =>
+        {
+            entity.HasKey(gp => new { gp.GuildId, gp.PlantId });
+            entity.HasOne<Guild>().WithMany().HasForeignKey(gp => gp.GuildId).OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne<Plant>().WithMany().HasForeignKey(gp => gp.PlantId).OnDelete(DeleteBehavior.Restrict);
         });
 
         modelBuilder.Entity<User>().HasData(new User

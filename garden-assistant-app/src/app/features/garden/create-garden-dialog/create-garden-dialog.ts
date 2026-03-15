@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TranslateModule } from '@ngx-translate/core';
 
 export interface CreateGardenFormValue {
   name: string;
@@ -18,7 +19,8 @@ export interface CreateGardenFormValue {
     MatDialogModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    TranslateModule
   ],
   templateUrl: './create-garden-dialog.html'
 })

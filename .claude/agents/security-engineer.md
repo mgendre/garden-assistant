@@ -1,5 +1,6 @@
 ---
 name: security-engineer
+model: opus
 description: Use when implementing authentication/authorisation, reviewing API security, auditing dependencies, configuring secrets management, or performing an OWASP-focused security review on any layer of the stack.
 ---
 

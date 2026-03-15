@@ -5,11 +5,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GardenAssistant.Services;
 
-public class PlantService(AppDbContext dbContext)
+public interface IPlantService
+{
+    Task<IEnumerable<PlantDto>> GetAllAsync();
+    Task<IEnumerable<PlantDto>> SearchAsync(string query);
+    Task<PlantDto?> GetByIdAsync(Guid id);
+    Task<PlantDto> CreateAsync(CreatePlantRequest request);
+    Task<bool> DeleteAsync(Guid id);
+}
+
+public class PlantService(AppDbContext dbContext) : IPlantService
 {
     public async Task<IEnumerable<PlantDto>> GetAllAsync()
     {
         return await dbContext.Plants
+            .Select(p => ToDto(p))
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<PlantDto>> SearchAsync(string query)
+    {
+        var q = query.ToLower();
+        return await dbContext.Plants
+            .Where(p => p.Name.ToLower().Contains(q)
+                     || (p.ScientificName != null && p.ScientificName.ToLower().Contains(q)))
+            .OrderBy(p => p.Name)
+            .Take(20)
             .Select(p => ToDto(p))
             .ToListAsync();
     }

@@ -4,5 +4,6 @@ public record CompanionRecommendationDto(
     Guid PlantId,
     string PlantName,
     string? ScientificName,
-    double Score
+    double Score,
+    List<GuildInfoDto> Guilds
 );

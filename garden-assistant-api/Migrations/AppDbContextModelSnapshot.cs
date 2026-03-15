@@ -53,6 +53,49 @@ namespace GardenAssistant.Migrations
                     b.ToTable("gardens", (string)null);
                 });
 
+            modelBuilder.Entity("GardenAssistant.Data.Entities.Guild", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)")
+                        .HasColumnName("description");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_guilds");
+
+                    b.ToTable("guilds", (string)null);
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.GuildPlant", b =>
+                {
+                    b.Property<Guid>("GuildId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("guild_id");
+
+                    b.Property<Guid>("PlantId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("plant_id");
+
+                    b.HasKey("GuildId", "PlantId")
+                        .HasName("pk_guild_plants");
+
+                    b.HasIndex("PlantId")
+                        .HasDatabaseName("ix_guild_plants_plant_id");
+
+                    b.ToTable("guild_plants", (string)null);
+                });
+
             modelBuilder.Entity("GardenAssistant.Data.Entities.Plant", b =>
                 {
                     b.Property<Guid>("Id")
@@ -348,6 +391,23 @@ namespace GardenAssistant.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_gardens_users_user_id");
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.GuildPlant", b =>
+                {
+                    b.HasOne("GardenAssistant.Data.Entities.Guild", null)
+                        .WithMany()
+                        .HasForeignKey("GuildId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_guild_plants_guilds_guild_id");
+
+                    b.HasOne("GardenAssistant.Data.Entities.Plant", null)
+                        .WithMany()
+                        .HasForeignKey("PlantId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_guild_plants_plants_plant_id");
                 });
 
             modelBuilder.Entity("GardenAssistant.Data.Entities.PlantAssociation", b =>

@@ -47,6 +47,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env)
     }
 
     private record PlantSeedRecord(
+        string Key,
         string Name,
         string? ScientificName,
         string? Description,

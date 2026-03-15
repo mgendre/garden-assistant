@@ -8,7 +8,14 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace GardenAssistant.Services;
 
-public class AuthService(AppDbContext db, IConfiguration configuration)
+public interface IAuthService
+{
+    Task<(string accessToken, string refreshToken)> CreateTokensAsync(User user);
+    Task<(string accessToken, string refreshToken)> GetDevelopmentTokenAsync();
+    Task<(string accessToken, string refreshToken)?> RefreshAsync(string refreshToken);
+}
+
+public class AuthService(AppDbContext db, IConfiguration configuration) : IAuthService
 {
     public async Task<(string accessToken, string refreshToken)> CreateTokensAsync(User user)
     {

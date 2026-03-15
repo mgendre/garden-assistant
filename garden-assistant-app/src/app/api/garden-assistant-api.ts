@@ -266,6 +266,92 @@ export class GardensClient {
     }
 }
 
+export class GuildsClient {
+    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
+        this.http = http ? http : window as any;
+        this.baseUrl = baseUrl ?? "";
+    }
+
+    getAll(): Promise<GuildSummaryDto[]> {
+        let url_ = this.baseUrl + "/api/Guilds";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetAll(_response);
+        });
+    }
+
+    protected processGetAll(response: Response): Promise<GuildSummaryDto[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildSummaryDto[];
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<GuildSummaryDto[]>(null as any);
+    }
+
+    getById(id: string): Promise<GuildDetailDto> {
+        let url_ = this.baseUrl + "/api/Guilds/{id}";
+        if (id === undefined || id === null)
+            throw new globalThis.Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetById(_response);
+        });
+    }
+
+    protected processGetById(response: Response): Promise<GuildDetailDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDetailDto;
+            return result200;
+            });
+        } else if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<GuildDetailDto>(null as any);
+    }
+}
+
 export class PlantAssociationsClient {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
@@ -355,7 +441,7 @@ export class PlantAssociationsClient {
         return Promise.resolve<PlantAssociationDto>(null as any);
     }
 
-    getCompanionRecommendations(request: CompanionRecommendationRequest): Promise<CompanionRecommendationDto[]> {
+    getCompanionRecommendations(request: CompanionRecommendationRequest): Promise<CompanionSearchResultDto> {
         let url_ = this.baseUrl + "/api/plants/companions";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -375,13 +461,13 @@ export class PlantAssociationsClient {
         });
     }
 
-    protected processGetCompanionRecommendations(response: Response): Promise<CompanionRecommendationDto[]> {
+    protected processGetCompanionRecommendations(response: Response): Promise<CompanionSearchResultDto> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as CompanionRecommendationDto[];
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as CompanionSearchResultDto;
             return result200;
             });
         } else if (status === 400) {
@@ -395,7 +481,7 @@ export class PlantAssociationsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<CompanionRecommendationDto[]>(null as any);
+        return Promise.resolve<CompanionSearchResultDto>(null as any);
     }
 
     delete(id: string): Promise<void> {
@@ -872,6 +958,43 @@ export class PlantsClient {
         return Promise.resolve<PlantDto>(null as any);
     }
 
+    search(q: string | undefined): Promise<PlantDto[]> {
+        let url_ = this.baseUrl + "/api/Plants/search?";
+        if (q === null)
+            throw new globalThis.Error("The parameter 'q' cannot be null.");
+        else if (q !== undefined)
+            url_ += "q=" + encodeURIComponent("" + q) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processSearch(_response);
+        });
+    }
+
+    protected processSearch(response: Response): Promise<PlantDto[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantDto[];
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<PlantDto[]>(null as any);
+    }
+
     getById(id: string): Promise<PlantDto> {
         let url_ = this.baseUrl + "/api/Plants/{id}";
         if (id === undefined || id === null)
@@ -984,6 +1107,26 @@ export interface UpdateGardenRequest {
     description?: string | undefined;
 }
 
+export interface GuildSummaryDto {
+    id?: string;
+    name?: string;
+    description?: string | undefined;
+    plantCount?: number;
+}
+
+export interface GuildDetailDto {
+    id?: string;
+    name?: string;
+    description?: string | undefined;
+    plants?: GuildPlantMemberDto[];
+}
+
+export interface GuildPlantMemberDto {
+    id?: string;
+    name?: string;
+    scientificName?: string | undefined;
+}
+
 export interface PlantAssociationDto {
     id?: string;
     sourcePlantId?: string;
@@ -1006,6 +1149,12 @@ export enum AssociationMechanism {
     PhysicalSupport = 7,
     SoilCover = 8,
     DynamicAccumulation = 9,
+    MycorrhizalNetwork = 10,
+    HydraulicLift = 11,
+    MicroclimateModification = 12,
+    WeedSuppression = 13,
+    Biofumigation = 14,
+    NursePlant = 15,
 }
 
 export enum AssociationEffect {
@@ -1037,11 +1186,30 @@ export interface CreatePlantAssociationRequest {
     notes?: string | undefined;
 }
 
+export interface CompanionSearchResultDto {
+    goodCompanions?: CompanionRecommendationDto[];
+    plantsToAvoid?: PlantToAvoidDto[];
+}
+
 export interface CompanionRecommendationDto {
     plantId?: string;
     plantName?: string;
     scientificName?: string | undefined;
     score?: number;
+    guilds?: GuildInfoDto[];
+}
+
+export interface GuildInfoDto {
+    id?: string;
+    name?: string;
+    description?: string | undefined;
+}
+
+export interface PlantToAvoidDto {
+    plantId?: string;
+    plantName?: string;
+    scientificName?: string | undefined;
+    mechanisms?: AssociationMechanism[];
 }
 
 export interface CompanionRecommendationRequest {

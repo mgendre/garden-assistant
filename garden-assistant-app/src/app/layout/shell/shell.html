@@ -1,71 +1,77 @@
-<div class="flex min-h-screen">
+<!-- Fixed header -->
+<header class="fixed top-0 left-0 right-0 z-[100] flex h-14 items-center bg-forest px-4 shadow-md md:h-16 md:px-6">
 
-  <!-- Mobile overlay -->
-  @if (sidebarOpen()) {
-    <div class="fixed inset-0 z-20 bg-black/50 backdrop-blur-sm lg:hidden"
-         (click)="closeSidebar()"></div>
-  }
+  <!-- Hamburger button (mobile only) -->
+  <button class="mr-2 flex h-11 w-11 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50 md:hidden"
+          (click)="toggleMenu()"
+          [attr.aria-label]="(menuOpen() ? 'Nav.CloseMenu' : 'Nav.OpenMenu') | translate"
+          [attr.aria-expanded]="menuOpen()"
+          aria-controls="mobile-nav">
+    @if (menuOpen()) {
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    } @else {
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    }
+  </button>
 
-  <!-- Sidebar -->
-  <aside class="fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-forest transition-transform duration-300 ease-in-out lg:static lg:translate-x-0"
-         [class.-translate-x-full]="!sidebarOpen()"
-         [class.translate-x-0]="sidebarOpen()">
+  <!-- Brand -->
+  <a routerLink="/dashboard" class="flex items-center gap-2.5 md:gap-3" (click)="closeMenu()">
+    <svg class="h-7 w-7 text-sage md:h-8 md:w-8" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16 28c0-8-6-14-12-14 8 0 12-6 12-12 0 6 4 12 12 12-6 0-12 6-12 14z" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="M16 28V14" />
+    </svg>
+    <span class="brand text-base tracking-wide text-white md:text-lg">{{ 'App.Brand' | translate }}</span>
+  </a>
 
-    <!-- Brand -->
-    <div class="flex items-center gap-3 border-b border-white/10 px-6 py-7">
-      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-canopy text-xl shadow-md">
-        🌿
-      </div>
-      <span class="font-['DM_Serif_Display'] text-lg tracking-wide text-white">
-        Garden Assistant
-      </span>
-    </div>
+  <!-- Desktop navigation -->
+  <nav class="hidden items-center gap-1 ml-8 md:flex" [attr.aria-label]="'Nav.MainNav' | translate">
+    @for (item of navItems; track item.route) {
+      <a class="flex min-h-[44px] items-center rounded-lg px-4 py-2 text-sm font-medium text-white/60 transition-colors duration-200 hover:bg-white/10 hover:text-white focus:outline-none focus:ring-2 focus:ring-white/50"
+         [routerLink]="item.route"
+         routerLinkActive="!bg-white/15 !text-white ring-1 ring-white/20">
+        {{ item.labelKey | translate }}
+      </a>
+    }
+  </nav>
+</header>
 
-    <!-- Navigation -->
-    <nav class="flex flex-1 flex-col gap-1 px-3 py-6">
-      @for (item of navItems; track item.route) {
-        <a class="group flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium text-white/60 transition-all duration-200 hover:bg-white/10 hover:text-white"
-           [routerLink]="item.route"
-           routerLinkActive="!bg-white/15 !text-white ring-1 ring-white/20"
-           (click)="closeSidebar()">
-          <span class="text-base leading-none transition-transform duration-200 group-hover:scale-110">{{ item.emoji }}</span>
-          <span>{{ item.label }}</span>
-        </a>
-      }
-    </nav>
+<!-- Mobile backdrop overlay -->
+@if (menuOpen()) {
+  <div class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm transition-opacity duration-300 md:hidden"
+       (click)="closeMenu()"></div>
+}
 
-    <!-- Footer -->
-    <div class="border-t border-white/10 px-6 py-5">
-      <p class="text-xs text-white/30">Cultivate your world</p>
-    </div>
-  </aside>
-
-  <!-- Main content (inert when sidebar overlay is open to trap focus inside sidebar) -->
-  <div class="flex min-w-0 flex-1 flex-col" [attr.inert]="sidebarOpen() || null">
-
-    <!-- Mobile topbar -->
-    <header class="flex items-center gap-4 border-b border-forest-light/20 bg-forest px-4 py-4 shadow-sm lg:hidden">
-      <button class="flex h-9 w-9 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white"
-              (click)="toggleSidebar()"
-              [attr.aria-label]="sidebarOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
-              [attr.aria-expanded]="sidebarOpen()">
-        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      <div class="flex flex-col">
-        <span class="font-['DM_Serif_Display'] text-base text-white leading-tight">Garden Assistant</span>
-        @if (activePageLabel()) {
-          <span class="text-xs text-white/60 leading-tight">{{ activePageLabel() }}</span>
-        }
-      </div>
-    </header>
-
-    <!-- Page content -->
-    <main class="flex-1 bg-parchment">
-      <div class="mx-auto max-w-5xl px-6 py-8 lg:px-10 lg:py-10">
-        <router-outlet />
-      </div>
-    </main>
+<!-- Mobile navigation panel -->
+<div id="mobile-nav"
+     role="navigation"
+     [attr.aria-label]="'Nav.MobileNav' | translate"
+     class="fixed top-14 left-0 right-0 z-[105] border-t border-white/10 bg-forest shadow-lg transition-all duration-300 ease-in-out md:hidden"
+     [class.max-h-0]="!menuOpen()"
+     [class.overflow-hidden]="!menuOpen()"
+     [class.opacity-0]="!menuOpen()"
+     [class.max-h-[300px]]="menuOpen()"
+     [class.opacity-100]="menuOpen()">
+  <div class="flex flex-col">
+    @for (item of navItems; track item.route; let last = $last) {
+      <a class="px-6 py-4 text-base font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+         [class.border-b]="!last"
+         [class.border-white/5]="!last"
+         [routerLink]="item.route"
+         routerLinkActive="!bg-white/15 !text-white border-l-[3px] !border-l-canopy"
+         (click)="closeMenu()">
+        {{ item.labelKey | translate }}
+      </a>
+    }
   </div>
 </div>
+
+<!-- Main content -->
+<main class="min-h-screen bg-parchment pt-14 md:pt-16" [attr.inert]="menuOpen() || null">
+  <div class="mx-auto max-w-5xl px-4 py-6 md:px-6 md:py-8 lg:max-w-6xl lg:px-8 lg:py-10">
+    <router-outlet />
+  </div>
+</main>

@@ -21,6 +21,14 @@ export const routes: Routes = [
       {
         path: 'companions',
         loadComponent: () => import('./features/companions/companions').then(m => m.CompanionsComponent)
+      },
+      {
+        path: 'guilds',
+        loadComponent: () => import('./features/guilds/guild-list').then(m => m.GuildListComponent)
+      },
+      {
+        path: 'guilds/:id',
+        loadComponent: () => import('./features/guilds/guild-detail').then(m => m.GuildDetailComponent)
       }
     ]
   },

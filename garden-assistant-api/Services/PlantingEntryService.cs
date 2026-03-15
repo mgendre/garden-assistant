@@ -5,7 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GardenAssistant.Services;
 
-public class PlantingEntryService(AppDbContext dbContext)
+public interface IPlantingEntryService
+{
+    Task<IEnumerable<PlantingEntryDto>?> GetForPlantingAsync(Guid plantingId, Guid userId);
+    Task<PlantingEntryDto?> AddEntryAsync(Guid plantingId, CreatePlantingEntryRequest request, Guid userId);
+    Task<bool> RemoveEntryAsync(Guid entryId, Guid userId);
+}
+
+public class PlantingEntryService(AppDbContext dbContext) : IPlantingEntryService
 {
     public async Task<IEnumerable<PlantingEntryDto>?> GetForPlantingAsync(Guid plantingId, Guid userId)
     {

@@ -1,102 +1,77 @@
 import { inject, Injectable, signal } from '@angular/core';
 import {
-  AssociationEffect,
+  CompanionRecommendationRequest,
+  CompanionSearchResultDto,
   PlantAssociationsClient,
-  PlantAssociationDto,
   PlantDto,
-  PlantsClient
+  PlantsClient,
 } from '../../api/garden-assistant-api';
 
 @Injectable()
 export class CompanionSearchService {
   private readonly plantsClient = inject(PlantsClient);
   private readonly associationsClient = inject(PlantAssociationsClient);
-  private readonly cache = new Map<string, PlantAssociationDto[]>();
 
-  readonly plants = signal<PlantDto[]>([]);
+  readonly searchResults = signal<PlantDto[]>([]);
   readonly selectedPlants = signal<PlantDto[]>([]);
-  readonly associations = signal<PlantAssociationDto[]>([]);
-  readonly loading = signal(false);
+  readonly companionResults = signal<CompanionSearchResultDto | null>(null);
+  readonly searchLoading = signal(false);
+  readonly companionsLoading = signal(false);
   readonly error = signal<string | null>(null);
 
-  async loadPlants(): Promise<void> {
-    this.loading.set(true);
+  async searchPlants(query: string): Promise<void> {
+    this.searchLoading.set(true);
     this.error.set(null);
     try {
-      this.plants.set(await this.plantsClient.getAll() ?? []);
+      const results = await this.plantsClient.search(query);
+      this.searchResults.set(results);
     } catch {
-      this.error.set('Impossible de charger les plantes.');
+      this.error.set('Erreur lors de la recherche.');
     } finally {
-      this.loading.set(false);
+      this.searchLoading.set(false);
     }
   }
 
-  async togglePlant(plant: PlantDto): Promise<void> {
-    const current = this.selectedPlants();
-    const isSelected = current.some(p => p.id === plant.id);
-
-    const next = isSelected
-      ? current.filter(p => p.id !== plant.id)
-      : [...current, plant];
-
-    this.selectedPlants.set(next);
-    await this.refreshAssociations(next);
+  async addPlant(plant: PlantDto): Promise<void> {
+    if (this.selectedPlants().some(p => p.id === plant.id)) return;
+    this.selectedPlants.update(plants => [...plants, plant]);
+    this.searchResults.set([]);
+    await this.refreshCompanions();
   }
 
-  private async refreshAssociations(selected: PlantDto[]): Promise<void> {
-    if (selected.length < 2) {
-      this.associations.set([]);
+  async removePlant(plant: PlantDto): Promise<void> {
+    this.selectedPlants.update(plants => plants.filter(p => p.id !== plant.id));
+    if (this.selectedPlants().length === 0) {
+      this.companionResults.set(null);
       return;
     }
-
-    this.loading.set(true);
-    this.error.set(null);
-    try {
-      await this.fetchMissingAssociations(selected);
-
-      const selectedIds = new Set(selected.map(p => p.id!));
-      const seen = new Set<string>();
-      const result: PlantAssociationDto[] = [];
-
-      for (const plant of selected) {
-        for (const assoc of this.cache.get(plant.id!) ?? []) {
-          if (seen.has(assoc.id!)) continue;
-          if (selectedIds.has(assoc.sourcePlantId!) && selectedIds.has(assoc.targetPlantId!)) {
-            seen.add(assoc.id!);
-            result.push(assoc);
-          }
-        }
-      }
-
-      result.sort((a, b) => (a.effect ?? 0) - (b.effect ?? 0));
-      this.associations.set(result);
-    } catch {
-      this.error.set('Impossible de charger les associations.');
-    } finally {
-      this.loading.set(false);
-    }
+    await this.refreshCompanions();
   }
 
-  private async fetchMissingAssociations(plants: PlantDto[]): Promise<void> {
-    const missing = plants.filter(p => !this.cache.has(p.id!));
-    await Promise.all(
-      missing.map(async p => {
-        const result = await this.associationsClient.getForPlant(p.id!);
-        this.cache.set(p.id!, result ?? []);
-      })
-    );
+  clearAll(): void {
+    this.selectedPlants.set([]);
+    this.companionResults.set(null);
+    this.error.set(null);
   }
 
   isSelected(plant: PlantDto): boolean {
     return this.selectedPlants().some(p => p.id === plant.id);
   }
 
-  score(): { beneficial: number; harmful: number; neutral: number } {
-    const assocs = this.associations();
-    return {
-      beneficial: assocs.filter(a => a.effect === AssociationEffect.Beneficial).length,
-      harmful: assocs.filter(a => a.effect === AssociationEffect.Harmful).length,
-      neutral: assocs.filter(a => a.effect === AssociationEffect.Neutral).length,
-    };
+  private async refreshCompanions(): Promise<void> {
+    const plantIds = this.selectedPlants().map(p => p.id!);
+    if (plantIds.length === 0) return;
+
+    this.companionsLoading.set(true);
+    this.error.set(null);
+    try {
+      const request: CompanionRecommendationRequest = { plantIds };
+      const result = await this.associationsClient.getCompanionRecommendations(request);
+      this.companionResults.set(result);
+    } catch {
+      this.error.set('Erreur lors de l\'analyse des associations.');
+    } finally {
+      this.companionsLoading.set(false);
+    }
   }
 }

@@ -38,6 +38,15 @@ public class CompanionRecommendationTests : DatabaseTestBase
         });
     }
 
+    private Guild CreateGuild(string name, string description, params Plant[] plants)
+    {
+        var guild = new Guild { Id = Guid.NewGuid(), Name = name, Description = description };
+        DbContext.Guilds.Add(guild);
+        foreach (var plant in plants)
+            DbContext.GuildPlants.Add(new GuildPlant { GuildId = guild.Id, PlantId = plant.Id });
+        return guild;
+    }
+
     [Fact]
     public async Task GetCompanionRecommendationsAsync_WhenNoCandidates_ShouldReturnEmpty()
     {
@@ -46,7 +55,8 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([plant.Id]);
 
-        result.ShouldBeEmpty();
+        result.GoodCompanions.ShouldBeEmpty();
+        result.PlantsToAvoid.ShouldBeEmpty();
     }
 
     [Fact]
@@ -61,9 +71,8 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.Count.ShouldBe(2);
-        result[0].PlantId.ShouldBe(basil.Id);
-        result[1].PlantId.ShouldBe(fennel.Id);
+        result.GoodCompanions.Count.ShouldBe(2);
+        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
     }
 
     [Fact]
@@ -77,8 +86,8 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        var neutralScore = result.First(r => r.PlantId == neutral.Id).Score;
-        var unknownScore = result.First(r => r.PlantId == unknown.Id).Score;
+        var neutralScore = result.GoodCompanions.First(r => r.PlantId == neutral.Id).Score;
+        var unknownScore = result.GoodCompanions.First(r => r.PlantId == unknown.Id).Score;
         neutralScore.ShouldBeGreaterThan(unknownScore);
     }
 
@@ -92,7 +101,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
 
-        result.Count.ShouldBe(10);
+        result.GoodCompanions.Count.ShouldBe(10);
     }
 
     [Fact]
@@ -105,9 +114,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, basil.Id]);
 
-        result.Select(r => r.PlantId).ShouldNotContain(tomato.Id);
-        result.Select(r => r.PlantId).ShouldNotContain(basil.Id);
-        result.ShouldContain(r => r.PlantId == carrot.Id);
+        result.GoodCompanions.Select(r => r.PlantId).ShouldNotContain(tomato.Id);
+        result.GoodCompanions.Select(r => r.PlantId).ShouldNotContain(basil.Id);
+        result.GoodCompanions.ShouldContain(r => r.PlantId == carrot.Id);
     }
 
     [Fact]
@@ -120,8 +129,8 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result[0].PlantName.ShouldBe("Basil");
-        result[0].ScientificName.ShouldBe("Ocimum basilicum");
+        result.GoodCompanions[0].PlantName.ShouldBe("Basil");
+        result.GoodCompanions[0].ScientificName.ShouldBe("Ocimum basilicum");
     }
 
     [Fact]
@@ -139,7 +148,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, carrot.Id]);
 
-        result[0].PlantId.ShouldBe(basil.Id);
+        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
     }
 
     [Fact]
@@ -161,10 +170,11 @@ public class CompanionRecommendationTests : DatabaseTestBase
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
+        var good = result.GoodCompanions;
 
-        var teamAIndex = result.FindIndex(r => r.PlantId == teamA.Id);
-        var teamBIndex = result.FindIndex(r => r.PlantId == teamB.Id);
-        var goodAloneIndex = result.FindIndex(r => r.PlantId == goodAlone.Id);
+        var teamAIndex = good.FindIndex(r => r.PlantId == teamA.Id);
+        var teamBIndex = good.FindIndex(r => r.PlantId == teamB.Id);
+        var goodAloneIndex = good.FindIndex(r => r.PlantId == goodAlone.Id);
 
         teamAIndex.ShouldBeLessThan(goodAloneIndex);
         teamBIndex.ShouldBeLessThan(goodAloneIndex);
@@ -183,7 +193,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result[0].Score.ShouldBeGreaterThan(1.0);
+        result.GoodCompanions[0].Score.ShouldBeGreaterThan(1.0);
     }
 
     [Fact]
@@ -196,40 +206,115 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result[0].PlantId.ShouldBe(basil.Id);
-        result[0].Score.ShouldBeGreaterThan(0);
-    }
-
-    [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenBeneficialHarmfulNeutral_ShouldProduceExpectedScoreOrder()
-    {
-        var selected = CreatePlant("Selected");
-        var beneficial = CreatePlant("Beneficial");
-        var neutral = CreatePlant("Neutral");
-        var harmful = CreatePlant("Harmful");
-        CreateAssociation(selected.Id, beneficial.Id, AssociationEffect.Beneficial);
-        CreateAssociation(selected.Id, neutral.Id, AssociationEffect.Neutral);
-        CreateAssociation(selected.Id, harmful.Id, AssociationEffect.Harmful);
-        await DbContext.SaveChangesAsync();
-
-        var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
-
-        result[0].PlantId.ShouldBe(beneficial.Id);
-        result[0].Score.ShouldBeGreaterThan(0);
-        result[2].PlantId.ShouldBe(harmful.Id);
-        result[2].Score.ShouldBeLessThan(0);
+        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
+        result.GoodCompanions[0].Score.ShouldBeGreaterThan(0);
     }
 
     [Fact]
     public async Task GetCompanionRecommendationsAsync_WhenFewerCandidatesThanMax_ShouldReturnAll()
     {
         var selected = CreatePlant("Selected");
-        var candidateA = CreatePlant("A");
-        var candidateB = CreatePlant("B");
+        CreatePlant("A");
+        CreatePlant("B");
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
 
-        result.Count.ShouldBe(2);
+        result.GoodCompanions.Count.ShouldBe(2);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulAssociationExists_ShouldReturnPlantsToAvoid()
+    {
+        var tomato = CreatePlant("Tomato");
+        var fennel = CreatePlant("Fennel");
+        CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.RootAllelopathy);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.PlantsToAvoid.Count.ShouldBe(1);
+        result.PlantsToAvoid[0].PlantId.ShouldBe(fennel.Id);
+        result.PlantsToAvoid[0].PlantName.ShouldBe("Fennel");
+        result.PlantsToAvoid[0].Mechanisms.ShouldContain(AssociationMechanism.RootAllelopathy);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenNoHarmfulAssociations_ShouldReturnEmptyPlantsToAvoid()
+    {
+        var tomato = CreatePlant("Tomato");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.PlantsToAvoid.ShouldBeEmpty();
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenGuildExists_ShouldIncludeGuildInfo()
+    {
+        var tomato = CreatePlant("Tomato");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
+        CreateGuild("Tomato Guild", "Tomato and basil work great together", tomato, basil);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
+        result.GoodCompanions[0].Guilds.Count.ShouldBe(1);
+        result.GoodCompanions[0].Guilds[0].Name.ShouldBe("Tomato Guild");
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenNoGuild_ShouldReturnEmptyGuilds()
+    {
+        var tomato = CreatePlant("Tomato");
+        var basil = CreatePlant("Basil");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.GoodCompanions[0].Guilds.ShouldBeEmpty();
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_ShouldSortByScoreDescending()
+    {
+        var tomato = CreatePlant("Tomato");
+        var basil = CreatePlant("Basil");
+        var carrot = CreatePlant("Carrot");
+        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
+        CreateAssociation(tomato.Id, carrot.Id, AssociationEffect.Beneficial);
+        CreateAssociation(tomato.Id, carrot.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.PredatorAttraction);
+        CreateGuild("Tomato Guild", "Classic guild", tomato, basil);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.GoodCompanions[0].PlantId.ShouldBe(carrot.Id);
+        result.GoodCompanions[0].Score.ShouldBeGreaterThan(result.GoodCompanions[1].Score);
+        result.GoodCompanions[1].PlantId.ShouldBe(basil.Id);
+        result.GoodCompanions[1].Guilds.Count.ShouldBeGreaterThan(0);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithMultipleMechanisms_ShouldListAll()
+    {
+        var tomato = CreatePlant("Tomato");
+        var fennel = CreatePlant("Fennel");
+        CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.RootAllelopathy);
+        CreateAssociation(tomato.Id, fennel.Id, AssociationEffect.Harmful, AssociationMechanism.AerialRepulsion);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
+
+        result.PlantsToAvoid[0].Mechanisms.Count.ShouldBe(2);
+        result.PlantsToAvoid[0].Mechanisms.ShouldContain(AssociationMechanism.RootAllelopathy);
+        result.PlantsToAvoid[0].Mechanisms.ShouldContain(AssociationMechanism.AerialRepulsion);
     }
 }

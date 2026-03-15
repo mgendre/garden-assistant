@@ -10,7 +10,7 @@ namespace GardenAssistant.Controllers;
 [ApiController]
 [Authorize]
 [Route("api")]
-public class PlantingEntriesController(PlantingEntryService plantingEntryService) : ControllerBase
+public class PlantingEntriesController(IPlantingEntryService plantingEntryService) : ControllerBase
 {
     private Guid CallerId =>
         Guid.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)!);

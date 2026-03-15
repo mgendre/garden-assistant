@@ -1,41 +1,42 @@
-import { Component, computed, inject, signal } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { Component, HostListener, signal } from '@angular/core';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface NavItem {
-  label: string;
+  labelKey: string;
   route: string;
-  emoji: string;
 }
 
 @Component({
   selector: 'app-shell',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslateModule],
   templateUrl: './shell.html',
   styleUrl: './shell.scss'
 })
 export class ShellComponent {
-  private readonly router = inject(Router);
-
   readonly navItems: NavItem[] = [
-    { label: 'Tableau de bord', route: '/dashboard', emoji: '🏡' },
-    { label: 'Mon jardin',      route: '/garden',    emoji: '🌱' },
-    { label: 'Tâches',          route: '/tasks',     emoji: '📋' },
-    { label: 'Associations',    route: '/companions',emoji: '🤝' },
+    { labelKey: 'Nav.Dashboard',  route: '/dashboard' },
+    { labelKey: 'Nav.Garden',     route: '/garden' },
+    { labelKey: 'Nav.Companions', route: '/companions' },
+    { labelKey: 'Nav.Guilds',     route: '/guilds' },
+    { labelKey: 'Nav.Tasks',      route: '/tasks' },
   ];
 
-  readonly sidebarOpen = signal(false);
+  readonly menuOpen = signal(false);
 
-  readonly activePageLabel = computed(() => {
-    const url = this.router.url;
-    return this.navItems.find(item => url.startsWith(item.route))?.label ?? '';
-  });
-
-  toggleSidebar(): void {
-    this.sidebarOpen.update(v => !v);
+  toggleMenu(): void {
+    this.menuOpen.update(v => !v);
   }
 
-  closeSidebar(): void {
-    this.sidebarOpen.set(false);
+  closeMenu(): void {
+    this.menuOpen.set(false);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscapeKey(): void {
+    if (this.menuOpen()) {
+      this.closeMenu();
+    }
   }
 }

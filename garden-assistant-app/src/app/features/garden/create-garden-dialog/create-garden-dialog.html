@@ -1,42 +1,42 @@
 <div class="px-1 pb-1">
-  <h2 mat-dialog-title class="!font-['DM_Serif_Display'] !text-2xl !text-forest">
-    Create Garden
+  <h2 mat-dialog-title>
+    {{ 'GardenDialog.Title' | translate }}
   </h2>
 
   <mat-dialog-content>
     <form [formGroup]="form" id="createGardenForm" (ngSubmit)="submit()" class="flex flex-col gap-4 pt-2">
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Name</mat-label>
+        <mat-label>{{ 'GardenDialog.Name' | translate }}</mat-label>
         <input matInput formControlName="name" maxlength="256" />
         @if (form.controls.name.hasError('required') && form.controls.name.touched) {
-          <mat-error>Name is required</mat-error>
+          <mat-error>{{ 'GardenDialog.NameRequired' | translate }}</mat-error>
         }
         @if (form.controls.name.hasError('maxlength')) {
-          <mat-error>Name cannot exceed 256 characters</mat-error>
+          <mat-error>{{ 'GardenDialog.NameMax' | translate }}</mat-error>
         }
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="w-full">
-        <mat-label>Description</mat-label>
+        <mat-label>{{ 'GardenDialog.Description' | translate }}</mat-label>
         <textarea matInput formControlName="description" rows="4" maxlength="2000"></textarea>
         @if (form.controls.description.hasError('maxlength')) {
-          <mat-error>Description cannot exceed 2000 characters</mat-error>
+          <mat-error>{{ 'GardenDialog.DescMax' | translate }}</mat-error>
         }
       </mat-form-field>
     </form>
   </mat-dialog-content>
 
-  <mat-dialog-actions class="!flex !gap-3 !justify-end !px-0 !pb-0 !pt-2">
-    <button class="rounded-lg border border-stone-200 bg-white px-5 py-2 text-sm font-medium text-stone-600 transition-all duration-200 hover:border-stone-300 hover:bg-stone-50 focus:outline-none focus:ring-2 focus:ring-stone-300"
+  <mat-dialog-actions class="dialog-actions !pt-2">
+    <button class="btn-secondary"
             type="button"
             (click)="cancel()">
-      Cancel
+      {{ 'GardenDialog.Cancel' | translate }}
     </button>
-    <button class="rounded-lg bg-earth px-5 py-2 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-earth-dark hover:shadow-md focus:outline-none focus:ring-2 focus:ring-earth focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+    <button class="btn-primary !rounded-lg !py-2 !shadow-sm hover:!translate-y-0 hover:!shadow-md !ring-offset-transparent disabled:cursor-not-allowed disabled:opacity-50"
             form="createGardenForm"
             type="submit"
             [disabled]="form.invalid">
-      Create Garden
+      {{ 'GardenDialog.Create' | translate }}
     </button>
   </mat-dialog-actions>
 </div>
