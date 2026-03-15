@@ -43,7 +43,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
         var guild = new Guild { Id = Guid.NewGuid(), Name = name, Description = description };
         DbContext.Guilds.Add(guild);
         foreach (var plant in plants)
+        {
             DbContext.GuildPlants.Add(new GuildPlant { GuildId = guild.Id, PlantId = plant.Id });
+        }
         return guild;
     }
 
@@ -97,7 +99,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
     {
         var selected = CreatePlant("Selected");
         for (var i = 0; i < 15; i++)
+        {
             CreatePlant($"Candidate {i}");
+        }
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);

@@ -11,7 +11,9 @@ var jwtKey = builder.Configuration["Jwt:Key"]
     ?? throw new InvalidOperationException("Jwt:Key is not configured.");
 
 if (jwtKey.Length < 32)
+{
     throw new InvalidOperationException("Jwt:Key must be at least 32 characters.");
+}
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
@@ -79,7 +81,9 @@ if (!app.Environment.IsEnvironment("NSwag") && !app.Environment.IsEnvironment("T
 }
 
 if (!app.Environment.IsDevelopment())
+{
     app.UseHttpsRedirection();
+}
 
 app.Use(async (context, next) =>
 {

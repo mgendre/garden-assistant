@@ -15,7 +15,9 @@ export class PlantDetailPanel {
   readonly expandedPlants = signal<Set<string>>(new Set());
 
   toggleExpanded(plantId: string | undefined): void {
-    if (!plantId) return;
+    if (!plantId) {
+      return;
+    }
     this.expandedPlants.update(set => {
       const next = new Set(set);
       if (next.has(plantId)) {
@@ -28,7 +30,9 @@ export class PlantDetailPanel {
   }
 
   isExpanded(plantId: string | undefined): boolean {
-    if (!plantId) return false;
+    if (!plantId) {
+      return false;
+    }
     return this.expandedPlants().has(plantId);
   }
 
@@ -60,15 +64,23 @@ export class PlantDetailPanel {
   }
 
   getHeightLabel(plant: PlantDto): string {
-    if (plant.heightAtMaturityCm == null) return '—';
+    if (plant.heightAtMaturityCm == null) {
+      return '—';
+    }
     return `${plant.heightAtMaturityCm} cm`;
   }
 
   getBadgeKeys(plant: PlantDto): string[] {
     const keys: string[] = [];
-    if (plant.nitrogenFixer) keys.push('Companions.TraitNitrogenFixer');
-    if (plant.pollinatorPlant) keys.push('Companions.TraitPollinator');
-    if (plant.allelopathicRisk) keys.push('Companions.TraitAllelopathic');
+    if (plant.nitrogenFixer) {
+      keys.push('Companions.TraitNitrogenFixer');
+    }
+    if (plant.pollinatorPlant) {
+      keys.push('Companions.TraitPollinator');
+    }
+    if (plant.allelopathicRisk) {
+      keys.push('Companions.TraitAllelopathic');
+    }
     return keys;
   }
 }

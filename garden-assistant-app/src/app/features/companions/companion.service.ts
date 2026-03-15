@@ -125,7 +125,9 @@ export class CompanionService {
   }
 
   addPlant(plant: PlantDto): void {
-    if (this.selectedPlantIds().has(plant.id)) return;
+    if (this.selectedPlantIds().has(plant.id)) {
+      return;
+    }
     this.selectedPlants.update(list => [...list, plant]);
   }
 

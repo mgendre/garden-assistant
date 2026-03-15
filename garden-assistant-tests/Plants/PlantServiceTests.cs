@@ -160,7 +160,9 @@ public class PlantServiceTests : DatabaseTestBase
     public async Task SearchAsync_ShouldLimitTo20Results()
     {
         for (var i = 0; i < 25; i++)
+        {
             DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = $"Plant {i}" });
+        }
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.SearchAsync("Plant");

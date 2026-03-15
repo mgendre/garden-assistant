@@ -17,7 +17,9 @@ export class RecommendationsPanel {
 
   readonly uniqueGuilds = computed(() => {
     const recs = this.service.recommendations();
-    if (!recs?.goodCompanions) return [];
+    if (!recs?.goodCompanions) {
+      return [];
+    }
     const seen = new Set<string>();
     const guilds: GuildInfoDto[] = [];
     for (const companion of recs.goodCompanions) {
@@ -46,7 +48,9 @@ export class RecommendationsPanel {
   }
 
   onGuildPlantClick(plantId: string | undefined): void {
-    if (!plantId) return;
+    if (!plantId) {
+      return;
+    }
     const plant = this.service.plants().find(p => p.id === plantId);
     if (plant) {
       this.service.addPlant(plant);
@@ -54,7 +58,9 @@ export class RecommendationsPanel {
   }
 
   async onGuildClick(guild: GuildInfoDto): Promise<void> {
-    if (!guild.id || this.guildLoading()) return;
+    if (!guild.id || this.guildLoading()) {
+      return;
+    }
     this.guildLoading.set(guild.id);
     try {
       const detail = this.guildDetails().get(guild.id)
@@ -72,18 +78,24 @@ export class RecommendationsPanel {
   }
 
   getGuildPlants(guildId: string | undefined): GuildDetailDto | undefined {
-    if (!guildId) return undefined;
+    if (!guildId) {
+      return undefined;
+    }
     return this.guildDetails().get(guildId);
   }
 
   getPlantEmojiById(plantId: string | undefined): string {
-    if (!plantId) return '🌱';
+    if (!plantId) {
+      return '🌱';
+    }
     const plant = this.service.plants().find(p => p.id === plantId);
     return plant ? this.service.getPlantEmoji(plant) : '🌱';
   }
 
   getPlantEmojiByName(name: string | undefined): string {
-    if (!name) return '🌱';
+    if (!name) {
+      return '🌱';
+    }
     const plant = this.service.plants().find(p => p.name === name);
     return plant ? this.service.getPlantEmoji(plant) : '🌱';
   }
@@ -96,7 +108,9 @@ export class RecommendationsPanel {
   private async loadGuildDetails(guilds: GuildInfoDto[]): Promise<void> {
     const current = this.guildDetails();
     const toLoad = guilds.filter(g => g.id && !current.has(g.id));
-    if (toLoad.length === 0) return;
+    if (toLoad.length === 0) {
+      return;
+    }
 
     const results = await Promise.all(
       toLoad.map(g => this.service.loadGuildPlants(g.id!))
@@ -105,7 +119,9 @@ export class RecommendationsPanel {
     this.guildDetails.update(map => {
       const next = new Map(map);
       for (const detail of results) {
-        if (detail.id) next.set(detail.id, detail);
+        if (detail.id) {
+          next.set(detail.id, detail);
+        }
       }
       return next;
     });

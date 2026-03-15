@@ -54,7 +54,10 @@ public class PlantingService(AppDbContext dbContext) : IPlantingService
     {
         var planting = await dbContext.Plantings
             .FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
-        if (planting is null) return false;
+        if (planting is null)
+        {
+            return false;
+        }
 
         dbContext.Plantings.Remove(planting);
         await dbContext.SaveChangesAsync();
@@ -68,7 +71,9 @@ public class PlantingService(AppDbContext dbContext) : IPlantingService
             .AnyAsync(p => p.Id == plantingId && p.UserId == userId);
 
         if (!plantingExists)
+        {
             return new CompatibilityScoreDto(0, 0, 0, 0);
+        }
 
         var plantIds = await dbContext.PlantingEntries
             .Where(pe => pe.PlantingId == plantingId)

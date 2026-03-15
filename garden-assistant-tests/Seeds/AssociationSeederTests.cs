@@ -174,6 +174,8 @@ public class AssociationSeederTests : DatabaseTestBase
     ~AssociationSeederTests()
     {
         if (Directory.Exists(_tempRoot))
+        {
             Directory.Delete(_tempRoot, recursive: true);
+        }
     }
 }

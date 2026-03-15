@@ -125,6 +125,8 @@ public class PlantSeederTests : DatabaseTestBase
     ~PlantSeederTests()
     {
         if (Directory.Exists(_tempRoot))
+        {
             Directory.Delete(_tempRoot, recursive: true);
+        }
     }
 }

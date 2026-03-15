@@ -40,7 +40,10 @@ public class WebAppFixture : WebApplicationFactory<Program>
                 .Where(d => d.ServiceType == typeof(AppDbContext) ||
                             d.ServiceType == typeof(DbContextOptions<AppDbContext>))
                 .ToList();
-            foreach (var d in toRemove) services.Remove(d);
+            foreach (var d in toRemove)
+            {
+                services.Remove(d);
+            }
 
             services.AddScoped<AppDbContext>(_ => new AppDbContext(SqliteOptions));
         });

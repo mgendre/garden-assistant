@@ -234,15 +234,24 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
 
         foreach (var a in associations)
         {
-            if (a.Effect != AssociationEffect.Harmful) continue;
+            if (a.Effect != AssociationEffect.Harmful)
+            {
+                continue;
+            }
 
             Guid candidateId;
             if (selectedPlantIds.Contains(a.SourcePlantId) && !selectedPlantIds.Contains(a.TargetPlantId))
+            {
                 candidateId = a.TargetPlantId;
+            }
             else if (selectedPlantIds.Contains(a.TargetPlantId) && !selectedPlantIds.Contains(a.SourcePlantId))
+            {
                 candidateId = a.SourcePlantId;
+            }
             else
+            {
                 continue;
+            }
 
             if (!harmfulByPlant.TryGetValue(candidateId, out var mechanisms))
             {
@@ -295,7 +304,9 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
     {
         var key = NormalizeKey(plantA, plantB);
         if (!lookup.TryGetValue(key, out var entries))
+        {
             return UnknownScore;
+        }
 
         return entries.Sum(e => ScoreForEffect(e.Effect));
     }
@@ -318,10 +329,17 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
         foreach (var selectedId in selectedPlantIds)
         {
             var key = NormalizeKey(candidateId, selectedId);
-            if (!lookup.TryGetValue(key, out var entries)) continue;
+            if (!lookup.TryGetValue(key, out var entries))
+            {
+                continue;
+            }
             foreach (var e in entries)
+            {
                 if (e.Effect == AssociationEffect.Beneficial)
+                {
                     mechanisms.Add(e.Mechanism);
+                }
+            }
         }
         return mechanisms.ToList();
     }

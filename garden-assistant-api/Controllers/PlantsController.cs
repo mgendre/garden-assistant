@@ -20,7 +20,9 @@ public class PlantsController(IPlantService plantService) : ControllerBase
     public async Task<IActionResult> Search([FromQuery] string q)
     {
         if (string.IsNullOrWhiteSpace(q))
+        {
             return Ok(Array.Empty<PlantDto>());
+        }
         return Ok(await plantService.SearchAsync(q));
     }
 
