@@ -38,7 +38,8 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env)
             WaterNeeds = r.WaterNeeds,
             NitrogenFixer = r.NitrogenFixer,
             AllelopathicRisk = r.AllelopathicRisk,
-            PollinatorPlant = r.PollinatorPlant
+            PollinatorPlant = r.PollinatorPlant,
+            MaxAltitudeM = r.MaxAltitudeM
         }).ToList();
 
         db.Plants.AddRange(plants);
@@ -58,6 +59,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env)
         WaterNeeds WaterNeeds,
         bool NitrogenFixer,
         bool AllelopathicRisk,
-        bool PollinatorPlant
+        bool PollinatorPlant,
+        int? MaxAltitudeM
     );
 }

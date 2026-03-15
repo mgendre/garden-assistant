@@ -24,6 +24,12 @@ public class PlantAssociationsController(PlantAssociationService plantAssociatio
         return CreatedAtAction(nameof(GetForPlant), new { plantId = association.SourcePlantId }, association);
     }
 
+    [HttpPost("plants/companions")]
+    [ProducesResponseType(typeof(List<CompanionRecommendationDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> GetCompanionRecommendations(CompanionRecommendationRequest request) =>
+        Ok(await plantAssociationService.GetCompanionRecommendationsAsync(request.PlantIds));
+
     [HttpDelete("plantassociations/{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

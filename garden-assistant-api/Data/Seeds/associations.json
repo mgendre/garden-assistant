@@ -110,11 +110,20 @@
   {
     "sourcePlantName": "Maïs",
     "targetPlantName": "Haricot à rames",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Milpa : le maïs sert de tuteur naturel au haricot grimpant, lui fournissant un support vertical solide."
+  },
+  {
+    "sourcePlantName": "Haricot à rames",
+    "targetPlantName": "Maïs",
     "mechanism": "NitrogenFixation",
     "effect": "Beneficial",
     "distanceEffect": "Contact",
     "confidenceLevel": "PeerReviewed",
-    "notes": "Milpa : le haricot grimpe sur le maïs et fixe l'azote dont il bénéficie, réduisant les besoins en intrants."
+    "notes": "Milpa : le haricot fixe l'azote atmosphérique par ses nodosités racinaires (Rhizobium), enrichissant le sol au bénéfice direct du maïs."
   },
   {
     "sourcePlantName": "Maïs",
@@ -380,7 +389,7 @@
   {
     "sourcePlantName": "Ail",
     "targetPlantName": "Pois",
-    "mechanism": "AerialRepulsion",
+    "mechanism": "RootAllelopathy",
     "effect": "Harmful",
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
@@ -389,7 +398,7 @@
   {
     "sourcePlantName": "Ail",
     "targetPlantName": "Haricot nain",
-    "mechanism": "AerialRepulsion",
+    "mechanism": "RootAllelopathy",
     "effect": "Harmful",
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
@@ -531,13 +540,13 @@
     "notes": "L'épinard couvre le sol entre les fraisiers en hiver et au printemps, limitant les adventices."
   },
   {
-    "sourcePlantName": "Betterave",
-    "targetPlantName": "Haricot nain",
+    "sourcePlantName": "Haricot nain",
+    "targetPlantName": "Betterave",
     "mechanism": "NitrogenFixation",
     "effect": "Beneficial",
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
-    "notes": "Le haricot fixe l'azote dont profite la betterave, association en bandes alternées recommandée."
+    "notes": "Le haricot nain fixe l'azote atmosphérique dont profite la betterave, association en bandes alternées recommandée."
   },
   {
     "sourcePlantName": "Pissenlit",
@@ -565,15 +574,6 @@
     "distanceEffect": "Short",
     "confidenceLevel": "Anecdotal",
     "notes": "Le topinambour crée une haie brise-vent protégeant la courgette des vents desséchants."
-  },
-  {
-    "sourcePlantName": "Framboisier",
-    "targetPlantName": "Consoude",
-    "mechanism": "DynamicAccumulation",
-    "effect": "Beneficial",
-    "distanceEffect": "Contact",
-    "confidenceLevel": "FieldObserved",
-    "notes": "La consoude plantée au pied du framboisier enrichit continuellement le sol de son paillis de feuilles."
   },
   {
     "sourcePlantName": "Framboisier",
@@ -727,5 +727,149 @@
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
     "notes": "La consoude en bordure de parcelle de courge apporte le potassium nécessaire à la fructification."
+  },
+  {
+    "sourcePlantName": "Chou",
+    "targetPlantName": "Céleri",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le céleri repousse la piéride du chou par son odeur forte, association classique en rangs alternés."
+  },
+  {
+    "sourcePlantName": "Sauge officinale",
+    "targetPlantName": "Chou",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sauge repousse la piéride du chou (Pieris brassicae) et les altises par ses huiles essentielles volatiles."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Laitue",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La tomate fournit une ombre légère à la laitue en été, retardant sa montée en graines et maintenant sa tendreté."
+  },
+  {
+    "sourcePlantName": "Noyer",
+    "targetPlantName": "Tomate",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Field",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La juglone exsudée par les racines du noyer inhibe la croissance de la tomate et de nombreuses Solanacées dans un rayon de 15 à 20 mètres."
+  },
+  {
+    "sourcePlantName": "Noyer",
+    "targetPlantName": "Pomme de terre",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Field",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La juglone du noyer est particulièrement toxique pour la pomme de terre, provoquant flétrissement et nécrose."
+  },
+  {
+    "sourcePlantName": "Aneth",
+    "targetPlantName": "Chou",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'aneth en fleur attire les guêpes parasites (ichneumons) qui pondent dans les chenilles de piéride du chou."
+  },
+  {
+    "sourcePlantName": "Concombre",
+    "targetPlantName": "Aneth",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'aneth attire les insectes auxiliaires bénéfiques au concombre et améliorerait sa vigueur."
+  },
+  {
+    "sourcePlantName": "Sarriette",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sarriette repousse les pucerons noirs (Aphis fabae) du haricot et en améliore la saveur, compagnon traditionnel."
+  },
+  {
+    "sourcePlantName": "Pommier",
+    "targetPlantName": "Capucine",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine en pied de pommier attire les pucerons lanigères loin de l'arbre, servant de plante piège."
+  },
+  {
+    "sourcePlantName": "Pommier",
+    "targetPlantName": "Ciboulette",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette plantée au pied du pommier réduirait la tavelure et les attaques de pucerons par ses composés soufrés."
+  },
+  {
+    "sourcePlantName": "Concombre",
+    "targetPlantName": "Sauge officinale",
+    "mechanism": "AerialRepulsion",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La sauge inhiberait la croissance du concombre, à maintenir à distance."
+  },
+  {
+    "sourcePlantName": "Tomate",
+    "targetPlantName": "Chou",
+    "mechanism": "AerialRepulsion",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La tomate et le chou se nuisent mutuellement par compétition en nutriments et incompatibilité de besoins."
+  },
+  {
+    "sourcePlantName": "Fraisier",
+    "targetPlantName": "Ail",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail planté entre les rangs de fraisiers réduit les maladies fongiques (botrytis) et repousse les pucerons."
+  },
+  {
+    "sourcePlantName": "Haricot nain",
+    "targetPlantName": "Maïs",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot nain fixe l'azote au bénéfice du maïs, variante de la Milpa adaptée aux petits espaces."
+  },
+  {
+    "sourcePlantName": "Blette",
+    "targetPlantName": "Haricot nain",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La blette couvre le sol entre les rangs de haricots, limitant l'évaporation, association productive en rangs alternés."
+  },
+  {
+    "sourcePlantName": "Rhubarbe",
+    "targetPlantName": "Chou",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La rhubarbe repousserait la piéride du chou et l'altise par ses feuilles riches en acide oxalique."
   }
 ]

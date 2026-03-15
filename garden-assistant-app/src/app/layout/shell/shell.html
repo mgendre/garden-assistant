@@ -7,13 +7,13 @@
   }
 
   <!-- Sidebar -->
-  <aside class="fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-[#1e3d1e] transition-transform duration-300 ease-in-out lg:static lg:translate-x-0"
+  <aside class="fixed inset-y-0 left-0 z-30 flex w-64 flex-col bg-forest transition-transform duration-300 ease-in-out lg:static lg:translate-x-0"
          [class.-translate-x-full]="!sidebarOpen()"
          [class.translate-x-0]="sidebarOpen()">
 
     <!-- Brand -->
     <div class="flex items-center gap-3 border-b border-white/10 px-6 py-7">
-      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-[#4a7c3f] text-xl shadow-md">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-canopy text-xl shadow-md">
         🌿
       </div>
       <span class="font-['DM_Serif_Display'] text-lg tracking-wide text-white">
@@ -44,7 +44,7 @@
   <div class="flex min-w-0 flex-1 flex-col" [attr.inert]="sidebarOpen() || null">
 
     <!-- Mobile topbar -->
-    <header class="flex items-center gap-4 border-b border-[#2d5a27]/20 bg-[#1e3d1e] px-4 py-4 shadow-sm lg:hidden">
+    <header class="flex items-center gap-4 border-b border-forest-light/20 bg-forest px-4 py-4 shadow-sm lg:hidden">
       <button class="flex h-9 w-9 items-center justify-center rounded-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white"
               (click)="toggleSidebar()"
               [attr.aria-label]="sidebarOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
@@ -62,7 +62,7 @@
     </header>
 
     <!-- Page content -->
-    <main class="flex-1 bg-[#f8f4ef]">
+    <main class="flex-1 bg-parchment">
       <div class="mx-auto max-w-5xl px-6 py-8 lg:px-10 lg:py-10">
         <router-outlet />
       </div>

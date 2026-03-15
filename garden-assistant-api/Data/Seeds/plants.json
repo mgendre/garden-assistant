@@ -12,7 +12,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Basilic",
@@ -27,7 +28,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 800
   },
   {
     "name": "Carotte",
@@ -35,14 +37,15 @@
     "description": "Légume racine attractant les prédateurs naturels de ravageurs grâce à ses fleurs ombellifères.",
     "family": "Apiaceae",
     "genus": "Daucus",
-    "lifeCycle": "Annual",
+    "lifeCycle": "Biennial",
     "heightAtMaturityCm": 30,
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1800
   },
   {
     "name": "Poireau",
@@ -50,14 +53,15 @@
     "description": "Légume alliacé repoussant les mouches de la carotte par son odeur.",
     "family": "Amaryllidaceae",
     "genus": "Allium",
-    "lifeCycle": "Annual",
+    "lifeCycle": "Biennial",
     "heightAtMaturityCm": 60,
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Ail",
@@ -72,7 +76,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Oignon",
@@ -80,14 +85,15 @@
     "description": "Légume alliacé compagnon classique de la carotte, repousse les ravageurs par son odeur.",
     "family": "Amaryllidaceae",
     "genus": "Allium",
-    "lifeCycle": "Annual",
+    "lifeCycle": "Biennial",
     "heightAtMaturityCm": 50,
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Ciboulette",
@@ -102,7 +108,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Haricot nain",
@@ -117,7 +124,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Haricot à rames",
@@ -132,7 +140,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Maïs",
@@ -147,7 +156,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Courge",
@@ -162,7 +172,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Potiron",
@@ -177,11 +188,12 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 800
   },
   {
     "name": "Courgette",
-    "scientificName": "Cucurbita pepo var. giromontiina",
+    "scientificName": "Cucurbita pepo var. cylindrica",
     "description": "Cucurbitacée prolixe attirant les pollinisateurs, s'associe bien au maïs et aux légumineuses.",
     "family": "Cucurbitaceae",
     "genus": "Cucurbita",
@@ -192,7 +204,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Pois",
@@ -207,7 +220,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Fève",
@@ -222,7 +236,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1800
   },
   {
     "name": "Trèfle blanc",
@@ -237,7 +252,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Trèfle rouge",
@@ -247,12 +263,13 @@
     "genus": "Trifolium",
     "lifeCycle": "Perennial",
     "heightAtMaturityCm": 40,
-    "rootDepth": "Shallow",
+    "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Luzerne",
@@ -267,7 +284,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Lupin",
@@ -277,12 +295,13 @@
     "genus": "Lupinus",
     "lifeCycle": "Annual",
     "heightAtMaturityCm": 120,
-    "rootDepth": "Medium",
+    "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Consoude",
@@ -297,7 +316,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Ortie",
@@ -312,7 +332,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Pissenlit",
@@ -327,7 +348,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 3000
   },
   {
     "name": "Capucine",
@@ -342,7 +364,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 800
   },
   {
     "name": "Tagète",
@@ -357,7 +380,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Souci",
@@ -372,7 +396,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Bourrache",
@@ -387,7 +412,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Phacélie",
@@ -402,7 +428,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Achillée millefeuille",
@@ -417,7 +444,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Fenouil",
@@ -432,7 +460,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": true,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 800
   },
   {
     "name": "Aneth",
@@ -447,7 +476,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Coriandre",
@@ -462,7 +492,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Persil",
@@ -477,7 +508,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Thym",
@@ -492,7 +524,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Romarin",
@@ -507,7 +540,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 800
   },
   {
     "name": "Lavande",
@@ -522,7 +556,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1800
   },
   {
     "name": "Sauge officinale",
@@ -537,7 +572,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Menthe poivrée",
@@ -552,7 +588,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Mélisse",
@@ -567,7 +604,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Origan",
@@ -582,7 +620,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Hysope",
@@ -597,7 +636,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Valériane",
@@ -612,7 +652,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Grande camomille",
@@ -627,7 +668,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Camomille allemande",
@@ -642,7 +684,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Absinthe",
@@ -652,12 +695,13 @@
     "genus": "Artemisia",
     "lifeCycle": "Perennial",
     "heightAtMaturityCm": 100,
-    "rootDepth": "Shallow",
+    "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": true,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Tanaisie",
@@ -672,22 +716,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
-  },
-  {
-    "name": "Rue des jardins",
-    "scientificName": "Ruta graveolens",
-    "description": "Répulsive contre les chats, les puces et certains insectes, mais peut inhiber les plantes voisines sensibles.",
-    "family": "Rutaceae",
-    "genus": "Ruta",
-    "lifeCycle": "Perennial",
-    "heightAtMaturityCm": 60,
-    "rootDepth": "Shallow",
-    "sunRequirement": "FullSun",
-    "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Tournesol",
@@ -701,23 +731,9 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true
-  },
-  {
-    "name": "Chou cabus",
-    "scientificName": "Brassica oleracea var. capitata",
-    "description": "Brassicacée s'associant bien avec le céleri, la camomille et les aromates répulsifs.",
-    "family": "Brassicaceae",
-    "genus": "Brassica",
-    "lifeCycle": "Annual",
-    "heightAtMaturityCm": 50,
-    "rootDepth": "Medium",
-    "sunRequirement": "FullSun",
-    "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "allelopathicRisk": true,
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Chou kale",
@@ -732,7 +748,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Brocoli",
@@ -747,7 +764,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Radis",
@@ -762,7 +780,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Navet",
@@ -777,7 +796,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1800
   },
   {
     "name": "Laitue",
@@ -792,7 +812,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Épinard",
@@ -807,7 +828,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Roquette",
@@ -822,7 +844,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Betterave",
@@ -837,7 +860,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Panais",
@@ -852,7 +876,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Céleri",
@@ -867,7 +892,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Poivron",
@@ -882,7 +908,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 800
   },
   {
     "name": "Aubergine",
@@ -897,7 +924,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 600
   },
   {
     "name": "Pomme de terre",
@@ -912,7 +940,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Asperge",
@@ -927,7 +956,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Artichaut",
@@ -942,7 +972,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 600
   },
   {
     "name": "Topinambour",
@@ -957,7 +988,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": true,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Oseille",
@@ -972,7 +1004,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Fraisier",
@@ -987,7 +1020,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Fraisier des bois",
@@ -1002,7 +1036,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Framboisier",
@@ -1017,22 +1052,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
-  },
-  {
-    "name": "Groseillier rouge",
-    "scientificName": "Ribes rubrum",
-    "description": "Arbuste fruitier de sous-étage, tolère bien l'ombre partielle, attire les pollinisateurs au printemps.",
-    "family": "Grossulariaceae",
-    "genus": "Ribes",
-    "lifeCycle": "Perennial",
-    "heightAtMaturityCm": 150,
-    "rootDepth": "Shallow",
-    "sunRequirement": "PartialShade",
-    "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1800
   },
   {
     "name": "Cassis",
@@ -1047,7 +1068,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Myrtille",
@@ -1062,7 +1084,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Aronia",
@@ -1077,7 +1100,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Argousier",
@@ -1092,7 +1116,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Sureau noir",
@@ -1107,7 +1132,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Cornouiller mâle",
@@ -1122,10 +1148,11 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
-    "name": "Noisette",
+    "name": "Noisetier",
     "scientificName": "Corylus avellana",
     "description": "Arbuste à floraison hivernale nourrissant pollinisateurs précoces, noix riches en acides gras.",
     "family": "Betulaceae",
@@ -1137,7 +1164,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Prunellier",
@@ -1152,7 +1180,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Viorne obier",
@@ -1167,7 +1196,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Pommier",
@@ -1182,7 +1212,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Poirier",
@@ -1197,7 +1228,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Prunier",
@@ -1212,7 +1244,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Cerisier",
@@ -1227,7 +1260,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Figuier",
@@ -1242,7 +1276,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 600
   },
   {
     "name": "Noyer",
@@ -1257,7 +1292,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": true,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Châtaignier",
@@ -1272,7 +1308,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Aulne glutineux",
@@ -1287,7 +1324,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Robinier",
@@ -1302,7 +1340,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": true,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Tilleul à petites feuilles",
@@ -1317,7 +1356,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Saule blanc",
@@ -1332,7 +1372,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Chêne pédonculé",
@@ -1347,7 +1388,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Vigne",
@@ -1362,7 +1404,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 800
   },
   {
     "name": "Houblon",
@@ -1377,7 +1420,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Lotier corniculé",
@@ -1392,22 +1436,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
-  },
-  {
-    "name": "Mélilot jaune",
-    "scientificName": "Melilotus officinalis",
-    "description": "Légumineuse biennale fixatrice d'azote, exceptionnellement mellifère, décompacte les sols argil.",
-    "family": "Fabaceae",
-    "genus": "Melilotus",
-    "lifeCycle": "Biennial",
-    "heightAtMaturityCm": 120,
-    "rootDepth": "Shallow",
-    "sunRequirement": "FullSun",
-    "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Vesce commune",
@@ -1422,7 +1452,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Sarrasin",
@@ -1437,7 +1468,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Plantain lancéolé",
@@ -1452,7 +1484,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Prêle des champs",
@@ -1467,7 +1500,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Millepertuis",
@@ -1482,7 +1516,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Estragon",
@@ -1497,7 +1532,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Sarriette des montagnes",
@@ -1512,7 +1548,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Sainfoin",
@@ -1527,7 +1564,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Mâche",
@@ -1542,7 +1580,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Seigle",
@@ -1557,7 +1596,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": true,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Avoine",
@@ -1572,7 +1612,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Quinoa",
@@ -1587,7 +1628,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Amarante",
@@ -1602,7 +1644,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Cresson de fontaine",
@@ -1617,7 +1660,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Souchet comestible",
@@ -1632,11 +1676,12 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 800
   },
   {
     "name": "Morelle de Balbis",
-    "scientificName": "Solanum retroflexum",
+    "scientificName": "Solanum sisymbriifolium",
     "description": "Solanacée sauvage à petits fruits comestibles, résistante et utile pour diversifier les strates.",
     "family": "Solanaceae",
     "genus": "Solanum",
@@ -1647,7 +1692,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Mûrier blanc",
@@ -1662,7 +1708,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 800
   },
   {
     "name": "Cognassier",
@@ -1677,7 +1724,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Nèflier",
@@ -1692,7 +1740,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1000
   },
   {
     "name": "Sorbier des oiseleurs",
@@ -1707,7 +1756,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Genévrier commun",
@@ -1722,7 +1772,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Pois chiche",
@@ -1737,7 +1788,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 800
   },
   {
     "name": "Lentille",
@@ -1752,7 +1804,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Thym rampant",
@@ -1767,7 +1820,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2500
   },
   {
     "name": "Ajuga rampant",
@@ -1782,7 +1836,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Véronique petit chêne",
@@ -1797,7 +1852,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Primevère",
@@ -1812,7 +1868,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
   },
   {
     "name": "Violette odorante",
@@ -1827,7 +1884,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Sarriette",
@@ -1842,7 +1900,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Chou",
@@ -1857,7 +1916,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Chou-fleur",
@@ -1872,7 +1932,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Concombre",
@@ -1887,7 +1948,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 800
   },
   {
     "name": "Melon",
@@ -1902,7 +1964,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 600
   },
   {
     "name": "Groseillier",
@@ -1917,22 +1980,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
-  },
-  {
-    "name": "Cassissier",
-    "scientificName": "Ribes nigrum",
-    "description": "Arbuste fruitier riche en vitamine C, ses feuilles aromatiques repoussent certains ravageurs du voisinage.",
-    "family": "Grossulariaceae",
-    "genus": "Ribes",
-    "lifeCycle": "Perennial",
-    "heightAtMaturityCm": 150,
-    "rootDepth": "Medium",
-    "sunRequirement": "PartialShade",
-    "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Moutarde blanche",
@@ -1947,22 +1996,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": true,
-    "pollinatorPlant": true
-  },
-  {
-    "name": "Seigle d'hiver",
-    "scientificName": "Secale cereale",
-    "description": "Graminée couvre-sol hivernal fixant l'azote atmosphérique en symbiose et structurant le sol par ses racines fibreuses.",
-    "family": "Poaceae",
-    "genus": "Secale",
-    "lifeCycle": "Annual",
-    "heightAtMaturityCm": 150,
-    "rootDepth": "Deep",
-    "sunRequirement": "FullSun",
-    "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Chrysanthème des jardins",
@@ -1977,7 +2012,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Rue officinale",
@@ -1992,37 +2028,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": true,
-    "pollinatorPlant": false
-  },
-  {
-    "name": "Armoise",
-    "scientificName": "Artemisia absinthium",
-    "description": "Vivace très aromatique dont les composés volatils repoussent de nombreux ravageurs, mais inhibent les plantes proches.",
-    "family": "Asteraceae",
-    "genus": "Artemisia",
-    "lifeCycle": "Perennial",
-    "heightAtMaturityCm": 120,
-    "rootDepth": "Medium",
-    "sunRequirement": "FullSun",
-    "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false
-  },
-  {
-    "name": "Mélisse officinale",
-    "scientificName": "Melissa officinalis",
-    "description": "Herbe aromatique très mellifère attirant les abeilles, utile en bordure de jardin pour la pollinisation.",
-    "family": "Lamiaceae",
-    "genus": "Melissa",
-    "lifeCycle": "Perennial",
-    "heightAtMaturityCm": 80,
-    "rootDepth": "Shallow",
-    "sunRequirement": "PartialShade",
-    "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Cerfeuil",
@@ -2037,7 +2044,8 @@
     "waterNeeds": "Medium",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Ciboulette ail",
@@ -2052,7 +2060,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Échalote",
@@ -2067,7 +2076,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Céleri-rave",
@@ -2082,7 +2092,8 @@
     "waterNeeds": "High",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": false
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1200
   },
   {
     "name": "Scorsonère",
@@ -2097,7 +2108,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Agastache",
@@ -2112,7 +2124,8 @@
     "waterNeeds": "Low",
     "nitrogenFixer": false,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 1500
   },
   {
     "name": "Mélilot",
@@ -2127,6 +2140,71 @@
     "waterNeeds": "Low",
     "nitrogenFixer": true,
     "allelopathicRisk": false,
-    "pollinatorPlant": true
+    "pollinatorPlant": true,
+    "maxAltitudeM": 2000
+  },
+  {
+    "name": "Rhubarbe",
+    "scientificName": "Rheum rhabarbarum",
+    "description": "Vivace robuste aux grandes feuilles fournissant de l'ombre, ses racines profondes remontent les nutriments du sous-sol.",
+    "family": "Polygonaceae",
+    "genus": "Rheum",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 100,
+    "rootDepth": "Deep",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "nitrogenFixer": false,
+    "allelopathicRisk": true,
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
+  },
+  {
+    "name": "Blette",
+    "scientificName": "Beta vulgaris var. cicla",
+    "description": "Légume-feuille productif tolérant chaleur et froid modéré, proche parente de la betterave avec un feuillage décoratif.",
+    "family": "Amaranthaceae",
+    "genus": "Beta",
+    "lifeCycle": "Biennial",
+    "heightAtMaturityCm": 50,
+    "rootDepth": "Medium",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "nitrogenFixer": false,
+    "allelopathicRisk": false,
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
+  },
+  {
+    "name": "Chou de Bruxelles",
+    "scientificName": "Brassica oleracea var. gemmifera",
+    "description": "Brassicacée haute résistante au froid, produit des bourgeons axillaires comestibles et bénéficie de la compagnie des aromatiques.",
+    "family": "Brassicaceae",
+    "genus": "Brassica",
+    "lifeCycle": "Biennial",
+    "heightAtMaturityCm": 90,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "nitrogenFixer": false,
+    "allelopathicRisk": false,
+    "pollinatorPlant": false,
+    "maxAltitudeM": 1500
+  },
+  {
+    "name": "Patate douce",
+    "scientificName": "Ipomoea batatas",
+    "description": "Plante tropicale rampante couvre-sol, ses tubercules riches en bêta-carotène nécessitent une longue saison chaude.",
+    "family": "Convolvulaceae",
+    "genus": "Ipomoea",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 30,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "nitrogenFixer": false,
+    "allelopathicRisk": false,
+    "pollinatorPlant": true,
+    "maxAltitudeM": 600
   }
 ]

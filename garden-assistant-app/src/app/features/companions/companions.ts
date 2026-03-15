@@ -59,10 +59,10 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
   standalone: true,
   providers: [CompanionSearchService],
   template: `
-    <div class="min-h-screen bg-[#f8f4ef]">
+    <div class="min-h-screen bg-parchment">
       <header class="mb-8">
-        <h1 class="font-['DM_Serif_Display'] text-3xl text-[#1e3d1e]">Associations de plantes</h1>
-        <p class="mt-1 text-sm text-[#6b4226]">Sélectionnez 2 à 5 plantes pour analyser leur compatibilité</p>
+        <h1 class="font-['DM_Serif_Display'] text-3xl text-forest">Associations de plantes</h1>
+        <p class="mt-1 text-sm text-earth">Sélectionnez 2 à 5 plantes pour analyser leur compatibilité</p>
       </header>
 
       @if (service.error()) {
@@ -82,12 +82,12 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
             placeholder="Rechercher une plante..."
             [value]="searchTerm()"
             (input)="searchTerm.set($any($event.target).value)"
-            class="w-full rounded-lg border border-[#c8b99a] bg-white px-4 py-2.5 text-sm text-[#1e3d1e] placeholder-[#a89070] shadow-sm focus:outline-none focus:ring-2 focus:ring-[#4a7c3f]"
+            class="w-full rounded-lg border border-bark bg-cream px-4 py-2.5 text-sm text-forest placeholder-bark-muted shadow-sm focus:outline-none focus:ring-2 focus:ring-canopy"
           />
 
           @if (service.loading() && service.selectedPlants().length === 0) {
             <div role="status" class="flex justify-center py-8">
-              <div class="h-8 w-8 animate-spin rounded-full border-4 border-[#4a7c3f] border-t-transparent"></div>
+              <div class="h-8 w-8 animate-spin rounded-full border-4 border-canopy border-t-transparent"></div>
               <span class="sr-only">Chargement des plantes…</span>
             </div>
           }
@@ -101,15 +101,15 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
                   [attr.aria-label]="plant.name + (plant.scientificName ? ' — ' + plant.scientificName : '')"
                   class="group w-full rounded-lg border px-4 py-2.5 text-left text-sm transition-all duration-150"
                   [class]="service.isSelected(plant)
-                    ? 'border-[#4a7c3f] bg-[#e8f0e8] ring-1 ring-[#4a7c3f]'
-                    : 'border-[#e0d6cc] bg-white hover:border-[#4a7c3f]/40 hover:bg-[#f0ebe4]'"
+                    ? 'border-canopy bg-moss-tint ring-1 ring-canopy'
+                    : 'border-bark-light bg-cream hover:border-canopy/40 hover:bg-sand'"
                 >
                   <div class="flex items-center gap-2">
                     <span aria-hidden="true"
                       class="flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-all"
                       [class]="service.isSelected(plant)
-                        ? 'border-[#4a7c3f] bg-[#4a7c3f] text-white'
-                        : 'border-[#c8b99a] bg-white'">
+                        ? 'border-canopy bg-canopy text-white'
+                        : 'border-bark bg-cream'">
                       @if (service.isSelected(plant)) {
                         <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none">
                           <path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -117,9 +117,9 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
                       }
                     </span>
                     <div class="min-w-0">
-                      <span class="block truncate font-medium text-[#1e3d1e]">{{ plant.name }}</span>
+                      <span class="block truncate font-medium text-forest">{{ plant.name }}</span>
                       @if (plant.scientificName) {
-                        <span class="block truncate text-xs italic text-[#6b4226]">{{ plant.scientificName }}</span>
+                        <span class="block truncate text-xs italic text-earth">{{ plant.scientificName }}</span>
                       }
                     </div>
                   </div>
@@ -127,7 +127,7 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
               </li>
             }
             @if (filteredPlants().length === 0 && !service.loading()) {
-              <li class="py-6 text-center text-sm text-[#6b4226]">Aucune plante trouvée</li>
+              <li class="py-6 text-center text-sm text-earth">Aucune plante trouvée</li>
             }
           </ul>
         </aside>
@@ -139,7 +139,7 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
           @if (service.selectedPlants().length > 0) {
             <div class="mb-5 flex flex-wrap gap-2" aria-label="Plantes sélectionnées">
               @for (plant of service.selectedPlants(); track plant.id) {
-                <span class="inline-flex items-center gap-1.5 rounded-full bg-[#1e3d1e] pl-3 pr-1 py-1 text-sm font-medium text-white">
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-forest pl-3 pr-1 py-1 text-sm font-medium text-white">
                   {{ plant.name }}
                   <button
                     (click)="service.togglePlant(plant)"
@@ -156,25 +156,25 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
 
           <!-- Empty state: no plants selected -->
           @if (service.selectedPlants().length === 0) {
-            <div class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#c8b99a] bg-white py-24 text-center">
+            <div class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-bark bg-cream py-24 text-center">
               <span aria-hidden="true" class="mb-4 text-5xl">🌿</span>
-              <p class="text-base font-medium text-[#1e3d1e]">Sélectionnez au moins 2 plantes</p>
-              <p class="mt-1 text-sm text-[#6b4226]">L'outil analysera toutes les associations entre elles</p>
+              <p class="text-base font-medium text-forest">Sélectionnez au moins 2 plantes</p>
+              <p class="mt-1 text-sm text-earth">L'outil analysera toutes les associations entre elles</p>
             </div>
           }
 
           <!-- Need one more plant -->
           @if (service.selectedPlants().length === 1) {
-            <div class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-[#4a7c3f]/40 bg-[#e8f0e8]/50 py-16 text-center">
+            <div class="flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-canopy/40 bg-moss-tint/50 py-16 text-center">
               <span aria-hidden="true" class="mb-3 text-4xl">➕</span>
-              <p class="text-sm font-medium text-[#1e3d1e]">Ajoutez une deuxième plante pour voir les associations</p>
+              <p class="text-sm font-medium text-forest">Ajoutez une deuxième plante pour voir les associations</p>
             </div>
           }
 
           <!-- Loading -->
           @if (service.loading() && service.selectedPlants().length >= 2) {
             <div role="status" class="flex justify-center py-16">
-              <div class="h-10 w-10 animate-spin rounded-full border-4 border-[#4a7c3f] border-t-transparent"></div>
+              <div class="h-10 w-10 animate-spin rounded-full border-4 border-canopy border-t-transparent"></div>
               <span class="sr-only">Analyse des associations en cours…</span>
             </div>
           }
@@ -233,22 +233,22 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
             </div>
 
             @if (service.associations().length === 0) {
-              <div class="rounded-xl border border-[#e0d6cc] bg-white px-8 py-12 text-center">
-                <p class="text-sm text-[#6b4226]">Aucune association répertoriée entre ces plantes.</p>
+              <div class="rounded-xl border border-bark-light bg-cream px-8 py-12 text-center">
+                <p class="text-sm text-earth">Aucune association répertoriée entre ces plantes.</p>
               </div>
             } @else {
               <ul class="flex flex-col gap-3">
                 @for (assoc of service.associations(); track assoc.id) {
-                  <li class="rounded-xl border bg-white px-5 py-4 shadow-sm transition-shadow hover:shadow-md"
+                  <li class="rounded-xl border bg-cream px-5 py-4 shadow-sm transition-shadow hover:shadow-md"
                     [class]="effectBorderClass(assoc.effect)">
                     <div class="flex flex-wrap items-start justify-between gap-3">
                       <div class="flex items-center gap-2">
                         <span [attr.aria-label]="effectLabel(assoc.effect)" class="text-lg">{{ effectEmoji(assoc.effect) }}</span>
                         <div>
-                          <span class="font-semibold text-[#1e3d1e]">{{ plantName(assoc.sourcePlantId) }}</span>
-                          <span aria-hidden="true" class="mx-2 text-[#6b4226]">→</span>
+                          <span class="font-semibold text-forest">{{ plantName(assoc.sourcePlantId) }}</span>
+                          <span aria-hidden="true" class="mx-2 text-earth">→</span>
                           <span class="sr-only">agit sur</span>
-                          <span class="font-semibold text-[#1e3d1e]">{{ plantName(assoc.targetPlantId) }}</span>
+                          <span class="font-semibold text-forest">{{ plantName(assoc.targetPlantId) }}</span>
                         </div>
                       </div>
                       <div class="flex flex-wrap gap-2">
@@ -256,7 +256,7 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
                           [class]="mechanismChipClass(assoc.mechanism)">
                           {{ mechanismLabel(assoc.mechanism) }}
                         </span>
-                        <span class="inline-flex items-center rounded-full border border-[#c0d8bc] bg-[#e8f0e8] px-3 py-0.5 text-xs font-medium text-[#1e3d1e]"
+                        <span class="inline-flex items-center rounded-full border border-border-green bg-moss-tint px-3 py-0.5 text-xs font-medium text-forest"
                           [title]="distanceTooltip(assoc.distanceEffect)">
                           {{ distanceLabel(assoc.distanceEffect) }}
                         </span>
@@ -267,7 +267,7 @@ const CONFIDENCE_TOOLTIP: Record<ConfidenceLevel, string> = {
                         </span>
                       </div>
                     </div>
-                    <p class="mt-3 border-t border-[#f0ebe4] pt-3 text-sm text-[#6b4226]">
+                    <p class="mt-3 border-t border-sand pt-3 text-sm text-earth">
                       {{ assoc.notes || mechanismFallbackNote(assoc.mechanism) }}
                     </p>
                   </li>
@@ -351,7 +351,7 @@ export class CompanionsComponent implements OnInit {
   mechanismChipClass(m: AssociationMechanism | undefined): string {
     return m === AssociationMechanism.TrapCrop
       ? 'bg-amber-500'
-      : 'bg-[#4a7c3f]';
+      : 'bg-canopy';
   }
 
   distanceLabel(d: DistanceEffect | undefined): string {
@@ -396,6 +396,6 @@ export class CompanionsComponent implements OnInit {
   effectBorderClass(effect: AssociationEffect | undefined): string {
     if (effect === AssociationEffect.Beneficial) return 'border-green-200';
     if (effect === AssociationEffect.Harmful)    return 'border-red-200';
-    return 'border-[#e0d6cc]';
+    return 'border-bark-light';
   }
 }
