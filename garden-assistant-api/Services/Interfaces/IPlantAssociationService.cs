@@ -5,7 +5,7 @@ namespace GardenAssistant.Services.Interfaces;
 public interface IPlantAssociationService
 {
     Task<IEnumerable<PlantAssociationDto>> GetForPlantAsync(Guid plantId);
-    Task<CompanionSearchResultDto> GetCompanionRecommendationsAsync(List<Guid> selectedPlantIds);
+    Task<CompanionSearchResultDto> GetCompanionRecommendationsAsync(List<Guid> selectedPlantIds, double? minScore = null);
     Task<PlantAssociationDto> CreateAsync(CreatePlantAssociationRequest request);
     Task<bool> DeleteAsync(Guid id);
 }

@@ -8,6 +8,7 @@ import {
   AssociationMechanism,
 } from '../../api/garden-assistant-api';
 import { CompanionService } from './companion.service';
+import { MyPlantsStore } from '../my-plants/my-plants.store';
 
 const FAMILY_EMOJI_MAP: Record<string, string> = {
   'Solanaceae': '🍅',
@@ -59,29 +60,36 @@ const MECHANISM_KEY_MAP: Record<number, string> = {
 @Injectable({ providedIn: 'root' })
 export class CompanionStore {
   private readonly service = inject(CompanionService);
+  private readonly myPlantsStore = inject(MyPlantsStore);
 
   readonly plants = signal<PlantDto[]>([]);
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
-  readonly sortMode = signal<'alpha' | 'family' | 'compat'>('compat');
+  readonly sortMode = signal<'alpha' | 'family' | 'compat'>('alpha');
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
   readonly plantsLoading = signal(false);
   readonly guildDetails = signal<Map<string, GuildDetailDto>>(new Map());
   readonly guildLoading = signal<string | null>(null);
 
-  private static readonly MAX_VISIBLE_PLANTS = 15;
 
   readonly selectedPlantIds = computed(() =>
     new Set(this.selectedPlants().map(p => p.id))
   );
 
-  readonly goodCompanionIds = computed(() =>
-    new Set(this.recommendations()?.goodCompanions?.map(c => c.plantId).filter(Boolean) ?? [])
-  );
-
   readonly avoidPlantIds = computed(() =>
     new Set(this.recommendations()?.plantsToAvoid?.map(p => p.plantId).filter(Boolean) ?? [])
+  );
+
+  readonly goodCompanions = computed(() => {
+    const avoid = this.avoidPlantIds();
+    const selected = this.selectedPlantIds();
+    return this.recommendations()?.goodCompanions
+      ?.filter(c => !avoid.has(c.plantId) && !selected.has(c.plantId)) ?? [];
+  });
+
+  readonly goodCompanionIds = computed(() =>
+    new Set(this.goodCompanions().map(c => c.plantId).filter(Boolean))
   );
 
   readonly filteredPlants = computed(() => {
@@ -100,6 +108,13 @@ export class CompanionStore {
     const byName = (a: PlantDto, b: PlantDto) =>
       (a.name ?? '').localeCompare(b.name ?? '', 'fr');
 
+    const myPlantIds = this.myPlantsStore.plantIds();
+    const favFirst = (a: PlantDto, b: PlantDto) => {
+      const aFav = myPlantIds.has(a.id) ? 0 : 1;
+      const bFav = myPlantIds.has(b.id) ? 0 : 1;
+      return aFav - bFav;
+    };
+
     const sorted = [...result].sort((a, b) => {
       if (sort === 'family') {
         const famCmp = (a.family ?? '').localeCompare(b.family ?? '', 'fr');
@@ -108,16 +123,18 @@ export class CompanionStore {
       if (sort === 'compat') {
         const compatScore = (p: PlantDto) => {
           if (this.goodCompanionIds().has(p.id)) return 0;
+          if (myPlantIds.has(p.id)) return 0.5;
           if (this.avoidPlantIds().has(p.id)) return 2;
           return 1;
         };
         const scoreDiff = compatScore(a) - compatScore(b);
         return scoreDiff !== 0 ? scoreDiff : byName(a, b);
       }
-      return byName(a, b);
+      const fav = favFirst(a, b);
+      return fav !== 0 ? fav : byName(a, b);
     });
 
-    return sorted.slice(0, CompanionStore.MAX_VISIBLE_PLANTS);
+    return sorted;
   });
 
   readonly guildsForSelectedPlants = computed(() => {
@@ -234,7 +251,8 @@ export class CompanionStore {
     this.loading.set(true);
     try {
       const request: CompanionRecommendationRequest = {
-        plantIds: plants.map(p => p.id!).filter(Boolean)
+        plantIds: plants.map(p => p.id!).filter(Boolean),
+        minScore: 0,
       };
       const result = await this.service.getRecommendations(request);
       this.recommendations.set(result);

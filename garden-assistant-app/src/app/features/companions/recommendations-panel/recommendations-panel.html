@@ -44,11 +44,11 @@
       <div class="companion-section-header">
         <span>🤝</span>
         <span [translate]="'Companions.GoodTitle'"></span>
-        <span class="stat-badge stat-green">{{ recs.goodCompanions?.length ?? 0 }}</span>
+        <span class="stat-badge stat-green">{{ store.goodCompanions().length }}</span>
       </div>
       <div class="companion-list">
-        @if (recs.goodCompanions?.length) {
-          @for (companion of recs.goodCompanions; track companion.plantId) {
+        @if (store.goodCompanions().length) {
+          @for (companion of store.goodCompanions(); track companion.plantId) {
             <div class="companion-item" (click)="onCompanionClick(companion)">
               <span class="companion-icon">{{ store.getPlantEmojiById(companion.plantId) }}</span>
               <div class="companion-info">

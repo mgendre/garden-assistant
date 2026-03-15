@@ -5,5 +5,9 @@ export const routes: Routes = [
   {
     path: 'companions',
     loadComponent: () => import('./features/companions/companions').then(m => m.Companions)
+  },
+  {
+    path: 'mes-plantes',
+    loadComponent: () => import('./features/my-plants/my-plants').then(m => m.MyPlants)
   }
 ];

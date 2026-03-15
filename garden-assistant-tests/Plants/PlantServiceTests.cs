@@ -118,8 +118,9 @@ public class PlantServiceTests : DatabaseTestBase
 
         var result = await _sut.SearchAsync("tom");
 
-        result.Count().ShouldBe(1);
-        result.First().Name.ShouldBe("Tomate");
+        var plantDtos = result as PlantDto[] ?? result.ToArray();
+        plantDtos.Length.ShouldBe(1);
+        plantDtos.First().Name.ShouldBe("Tomate");
     }
 
     [Fact]
@@ -130,8 +131,9 @@ public class PlantServiceTests : DatabaseTestBase
 
         var result = await _sut.SearchAsync("solanum");
 
-        result.Count().ShouldBe(1);
-        result.First().Name.ShouldBe("Tomate");
+        var plantDtos = result as PlantDto[] ?? result.ToArray();
+        plantDtos.Length.ShouldBe(1);
+        plantDtos.First().Name.ShouldBe("Tomate");
     }
 
     [Fact]

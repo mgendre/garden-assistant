@@ -1,4 +1,5 @@
 using GardenAssistant.Data;
+using GardenAssistant.Data.Entities;
 using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,7 @@ public abstract class DatabaseTestBase : IDisposable
             .UseSnakeCaseNamingConvention()
             .Options;
 
-        DbContext = new AppDbContext(options);
+        DbContext = new TestAppDbContext(options);
         DbContext.Database.EnsureCreated();
     }
 

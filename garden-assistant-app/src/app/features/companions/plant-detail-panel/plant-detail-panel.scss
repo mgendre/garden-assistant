@@ -6,12 +6,7 @@
 }
 
 .plants-scroll {
-  @apply flex flex-col;
-}
-
-.plant-detail {
-  border-bottom: 1.5px solid #d8f3dc;
-  &:last-child { border-bottom: none; }
+  @apply flex flex-col gap-3;
 }
 
 .collapsible-body {

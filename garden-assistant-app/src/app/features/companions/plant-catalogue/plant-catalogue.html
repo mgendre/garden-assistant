@@ -5,7 +5,7 @@
   </div>
 
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
+    <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
     <input
       #searchInput
       type="text"
@@ -17,15 +17,15 @@
   <div class="sort-wrap">
     <button
       class="chip"
-      [class.active]="store.sortMode() === 'compat'"
-      (click)="store.setSort('compat')"
-      [translate]="'Companions.SortCompat'">
-    </button>
-    <button
-      class="chip"
       [class.active]="store.sortMode() === 'alpha'"
       (click)="store.setSort('alpha')"
       [translate]="'Companions.SortAlpha'">
+    </button>
+    <button
+      class="chip"
+      [class.active]="store.sortMode() === 'compat'"
+      (click)="store.setSort('compat')"
+      [translate]="'Companions.SortCompat'">
     </button>
     <button
       class="chip"
@@ -46,13 +46,10 @@
         <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
         <div class="plant-info">
           <div class="plant-name">{{ plant.name }}</div>
-          <div class="plant-latin">{{ plant.scientificName }}</div>
+          @if (plant.family) {
+            <div class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</div>
+          }
         </div>
-        @if (!store.recommendations() && plant.family) {
-          <span class="family-badge" [class]="store.getFamilyClass(plant.family)">
-            {{ plant.family }}
-          </span>
-        }
       </div>
     }
 

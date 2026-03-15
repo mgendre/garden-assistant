@@ -20,6 +20,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IPlantingService, PlantingService>();
         services.AddScoped<IPlantingEntryService, PlantingEntryService>();
         services.AddScoped<IGuildService, GuildService>();
+        services.AddScoped<IUserPlantService, UserPlantService>();
 
         return services;
     }

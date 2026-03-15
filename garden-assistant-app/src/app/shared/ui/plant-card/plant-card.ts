@@ -1,13 +1,20 @@
 import { Component, input, output, inject } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { firstValueFrom } from 'rxjs';
 import { PlantDto, SunRequirement, WaterNeeds, LifeCycle } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../../features/companions/companion.store';
+import { MyPlantsStore } from '../../../features/my-plants/my-plants.store';
+import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog';
 import { Collapsible } from '../collapsible/collapsible';
 
 @Component({
   selector: 'app-plant-card',
   standalone: true,
-  imports: [TranslateModule, Collapsible],
+  imports: [TranslateModule, FontAwesomeModule, Collapsible],
   templateUrl: './plant-card.html',
   styleUrl: './plant-card.scss'
 })
@@ -18,6 +25,11 @@ export class PlantCard {
   readonly remove = output<void>();
 
   protected readonly store = inject(CompanionStore);
+  protected readonly myPlantsStore = inject(MyPlantsStore);
+  protected readonly faHeartSolid = faHeartSolid;
+  protected readonly faHeartRegular = faHeartRegular;
+  private readonly dialog = inject(MatDialog);
+  private readonly translate = inject(TranslateService);
 
   getSunKey(sun: SunRequirement | undefined): string {
     switch (sun) {
@@ -57,5 +69,24 @@ export class PlantCard {
     if (plant.pollinatorPlant) keys.push('Plant.Trait.Pollinator');
     if (plant.allelopathicRisk) keys.push('Plant.Trait.Allelopathic');
     return keys;
+  }
+
+  async toggleFav(event: Event): Promise<void> {
+    event.stopPropagation();
+    const p = this.plant();
+    if (this.myPlantsStore.isSaved(p.id)) {
+      const message = this.translate.instant('MyPlants.ConfirmRemoveMessage', { name: p.name });
+      const confirmed = await firstValueFrom(
+        this.dialog.open<ConfirmDialogComponent, ConfirmDialogData, boolean>(ConfirmDialogComponent, {
+          data: {
+            title: this.translate.instant('MyPlants.ConfirmRemoveTitle'),
+            message,
+            confirmLabel: this.translate.instant('MyPlants.ConfirmRemoveAction'),
+          },
+        }).afterClosed()
+      );
+      if (!confirmed) return;
+    }
+    this.myPlantsStore.toggle(p);
   }
 }

@@ -1,0 +1,61 @@
+@use '../../../styles/abstracts/variables' as *;
+@use '../../../styles/abstracts/mixins' as *;
+@reference "tailwindcss";
+
+.my-plants-page {
+  @apply max-w-[1400px] mx-auto px-4 pt-4;
+
+  @include respond-to('md') {
+    @apply px-12 pt-6;
+  }
+}
+
+.page-header {
+  @apply mb-6;
+}
+
+.page-category {
+  @apply text-xs font-semibold uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+}
+
+.page-description {
+  @apply text-sm mt-1;
+  color: var(--color-text-muted);
+}
+
+.two-col {
+  @apply flex flex-col gap-5;
+
+  @include respond-to('lg') {
+    @apply grid items-start;
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+.collection {
+  @apply min-w-0;
+}
+
+.plants-list {
+  @apply flex flex-col gap-3;
+}
+
+.empty-state {
+  @apply flex flex-col items-center justify-center text-center p-8;
+  min-height: 200px;
+}
+
+.empty-state-icon {
+  @apply text-6xl mb-4 opacity-30;
+}
+
+.empty-state-title {
+  @apply mb-2;
+}
+
+.empty-state-text {
+  @apply text-sm leading-relaxed max-w-[260px];
+  color: var(--color-text-muted);
+}

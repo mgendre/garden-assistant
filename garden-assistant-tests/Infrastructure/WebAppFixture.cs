@@ -1,4 +1,5 @@
 using GardenAssistant.Data;
+using JetBrains.Annotations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Data.Sqlite;
@@ -8,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace GardenAssistant.Tests.Infrastructure;
 
+[UsedImplicitly]
 public class WebAppFixture : WebApplicationFactory<Program>
 {
     private readonly SqliteConnection _connection = new("DataSource=:memory:");

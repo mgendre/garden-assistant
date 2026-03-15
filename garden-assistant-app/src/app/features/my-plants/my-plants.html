@@ -1,0 +1,31 @@
+<div class="my-plants-page">
+  <div class="page-header">
+    <span class="page-category" [translate]="'MyPlants.Category'"></span>
+    <h1 [translate]="'MyPlants.Title'"></h1>
+    <p class="page-description" [translate]="'MyPlants.Description'"></p>
+  </div>
+
+  <div class="two-col">
+    <app-plant-picker></app-plant-picker>
+
+    <div class="collection">
+      @if (store.sortedPlants().length > 0) {
+        <div class="plants-list">
+          @for (plant of store.sortedPlants(); track plant.id) {
+            <app-plant-card
+              [plant]="plant"
+              [removable]="true"
+              (remove)="store.toggle(plant)">
+            </app-plant-card>
+          }
+        </div>
+      } @else if (!store.loading()) {
+        <div class="empty-state">
+          <div class="empty-state-icon">🌱</div>
+          <h3 class="empty-state-title" [translate]="'MyPlants.EmptyTitle'"></h3>
+          <p class="empty-state-text" [translate]="'MyPlants.EmptyDesc'"></p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

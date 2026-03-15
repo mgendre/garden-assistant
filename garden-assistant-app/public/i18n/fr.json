@@ -7,6 +7,7 @@
     "Garden": "Mon jardin",
     "Tasks": "T\u00e2ches",
     "Companions": "Associations",
+    "MyPlants": "Mes plantes",
     "Guilds": "Guildes",
     "OpenMenu": "Ouvrir le menu",
     "CloseMenu": "Fermer le menu",
@@ -140,6 +141,18 @@
     "SectionTitle": "Guildes associ\u00e9es",
     "Add": "Tout ajouter"
   },
+  "MyPlants": {
+    "Category": "Collection",
+    "Title": "Mes plantes",
+    "Description": "Retrouvez ici toutes les plantes que vous cultivez ou souhaitez cultiver.",
+    "EmptyTitle": "Aucune plante sauvegard\u00e9e",
+    "EmptyDesc": "Ajoutez des plantes depuis le catalogue pour les retrouver ici.",
+    "PickerTitle": "Ajouter des plantes",
+    "Remove": "Retirer {{name}} de ma collection",
+    "ConfirmRemoveTitle": "Retirer de ma collection",
+    "ConfirmRemoveMessage": "Retirer « {{name}} » de votre collection ?",
+    "ConfirmRemoveAction": "Retirer"
+  },
   "Companions": {
     "Category": "Permaculture",
     "Title": "Associations de plantes",
@@ -166,6 +179,7 @@
     "ConflictDesc": "Certaines plantes s\u00e9lectionn\u00e9es ne sont pas compatibles entre elles.",
     "ConflictBetween": "{{plantA}} et {{plantB}}",
     "AddCompanion": "Ajouter {{name}} \u00e0 la s\u00e9lection",
+    "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
     "SearchStatus": {
       "Good": "Bon compagnon",
       "Avoid": "\u00c0 \u00e9viter"

@@ -23,6 +23,13 @@
         }
       </div>
     </div>
+    <button
+      class="fav-btn"
+      [class.saved]="myPlantsStore.isSaved(plant().id)"
+      (click)="toggleFav($event)"
+      [attr.aria-label]="(myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name }">
+      <fa-icon [icon]="myPlantsStore.isSaved(plant().id) ? faHeartSolid : faHeartRegular"></fa-icon>
+    </button>
     @if (removable()) {
       <button
         class="remove-btn"

@@ -1,0 +1,40 @@
+import { Component, inject, signal, computed } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faMagnifyingGlass, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { PlantDto } from '../../../api/garden-assistant-api';
+import { CompanionStore } from '../../companions/companion.store';
+import { MyPlantsStore } from '../my-plants.store';
+
+@Component({
+  selector: 'app-plant-picker',
+  standalone: true,
+  imports: [TranslateModule, FontAwesomeModule],
+  templateUrl: './plant-picker.html',
+  styleUrl: './plant-picker.scss'
+})
+export class PlantPicker {
+  protected readonly companionStore = inject(CompanionStore);
+  protected readonly myPlantsStore = inject(MyPlantsStore);
+  protected readonly faSearch = faMagnifyingGlass;
+  protected readonly faPlus = faPlus;
+
+  readonly searchQuery = signal('');
+
+  readonly filteredPlants = computed(() => {
+    const query = this.searchQuery().toLowerCase();
+    const savedIds = this.myPlantsStore.plantIds();
+    let result = this.companionStore.plants().filter(p => !savedIds.has(p.id));
+    if (query) {
+      result = result.filter(p =>
+        (p.name?.toLowerCase().includes(query)) ||
+        (p.scientificName?.toLowerCase().includes(query))
+      );
+    }
+    return [...result].sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'));
+  });
+
+  onPlantClick(plant: PlantDto): void {
+    this.myPlantsStore.toggle(plant);
+  }
+}

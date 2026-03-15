@@ -138,10 +138,12 @@
   color: var(--color-text);
 }
 
-.plant-latin {
-  @apply text-xs italic truncate;
-  color: var(--color-text-muted);
+.plant-family {
+  @apply inline-block font-semibold uppercase whitespace-nowrap rounded;
+  font-size: 0.6rem;
+  letter-spacing: 0.05em;
+  padding: 0.1rem 0.35rem;
+  margin-top: 2px;
 }
 
-// .family-badge is defined globally in _badges.scss
 @include family-badges;
