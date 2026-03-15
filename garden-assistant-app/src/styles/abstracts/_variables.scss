@@ -2,29 +2,33 @@
 $font-display: 'DM Serif Display', Georgia, serif;  // headings — old botanical feel
 $font-body:    'Lato', 'Helvetica Neue', sans-serif; // body — clean, readable outdoors
 
-$color-forest:       #1e3d1e;
-$color-forest-light: #2d5a27;
-$color-canopy:       #4a7c3f;
-$color-canopy-muted: #5a8a50;
-$color-sage:         #8ab88a;
-$color-moss:         #c8dfc8;
-$color-moss-tint:    #e8f0e8;
-$color-parchment:    #f8f4ef;
-$color-cream:        #fefcf8;
-$color-earth:        #6b4226;
-$color-earth-dark:   #5a3720;
-$color-bark:         #c8b99a;
-$color-bark-light:   #e0d6cc;
-$color-bark-muted:   #a89070;
-$color-sand:         #f0ebe4;
-$color-success:      #2d6a4f;
+$color-forest:       #1a5c1e;
+$color-forest-light: #237227;
+$color-canopy:       #519A66;
+$color-canopy-muted: #6aab7c;
+$color-sage:         #8ec49a;
+$color-moss:         #c2e0c8;
+$color-moss-tint:    #e4f0e6;
+$color-parchment:    #faf8f4;
+$color-cream:        #fefdfb;
+$color-accent:       #FFAA00;
+$color-accent-dark:  #e69900;
+$color-accent-light: #FFD786;
+$color-accent-tint:  #fff4de;
+$color-earth:        #FFAA00;
+$color-earth-dark:   #e69900;
+$color-bark:         #d4c9a8;
+$color-bark-light:   #e8e0d0;
+$color-bark-muted:   #b0a080;
+$color-sand:         #f5f0e8;
+$color-success:      #237227;
 $color-danger:       #9b1c1c;
-$color-warning:      #b45309;
-$color-text:         #1c2b1c;
-$color-text-muted:   #556b55;
-$color-border:       #d0e4cc;
-$color-border-green: #c0d8bc;
-$color-divider:      #e8f0e4;
+$color-warning:      #e69900;
+$color-text:         #1a2e1a;
+$color-text-muted:   #5a7a5a;
+$color-border:       #c2e0c8;
+$color-border-green: #b8d8b0;
+$color-divider:      #e0f0dc;
 
 // ─── Spacing — 8px grid ───────────────────────────────────────────────────────
 $spacing-unit: 8px;
@@ -57,11 +61,11 @@ $shadow-sm:      0 1px 4px rgba(30, 61, 30, 0.08);
 $shadow-base:    0 2px 16px rgba(30, 61, 30, 0.10);
 $shadow-lg:      0 8px 32px rgba(30, 61, 30, 0.15);
 $shadow-focus:   0 0 0 3px rgba(74, 139, 74, 0.35);
-$shadow-sidebar: 4px 0 24px rgba(0, 0, 0, 0.18);
 
 // ─── Layout ───────────────────────────────────────────────────────────────────
-$sidebar-width:     260px;
-$content-max-width: 1100px;
+$header-height:        64px;
+$header-height-mobile: 56px;
+$content-max-width:    1200px;
 
 // ─── Transitions ──────────────────────────────────────────────────────────────
 $transition-fast: 150ms ease;
@@ -69,5 +73,7 @@ $transition-base: 250ms ease;
 $transition-slow: 400ms ease;
 
 // ─── Z-index ──────────────────────────────────────────────────────────────────
-$z-overlay: 90;
-$z-sidebar: 100;
+$z-overlay:        90;
+$z-header:         100;
+$z-mobile-menu:    110;
+$z-mobile-overlay: 105;

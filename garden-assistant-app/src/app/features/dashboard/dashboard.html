@@ -1,55 +1,79 @@
 <!-- Hero section -->
-<div class="mb-10 overflow-hidden rounded-2xl bg-gradient-to-br from-forest via-forest-light to-canopy px-8 py-12 shadow-xl">
+<div class="mb-6 overflow-hidden rounded-xl bg-gradient-to-br from-forest via-forest-light to-canopy px-5 py-8 shadow-xl md:mb-8 md:rounded-2xl md:px-8 md:py-10 lg:mb-10 lg:px-10 lg:py-14">
   <div class="max-w-xl">
-    <p class="mb-2 text-sm font-medium uppercase tracking-widest text-canopy-muted">Welcome back</p>
-    <h1 class="font-['DM_Serif_Display'] text-4xl leading-snug text-white lg:text-5xl">
-      Your garden<br>awaits you.
+    <p class="mb-2 text-xs font-medium uppercase tracking-widest text-sage sm:text-sm">{{ 'Dashboard.Welcome' | translate }}</p>
+    <h1 class="leading-snug text-white lg:!text-5xl"
+        [innerHTML]="'Dashboard.Title' | translate">
     </h1>
-    <p class="mt-4 text-base leading-relaxed text-white/70">
-      Track your plants, schedule tasks, and watch your garden flourish — all in one place.
+    <p class="mt-3 text-sm leading-relaxed text-white/70 md:mt-4 md:text-base">
+      {{ 'Dashboard.Description' | translate }}
     </p>
   </div>
-  <div class="mt-8 flex items-center gap-2">
-    <span class="rounded-full bg-white/10 px-4 py-1.5 text-sm text-white/80 ring-1 ring-white/20">
-      🌱 Spring season
+  <div class="mt-6 flex flex-wrap items-center gap-2 md:mt-8">
+    <span class="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white/80 ring-1 ring-white/20 sm:px-4 sm:text-sm">
+      {{ 'Dashboard.Season' | translate }}
     </span>
-    <span class="rounded-full bg-white/10 px-4 py-1.5 text-sm text-white/80 ring-1 ring-white/20">
+    <span class="rounded-full bg-white/10 px-3 py-1.5 text-xs text-white/80 ring-1 ring-white/20 sm:px-4 sm:text-sm">
       14 Mar 2026
     </span>
   </div>
 </div>
 
 <!-- Summary cards -->
-<div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
   <a routerLink="/garden"
-     class="group rounded-xl border border-canopy/20 bg-cream px-6 py-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-canopy/40 focus:outline-none focus:ring-2 focus:ring-canopy focus:ring-offset-2">
-    <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-parchment text-2xl ring-1 ring-canopy/15">
-      🌱
+     class="card-interactive">
+    <div class="mb-4 icon-badge-md">
+      <svg class="h-6 w-6 text-canopy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22c0-6-4-10-8-10 5 0 8-4 8-8 0 4 3 8 8 8-4 0-8 4-8 10z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22v-10" />
+      </svg>
     </div>
-    <p class="text-xs font-semibold uppercase tracking-widest text-canopy-muted">Mon jardin</p>
-    <p class="mt-1 font-['DM_Serif_Display'] text-2xl text-forest">Gérer mes jardins</p>
-    <p class="mt-2 text-sm leading-relaxed text-stone-500">Créez et organisez vos parcelles de jardin.</p>
+    <p class="page-category">{{ 'Dashboard.CardGardenCategory' | translate }}</p>
+    <h2 class="mt-1">{{ 'Dashboard.CardGardenTitle' | translate }}</h2>
+    <p class="mt-2 text-sm leading-relaxed text-bark-muted">{{ 'Dashboard.CardGardenDesc' | translate }}</p>
   </a>
 
   <a routerLink="/companions"
-     class="group rounded-xl border border-canopy/20 bg-cream px-6 py-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-canopy/40 focus:outline-none focus:ring-2 focus:ring-canopy focus:ring-offset-2">
-    <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-parchment text-2xl ring-1 ring-canopy/15">
-      🤝
+     class="card-interactive">
+    <div class="mb-4 icon-badge-md">
+      <svg class="h-6 w-6 text-canopy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M7 17c0-4-3-7-5-7 3 0 5-3 5-7 0 4 2 7 5 7-3 0-5 3-5 7z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M17 17c0-4-3-7-5-7 3 0 5-3 5-7 0 4 2 7 5 7-3 0-5 3-5 7z" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 22v-5" />
+      </svg>
     </div>
-    <p class="text-xs font-semibold uppercase tracking-widest text-canopy-muted">Associations</p>
-    <p class="mt-1 font-['DM_Serif_Display'] text-2xl text-forest">Plantes compagnes</p>
-    <p class="mt-2 text-sm leading-relaxed text-stone-500">Analysez la compatibilité entre vos plantes.</p>
+    <p class="page-category">{{ 'Dashboard.CardCompanionsCategory' | translate }}</p>
+    <h2 class="mt-1">{{ 'Dashboard.CardCompanionsTitle' | translate }}</h2>
+    <p class="mt-2 text-sm leading-relaxed text-bark-muted">{{ 'Dashboard.CardCompanionsDesc' | translate }}</p>
+  </a>
+
+  <a routerLink="/guilds"
+     class="card-interactive focus:!ring-accent">
+    <div class="mb-4 icon-badge-md !bg-accent-tint !ring-accent/20">
+      <svg class="h-6 w-6 text-accent-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"/>
+        <path stroke-linecap="round" d="M12 8v4l3 1.5"/>
+        <path stroke-linecap="round" d="M8 14c1.5-1 2.5-2 4-2s2.5 1 4 2"/>
+      </svg>
+    </div>
+    <p class="page-category !text-accent-dark">{{ 'Dashboard.CardGuildsCategory' | translate }}</p>
+    <h2 class="mt-1">{{ 'Dashboard.CardGuildsTitle' | translate }}</h2>
+    <p class="mt-2 text-sm leading-relaxed text-bark-muted">{{ 'Dashboard.CardGuildsDesc' | translate }}</p>
   </a>
 
   <a routerLink="/tasks"
-     class="group rounded-xl border border-canopy/20 bg-cream px-6 py-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:border-canopy/40 focus:outline-none focus:ring-2 focus:ring-canopy focus:ring-offset-2 sm:col-span-2 lg:col-span-1">
-    <div class="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-parchment text-2xl ring-1 ring-canopy/15">
-      📋
+     class="card-interactive">
+    <div class="mb-4 icon-badge-md">
+      <svg class="h-6 w-6 text-canopy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <rect x="5" y="3" width="14" height="18" rx="2" />
+        <path stroke-linecap="round" d="M9 8h6M9 12h6M9 16h4" />
+      </svg>
     </div>
-    <p class="text-xs font-semibold uppercase tracking-widest text-canopy-muted">Tâches</p>
-    <p class="mt-1 font-['DM_Serif_Display'] text-2xl text-forest">Planifier les soins</p>
-    <p class="mt-2 text-sm leading-relaxed text-stone-500">Arrosage, taille, semis — planifiez vos interventions.</p>
+    <p class="page-category">{{ 'Dashboard.CardTasksCategory' | translate }}</p>
+    <h2 class="mt-1">{{ 'Dashboard.CardTasksTitle' | translate }}</h2>
+    <p class="mt-2 text-sm leading-relaxed text-bark-muted">{{ 'Dashboard.CardTasksDesc' | translate }}</p>
   </a>
 
 </div>

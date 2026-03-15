@@ -43,6 +43,7 @@ These apply across all layers. Agents reference this section rather than restati
 - Map EF entities to DTOs — never expose EF entities directly on API contracts
 - Use `async/await` throughout the backend; no `.Result` or `.Wait()`
 - Validate at system boundaries (API input, external calls); trust internal code
+- **Services must implement an interface** (e.g. `IGardenService` / `GardenService`). Inject via the interface, not the concrete class
 
 ### Security by default
 - The `security-engineer` agent reviews every feature that touches auth, secrets, or data access
@@ -68,15 +69,23 @@ These apply across all layers. Agents reference this section rather than restati
 ### Frontend conventions
 - Use **Angular signals** for all state management — no NgRx or other state libraries
 - Prefer `async/await` and Promises over RxJS Observables; use `firstValueFrom()` when bridging Observable APIs (e.g. `MatDialog.afterClosed()`)
+- **Mobile-first**: all pages and components must work on mobile viewports (≥ 320px). Use responsive Tailwind breakpoints (`sm:`, `md:`, `lg:`) to progressively enhance for larger screens
+- **Separate template files**: always use `templateUrl` pointing to a `.html` file — never inline `template` in components
+- **i18n with ngx-translate**: all user-facing text must use `{{ 'Key' | translate }}` or `[translate]="'Key'"`. Translation keys use **PascalCase** (e.g. `Companions.GoodTitle`, `Snackbar.GardenCreated`). Translation files live in `public/i18n/{lang}.json`. Default language is `fr`
 - **After every frontend change, run `npm run build --prefix garden-assistant-app` and fix all errors before considering the task done**
 
-### Frontend styling — Tailwind CSS
-- **Tailwind CSS v4** is the primary styling framework; use utility classes directly in templates
-- **Always check if an existing Tailwind utility or custom style covers your need before writing new CSS**
-- Reserve custom Sass only for styles Tailwind cannot express (e.g. complex animations, Material overrides)
-- Global custom styles follow the 7-1 Sass architecture via `main.scss`
-- Variables and design tokens live in `abstracts/_variables.scss`
-- Use `@use` / `@forward` — never the deprecated `@import`
+### Frontend styling — 7-1 Sass + Tailwind CSS
+- **7-1 Sass architecture** (`main.scss`) is the structural foundation:
+  - `abstracts/` — variables, mixins (no CSS output)
+  - `base/` — reset, typography (h1–h6, body, brand)
+  - `components/` — reusable component styles Sass can express
+  - `layout/` — header, footer
+  - `vendors/` — Angular Material overrides, Tailwind import
+- **Typography is defined once in `base/_typography.scss`** — headings (`h1`, `h2`, `h3`) get font-family, color, and responsive sizes from Sass. Never add `font-['DM_Serif_Display']`, heading size, or heading color classes in templates. Only add contextual overrides (e.g. `text-white` on a dark background)
+- **Tailwind CSS v4** is used for layout and utility styling in templates. Reusable component classes (`.card-interactive`, `.btn-primary`, `.empty-state`, etc.) are defined via `@layer components` in `tailwind.css`
+- **Always check if an existing component class or Tailwind utility covers your need before writing new CSS**
+- Variables and design tokens live in `abstracts/_variables.scss` (Sass) and `@theme` in `tailwind.css` (Tailwind)
+- Use `@use` / `@forward` in Sass — never the deprecated `@import`
 
 ### Container baseline
 - **Runtime: Podman** — use `podman compose` (not `docker compose`)
@@ -109,8 +118,8 @@ Always run commands from the repo root — never `cd` into subdirectories.
 | `architect` | High-level design, task breakdown, quality & security oversight |
 | `backend-dotnet-developer` | ASP.NET Core, services, repositories, EF Core, migrations |
 | `backend-tester` | xUnit / Moq / Shouldly unit and integration tests, maximum coverage |
-| `ux-designer` | User flows, wireframes, design system, accessibility |
-| `frontend-angular-developer` | Angular components, signals, services — **must run `npm run build` after every change and fix all errors** |
+| `ux-designer` | UX/UI design — user flows, wireframes, visual design, design system, accessibility, micro-interactions |
+| `frontend-angular-developer` | Angular components, signals, services — **mobile-first, must run `npm run build` after every change and fix all errors** |
 | `reviewer` | Final review against these guidelines |
 | `devops-engineer` | Podman, podman-compose, container orchestration |
 | `database-engineer` | Schema design, EF Core Fluent API, query performance |

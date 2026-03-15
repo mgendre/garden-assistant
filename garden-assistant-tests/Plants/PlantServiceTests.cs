@@ -108,4 +108,63 @@ public class PlantServiceTests : DatabaseTestBase
 
         result.ShouldBeFalse();
     }
+
+    [Fact]
+    public async Task SearchAsync_WhenQueryMatchesName_ShouldReturnMatch()
+    {
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate" });
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Basilic" });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.SearchAsync("tom");
+
+        result.Count().ShouldBe(1);
+        result.First().Name.ShouldBe("Tomate");
+    }
+
+    [Fact]
+    public async Task SearchAsync_WhenQueryMatchesScientificName_ShouldReturnMatch()
+    {
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate", ScientificName = "Solanum lycopersicum" });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.SearchAsync("solanum");
+
+        result.Count().ShouldBe(1);
+        result.First().Name.ShouldBe("Tomate");
+    }
+
+    [Fact]
+    public async Task SearchAsync_WhenQueryIsCaseInsensitive_ShouldReturnMatch()
+    {
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate" });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.SearchAsync("TOMATE");
+
+        result.Count().ShouldBe(1);
+    }
+
+    [Fact]
+    public async Task SearchAsync_WhenNoMatch_ShouldReturnEmpty()
+    {
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate" });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.SearchAsync("xyz");
+
+        result.ShouldBeEmpty();
+    }
+
+    [Fact]
+    public async Task SearchAsync_ShouldLimitTo20Results()
+    {
+        for (var i = 0; i < 25; i++)
+            DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = $"Plant {i}" });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.SearchAsync("Plant");
+
+        result.Count().ShouldBe(20);
+    }
 }

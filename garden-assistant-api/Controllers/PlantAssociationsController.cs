@@ -8,7 +8,7 @@ namespace GardenAssistant.Controllers;
 [ApiController]
 [Authorize]
 [Route("api")]
-public class PlantAssociationsController(PlantAssociationService plantAssociationService) : ControllerBase
+public class PlantAssociationsController(IPlantAssociationService plantAssociationService) : ControllerBase
 {
     [HttpGet("plants/{plantId:guid}/associations")]
     [ProducesResponseType(typeof(IEnumerable<PlantAssociationDto>), StatusCodes.Status200OK)]
@@ -25,7 +25,7 @@ public class PlantAssociationsController(PlantAssociationService plantAssociatio
     }
 
     [HttpPost("plants/companions")]
-    [ProducesResponseType(typeof(List<CompanionRecommendationDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(CompanionSearchResultDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetCompanionRecommendations(CompanionRecommendationRequest request) =>
         Ok(await plantAssociationService.GetCompanionRecommendationsAsync(request.PlantIds));

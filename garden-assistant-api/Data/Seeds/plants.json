@@ -1,5 +1,6 @@
 [
   {
+    "key": "tomate",
     "name": "Tomate",
     "scientificName": "Solanum lycopersicum",
     "description": "Fruit rouge incontournable du potager, excellent associé au basilic et à la carotte.",
@@ -16,6 +17,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "basilic",
     "name": "Basilic",
     "scientificName": "Ocimum basilicum",
     "description": "Herbe aromatique repoussant les pucerons et attirant les pollinisateurs, excellent compagnon de la tomate.",
@@ -32,6 +34,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "carotte",
     "name": "Carotte",
     "scientificName": "Daucus carota subsp. sativus",
     "description": "Légume racine attractant les prédateurs naturels de ravageurs grâce à ses fleurs ombellifères.",
@@ -48,6 +51,7 @@
     "maxAltitudeM": 1800
   },
   {
+    "key": "poireau",
     "name": "Poireau",
     "scientificName": "Allium porrum",
     "description": "Légume alliacé repoussant les mouches de la carotte par son odeur.",
@@ -64,6 +68,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "ail",
     "name": "Ail",
     "scientificName": "Allium sativum",
     "description": "Bulbe aux propriétés antifongiques et insectifuges, protège les rosiers et de nombreux légumes.",
@@ -80,6 +85,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "oignon",
     "name": "Oignon",
     "scientificName": "Allium cepa",
     "description": "Légume alliacé compagnon classique de la carotte, repousse les ravageurs par son odeur.",
@@ -96,6 +102,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "ciboulette",
     "name": "Ciboulette",
     "scientificName": "Allium schoenoprasum",
     "description": "Vivace alliacée, excellent couvre-sol et compagnon des rosiers et carottes.",
@@ -112,6 +119,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "haricot-nain",
     "name": "Haricot nain",
     "scientificName": "Phaseolus vulgaris var. nanus",
     "description": "Légumineuse fixatrice d'azote, s'associe bien avec la courge et le maïs dans la «Trois Sœurs».",
@@ -128,6 +136,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "haricot-a-rames",
     "name": "Haricot à rames",
     "scientificName": "Phaseolus vulgaris var. vulgaris",
     "description": "Légumineuse grimpante fixatrice d'azote, pilier de l'association des Trois Sœurs.",
@@ -144,6 +153,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "mais",
     "name": "Maïs",
     "scientificName": "Zea mays",
     "description": "Céréale haute fournissant un support physique aux haricots grimpants dans la culture des Trois Sœurs.",
@@ -160,6 +170,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "courge",
     "name": "Courge",
     "scientificName": "Cucurbita pepo",
     "description": "Plante couvre-sol des Trois Sœurs, ses grandes feuilles conservent l'humidité et étouffent les adventices.",
@@ -176,6 +187,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "potiron",
     "name": "Potiron",
     "scientificName": "Cucurbita maxima",
     "description": "Grande courge couvre-sol aux fruits juteux, bénéfique en association avec le maïs et les haricots.",
@@ -192,6 +204,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "courgette",
     "name": "Courgette",
     "scientificName": "Cucurbita pepo var. cylindrica",
     "description": "Cucurbitacée prolixe attirant les pollinisateurs, s'associe bien au maïs et aux légumineuses.",
@@ -208,6 +221,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "pois",
     "name": "Pois",
     "scientificName": "Pisum sativum",
     "description": "Légumineuse grimpante de printemps, fixe l'azote et améliore le sol pour les cultures suivantes.",
@@ -224,6 +238,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "feve",
     "name": "Fève",
     "scientificName": "Vicia faba",
     "description": "Légumineuse robuste de printemps, fixe l'azote et attire les bourdons par ses fleurs parfumées.",
@@ -240,6 +255,7 @@
     "maxAltitudeM": 1800
   },
   {
+    "key": "trefle-blanc",
     "name": "Trèfle blanc",
     "scientificName": "Trifolium repens",
     "description": "Excellent couvre-sol fixateur d'azote, attire abondamment les pollinisateurs et améliore la structure du sol.",
@@ -256,6 +272,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "trefle-rouge",
     "name": "Trèfle rouge",
     "scientificName": "Trifolium pratense",
     "description": "Légumineuse vivace fixatrice d'azote, excellent engrais vert et plante mellifère très appréciée.",
@@ -272,6 +289,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "luzerne",
     "name": "Luzerne",
     "scientificName": "Medicago sativa",
     "description": "Légumineuse vivace aux racines profondes, fixatrice d'azote et accumulatrice de minéraux.",
@@ -288,6 +306,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "lupin",
     "name": "Lupin",
     "scientificName": "Lupinus albus",
     "description": "Légumineuse à enracinement profond, excellent engrais vert décompactant et fixateur d'azote.",
@@ -304,6 +323,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "consoude",
     "name": "Consoude",
     "scientificName": "Symphytum officinale",
     "description": "Plante accumulatrice dynamique de potassium et de minéraux, ses feuilles en paillis enrichissent le sol.",
@@ -320,6 +340,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "ortie",
     "name": "Ortie",
     "scientificName": "Urtica dioica",
     "description": "Plante bioindicatrice et accumulatrice de fer, ses purins fertilisent et renforcent les plantes voisines.",
@@ -336,6 +357,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "pissenlit",
     "name": "Pissenlit",
     "scientificName": "Taraxacum officinale",
     "description": "Plante pionnière accumulatrice, ses racines pivotantes décompactent le sol et remontent les minéraux.",
@@ -352,6 +374,7 @@
     "maxAltitudeM": 3000
   },
   {
+    "key": "capucine",
     "name": "Capucine",
     "scientificName": "Tropaeolum majus",
     "description": "Plante attrape-ravageurs (pucerons noirs), ses fleurs sont comestibles et attirent les pollinisateurs.",
@@ -368,6 +391,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "tagete",
     "name": "Tagète",
     "scientificName": "Tagetes patula",
     "description": "Repousse les nématodes nuisibles par ses sécrétions racinaires et attire les syrphes prédateurs.",
@@ -384,6 +408,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "souci",
     "name": "Souci",
     "scientificName": "Calendula officinalis",
     "description": "Attire les syrphes et autres insectes bénéfiques, ses fleurs repoussent certains ravageurs.",
@@ -400,6 +425,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "bourrache",
     "name": "Bourrache",
     "scientificName": "Borago officinalis",
     "description": "Ses fleurs bleues attirent les bourdons, compagnon excellent de la tomate et de la fraise.",
@@ -416,6 +442,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "phacelie",
     "name": "Phacélie",
     "scientificName": "Phacelia tanacetifolia",
     "description": "Plante mellifère exceptionnelle, engrais vert léger, attire massivement les pollinisateurs.",
@@ -432,6 +459,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "achillee-millefeuille",
     "name": "Achillée millefeuille",
     "scientificName": "Achillea millefolium",
     "description": "Accumulatrice de minéraux, attire les auxiliaires du jardin et améliore la fertilité de son entourage.",
@@ -448,6 +476,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "fenouil",
     "name": "Fenouil",
     "scientificName": "Foeniculum vulgare",
     "description": "Attire les syrphes et ichneumons, mais inhibe la croissance de nombreuses plantes voisines.",
@@ -464,6 +493,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "aneth",
     "name": "Aneth",
     "scientificName": "Anethum graveolens",
     "description": "Attire les syrphes et guêpes parasites, compagnon de la carotte et du chou. Incompatible avec le fenouil.",
@@ -480,6 +510,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "coriandre",
     "name": "Coriandre",
     "scientificName": "Coriandrum sativum",
     "description": "Ses fleurs attirent les insectes bénéfiques, répulsif contre les pucerons et les araignées rouges.",
@@ -496,6 +527,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "persil",
     "name": "Persil",
     "scientificName": "Petroselinum crispum",
     "description": "Attire les syrphes, compagnon des asperges et des tomates. Revitalisateur du sol.",
@@ -512,6 +544,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "thym",
     "name": "Thym",
     "scientificName": "Thymus vulgaris",
     "description": "Sous-arbrisseau aromatique répulsif contre de nombreux ravageurs, excellent couvre-sol pour potager.",
@@ -528,6 +561,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "romarin",
     "name": "Romarin",
     "scientificName": "Salvia rosmarinus",
     "description": "Arbrisseau aromatique méditerranéen, repousse les insectes nuisibles et attire les pollinisateurs.",
@@ -544,6 +578,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "lavande",
     "name": "Lavande",
     "scientificName": "Lavandula angustifolia",
     "description": "Arbrisseau méditerranéen mellifère, repousse les insectes nuisibles par son parfum puissant.",
@@ -560,6 +595,7 @@
     "maxAltitudeM": 1800
   },
   {
+    "key": "sauge-officinale",
     "name": "Sauge officinale",
     "scientificName": "Salvia officinalis",
     "description": "Repoussant la piéride du chou et les escargots, excellent compagnon des brassicacées.",
@@ -576,6 +612,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "menthe-poivree",
     "name": "Menthe poivrée",
     "scientificName": "Mentha x piperita",
     "description": "Plante envahissante répulsive contre de nombreux ravageurs, à cultiver en pot pour limiter l'expansion.",
@@ -592,6 +629,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "melisse",
     "name": "Mélisse",
     "scientificName": "Melissa officinalis",
     "description": "Attire fortement les abeilles, répulsif contre les pucerons, compagnon de presque tous les légumes.",
@@ -608,6 +646,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "origan",
     "name": "Origan",
     "scientificName": "Origanum vulgare",
     "description": "Répulsif contre les insectes nuisibles, attire les prédateurs naturels, améliore la saveur des voisins.",
@@ -624,6 +663,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "hysope",
     "name": "Hysope",
     "scientificName": "Hyssopus officinalis",
     "description": "Répulsif contre la piéride du chou, attire les bourdons, compagnon des brassicacées et de la vigne.",
@@ -640,6 +680,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "valeriane",
     "name": "Valériane",
     "scientificName": "Valeriana officinalis",
     "description": "Accumulatrice de phosphore, attire les vers de terre et améliore la croissance de ses voisins.",
@@ -656,6 +697,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "grande-camomille",
     "name": "Grande camomille",
     "scientificName": "Tanacetum parthenium",
     "description": "Répulsif contre de nombreux insectes, améliore la vigueur des plantes voisines.",
@@ -672,6 +714,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "camomille-allemande",
     "name": "Camomille allemande",
     "scientificName": "Matricaria chamomilla",
     "description": "Améliore la croissance des oignons et des brassicacées, attire les insectes bénéfiques.",
@@ -688,6 +731,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "absinthe",
     "name": "Absinthe",
     "scientificName": "Artemisia absinthium",
     "description": "Fortement répulsive contre les insectes et les animaux nuisibles par ses composés volatils.",
@@ -704,6 +748,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "tanaisie",
     "name": "Tanaisie",
     "scientificName": "Tanacetum vulgare",
     "description": "Répulsif puissant contre de nombreux insectes nuisibles, attire les coccinelles et syrphes.",
@@ -720,6 +765,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "tournesol",
     "name": "Tournesol",
     "scientificName": "Helianthus annuus",
     "description": "Attire pollinisateurs et oiseaux granivores, ses racines dépolluent et aèrent le sol.",
@@ -736,6 +782,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "chou-kale",
     "name": "Chou kale",
     "scientificName": "Brassica oleracea var. sabellica",
     "description": "Brassicacée très résistante, source de minéraux, fonctionne bien avec les légumineuses et aromates.",
@@ -752,6 +799,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "brocoli",
     "name": "Brocoli",
     "scientificName": "Brassica oleracea var. italica",
     "description": "Brassicacée bénéficiant de la compagnie du céleri, de l'aneth et des aromates repoussant la piéride.",
@@ -768,6 +816,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "radis",
     "name": "Radis",
     "scientificName": "Raphanus sativus",
     "description": "Légume à croissance rapide, excellent compagnon de la carotte pour attirer les mouches et protéger.",
@@ -784,6 +833,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "navet",
     "name": "Navet",
     "scientificName": "Brassica rapa subsp. rapa",
     "description": "Brassicacée à racine charnue, couvre-sol d'automne utile en rotation.",
@@ -800,6 +850,7 @@
     "maxAltitudeM": 1800
   },
   {
+    "key": "laitue",
     "name": "Laitue",
     "scientificName": "Lactuca sativa",
     "description": "Légume de mi-ombre poussant bien à l'ombre des tomates, avec la carotte et la ciboulette.",
@@ -816,6 +867,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "epinard",
     "name": "Épinard",
     "scientificName": "Spinacia oleracea",
     "description": "Légume-feuille de mi-ombre tolérant le froid, excellent précédent cultural enrichissant le sol.",
@@ -832,6 +884,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "roquette",
     "name": "Roquette",
     "scientificName": "Eruca vesicaria",
     "description": "Brassicacée à pousse rapide, tolère l'ombre légère, compagnon des légumes printemps-automne.",
@@ -848,6 +901,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "betterave",
     "name": "Betterave",
     "scientificName": "Beta vulgaris subsp. vulgaris",
     "description": "Légume racine accumulateur de soufre, s'associe bien avec les légumineuses et les oignons.",
@@ -864,6 +918,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "panais",
     "name": "Panais",
     "scientificName": "Pastinaca sativa",
     "description": "Légume racine à longue saison, s'associe avec les pois et les laitues, attire les auxiliaires à floraison.",
@@ -880,6 +935,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "celeri",
     "name": "Céleri",
     "scientificName": "Apium graveolens",
     "description": "Répulsif contre la piéride du chou, excellent compagnon des brassicacées et des poireaux.",
@@ -896,6 +952,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "poivron",
     "name": "Poivron",
     "scientificName": "Capsicum annuum",
     "description": "De la famille des solanacées, s'associe avec le basilic et bénéficie de la compagnie de la carotte.",
@@ -912,6 +969,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "aubergine",
     "name": "Aubergine",
     "scientificName": "Solanum melongena",
     "description": "Solanacée thermophile s'associant avec le basilic, la marjolaine et les légumineuses.",
@@ -928,6 +986,7 @@
     "maxAltitudeM": 600
   },
   {
+    "key": "pomme-de-terre",
     "name": "Pomme de terre",
     "scientificName": "Solanum tuberosum",
     "description": "Solanacée tubéreuse s'associant avec le haricot et le maïs, incompatible avec la tomate en plein champ.",
@@ -944,6 +1003,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "asperge",
     "name": "Asperge",
     "scientificName": "Asparagus officinalis",
     "description": "Vivace à implantation longue, bénéficie de la compagnie du persil et du basilic, repousse les nématodes.",
@@ -960,6 +1020,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "artichaut",
     "name": "Artichaut",
     "scientificName": "Cynara cardunculus var. scolymus",
     "description": "Grande vivace accumulatrice, ses fleurs attirent massivement les abeilles. Brise-vent naturel.",
@@ -976,6 +1037,7 @@
     "maxAltitudeM": 600
   },
   {
+    "key": "topinambour",
     "name": "Topinambour",
     "scientificName": "Helianthus tuberosus",
     "description": "Vivace très productive à tubercules, brise-vent efficace mais potentiellement envahissant.",
@@ -992,6 +1054,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "oseille",
     "name": "Oseille",
     "scientificName": "Rumex acetosa",
     "description": "Vivace acidifiante accumulatrice de fer et de potassium, pousse bien à mi-ombre.",
@@ -1008,6 +1071,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "fraisier",
     "name": "Fraisier",
     "scientificName": "Fragaria x ananassa",
     "description": "Couvre-sol vivace attirant les pollinisateurs, excellent compagnon du poireau et de l'ail.",
@@ -1024,6 +1088,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "fraisier-des-bois",
     "name": "Fraisier des bois",
     "scientificName": "Fragaria vesca",
     "description": "Couvre-sol vivace de sous-bois, tolère l'ombre et colonise naturellement les zones libres.",
@@ -1040,6 +1105,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "framboisier",
     "name": "Framboisier",
     "scientificName": "Rubus idaeus",
     "description": "Arbuste fruitier colonisant, ses rejets créent des haies, attire abeilles et oiseaux frugivores.",
@@ -1056,6 +1122,7 @@
     "maxAltitudeM": 1800
   },
   {
+    "key": "cassis",
     "name": "Cassis",
     "scientificName": "Ribes nigrum",
     "description": "Arbuste aux baies très riches en vitamine C, feuilles aromatiques répulsives contre de nombreux insectes.",
@@ -1072,6 +1139,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "myrtille",
     "name": "Myrtille",
     "scientificName": "Vaccinium myrtillus",
     "description": "Arbuste acidophile de sous-bois, excellent couvre-sol et source de fruits pour la faune.",
@@ -1088,6 +1156,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "aronia",
     "name": "Aronia",
     "scientificName": "Aronia melanocarpa",
     "description": "Arbuste rustique aux baies riches en antioxydants, résiste aux maladies et attire les pollinisateurs.",
@@ -1104,6 +1173,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "argousier",
     "name": "Argousier",
     "scientificName": "Hippophae rhamnoides",
     "description": "Arbuste pionnier épineux fixateur d'azote, très riche en vitamine C, excellent pour les haies défensives.",
@@ -1120,6 +1190,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "sureau-noir",
     "name": "Sureau noir",
     "scientificName": "Sambucus nigra",
     "description": "Arbrisseau pionnier à croissance rapide, fleurs et baies comestibles, attire les auxiliaires du jardin.",
@@ -1136,6 +1207,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "cornouiller-male",
     "name": "Cornouiller mâle",
     "scientificName": "Cornus mas",
     "description": "Arbuste à floraison précoce, nourriture pour pollinisateurs en hiver, fruits comestibles acidulés.",
@@ -1152,6 +1224,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "noisetier",
     "name": "Noisetier",
     "scientificName": "Corylus avellana",
     "description": "Arbuste à floraison hivernale nourrissant pollinisateurs précoces, noix riches en acides gras.",
@@ -1168,6 +1241,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "prunellier",
     "name": "Prunellier",
     "scientificName": "Prunus spinosa",
     "description": "Arbuste épineux pionnier à floraison précoce, haie défensive et ressource pour la faune sauvage.",
@@ -1184,6 +1258,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "viorne-obier",
     "name": "Viorne obier",
     "scientificName": "Viburnum opulus",
     "description": "Arbuste de lisière à floraison printanière attractive, baies pour les oiseaux en automne-hiver.",
@@ -1200,6 +1275,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "pommier",
     "name": "Pommier",
     "scientificName": "Malus domestica",
     "description": "Arbre fruitier emblématique, attire une grande biodiversité, associé avec l'ail, le trèfle et les aromatiques.",
@@ -1216,6 +1292,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "poirier",
     "name": "Poirier",
     "scientificName": "Pyrus communis",
     "description": "Arbre fruitier aux exigences thermiques élevées, pollinisateurs indispensables à la fructification.",
@@ -1232,6 +1309,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "prunier",
     "name": "Prunier",
     "scientificName": "Prunus domestica",
     "description": "Arbre fruitier à fructification abondante, feuillage décomposé enrichissant le sol en matière organique.",
@@ -1248,6 +1326,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "cerisier",
     "name": "Cerisier",
     "scientificName": "Prunus avium",
     "description": "Grand arbre fruitier fournissant ombre et ressources pour de nombreux oiseaux et insectes bénéfiques.",
@@ -1264,6 +1343,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "figuier",
     "name": "Figuier",
     "scientificName": "Ficus carica",
     "description": "Arbre méditerranéen résistant à la sécheresse, ses fruits nourrissent de nombreux animaux sauvages.",
@@ -1280,6 +1360,7 @@
     "maxAltitudeM": 600
   },
   {
+    "key": "noyer",
     "name": "Noyer",
     "scientificName": "Juglans regia",
     "description": "Grand arbre producteur de noix, sécrète la juglone qui inhibe de nombreuses plantes dans son périmètre.",
@@ -1296,6 +1377,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "chataignier",
     "name": "Châtaignier",
     "scientificName": "Castanea sativa",
     "description": "Grand arbre à croissance rapide, production de châtaignes nourrissant hommes et animaux, bois durable.",
@@ -1312,6 +1394,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "aulne-glutineux",
     "name": "Aulne glutineux",
     "scientificName": "Alnus glutinosa",
     "description": "Arbre pionnier des zones humides, fixateur d'azote par symbiose avec Frankia, améliore les sols pauvres.",
@@ -1328,6 +1411,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "robinier",
     "name": "Robinier",
     "scientificName": "Robinia pseudoacacia",
     "description": "Arbre pionnier fixateur d'azote à croissance très rapide. Attention à son caractère envahissant.",
@@ -1344,6 +1428,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "tilleul-a-petites-feuilles",
     "name": "Tilleul à petites feuilles",
     "scientificName": "Tilia cordata",
     "description": "Arbre mellifère remarquable, ses fleurs produisent un miel exceptionnel, brise-vent et ombrage doux.",
@@ -1360,6 +1445,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "saule-blanc",
     "name": "Saule blanc",
     "scientificName": "Salix alba",
     "description": "Arbre des zones humides à croissance rapide, haie vive, biomasse, habitat pour la faune sauvage.",
@@ -1376,6 +1462,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "chene-pedoncule",
     "name": "Chêne pédonculé",
     "scientificName": "Quercus robur",
     "description": "Arbre emblématique de la forêt européenne, hôte de plusieurs centaines d'espèces d'insectes et lichens.",
@@ -1392,6 +1479,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "vigne",
     "name": "Vigne",
     "scientificName": "Vitis vinifera",
     "description": "Liane ligneuse grimpante, associée avec l'ail, le romarin, la lavande. Incompatible avec le chou.",
@@ -1408,6 +1496,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "houblon",
     "name": "Houblon",
     "scientificName": "Humulus lupulus",
     "description": "Liane herbacée vivace à forte croissance, fournit de l'ombre et des ressources pour la faune.",
@@ -1424,6 +1513,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "lotier-cornicule",
     "name": "Lotier corniculé",
     "scientificName": "Lotus corniculatus",
     "description": "Légumineuse couvre-sol fixatrice d'azote, excellent pour les prairies mellifères et les zones sèches.",
@@ -1440,6 +1530,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "vesce-commune",
     "name": "Vesce commune",
     "scientificName": "Vicia sativa",
     "description": "Légumineuse annuelle grimpante, excellent engrais vert fixateur d'azote pour les rotations.",
@@ -1456,6 +1547,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "sarrasin",
     "name": "Sarrasin",
     "scientificName": "Fagopyrum esculentum",
     "description": "Pseudo-céréale à croissance rapide, excellent engrais vert mellifère, mobilise le phosphore du sol.",
@@ -1472,6 +1564,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "plantain-lanceole",
     "name": "Plantain lancéolé",
     "scientificName": "Plantago lanceolata",
     "description": "Accumulatrice de calcium et de silice, indicatrice de sol tassé, ses racines décompactent en douceur.",
@@ -1488,6 +1581,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "prele-des-champs",
     "name": "Prêle des champs",
     "scientificName": "Equisetum arvense",
     "description": "Plante fongicide naturelle accumulatrice de silice. Son purin renforce les défenses des plantes.",
@@ -1504,6 +1598,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "millepertuis",
     "name": "Millepertuis",
     "scientificName": "Hypericum perforatum",
     "description": "Plante médicinale vivace, attire les pollinisateurs, indicatrice de sol calcaire pauvre.",
@@ -1520,6 +1615,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "estragon",
     "name": "Estragon",
     "scientificName": "Artemisia dracunculus",
     "description": "Herbe culinaire vivace repoussant les insectes nuisibles par son parfum anisé.",
@@ -1536,6 +1632,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "sarriette-des-montagnes",
     "name": "Sarriette des montagnes",
     "scientificName": "Satureja montana",
     "description": "Aromatique vivace compagnon des haricots, repousse la bruche et améliore leur saveur.",
@@ -1552,6 +1649,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "sainfoin",
     "name": "Sainfoin",
     "scientificName": "Onobrychis viciifolia",
     "description": "Légumineuse mellifère vivace, excellente pour les prairies sèches et calcaires, fixatrice d'azote.",
@@ -1568,6 +1666,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "mache",
     "name": "Mâche",
     "scientificName": "Valerianella locusta",
     "description": "Salade d'hiver résistante au gel, pousse naturellement sous les cultures d'automne.",
@@ -1584,6 +1683,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "seigle",
     "name": "Seigle",
     "scientificName": "Secale cereale",
     "description": "Céréale rustique excellente pour la couverture hivernale du sol, ses résidus allélopathiques freinent les adventices.",
@@ -1600,6 +1700,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "avoine",
     "name": "Avoine",
     "scientificName": "Avena sativa",
     "description": "Céréale légère excellent engrais vert d'été, ses résidus décomposés enrichissent le sol en matière organique.",
@@ -1616,6 +1717,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "quinoa",
     "name": "Quinoa",
     "scientificName": "Chenopodium quinoa",
     "description": "Pseudo-céréale accumulatrice et résistante à la sécheresse, excellent compagnon des légumineuses.",
@@ -1632,6 +1734,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "amarante",
     "name": "Amarante",
     "scientificName": "Amaranthus hypochondriacus",
     "description": "Plante accumulatrice à haute valeur nutritive, tolère la chaleur et améliore le sol après décomposition.",
@@ -1648,6 +1751,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "cresson-de-fontaine",
     "name": "Cresson de fontaine",
     "scientificName": "Nasturtium officinale",
     "description": "Plante aquatique ou semi-aquatique, indicatrice de bonne qualité de l'eau, comestible et médicinale.",
@@ -1664,6 +1768,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "souchet-comestible",
     "name": "Souchet comestible",
     "scientificName": "Cyperus esculentus",
     "description": "Souchet à tubercules comestibles (chufa), indispensable pour les zones humides ou irriguées.",
@@ -1680,6 +1785,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "morelle-de-balbis",
     "name": "Morelle de Balbis",
     "scientificName": "Solanum sisymbriifolium",
     "description": "Solanacée sauvage à petits fruits comestibles, résistante et utile pour diversifier les strates.",
@@ -1696,6 +1802,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "murier-blanc",
     "name": "Mûrier blanc",
     "scientificName": "Morus alba",
     "description": "Arbre à croissance rapide, feuilles nourrissant de nombreux insectes, fruits pour la faune et l'homme.",
@@ -1712,6 +1819,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "cognassier",
     "name": "Cognassier",
     "scientificName": "Cydonia oblonga",
     "description": "Arbre fruitier rustique à floraison tardive, ses fruits riches en pectine, résistant aux maladies.",
@@ -1728,6 +1836,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "neflier",
     "name": "Nèflier",
     "scientificName": "Mespilus germanica",
     "description": "Arbre fruitier très rustique, fruits mûrissant après les gelées, résistant aux maladies.",
@@ -1744,6 +1853,7 @@
     "maxAltitudeM": 1000
   },
   {
+    "key": "sorbier-des-oiseleurs",
     "name": "Sorbier des oiseleurs",
     "scientificName": "Sorbus aucuparia",
     "description": "Arbre pionnier aux baies très appréciées des oiseaux, supporte les conditions difficiles.",
@@ -1760,6 +1870,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "genevrier-commun",
     "name": "Genévrier commun",
     "scientificName": "Juniperus communis",
     "description": "Conifère pionnier à fruits aromatiques, habitat pour de nombreux insectes et oiseaux.",
@@ -1776,6 +1887,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "pois-chiche",
     "name": "Pois chiche",
     "scientificName": "Cicer arietinum",
     "description": "Légumineuse méditerranéenne résistante à la sécheresse, fixatrice d'azote, riche en protéines.",
@@ -1792,6 +1904,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "lentille",
     "name": "Lentille",
     "scientificName": "Lens culinaris",
     "description": "Légumineuse annuelle à petites graines, excellente pour enrichir le sol en azote et couvrir le sol.",
@@ -1808,6 +1921,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "thym-rampant",
     "name": "Thym rampant",
     "scientificName": "Thymus serpyllum",
     "description": "Couvre-sol aromatique vivace, excellent entre les dalles et comme bordure, attire les pollinisateurs.",
@@ -1824,6 +1938,7 @@
     "maxAltitudeM": 2500
   },
   {
+    "key": "ajuga-rampant",
     "name": "Ajuga rampant",
     "scientificName": "Ajuga reptans",
     "description": "Couvre-sol vivace de sous-bois, fleurs bleues très mellifères au printemps, résistant à l'ombre.",
@@ -1840,6 +1955,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "veronique-petit-chene",
     "name": "Véronique petit chêne",
     "scientificName": "Veronica chamaedrys",
     "description": "Couvre-sol vivace indicateur de sol sain, attire les pollinisateurs, tolère le piétinement léger.",
@@ -1856,6 +1972,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "primevere",
     "name": "Primevère",
     "scientificName": "Primula vulgaris",
     "description": "Vivace de sous-bois à floraison printanière précoce, nourrit les pollinisateurs en sortie de diapause.",
@@ -1872,6 +1989,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "violette-odorante",
     "name": "Violette odorante",
     "scientificName": "Viola odorata",
     "description": "Couvre-sol printanier de sous-bois, fleurs comestibles, nourrit les pollinisateurs précoces.",
@@ -1888,6 +2006,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "sarriette",
     "name": "Sarriette",
     "scientificName": "Satureja hortensis",
     "description": "Herbe aromatique repoussant les pucerons noirs du haricot et améliorant son goût, excellent compagnon des légumineuses.",
@@ -1904,6 +2023,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "chou",
     "name": "Chou",
     "scientificName": "Brassica oleracea var. capitata",
     "description": "Légume feuille de la famille des Brassicacées, sensible à la piéride et aux pucerons cendrés.",
@@ -1920,6 +2040,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "chou-fleur",
     "name": "Chou-fleur",
     "scientificName": "Brassica oleracea var. botrytis",
     "description": "Légume Brassicacée sensible aux pucerons et à la piéride, bénéficie de la présence d'herbes aromatiques.",
@@ -1936,6 +2057,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "concombre",
     "name": "Concombre",
     "scientificName": "Cucumis sativus",
     "description": "Cucurbitacée grimpante pouvant être guidée sur des supports partagés avec le haricot à rames.",
@@ -1952,6 +2074,7 @@
     "maxAltitudeM": 800
   },
   {
+    "key": "melon",
     "name": "Melon",
     "scientificName": "Cucumis melo",
     "description": "Cucurbitacée thermophile rampante bénéficiant de la pollinisation croisée favorisée par les plantes mellifères voisines.",
@@ -1968,6 +2091,7 @@
     "maxAltitudeM": 600
   },
   {
+    "key": "groseillier",
     "name": "Groseillier",
     "scientificName": "Ribes rubrum",
     "description": "Arbuste fruitier de sous-étage tolérant l'ombre partielle, idéal en forêt comestible au niveau arbustif.",
@@ -1984,6 +2108,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "moutarde-blanche",
     "name": "Moutarde blanche",
     "scientificName": "Sinapis alba",
     "description": "Engrais vert à croissance rapide avec un effet biofumigant contre les nématodes et pathogènes du sol.",
@@ -2000,6 +2125,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "chrysantheme-des-jardins",
     "name": "Chrysanthème des jardins",
     "scientificName": "Chrysanthemum x morifolium",
     "description": "Vivace dont les pyréthrines naturelles repoussent de nombreux insectes nuisibles, notamment les acariens.",
@@ -2016,6 +2142,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "rue-officinale",
     "name": "Rue officinale",
     "scientificName": "Ruta graveolens",
     "description": "Vivace aromatique très forte repoussant les chats, les insectes et certains ravageurs, mais allélopathique.",
@@ -2032,6 +2159,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "cerfeuil",
     "name": "Cerfeuil",
     "scientificName": "Anthriscus cerefolium",
     "description": "Herbe de sous-étage tolérant l'ombre qui repousse les limaces et attire les insectes bénéfiques.",
@@ -2048,6 +2176,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "ciboulette-ail",
     "name": "Ciboulette ail",
     "scientificName": "Allium tuberosum",
     "description": "Alliacée vivace à saveur ailée repoussant les pucerons et protégeant les rosiers et les arbres fruitiers.",
@@ -2064,6 +2193,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "echalote",
     "name": "Échalote",
     "scientificName": "Allium ascalonicum",
     "description": "Alliacée repoussant les pucerons et les acariens, bonne association avec les carottes et les laitues.",
@@ -2080,6 +2210,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "celeri-rave",
     "name": "Céleri-rave",
     "scientificName": "Apium graveolens var. rapaceum",
     "description": "Légume racine aromatique de rotation utile, compagnon bénéfique des tomates et des poireaux.",
@@ -2096,6 +2227,7 @@
     "maxAltitudeM": 1200
   },
   {
+    "key": "scorsonere",
     "name": "Scorsonère",
     "scientificName": "Scorzonera hispanica",
     "description": "Légume racine vivace à pivot profond restructurant le sol, peu connue mais précieuse en permaculture.",
@@ -2112,6 +2244,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "agastache",
     "name": "Agastache",
     "scientificName": "Agastache foeniculum",
     "description": "Vivace aromatique très mellifère répulsive contre les pucerons, parfait compagnon des légumes-feuilles.",
@@ -2128,6 +2261,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "melilot",
     "name": "Mélilot",
     "scientificName": "Melilotus officinalis",
     "description": "Légumineuse bisannuelle fixatrice d'azote et fortement mellifère, dont les racines profondes décompactent le sol.",
@@ -2144,6 +2278,7 @@
     "maxAltitudeM": 2000
   },
   {
+    "key": "rhubarbe",
     "name": "Rhubarbe",
     "scientificName": "Rheum rhabarbarum",
     "description": "Vivace robuste aux grandes feuilles fournissant de l'ombre, ses racines profondes remontent les nutriments du sous-sol.",
@@ -2160,6 +2295,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "blette",
     "name": "Blette",
     "scientificName": "Beta vulgaris var. cicla",
     "description": "Légume-feuille productif tolérant chaleur et froid modéré, proche parente de la betterave avec un feuillage décoratif.",
@@ -2176,6 +2312,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "chou-de-bruxelles",
     "name": "Chou de Bruxelles",
     "scientificName": "Brassica oleracea var. gemmifera",
     "description": "Brassicacée haute résistante au froid, produit des bourgeons axillaires comestibles et bénéficie de la compagnie des aromatiques.",
@@ -2192,6 +2329,7 @@
     "maxAltitudeM": 1500
   },
   {
+    "key": "patate-douce",
     "name": "Patate douce",
     "scientificName": "Ipomoea batatas",
     "description": "Plante tropicale rampante couvre-sol, ses tubercules riches en bêta-carotène nécessitent une longue saison chaude.",
@@ -2205,6 +2343,40 @@
     "nitrogenFixer": false,
     "allelopathicRisk": false,
     "pollinatorPlant": true,
+    "maxAltitudeM": 600
+  },
+  {
+    "key": "piment",
+    "name": "Piment",
+    "scientificName": "Capsicum frutescens",
+    "description": "Solanacee piquante aux fruits riches en capsaicine, repousse de nombreux ravageurs par ses composes volatils.",
+    "family": "Solanaceae",
+    "genus": "Capsicum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 80,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "nitrogenFixer": false,
+    "allelopathicRisk": false,
+    "pollinatorPlant": false,
+    "maxAltitudeM": 800
+  },
+  {
+    "key": "pasteque",
+    "name": "Pastèque",
+    "scientificName": "Citrullus lanatus",
+    "description": "Cucurbitacée rampante thermophile couvrant le sol, nécessite une longue saison chaude et une pollinisation abondante.",
+    "family": "Cucurbitaceae",
+    "genus": "Citrullus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 30,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "High",
+    "nitrogenFixer": false,
+    "allelopathicRisk": false,
+    "pollinatorPlant": false,
     "maxAltitudeM": 600
   }
 ]

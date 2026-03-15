@@ -1,0 +1,132 @@
+{
+  "App": {
+    "Brand": "Garden Assistant"
+  },
+  "Nav": {
+    "Dashboard": "Tableau de bord",
+    "Garden": "Mon jardin",
+    "Tasks": "Tâches",
+    "Companions": "Associations",
+    "Guilds": "Guildes",
+    "OpenMenu": "Ouvrir le menu",
+    "CloseMenu": "Fermer le menu",
+    "MainNav": "Navigation principale",
+    "MobileNav": "Menu principal"
+  },
+  "Dashboard": {
+    "Welcome": "Welcome back",
+    "Title": "Votre jardin<br>vous attend.",
+    "Description": "Suivez vos plantes, planifiez vos tâches et regardez votre jardin prospérer.",
+    "Season": "Printemps",
+    "CardGardenCategory": "Mon jardin",
+    "CardGardenTitle": "Gérer mes jardins",
+    "CardGardenDesc": "Créez et organisez vos parcelles de jardin.",
+    "CardCompanionsCategory": "Associations",
+    "CardCompanionsTitle": "Plantes compagnes",
+    "CardCompanionsDesc": "Analysez la compatibilité entre vos plantes.",
+    "CardGuildsCategory": "Permaculture",
+    "CardGuildsTitle": "Guildes végétales",
+    "CardGuildsDesc": "Découvrez les guildes de plantes et leurs synergies naturelles.",
+    "CardTasksCategory": "Tâches",
+    "CardTasksTitle": "Planifier les soins",
+    "CardTasksDesc": "Arrosage, taille, semis — planifiez vos interventions."
+  },
+  "Garden": {
+    "Category": "Gestion",
+    "Title": "Mes jardins",
+    "Add": "Ajouter un jardin",
+    "Loading": "Chargement de vos jardins…",
+    "EmptyTitle": "Aucun jardin",
+    "EmptyDesc": "Commencez à cultiver votre espace.",
+    "EmptyCta": "Créer mon premier jardin",
+    "ColName": "Nom",
+    "ColDescription": "Description",
+    "NoDescription": "—",
+    "DeleteAria": "Supprimer {{name}}"
+  },
+  "GardenDialog": {
+    "Title": "Créer un jardin",
+    "Name": "Nom",
+    "NameRequired": "Le nom est requis",
+    "NameMax": "Le nom ne peut pas dépasser 256 caractères",
+    "Description": "Description",
+    "DescMax": "La description ne peut pas dépasser 2000 caractères",
+    "Cancel": "Annuler",
+    "Create": "Créer"
+  },
+  "ConfirmDialog": {
+    "Cancel": "Annuler",
+    "Confirm": "Confirmer"
+  },
+  "DeleteGarden": {
+    "Title": "Supprimer le jardin",
+    "Message": "Supprimer \"{{name}}\" ? Cette action est irréversible.",
+    "Confirm": "Supprimer"
+  },
+  "Snackbar": {
+    "GardenCreated": "Jardin créé",
+    "GardenDeleted": "Jardin supprimé",
+    "ErrorCreate": "Impossible de créer le jardin",
+    "ErrorDelete": "Impossible de supprimer le jardin",
+    "ErrorStatus": "Erreur {{status}}",
+    "Close": "Fermer"
+  },
+  "Tasks": {
+    "Category": "À venir",
+    "Title": "Tâches",
+    "EmptyTitle": "Aucune tâche",
+    "EmptyDesc": "Les rappels d'arrosage, de taille et de semis apparaîtront ici.",
+    "ComingSoon": "Fonctionnalité à venir"
+  },
+  "Guilds": {
+    "Category": "Permaculture",
+    "Title": "Guildes végétales",
+    "Description": "Découvrez les guildes de plantes compagnes — des associations synergiques inspirées de la permaculture.",
+    "Loading": "Chargement des guildes…",
+    "EmptyTitle": "Aucune guilde",
+    "EmptyDesc": "Les guildes de plantes apparaîtront ici.",
+    "PlantsCount": "{{count}} plantes",
+    "Back": "Retour aux guildes",
+    "PlantsTitle": "Plantes de la guilde",
+    "ScientificName": "Nom latin"
+  },
+  "Companions": {
+    "Category": "Permaculture",
+    "Title": "Associations de plantes",
+    "Description": "Recherchez et sélectionnez des plantes pour découvrir leurs meilleurs compagnons et les associations à éviter.",
+    "SearchLabel": "Rechercher une plante",
+    "SearchPlaceholder": "Rechercher une plante par nom ou nom latin…",
+    "ClearSearch": "Effacer la recherche",
+    "Searching": "Recherche en cours…",
+    "NoResults": "Aucune plante trouvée",
+    "RemovePlant": "Retirer {{name}}",
+    "ClearAll": "Tout effacer",
+    "EmptyTitle": "Trouvez les meilleures associations",
+    "EmptyDesc": "Recherchez et sélectionnez des plantes pour découvrir leurs meilleurs compagnons et les associations à éviter.",
+    "Loading": "Analyse des associations…",
+    "GoodTitle": "Bons compagnons",
+    "GoodEmpty": "Aucun compagnon bénéfique connu",
+    "AvoidTitle": "Plantes à éviter",
+    "GuildsSectionTitle": "Guildes associées",
+    "GuildPlantsCount": "{{count}} plantes",
+    "ViewGuild": "Voir la guilde",
+    "Mechanism": {
+      "OlfactoryConfusion": "Confusion olfactive",
+      "PollinatorAttraction": "Attraction des pollinisateurs",
+      "TrapCrop": "Plante piège",
+      "RootAllelopathy": "Toxines racinaires",
+      "AerialRepulsion": "Répulsion aérienne",
+      "NitrogenFixation": "Fixation d'azote",
+      "PredatorAttraction": "Attraction des prédateurs",
+      "PhysicalSupport": "Support physique",
+      "SoilCover": "Couverture du sol",
+      "DynamicAccumulation": "Accumulation dynamique",
+      "MycorrhizalNetwork": "Réseau mycorhizien",
+      "HydraulicLift": "Ascenseur hydraulique",
+      "MicroclimateModification": "Modification du microclimat",
+      "WeedSuppression": "Suppression des adventices",
+      "Biofumigation": "Biofumigation",
+      "NursePlant": "Plante nurse"
+    }
+  }
+}

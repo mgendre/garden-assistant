@@ -18,6 +18,12 @@ public class AssociationSeeder(AppDbContext db, IWebHostEnvironment env)
     {
         if (await db.PlantAssociations.AnyAsync()) return;
 
+        var plantsPath = Path.Combine(env.ContentRootPath, "Data", "Seeds", "plants.json");
+        var plantsJson = await File.ReadAllTextAsync(plantsPath);
+        var plantRecords = JsonSerializer.Deserialize<List<PlantKeyRecord>>(plantsJson, JsonOptions)
+            ?? throw new InvalidOperationException("Failed to deserialize plant key data.");
+        var keyToName = plantRecords.ToDictionary(p => p.Key, p => p.Name);
+
         var path = Path.Combine(env.ContentRootPath, "Data", "Seeds", "associations.json");
         var json = await File.ReadAllTextAsync(path);
         var records = JsonSerializer.Deserialize<List<AssociationSeedRecord>>(json, JsonOptions)
@@ -30,8 +36,10 @@ public class AssociationSeeder(AppDbContext db, IWebHostEnvironment env)
 
         foreach (var r in records)
         {
-            if (!plantsByName.TryGetValue(r.SourcePlantName, out var sourceId) ||
-                !plantsByName.TryGetValue(r.TargetPlantName, out var targetId))
+            if (!keyToName.TryGetValue(r.SourcePlantKey, out var sourceName) ||
+                !keyToName.TryGetValue(r.TargetPlantKey, out var targetName) ||
+                !plantsByName.TryGetValue(sourceName, out var sourceId) ||
+                !plantsByName.TryGetValue(targetName, out var targetId))
                 continue;
 
             associations.Add(new PlantAssociation
@@ -51,9 +59,11 @@ public class AssociationSeeder(AppDbContext db, IWebHostEnvironment env)
         await db.SaveChangesAsync();
     }
 
+    private record PlantKeyRecord(string Key, string Name);
+
     private record AssociationSeedRecord(
-        string SourcePlantName,
-        string TargetPlantName,
+        string SourcePlantKey,
+        string TargetPlantKey,
         AssociationMechanism Mechanism,
         AssociationEffect Effect,
         DistanceEffect DistanceEffect,

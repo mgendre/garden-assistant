@@ -1,0 +1,65 @@
+<!-- Loading -->
+@if (loading()) {
+  <div class="loading-state">
+    <div class="spinner"></div>
+  </div>
+}
+
+@if (!loading() && guild()) {
+  <!-- Back link -->
+  <a routerLink="/guilds"
+     class="mb-6 inline-flex items-center gap-1.5 text-sm font-medium text-canopy hover:text-forest transition-colors focus:outline-none focus:ring-2 focus:ring-accent rounded">
+    <svg class="h-4 w-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10 4l-4 4 4 4"/>
+    </svg>
+    {{ 'Guilds.Back' | translate }}
+  </a>
+
+  <!-- Hero -->
+  <div class="mb-8 overflow-hidden rounded-2xl bg-gradient-to-br from-forest via-forest-light to-canopy p-6 shadow-xl md:p-8 lg:p-10">
+    <div class="flex items-start gap-4">
+      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-white/10 text-accent md:h-14 md:w-14">
+        <svg class="h-6 w-6 md:h-7 md:w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M7 17c0-4-3-7-5-7 3 0 5-3 5-7 0 4 2 7 5 7-3 0-5 3-5 7z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M17 17c0-4-3-7-5-7 3 0 5-3 5-7 0 4 2 7 5 7-3 0-5 3-5 7z"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 22v-5"/>
+        </svg>
+      </div>
+      <div class="min-w-0 flex-1">
+        <span class="rounded-full bg-accent/20 px-2.5 py-1 text-xs font-bold text-accent-light">
+          {{ 'Guilds.PlantsCount' | translate: { count: guild()!.plants!.length } }}
+        </span>
+        <h1 class="mt-2 leading-snug text-white">
+          {{ guild()!.name }}
+        </h1>
+      </div>
+    </div>
+    @if (guild()!.description) {
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-white/80 md:text-base">
+        {{ guild()!.description }}
+      </p>
+    }
+  </div>
+
+  <!-- Plants list -->
+  <section>
+    <h2 class="mb-4">{{ 'Guilds.PlantsTitle' | translate }}</h2>
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      @for (plant of guild()!.plants!; track plant.id) {
+        <div class="flex items-center gap-3 rounded-xl border border-border-green bg-cream p-4 shadow-sm transition-all hover:shadow-md hover:-translate-y-px">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-canopy/10 text-canopy">
+            <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M10 18c0-5-3.5-9-7-9 4.5 0 7-3.5 7-7 0 3.5 2.5 7 7 7-3.5 0-7 4-7 9z"/>
+            </svg>
+          </div>
+          <div class="min-w-0 flex-1">
+            <p class="text-sm font-medium text-forest">{{ plant.name }}</p>
+            @if (plant.scientificName) {
+              <p class="truncate text-xs italic text-bark-muted">{{ plant.scientificName }}</p>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+}

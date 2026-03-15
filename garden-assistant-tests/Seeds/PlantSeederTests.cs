@@ -45,6 +45,7 @@ public class PlantSeederTests : DatabaseTestBase
         WritePlantsJson("""
         [
           {
+            "key": "tomate",
             "name": "Tomate",
             "scientificName": "Solanum lycopersicum",
             "description": null,
@@ -57,9 +58,11 @@ public class PlantSeederTests : DatabaseTestBase
             "waterNeeds": "Medium",
             "nitrogenFixer": false,
             "allelopathicRisk": false,
-            "pollinatorPlant": false
+            "pollinatorPlant": false,
+            "maxAltitudeM": 1000
           },
           {
+            "key": "basilic",
             "name": "Basilic",
             "scientificName": "Ocimum basilicum",
             "description": null,
@@ -72,7 +75,8 @@ public class PlantSeederTests : DatabaseTestBase
             "waterNeeds": "Medium",
             "nitrogenFixer": false,
             "allelopathicRisk": false,
-            "pollinatorPlant": true
+            "pollinatorPlant": true,
+            "maxAltitudeM": 800
           }
         ]
         """);
@@ -88,6 +92,7 @@ public class PlantSeederTests : DatabaseTestBase
         WritePlantsJson("""
         [
           {
+            "key": "trefle-blanc",
             "name": "Trèfle blanc",
             "scientificName": "Trifolium repens",
             "description": "Fixateur d'azote",
@@ -100,7 +105,8 @@ public class PlantSeederTests : DatabaseTestBase
             "waterNeeds": "Medium",
             "nitrogenFixer": true,
             "allelopathicRisk": false,
-            "pollinatorPlant": true
+            "pollinatorPlant": true,
+            "maxAltitudeM": 2500
           }
         ]
         """);
@@ -113,6 +119,7 @@ public class PlantSeederTests : DatabaseTestBase
         plant.NitrogenFixer.ShouldBeTrue();
         plant.PollinatorPlant.ShouldBeTrue();
         plant.LifeCycle.ShouldBe(LifeCycle.Perennial);
+        plant.MaxAltitudeM.ShouldBe(2500);
     }
 
     ~PlantSeederTests()

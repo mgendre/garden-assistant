@@ -8,12 +8,21 @@ namespace GardenAssistant.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public class PlantsController(PlantService plantService) : ControllerBase
+public class PlantsController(IPlantService plantService) : ControllerBase
 {
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<PlantDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll() =>
         Ok(await plantService.GetAllAsync());
+
+    [HttpGet("search")]
+    [ProducesResponseType(typeof(IEnumerable<PlantDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Search([FromQuery] string q)
+    {
+        if (string.IsNullOrWhiteSpace(q))
+            return Ok(Array.Empty<PlantDto>());
+        return Ok(await plantService.SearchAsync(q));
+    }
 
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(PlantDto), StatusCodes.Status200OK)]

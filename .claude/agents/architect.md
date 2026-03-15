@@ -1,5 +1,6 @@
 ---
 name: architect
+model: opus
 description: Use when designing new features, breaking down complex tasks, or when quality and security oversight is needed. Delegates implementation work to specialised sub-agents and reviews the integrated result.
 ---
 

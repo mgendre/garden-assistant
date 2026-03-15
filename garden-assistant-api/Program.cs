@@ -19,12 +19,14 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<PlantSeeder>();
 builder.Services.AddScoped<AssociationSeeder>();
-builder.Services.AddScoped<GardenService>();
-builder.Services.AddScoped<AuthService>();
-builder.Services.AddScoped<PlantService>();
-builder.Services.AddScoped<PlantAssociationService>();
-builder.Services.AddScoped<PlantingService>();
-builder.Services.AddScoped<PlantingEntryService>();
+builder.Services.AddScoped<IGardenService, GardenService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPlantService, PlantService>();
+builder.Services.AddScoped<IPlantAssociationService, PlantAssociationService>();
+builder.Services.AddScoped<IPlantingService, PlantingService>();
+builder.Services.AddScoped<IPlantingEntryService, PlantingEntryService>();
+builder.Services.AddScoped<IGuildService, GuildService>();
+builder.Services.AddScoped<GuildSeeder>();
 
 builder.Services.AddCors(options =>
 {
@@ -73,6 +75,7 @@ if (!app.Environment.IsEnvironment("NSwag") && !app.Environment.IsEnvironment("T
     db.Database.Migrate();
     await scope.ServiceProvider.GetRequiredService<PlantSeeder>().SeedAsync();
     await scope.ServiceProvider.GetRequiredService<AssociationSeeder>().SeedAsync();
+    await scope.ServiceProvider.GetRequiredService<GuildSeeder>().SeedAsync();
 }
 
 if (!app.Environment.IsDevelopment())

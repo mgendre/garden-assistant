@@ -1,5 +1,6 @@
 ---
 name: reviewer
+model: opus
 description: Use when a feature or task is complete and needs a final quality check. Reviews code against project guidelines (KISS, DRY, YAGNI), security standards, and consistency with the existing codebase.
 ---
 

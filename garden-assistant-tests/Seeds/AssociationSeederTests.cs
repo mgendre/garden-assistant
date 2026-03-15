@@ -22,10 +22,20 @@ public class AssociationSeederTests : DatabaseTestBase
         _envMock.Setup(e => e.ContentRootPath).Returns(_tempRoot);
     }
 
+    private void WritePlantsJson(string json) =>
+        File.WriteAllText(Path.Combine(_tempRoot, "Data", "Seeds", "plants.json"), json);
+
     private void WriteAssociationsJson(string json) =>
         File.WriteAllText(Path.Combine(_tempRoot, "Data", "Seeds", "associations.json"), json);
 
     private AssociationSeeder CreateSeeder() => new(DbContext, _envMock.Object);
+
+    private static readonly string TwoPlantsJson = """
+        [
+          { "key": "tomate", "name": "Tomate" },
+          { "key": "basilic", "name": "Basilic" }
+        ]
+        """;
 
     private async Task<(Plant tomate, Plant basilic)> SeedTwoPlantsAsync()
     {
@@ -52,6 +62,7 @@ public class AssociationSeederTests : DatabaseTestBase
         });
         await DbContext.SaveChangesAsync();
 
+        WritePlantsJson(TwoPlantsJson);
         WriteAssociationsJson("[]");
         await CreateSeeder().SeedAsync();
 
@@ -63,11 +74,12 @@ public class AssociationSeederTests : DatabaseTestBase
     {
         await SeedTwoPlantsAsync();
 
+        WritePlantsJson(TwoPlantsJson);
         WriteAssociationsJson("""
         [
           {
-            "sourcePlantName": "Tomate",
-            "targetPlantName": "Basilic",
+            "sourcePlantKey": "tomate",
+            "targetPlantKey": "basilic",
             "mechanism": "OlfactoryConfusion",
             "effect": "Beneficial",
             "distanceEffect": "Contact",
@@ -87,11 +99,12 @@ public class AssociationSeederTests : DatabaseTestBase
     {
         var (tomate, basilic) = await SeedTwoPlantsAsync();
 
+        WritePlantsJson(TwoPlantsJson);
         WriteAssociationsJson("""
         [
           {
-            "sourcePlantName": "Tomate",
-            "targetPlantName": "Basilic",
+            "sourcePlantKey": "tomate",
+            "targetPlantKey": "basilic",
             "mechanism": "PollinatorAttraction",
             "effect": "Beneficial",
             "distanceEffect": "Short",
@@ -113,15 +126,16 @@ public class AssociationSeederTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task SeedAsync_WhenPlantNameNotFound_ShouldSkipThatAssociation()
+    public async Task SeedAsync_WhenPlantKeyNotFound_ShouldSkipThatAssociation()
     {
         await SeedTwoPlantsAsync();
 
+        WritePlantsJson(TwoPlantsJson);
         WriteAssociationsJson("""
         [
           {
-            "sourcePlantName": "Tomate",
-            "targetPlantName": "PlantInconnue",
+            "sourcePlantKey": "tomate",
+            "targetPlantKey": "inconnue",
             "mechanism": "OlfactoryConfusion",
             "effect": "Beneficial",
             "distanceEffect": "Contact",
@@ -129,8 +143,8 @@ public class AssociationSeederTests : DatabaseTestBase
             "notes": null
           },
           {
-            "sourcePlantName": "Tomate",
-            "targetPlantName": "Basilic",
+            "sourcePlantKey": "tomate",
+            "targetPlantKey": "basilic",
             "mechanism": "OlfactoryConfusion",
             "effect": "Beneficial",
             "distanceEffect": "Contact",
@@ -150,6 +164,7 @@ public class AssociationSeederTests : DatabaseTestBase
     {
         await SeedTwoPlantsAsync();
 
+        WritePlantsJson(TwoPlantsJson);
         WriteAssociationsJson("[]");
         await CreateSeeder().SeedAsync();
 

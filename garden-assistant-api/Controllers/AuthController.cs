@@ -5,7 +5,7 @@ namespace GardenAssistant.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class AuthController(AuthService authService) : ControllerBase
+public class AuthController(IAuthService authService) : ControllerBase
 {
     [HttpGet("token")]
     [ProducesResponseType(StatusCodes.Status200OK)]
