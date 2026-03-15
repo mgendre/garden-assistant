@@ -4,9 +4,9 @@ using GardenAssistant.Data.Entities;
 using GardenAssistant.Data.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Data;
+namespace GardenAssistant.Data.Seeders;
 
-public class PlantSeeder(AppDbContext db, IWebHostEnvironment env)
+public class PlantSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
 {
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -16,7 +16,10 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env)
 
     public async Task SeedAsync()
     {
-        if (await db.Plants.AnyAsync()) return;
+        if (await db.Plants.AnyAsync())
+        {
+            return;
+        }
 
         var path = Path.Combine(env.ContentRootPath, "Data", "Seeds", "plants.json");
         var json = await File.ReadAllTextAsync(path);

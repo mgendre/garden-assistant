@@ -10,8 +10,6 @@
 
 ## Architecture technique
 
-Le projet suit les guidelines définies dans [`CLAUDE.md`](../CLAUDE.md).
-
 | Couche | Technologie |
 |---|---|
 | Frontend | Angular 21, Tailwind CSS v4, Angular Signals |

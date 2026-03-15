@@ -3,14 +3,9 @@ using GardenAssistant.Data.Entities;
 using GardenAssistant.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 
-public interface IPlantingEntryService
-{
-    Task<IEnumerable<PlantingEntryDto>?> GetForPlantingAsync(Guid plantingId, Guid userId);
-    Task<PlantingEntryDto?> AddEntryAsync(Guid plantingId, CreatePlantingEntryRequest request, Guid userId);
-    Task<bool> RemoveEntryAsync(Guid entryId, Guid userId);
-}
+namespace GardenAssistant.Services;
 
 public class PlantingEntryService(AppDbContext dbContext) : IPlantingEntryService
 {
@@ -19,7 +14,10 @@ public class PlantingEntryService(AppDbContext dbContext) : IPlantingEntryServic
         var plantingExists = await dbContext.Plantings
             .AnyAsync(p => p.Id == plantingId && p.UserId == userId);
 
-        if (!plantingExists) return null;
+        if (!plantingExists)
+        {
+            return null;
+        }
 
         return await dbContext.PlantingEntries
             .Where(pe => pe.PlantingId == plantingId)
@@ -32,7 +30,10 @@ public class PlantingEntryService(AppDbContext dbContext) : IPlantingEntryServic
         var plantingExists = await dbContext.Plantings
             .AnyAsync(p => p.Id == plantingId && p.UserId == userId);
 
-        if (!plantingExists) return null;
+        if (!plantingExists)
+        {
+            return null;
+        }
 
         var entry = new PlantingEntry
         {
@@ -57,12 +58,18 @@ public class PlantingEntryService(AppDbContext dbContext) : IPlantingEntryServic
     public async Task<bool> RemoveEntryAsync(Guid entryId, Guid userId)
     {
         var entry = await dbContext.PlantingEntries.FindAsync(entryId);
-        if (entry is null) return false;
+        if (entry is null)
+        {
+            return false;
+        }
 
         var plantingBelongsToUser = await dbContext.Plantings
             .AnyAsync(p => p.Id == entry.PlantingId && p.UserId == userId);
 
-        if (!plantingBelongsToUser) return false;
+        if (!plantingBelongsToUser)
+        {
+            return false;
+        }
 
         dbContext.PlantingEntries.Remove(entry);
         await dbContext.SaveChangesAsync();

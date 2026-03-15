@@ -4,16 +4,9 @@ using GardenAssistant.Data.Entities.Enums;
 using GardenAssistant.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 
-public interface IPlantingService
-{
-    Task<IEnumerable<PlantingDto>> GetAllAsync(Guid userId);
-    Task<PlantingDto?> GetByIdAsync(Guid id, Guid userId);
-    Task<PlantingDto> CreateAsync(CreatePlantingRequest request, Guid userId);
-    Task<bool> DeleteAsync(Guid id, Guid userId);
-    Task<CompatibilityScoreDto> GetCompatibilityScoreAsync(Guid plantingId, Guid userId);
-}
+namespace GardenAssistant.Services;
 
 public class PlantingService(AppDbContext dbContext) : IPlantingService
 {

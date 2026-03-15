@@ -1,6 +1,7 @@
 using System.Text;
+using GardenAssistant;
 using GardenAssistant.Data;
-using GardenAssistant.Services;
+using GardenAssistant.Data.Seeders;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -19,16 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
            .UseSnakeCaseNamingConvention());
 
-builder.Services.AddScoped<PlantSeeder>();
-builder.Services.AddScoped<AssociationSeeder>();
-builder.Services.AddScoped<IGardenService, GardenService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IPlantService, PlantService>();
-builder.Services.AddScoped<IPlantAssociationService, PlantAssociationService>();
-builder.Services.AddScoped<IPlantingService, PlantingService>();
-builder.Services.AddScoped<IPlantingEntryService, PlantingEntryService>();
-builder.Services.AddScoped<IGuildService, GuildService>();
-builder.Services.AddScoped<GuildSeeder>();
+builder.Services.AddApplicationServices();
 
 builder.Services.AddCors(options =>
 {
@@ -75,9 +67,7 @@ if (!app.Environment.IsEnvironment("NSwag") && !app.Environment.IsEnvironment("T
     using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.Migrate();
-    await scope.ServiceProvider.GetRequiredService<PlantSeeder>().SeedAsync();
-    await scope.ServiceProvider.GetRequiredService<AssociationSeeder>().SeedAsync();
-    await scope.ServiceProvider.GetRequiredService<GuildSeeder>().SeedAsync();
+    await scope.ServiceProvider.GetRequiredService<IDatabaseSeeder>().SeedAllAsync();
 }
 
 if (!app.Environment.IsDevelopment())

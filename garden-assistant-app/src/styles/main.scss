@@ -10,8 +10,13 @@
 @use 'base/typography';
 
 // 3. Components (Sass-only overrides; Tailwind component classes live in tailwind.css)
+@use 'components/family-badges';
+@use 'components/badges';
+@use 'components/buttons';
+@use 'components/cards';
+@use 'components/empty-state';
 
 // 4. Layout
+@use 'layout/header';
 
-// 5. Vendors
-@use 'vendors/angular-material';
+// 5. Vendors (Tailwind is loaded via angular.json → src/styles/tailwind.css)

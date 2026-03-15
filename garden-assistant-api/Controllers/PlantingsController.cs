@@ -1,7 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using GardenAssistant.DTOs;
-using GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +10,7 @@ namespace GardenAssistant.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public class PlantingsController(IPlantingService plantingService) : ControllerBase
+public class PlantingsController(IPlantingService plantingService, IPlantingEntryService plantingEntryService) : ControllerBase
 {
     private Guid CallerId =>
         Guid.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)!);
@@ -51,4 +51,27 @@ public class PlantingsController(IPlantingService plantingService) : ControllerB
     [ProducesResponseType(typeof(CompatibilityScoreDto), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCompatibilityScore(Guid id) =>
         Ok(await plantingService.GetCompatibilityScoreAsync(id, CallerId));
+
+    [HttpGet("{plantingId:guid}/entries")]
+    [ProducesResponseType(typeof(IEnumerable<PlantingEntryDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetEntries(Guid plantingId)
+    {
+        var entries = await plantingEntryService.GetForPlantingAsync(plantingId, CallerId);
+        return entries is null ? NotFound() : Ok(entries);
+    }
+
+    [HttpPost("{plantingId:guid}/entries")]
+    [ProducesResponseType(typeof(PlantingEntryDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> AddEntry(Guid plantingId, CreatePlantingEntryRequest request)
+    {
+        var entry = await plantingEntryService.AddEntryAsync(plantingId, request, CallerId);
+        if (entry is null)
+        {
+            return NotFound();
+        }
+        return CreatedAtAction(nameof(GetEntries), new { plantingId }, entry);
+    }
 }

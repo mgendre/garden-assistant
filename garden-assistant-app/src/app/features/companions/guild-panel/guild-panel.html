@@ -1,0 +1,27 @@
+<div class="guild-panel-grid">
+  @for (guild of store.guildsForSelectedPlants(); track guild.id) {
+    <div class="card guild-card">
+      <div class="guild-header">
+        <span class="guild-icon">🌐</span>
+        <span class="guild-name">{{ guild.name }}</span>
+      </div>
+      @if (guild.description) {
+        <p class="guild-desc">{{ guild.description }}</p>
+      }
+      @if (guild.plants?.length) {
+        <div class="guild-plants">
+          @for (gp of guild.plants; track gp.id) {
+            <span class="guild-plant-chip" (click)="onGuildPlantClick(gp.id)">
+              {{ store.getPlantEmojiById(gp.id) }} {{ gp.name }}
+            </span>
+          }
+        </div>
+      }
+      <button
+        class="btn-pill btn-pill-earth"
+        (click)="onAddGuild(guild)"
+        [translate]="'Guilds.Add'">
+      </button>
+    </div>
+  }
+</div>

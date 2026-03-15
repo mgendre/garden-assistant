@@ -1,0 +1,134 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@reference "tailwindcss";
+
+$header-bg: #1a3a2a;
+$nav-active-color: #52b788;
+$nav-active-bg: rgba(82, 183, 136, 0.15);
+
+.shell-header {
+  @apply sticky top-0;
+  z-index: $z-header;
+  background: $header-bg;
+  box-shadow: 0 2px 20px rgba(26, 58, 42, 0.35);
+}
+
+.header-inner {
+  @apply max-w-[1400px] mx-auto flex items-center justify-between px-6;
+  height: $header-height-mobile;
+
+  @include respond-to('md') {
+    @apply px-12;
+    height: $header-height;
+  }
+}
+
+.logo {
+  @apply flex items-center gap-2.5 no-underline;
+}
+
+.logo-leaf {
+  @apply flex items-center justify-center text-base;
+  width: 30px;
+  height: 30px;
+  background: $nav-active-color;
+  border-radius: 50% 0 50% 50%;
+  box-shadow: 0 0 12px rgba(82, 183, 136, 0.5);
+}
+
+.logo-text {
+  @apply text-2xl font-extrabold text-white;
+  font-family: $font-display;
+  letter-spacing: -0.02em;
+}
+
+.logo-accent {
+  color: #f4845f;
+}
+
+.desktop-nav {
+  @apply hidden items-center gap-1;
+
+  @include respond-to('md') {
+    @apply flex;
+  }
+
+  a {
+    @apply text-sm font-medium rounded-md transition-all;
+    color: rgba(255, 255, 255, 0.65);
+    padding: 0.4rem 0.9rem;
+    transition: color var(--transition-fast), background var(--transition-fast);
+
+    &:hover {
+      @apply text-white;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &.active {
+      color: $nav-active-color;
+      background: $nav-active-bg;
+    }
+  }
+}
+
+.hamburger {
+  @apply flex items-center justify-center text-white cursor-pointer;
+  width: 40px;
+  height: 40px;
+
+  @include respond-to('md') {
+    @apply hidden;
+  }
+
+  svg {
+    @apply w-6 h-6;
+  }
+}
+
+.mobile-overlay {
+  @apply fixed inset-0;
+  top: $header-height-mobile;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: $z-mobile-overlay;
+
+  @include respond-to('md') {
+    @apply hidden;
+  }
+}
+
+.mobile-nav {
+  @apply fixed left-0 right-0 flex flex-col py-2;
+  top: $header-height-mobile;
+  z-index: $z-mobile-menu;
+  background: $header-bg;
+  box-shadow: 0 4px 20px rgba(26, 58, 42, 0.3);
+
+  @include respond-to('md') {
+    @apply hidden;
+  }
+
+  a {
+    @apply text-base font-medium px-6 py-4;
+    color: rgba(255, 255, 255, 0.75);
+    transition: color var(--transition-fast), background var(--transition-fast);
+
+    &:hover {
+      @apply text-white;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &.active {
+      color: $nav-active-color;
+      background: $nav-active-bg;
+    }
+  }
+}
+
+.shell-content {
+  min-height: calc(100vh - #{$header-height-mobile});
+  isolation: isolate;
+
+  @include respond-to('md') {
+    min-height: calc(100vh - #{$header-height});
+  }
+}

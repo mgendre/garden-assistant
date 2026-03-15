@@ -6,24 +6,12 @@ using GardenAssistant.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
-namespace GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 
-public interface IAuthService
-{
-    Task<(string accessToken, string refreshToken)> CreateTokensAsync(User user);
-    Task<(string accessToken, string refreshToken)> GetDevelopmentTokenAsync();
-    Task<(string accessToken, string refreshToken)?> RefreshAsync(string refreshToken);
-}
+namespace GardenAssistant.Services;
 
 public class AuthService(AppDbContext db, IConfiguration configuration) : IAuthService
 {
-    public async Task<(string accessToken, string refreshToken)> CreateTokensAsync(User user)
-    {
-        var accessToken = GenerateAccessToken(user);
-        var refreshToken = await GenerateAndStoreRefreshTokenAsync(user.Id);
-        return (accessToken, refreshToken);
-    }
-
     public async Task<(string accessToken, string refreshToken)> GetDevelopmentTokenAsync()
     {
         var user = await db.Users.OrderBy(u => u.Id).FirstAsync();
@@ -35,15 +23,28 @@ public class AuthService(AppDbContext db, IConfiguration configuration) : IAuthS
         var stored = await db.RefreshTokens
             .FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.ExpiresAt > DateTime.UtcNow);
 
-        if (stored is null) return null;
+        if (stored is null)
+        {
+            return null;
+        }
 
         var user = await db.Users.FindAsync(stored.UserId);
-        if (user is null) return null;
+        if (user is null)
+        {
+            return null;
+        }
 
         db.RefreshTokens.Remove(stored);
         await db.SaveChangesAsync();
 
         return await CreateTokensAsync(user);
+    }
+    
+    private async Task<(string accessToken, string refreshToken)> CreateTokensAsync(User user)
+    {
+        var accessToken = GenerateAccessToken(user);
+        var refreshToken = await GenerateAndStoreRefreshTokenAsync(user.Id);
+        return (accessToken, refreshToken);
     }
 
     private string GenerateAccessToken(User user)

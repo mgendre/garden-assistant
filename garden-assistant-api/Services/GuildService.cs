@@ -2,13 +2,9 @@ using GardenAssistant.Data;
 using GardenAssistant.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 
-public interface IGuildService
-{
-    Task<IEnumerable<GuildSummaryDto>> GetAllAsync();
-    Task<GuildDetailDto?> GetByIdAsync(Guid id);
-}
+namespace GardenAssistant.Services;
 
 public class GuildService(AppDbContext dbContext) : IGuildService
 {
@@ -31,7 +27,10 @@ public class GuildService(AppDbContext dbContext) : IGuildService
     public async Task<GuildDetailDto?> GetByIdAsync(Guid id)
     {
         var guild = await dbContext.Guilds.FindAsync(id);
-        if (guild is null) return null;
+        if (guild is null)
+        {
+            return null;
+        }
 
         var plants = await dbContext.GuildPlants
             .Where(gp => gp.GuildId == id)

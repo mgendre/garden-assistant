@@ -1,0 +1,107 @@
+@use '../../../../styles/abstracts/variables' as *;
+@use '../../../../styles/abstracts/mixins' as *;
+@use '../../../../styles/components/family-badges' as *;
+@reference "tailwindcss";
+
+.detail-hero-content {
+  @apply flex items-center gap-3 flex-1 min-w-0;
+  padding: 0.75rem 1.25rem;
+}
+
+.detail-icon-sm {
+  @apply flex-shrink-0 flex items-center justify-center rounded-[10px];
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  background: #d8f3dc;
+  border: 1.5px solid rgba(45, 106, 79, 0.12);
+}
+
+.detail-hero-info {
+  @apply flex-1 min-w-0;
+}
+
+.detail-name-row {
+  @apply flex items-baseline gap-2 flex-wrap;
+}
+
+.detail-name {
+  @apply font-extrabold leading-tight;
+  font-family: $font-display;
+  font-size: 1.1rem;
+  color: #1a3a2a;
+}
+
+.detail-latin-inline {
+  @apply text-xs italic;
+  color: var(--color-text-muted);
+}
+
+.detail-badges {
+  @apply flex flex-wrap gap-1.5 mt-1.5;
+}
+
+// .detail-badge and variants are defined globally in _badges.scss
+@include family-badges;
+
+.remove-btn {
+  @apply flex items-center justify-center rounded-full text-xs flex-shrink-0 cursor-pointer transition-all;
+  width: 26px;
+  height: 26px;
+  color: var(--color-text-muted);
+  background: transparent;
+
+  &:hover {
+    background: #fce4ec;
+    color: #c62828;
+  }
+}
+
+// Collapsible body layout is provided by the parent (plant-detail-panel)
+
+.detail-section {
+  @apply mb-5;
+
+  &:last-child { @apply mb-0; }
+}
+
+.detail-section-title {
+  @apply flex items-center gap-2 text-xs font-semibold uppercase mb-3;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+
+  &::after {
+    content: '';
+    @apply flex-1;
+    height: 1px;
+    background: #d8f3dc;
+  }
+}
+
+.desc-text {
+  @apply text-sm leading-7;
+  color: var(--color-text);
+}
+
+.info-grid {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.info-card {
+  @apply rounded-[10px] py-3 px-4;
+  background: var(--color-parchment);
+  border: 1px solid rgba(45, 106, 79, 0.08);
+}
+
+.info-card-label {
+  @apply font-semibold uppercase mb-1;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.info-card-value {
+  @apply text-sm font-medium;
+  color: var(--color-text);
+}
+

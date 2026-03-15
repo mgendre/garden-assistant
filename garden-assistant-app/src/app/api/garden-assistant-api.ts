@@ -362,11 +362,12 @@ export class PlantAssociationsClient {
         this.baseUrl = baseUrl ?? "";
     }
 
-    getForPlant(plantId: string): Promise<PlantAssociationDto[]> {
-        let url_ = this.baseUrl + "/api/plants/{plantId}/associations";
-        if (plantId === undefined || plantId === null)
-            throw new globalThis.Error("The parameter 'plantId' must be defined.");
-        url_ = url_.replace("{plantId}", encodeURIComponent("" + plantId));
+    getForPlant(plantId: string | undefined): Promise<PlantAssociationDto[]> {
+        let url_ = this.baseUrl + "/api/plant-associations?";
+        if (plantId === null)
+            throw new globalThis.Error("The parameter 'plantId' cannot be null.");
+        else if (plantId !== undefined)
+            url_ += "plantId=" + encodeURIComponent("" + plantId) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -399,7 +400,7 @@ export class PlantAssociationsClient {
     }
 
     create(request: CreatePlantAssociationRequest): Promise<PlantAssociationDto> {
-        let url_ = this.baseUrl + "/api/plantassociations";
+        let url_ = this.baseUrl + "/api/plant-associations";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(request);
@@ -442,7 +443,7 @@ export class PlantAssociationsClient {
     }
 
     getCompanionRecommendations(request: CompanionRecommendationRequest): Promise<CompanionSearchResultDto> {
-        let url_ = this.baseUrl + "/api/plants/companions";
+        let url_ = this.baseUrl + "/api/plant-associations/companions";
         url_ = url_.replace(/[?&]$/, "");
 
         const content_ = JSON.stringify(request);
@@ -485,7 +486,7 @@ export class PlantAssociationsClient {
     }
 
     delete(id: string): Promise<void> {
-        let url_ = this.baseUrl + "/api/plantassociations/{id}";
+        let url_ = this.baseUrl + "/api/plant-associations/{id}";
         if (id === undefined || id === null)
             throw new globalThis.Error("The parameter 'id' must be defined.");
         url_ = url_.replace("{id}", encodeURIComponent("" + id));
@@ -534,102 +535,8 @@ export class PlantingEntriesClient {
         this.baseUrl = baseUrl ?? "";
     }
 
-    getForPlanting(plantingId: string): Promise<PlantingEntryDto[]> {
-        let url_ = this.baseUrl + "/api/plantings/{plantingId}/entries";
-        if (plantingId === undefined || plantingId === null)
-            throw new globalThis.Error("The parameter 'plantingId' must be defined.");
-        url_ = url_.replace("{plantingId}", encodeURIComponent("" + plantingId));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetForPlanting(_response);
-        });
-    }
-
-    protected processGetForPlanting(response: Response): Promise<PlantingEntryDto[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingEntryDto[];
-            return result200;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantingEntryDto[]>(null as any);
-    }
-
-    addEntry(plantingId: string, request: CreatePlantingEntryRequest): Promise<PlantingEntryDto> {
-        let url_ = this.baseUrl + "/api/plantings/{plantingId}/entries";
-        if (plantingId === undefined || plantingId === null)
-            throw new globalThis.Error("The parameter 'plantingId' must be defined.");
-        url_ = url_.replace("{plantingId}", encodeURIComponent("" + plantingId));
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(request);
-
-        let options_: RequestInit = {
-            body: content_,
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processAddEntry(_response);
-        });
-    }
-
-    protected processAddEntry(response: Response): Promise<PlantingEntryDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 201) {
-            return response.text().then((_responseText) => {
-            let result201: any = null;
-            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingEntryDto;
-            return result201;
-            });
-        } else if (status === 400) {
-            return response.text().then((_responseText) => {
-            let result400: any = null;
-            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantingEntryDto>(null as any);
-    }
-
     removeEntry(entryId: string): Promise<void> {
-        let url_ = this.baseUrl + "/api/plantingentries/{entryId}";
+        let url_ = this.baseUrl + "/api/planting-entries/{entryId}";
         if (entryId === undefined || entryId === null)
             throw new globalThis.Error("The parameter 'entryId' must be defined.");
         url_ = url_.replace("{entryId}", encodeURIComponent("" + entryId));
@@ -869,6 +776,100 @@ export class PlantingsClient {
             });
         }
         return Promise.resolve<CompatibilityScoreDto>(null as any);
+    }
+
+    getEntries(plantingId: string): Promise<PlantingEntryDto[]> {
+        let url_ = this.baseUrl + "/api/Plantings/{plantingId}/entries";
+        if (plantingId === undefined || plantingId === null)
+            throw new globalThis.Error("The parameter 'plantingId' must be defined.");
+        url_ = url_.replace("{plantingId}", encodeURIComponent("" + plantingId));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetEntries(_response);
+        });
+    }
+
+    protected processGetEntries(response: Response): Promise<PlantingEntryDto[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingEntryDto[];
+            return result200;
+            });
+        } else if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<PlantingEntryDto[]>(null as any);
+    }
+
+    addEntry(plantingId: string, request: CreatePlantingEntryRequest): Promise<PlantingEntryDto> {
+        let url_ = this.baseUrl + "/api/Plantings/{plantingId}/entries";
+        if (plantingId === undefined || plantingId === null)
+            throw new globalThis.Error("The parameter 'plantingId' must be defined.");
+        url_ = url_.replace("{plantingId}", encodeURIComponent("" + plantingId));
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = JSON.stringify(request);
+
+        let options_: RequestInit = {
+            body: content_,
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processAddEntry(_response);
+        });
+    }
+
+    protected processAddEntry(response: Response): Promise<PlantingEntryDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 201) {
+            return response.text().then((_responseText) => {
+            let result201: any = null;
+            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingEntryDto;
+            return result201;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
+            });
+        } else if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<PlantingEntryDto>(null as any);
     }
 }
 
@@ -1226,6 +1227,28 @@ export interface CompanionRecommendationRequest {
     plantIds?: string[];
 }
 
+export interface PlantingDto {
+    id?: string;
+    gardenId?: string;
+    name?: string;
+    description?: string | undefined;
+    plannedDate?: Date | undefined;
+}
+
+export interface CreatePlantingRequest {
+    gardenId?: string;
+    name?: string;
+    description?: string | undefined;
+    plannedDate?: Date | undefined;
+}
+
+export interface CompatibilityScoreDto {
+    beneficial?: number;
+    harmful?: number;
+    neutral?: number;
+    total?: number;
+}
+
 export interface PlantingEntryDto {
     id?: string;
     plantingId?: string;
@@ -1259,28 +1282,6 @@ export interface CreatePlantingEntryRequest {
     plannedSowDate?: Date | undefined;
     plannedHarvestDate?: Date | undefined;
     notes?: string | undefined;
-}
-
-export interface PlantingDto {
-    id?: string;
-    gardenId?: string;
-    name?: string;
-    description?: string | undefined;
-    plannedDate?: Date | undefined;
-}
-
-export interface CreatePlantingRequest {
-    gardenId?: string;
-    name?: string;
-    description?: string | undefined;
-    plannedDate?: Date | undefined;
-}
-
-export interface CompatibilityScoreDto {
-    beneficial?: number;
-    harmful?: number;
-    neutral?: number;
-    total?: number;
 }
 
 export interface PlantDto {

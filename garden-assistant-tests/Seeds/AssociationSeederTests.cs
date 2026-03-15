@@ -1,6 +1,6 @@
-using GardenAssistant.Data;
 using GardenAssistant.Data.Entities;
 using GardenAssistant.Data.Entities.Enums;
+using GardenAssistant.Data.Seeders;
 using GardenAssistant.Tests.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Moq;

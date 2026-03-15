@@ -78,73 +78,33 @@
     "EmptyDesc": "Les rappels d'arrosage, de taille et de semis appara\u00eetront ici.",
     "ComingSoon": "Fonctionnalit\u00e9 \u00e0 venir"
   },
-  "Guilds": {
-    "Category": "Permaculture",
-    "Title": "Guildes v\u00e9g\u00e9tales",
-    "Description": "D\u00e9couvrez les guildes de plantes compagnes \u2014 des associations synergiques inspir\u00e9es de la permaculture.",
-    "Loading": "Chargement des guildes\u2026",
-    "EmptyTitle": "Aucune guilde",
-    "EmptyDesc": "Les guildes de plantes appara\u00eetront ici.",
-    "PlantsCount": "{{count}} plantes",
-    "Back": "Retour aux guildes",
-    "PlantsTitle": "Plantes de la guilde",
-    "ScientificName": "Nom latin"
-  },
-  "Companions": {
-    "Category": "Permaculture",
-    "Title": "Associations de plantes",
-    "Description": "Recherchez et s\u00e9lectionnez des plantes pour d\u00e9couvrir leurs meilleurs compagnons et les associations \u00e0 \u00e9viter.",
-    "Catalogue": "Catalogue",
-    "PlantCountSuffix": "plantes",
-    "SortAlpha": "A\u2192Z",
-    "SortFamily": "Famille",
-    "SearchLabel": "Rechercher une plante",
-    "SearchPlaceholder": "Rechercher une plante\u2026",
-    "ClearSearch": "Effacer la recherche",
-    "Searching": "Recherche en cours\u2026",
-    "NoResults": "Aucune plante trouv\u00e9e",
-    "RemovePlant": "Retirer {{name}}",
-    "ClearAll": "Tout effacer",
-    "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
+  "Plant": {
+    "Description": "Description",
     "Characteristics": "Caract\u00e9ristiques",
     "Height": "Hauteur",
     "Season": "Cycle de vie",
-    "Sun": "Ensoleillement",
-    "Water": "Arrosage",
-    "EmptyTitle": "Trouvez les meilleures associations",
-    "EmptyDesc": "Recherchez et s\u00e9lectionnez des plantes pour d\u00e9couvrir leurs meilleurs compagnons et les associations \u00e0 \u00e9viter.",
-    "Loading": "Analyse des associations\u2026",
-    "GoodTitle": "Bons compagnons",
-    "GoodEmpty": "Aucun compagnon b\u00e9n\u00e9fique connu",
-    "AvoidTitle": "Plantes \u00e0 \u00e9viter",
-    "GuildsSectionTitle": "Guildes associ\u00e9es",
-    "GuildPlantsCount": "{{count}} plantes",
-    "ViewGuild": "Voir la guilde",
-    "AddGuild": "Ajouter la guilde",
-    "DescriptionTitle": "Description",
-    "SunFullSun": "☀️ Plein soleil",
-    "SunPartialShade": "⛅ Mi-ombre",
-    "SunShade": "🌤️ Ombre",
-    "WaterLow": "💧 Faible",
-    "WaterMedium": "💧💧 Moyen",
-    "WaterHigh": "💧💧💧 Abondant",
-    "LifeCycleAnnual": "Annuelle",
-    "LifeCycleBiennial": "Bisannuelle",
-    "LifeCyclePerennial": "Vivace",
-    "TraitNitrogenFixer": "🌿 Fixateur N",
-    "TraitPollinator": "🐝 Pollinisateur",
-    "TraitAllelopathic": "⚠️ Allélopathique",
-    "ConflictTitle": "Associations défavorables",
-    "ConflictDesc": "Certaines plantes s\u00e9lectionn\u00e9es ne sont pas compatibles entre elles.",
-    "ConflictBetween": "{{plantA}} et {{plantB}}",
-    "SearchStatus": {
-      "Good": "Bon compagnon",
-      "Avoid": "\u00c0 \u00e9viter"
+    "Remove": "Retirer {{name}}",
+    "Sun": {
+      "Label": "Ensoleillement",
+      "FullSun": "\u2600\ufe0f Plein soleil",
+      "PartialShade": "\u26c5 Mi-ombre",
+      "Shade": "\ud83c\udf24\ufe0f Ombre"
     },
-    "AddCompanion": "Ajouter {{name}} \u00e0 la s\u00e9lection",
-    "Error": {
-      "Search": "Erreur lors de la recherche.",
-      "Analysis": "Erreur lors de l'analyse des associations."
+    "Water": {
+      "Label": "Arrosage",
+      "Low": "\ud83d\udca7 Faible",
+      "Medium": "\ud83d\udca7\ud83d\udca7 Moyen",
+      "High": "\ud83d\udca7\ud83d\udca7\ud83d\udca7 Abondant"
+    },
+    "LifeCycle": {
+      "Annual": "Annuelle",
+      "Biennial": "Bisannuelle",
+      "Perennial": "Vivace"
+    },
+    "Trait": {
+      "NitrogenFixer": "\ud83c\udf3f Fixateur N",
+      "Pollinator": "\ud83d\udc1d Pollinisateur",
+      "Allelopathic": "\u26a0\ufe0f All\u00e9lopathique"
     },
     "Mechanism": {
       "OlfactoryConfusion": "Confusion olfactive",
@@ -163,6 +123,55 @@
       "WeedSuppression": "Suppression des adventices",
       "Biofumigation": "Biofumigation",
       "NursePlant": "Plante nurse"
+    }
+  },
+  "Guilds": {
+    "Category": "Permaculture",
+    "Title": "Guildes v\u00e9g\u00e9tales",
+    "Description": "D\u00e9couvrez les guildes de plantes compagnes \u2014 des associations synergiques inspir\u00e9es de la permaculture.",
+    "Loading": "Chargement des guildes\u2026",
+    "EmptyTitle": "Aucune guilde",
+    "EmptyDesc": "Les guildes de plantes appara\u00eetront ici.",
+    "PlantsCount": "{{count}} plantes",
+    "Back": "Retour aux guildes",
+    "PlantsTitle": "Plantes de la guilde",
+    "ScientificName": "Nom latin",
+    "SectionTitle": "Guildes associ\u00e9es",
+    "Add": "Tout ajouter"
+  },
+  "Companions": {
+    "Category": "Permaculture",
+    "Title": "Associations de plantes",
+    "Description": "Recherchez et s\u00e9lectionnez des plantes pour d\u00e9couvrir leurs meilleurs compagnons et les associations \u00e0 \u00e9viter.",
+    "Catalogue": "Catalogue",
+    "PlantCountSuffix": "plantes",
+    "SortAlpha": "A\u2192Z",
+    "SortFamily": "Famille",
+    "SortCompat": "Compatibilit\u00e9",
+    "SearchLabel": "Rechercher une plante",
+    "SearchPlaceholder": "Rechercher une plante\u2026",
+    "ClearSearch": "Effacer la recherche",
+    "Searching": "Recherche en cours\u2026",
+    "NoResults": "Aucune plante trouv\u00e9e",
+    "ClearAll": "Tout effacer",
+    "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
+    "EmptyTitle": "Trouvez les meilleures associations",
+    "EmptyDesc": "Recherchez et s\u00e9lectionnez des plantes pour d\u00e9couvrir leurs meilleurs compagnons et les associations \u00e0 \u00e9viter.",
+    "Loading": "Analyse des associations\u2026",
+    "GoodTitle": "Bons compagnons",
+    "GoodEmpty": "Aucun compagnon b\u00e9n\u00e9fique connu",
+    "AvoidTitle": "Plantes \u00e0 \u00e9viter",
+    "ConflictTitle": "Associations d\u00e9favorables",
+    "ConflictDesc": "Certaines plantes s\u00e9lectionn\u00e9es ne sont pas compatibles entre elles.",
+    "ConflictBetween": "{{plantA}} et {{plantB}}",
+    "AddCompanion": "Ajouter {{name}} \u00e0 la s\u00e9lection",
+    "SearchStatus": {
+      "Good": "Bon compagnon",
+      "Avoid": "\u00c0 \u00e9viter"
+    },
+    "Error": {
+      "Search": "Erreur lors de la recherche.",
+      "Analysis": "Erreur lors de l'analyse des associations."
     }
   }
 }

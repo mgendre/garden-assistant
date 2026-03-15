@@ -1,0 +1,15 @@
+@reference "tailwindcss";
+
+.empty-state {
+  @apply flex flex-col items-center justify-center text-center p-8;
+  min-height: 200px;
+}
+
+.empty-state-icon {
+  @apply text-6xl mb-4 opacity-30;
+}
+
+.empty-state-text {
+  @apply text-sm leading-relaxed max-w-[260px];
+  color: var(--color-text-muted);
+}

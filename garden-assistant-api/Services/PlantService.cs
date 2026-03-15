@@ -3,16 +3,9 @@ using GardenAssistant.Data.Entities;
 using GardenAssistant.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 
-public interface IPlantService
-{
-    Task<IEnumerable<PlantDto>> GetAllAsync();
-    Task<IEnumerable<PlantDto>> SearchAsync(string query);
-    Task<PlantDto?> GetByIdAsync(Guid id);
-    Task<PlantDto> CreateAsync(CreatePlantRequest request);
-    Task<bool> DeleteAsync(Guid id);
-}
+namespace GardenAssistant.Services;
 
 public class PlantService(AppDbContext dbContext) : IPlantService
 {
@@ -70,7 +63,10 @@ public class PlantService(AppDbContext dbContext) : IPlantService
     public async Task<bool> DeleteAsync(Guid id)
     {
         var plant = await dbContext.Plants.FindAsync(id);
-        if (plant is null) return false;
+        if (plant is null)
+        {
+            return false;
+        }
 
         dbContext.Plants.Remove(plant);
         await dbContext.SaveChangesAsync();

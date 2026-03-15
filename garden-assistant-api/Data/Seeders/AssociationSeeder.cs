@@ -4,9 +4,9 @@ using GardenAssistant.Data.Entities;
 using GardenAssistant.Data.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Data;
+namespace GardenAssistant.Data.Seeders;
 
-public class AssociationSeeder(AppDbContext db, IWebHostEnvironment env)
+public class AssociationSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
 {
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -16,7 +16,10 @@ public class AssociationSeeder(AppDbContext db, IWebHostEnvironment env)
 
     public async Task SeedAsync()
     {
-        if (await db.PlantAssociations.AnyAsync()) return;
+        if (await db.PlantAssociations.AnyAsync())
+        {
+            return;
+        }
 
         var plantsPath = Path.Combine(env.ContentRootPath, "Data", "Seeds", "plants.json");
         var plantsJson = await File.ReadAllTextAsync(plantsPath);
@@ -40,7 +43,9 @@ public class AssociationSeeder(AppDbContext db, IWebHostEnvironment env)
                 !keyToName.TryGetValue(r.TargetPlantKey, out var targetName) ||
                 !plantsByName.TryGetValue(sourceName, out var sourceId) ||
                 !plantsByName.TryGetValue(targetName, out var targetId))
+            {
                 continue;
+            }
 
             associations.Add(new PlantAssociation
             {

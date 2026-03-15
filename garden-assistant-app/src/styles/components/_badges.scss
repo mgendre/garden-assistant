@@ -1,0 +1,49 @@
+@reference "tailwindcss";
+
+// ─── Detail badges (sun, water, trait) ───────────────────────────────────────
+
+.detail-badge {
+  @apply font-semibold uppercase whitespace-nowrap rounded-md;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.5rem;
+}
+
+.badge-sun        { background: #e8f5e9; color: #2d6a4f; }
+.badge-water      { background: #e3f2fd; color: #1565c0; }
+.badge-trait      { background: #fff8e1; color: #f57f17; }
+.badge-compat-good  { background: #e8f5e9; color: #2d6a4f; }
+.badge-compat-avoid { background: #ffebee; color: #c62828; }
+
+// ─── Mechanism chips ──────────────────────────────────────────────────────────
+
+.mechanism-chip {
+  @apply font-semibold rounded;
+  font-size: 0.6875rem;
+  padding: 0.1rem 0.4rem;
+}
+
+.mechanism-green { background: #e8f5e9; color: #2e7d32; }
+.mechanism-red   { background: #ffebee; color: #c62828; }
+
+// ─── Stat badges (circular count) ────────────────────────────────────────────
+
+.stat-badge {
+  @apply inline-flex items-center justify-center rounded-full font-bold ml-auto;
+  width: 20px;
+  height: 20px;
+  font-size: 0.6875rem;
+}
+
+.stat-green  { background: #2d6a4f; color: #fff; }
+.stat-orange { background: #f4845f; color: #fff; }
+.stat-red    { background: #ef5350; color: #fff; }
+
+// ─── Family badge (layout + positioning; colours come from _family-badges.scss)
+
+.family-badge {
+  @apply ml-auto flex-shrink-0 font-semibold uppercase whitespace-nowrap rounded;
+  font-size: 0.6875rem;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.4rem;
+}

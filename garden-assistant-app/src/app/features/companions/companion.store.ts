@@ -1,0 +1,269 @@
+import { Injectable, inject, signal, computed, effect, untracked } from '@angular/core';
+import {
+  PlantDto,
+  CompanionSearchResultDto,
+  CompanionRecommendationRequest,
+  GuildDetailDto,
+  GuildInfoDto,
+  AssociationMechanism,
+} from '../../api/garden-assistant-api';
+import { CompanionService } from './companion.service';
+
+const FAMILY_EMOJI_MAP: Record<string, string> = {
+  'Solanaceae': '🍅',
+  'Lamiaceae': '🌿',
+  'Apiaceae': '🥕',
+  'Amaryllidaceae': '🧅',
+  'Fabaceae': '🫘',
+  'Poaceae': '🌽',
+  'Cucurbitaceae': '🥒',
+  'Brassicaceae': '🥦',
+  'Asteraceae': '🌻',
+  'Rosaceae': '🍎',
+  'Boraginaceae': '💙',
+};
+
+const FAMILY_CLASS_MAP: Record<string, string> = {
+  'Solanaceae': 'fam-solanum',
+  'Lamiaceae': 'fam-lamiaceae',
+  'Apiaceae': 'fam-apiaceae',
+  'Amaryllidaceae': 'fam-allium',
+  'Fabaceae': 'fam-legume',
+  'Poaceae': 'fam-poaceae',
+  'Cucurbitaceae': 'fam-cucurbit',
+  'Brassicaceae': 'fam-brassica',
+  'Asteraceae': 'fam-asteraceae',
+  'Rosaceae': 'fam-rosaceae',
+  'Boraginaceae': 'fam-boraginaceae',
+};
+
+const MECHANISM_KEY_MAP: Record<number, string> = {
+  [AssociationMechanism.OlfactoryConfusion]: 'OlfactoryConfusion',
+  [AssociationMechanism.PollinatorAttraction]: 'PollinatorAttraction',
+  [AssociationMechanism.TrapCrop]: 'TrapCrop',
+  [AssociationMechanism.RootAllelopathy]: 'RootAllelopathy',
+  [AssociationMechanism.AerialRepulsion]: 'AerialRepulsion',
+  [AssociationMechanism.NitrogenFixation]: 'NitrogenFixation',
+  [AssociationMechanism.PredatorAttraction]: 'PredatorAttraction',
+  [AssociationMechanism.PhysicalSupport]: 'PhysicalSupport',
+  [AssociationMechanism.SoilCover]: 'SoilCover',
+  [AssociationMechanism.DynamicAccumulation]: 'DynamicAccumulation',
+  [AssociationMechanism.MycorrhizalNetwork]: 'MycorrhizalNetwork',
+  [AssociationMechanism.HydraulicLift]: 'HydraulicLift',
+  [AssociationMechanism.MicroclimateModification]: 'MicroclimateModification',
+  [AssociationMechanism.WeedSuppression]: 'WeedSuppression',
+  [AssociationMechanism.Biofumigation]: 'Biofumigation',
+  [AssociationMechanism.NursePlant]: 'NursePlant',
+};
+
+@Injectable({ providedIn: 'root' })
+export class CompanionStore {
+  private readonly service = inject(CompanionService);
+
+  readonly plants = signal<PlantDto[]>([]);
+  readonly selectedPlants = signal<PlantDto[]>([]);
+  readonly searchQuery = signal('');
+  readonly sortMode = signal<'alpha' | 'family' | 'compat'>('compat');
+  readonly recommendations = signal<CompanionSearchResultDto | null>(null);
+  readonly loading = signal(false);
+  readonly plantsLoading = signal(false);
+  readonly guildDetails = signal<Map<string, GuildDetailDto>>(new Map());
+  readonly guildLoading = signal<string | null>(null);
+
+  private static readonly MAX_VISIBLE_PLANTS = 15;
+
+  readonly selectedPlantIds = computed(() =>
+    new Set(this.selectedPlants().map(p => p.id))
+  );
+
+  readonly goodCompanionIds = computed(() =>
+    new Set(this.recommendations()?.goodCompanions?.map(c => c.plantId).filter(Boolean) ?? [])
+  );
+
+  readonly avoidPlantIds = computed(() =>
+    new Set(this.recommendations()?.plantsToAvoid?.map(p => p.plantId).filter(Boolean) ?? [])
+  );
+
+  readonly filteredPlants = computed(() => {
+    const query = this.searchQuery().toLowerCase();
+    const sort = this.sortMode();
+    const selectedIds = this.selectedPlantIds();
+    let result = this.plants().filter(p => !selectedIds.has(p.id));
+
+    if (query) {
+      result = result.filter(p =>
+        (p.name?.toLowerCase().includes(query)) ||
+        (p.scientificName?.toLowerCase().includes(query))
+      );
+    }
+
+    const byName = (a: PlantDto, b: PlantDto) =>
+      (a.name ?? '').localeCompare(b.name ?? '', 'fr');
+
+    const sorted = [...result].sort((a, b) => {
+      if (sort === 'family') {
+        const famCmp = (a.family ?? '').localeCompare(b.family ?? '', 'fr');
+        return famCmp !== 0 ? famCmp : byName(a, b);
+      }
+      if (sort === 'compat') {
+        const compatScore = (p: PlantDto) => {
+          if (this.goodCompanionIds().has(p.id)) return 0;
+          if (this.avoidPlantIds().has(p.id)) return 2;
+          return 1;
+        };
+        const scoreDiff = compatScore(a) - compatScore(b);
+        return scoreDiff !== 0 ? scoreDiff : byName(a, b);
+      }
+      return byName(a, b);
+    });
+
+    return sorted.slice(0, CompanionStore.MAX_VISIBLE_PLANTS);
+  });
+
+  readonly guildsForSelectedPlants = computed(() => {
+    const guilds = new Map<string, GuildDetailDto>();
+    for (const plant of this.selectedPlants()) {
+      for (const guild of this.getGuildsForPlant(plant.id)) {
+        if (guild.id) guilds.set(guild.id, guild);
+      }
+    }
+    return Array.from(guilds.values());
+  });
+
+  constructor() {
+    effect(() => {
+      const selected = this.selectedPlants();
+      untracked(() => {
+        if (selected.length === 0) {
+          this.recommendations.set(null);
+          this.guildDetails.set(new Map());
+          return;
+        }
+        this.fetchRecommendations(selected);
+      });
+    });
+
+    effect(() => {
+      const recs = this.recommendations();
+      untracked(() => this.loadAllGuildDetails(recs));
+    });
+  }
+
+  async loadPlants(): Promise<void> {
+    this.plantsLoading.set(true);
+    try {
+      const plants = await this.service.getPlants();
+      this.plants.set(plants);
+    } finally {
+      this.plantsLoading.set(false);
+    }
+  }
+
+  addPlant(plant: PlantDto): void {
+    if (this.selectedPlantIds().has(plant.id)) return;
+    this.selectedPlants.update(list => [...list, plant]);
+  }
+
+  removePlant(plant: PlantDto): void {
+    this.selectedPlants.update(list => list.filter(p => p.id !== plant.id));
+  }
+
+  clearSelection(): void {
+    this.selectedPlants.set([]);
+  }
+
+  setSearch(query: string): void {
+    this.searchQuery.set(query);
+  }
+
+  setSort(mode: 'alpha' | 'family' | 'compat'): void {
+    this.sortMode.set(mode);
+  }
+
+  isSelected(plant: PlantDto): boolean {
+    return this.selectedPlantIds().has(plant.id);
+  }
+
+  getPlantEmoji(plant: PlantDto): string {
+    return FAMILY_EMOJI_MAP[plant.family ?? ''] ?? '🌱';
+  }
+
+  getPlantEmojiById(plantId: string | undefined): string {
+    if (!plantId) return '🌱';
+    const plant = this.plants().find(p => p.id === plantId);
+    return plant ? this.getPlantEmoji(plant) : '🌱';
+  }
+
+  getFamilyClass(family: string | undefined): string {
+    return FAMILY_CLASS_MAP[family ?? ''] ?? '';
+  }
+
+  getMechanismKey(mechanism: AssociationMechanism): string {
+    return MECHANISM_KEY_MAP[mechanism] ?? '';
+  }
+
+  getCompatibility(plantId: string | undefined): 'good' | 'avoid' | 'neutral' {
+    if (!plantId || !this.recommendations()) return 'neutral';
+    if (this.goodCompanionIds().has(plantId)) return 'good';
+    if (this.avoidPlantIds().has(plantId)) return 'avoid';
+    return 'neutral';
+  }
+
+  getGuildsForPlant(plantId: string | undefined): GuildDetailDto[] {
+    if (!plantId) return [];
+    return Array.from(this.guildDetails().values())
+      .filter(guild => guild.plants?.some(p => p.id === plantId));
+  }
+
+  async addGuild(guild: GuildInfoDto | GuildDetailDto): Promise<void> {
+    const guildId = guild.id;
+    if (!guildId || this.guildLoading()) return;
+    this.guildLoading.set(guildId);
+    try {
+      const detail = this.guildDetails().get(guildId) ?? await this.service.getGuildById(guildId);
+      for (const guildPlant of detail.plants ?? []) {
+        const plant = this.plants().find(p => p.id === guildPlant.id);
+        if (plant) this.addPlant(plant);
+      }
+    } finally {
+      this.guildLoading.set(null);
+    }
+  }
+
+  private async fetchRecommendations(plants: PlantDto[]): Promise<void> {
+    this.loading.set(true);
+    try {
+      const request: CompanionRecommendationRequest = {
+        plantIds: plants.map(p => p.id!).filter(Boolean)
+      };
+      const result = await this.service.getRecommendations(request);
+      this.recommendations.set(result);
+    } catch {
+      this.recommendations.set(null);
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  private async loadAllGuildDetails(recs: CompanionSearchResultDto | null): Promise<void> {
+    if (!recs?.goodCompanions) return;
+    const current = this.guildDetails();
+    const toLoad: string[] = [];
+    for (const companion of recs.goodCompanions) {
+      for (const guild of companion.guilds ?? []) {
+        if (guild.id && !current.has(guild.id) && !toLoad.includes(guild.id)) {
+          toLoad.push(guild.id);
+        }
+      }
+    }
+    if (toLoad.length === 0) return;
+    const results = await Promise.all(toLoad.map(id => this.service.getGuildById(id)));
+    this.guildDetails.update(map => {
+      const next = new Map(map);
+      for (const detail of results) {
+        if (detail.id) next.set(detail.id, detail);
+      }
+      return next;
+    });
+  }
+}

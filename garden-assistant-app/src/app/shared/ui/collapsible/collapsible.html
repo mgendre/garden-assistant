@@ -1,0 +1,13 @@
+<div class="collapsible">
+  <div class="collapsible-trigger" (click)="toggle()">
+    <div class="collapsible-header-content">
+      <ng-content select="[collapsible-header]"></ng-content>
+    </div>
+    <span class="chevron" [class.expanded]="expanded()">▾</span>
+  </div>
+  @if (expanded()) {
+    <div class="collapsible-body">
+      <ng-content select="[collapsible-body]"></ng-content>
+    </div>
+  }
+</div>

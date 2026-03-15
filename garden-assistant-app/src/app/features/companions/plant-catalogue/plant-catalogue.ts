@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { CompanionService } from '../companion.service';
+import { CompanionStore } from '../companion.store';
 
 @Component({
   selector: 'app-plant-catalogue',
@@ -10,5 +10,5 @@ import { CompanionService } from '../companion.service';
   styleUrl: './plant-catalogue.scss'
 })
 export class PlantCatalogue {
-  protected readonly service = inject(CompanionService);
+  protected readonly store = inject(CompanionStore);
 }

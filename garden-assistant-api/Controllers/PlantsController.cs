@@ -1,5 +1,5 @@
 using GardenAssistant.DTOs;
-using GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,4 +52,5 @@ public class PlantsController(IPlantService plantService) : ControllerBase
         var deleted = await plantService.DeleteAsync(id);
         return deleted ? NoContent() : NotFound();
     }
+
 }

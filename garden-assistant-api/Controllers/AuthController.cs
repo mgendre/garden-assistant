@@ -1,4 +1,4 @@
-using GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GardenAssistant.Controllers;
@@ -21,7 +21,10 @@ public class AuthController(IAuthService authService) : ControllerBase
     public async Task<IActionResult> Refresh([FromBody] RefreshRequest request)
     {
         var result = await authService.RefreshAsync(request.RefreshToken);
-        if (result is null) return Unauthorized();
+        if (result is null)
+        {
+            return Unauthorized();
+        }
         var (accessToken, refreshToken) = result.Value;
         return Ok(new { accessToken, refreshToken });
     }

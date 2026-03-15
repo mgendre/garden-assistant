@@ -3,15 +3,9 @@ using GardenAssistant.Data.Entities;
 using GardenAssistant.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 
-public interface IGardenService
-{
-    Task<IEnumerable<GardenDto>> GetAllAsync(Guid userId);
-    Task<GardenDto> CreateAsync(CreateGardenRequest request, Guid userId);
-    Task<GardenDto?> UpdateAsync(Guid id, UpdateGardenRequest request, Guid userId);
-    Task<bool> DeleteAsync(Guid id, Guid userId);
-}
+namespace GardenAssistant.Services;
 
 public class GardenService(AppDbContext dbContext) : IGardenService
 {
@@ -43,7 +37,10 @@ public class GardenService(AppDbContext dbContext) : IGardenService
     {
         var garden = await dbContext.Gardens
             .FirstOrDefaultAsync(g => g.Id == id && g.UserId == userId);
-        if (garden is null) return null;
+        if (garden is null)
+        {
+            return null;
+        }
 
         garden.Name = request.Name;
         garden.Description = request.Description;
@@ -56,7 +53,10 @@ public class GardenService(AppDbContext dbContext) : IGardenService
     {
         var garden = await dbContext.Gardens
             .FirstOrDefaultAsync(g => g.Id == id && g.UserId == userId);
-        if (garden is null) return false;
+        if (garden is null)
+        {
+            return false;
+        }
 
         dbContext.Gardens.Remove(garden);
         await dbContext.SaveChangesAsync();

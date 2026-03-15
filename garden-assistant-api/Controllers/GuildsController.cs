@@ -1,5 +1,5 @@
 using GardenAssistant.DTOs;
-using GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

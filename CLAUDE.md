@@ -40,6 +40,7 @@ These apply across all layers. Agents reference this section rather than restati
 
 ### API design
 - Follow RESTful conventions; return consistent HTTP status codes and problem-detail errors
+- Use **kebab-case** for multi-word route segments (e.g. `plant-associations`, `planting-entries` — never `plantassociations`)
 - Keep controllers thin: validate input → call service → return result. No business logic in controllers
 - Map EF entities to DTOs — never expose EF entities directly on API contracts
 - Use `async/await` throughout the backend; no `.Result` or `.Wait()`

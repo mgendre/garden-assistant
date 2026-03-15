@@ -1,0 +1,16 @@
+@reference "tailwindcss";
+
+// ─── Generic card styles ──────────────────────────────────────────────────────
+
+// Standard white card with subtle border and shadow.
+.card {
+  @apply bg-white rounded-xl overflow-hidden;
+  border: 1.5px solid rgba(45, 106, 79, 0.1);
+  box-shadow: 0 1px 3px rgba(26, 58, 42, 0.04);
+}
+
+// Warm card — used for guild / earth-toned content.
+.card-warm {
+  background: #fff0e8;
+  border: 1px solid rgba(244, 132, 95, 0.2);
+}

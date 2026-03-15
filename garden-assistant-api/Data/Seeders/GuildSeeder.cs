@@ -2,9 +2,9 @@ using System.Text.Json;
 using GardenAssistant.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Data;
+namespace GardenAssistant.Data.Seeders;
 
-public class GuildSeeder(AppDbContext db, IWebHostEnvironment env)
+public class GuildSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
 {
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
@@ -13,7 +13,10 @@ public class GuildSeeder(AppDbContext db, IWebHostEnvironment env)
 
     public async Task SeedAsync()
     {
-        if (await db.Guilds.AnyAsync()) return;
+        if (await db.Guilds.AnyAsync())
+        {
+            return;
+        }
 
         var plantsPath = Path.Combine(env.ContentRootPath, "Data", "Seeds", "plants.json");
         var plantsJson = await File.ReadAllTextAsync(plantsPath);
@@ -43,7 +46,9 @@ public class GuildSeeder(AppDbContext db, IWebHostEnvironment env)
             {
                 if (!keyToName.TryGetValue(plantKey, out var plantName) ||
                     !plantsByName.TryGetValue(plantName, out var plantId))
+                {
                     continue;
+                }
 
                 db.GuildPlants.Add(new GuildPlant
                 {

@@ -1,5 +1,5 @@
 using GardenAssistant.DTOs;
-using GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,30 +7,30 @@ namespace GardenAssistant.Controllers;
 
 [ApiController]
 [Authorize]
-[Route("api")]
+[Route("api/plant-associations")]
 public class PlantAssociationsController(IPlantAssociationService plantAssociationService) : ControllerBase
 {
-    [HttpGet("plants/{plantId:guid}/associations")]
+    [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<PlantAssociationDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetForPlant(Guid plantId) =>
+    public async Task<IActionResult> GetForPlant([FromQuery] Guid plantId) =>
         Ok(await plantAssociationService.GetForPlantAsync(plantId));
 
-    [HttpPost("plantassociations")]
+    [HttpPost]
     [ProducesResponseType(typeof(PlantAssociationDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create(CreatePlantAssociationRequest request)
     {
         var association = await plantAssociationService.CreateAsync(request);
-        return CreatedAtAction(nameof(GetForPlant), new { plantId = association.SourcePlantId }, association);
+        return Created($"/api/plant-associations/{association.Id}", association);
     }
 
-    [HttpPost("plants/companions")]
+    [HttpPost("companions")]
     [ProducesResponseType(typeof(CompanionSearchResultDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetCompanionRecommendations(CompanionRecommendationRequest request) =>
         Ok(await plantAssociationService.GetCompanionRecommendationsAsync(request.PlantIds));
 
-    [HttpDelete("plantassociations/{id:guid}")]
+    [HttpDelete("{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(Guid id)

@@ -4,15 +4,9 @@ using GardenAssistant.Data.Entities.Enums;
 using GardenAssistant.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace GardenAssistant.Services;
+using GardenAssistant.Services.Interfaces;
 
-public interface IPlantAssociationService
-{
-    Task<IEnumerable<PlantAssociationDto>> GetForPlantAsync(Guid plantId);
-    Task<CompanionSearchResultDto> GetCompanionRecommendationsAsync(List<Guid> selectedPlantIds);
-    Task<PlantAssociationDto> CreateAsync(CreatePlantAssociationRequest request);
-    Task<bool> DeleteAsync(Guid id);
-}
+namespace GardenAssistant.Services;
 
 public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociationService
 {
@@ -59,11 +53,8 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
         var baseScores = new Dictionary<Guid, double>();
         foreach (var candidate in candidates)
         {
-            var score = 0.0;
-            foreach (var selectedId in selectedPlantIds)
-            {
-                score += ScorePair(candidate.Id, selectedId, associationLookup);
-            }
+            var score = selectedPlantIds.Sum(selectedId => 
+                ScorePair(candidate.Id, selectedId, associationLookup));
             baseScores[candidate.Id] = score;
         }
 
@@ -77,11 +68,8 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
 
             foreach (var candidate in remaining)
             {
-                var totalScore = baseScores[candidate.Id];
-                foreach (var alreadyPicked in selected)
-                {
-                    totalScore += ScorePair(candidate.Id, alreadyPicked.Id, associationLookup);
-                }
+                var totalScore = baseScores[candidate.Id] + selected.Sum(alreadyPicked 
+                    => ScorePair(candidate.Id, alreadyPicked.Id, associationLookup));
 
                 if (totalScore > bestScore)
                 {
@@ -232,13 +220,8 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
     {
         var harmfulByPlant = new Dictionary<Guid, HashSet<AssociationMechanism>>();
 
-        foreach (var a in associations)
+        foreach (var a in associations.Where(a => a.Effect == AssociationEffect.Harmful))
         {
-            if (a.Effect != AssociationEffect.Harmful)
-            {
-                continue;
-            }
-
             Guid candidateId;
             if (selectedPlantIds.Contains(a.SourcePlantId) && !selectedPlantIds.Contains(a.TargetPlantId))
             {
@@ -278,7 +261,6 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
     {
         AssociationEffect.Beneficial => BeneficialScore,
         AssociationEffect.Harmful => HarmfulScore,
-        AssociationEffect.Neutral => NeutralScore,
         _ => NeutralScore
     };
 
@@ -333,12 +315,9 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
             {
                 continue;
             }
-            foreach (var e in entries)
+            foreach (var e in entries.Where(e => e.Effect == AssociationEffect.Beneficial))
             {
-                if (e.Effect == AssociationEffect.Beneficial)
-                {
-                    mechanisms.Add(e.Mechanism);
-                }
+                mechanisms.Add(e.Mechanism);
             }
         }
         return mechanisms.ToList();

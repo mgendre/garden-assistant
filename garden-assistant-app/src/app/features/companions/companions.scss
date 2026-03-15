@@ -1,34 +1,38 @@
-@use '../../../styles/abstracts/variables' as *;
 @use '../../../styles/abstracts/mixins' as *;
+@reference "tailwindcss";
 
 .companions-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 1rem $space-md;
+  @apply max-w-[1400px] mx-auto px-4 pt-4;
 
   @include respond-to('md') {
-    padding: 1.5rem $space-2xl;
+    @apply px-12 pt-6;
   }
 }
 
 .page-header {
-  margin-bottom: 1.25rem;
+  @apply mb-5;
 }
 
 .page-subtitle {
-  font-size: $font-size-sm;
-  color: $color-text-muted;
-  margin-top: 0.25rem;
+  @apply text-sm mt-1;
+  color: var(--color-text-muted);
 }
 
 .three-col {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  @apply flex flex-col gap-5;
 
   @include respond-to('lg') {
-    display: grid;
+    @apply grid items-start;
     grid-template-columns: 280px 1fr 320px;
-    align-items: start;
   }
+}
+
+.guild-section {
+  @apply mt-5;
+}
+
+.guild-section-title {
+  @apply flex items-center gap-2 text-xs font-semibold uppercase mb-3;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
 }

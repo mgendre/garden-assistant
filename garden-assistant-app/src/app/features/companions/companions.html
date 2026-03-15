@@ -6,7 +6,18 @@
 
   <div class="three-col">
     <app-plant-catalogue></app-plant-catalogue>
-    <app-plant-detail-panel></app-plant-detail-panel>
+    <div>
+      <app-plant-detail-panel></app-plant-detail-panel>
+      @if (store.guildsForSelectedPlants().length) {
+        <div class="guild-section">
+          <div class="guild-section-title">
+            <span>🌐</span>
+            <span [translate]="'Guilds.SectionTitle'"></span>
+          </div>
+          <app-guild-panel></app-guild-panel>
+        </div>
+      }
+    </div>
     <app-recommendations-panel></app-recommendations-panel>
   </div>
 </div>
