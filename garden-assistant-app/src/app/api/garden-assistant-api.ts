@@ -883,8 +883,10 @@ export class PlantsClient {
         this.baseUrl = baseUrl ?? "";
     }
 
-    getAll(): Promise<PlantDto[]> {
-        let url_ = this.baseUrl + "/api/Plants";
+    getAll(q: string | null | undefined): Promise<PaginatedResultOfPlantDto> {
+        let url_ = this.baseUrl + "/api/Plants?";
+        if (q !== undefined && q !== null)
+            url_ += "q=" + encodeURIComponent("" + q) + "&";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -899,13 +901,13 @@ export class PlantsClient {
         });
     }
 
-    protected processGetAll(response: Response): Promise<PlantDto[]> {
+    protected processGetAll(response: Response): Promise<PaginatedResultOfPlantDto> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantDto[];
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfPlantDto;
             return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -913,7 +915,7 @@ export class PlantsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<PlantDto[]>(null as any);
+        return Promise.resolve<PaginatedResultOfPlantDto>(null as any);
     }
 
     create(request: CreatePlantRequest): Promise<PlantDto> {
@@ -957,43 +959,6 @@ export class PlantsClient {
             });
         }
         return Promise.resolve<PlantDto>(null as any);
-    }
-
-    search(q: string | undefined): Promise<PlantDto[]> {
-        let url_ = this.baseUrl + "/api/Plants/search?";
-        if (q === null)
-            throw new globalThis.Error("The parameter 'q' cannot be null.");
-        else if (q !== undefined)
-            url_ += "q=" + encodeURIComponent("" + q) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processSearch(_response);
-        });
-    }
-
-    protected processSearch(response: Response): Promise<PlantDto[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantDto[];
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantDto[]>(null as any);
     }
 
     getById(id: string): Promise<PlantDto> {
@@ -1408,6 +1373,11 @@ export interface CreatePlantingEntryRequest {
     plannedSowDate?: Date | undefined;
     plannedHarvestDate?: Date | undefined;
     notes?: string | undefined;
+}
+
+export interface PaginatedResultOfPlantDto {
+    items?: PlantDto[];
+    totalCount?: number;
 }
 
 export interface PlantDto {

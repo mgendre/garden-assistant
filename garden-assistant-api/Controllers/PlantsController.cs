@@ -11,20 +11,9 @@ namespace GardenAssistant.Controllers;
 public class PlantsController(IPlantService plantService) : ControllerBase
 {
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<PlantDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAll() =>
-        Ok(await plantService.GetAllAsync());
-
-    [HttpGet("search")]
-    [ProducesResponseType(typeof(IEnumerable<PlantDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> Search([FromQuery] string q)
-    {
-        if (string.IsNullOrWhiteSpace(q))
-        {
-            return Ok(Array.Empty<PlantDto>());
-        }
-        return Ok(await plantService.SearchAsync(q));
-    }
+    [ProducesResponseType(typeof(PaginatedResult<PlantDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll([FromQuery] string? q = null) =>
+        Ok(await plantService.GetAllAsync(q));
 
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(PlantDto), StatusCodes.Status200OK)]

@@ -4,6 +4,7 @@ import {
   PlantAssociationsClient,
   GuildsClient,
   PlantDto,
+  PaginatedResultOfPlantDto,
   CompanionSearchResultDto,
   CompanionRecommendationRequest,
   GuildDetailDto,
@@ -15,8 +16,8 @@ export class CompanionService {
   private readonly associationsClient = inject(PlantAssociationsClient);
   private readonly guildsClient = inject(GuildsClient);
 
-  getPlants(): Promise<PlantDto[]> {
-    return this.plantsClient.getAll();
+  getPlants(search?: string): Promise<PaginatedResultOfPlantDto> {
+    return this.plantsClient.getAll(search);
   }
 
   getRecommendations(request: CompanionRecommendationRequest): Promise<CompanionSearchResultDto> {

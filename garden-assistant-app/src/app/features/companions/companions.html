@@ -7,16 +7,22 @@
   <div class="three-col">
     <app-plant-catalogue></app-plant-catalogue>
     <div>
-      <div class="guild-container" [class.guild-active]="store.guildsForSelectedPlants().length">
-        @if (store.guildsForSelectedPlants().length) {
+      <div class="guild-container" [class.guild-active]="store.selectedPlants().length">
+        @if (store.selectedPlants().length) {
           <div class="guild-container-header">
-            <span>🌐</span>
-            <span [translate]="'Guilds.SectionTitle'"></span>
+            <span>🌱</span>
+            <span [translate]="'Companions.NewGuild'"></span>
           </div>
         }
         <app-plant-detail-panel></app-plant-detail-panel>
       </div>
       @if (store.guildsForSelectedPlants().length) {
+        <div class="guild-container guild-active">
+          <div class="guild-container-header">
+            <span>🌐</span>
+            <span [translate]="'Guilds.SectionTitle'"></span>
+          </div>
+        </div>
         <app-guild-panel></app-guild-panel>
       }
     </div>

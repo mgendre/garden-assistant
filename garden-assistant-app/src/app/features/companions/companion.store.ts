@@ -1,4 +1,4 @@
-import { Injectable, inject, signal, computed, effect, untracked } from '@angular/core';
+import { Injectable, inject, signal, computed, effect, untracked, DestroyRef } from '@angular/core';
 import {
   PlantDto,
   CompanionSearchResultDto,
@@ -62,7 +62,12 @@ export class CompanionStore {
   private readonly service = inject(CompanionService);
   private readonly myPlantsStore = inject(MyPlantsStore);
 
+  private readonly destroyRef = inject(DestroyRef);
+  private searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
+  private searchInitialized = false;
+
   readonly plants = signal<PlantDto[]>([]);
+  readonly totalCount = signal(0);
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
   readonly sortMode = signal<'alpha' | 'family' | 'compat'>('alpha');
@@ -102,17 +107,9 @@ export class CompanionStore {
   );
 
   readonly filteredPlants = computed(() => {
-    const query = this.searchQuery().toLowerCase();
     const sort = this.sortMode();
     const selectedIds = this.selectedPlantIds();
-    let result = this.plants().filter(p => !selectedIds.has(p.id));
-
-    if (query) {
-      result = result.filter(p =>
-        (p.name?.toLowerCase().includes(query)) ||
-        (p.scientificName?.toLowerCase().includes(query))
-      );
-    }
+    const result = this.plants().filter(p => !selectedIds.has(p.id));
 
     const byName = (a: PlantDto, b: PlantDto) =>
       (a.name ?? '').localeCompare(b.name ?? '', 'fr');
@@ -173,16 +170,43 @@ export class CompanionStore {
       const recs = this.recommendations();
       untracked(() => this.loadAllGuildDetails(recs));
     });
+
+    effect(() => {
+      const query = this.searchQuery();
+      untracked(() => {
+        if (!this.searchInitialized) {
+          this.searchInitialized = true;
+          return;
+        }
+        this.debouncedLoadPlants(query);
+      });
+    });
+
+    this.destroyRef.onDestroy(() => {
+      if (this.searchDebounceTimer) {
+        clearTimeout(this.searchDebounceTimer);
+      }
+    });
   }
 
-  async loadPlants(): Promise<void> {
+  async loadPlants(search?: string): Promise<void> {
     this.plantsLoading.set(true);
     try {
-      const plants = await this.service.getPlants();
-      this.plants.set(plants);
+      const result = await this.service.getPlants(search || undefined);
+      this.plants.set(result.items ?? []);
+      this.totalCount.set(result.totalCount ?? 0);
     } finally {
       this.plantsLoading.set(false);
     }
+  }
+
+  private debouncedLoadPlants(query: string): void {
+    if (this.searchDebounceTimer) {
+      clearTimeout(this.searchDebounceTimer);
+    }
+    this.searchDebounceTimer = setTimeout(() => {
+      this.loadPlants(query);
+    }, 300);
   }
 
   addPlant(plant: PlantDto): void {
