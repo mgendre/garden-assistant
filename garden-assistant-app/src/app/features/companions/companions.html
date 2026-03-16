@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="page-container page-companions">
   <div class="page-header">
     <h1 [translate]="'Companions.Title'"></h1>
     <p class="page-subtitle" [translate]="'Companions.Description'"></p>
@@ -6,7 +6,7 @@
 
   <div class="three-col">
     <app-plant-catalogue></app-plant-catalogue>
-    <div>
+    <div class="guilds-column flex-col">
       <div class="guild-container" [class.guild-active]="store.selectedPlants().length">
         @if (store.selectedPlants().length) {
           <div class="guild-container-header">
@@ -54,13 +54,13 @@
         }
       </div>
       @if (store.guildsForSelectedPlants().length) {
-        <div class="guild-container guild-active">
+        <div class="guild-container guild-active related-guilds">
           <div class="guild-container-header">
             <span>🌐</span>
             <span [translate]="'Guilds.SectionTitle'"></span>
           </div>
+          <app-guild-panel></app-guild-panel>
         </div>
-        <app-guild-panel></app-guild-panel>
       }
     </div>
     <app-recommendations-panel></app-recommendations-panel>

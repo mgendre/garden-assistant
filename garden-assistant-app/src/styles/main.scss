@@ -1,16 +1,13 @@
 // 7-1 Sass Architecture
 // ─────────────────────
 
-// 1. Abstracts (no CSS output)
 @use 'abstracts/variables';
 @use 'abstracts/mixins';
 
-// 2. Base
 @use 'base/reset';
 @use 'base/typography';
 @use 'base/page';
 
-// 3. Components (Sass-only overrides; Tailwind component classes live in tailwind.css)
 @use 'components/family-badges';
 @use 'components/badges';
 @use 'components/buttons';
@@ -23,8 +20,9 @@
 @use 'components/companion-list';
 @use 'components/guilds';
 
-// 4. Layout
 @use 'layout/header';
 @use 'layout/layout';
+
+@use 'pages/companions';
 
 // 5. Vendors (Tailwind is loaded via angular.json → src/styles/tailwind.css)

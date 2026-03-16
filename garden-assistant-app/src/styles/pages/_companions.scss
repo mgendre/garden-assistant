@@ -1,0 +1,73 @@
+@reference "tailwindcss";
+
+.page-companions {
+
+  .guild-container {
+    &.guild-active {
+      @apply rounded-2xl overflow-hidden;
+      border: 1.5px solid rgba(244, 132, 95, 0.2);
+      background: white;
+      box-shadow: 0 1px 3px rgba(244, 132, 95, 0.08), 0 8px 24px rgba(244, 132, 95, 0.06);
+    }
+  }
+
+  .guild-container-header {
+    @apply flex items-center gap-2 text-xs font-semibold uppercase px-5 pt-4 pb-3;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+    border-bottom: 1.5px solid #d8f3dc;
+    background: rgba(244, 132, 95, 0.06);
+  }
+
+  .guild-form {
+    @apply flex flex-col gap-3 px-5 py-4;
+    border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+  }
+
+  .guild-form-input {
+    @apply w-full rounded-lg text-sm font-medium;
+    padding: 0.6rem 0.75rem;
+    border: 1.5px solid rgba(45, 106, 79, 0.15);
+    background: var(--color-parchment);
+    color: var(--color-text);
+    transition: border-color var(--transition-fast);
+
+    &:focus {
+      outline: none;
+      border-color: rgba(45, 106, 79, 0.4);
+    }
+
+    &::placeholder {
+      color: var(--color-text-muted);
+      font-weight: normal;
+    }
+  }
+
+  .guild-form-textarea {
+    @apply w-full rounded-lg text-sm resize-none;
+    padding: 0.6rem 0.75rem;
+    border: 1.5px solid rgba(45, 106, 79, 0.15);
+    background: var(--color-parchment);
+    color: var(--color-text);
+    transition: border-color var(--transition-fast);
+
+    &:focus {
+      outline: none;
+      border-color: rgba(45, 106, 79, 0.4);
+    }
+
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
+  }
+
+  .guild-form-actions {
+    @apply flex items-center justify-end gap-3 px-5 py-4;
+    border-top: 1px solid rgba(45, 106, 79, 0.1);
+  }
+
+  .related-guilds app-guild-panel {
+    @apply p-5 pb-0;
+    display: block;
+  }
+}
