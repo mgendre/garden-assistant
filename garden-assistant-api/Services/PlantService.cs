@@ -9,23 +9,26 @@ namespace GardenAssistant.Services;
 
 public class PlantService(AppDbContext dbContext) : IPlantService
 {
-    public async Task<IEnumerable<PlantDto>> GetAllAsync()
+    public async Task<PaginatedResult<PlantDto>> GetAllAsync(string? search = null)
     {
-        return await dbContext.Plants
-            .Select(p => ToDto(p))
-            .ToListAsync();
-    }
+        var query = dbContext.Plants.AsQueryable();
 
-    public async Task<IEnumerable<PlantDto>> SearchAsync(string query)
-    {
-        var q = query.ToLower();
-        return await dbContext.Plants
-            .Where(p => p.Name.ToLower().Contains(q)
-                     || (p.ScientificName != null && p.ScientificName.ToLower().Contains(q)))
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            var term = search.ToLower();
+            query = query.Where(p => p.Name.ToLower().Contains(term)
+                                  || (p.ScientificName != null && p.ScientificName.ToLower().Contains(term)));
+        }
+
+        var totalCount = await query.CountAsync();
+
+        var items = await query
             .OrderBy(p => p.Name)
             .Take(20)
             .Select(p => ToDto(p))
             .ToListAsync();
+
+        return new PaginatedResult<PlantDto>(items, totalCount);
     }
 
     public async Task<PlantDto?> GetByIdAsync(Guid id)

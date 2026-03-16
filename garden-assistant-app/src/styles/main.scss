@@ -8,6 +8,7 @@
 // 2. Base
 @use 'base/reset';
 @use 'base/typography';
+@use 'base/page';
 
 // 3. Components (Sass-only overrides; Tailwind component classes live in tailwind.css)
 @use 'components/family-badges';
@@ -15,8 +16,15 @@
 @use 'components/buttons';
 @use 'components/cards';
 @use 'components/empty-state';
+@use 'components/panels';
+@use 'components/plant-list';
+@use 'components/plant-card';
+@use 'components/collapsible';
+@use 'components/companion-list';
+@use 'components/guilds';
 
 // 4. Layout
 @use 'layout/header';
+@use 'layout/layout';
 
 // 5. Vendors (Tailwind is loaded via angular.json → src/styles/tailwind.css)

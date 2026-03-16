@@ -10,7 +10,6 @@ namespace GardenAssistant.Services;
 
 public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociationService
 {
-    private const int MaxRecommendations = 10;
     private const double BeneficialScore = 1.0;
     private const double NeutralScore = 0.0;
     private const double HarmfulScore = -1.5;
@@ -25,77 +24,47 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
     }
 
     public async Task<CompanionSearchResultDto> GetCompanionRecommendationsAsync(
-        List<Guid> selectedPlantIds)
+        List<Guid> selectedPlantIds, double? minScore = null)
     {
-        var candidates = await dbContext.Plants
-            .Where(p => !selectedPlantIds.Contains(p.Id))
-            .ToListAsync();
+        var candidates = await dbContext.Plants.ToListAsync();
 
         if (candidates.Count == 0)
         {
             return new CompanionSearchResultDto([], [], []);
         }
 
-        var allRelevantPlantIds = selectedPlantIds
-            .Concat(candidates.Select(c => c.Id))
-            .ToList();
+        var allPlantIds = candidates.Select(c => c.Id).ToList();
 
         var associations = await dbContext.PlantAssociations
-            .Where(pa => allRelevantPlantIds.Contains(pa.SourcePlantId)
-                      && allRelevantPlantIds.Contains(pa.TargetPlantId))
+            .Where(pa => allPlantIds.Contains(pa.SourcePlantId)
+                      && allPlantIds.Contains(pa.TargetPlantId))
             .ToListAsync();
 
         var associationLookup = BuildAssociationLookup(associations);
 
-        var allCandidates = new List<Plant>(candidates);
-        candidates.RemoveAll(c => HasHarmfulAssociation(c.Id, selectedPlantIds, associationLookup));
-
-        var baseScores = new Dictionary<Guid, double>();
+        var scores = new Dictionary<Guid, double>();
         foreach (var candidate in candidates)
         {
-            var score = selectedPlantIds.Sum(selectedId => 
+            scores[candidate.Id] = selectedPlantIds.Sum(selectedId =>
                 ScorePair(candidate.Id, selectedId, associationLookup));
-            baseScores[candidate.Id] = score;
         }
 
-        var selected = new List<Plant>();
-        var remaining = new List<Plant>(candidates);
+        var guildLookup = await BuildGuildLookup(candidates.Select(p => p.Id).ToList(), selectedPlantIds);
 
-        while (selected.Count < MaxRecommendations && remaining.Count > 0)
+        var goodCompanions = candidates
+        .Select(p =>
         {
-            Plant? best = null;
-            var bestScore = double.MinValue;
-
-            foreach (var candidate in remaining)
-            {
-                var totalScore = baseScores[candidate.Id] + selected.Sum(alreadyPicked 
-                    => ScorePair(candidate.Id, alreadyPicked.Id, associationLookup));
-
-                if (totalScore > bestScore)
-                {
-                    bestScore = totalScore;
-                    best = candidate;
-                }
-            }
-
-            selected.Add(best!);
-            remaining.Remove(best!);
-        }
-
-        var guildLookup = await BuildGuildLookup(selected.Select(p => p.Id).ToList(), selectedPlantIds);
-
-        var goodCompanions = selected.Select(p =>
-        {
-            var score = Math.Round(baseScores[p.Id] + InterCandidateScore(p.Id, selected, associationLookup), 2);
+            var score = Math.Round(scores[p.Id], 2);
             var mechanisms = CollectBeneficialMechanisms(p.Id, selectedPlantIds, associationLookup);
             var guilds = guildLookup.GetValueOrDefault(p.Id, []);
             return new CompanionRecommendationDto(p.Id, p.Name, p.ScientificName, score, mechanisms, guilds);
         })
+        .Where(c => !minScore.HasValue || c.Score >= minScore.Value)
         .OrderByDescending(c => c.Score)
         .ThenBy(c => c.PlantName, StringComparer.OrdinalIgnoreCase)
         .ToList();
 
-        var plantsToAvoid = BuildPlantsToAvoid(allCandidates, selectedPlantIds, associations);
+        var plantsToAvoid = BuildPlantsToAvoid(candidates, selectedPlantIds, associations);
 
         var selectedPlants = await dbContext.Plants
             .Where(p => selectedPlantIds.Contains(p.Id))
@@ -294,17 +263,6 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
         return entries.Sum(e => ScoreForEffect(e.Effect));
     }
 
-    private static bool HasHarmfulAssociation(Guid candidateId, List<Guid> selectedPlantIds,
-        Dictionary<(Guid, Guid), List<(AssociationEffect Effect, AssociationMechanism Mechanism)>> lookup)
-    {
-        return selectedPlantIds.Any(selectedId =>
-        {
-            var key = NormalizeKey(candidateId, selectedId);
-            return lookup.TryGetValue(key, out var entries)
-                && entries.Any(e => e.Effect == AssociationEffect.Harmful);
-        });
-    }
-
     private static List<AssociationMechanism> CollectBeneficialMechanisms(Guid candidateId, List<Guid> selectedPlantIds,
         Dictionary<(Guid, Guid), List<(AssociationEffect Effect, AssociationMechanism Mechanism)>> lookup)
     {
@@ -322,14 +280,6 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
             }
         }
         return mechanisms.ToList();
-    }
-
-    private static double InterCandidateScore(Guid plantId, List<Plant> selected,
-        Dictionary<(Guid, Guid), List<(AssociationEffect Effect, AssociationMechanism Mechanism)>> lookup)
-    {
-        return selected
-            .Where(s => s.Id != plantId)
-            .Sum(s => ScorePair(plantId, s.Id, lookup));
     }
 
     private static (Guid, Guid) NormalizeKey(Guid a, Guid b) =>

@@ -19,3 +19,4 @@
 ### Estimation
 - **Priorite :** Should
 - **Points :** 1
+- **Statut :** Done

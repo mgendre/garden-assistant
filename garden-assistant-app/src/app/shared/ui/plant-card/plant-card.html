@@ -1,4 +1,4 @@
-<app-collapsible>
+<app-collapsible [initialExpanded]="initialExpanded()" [forceExpanded]="forceExpanded()">
   <div collapsible-header class="detail-hero-content">
     <div class="detail-icon-sm">{{ store.getPlantEmoji(plant()) }}</div>
     <div class="detail-hero-info">
@@ -8,18 +8,28 @@
       </div>
       <div class="detail-badges">
         @if (plant().family) {
-          <span class="detail-badge" [class]="store.getFamilyClass(plant().family)">
+          <span class="detail-badge" [class]="store.getFamilyClass(plant().family)"
+            (click)="openBadgeInfo('BadgeInfo.Family.' + plant().family + '.Title', 'BadgeInfo.Family.' + plant().family + '.Description'); $event.stopPropagation()">
             {{ plant().family }}
           </span>
         }
         @if (getSunKey(plant().sunRequirement); as key) {
-          <span class="detail-badge badge-sun">{{ key | translate }}</span>
+          <span class="detail-badge badge-sun"
+            (click)="openBadgeInfo('BadgeInfo.Sun.' + getSunBadgeKey(plant().sunRequirement) + '.Title', 'BadgeInfo.Sun.' + getSunBadgeKey(plant().sunRequirement) + '.Description'); $event.stopPropagation()">
+            {{ key | translate }}
+          </span>
         }
         @if (getWaterKey(plant().waterNeeds); as key) {
-          <span class="detail-badge badge-water">{{ key | translate }}</span>
+          <span class="detail-badge badge-water"
+            (click)="openBadgeInfo('BadgeInfo.Water.' + getWaterBadgeKey(plant().waterNeeds) + '.Title', 'BadgeInfo.Water.' + getWaterBadgeKey(plant().waterNeeds) + '.Description'); $event.stopPropagation()">
+            {{ key | translate }}
+          </span>
         }
         @for (badgeKey of getBadgeKeys(plant()); track badgeKey) {
-          <span class="detail-badge badge-trait">{{ badgeKey | translate }}</span>
+          <span class="detail-badge badge-trait"
+            (click)="openBadgeInfo('BadgeInfo.Trait.' + getTraitBadgeKey(badgeKey) + '.Title', 'BadgeInfo.Trait.' + getTraitBadgeKey(badgeKey) + '.Description'); $event.stopPropagation()">
+            {{ badgeKey | translate }}
+          </span>
         }
       </div>
     </div>
@@ -69,5 +79,14 @@
         </div>
       </div>
     </div>
+
+    <button
+      class="fav-btn-action"
+      [class.saved]="myPlantsStore.isSaved(plant().id)"
+      (click)="toggleFav($event)"
+      [attr.aria-label]="(myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name }">
+      <fa-icon [icon]="myPlantsStore.isSaved(plant().id) ? faHeartSolid : faHeartRegular"></fa-icon>
+      <span>{{ (myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name } }}</span>
+    </button>
   </div>
 </app-collapsible>

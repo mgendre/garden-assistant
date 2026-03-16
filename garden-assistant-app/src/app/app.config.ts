@@ -5,10 +5,11 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
-import { AuthClient, GardensClient, GuildsClient, PlantAssociationsClient, PlantsClient } from './api/garden-assistant-api';
+import { AuthClient, GardensClient, GuildsClient, PlantAssociationsClient, PlantsClient, UserPlantsClient } from './api/garden-assistant-api';
 import { environment } from '../environments/environment';
 import { AuthService } from './core/auth/auth.service';
 import { authInterceptor } from './core/auth/auth.interceptor';
+import { StartupService } from './core/startup.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,8 +24,11 @@ export const appConfig: ApplicationConfig = {
     }),
     {
       provide: APP_INITIALIZER,
-      useFactory: (authService: AuthService) => () => authService.initialize(),
-      deps: [AuthService],
+      useFactory: (authService: AuthService, startupService: StartupService) => async () => {
+        await authService.initialize();
+        await startupService.loadAll();
+      },
+      deps: [AuthService, StartupService],
       multi: true
     },
     {
@@ -49,6 +53,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: GuildsClient,
       useFactory: (authService: AuthService) => new GuildsClient(environment.apiBaseUrl, authService.createAuthFetch()),
+      deps: [AuthService]
+    },
+    {
+      provide: UserPlantsClient,
+      useFactory: (authService: AuthService) => new UserPlantsClient(environment.apiBaseUrl, authService.createAuthFetch()),
       deps: [AuthService]
     }
   ]

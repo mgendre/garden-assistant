@@ -1,4 +1,4 @@
-import { Injectable, inject, signal, computed, effect, untracked } from '@angular/core';
+import { Injectable, inject, signal, computed, effect, untracked, DestroyRef } from '@angular/core';
 import {
   PlantDto,
   CompanionSearchResultDto,
@@ -8,6 +8,7 @@ import {
   AssociationMechanism,
 } from '../../api/garden-assistant-api';
 import { CompanionService } from './companion.service';
+import { MyPlantsStore } from '../my-plants/my-plants.store';
 
 const FAMILY_EMOJI_MAP: Record<string, string> = {
   'Solanaceae': '🍅',
@@ -59,46 +60,66 @@ const MECHANISM_KEY_MAP: Record<number, string> = {
 @Injectable({ providedIn: 'root' })
 export class CompanionStore {
   private readonly service = inject(CompanionService);
+  private readonly myPlantsStore = inject(MyPlantsStore);
+
+  private readonly destroyRef = inject(DestroyRef);
+  private searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
+  private searchInitialized = false;
 
   readonly plants = signal<PlantDto[]>([]);
+  readonly totalCount = signal(0);
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
-  readonly sortMode = signal<'alpha' | 'family' | 'compat'>('compat');
+  readonly sortMode = signal<'alpha' | 'family' | 'compat'>('alpha');
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
   readonly plantsLoading = signal(false);
   readonly guildDetails = signal<Map<string, GuildDetailDto>>(new Map());
   readonly guildLoading = signal<string | null>(null);
 
-  private static readonly MAX_VISIBLE_PLANTS = 15;
 
   readonly selectedPlantIds = computed(() =>
     new Set(this.selectedPlants().map(p => p.id))
-  );
-
-  readonly goodCompanionIds = computed(() =>
-    new Set(this.recommendations()?.goodCompanions?.map(c => c.plantId).filter(Boolean) ?? [])
   );
 
   readonly avoidPlantIds = computed(() =>
     new Set(this.recommendations()?.plantsToAvoid?.map(p => p.plantId).filter(Boolean) ?? [])
   );
 
+  readonly goodCompanions = computed(() => {
+    const avoid = this.avoidPlantIds();
+    const selected = this.selectedPlantIds();
+    const myPlants = this.myPlantsStore.plantIds();
+    const filtered = this.recommendations()?.goodCompanions
+      ?.filter(c => !avoid.has(c.plantId) && !selected.has(c.plantId)) ?? [];
+    return [...filtered].sort((a, b) => {
+      const aFav = myPlants.has(a.plantId) ? 0 : 1;
+      const bFav = myPlants.has(b.plantId) ? 0 : 1;
+      if (aFav !== bFav) {
+        return aFav - bFav;
+      }
+      return (a.plantName ?? '').localeCompare(b.plantName ?? '', 'fr');
+    });
+  });
+
+  readonly goodCompanionIds = computed(() =>
+    new Set(this.goodCompanions().map(c => c.plantId).filter(Boolean))
+  );
+
   readonly filteredPlants = computed(() => {
-    const query = this.searchQuery().toLowerCase();
     const sort = this.sortMode();
     const selectedIds = this.selectedPlantIds();
-    let result = this.plants().filter(p => !selectedIds.has(p.id));
-
-    if (query) {
-      result = result.filter(p =>
-        (p.name?.toLowerCase().includes(query)) ||
-        (p.scientificName?.toLowerCase().includes(query))
-      );
-    }
+    const result = this.plants().filter(p => !selectedIds.has(p.id));
 
     const byName = (a: PlantDto, b: PlantDto) =>
       (a.name ?? '').localeCompare(b.name ?? '', 'fr');
+
+    const myPlantIds = this.myPlantsStore.plantIds();
+    const favFirst = (a: PlantDto, b: PlantDto) => {
+      const aFav = myPlantIds.has(a.id) ? 0 : 1;
+      const bFav = myPlantIds.has(b.id) ? 0 : 1;
+      return aFav - bFav;
+    };
 
     const sorted = [...result].sort((a, b) => {
       if (sort === 'family') {
@@ -108,16 +129,18 @@ export class CompanionStore {
       if (sort === 'compat') {
         const compatScore = (p: PlantDto) => {
           if (this.goodCompanionIds().has(p.id)) return 0;
+          if (myPlantIds.has(p.id)) return 0.5;
           if (this.avoidPlantIds().has(p.id)) return 2;
           return 1;
         };
         const scoreDiff = compatScore(a) - compatScore(b);
         return scoreDiff !== 0 ? scoreDiff : byName(a, b);
       }
-      return byName(a, b);
+      const fav = favFirst(a, b);
+      return fav !== 0 ? fav : byName(a, b);
     });
 
-    return sorted.slice(0, CompanionStore.MAX_VISIBLE_PLANTS);
+    return sorted;
   });
 
   readonly guildsForSelectedPlants = computed(() => {
@@ -147,16 +170,43 @@ export class CompanionStore {
       const recs = this.recommendations();
       untracked(() => this.loadAllGuildDetails(recs));
     });
+
+    effect(() => {
+      const query = this.searchQuery();
+      untracked(() => {
+        if (!this.searchInitialized) {
+          this.searchInitialized = true;
+          return;
+        }
+        this.debouncedLoadPlants(query);
+      });
+    });
+
+    this.destroyRef.onDestroy(() => {
+      if (this.searchDebounceTimer) {
+        clearTimeout(this.searchDebounceTimer);
+      }
+    });
   }
 
-  async loadPlants(): Promise<void> {
+  async loadPlants(search?: string): Promise<void> {
     this.plantsLoading.set(true);
     try {
-      const plants = await this.service.getPlants();
-      this.plants.set(plants);
+      const result = await this.service.getPlants(search || undefined);
+      this.plants.set(result.items ?? []);
+      this.totalCount.set(result.totalCount ?? 0);
     } finally {
       this.plantsLoading.set(false);
     }
+  }
+
+  private debouncedLoadPlants(query: string): void {
+    if (this.searchDebounceTimer) {
+      clearTimeout(this.searchDebounceTimer);
+    }
+    this.searchDebounceTimer = setTimeout(() => {
+      this.loadPlants(query);
+    }, 300);
   }
 
   addPlant(plant: PlantDto): void {
@@ -234,7 +284,8 @@ export class CompanionStore {
     this.loading.set(true);
     try {
       const request: CompanionRecommendationRequest = {
-        plantIds: plants.map(p => p.id!).filter(Boolean)
+        plantIds: plants.map(p => p.id!).filter(Boolean),
+        minScore: 0,
       };
       const result = await this.service.getRecommendations(request);
       this.recommendations.set(result);

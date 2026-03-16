@@ -1,0 +1,151 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use 'family-badges' as *;
+@reference "tailwindcss";
+
+.plant-card {
+  @apply block;
+  background: white;
+  border-radius: $border-radius-base;
+  overflow: hidden;
+}
+
+.detail-hero-content {
+  @apply flex items-center gap-3 flex-1 min-w-0;
+}
+
+.detail-icon-sm {
+  @apply flex-shrink-0 flex items-center justify-center rounded-[10px];
+  width: 40px;
+  height: 40px;
+  font-size: 1.3rem;
+  background: #d8f3dc;
+  border: 1.5px solid rgba(45, 106, 79, 0.12);
+}
+
+.detail-hero-info {
+  @apply flex-1 min-w-0;
+}
+
+.detail-name-row {
+  @apply flex items-baseline gap-2 flex-wrap;
+}
+
+.detail-name {
+  @apply font-extrabold leading-tight;
+  font-family: $font-display;
+  font-size: 1.1rem;
+  color: #1a3a2a;
+}
+
+.detail-latin-inline {
+  @apply text-xs italic;
+  color: var(--color-text-muted);
+}
+
+.detail-badges {
+  @apply flex flex-wrap gap-1.5 mt-1.5;
+}
+
+@include family-badges;
+
+.fav-btn-action {
+  @apply flex items-center justify-center gap-2 w-full rounded-lg cursor-pointer text-sm font-medium mt-4;
+  padding: 0.6rem 1rem;
+  background: var(--color-parchment);
+  border: 1.5px solid rgba(45, 106, 79, 0.12);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: #e53935;
+    color: #e53935;
+    background: #fff5f5;
+  }
+
+  &.saved {
+    color: #e53935;
+    border-color: rgba(229, 57, 53, 0.3);
+    background: #fff5f5;
+
+    &:hover {
+      background: #fde8e8;
+    }
+  }
+}
+
+.remove-btn {
+  @apply flex items-center justify-center rounded-full text-xs flex-shrink-0 cursor-pointer transition-all;
+  width: 26px;
+  height: 26px;
+  color: var(--color-text-muted);
+  background: transparent;
+
+  &:hover {
+    background: #fce4ec;
+    color: #c62828;
+  }
+}
+
+.allelopathic-warning {
+  @apply flex items-start gap-2 text-xs leading-relaxed rounded-lg mb-4;
+  padding: 0.6rem 0.75rem;
+  background: #fff8e1;
+  border: 1px solid #ffe0b2;
+  color: #e65100;
+}
+
+.allelopathic-warning-icon {
+  @apply flex-shrink-0;
+  margin-top: 0.05rem;
+}
+
+.detail-section {
+  @apply mb-5;
+
+  &:last-child { @apply mb-0; }
+}
+
+.detail-section-title {
+  @apply flex items-center gap-2 text-xs font-semibold uppercase mb-3;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+
+  &::after {
+    content: '';
+    @apply flex-1;
+    height: 1px;
+    background: #d8f3dc;
+  }
+}
+
+.desc-text {
+  @apply text-sm leading-7;
+  color: var(--color-text);
+}
+
+.info-grid {
+  @apply grid grid-cols-2 gap-3;
+}
+
+.info-card {
+  @apply rounded-[10px] py-3 px-4;
+  background: var(--color-parchment);
+  border: 1px solid rgba(45, 106, 79, 0.08);
+}
+
+.info-card-label {
+  @apply font-semibold uppercase mb-1;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+}
+
+.info-card-value {
+  @apply text-sm font-medium;
+  color: var(--color-text);
+}
+
+.plant-detail-dialog {
+  @apply flex flex-col gap-4 p-4;
+}

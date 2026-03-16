@@ -383,6 +383,31 @@ namespace GardenAssistant.Migrations
                         });
                 });
 
+            modelBuilder.Entity("GardenAssistant.Data.Entities.UserPlant", b =>
+                {
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
+                    b.Property<Guid>("PlantId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("plant_id");
+
+                    b.Property<DateTime>("AddedAtUtc")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("added_at_utc")
+                        .HasDefaultValueSql("now() at time zone 'utc'");
+
+                    b.HasKey("UserId", "PlantId")
+                        .HasName("pk_user_plants");
+
+                    b.HasIndex("PlantId")
+                        .HasDatabaseName("ix_user_plants_plant_id");
+
+                    b.ToTable("user_plants", (string)null);
+                });
+
             modelBuilder.Entity("GardenAssistant.Data.Entities.Garden", b =>
                 {
                     b.HasOne("GardenAssistant.Data.Entities.User", null)
@@ -469,6 +494,23 @@ namespace GardenAssistant.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_refresh_tokens_users_user_id");
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.UserPlant", b =>
+                {
+                    b.HasOne("GardenAssistant.Data.Entities.Plant", null)
+                        .WithMany()
+                        .HasForeignKey("PlantId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_user_plants_plants_plant_id");
+
+                    b.HasOne("GardenAssistant.Data.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_user_plants_users_user_id");
                 });
 #pragma warning restore 612, 618
         }

@@ -7,6 +7,7 @@
     "Garden": "Mon jardin",
     "Tasks": "T\u00e2ches",
     "Companions": "Associations",
+    "MyPlants": "Mes plantes",
     "Guilds": "Guildes",
     "OpenMenu": "Ouvrir le menu",
     "CloseMenu": "Fermer le menu",
@@ -84,6 +85,7 @@
     "Height": "Hauteur",
     "Season": "Cycle de vie",
     "Remove": "Retirer {{name}}",
+    "ViewDetails": "Voir les détails de {{name}}",
     "AllelopathicWarning": "Plante allélopathique — ses exsudats racinaires peuvent inhiber la croissance des plantes voisines. Isolez-la en bordure de jardin.",
     "Sun": {
       "Label": "Ensoleillement",
@@ -140,11 +142,24 @@
     "SectionTitle": "Guildes associ\u00e9es",
     "Add": "Tout ajouter"
   },
+  "MyPlants": {
+    "Category": "Collection",
+    "Title": "Mes plantes",
+    "Description": "Retrouvez ici toutes les plantes que vous cultivez ou souhaitez cultiver.",
+    "EmptyTitle": "Aucune plante sauvegard\u00e9e",
+    "EmptyDesc": "Ajoutez des plantes depuis le catalogue pour les retrouver ici.",
+    "PickerTitle": "Ajouter des plantes",
+    "Remove": "Retirer {{name}} de ma collection",
+    "ConfirmRemoveTitle": "Retirer de ma collection",
+    "ConfirmRemoveMessage": "Retirer « {{name}} » de votre collection ?",
+    "ConfirmRemoveAction": "Retirer"
+  },
   "Companions": {
     "Category": "Permaculture",
     "Title": "Associations de plantes",
     "Description": "Recherchez et s\u00e9lectionnez des plantes pour d\u00e9couvrir leurs meilleurs compagnons et les associations \u00e0 \u00e9viter.",
     "Catalogue": "Catalogue",
+    "NewGuild": "Nouvelle guilde",
     "PlantCountSuffix": "plantes",
     "SortAlpha": "A\u2192Z",
     "SortFamily": "Famille",
@@ -166,6 +181,7 @@
     "ConflictDesc": "Certaines plantes s\u00e9lectionn\u00e9es ne sont pas compatibles entre elles.",
     "ConflictBetween": "{{plantA}} et {{plantB}}",
     "AddCompanion": "Ajouter {{name}} \u00e0 la s\u00e9lection",
+    "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
     "SearchStatus": {
       "Good": "Bon compagnon",
       "Avoid": "\u00c0 \u00e9viter"
@@ -173,6 +189,163 @@
     "Error": {
       "Search": "Erreur lors de la recherche.",
       "Analysis": "Erreur lors de l'analyse des associations."
+    }
+  },
+  "BadgeInfo": {
+    "Close": "Fermer",
+    "Family": {
+      "Solanaceae": {
+        "Title": "Solanaceae",
+        "Description": "Famille comprenant tomates, poivrons, aubergines et pommes de terre. Gourmandes en nutriments, elles ne doivent pas se succ\u00e9der au m\u00eame emplacement pour \u00e9viter l'accumulation de pathog\u00e8nes dans le sol."
+      },
+      "Lamiaceae": {
+        "Title": "Lamiaceae",
+        "Description": "Famille des aromatiques comme le basilic, la menthe, le thym et la sauge. Riches en huiles essentielles, elles jouent un r\u00f4le cl\u00e9 en confusion olfactive et en attraction des pollinisateurs au potager."
+      },
+      "Apiaceae": {
+        "Title": "Apiaceae",
+        "Description": "Famille de la carotte, du persil, du c\u00e9leri et du fenouil. Leurs ombelles attirent de nombreux insectes auxiliaires, notamment les syrphes et les gu\u00eapes parasito\u00efdes."
+      },
+      "Amaryllidaceae": {
+        "Title": "Amaryllidaceae",
+        "Description": "Famille de l'ail, de l'oignon et du poireau. Leurs compos\u00e9s soufr\u00e9s repoussent de nombreux ravageurs et en font d'excellentes compagnes pour les carottes et les fraisiers."
+      },
+      "Fabaceae": {
+        "Title": "Fabaceae",
+        "Description": "Famille des l\u00e9gumineuses : haricots, pois, f\u00e8ves et tr\u00e8fles. Gr\u00e2ce \u00e0 leur symbiose avec les bact\u00e9ries Rhizobium, elles fixent l'azote atmosph\u00e9rique et enrichissent le sol pour les cultures suivantes."
+      },
+      "Poaceae": {
+        "Title": "Poaceae",
+        "Description": "Famille des gramin\u00e9es incluant le bl\u00e9, le ma\u00efs et le seigle. Leur syst\u00e8me racinaire dense structure le sol en profondeur et en fait d'excellents engrais verts et couvre-sols."
+      },
+      "Cucurbitaceae": {
+        "Title": "Cucurbitaceae",
+        "Description": "Famille des courges, courgettes, concombres et melons. Plantes coureuses gourmandes en mati\u00e8re organique, elles forment un excellent couvre-sol dans les associations de type \u00ab trois s\u0153urs \u00bb."
+      },
+      "Brassicaceae": {
+        "Title": "Brassicaceae",
+        "Description": "Famille des choux, radis, navets et moutardes. Sensibles \u00e0 la hernie du chou, elles n\u00e9cessitent une rotation longue. Certaines esp\u00e8ces sont utilis\u00e9es comme engrais verts biofumigants."
+      },
+      "Asteraceae": {
+        "Title": "Asteraceae",
+        "Description": "Famille tr\u00e8s diversifi\u00e9e comprenant laitues, tournesols, artichauts et soucis. Beaucoup d'esp\u00e8ces attirent les auxiliaires ou repoussent les ravageurs par leurs compos\u00e9s aromatiques."
+      },
+      "Rosaceae": {
+        "Title": "Rosaceae",
+        "Description": "Famille des fruitiers (pommier, fraisier, framboisier) et de nombreuses plantes ornementales. Sensibles aux maladies fongiques, elles b\u00e9n\u00e9ficient de plantes compagnes aromatiques \u00e0 leur pied."
+      },
+      "Boraginaceae": {
+        "Title": "Boraginaceae",
+        "Description": "Famille de la bourrache et de la consoude. La bourrache est l'une des meilleures plantes mellif\u00e8res du potager, et la consoude est un accumulateur dynamique de potassium et d'oligo-\u00e9l\u00e9ments."
+      }
+    },
+    "Mechanism": {
+      "OlfactoryConfusion": {
+        "Title": "Confusion olfactive",
+        "Description": "Les plantes aromatiques brouillent les signaux olfactifs utilis\u00e9s par les ravageurs pour localiser leurs h\u00f4tes. Intercaler des aromatiques parmi les cultures r\u00e9duit significativement la pression parasitaire."
+      },
+      "PollinatorAttraction": {
+        "Title": "Attraction des pollinisateurs",
+        "Description": "Certaines plantes attirent abeilles, bourdons et syrphes gr\u00e2ce \u00e0 leur nectar et leur pollen abondants. Leur pr\u00e9sence au potager am\u00e9liore la nouaison des fruits et l\u00e9gumes."
+      },
+      "TrapCrop": {
+        "Title": "Plante pi\u00e8ge",
+        "Description": "Une plante pi\u00e8ge attire un ravageur sp\u00e9cifique sur elle-m\u00eame, d\u00e9tournant l'attaque de la culture principale. Par exemple, la capucine concentre les pucerons loin des autres plants."
+      },
+      "RootAllelopathy": {
+        "Title": "Toxines racinaires",
+        "Description": "Certaines plantes lib\u00e8rent par leurs racines des substances biochimiques qui inhibent la germination ou la croissance des plantes voisines. Ce ph\u00e9nom\u00e8ne explique des incompatibilit\u00e9s entre esp\u00e8ces au potager."
+      },
+      "AerialRepulsion": {
+        "Title": "R\u00e9pulsion a\u00e9rienne",
+        "Description": "Des compos\u00e9s volatils \u00e9mis par le feuillage repoussent certains insectes ravageurs. L'odeur forte du tag\u00e8te ou de l'absinthe \u00e9loigne par exemple les mouches et les altises."
+      },
+      "NitrogenFixation": {
+        "Title": "Fixation d'azote",
+        "Description": "Les l\u00e9gumineuses captent l'azote de l'air gr\u00e2ce aux bact\u00e9ries Rhizobium pr\u00e9sentes dans leurs nodosit\u00e9s racinaires. Cet azote est restitu\u00e9 au sol et profite aux cultures voisines ou suivantes."
+      },
+      "PredatorAttraction": {
+        "Title": "Attraction des pr\u00e9dateurs",
+        "Description": "Certaines plantes attirent les pr\u00e9dateurs naturels des ravageurs : coccinelles, chrysopes, carabes et gu\u00eapes parasito\u00efdes. Elles constituent l'infrastructure \u00e9cologique de la lutte biologique au jardin."
+      },
+      "PhysicalSupport": {
+        "Title": "Support physique",
+        "Description": "Une plante robuste sert de tuteur vivant \u00e0 une plante grimpante. L'exemple classique est le ma\u00efs qui supporte les haricots grimpants dans le syst\u00e8me des trois s\u0153urs."
+      },
+      "SoilCover": {
+        "Title": "Couverture du sol",
+        "Description": "Les plantes couvre-sol prot\u00e8gent la terre contre l'\u00e9rosion, le dess\u00e8chement et les adventices en maintenant une couverture v\u00e9g\u00e9tale permanente. Elles pr\u00e9servent l'humidit\u00e9 et la vie biologique du sol."
+      },
+      "DynamicAccumulation": {
+        "Title": "Accumulation dynamique",
+        "Description": "Certaines plantes \u00e0 racines profondes puisent les min\u00e9raux des couches inf\u00e9rieures du sol et les concentrent dans leur feuillage. Utilis\u00e9es en paillis ou compost, elles redistribuent ces nutriments en surface."
+      },
+      "MycorrhizalNetwork": {
+        "Title": "R\u00e9seau mycorhizien",
+        "Description": "Les champignons mycorhiziens relient les racines de diff\u00e9rentes plantes en un r\u00e9seau souterrain. Ce r\u00e9seau facilite les \u00e9changes de nutriments, d'eau et de signaux d'alerte entre plantes voisines."
+      },
+      "HydraulicLift": {
+        "Title": "Ascenseur hydraulique",
+        "Description": "Les arbres et plantes \u00e0 racines profondes puisent l'eau des couches souterraines et la redistribuent dans les horizons superficiels du sol. Les plantes voisines \u00e0 racines courtes en b\u00e9n\u00e9ficient directement."
+      },
+      "MicroclimateModification": {
+        "Title": "Modification du microclimat",
+        "Description": "Une plante haute ou dense modifie les conditions locales : ombre, humidit\u00e9, protection contre le vent. Cela permet de cultiver des esp\u00e8ces fragiles \u00e0 l'abri de plantes plus r\u00e9sistantes."
+      },
+      "WeedSuppression": {
+        "Title": "Suppression des adventices",
+        "Description": "Certaines plantes \u00e9touffent les adventices par leur couverture dense, leur croissance rapide ou leurs exsudats racinaires. Elles r\u00e9duisent le d\u00e9sherbage et maintiennent un sol propre naturellement."
+      },
+      "Biofumigation": {
+        "Title": "Biofumigation",
+        "Description": "Le broyage et l'incorporation de certaines Brassicac\u00e9es (moutarde, radis fourrager) lib\u00e8rent des isothiocyanates qui assainissent le sol. Cette technique r\u00e9duit les pathog\u00e8nes et les n\u00e9matodes sans produit chimique."
+      },
+      "NursePlant": {
+        "Title": "Plante nurse",
+        "Description": "Une plante nurse prot\u00e8ge une jeune pousse fragile en lui offrant ombre, abri du vent et humidit\u00e9. Elle cr\u00e9e un microclimat favorable \u00e0 l'installation de plantes plus exigeantes."
+      }
+    },
+    "Trait": {
+      "NitrogenFixer": {
+        "Title": "Fixateur d'azote",
+        "Description": "Cette plante vit en symbiose avec des bact\u00e9ries fixatrices d'azote atmosph\u00e9rique dans ses nodosit\u00e9s racinaires. Elle enrichit naturellement le sol et r\u00e9duit le besoin en fertilisation azot\u00e9e."
+      },
+      "Pollinator": {
+        "Title": "Pollinisateur",
+        "Description": "Cette plante produit du nectar ou du pollen attractif pour les insectes pollinisateurs. Sa pr\u00e9sence au jardin favorise la biodiversit\u00e9 et am\u00e9liore les rendements des cultures voisines."
+      },
+      "Allelopathic": {
+        "Title": "All\u00e9lopathique",
+        "Description": "Cette plante produit des substances biochimiques qui peuvent inhiber la croissance des v\u00e9g\u00e9taux \u00e0 proximit\u00e9. Il est important de bien choisir ses voisines pour \u00e9viter les effets n\u00e9gatifs."
+      }
+    },
+    "Sun": {
+      "FullSun": {
+        "Title": "Plein soleil",
+        "Description": "La plante n\u00e9cessite au minimum 6 heures d'ensoleillement direct par jour. Un emplacement d\u00e9gag\u00e9, orient\u00e9 sud, est id\u00e9al pour une croissance et une fructification optimales."
+      },
+      "PartialShade": {
+        "Title": "Mi-ombre",
+        "Description": "La plante s'\u00e9panouit avec 3 \u00e0 6 heures de soleil par jour, id\u00e9alement le matin. Elle tol\u00e8re l'ombre l\u00e9g\u00e8re d'un arbre ou d'une structure en apr\u00e8s-midi."
+      },
+      "Shade": {
+        "Title": "Ombre",
+        "Description": "La plante se d\u00e9veloppe bien avec moins de 3 heures de soleil direct par jour. Elle convient aux emplacements ombrag\u00e9s, sous couvert d'arbres ou au pied de murs orient\u00e9s nord."
+      }
+    },
+    "Water": {
+      "Low": {
+        "Title": "Arrosage faible",
+        "Description": "La plante r\u00e9siste bien \u00e0 la s\u00e9cheresse et n\u00e9cessite peu d'arrosage une fois \u00e9tablie. Un paillage suffit g\u00e9n\u00e9ralement \u00e0 maintenir l'humidit\u00e9 n\u00e9cessaire \u00e0 sa croissance."
+      },
+      "Medium": {
+        "Title": "Arrosage moyen",
+        "Description": "La plante a besoin d'un arrosage r\u00e9gulier mais supporte de courtes p\u00e9riodes de s\u00e9cheresse. Un sol paill\u00e9 et un arrosage hebdomadaire conviennent dans la plupart des cas."
+      },
+      "High": {
+        "Title": "Arrosage abondant",
+        "Description": "La plante demande un sol constamment frais et un arrosage fr\u00e9quent, surtout en p\u00e9riode estivale. Un paillage \u00e9pais et un emplacement abrit\u00e9 du vent aident \u00e0 maintenir l'humidit\u00e9."
+      }
     }
   }
 }

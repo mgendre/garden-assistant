@@ -9,6 +9,10 @@
   @apply text-6xl mb-4 opacity-30;
 }
 
+.empty-state-title {
+  @apply mb-2;
+}
+
 .empty-state-text {
   @apply text-sm leading-relaxed max-w-[260px];
   color: var(--color-text-muted);

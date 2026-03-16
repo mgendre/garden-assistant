@@ -7,6 +7,7 @@
   font-size: 0.6875rem;
   letter-spacing: 0.06em;
   padding: 0.15rem 0.5rem;
+  cursor: pointer;
 }
 
 .badge-sun        { background: #e8f5e9; color: #2d6a4f; }
@@ -21,6 +22,7 @@
   @apply font-semibold rounded;
   font-size: 0.6875rem;
   padding: 0.1rem 0.4rem;
+  cursor: pointer;
 }
 
 .mechanism-green { background: #e8f5e9; color: #2e7d32; }
@@ -46,4 +48,34 @@
   font-size: 0.6875rem;
   letter-spacing: 0.05em;
   padding: 0.15rem 0.4rem;
+}
+
+// ─── Badge info dialog ──────────────────────────────────────────────────────
+
+.badge-info-dialog {
+  @apply p-6;
+  max-width: 400px;
+}
+
+.badge-info-title {
+  @apply mb-3;
+}
+
+.badge-info-desc {
+  @apply text-sm leading-relaxed mb-5;
+  color: var(--color-text);
+}
+
+.badge-info-close {
+  @apply w-full rounded-lg cursor-pointer text-sm font-medium;
+  padding: 0.5rem 1rem;
+  background: var(--color-parchment);
+  border: 1.5px solid rgba(45, 106, 79, 0.12);
+  color: var(--color-text);
+  transition: all var(--transition-fast);
+
+  &:hover {
+    border-color: #52b788;
+    background: #d8f3dc;
+  }
 }

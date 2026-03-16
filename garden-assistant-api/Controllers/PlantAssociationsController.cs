@@ -28,7 +28,7 @@ public class PlantAssociationsController(IPlantAssociationService plantAssociati
     [ProducesResponseType(typeof(CompanionSearchResultDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetCompanionRecommendations(CompanionRecommendationRequest request) =>
-        Ok(await plantAssociationService.GetCompanionRecommendationsAsync(request.PlantIds));
+        Ok(await plantAssociationService.GetCompanionRecommendationsAsync(request.PlantIds, request.MinScore));
 
     [HttpDelete("{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

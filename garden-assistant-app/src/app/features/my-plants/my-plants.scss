@@ -1,0 +1,9 @@
+@reference "tailwindcss";
+
+.collection {
+  @apply min-w-0;
+}
+
+.plants-list {
+  @apply flex flex-col gap-3;
+}

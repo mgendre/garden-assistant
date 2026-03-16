@@ -24,3 +24,4 @@
 ### Estimation
 - **Priorite :** Must
 - **Points :** 3
+- **Statut :** Done

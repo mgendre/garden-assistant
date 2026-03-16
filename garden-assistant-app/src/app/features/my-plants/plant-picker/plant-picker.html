@@ -1,0 +1,39 @@
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title" [translate]="'MyPlants.PickerTitle'"></span>
+    <span class="plant-count">{{ totalCount() }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
+  </div>
+
+  <div class="search-wrap">
+    <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
+    <input
+      #searchInput
+      type="text"
+      [placeholder]="'Companions.SearchPlaceholder' | translate"
+      [value]="searchQuery()"
+      (input)="searchQuery.set(searchInput.value)" />
+  </div>
+
+  <div class="plant-list">
+    @for (plant of filteredPlants(); track plant.id) {
+      <div
+        class="plant-item"
+        (click)="onPlantClick(plant)">
+        <div class="plant-icon">{{ companionStore.getPlantEmoji(plant) }}</div>
+        <div class="plant-info">
+          <div class="plant-name">{{ plant.name }}</div>
+          @if (plant.family) {
+            <div class="plant-family" [class]="companionStore.getFamilyClass(plant.family)">{{ plant.family }}</div>
+          }
+        </div>
+        <fa-icon class="add-icon" [icon]="faPlus"></fa-icon>
+      </div>
+    }
+
+    @if (filteredPlants().length === 0) {
+      <div class="empty-state">
+        <p class="empty-state-text" [translate]="'Companions.NoResults'"></p>
+      </div>
+    }
+  </div>
+</div>

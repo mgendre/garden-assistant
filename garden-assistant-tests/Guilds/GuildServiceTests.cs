@@ -17,17 +17,14 @@ public class GuildServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_WhenNoGuilds_ShouldReturnEmpty()
     {
-        // Act
         var result = await _sut.GetAllAsync();
 
-        // Assert
         result.ShouldBeEmpty();
     }
 
     [Fact]
     public async Task GetAllAsync_WhenGuildsExist_ShouldReturnAllWithPlantCounts()
     {
-        // Arrange
         var guildWithPlants = new Guild { Id = Guid.NewGuid(), Name = "Three Sisters" };
         var guildWithoutPlants = new Guild { Id = Guid.NewGuid(), Name = "Herb Spiral" };
 
@@ -44,10 +41,8 @@ public class GuildServiceTests : DatabaseTestBase
         );
         await DbContext.SaveChangesAsync();
 
-        // Act
         var result = (await _sut.GetAllAsync()).ToList();
 
-        // Assert
         result.Count.ShouldBe(2);
 
         var threeSisters = result.Single(g => g.Name == "Three Sisters");

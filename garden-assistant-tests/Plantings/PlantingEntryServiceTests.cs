@@ -66,9 +66,10 @@ public class PlantingEntryServiceTests : DatabaseTestBase
 
         var result = await _sut.GetForPlantingAsync(plantingId, DefaultUserId);
 
-        result.ShouldNotBeNull();
-        result.Count().ShouldBe(1);
-        result.First().PlantingId.ShouldBe(plantingId);
+        var plantingEntryDtos = result as PlantingEntryDto[] ?? result?.ToArray();
+        plantingEntryDtos.ShouldNotBeNull();
+        plantingEntryDtos.Length.ShouldBe(1);
+        plantingEntryDtos.First().PlantingId.ShouldBe(plantingId);
     }
 
     [Fact]

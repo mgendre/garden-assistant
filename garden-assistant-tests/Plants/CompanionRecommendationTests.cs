@@ -50,14 +50,14 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenNoCandidates_ShouldReturnEmpty()
+    public async Task GetCompanionRecommendationsAsync_WhenOnlySelectedPlant_ShouldReturnItInResults()
     {
         var plant = CreatePlant("Tomato");
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([plant.Id]);
 
-        result.GoodCompanions.ShouldBeEmpty();
+        result.GoodCompanions.ShouldContain(c => c.PlantId == plant.Id);
         result.PlantsToAvoid.ShouldBeEmpty();
         result.SelectedPlantConflicts.ShouldBeEmpty();
     }
@@ -74,8 +74,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.GoodCompanions.Count.ShouldBe(2);
-        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
+        result.GoodCompanions.Count.ShouldBe(3);
+        var nonSelected = result.GoodCompanions.Where(c => c.PlantId != tomato.Id).ToList();
+        nonSelected[0].PlantId.ShouldBe(basil.Id);
     }
 
     [Fact]
@@ -95,7 +96,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_ShouldReturnAtMost10()
+    public async Task GetCompanionRecommendationsAsync_ShouldReturnAllPlants()
     {
         var selected = CreatePlant("Selected");
         for (var i = 0; i < 15; i++)
@@ -106,11 +107,11 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
 
-        result.GoodCompanions.Count.ShouldBe(10);
+        result.GoodCompanions.Count.ShouldBe(16);
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_ShouldExcludeSelectedPlants()
+    public async Task GetCompanionRecommendationsAsync_ShouldIncludeSelectedPlants()
     {
         var tomato = CreatePlant("Tomato");
         var basil = CreatePlant("Basil");
@@ -119,8 +120,8 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, basil.Id]);
 
-        result.GoodCompanions.Select(r => r.PlantId).ShouldNotContain(tomato.Id);
-        result.GoodCompanions.Select(r => r.PlantId).ShouldNotContain(basil.Id);
+        result.GoodCompanions.ShouldContain(r => r.PlantId == tomato.Id);
+        result.GoodCompanions.ShouldContain(r => r.PlantId == basil.Id);
         result.GoodCompanions.ShouldContain(r => r.PlantId == carrot.Id);
     }
 
@@ -157,35 +158,6 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_ShouldFavorCandidatesCompatibleWithEachOther()
-    {
-        var selected = CreatePlant("Selected");
-        var goodAlone = CreatePlant("Good Alone");
-        var teamA = CreatePlant("Team A");
-        var teamB = CreatePlant("Team B");
-
-        CreateAssociation(selected.Id, goodAlone.Id, AssociationEffect.Beneficial);
-        CreateAssociation(selected.Id, teamA.Id, AssociationEffect.Beneficial);
-        CreateAssociation(selected.Id, teamB.Id, AssociationEffect.Beneficial);
-
-        CreateAssociation(goodAlone.Id, teamA.Id, AssociationEffect.Harmful);
-        CreateAssociation(goodAlone.Id, teamB.Id, AssociationEffect.Harmful);
-
-        CreateAssociation(teamA.Id, teamB.Id, AssociationEffect.Beneficial);
-        await DbContext.SaveChangesAsync();
-
-        var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
-        var good = result.GoodCompanions;
-
-        var teamAIndex = good.FindIndex(r => r.PlantId == teamA.Id);
-        var teamBIndex = good.FindIndex(r => r.PlantId == teamB.Id);
-        var goodAloneIndex = good.FindIndex(r => r.PlantId == goodAlone.Id);
-
-        teamAIndex.ShouldBeLessThan(goodAloneIndex);
-        teamBIndex.ShouldBeLessThan(goodAloneIndex);
-    }
-
-    [Fact]
     public async Task GetCompanionRecommendationsAsync_WhenMultipleAssociationsForSamePair_ShouldSumAll()
     {
         var tomato = CreatePlant("Tomato");
@@ -216,7 +188,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenFewerCandidatesThanMax_ShouldReturnAll()
+    public async Task GetCompanionRecommendationsAsync_WhenFewPlants_ShouldReturnAll()
     {
         var selected = CreatePlant("Selected");
         CreatePlant("A");
@@ -225,11 +197,11 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
 
-        result.GoodCompanions.Count.ShouldBe(2);
+        result.GoodCompanions.Count.ShouldBe(3);
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenHarmfulAssociationExists_ShouldExcludeFromGoodCompanions()
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulAssociationExists_ShouldIncludeInBothLists()
     {
         var tomato = CreatePlant("Tomato");
         var fennel = CreatePlant("Fennel");
@@ -240,8 +212,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.GoodCompanions.Select(c => c.PlantId).ShouldNotContain(fennel.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == fennel.Id);
         result.GoodCompanions.ShouldContain(c => c.PlantId == basil.Id);
+        result.PlantsToAvoid.ShouldContain(p => p.PlantId == fennel.Id);
     }
 
     [Fact]
@@ -308,7 +281,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithMultipleMechanisms_ShouldExcludeFromGoodCompanions()
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithMultipleMechanisms_ShouldIncludeInBothLists()
     {
         var tomato = CreatePlant("Tomato");
         var fennel = CreatePlant("Fennel");
@@ -320,12 +293,14 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.GoodCompanions.Select(c => c.PlantId).ShouldNotContain(fennel.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == fennel.Id);
         result.GoodCompanions.ShouldContain(c => c.PlantId == basil.Id);
+        result.PlantsToAvoid.ShouldContain(p => p.PlantId == fennel.Id);
+        result.PlantsToAvoid.First(p => p.PlantId == fennel.Id).Mechanisms.Count.ShouldBe(2);
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithAnySelectedPlant_ShouldExcludeFromGoodCompanions()
+    public async Task GetCompanionRecommendationsAsync_WhenHarmfulWithAnySelectedPlant_ShouldIncludeInBothLists()
     {
         var tomato = CreatePlant("Tomato");
         var carrot = CreatePlant("Carrot");
@@ -339,8 +314,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id, carrot.Id]);
 
-        result.GoodCompanions.Select(c => c.PlantId).ShouldNotContain(fennel.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == fennel.Id);
         result.GoodCompanions.ShouldContain(c => c.PlantId == basil.Id);
+        result.PlantsToAvoid.ShouldContain(p => p.PlantId == fennel.Id);
     }
 
     [Fact]

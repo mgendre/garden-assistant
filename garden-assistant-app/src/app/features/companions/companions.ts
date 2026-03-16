@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CompanionStore } from './companion.store';
 import { PlantCatalogue } from './plant-catalogue/plant-catalogue';
@@ -13,10 +13,6 @@ import { GuildPanel } from './guild-panel/guild-panel';
   templateUrl: './companions.html',
   styleUrl: './companions.scss'
 })
-export class Companions implements OnInit {
+export class Companions {
   protected readonly store = inject(CompanionStore);
-
-  async ngOnInit(): Promise<void> {
-    await this.store.loadPlants();
-  }
 }

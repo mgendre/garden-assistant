@@ -29,7 +29,7 @@ public class GardenServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_WhenGardensExist_ShouldReturnOnlyCallerGardens()
     {
-        DbContext.Users.Add(new GardenAssistant.Data.Entities.User { Id = OtherUserId, Email = "other@example.com" });
+        DbContext.Users.Add(new User { Id = OtherUserId, Email = "other@example.com" });
         DbContext.Gardens.Add(new Garden
         {
             Id = Guid.NewGuid(),
@@ -46,9 +46,9 @@ public class GardenServiceTests : DatabaseTestBase
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetAllAsync(DefaultUserId);
-
-        result.Count().ShouldBe(1);
-        result.First().Name.ShouldBe("My Garden");
+        var gardenDtos = result as GardenDto[] ?? result.ToArray();
+        gardenDtos.Length.ShouldBe(1);
+        gardenDtos.First().Name.ShouldBe("My Garden");
     }
 
     [Fact]
@@ -83,7 +83,7 @@ public class GardenServiceTests : DatabaseTestBase
     public async Task UpdateAsync_WhenGardenBelongsToAnotherUser_ShouldReturnNull()
     {
         var gardenId = Guid.NewGuid();
-        DbContext.Users.Add(new GardenAssistant.Data.Entities.User { Id = OtherUserId, Email = "other@example.com" });
+        DbContext.Users.Add(new User { Id = OtherUserId, Email = "other@example.com" });
         DbContext.Gardens.Add(new Garden { Id = gardenId, Name = "Other Garden", UserId = OtherUserId });
         await DbContext.SaveChangesAsync();
 
@@ -117,7 +117,7 @@ public class GardenServiceTests : DatabaseTestBase
     public async Task DeleteAsync_WhenGardenBelongsToAnotherUser_ShouldReturnFalse()
     {
         var gardenId = Guid.NewGuid();
-        DbContext.Users.Add(new GardenAssistant.Data.Entities.User { Id = OtherUserId, Email = "other@example.com" });
+        DbContext.Users.Add(new User { Id = OtherUserId, Email = "other@example.com" });
         DbContext.Gardens.Add(new Garden { Id = gardenId, Name = "Garden", UserId = OtherUserId });
         await DbContext.SaveChangesAsync();
 

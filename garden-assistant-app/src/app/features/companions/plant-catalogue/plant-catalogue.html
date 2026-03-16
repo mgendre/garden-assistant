@@ -1,11 +1,11 @@
 <div class="panel">
   <div class="panel-header">
     <span class="panel-title" [translate]="'Companions.Catalogue'"></span>
-    <span class="plant-count">{{ store.plants().length }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
+    <span class="plant-count">{{ store.totalCount() }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
   </div>
 
   <div class="search-wrap">
-    <span class="search-icon">🔍</span>
+    <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
     <input
       #searchInput
       type="text"
@@ -17,15 +17,15 @@
   <div class="sort-wrap">
     <button
       class="chip"
-      [class.active]="store.sortMode() === 'compat'"
-      (click)="store.setSort('compat')"
-      [translate]="'Companions.SortCompat'">
-    </button>
-    <button
-      class="chip"
       [class.active]="store.sortMode() === 'alpha'"
       (click)="store.setSort('alpha')"
       [translate]="'Companions.SortAlpha'">
+    </button>
+    <button
+      class="chip"
+      [class.active]="store.sortMode() === 'compat'"
+      (click)="store.setSort('compat')"
+      [translate]="'Companions.SortCompat'">
     </button>
     <button
       class="chip"
@@ -46,13 +46,14 @@
         <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
         <div class="plant-info">
           <div class="plant-name">{{ plant.name }}</div>
-          <div class="plant-latin">{{ plant.scientificName }}</div>
+          @if (plant.family) {
+            <div class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</div>
+          }
         </div>
-        @if (!store.recommendations() && plant.family) {
-          <span class="family-badge" [class]="store.getFamilyClass(plant.family)">
-            {{ plant.family }}
-          </span>
+        @if (myPlantsStore.isSaved(plant.id)) {
+          <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
         }
+        <fa-icon class="plant-info-btn" [icon]="faInfo" (click)="openPlantDetail(plant, $event)"></fa-icon>
       </div>
     }
 

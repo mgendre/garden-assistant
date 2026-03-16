@@ -94,8 +94,9 @@ public class PlantingServiceTests : DatabaseTestBase
 
         var result = await _sut.GetAllAsync(DefaultUserId);
 
-        result.Count().ShouldBe(1);
-        result.First().Name.ShouldBe("My Bed");
+        var plantingDtos = result as PlantingDto[] ?? result.ToArray();
+        plantingDtos.Length.ShouldBe(1);
+        plantingDtos.First().Name.ShouldBe("My Bed");
     }
 
     [Fact]

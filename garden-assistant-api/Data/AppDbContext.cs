@@ -14,6 +14,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<PlantingEntry> PlantingEntries => Set<PlantingEntry>();
     public DbSet<Guild> Guilds => Set<Guild>();
     public DbSet<GuildPlant> GuildPlants => Set<GuildPlant>();
+    public DbSet<UserPlant> UserPlants => Set<UserPlant>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -92,6 +93,14 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasKey(gp => new { gp.GuildId, gp.PlantId });
             entity.HasOne<Guild>().WithMany().HasForeignKey(gp => gp.GuildId).OnDelete(DeleteBehavior.Cascade);
             entity.HasOne<Plant>().WithMany().HasForeignKey(gp => gp.PlantId).OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<UserPlant>(entity =>
+        {
+            entity.HasKey(up => new { up.UserId, up.PlantId });
+            entity.HasOne<User>().WithMany().HasForeignKey(up => up.UserId).OnDelete(DeleteBehavior.Cascade);
+            entity.HasOne<Plant>().WithMany().HasForeignKey(up => up.PlantId).OnDelete(DeleteBehavior.Restrict);
+            entity.Property(up => up.AddedAtUtc).HasDefaultValueSql("now() at time zone 'utc'");
         });
 
         modelBuilder.Entity<User>().HasData(new User

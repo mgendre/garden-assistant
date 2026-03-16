@@ -29,7 +29,10 @@
                 @if (conflict.mechanisms?.length) {
                   <div class="conflict-mechanisms">
                     @for (m of conflict.mechanisms; track $index) {
-                      <span class="mechanism-chip mechanism-red">{{ getMechanismTranslationKey(m) | translate }}</span>
+                      <span class="mechanism-chip mechanism-red"
+                        (click)="openMechanismInfo(m); $event.stopPropagation()">
+                        {{ getMechanismTranslationKey(m) | translate }}
+                      </span>
                     }
                   </div>
                 }
@@ -44,11 +47,11 @@
       <div class="companion-section-header">
         <span>🤝</span>
         <span [translate]="'Companions.GoodTitle'"></span>
-        <span class="stat-badge stat-green">{{ recs.goodCompanions?.length ?? 0 }}</span>
+        <span class="stat-badge stat-green">{{ store.goodCompanions().length }}</span>
       </div>
       <div class="companion-list">
-        @if (recs.goodCompanions?.length) {
-          @for (companion of recs.goodCompanions; track companion.plantId) {
+        @if (store.goodCompanions().length) {
+          @for (companion of store.goodCompanions(); track companion.plantId) {
             <div class="companion-item" (click)="onCompanionClick(companion)">
               <span class="companion-icon">{{ store.getPlantEmojiById(companion.plantId) }}</span>
               <div class="companion-info">
@@ -57,12 +60,18 @@
                 @if (companion.mechanisms?.length) {
                   <div class="companion-mechanisms">
                     @for (m of companion.mechanisms; track $index) {
-                      <span
-                        class="mechanism-chip mechanism-green">{{ getMechanismTranslationKey(m) | translate }}</span>
+                      <span class="mechanism-chip mechanism-green"
+                        (click)="openMechanismInfo(m); $event.stopPropagation()">
+                        {{ getMechanismTranslationKey(m) | translate }}
+                      </span>
                     }
                   </div>
                 }
               </div>
+              @if (myPlantsStore.isSaved(companion.plantId)) {
+                <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
+              }
+              <fa-icon class="plant-info-btn" [icon]="faInfo" (click)="openPlantDetail(companion.plantId, $event)"></fa-icon>
             </div>
           }
         } @else {
@@ -88,11 +97,15 @@
                 @if (avoid.mechanisms?.length) {
                   <div class="avoid-mechanisms">
                     @for (m of avoid.mechanisms; track $index) {
-                      <span class="mechanism-chip mechanism-red">{{ getMechanismTranslationKey(m) | translate }}</span>
+                      <span class="mechanism-chip mechanism-red"
+                        (click)="openMechanismInfo(m); $event.stopPropagation()">
+                        {{ getMechanismTranslationKey(m) | translate }}
+                      </span>
                     }
                   </div>
                 }
               </div>
+              <fa-icon class="plant-info-btn" [icon]="faInfo" (click)="openPlantDetail(avoid.plantId, $event)"></fa-icon>
             </div>
           }
         </div>

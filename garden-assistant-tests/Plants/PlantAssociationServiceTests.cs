@@ -55,8 +55,9 @@ public class PlantAssociationServiceTests : DatabaseTestBase
 
         var result = await _sut.GetForPlantAsync(sourceId);
 
-        result.Count().ShouldBe(1);
-        result.First().SourcePlantId.ShouldBe(sourceId);
+        var plantAssociationDtos = result as PlantAssociationDto[] ?? result.ToArray();
+        plantAssociationDtos.Length.ShouldBe(1);
+        plantAssociationDtos.First().SourcePlantId.ShouldBe(sourceId);
     }
 
     [Fact]
@@ -77,8 +78,9 @@ public class PlantAssociationServiceTests : DatabaseTestBase
 
         var result = await _sut.GetForPlantAsync(targetId);
 
-        result.Count().ShouldBe(1);
-        result.First().TargetPlantId.ShouldBe(targetId);
+        var plantAssociationDtos = result as PlantAssociationDto[] ?? result.ToArray();
+        plantAssociationDtos.Length.ShouldBe(1);
+        plantAssociationDtos.First().TargetPlantId.ShouldBe(targetId);
     }
 
     [Fact]

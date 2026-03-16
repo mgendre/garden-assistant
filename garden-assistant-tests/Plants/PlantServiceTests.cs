@@ -18,15 +18,16 @@ public class PlantServiceTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetAllAsync_WhenNoPlantsExist_ShouldReturnEmpty()
+    public async Task GetAllAsync_WhenNoPlantsExist_ShouldReturnEmptyWithZeroCount()
     {
         var result = await _sut.GetAllAsync();
 
-        result.ShouldBeEmpty();
+        result.Items.ShouldBeEmpty();
+        result.TotalCount.ShouldBe(0);
     }
 
     [Fact]
-    public async Task GetAllAsync_WhenPlantsExist_ShouldReturnAll()
+    public async Task GetAllAsync_WhenPlantsExist_ShouldReturnAllWithCount()
     {
         DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomato" });
         DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Basil" });
@@ -34,7 +35,8 @@ public class PlantServiceTests : DatabaseTestBase
 
         var result = await _sut.GetAllAsync();
 
-        result.Count().ShouldBe(2);
+        result.Items.Count().ShouldBe(2);
+        result.TotalCount.ShouldBe(2);
     }
 
     [Fact]
@@ -110,54 +112,58 @@ public class PlantServiceTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task SearchAsync_WhenQueryMatchesName_ShouldReturnMatch()
+    public async Task GetAllAsync_WhenSearchMatchesName_ShouldReturnMatch()
     {
         DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate" });
         DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Basilic" });
         await DbContext.SaveChangesAsync();
 
-        var result = await _sut.SearchAsync("tom");
+        var result = await _sut.GetAllAsync("tom");
 
-        result.Count().ShouldBe(1);
-        result.First().Name.ShouldBe("Tomate");
+        result.Items.Count().ShouldBe(1);
+        result.Items.First().Name.ShouldBe("Tomate");
+        result.TotalCount.ShouldBe(1);
     }
 
     [Fact]
-    public async Task SearchAsync_WhenQueryMatchesScientificName_ShouldReturnMatch()
+    public async Task GetAllAsync_WhenSearchMatchesScientificName_ShouldReturnMatch()
     {
         DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate", ScientificName = "Solanum lycopersicum" });
         await DbContext.SaveChangesAsync();
 
-        var result = await _sut.SearchAsync("solanum");
+        var result = await _sut.GetAllAsync("solanum");
 
-        result.Count().ShouldBe(1);
-        result.First().Name.ShouldBe("Tomate");
+        result.Items.Count().ShouldBe(1);
+        result.Items.First().Name.ShouldBe("Tomate");
+        result.TotalCount.ShouldBe(1);
     }
 
     [Fact]
-    public async Task SearchAsync_WhenQueryIsCaseInsensitive_ShouldReturnMatch()
+    public async Task GetAllAsync_WhenSearchIsCaseInsensitive_ShouldReturnMatch()
     {
         DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate" });
         await DbContext.SaveChangesAsync();
 
-        var result = await _sut.SearchAsync("TOMATE");
+        var result = await _sut.GetAllAsync("TOMATE");
 
-        result.Count().ShouldBe(1);
+        result.Items.Count().ShouldBe(1);
+        result.TotalCount.ShouldBe(1);
     }
 
     [Fact]
-    public async Task SearchAsync_WhenNoMatch_ShouldReturnEmpty()
+    public async Task GetAllAsync_WhenSearchHasNoMatch_ShouldReturnEmptyWithZeroCount()
     {
         DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate" });
         await DbContext.SaveChangesAsync();
 
-        var result = await _sut.SearchAsync("xyz");
+        var result = await _sut.GetAllAsync("xyz");
 
-        result.ShouldBeEmpty();
+        result.Items.ShouldBeEmpty();
+        result.TotalCount.ShouldBe(0);
     }
 
     [Fact]
-    public async Task SearchAsync_ShouldLimitTo20Results()
+    public async Task GetAllAsync_WhenSearchExceedsLimit_ShouldReturnTotalCountGreaterThanItems()
     {
         for (var i = 0; i < 25; i++)
         {
@@ -165,8 +171,9 @@ public class PlantServiceTests : DatabaseTestBase
         }
         await DbContext.SaveChangesAsync();
 
-        var result = await _sut.SearchAsync("Plant");
+        var result = await _sut.GetAllAsync("Plant");
 
-        result.Count().ShouldBe(20);
+        result.Items.Count().ShouldBe(20);
+        result.TotalCount.ShouldBe(25);
     }
 }
