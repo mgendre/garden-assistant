@@ -99,19 +99,33 @@
 ## E07 — Mes plantes (liste personnelle)
 
 > Permettre au jardinier de maintenir une liste personnelle de plantes qu'il cultive ou souhaite cultiver, integree au catalogue et aux recommandations de la page Associations.
->
-> **Decision UX en attente :** le nom de la fonctionnalite ("Mes plantes" vs "Favoris") doit etre valide par un review UX.
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
 | [US-043](epics/E07-mes-plantes/US-043-api-mes-plantes.md) | API et persistance "Mes plantes" | Must | 3 | A faire |
-| [US-044](epics/E07-mes-plantes/US-044-store-mes-plantes.md) | Store signal pour "Mes plantes" | Must | 2 | A faire |
-| [US-045](epics/E07-mes-plantes/US-045-page-mes-plantes.md) | Page "Mes plantes" avec liste et gestion | Must | 5 | A faire |
+| [US-044](epics/E07-mes-plantes/US-044-store-mes-plantes.md) | Store signal pour "Mes plantes" | Must | 2 | Done |
+| [US-045](epics/E07-mes-plantes/US-045-page-mes-plantes.md) | Page "Mes plantes" avec liste et gestion | Must | 5 | Done |
 | [US-046](epics/E07-mes-plantes/US-046-info-box-reusable.md) | Composant info-box reutilisable | Should | 2 | A faire |
-| [US-047](epics/E07-mes-plantes/US-047-integration-catalogue-tri.md) | Prioriser "Mes plantes" dans le catalogue | Must | 3 | A faire |
-| [US-048](epics/E07-mes-plantes/US-048-bouton-ajouter-depuis-associations.md) | Ajouter a "Mes plantes" depuis Associations | Must | 2 | A faire |
+| [US-047](epics/E07-mes-plantes/US-047-integration-catalogue-tri.md) | Prioriser "Mes plantes" dans le catalogue | Must | 3 | Done |
+| [US-048](epics/E07-mes-plantes/US-048-bouton-ajouter-depuis-associations.md) | Ajouter a "Mes plantes" depuis Associations | Must | 2 | Done |
 
-**Total E07 : 17 points (0 Done / 17 a faire)**
+**Total E07 : 17 points (12 Done / 5 a faire)**
+
+---
+
+## E08 — Polish UX page Associations
+
+> Ameliorations UX de la page Associations : popups informatifs, fiche detail plante, conteneur visuel de guilde, refactoring Sass et optimisation API.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-049](epics/E08-polish-ux-associations/US-049-badge-info-popup.md) | Popup explicatif sur les badges | Should | 3 | Done |
+| [US-050](epics/E08-polish-ux-associations/US-050-plant-detail-dialog.md) | Fiche detail plante en popup | Should | 2 | Done |
+| [US-051](epics/E08-polish-ux-associations/US-051-guild-container-visual.md) | Conteneur visuel de guilde | Could | 1 | Done |
+| [US-052](epics/E08-polish-ux-associations/US-052-sass-7-1-refactoring.md) | Refactoring styles 7-1 Sass | Should | 3 | Done |
+| [US-053](epics/E08-polish-ux-associations/US-053-limiter-catalogue-api.md) | Limiter le catalogue API a 20 resultats | Must | 1 | Done |
+
+**Total E08 : 10 points (10 Done / 0 a faire)**
 
 ---
 
@@ -125,9 +139,10 @@
 | E04 — Rotations de culture | 30 | 0 | 30 |
 | ~~E05 — Compagnonnage vegetal~~ | ~~19~~ | — | — |
 | E06 — Refonte UI permaculture | 27 | 27 | 0 |
-| E07 — Mes plantes | 17 | 0 | 17 |
-| **Total (actif)** | **125** | **34** | **91** |
+| E07 — Mes plantes | 17 | 12 | 5 |
+| E08 — Polish UX Associations | 10 | 10 | 0 |
+| **Total (actif)** | **135** | **56** | **79** |
 
 ---
 
-*Backlog gere par l'agent Product Owner -- derniere mise a jour : 2026-03-15*
+*Backlog gere par l'agent Product Owner -- derniere mise a jour : 2026-03-16*

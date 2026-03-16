@@ -1,4 +1,4 @@
-<div class="companions-page">
+<div class="page-container">
   <div class="page-header">
     <h1 [translate]="'Companions.Title'"></h1>
     <p class="page-subtitle" [translate]="'Companions.Description'"></p>
@@ -7,15 +7,17 @@
   <div class="three-col">
     <app-plant-catalogue></app-plant-catalogue>
     <div>
-      <app-plant-detail-panel></app-plant-detail-panel>
-      @if (store.guildsForSelectedPlants().length) {
-        <div class="guild-section">
-          <div class="guild-section-title">
+      <div class="guild-container" [class.guild-active]="store.guildsForSelectedPlants().length">
+        @if (store.guildsForSelectedPlants().length) {
+          <div class="guild-container-header">
             <span>🌐</span>
             <span [translate]="'Guilds.SectionTitle'"></span>
           </div>
-          <app-guild-panel></app-guild-panel>
-        </div>
+        }
+        <app-plant-detail-panel></app-plant-detail-panel>
+      </div>
+      @if (store.guildsForSelectedPlants().length) {
+        <app-guild-panel></app-guild-panel>
       }
     </div>
     <app-recommendations-panel></app-recommendations-panel>

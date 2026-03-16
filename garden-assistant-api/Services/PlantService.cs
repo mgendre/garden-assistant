@@ -12,6 +12,8 @@ public class PlantService(AppDbContext dbContext) : IPlantService
     public async Task<IEnumerable<PlantDto>> GetAllAsync()
     {
         return await dbContext.Plants
+            .OrderBy(p => p.Name)
+            .Take(20)
             .Select(p => ToDto(p))
             .ToListAsync();
     }

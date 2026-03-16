@@ -6,18 +6,18 @@
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : Un service `MyPlantStore` (injectable, `providedIn: 'root'`) expose les signaux `myPlants` (liste de `PlantDto`), `myPlantIds` (computed `Set<string>`), et `loading` (boolean).
-- [ ] CA2 : La methode `loadMyPlants()` est appelee au demarrage de l'application (dans le `APP_INITIALIZER` ou equivalent) et remplit le signal `myPlants`.
-- [ ] CA3 : La methode `addPlant(plantId: string)` appelle `POST /api/MyPlants/{plantId}`, puis met a jour le signal localement (optimistic update ou re-fetch).
-- [ ] CA4 : La methode `removePlant(plantId: string)` appelle `DELETE /api/MyPlants/{plantId}`, puis met a jour le signal.
-- [ ] CA5 : La methode `isMyPlant(plantId: string)` retourne un boolean indiquant si la plante est dans la liste.
-- [ ] CA6 : Les erreurs API sont gerees avec un message snackbar traduit (cle `Snackbar.MyPlantAddError`, `Snackbar.MyPlantRemoveError`).
+- [x] CA1 : Un service `MyPlantsStore` (injectable, `providedIn: 'root'`) expose les signaux `plants` (liste de `PlantDto`), `savedIds` (computed `Set<string>`), et les methodes `isSaved(id)`, `toggle(plant)`.
+- [ ] CA2 : ~~La methode `loadMyPlants()` est appelee au demarrage~~ — report a US-043 (API). Actuellement, la persistance utilise `localStorage`.
+- [x] CA3 : La methode `toggle(plant)` ajoute ou retire la plante de la liste et met a jour le signal localement.
+- [x] CA4 : La methode `isSaved(plantId)` retourne un boolean indiquant si la plante est dans la liste.
+- [x] CA5 : Un snackbar de confirmation s'affiche a l'ajout/retrait (cles `Snackbar.PlantAddedToMyPlants`, `Snackbar.PlantRemovedFromMyPlants`).
 
 ### Notes & contraintes
 - Suit le meme pattern que `CompanionStore` (signals, pas d'Observable, pas de NgRx).
-- Le chargement au demarrage doit etre non-bloquant : si l'appel echoue, l'application demarre quand meme avec une liste vide.
-- Un service HTTP `MyPlantService` (avec interface) encapsule les appels API.
+- La persistance est actuellement en `localStorage`. Le passage a l'API sera fait dans US-043.
+- Le store est reutilise par le catalogue, les recommandations et la page "Mes plantes".
 
 ### Estimation
 - **Priorite :** Must
 - **Points :** 2
+- **Statut :** Done

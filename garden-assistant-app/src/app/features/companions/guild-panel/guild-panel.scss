@@ -1,49 +1,4 @@
-@use '../../../../styles/abstracts/variables' as *;
 @reference "tailwindcss";
-
-.guild-panel-grid {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-}
-
-.guild-card {
-  @apply flex flex-col gap-2 p-4 mb-4;
-}
-
-.guild-header {
-  @apply flex items-center gap-2;
-}
-
-.guild-icon {
-  @apply text-lg;
-}
-
-.guild-name {
-  @apply text-sm font-bold;
-  color: #8b3a0f;
-}
-
-.guild-desc {
-  @apply text-xs leading-relaxed;
-  color: #a0521f;
-}
-
-.guild-plants {
-  @apply flex flex-wrap gap-1.5;
-}
-
-.guild-plant-chip {
-  @apply font-semibold rounded-full cursor-pointer transition-all;
-  font-size: 0.6875rem;
-  padding: 0.15rem 0.5rem;
-  background: rgba(244, 132, 95, 0.15);
-  color: #c45f30;
-  border: 1px solid rgba(244, 132, 95, 0.25);
-
-  &:hover {
-    background: rgba(244, 132, 95, 0.3);
-    border-color: #f4845f;
-  }
-}
 
 .btn-pill {
   @apply self-start;

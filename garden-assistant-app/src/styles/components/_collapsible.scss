@@ -1,0 +1,28 @@
+@reference "tailwindcss";
+
+.collapsible-trigger {
+  @apply flex items-center cursor-pointer p-4;
+  transition: background var(--transition-fast);
+
+  &:hover {
+    background: rgba(82, 183, 136, 0.06);
+  }
+}
+
+.collapsible-body {
+  @apply px-5 pb-5 pt-0;
+}
+
+.collapsible-header-content {
+  @apply flex-1 min-w-0;
+}
+
+.chevron {
+  @apply text-sm inline-block flex-shrink-0;
+  color: var(--color-text-muted);
+  transition: transform var(--transition-fast);
+
+  &.expanded {
+    transform: rotate(180deg);
+  }
+}

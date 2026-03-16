@@ -1,6 +1,5 @@
-<div class="my-plants-page">
+<div class="page-container">
   <div class="page-header">
-    <span class="page-category" [translate]="'MyPlants.Category'"></span>
     <h1 [translate]="'MyPlants.Title'"></h1>
     <p class="page-description" [translate]="'MyPlants.Description'"></p>
   </div>
@@ -12,11 +11,7 @@
       @if (store.sortedPlants().length > 0) {
         <div class="plants-list">
           @for (plant of store.sortedPlants(); track plant.id) {
-            <app-plant-card
-              [plant]="plant"
-              [removable]="true"
-              (remove)="store.toggle(plant)">
-            </app-plant-card>
+            <app-plant-card [plant]="plant"></app-plant-card>
           }
         </div>
       } @else if (!store.loading()) {

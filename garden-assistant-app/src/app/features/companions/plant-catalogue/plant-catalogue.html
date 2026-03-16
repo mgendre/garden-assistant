@@ -50,6 +50,10 @@
             <div class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</div>
           }
         </div>
+        @if (myPlantsStore.isSaved(plant.id)) {
+          <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
+        }
+        <fa-icon class="plant-info-btn" [icon]="faInfo" (click)="openPlantDetail(plant, $event)"></fa-icon>
       </div>
     }
 

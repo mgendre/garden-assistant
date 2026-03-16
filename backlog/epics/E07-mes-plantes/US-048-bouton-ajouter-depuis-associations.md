@@ -6,18 +6,17 @@
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : Chaque fiche plante dans le panneau central (detail) affiche un bouton "Ajouter a mes plantes" (icone + texte).
-- [ ] CA2 : Si la plante est deja dans "Mes plantes", le bouton est remplace par un etat "Dans mes plantes" (desactive, style distinct, icone de validation).
-- [ ] CA3 : Cliquer sur le bouton appelle `MyPlantStore.addPlant()` et affiche un snackbar de confirmation ("Plante ajoutee a mes plantes").
-- [ ] CA4 : Apres l'ajout, le bouton passe immediatement a l'etat "Dans mes plantes" (optimistic update).
-- [ ] CA5 : Si l'ajout echoue (erreur API), le bouton revient a l'etat initial et un snackbar d'erreur s'affiche.
-- [ ] CA6 : Le bouton est visible uniquement quand l'utilisateur est authentifie.
+- [x] CA1 : Chaque fiche plante dans le panneau central (PlantCard) affiche un bouton coeur (toggle) en pleine largeur dans le corps de la carte.
+- [x] CA2 : Si la plante est deja dans "Mes plantes", le coeur est plein (solid). Sinon, il est vide (regular).
+- [x] CA3 : Cliquer sur le bouton appelle `MyPlantsStore.toggle()` et affiche un snackbar de confirmation.
+- [x] CA4 : Si la plante est deja sauvee, un dialog de confirmation s'affiche avant le retrait.
+- [x] CA5 : L'etat du bouton se met a jour immediatement (optimistic update via signal).
 
 ### Notes & contraintes
-- Le bouton s'integre dans le composant `PlantCard` existant ou dans le `PlantDetailPanel`.
-- Les cles de traduction : `MyPlants.AddButton`, `MyPlants.AlreadyAdded`, `Snackbar.PlantAddedToMyPlants`.
-- **Decision UX en attente :** le wording du bouton ("Ajouter a mes plantes" vs "Ajouter aux favoris") depend de la decision de nommage globale.
+- Le bouton est integre dans le composant `PlantCard` existant (dans le corps du collapsible, pas dans le header).
+- Les cles de traduction : `MyPlants.AddButton`, `MyPlants.RemoveButton`, `Snackbar.PlantAddedToMyPlants`.
 
 ### Estimation
 - **Priorite :** Must
 - **Points :** 2
+- **Statut :** Done

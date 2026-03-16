@@ -1,4 +1,4 @@
-import { Component, input, output, inject } from '@angular/core';
+import { Component, input, output, inject, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -9,6 +9,7 @@ import { PlantDto, SunRequirement, WaterNeeds, LifeCycle } from '../../../api/ga
 import { CompanionStore } from '../../../features/companions/companion.store';
 import { MyPlantsStore } from '../../../features/my-plants/my-plants.store';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog';
+import { BadgeInfoDialog, BadgeInfoDialogData } from '../badge-info-dialog/badge-info-dialog';
 import { Collapsible } from '../collapsible/collapsible';
 
 @Component({
@@ -16,10 +17,13 @@ import { Collapsible } from '../collapsible/collapsible';
   standalone: true,
   imports: [TranslateModule, FontAwesomeModule, Collapsible],
   templateUrl: './plant-card.html',
-  styleUrl: './plant-card.scss'
+  styleUrl: './plant-card.scss',
+  encapsulation: ViewEncapsulation.None,
+  host: { class: 'plant-card' }
 })
 export class PlantCard {
   readonly plant = input.required<PlantDto>();
+  readonly initialExpanded = input(false);
   readonly removable = input(false);
 
   readonly remove = output<void>();
@@ -69,6 +73,35 @@ export class PlantCard {
     if (plant.pollinatorPlant) keys.push('Plant.Trait.Pollinator');
     if (plant.allelopathicRisk) keys.push('Plant.Trait.Allelopathic');
     return keys;
+  }
+
+  openBadgeInfo(titleKey: string, descriptionKey: string): void {
+    this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
+      data: { titleKey, descriptionKey },
+      maxWidth: '400px',
+    });
+  }
+
+  getSunBadgeKey(sun: SunRequirement | undefined): string {
+    switch (sun) {
+      case SunRequirement.FullSun: return 'FullSun';
+      case SunRequirement.PartialShade: return 'PartialShade';
+      case SunRequirement.Shade: return 'Shade';
+      default: return '';
+    }
+  }
+
+  getWaterBadgeKey(water: WaterNeeds | undefined): string {
+    switch (water) {
+      case WaterNeeds.Low: return 'Low';
+      case WaterNeeds.Medium: return 'Medium';
+      case WaterNeeds.High: return 'High';
+      default: return '';
+    }
+  }
+
+  getTraitBadgeKey(translationKey: string): string {
+    return translationKey.replace('Plant.Trait.', '');
   }
 
   async toggleFav(event: Event): Promise<void> {

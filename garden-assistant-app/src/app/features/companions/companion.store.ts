@@ -84,8 +84,17 @@ export class CompanionStore {
   readonly goodCompanions = computed(() => {
     const avoid = this.avoidPlantIds();
     const selected = this.selectedPlantIds();
-    return this.recommendations()?.goodCompanions
+    const myPlants = this.myPlantsStore.plantIds();
+    const filtered = this.recommendations()?.goodCompanions
       ?.filter(c => !avoid.has(c.plantId) && !selected.has(c.plantId)) ?? [];
+    return [...filtered].sort((a, b) => {
+      const aFav = myPlants.has(a.plantId) ? 0 : 1;
+      const bFav = myPlants.has(b.plantId) ? 0 : 1;
+      if (aFav !== bFav) {
+        return aFav - bFav;
+      }
+      return (a.plantName ?? '').localeCompare(b.plantName ?? '', 'fr');
+    });
   });
 
   readonly goodCompanionIds = computed(() =>

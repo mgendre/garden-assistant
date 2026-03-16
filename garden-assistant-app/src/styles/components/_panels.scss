@@ -5,3 +5,7 @@
   border: 1.5px solid rgba(45, 106, 79, 0.1);
   box-shadow: 0 1px 3px rgba(26, 58, 42, 0.05), 0 8px 24px rgba(26, 58, 42, 0.04);
 }
+
+.panel {
+  @include panel;
+}
