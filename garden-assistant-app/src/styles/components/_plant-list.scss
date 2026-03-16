@@ -132,5 +132,9 @@
 @include family-badges;
 
 .plants-scroll {
-  @apply flex flex-col gap-3;
+  @apply flex flex-col;
+
+  .plant-detail + .plant-detail {
+    border-top: 1px solid rgba(45, 106, 79, 0.1);
+  }
 }

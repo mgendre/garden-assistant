@@ -6,15 +6,8 @@
 .plant-card {
   @apply block;
   background: white;
-  border: 1.5px solid rgba(45, 106, 79, 0.1);
   border-radius: $border-radius-base;
   overflow: hidden;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
-
-  &:hover {
-    border-color: rgba(45, 106, 79, 0.2);
-    box-shadow: $shadow-sm;
-  }
 }
 
 .detail-hero-content {
@@ -155,9 +148,4 @@
 
 .plant-detail-dialog {
   @apply flex flex-col gap-4 p-4;
-
-  .plant-card {
-    border: none;
-    box-shadow: none;
-  }
 }
