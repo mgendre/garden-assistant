@@ -140,7 +140,22 @@
     "PlantsTitle": "Plantes de la guilde",
     "ScientificName": "Nom latin",
     "SectionTitle": "Guildes associ\u00e9es",
-    "Add": "Tout ajouter"
+    "Add": "Tout ajouter",
+    "UserSectionTitle": "Mes guildes",
+    "OfficialSectionTitle": "Guildes officielles",
+    "Create": "Cr\u00e9er une guilde",
+    "Edit": "Modifier",
+    "Delete": "Supprimer",
+    "Open": "Ouvrir",
+    "ConfirmDeleteTitle": "Supprimer la guilde",
+    "ConfirmDeleteMessage": "\u00cates-vous s\u00fbr de vouloir supprimer \u00ab {{name}} \u00bb ?",
+    "FormEditTitle": "Modifier la guilde",
+    "FormName": "Nom de la guilde",
+    "FormDescription": "Description (optionnel)",
+    "FormCancel": "Annuler",
+    "FormSave": "Enregistrer",
+    "Saving": "Enregistrement\u2026",
+    "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e."
   },
   "MyPlants": {
     "Category": "Collection",

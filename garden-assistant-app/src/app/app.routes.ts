@@ -9,5 +9,9 @@ export const routes: Routes = [
   {
     path: 'mes-plantes',
     loadComponent: () => import('./features/my-plants/my-plants').then(m => m.MyPlants)
+  },
+  {
+    path: 'guilds',
+    loadComponent: () => import('./features/guilds/guilds').then(m => m.Guilds)
   }
 ];

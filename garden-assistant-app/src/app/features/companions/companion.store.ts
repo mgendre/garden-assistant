@@ -6,8 +6,12 @@ import {
   GuildDetailDto,
   GuildInfoDto,
   AssociationMechanism,
+  CreateGuildRequest,
+  UpdateGuildRequest,
 } from '../../api/garden-assistant-api';
 import { CompanionService } from './companion.service';
+import { GuildService } from '../guilds/guild.service';
+import { GuildStore } from '../guilds/guild.store';
 import { MyPlantsStore } from '../my-plants/my-plants.store';
 
 const FAMILY_EMOJI_MAP: Record<string, string> = {
@@ -60,6 +64,8 @@ const MECHANISM_KEY_MAP: Record<number, string> = {
 @Injectable({ providedIn: 'root' })
 export class CompanionStore {
   private readonly service = inject(CompanionService);
+  private readonly guildService = inject(GuildService);
+  private readonly guildStore = inject(GuildStore);
   private readonly myPlantsStore = inject(MyPlantsStore);
 
   private readonly destroyRef = inject(DestroyRef);
@@ -76,6 +82,14 @@ export class CompanionStore {
   readonly plantsLoading = signal(false);
   readonly guildDetails = signal<Map<string, GuildDetailDto>>(new Map());
   readonly guildLoading = signal<string | null>(null);
+
+  readonly editingGuild = signal<GuildDetailDto | null>(null);
+  readonly guildName = signal('');
+  readonly guildDescription = signal('');
+  readonly guildSaving = signal(false);
+
+  readonly isEditingGuild = computed(() => this.editingGuild() !== null);
+  readonly isNewGuild = computed(() => !this.editingGuild()?.id);
 
 
   readonly selectedPlantIds = computed(() =>
@@ -220,6 +234,65 @@ export class CompanionStore {
 
   clearSelection(): void {
     this.selectedPlants.set([]);
+    this.clearGuildEditing();
+  }
+
+  loadGuildForEditing(guild: GuildDetailDto): void {
+    this.clearSelection();
+    this.editingGuild.set(guild);
+    this.guildName.set(guild.name ?? '');
+    this.guildDescription.set(guild.description ?? '');
+    for (const guildPlant of guild.plants ?? []) {
+      const plant = this.plants().find(p => p.id === guildPlant.id);
+      if (plant) {
+        this.selectedPlants.update(list => [...list, plant]);
+      }
+    }
+  }
+
+  startNewGuild(): void {
+    this.clearSelection();
+    this.editingGuild.set({ id: undefined, name: '', description: '' });
+    this.guildName.set('');
+    this.guildDescription.set('');
+  }
+
+  clearGuildEditing(): void {
+    this.editingGuild.set(null);
+    this.guildName.set('');
+    this.guildDescription.set('');
+  }
+
+  async saveGuild(): Promise<void> {
+    const plantIds = this.selectedPlants().map(p => p.id!).filter(Boolean);
+    if (plantIds.length === 0 || !this.guildName()) {
+      return;
+    }
+
+    this.guildSaving.set(true);
+    try {
+      const editing = this.editingGuild();
+      if (editing?.id) {
+        const request: UpdateGuildRequest = {
+          name: this.guildName(),
+          description: this.guildDescription() || undefined,
+          plantIds,
+        };
+        const updated = await this.guildService.update(editing.id, request);
+        this.editingGuild.set(updated);
+      } else {
+        const request: CreateGuildRequest = {
+          name: this.guildName(),
+          description: this.guildDescription() || undefined,
+          plantIds,
+        };
+        const created = await this.guildService.create(request);
+        this.editingGuild.set(created);
+      }
+      await this.guildStore.load();
+    } finally {
+      this.guildSaving.set(false);
+    }
   }
 
   setSearch(query: string): void {

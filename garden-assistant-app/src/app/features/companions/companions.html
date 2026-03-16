@@ -11,10 +11,47 @@
         @if (store.selectedPlants().length) {
           <div class="guild-container-header">
             <span>🌱</span>
-            <span [translate]="'Companions.NewGuild'"></span>
+            @if (store.editingGuild(); as guild) {
+              <span>{{ guild.id ? ('Guilds.FormEditTitle' | translate) : ('Companions.NewGuild' | translate) }}</span>
+            } @else {
+              <span [translate]="'Companions.NewGuild'"></span>
+            }
+          </div>
+        }
+        @if (store.editingGuild() !== null) {
+          <div class="guild-form">
+            <input
+              #guildNameInput
+              type="text"
+              class="guild-form-input"
+              [placeholder]="'Guilds.FormName' | translate"
+              [value]="store.guildName()"
+              (input)="store.guildName.set(guildNameInput.value)" />
+            <textarea
+              #guildDescInput
+              class="guild-form-textarea"
+              rows="2"
+              [placeholder]="'Guilds.FormDescription' | translate"
+              [value]="store.guildDescription()"
+              (input)="store.guildDescription.set(guildDescInput.value)"></textarea>
           </div>
         }
         <app-plant-detail-panel></app-plant-detail-panel>
+        @if (store.editingGuild() !== null && store.selectedPlants().length > 0) {
+          <div class="guild-form-actions">
+            <button
+              class="btn-pill btn-pill-muted"
+              (click)="store.clearSelection()"
+              [translate]="'Guilds.FormCancel'">
+            </button>
+            <button
+              class="btn-pill btn-pill-earth"
+              [disabled]="!store.guildName() || store.guildSaving()"
+              (click)="store.saveGuild()">
+              {{ (store.guildSaving() ? 'Guilds.Saving' : 'Guilds.FormSave') | translate }}
+            </button>
+          </div>
+        }
       </div>
       @if (store.guildsForSelectedPlants().length) {
         <div class="guild-container guild-active">

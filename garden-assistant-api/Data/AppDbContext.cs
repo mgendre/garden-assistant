@@ -86,6 +86,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasKey(g => g.Id);
             entity.Property(g => g.Name).IsRequired().HasMaxLength(256);
             entity.Property(g => g.Description).HasMaxLength(2000);
+            entity.HasOne<User>().WithMany().HasForeignKey(g => g.UserId).OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<GuildPlant>(entity =>

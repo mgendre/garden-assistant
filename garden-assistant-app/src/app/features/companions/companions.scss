@@ -16,3 +16,50 @@
   border-bottom: 1.5px solid #d8f3dc;
   background: rgba(244, 132, 95, 0.06);
 }
+
+.guild-form {
+  @apply flex flex-col gap-3 px-5 py-4;
+  border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+}
+
+.guild-form-input {
+  @apply w-full rounded-lg text-sm font-medium;
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid rgba(45, 106, 79, 0.15);
+  background: var(--color-parchment);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast);
+
+  &:focus {
+    outline: none;
+    border-color: rgba(45, 106, 79, 0.4);
+  }
+
+  &::placeholder {
+    color: var(--color-text-muted);
+    font-weight: normal;
+  }
+}
+
+.guild-form-textarea {
+  @apply w-full rounded-lg text-sm resize-none;
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid rgba(45, 106, 79, 0.15);
+  background: var(--color-parchment);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast);
+
+  &:focus {
+    outline: none;
+    border-color: rgba(45, 106, 79, 0.4);
+  }
+
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+}
+
+.guild-form-actions {
+  @apply flex items-center justify-end gap-3 px-5 py-4;
+  border-top: 1px solid rgba(45, 106, 79, 0.1);
+}

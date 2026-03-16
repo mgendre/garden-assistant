@@ -1,0 +1,84 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 [translate]="'Guilds.Title'"></h1>
+    <p class="page-subtitle" [translate]="'Guilds.Description'"></p>
+  </div>
+
+  <div class="guilds-content">
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title" [translate]="'Guilds.UserSectionTitle'"></h2>
+        <button class="btn-pill btn-pill-earth" (click)="createGuild()">
+          <fa-icon [icon]="faPlus"></fa-icon>
+          <span [translate]="'Guilds.Create'"></span>
+        </button>
+      </div>
+
+      @if (store.userGuilds().length > 0) {
+        <div class="guild-grid">
+          @for (guild of store.userGuilds(); track guild.id) {
+            <div class="guild-card" (click)="editGuild(guild)">
+              <div class="guild-card-header">
+                <span class="guild-card-icon">🌱</span>
+                <span class="guild-card-name">{{ guild.name }}</span>
+              </div>
+              @if (guild.description) {
+                <p class="guild-card-desc">{{ guild.description }}</p>
+              }
+              <div class="guild-card-footer">
+                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plantCount } }}</span>
+                <div class="guild-card-actions">
+                  <button class="icon-btn" (click)="editGuild(guild); $event.stopPropagation()" [attr.aria-label]="'Guilds.Edit' | translate">
+                    <fa-icon [icon]="faPen"></fa-icon>
+                  </button>
+                  <button class="icon-btn icon-btn-danger" (click)="deleteGuild(guild, $event)" [attr.aria-label]="'Guilds.Delete' | translate">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+      } @else if (!store.loading()) {
+        <div class="empty-state">
+          <div class="empty-state-icon">🌱</div>
+          <p class="empty-state-text" [translate]="'Guilds.UserEmptyDesc'"></p>
+        </div>
+      }
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title" [translate]="'Guilds.OfficialSectionTitle'"></h2>
+      </div>
+
+      @if (store.officialGuilds().length > 0) {
+        <div class="guild-grid">
+          @for (guild of store.officialGuilds(); track guild.id) {
+            <div class="guild-card" (click)="openInCompanions(guild)">
+              <div class="guild-card-header">
+                <span class="guild-card-icon">🌐</span>
+                <span class="guild-card-name">{{ guild.name }}</span>
+              </div>
+              @if (guild.description) {
+                <p class="guild-card-desc">{{ guild.description }}</p>
+              }
+              <div class="guild-card-footer">
+                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plantCount } }}</span>
+                <button class="btn-pill btn-pill-earth btn-pill-sm" (click)="openInCompanions(guild); $event.stopPropagation()">
+                  <fa-icon [icon]="faOpen"></fa-icon>
+                  <span [translate]="'Guilds.Open'"></span>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      } @else if (!store.loading()) {
+        <div class="empty-state">
+          <div class="empty-state-icon">🌐</div>
+          <p class="empty-state-text" [translate]="'Guilds.EmptyDesc'"></p>
+        </div>
+      }
+    </div>
+  </div>
+</div>
