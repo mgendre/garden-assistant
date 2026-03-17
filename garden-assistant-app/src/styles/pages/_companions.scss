@@ -5,7 +5,7 @@
   .guild-container {
     &.guild-active {
       @apply rounded-2xl overflow-hidden;
-      border: 1.5px solid rgba(244, 132, 95, 0.2);
+      border: 1px solid rgba(244, 132, 95, 0.2);
       background: white;
       box-shadow: 0 1px 3px rgba(244, 132, 95, 0.08), 0 8px 24px rgba(244, 132, 95, 0.06);
     }
@@ -15,7 +15,7 @@
     @apply flex items-center gap-2 text-xs font-semibold uppercase px-5 pt-4 pb-3;
     letter-spacing: 0.1em;
     color: var(--color-text-muted);
-    border-bottom: 1.5px solid #d8f3dc;
+    border-bottom: 1px solid #d8f3dc;
     background: rgba(244, 132, 95, 0.06);
   }
 
@@ -27,7 +27,7 @@
   .guild-form-input {
     @apply w-full rounded-lg text-sm font-medium;
     padding: 0.6rem 0.75rem;
-    border: 1.5px solid rgba(45, 106, 79, 0.15);
+    border: 1px solid rgba(45, 106, 79, 0.15);
     background: var(--color-parchment);
     color: var(--color-text);
     transition: border-color var(--transition-fast);
@@ -44,9 +44,9 @@
   }
 
   .guild-form-textarea {
-    @apply w-full rounded-lg text-sm resize-none;
+    @apply w-full rounded-lg text-sm resize-y;
     padding: 0.6rem 0.75rem;
-    border: 1.5px solid rgba(45, 106, 79, 0.15);
+    border: 1px solid rgba(45, 106, 79, 0.15);
     background: var(--color-parchment);
     color: var(--color-text);
     transition: border-color var(--transition-fast);

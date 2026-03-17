@@ -1,4 +1,4 @@
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Companions;
 
 namespace GardenAssistant.Services.Interfaces;
 

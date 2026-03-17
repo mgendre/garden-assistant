@@ -1,28 +1,33 @@
 // 7-1 Sass Architecture
 // ─────────────────────
 
-@use 'abstracts/variables';
-@use 'abstracts/mixins';
+// 1. Abstracts
+@use './abstracts/variables';
+@use './abstracts/mixins';
 
-@use 'base/reset';
-@use 'base/typography';
-@use 'base/page';
+// 2. Vendors (Tailwind is loaded via angular.json → src/styles/tailwind.css)
 
-@use 'components/family-badges';
-@use 'components/badges';
-@use 'components/buttons';
-@use 'components/cards';
-@use 'components/empty-state';
-@use 'components/panels';
-@use 'components/plant-list';
-@use 'components/plant-card';
-@use 'components/collapsible';
-@use 'components/companion-list';
-@use 'components/guilds';
+// 3. Base
+@use './base/reset';
+@use './base/typography';
+@use './base/page';
 
-@use 'layout/header';
+// 4. Layout
+@use './layout/header';
 @use 'layout/layout';
 
-@use 'pages/companions';
+// 5. Components
+@use './components/family-badges';
+@use './components/badges';
+@use './components/buttons';
+@use './components/cards';
+@use './components/empty-state';
+@use './components/panels';
+@use './components/plant-card';
+@use './components/collapsible';
+@use './components/plant-list';
+@use './components/companion-list';
+@use './components/guilds';
 
-// 5. Vendors (Tailwind is loaded via angular.json → src/styles/tailwind.css)
+// 6. Pages
+@use './pages/companions';

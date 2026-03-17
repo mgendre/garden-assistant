@@ -1,6 +1,10 @@
 @use '../abstracts/mixins' as *;
 @reference "tailwindcss";
 
+.flex-col {
+  @apply flex flex-col gap-5;
+}
+
 .two-col {
   @apply flex flex-col gap-5;
 
@@ -19,6 +23,3 @@
   }
 }
 
-.flex-col {
-  @apply flex flex-col gap-5;
-}

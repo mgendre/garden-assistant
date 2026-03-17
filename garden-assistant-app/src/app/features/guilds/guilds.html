@@ -4,19 +4,26 @@
     <p class="page-subtitle" [translate]="'Guilds.Description'"></p>
   </div>
 
+  <div class="guild-toolbar">
+    <app-search-input
+      [placeholder]="'Guilds.SearchPlaceholder' | translate"
+      (valueChange)="searchQuery.set($event)">
+    </app-search-input>
+    <button class="btn-pill btn-pill-earth btn-pill-sm guild-toolbar-btn" (click)="createGuild()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      <span [translate]="'Guilds.Create'"></span>
+    </button>
+  </div>
+
   <div class="guilds-content">
     <div class="section">
       <div class="section-header">
         <h2 class="section-title" [translate]="'Guilds.UserSectionTitle'"></h2>
-        <button class="btn-pill btn-pill-earth" (click)="createGuild()">
-          <fa-icon [icon]="faPlus"></fa-icon>
-          <span [translate]="'Guilds.Create'"></span>
-        </button>
       </div>
 
-      @if (store.userGuilds().length > 0) {
+      @if (filteredUserGuilds().length > 0) {
         <div class="guild-grid">
-          @for (guild of store.userGuilds(); track guild.id) {
+          @for (guild of filteredUserGuilds(); track guild.id) {
             <div class="guild-card" (click)="editGuild(guild)">
               <div class="guild-card-header">
                 <span class="guild-card-icon">🌱</span>
@@ -25,8 +32,17 @@
               @if (guild.description) {
                 <p class="guild-card-desc">{{ guild.description }}</p>
               }
+              @if (guild.plants?.length) {
+                <div class="guild-plant-chips">
+                  @for (plant of guild.plants; track plant.id) {
+                    <span class="guild-plant-chip" (click)="openPlantDetail(plant.id, $event)">
+                      {{ plant.name }}
+                    </span>
+                  }
+                </div>
+              }
               <div class="guild-card-footer">
-                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plantCount } }}</span>
+                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plants?.length ?? 0 } }}</span>
                 <div class="guild-card-actions">
                   <button class="icon-btn" (click)="editGuild(guild); $event.stopPropagation()" [attr.aria-label]="'Guilds.Edit' | translate">
                     <fa-icon [icon]="faPen"></fa-icon>
@@ -52,10 +68,10 @@
         <h2 class="section-title" [translate]="'Guilds.OfficialSectionTitle'"></h2>
       </div>
 
-      @if (store.officialGuilds().length > 0) {
+      @if (filteredOfficialGuilds().length > 0) {
         <div class="guild-grid">
-          @for (guild of store.officialGuilds(); track guild.id) {
-            <div class="guild-card" (click)="openInCompanions(guild)">
+          @for (guild of filteredOfficialGuilds(); track guild.id) {
+            <div class="guild-card official-guild-card">
               <div class="guild-card-header">
                 <span class="guild-card-icon">🌐</span>
                 <span class="guild-card-name">{{ guild.name }}</span>
@@ -63,11 +79,20 @@
               @if (guild.description) {
                 <p class="guild-card-desc">{{ guild.description }}</p>
               }
+              @if (guild.plants?.length) {
+                <div class="guild-plant-chips">
+                  @for (plant of guild.plants; track plant.id) {
+                    <span class="guild-plant-chip" (click)="openPlantDetail(plant.id, $event)">
+                      {{ plant.name }}
+                    </span>
+                  }
+                </div>
+              }
               <div class="guild-card-footer">
-                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plantCount } }}</span>
-                <button class="btn-pill btn-pill-earth btn-pill-sm" (click)="openInCompanions(guild); $event.stopPropagation()">
-                  <fa-icon [icon]="faOpen"></fa-icon>
-                  <span [translate]="'Guilds.Open'"></span>
+                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plants?.length ?? 0 } }}</span>
+                <button class="btn-pill btn-pill-earth btn-pill-sm" (click)="customizeGuild(guild, $event)">
+                  <fa-icon [icon]="faCustomize"></fa-icon>
+                  <span [translate]="'Guilds.Customize'"></span>
                 </button>
               </div>
             </div>

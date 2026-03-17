@@ -9,7 +9,7 @@ import { AuthClient, GardensClient, GuildsClient, PlantAssociationsClient, Plant
 import { environment } from '../environments/environment';
 import { AuthService } from './core/auth/auth.service';
 import { authInterceptor } from './core/auth/auth.interceptor';
-import { StartupService } from './core/startup.service';
+import { StartupService } from './shared/services/startup.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [

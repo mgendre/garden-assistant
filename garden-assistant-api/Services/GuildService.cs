@@ -1,6 +1,6 @@
 using GardenAssistant.Data;
 using GardenAssistant.Data.Entities;
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Guilds;
 using GardenAssistant.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,17 +17,21 @@ public class GuildService(AppDbContext dbContext) : IGuildService
 
         var guildIds = guilds.Select(g => g.Id).ToList();
 
-        var plantCounts = await dbContext.GuildPlants
+        var guildPlants = await dbContext.GuildPlants
             .Where(gp => guildIds.Contains(gp.GuildId))
-            .GroupBy(gp => gp.GuildId)
-            .Select(g => new { GuildId = g.Key, Count = g.Count() })
-            .ToDictionaryAsync(x => x.GuildId, x => x.Count);
+            .Join(dbContext.Plants, gp => gp.PlantId, p => p.Id, (gp, p) => new { gp.GuildId, p.Id, p.Name, p.ScientificName })
+            .OrderBy(x => x.Name)
+            .ToListAsync();
+
+        var plantsByGuild = guildPlants
+            .GroupBy(x => x.GuildId)
+            .ToDictionary(g => g.Key, g => g.Select(x => new GuildPlantMemberDto(x.Id, x.Name, x.ScientificName)).ToList());
 
         return guilds.Select(g => new GuildSummaryDto(
             g.Id,
             g.Name,
             g.Description,
-            plantCounts.GetValueOrDefault(g.Id, 0),
+            plantsByGuild.GetValueOrDefault(g.Id, []),
             g.UserId == null
         ));
     }

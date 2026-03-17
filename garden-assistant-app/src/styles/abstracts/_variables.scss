@@ -1,79 +1,48 @@
-// ─── Typography — Botanical Journal ──────────────────────────────────────────
-$font-display: 'DM Serif Display', Georgia, serif;  // headings — old botanical feel
-$font-body:    'Lato', 'Helvetica Neue', sans-serif; // body — clean, readable outdoors
+@theme {
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-body: 'Lato', 'Helvetica Neue', sans-serif;
 
-$color-forest:       #1a5c1e;
-$color-forest-light: #237227;
-$color-canopy:       #519A66;
-$color-canopy-muted: #6aab7c;
-$color-sage:         #8ec49a;
-$color-moss:         #c2e0c8;
-$color-moss-tint:    #e4f0e6;
-$color-parchment:    #faf8f4;
-$color-cream:        #fefdfb;
-$color-accent:       #FFAA00;
-$color-accent-dark:  #e69900;
-$color-accent-light: #FFD786;
-$color-accent-tint:  #fff4de;
-$color-earth:        #FFAA00;
-$color-earth-dark:   #e69900;
-$color-bark:         #d4c9a8;
-$color-bark-light:   #e8e0d0;
-$color-bark-muted:   #b0a080;
-$color-sand:         #f5f0e8;
-$color-success:      #237227;
-$color-danger:       #9b1c1c;
-$color-warning:      #e69900;
-$color-text:         #1a2e1a;
-$color-text-muted:   #5a7a5a;
-$color-border:       #c2e0c8;
-$color-border-green: #b8d8b0;
-$color-divider:      #e0f0dc;
+  --color-forest: #1a5c1e;
+  --color-forest-light: #237227;
+  --color-canopy: #519a66;
+  --color-canopy-muted: #6aab7c;
+  --color-sage: #8ec49a;
+  --color-moss: #c2e0c8;
+  --color-moss-tint: #e4f0e6;
+  --color-parchment: #faf8f4;
+  --color-cream: #fefdfb;
+  --color-accent: #ffaa00;
+  --color-accent-dark: #e69900;
+  --color-accent-light: #ffd786;
+  --color-accent-tint: #fff4de;
+  --color-earth: #ffaa00;
+  --color-earth-dark: #e69900;
+  --color-bark: #d4c9a8;
+  --color-bark-light: #e8e0d0;
+  --color-bark-muted: #b0a080;
+  --color-sand: #f5f0e8;
+  --color-success: #237227;
+  --color-danger: #9b1c1c;
+  --color-warning: #e69900;
+  --color-text: #1a2e1a;
+  --color-text-muted: #5a7a5a;
+  --color-border: #c2e0c8;
+  --color-border-green: #b8d8b0;
+  --color-divider: #e0f0dc;
 
-// ─── Spacing — 8px grid ───────────────────────────────────────────────────────
-$spacing-unit: 8px;
-$space-xs:  4px;
-$space-sm:  8px;
-$space-md:  16px;
-$space-lg:  24px;
-$space-xl:  32px;
-$space-2xl: 48px;
-$space-3xl: 64px;
+  --radius-sm: 6px;
+  --radius-base: 12px;
+  --radius-lg: 20px;
 
-// ─── Type scale ───────────────────────────────────────────────────────────────
-$font-size-xs:   0.75rem;   // 12px
-$font-size-sm:   0.875rem;  // 14px
-$font-size-base: 1rem;      // 16px
-$font-size-md:   1.125rem;  // 18px
-$font-size-lg:   1.25rem;   // 20px
-$font-size-xl:   1.5rem;    // 24px
-$font-size-2xl:  2rem;      // 32px
-$font-size-3xl:  2.5rem;    // 40px
+  --shadow-sm: 0 1px 4px rgba(30, 61, 30, 0.08);
+  --shadow-base: 0 2px 16px rgba(30, 61, 30, 0.10);
+  --shadow-focus: 0 0 0 3px rgba(74, 139, 74, 0.35);
 
-// ─── Radius ───────────────────────────────────────────────────────────────────
-$border-radius-sm:   6px;
-$border-radius-base: 12px;
-$border-radius-lg:   20px;
-$border-radius-full: 9999px;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
 
-// ─── Shadows ──────────────────────────────────────────────────────────────────
-$shadow-sm:      0 1px 4px rgba(30, 61, 30, 0.08);
-$shadow-base:    0 2px 16px rgba(30, 61, 30, 0.10);
-$shadow-lg:      0 8px 32px rgba(30, 61, 30, 0.15);
-$shadow-focus:   0 0 0 3px rgba(74, 139, 74, 0.35);
-
-// ─── Layout ───────────────────────────────────────────────────────────────────
-$header-height:        64px;
-$header-height-mobile: 56px;
-$content-max-width:    1200px;
-
-// ─── Transitions ──────────────────────────────────────────────────────────────
-$transition-fast: 150ms ease;
-$transition-base: 250ms ease;
-$transition-slow: 400ms ease;
-
-// ─── Z-index ──────────────────────────────────────────────────────────────────
-$z-overlay:        90;
-$z-header:         100;
-$z-mobile-menu:    110;
-$z-mobile-overlay: 105;
+  --z-header: 100;
+  --z-mobile-menu: 110;
+  --z-mobile-overlay: 105;
+}

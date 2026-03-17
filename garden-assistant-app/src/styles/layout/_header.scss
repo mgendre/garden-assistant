@@ -1,25 +1,20 @@
-@use '../abstracts/variables' as *;
 @use '../abstracts/mixins' as *;
 @reference "tailwindcss";
 
-$header-bg: #1a3a2a;
-$nav-active-color: #52b788;
-$nav-active-bg: rgba(82, 183, 136, 0.15);
-
 .shell-header {
   @apply sticky top-0;
-  z-index: $z-header;
-  background: $header-bg;
+  z-index: var(--z-header);
+  background: #1a3a2a;
   box-shadow: 0 2px 20px rgba(26, 58, 42, 0.35);
 }
 
 .header-inner {
   @apply max-w-[1400px] mx-auto flex items-center justify-between px-6;
-  height: $header-height-mobile;
+  height: 56px;
 
   @include respond-to('md') {
     @apply px-12;
-    height: $header-height;
+    height: 64px;
   }
 }
 
@@ -31,14 +26,14 @@ $nav-active-bg: rgba(82, 183, 136, 0.15);
   @apply flex items-center justify-center text-base;
   width: 30px;
   height: 30px;
-  background: $nav-active-color;
+  background: #52b788;
   border-radius: 50% 0 50% 50%;
   box-shadow: 0 0 12px rgba(82, 183, 136, 0.5);
 }
 
 .logo-text {
   @apply text-2xl font-extrabold text-white;
-  font-family: $font-display;
+  font-family: var(--font-display);
   letter-spacing: -0.02em;
 }
 
@@ -65,8 +60,8 @@ $nav-active-bg: rgba(82, 183, 136, 0.15);
     }
 
     &.active {
-      color: $nav-active-color;
-      background: $nav-active-bg;
+      color: #52b788;
+      background: rgba(82, 183, 136, 0.15);
     }
   }
 }
@@ -87,9 +82,9 @@ $nav-active-bg: rgba(82, 183, 136, 0.15);
 
 .mobile-overlay {
   @apply fixed inset-0;
-  top: $header-height-mobile;
+  top: 56px;
   background: rgba(0, 0, 0, 0.4);
-  z-index: $z-mobile-overlay;
+  z-index: var(--z-mobile-overlay);
 
   @include respond-to('md') {
     @apply hidden;
@@ -98,9 +93,9 @@ $nav-active-bg: rgba(82, 183, 136, 0.15);
 
 .mobile-nav {
   @apply fixed left-0 right-0 flex flex-col py-2;
-  top: $header-height-mobile;
-  z-index: $z-mobile-menu;
-  background: $header-bg;
+  top: 56px;
+  z-index: var(--z-mobile-menu);
+  background: #1a3a2a;
   box-shadow: 0 4px 20px rgba(26, 58, 42, 0.3);
 
   @include respond-to('md') {
@@ -118,17 +113,17 @@ $nav-active-bg: rgba(82, 183, 136, 0.15);
     }
 
     &.active {
-      color: $nav-active-color;
-      background: $nav-active-bg;
+      color: #52b788;
+      background: rgba(82, 183, 136, 0.15);
     }
   }
 }
 
 .shell-content {
-  min-height: calc(100vh - #{$header-height-mobile});
+  min-height: calc(100vh - 56px);
   isolation: isolate;
 
   @include respond-to('md') {
-    min-height: calc(100vh - #{$header-height});
+    min-height: calc(100vh - 64px);
   }
 }

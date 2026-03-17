@@ -147,6 +147,8 @@
     "Edit": "Modifier",
     "Delete": "Supprimer",
     "Open": "Ouvrir",
+    "ShowDetails": "Voir les détails",
+    "Customize": "Personnaliser",
     "ConfirmDeleteTitle": "Supprimer la guilde",
     "ConfirmDeleteMessage": "\u00cates-vous s\u00fbr de vouloir supprimer \u00ab {{name}} \u00bb ?",
     "FormEditTitle": "Modifier la guilde",
@@ -155,7 +157,8 @@
     "FormCancel": "Annuler",
     "FormSave": "Enregistrer",
     "Saving": "Enregistrement\u2026",
-    "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e."
+    "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e.",
+    "SearchPlaceholder": "Rechercher par nom, description ou plante\u2026"
   },
   "MyPlants": {
     "Category": "Collection",

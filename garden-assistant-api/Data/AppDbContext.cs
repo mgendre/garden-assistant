@@ -101,7 +101,6 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasKey(up => new { up.UserId, up.PlantId });
             entity.HasOne<User>().WithMany().HasForeignKey(up => up.UserId).OnDelete(DeleteBehavior.Cascade);
             entity.HasOne<Plant>().WithMany().HasForeignKey(up => up.PlantId).OnDelete(DeleteBehavior.Restrict);
-            entity.Property(up => up.AddedAtUtc).HasDefaultValueSql("now() at time zone 'utc'");
         });
 
         modelBuilder.Entity<User>().HasData(new User

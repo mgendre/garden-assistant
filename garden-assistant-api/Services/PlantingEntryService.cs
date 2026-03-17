@@ -1,6 +1,6 @@
 using GardenAssistant.Data;
 using GardenAssistant.Data.Entities;
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Plantings;
 using Microsoft.EntityFrameworkCore;
 
 using GardenAssistant.Services.Interfaces;

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { MyPlantsStore } from './my-plants.store';
+import { MyPlantsStore } from '../../shared/services/my-plants.store';
 import { PlantCard } from '../../shared/ui/plant-card/plant-card';
 import { PlantPicker } from './plant-picker/plant-picker';
 

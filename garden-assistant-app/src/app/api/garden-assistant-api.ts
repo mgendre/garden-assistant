@@ -1017,10 +1017,8 @@ export class PlantsClient {
         this.baseUrl = baseUrl ?? "";
     }
 
-    getAll(q: string | null | undefined): Promise<PaginatedResultOfPlantDto> {
-        let url_ = this.baseUrl + "/api/Plants?";
-        if (q !== undefined && q !== null)
-            url_ += "q=" + encodeURIComponent("" + q) + "&";
+    getAll(): Promise<PlantDto[]> {
+        let url_ = this.baseUrl + "/api/Plants";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -1035,13 +1033,13 @@ export class PlantsClient {
         });
     }
 
-    protected processGetAll(response: Response): Promise<PaginatedResultOfPlantDto> {
+    protected processGetAll(response: Response): Promise<PlantDto[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PaginatedResultOfPlantDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantDto[];
             return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -1049,7 +1047,7 @@ export class PlantsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<PaginatedResultOfPlantDto>(null as any);
+        return Promise.resolve<PlantDto[]>(null as any);
     }
 
     create(request: CreatePlantRequest): Promise<PlantDto> {
@@ -1336,8 +1334,14 @@ export interface GuildSummaryDto {
     id?: string;
     name?: string;
     description?: string | undefined;
-    plantCount?: number;
+    plants?: GuildPlantMemberDto[];
     isOfficial?: boolean;
+}
+
+export interface GuildPlantMemberDto {
+    id?: string;
+    name?: string;
+    scientificName?: string | undefined;
 }
 
 export interface GuildDetailDto {
@@ -1347,12 +1351,6 @@ export interface GuildDetailDto {
     plants?: GuildPlantMemberDto[];
     isOfficial?: boolean;
     isOwner?: boolean;
-}
-
-export interface GuildPlantMemberDto {
-    id?: string;
-    name?: string;
-    scientificName?: string | undefined;
 }
 
 export interface CreateGuildRequest {
@@ -1522,11 +1520,6 @@ export interface CreatePlantingEntryRequest {
     plannedSowDate?: Date | undefined;
     plannedHarvestDate?: Date | undefined;
     notes?: string | undefined;
-}
-
-export interface PaginatedResultOfPlantDto {
-    items?: PlantDto[];
-    totalCount?: number;
 }
 
 export interface PlantDto {

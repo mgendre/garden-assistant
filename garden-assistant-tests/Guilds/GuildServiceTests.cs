@@ -24,7 +24,7 @@ public class GuildServiceTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetAllAsync_WhenGuildsExist_ShouldReturnAllWithPlantCounts()
+    public async Task GetAllAsync_WhenGuildsExist_ShouldReturnAllWithPlants()
     {
         var guildWithPlants = new Guild { Id = Guid.NewGuid(), Name = "Three Sisters" };
         var guildWithoutPlants = new Guild { Id = Guid.NewGuid(), Name = "Herb Spiral" };
@@ -47,12 +47,13 @@ public class GuildServiceTests : DatabaseTestBase
         result.Count.ShouldBe(2);
 
         var threeSisters = result.Single(g => g.Name == "Three Sisters");
-        threeSisters.PlantCount.ShouldBe(3);
+        threeSisters.Plants.Count.ShouldBe(3);
+        threeSisters.Plants.ShouldContain(p => p.Name == "Corn");
         threeSisters.Id.ShouldBe(guildWithPlants.Id);
         threeSisters.IsOfficial.ShouldBeTrue();
 
         var herbSpiral = result.Single(g => g.Name == "Herb Spiral");
-        herbSpiral.PlantCount.ShouldBe(0);
+        herbSpiral.Plants.ShouldBeEmpty();
         herbSpiral.IsOfficial.ShouldBeTrue();
     }
 

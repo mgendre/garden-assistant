@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { CompanionStore } from '../companion.store';
+import { CompanionStore } from '../../../shared/services/companion.store';
 import { PlantCard } from '../../../shared/ui/plant-card/plant-card';
 
 @Component({

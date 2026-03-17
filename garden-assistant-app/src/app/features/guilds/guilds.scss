@@ -1,5 +1,18 @@
 @reference "tailwindcss";
 
+.guild-toolbar {
+  @apply flex items-center gap-3 mb-8;
+
+  app-search-input {
+    @apply flex-1;
+    max-width: 400px;
+  }
+}
+
+.guild-toolbar-btn {
+  @apply flex-shrink-0 flex items-center gap-1;
+}
+
 .guilds-content {
   @apply flex flex-col gap-10;
 }
@@ -15,14 +28,17 @@
 
 .guild-grid {
   @apply grid gap-4;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
+
+  @media (min-width: 640px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1024px) { grid-template-columns: repeat(3, 1fr); }
 }
 
 .guild-card {
   @apply flex flex-col gap-2 rounded-2xl cursor-pointer;
   padding: 1.25rem;
   background: white;
-  border: 1.5px solid rgba(45, 106, 79, 0.1);
+  border: 1px solid rgba(45, 106, 79, 0.1);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 
   &:hover {
@@ -45,8 +61,21 @@
 }
 
 .guild-card-desc {
-  @apply text-sm leading-relaxed line-clamp-2;
+  @apply text-base leading-relaxed;
   color: var(--color-text-muted);
+}
+
+.guild-plant-chips {
+  @apply flex flex-wrap gap-1.5;
+}
+
+.official-guild-card {
+  cursor: default;
+
+  &:hover {
+    border-color: rgba(45, 106, 79, 0.15);
+    box-shadow: none;
+  }
 }
 
 .guild-card-footer {

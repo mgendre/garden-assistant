@@ -1,4 +1,4 @@
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Plants;
 using GardenAssistant.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,9 +11,9 @@ namespace GardenAssistant.Controllers;
 public class PlantsController(IPlantService plantService) : ControllerBase
 {
     [HttpGet]
-    [ProducesResponseType(typeof(PaginatedResult<PlantDto>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAll([FromQuery] string? q = null) =>
-        Ok(await plantService.GetAllAsync(q));
+    [ProducesResponseType(typeof(List<PlantDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll() =>
+        Ok(await plantService.GetAllAsync());
 
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(PlantDto), StatusCodes.Status200OK)]

@@ -1,6 +1,6 @@
 using GardenAssistant.Data.Entities;
 using GardenAssistant.Data.Entities.Enums;
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Plantings;
 using GardenAssistant.Services;
 using GardenAssistant.Tests.Infrastructure;
 using Microsoft.EntityFrameworkCore;

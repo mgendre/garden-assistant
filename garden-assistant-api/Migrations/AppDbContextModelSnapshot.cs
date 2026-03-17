@@ -401,10 +401,8 @@ namespace GardenAssistant.Migrations
                         .HasColumnName("plant_id");
 
                     b.Property<DateTime>("AddedAtUtc")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("added_at_utc")
-                        .HasDefaultValueSql("now() at time zone 'utc'");
+                        .HasColumnName("added_at_utc");
 
                     b.HasKey("UserId", "PlantId")
                         .HasName("pk_user_plants");

@@ -1,6 +1,6 @@
 using GardenAssistant.Data;
 using GardenAssistant.Data.Entities;
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Plants;
 using Microsoft.EntityFrameworkCore;
 
 using GardenAssistant.Services.Interfaces;
@@ -9,26 +9,12 @@ namespace GardenAssistant.Services;
 
 public class PlantService(AppDbContext dbContext) : IPlantService
 {
-    public async Task<PaginatedResult<PlantDto>> GetAllAsync(string? search = null)
+    public async Task<List<PlantDto>> GetAllAsync()
     {
-        var query = dbContext.Plants.AsQueryable();
-
-        if (!string.IsNullOrWhiteSpace(search))
-        {
-            var term = search.ToLower();
-            query = query.Where(p => p.Name.ToLower().Contains(term)
-                                  || (p.ScientificName != null && p.ScientificName.ToLower().Contains(term)));
-        }
-
-        var totalCount = await query.CountAsync();
-
-        var items = await query
+        return await dbContext.Plants
             .OrderBy(p => p.Name)
-            .Take(20)
             .Select(p => ToDto(p))
             .ToListAsync();
-
-        return new PaginatedResult<PlantDto>(items, totalCount);
     }
 
     public async Task<PlantDto?> GetByIdAsync(Guid id)
