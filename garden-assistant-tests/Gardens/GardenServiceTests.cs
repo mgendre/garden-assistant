@@ -1,4 +1,4 @@
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Gardens;
 using GardenAssistant.Data.Entities;
 using GardenAssistant.Services;
 using GardenAssistant.Tests.Infrastructure;

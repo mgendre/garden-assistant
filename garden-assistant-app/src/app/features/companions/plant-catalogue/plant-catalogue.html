@@ -1,17 +1,14 @@
 <div class="panel">
   <div class="panel-header">
     <span class="panel-title" [translate]="'Companions.Catalogue'"></span>
-    <span class="plant-count">{{ store.totalCount() }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
+    <span class="plant-count">{{ plantStore.allPlants().length }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
   </div>
 
   <div class="search-wrap">
-    <fa-icon class="search-icon" [icon]="faSearch"></fa-icon>
-    <input
-      #searchInput
-      type="text"
+    <app-search-input
       [placeholder]="'Companions.SearchPlaceholder' | translate"
-      [value]="store.searchQuery()"
-      (input)="store.setSearch(searchInput.value)" />
+      (valueChange)="store.setSearch($event)">
+    </app-search-input>
   </div>
 
   <div class="sort-wrap">
@@ -32,6 +29,14 @@
       [class.active]="store.sortMode() === 'family'"
       (click)="store.setSort('family')"
       [translate]="'Companions.SortFamily'">
+    </button>
+    <span class="sort-divider"></span>
+    <button
+      class="chip"
+      [class.active]="store.myPlantsOnly()"
+      (click)="store.toggleMyPlantsOnly()">
+      <fa-icon [icon]="faHeartSolid"></fa-icon>
+      <span [translate]="'Companions.MyPlantsOnly'"></span>
     </button>
   </div>
 
@@ -57,7 +62,7 @@
       </div>
     }
 
-    @if (store.filteredPlants().length === 0 && !store.plantsLoading()) {
+    @if (store.filteredPlants().length === 0 && !plantStore.loading()) {
       <div class="empty-state">
         <p class="empty-state-text" [translate]="'Companions.NoResults'"></p>
       </div>

@@ -1,0 +1,26 @@
+@reference "tailwindcss";
+
+.search-field {
+  @apply relative w-full;
+
+  input {
+    @apply w-full rounded-[10px] outline-none text-sm;
+    padding: 0.5rem 0.75rem 0.5rem 2.25rem;
+    border: 1px solid rgba(45, 106, 79, 0.15);
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: white;
+    transition: border-color var(--transition-fast);
+
+    &:focus { border-color: #52b788; }
+    &::placeholder { color: rgba(90, 122, 90, 0.7); }
+  }
+}
+
+.search-field-icon {
+  @apply absolute text-sm pointer-events-none;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+}

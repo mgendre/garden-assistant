@@ -1,0 +1,69 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 [translate]="'Guilds.Title'"></h1>
+    <p class="page-subtitle" [translate]="'Guilds.Description'"></p>
+  </div>
+
+  <div class="guild-toolbar">
+    <app-search-input
+      [placeholder]="'Guilds.SearchPlaceholder' | translate"
+      (valueChange)="searchQuery.set($event)">
+    </app-search-input>
+    <button class="btn-pill btn-pill-outline btn-pill-sm guild-toolbar-btn" (click)="createGuild()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      <span [translate]="'Guilds.Create'"></span>
+    </button>
+  </div>
+
+  <div class="guilds-content">
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title" [translate]="'Guilds.UserSectionTitle'"></h2>
+      </div>
+
+      @if (filteredUserGuilds().length > 0) {
+        <div class="guild-grid">
+          @for (guild of filteredUserGuilds(); track guild.id) {
+            <app-guild-card
+              [guild]="guild"
+              [showDelete]="true"
+              (view)="viewGuild(guild)"
+              (edit)="editGuild(guild)"
+              (delete)="deleteGuild(guild)"
+              (plantClick)="openPlantDetail($event)">
+            </app-guild-card>
+          }
+        </div>
+      } @else if (!store.loading()) {
+        <div class="empty-state">
+          <div class="empty-state-icon">🌱</div>
+          <p class="empty-state-text" [translate]="'Guilds.UserEmptyDesc'"></p>
+        </div>
+      }
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title" [translate]="'Guilds.OfficialSectionTitle'"></h2>
+      </div>
+
+      @if (filteredOfficialGuilds().length > 0) {
+        <div class="guild-grid">
+          @for (guild of filteredOfficialGuilds(); track guild.id) {
+            <app-guild-card
+              [guild]="guild"
+              (view)="viewGuild(guild)"
+              (edit)="editGuild(guild)"
+              (plantClick)="openPlantDetail($event)">
+            </app-guild-card>
+          }
+        </div>
+      } @else if (!store.loading()) {
+        <div class="empty-state">
+          <div class="empty-state-icon">🌐</div>
+          <p class="empty-state-text" [translate]="'Guilds.EmptyDesc'"></p>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -71,8 +71,15 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("character varying(256)")
                         .HasColumnName("name");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
                     b.HasKey("Id")
                         .HasName("pk_guilds");
+
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_guilds_user_id");
 
                     b.ToTable("guilds", (string)null);
                 });
@@ -394,10 +401,8 @@ namespace GardenAssistant.Migrations
                         .HasColumnName("plant_id");
 
                     b.Property<DateTime>("AddedAtUtc")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("timestamp with time zone")
-                        .HasColumnName("added_at_utc")
-                        .HasDefaultValueSql("now() at time zone 'utc'");
+                        .HasColumnName("added_at_utc");
 
                     b.HasKey("UserId", "PlantId")
                         .HasName("pk_user_plants");
@@ -416,6 +421,15 @@ namespace GardenAssistant.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_gardens_users_user_id");
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.Guild", b =>
+                {
+                    b.HasOne("GardenAssistant.Data.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_guilds_users_user_id");
                 });
 
             modelBuilder.Entity("GardenAssistant.Data.Entities.GuildPlant", b =>

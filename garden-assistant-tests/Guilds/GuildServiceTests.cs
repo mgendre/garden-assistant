@@ -8,6 +8,7 @@ namespace GardenAssistant.Tests.Guilds;
 public class GuildServiceTests : DatabaseTestBase
 {
     private readonly GuildService _sut;
+    private readonly Guid _userId = Guid.NewGuid();
 
     public GuildServiceTests()
     {
@@ -17,13 +18,13 @@ public class GuildServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_WhenNoGuilds_ShouldReturnEmpty()
     {
-        var result = await _sut.GetAllAsync();
+        var result = await _sut.GetAllAsync(_userId);
 
         result.ShouldBeEmpty();
     }
 
     [Fact]
-    public async Task GetAllAsync_WhenGuildsExist_ShouldReturnAllWithPlantCounts()
+    public async Task GetAllAsync_WhenGuildsExist_ShouldReturnAllWithPlants()
     {
         var guildWithPlants = new Guild { Id = Guid.NewGuid(), Name = "Three Sisters" };
         var guildWithoutPlants = new Guild { Id = Guid.NewGuid(), Name = "Herb Spiral" };
@@ -41,22 +42,24 @@ public class GuildServiceTests : DatabaseTestBase
         );
         await DbContext.SaveChangesAsync();
 
-        var result = (await _sut.GetAllAsync()).ToList();
+        var result = (await _sut.GetAllAsync(_userId)).ToList();
 
         result.Count.ShouldBe(2);
 
         var threeSisters = result.Single(g => g.Name == "Three Sisters");
-        threeSisters.PlantCount.ShouldBe(3);
+        threeSisters.Plants.Count.ShouldBe(3);
+        threeSisters.Plants.ShouldContain(p => p.Name == "Corn");
         threeSisters.Id.ShouldBe(guildWithPlants.Id);
+        threeSisters.IsOfficial.ShouldBeTrue();
 
         var herbSpiral = result.Single(g => g.Name == "Herb Spiral");
-        herbSpiral.PlantCount.ShouldBe(0);
+        herbSpiral.Plants.ShouldBeEmpty();
+        herbSpiral.IsOfficial.ShouldBeTrue();
     }
 
     [Fact]
     public async Task GetAllAsync_ShouldSortByName()
     {
-        // Arrange
         DbContext.Guilds.AddRange(
             new Guild { Id = Guid.NewGuid(), Name = "Walnut Guild" },
             new Guild { Id = Guid.NewGuid(), Name = "Apple Guild" },
@@ -64,10 +67,8 @@ public class GuildServiceTests : DatabaseTestBase
         );
         await DbContext.SaveChangesAsync();
 
-        // Act
-        var result = (await _sut.GetAllAsync()).ToList();
+        var result = (await _sut.GetAllAsync(_userId)).ToList();
 
-        // Assert
         result.Count.ShouldBe(3);
         result[0].Name.ShouldBe("Apple Guild");
         result[1].Name.ShouldBe("Mulberry Guild");
@@ -77,17 +78,14 @@ public class GuildServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetByIdAsync_WhenNotFound_ShouldReturnNull()
     {
-        // Act
-        var result = await _sut.GetByIdAsync(Guid.NewGuid());
+        var result = await _sut.GetByIdAsync(Guid.NewGuid(), _userId);
 
-        // Assert
         result.ShouldBeNull();
     }
 
     [Fact]
     public async Task GetByIdAsync_WhenFound_ShouldReturnGuildWithPlants()
     {
-        // Arrange
         var guild = new Guild
         {
             Id = Guid.NewGuid(),
@@ -105,10 +103,8 @@ public class GuildServiceTests : DatabaseTestBase
         );
         await DbContext.SaveChangesAsync();
 
-        // Act
-        var result = await _sut.GetByIdAsync(guild.Id);
+        var result = await _sut.GetByIdAsync(guild.Id, _userId);
 
-        // Assert
         result.ShouldNotBeNull();
         result.Id.ShouldBe(guild.Id);
         result.Name.ShouldBe("Three Sisters");
@@ -116,12 +112,13 @@ public class GuildServiceTests : DatabaseTestBase
         result.Plants.Count.ShouldBe(2);
         result.Plants.ShouldContain(p => p.Id == corn.Id && p.Name == "Corn" && p.ScientificName == "Zea mays");
         result.Plants.ShouldContain(p => p.Id == beans.Id && p.Name == "Beans" && p.ScientificName == "Phaseolus vulgaris");
+        result.IsOfficial.ShouldBeTrue();
+        result.IsOwner.ShouldBeFalse();
     }
 
     [Fact]
     public async Task GetByIdAsync_ShouldSortPlantsByName()
     {
-        // Arrange
         var guild = new Guild { Id = Guid.NewGuid(), Name = "Test Guild" };
 
         var squash = new Plant { Id = Guid.NewGuid(), Name = "Squash" };
@@ -137,10 +134,8 @@ public class GuildServiceTests : DatabaseTestBase
         );
         await DbContext.SaveChangesAsync();
 
-        // Act
-        var result = await _sut.GetByIdAsync(guild.Id);
+        var result = await _sut.GetByIdAsync(guild.Id, _userId);
 
-        // Assert
         result.ShouldNotBeNull();
         result.Plants.Count.ShouldBe(3);
         result.Plants[0].Name.ShouldBe("Beans");

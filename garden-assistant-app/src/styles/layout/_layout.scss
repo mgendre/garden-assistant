@@ -1,6 +1,10 @@
 @use '../abstracts/mixins' as *;
 @reference "tailwindcss";
 
+.flex-col {
+  @apply flex flex-col gap-5;
+}
+
 .two-col {
   @apply flex flex-col gap-5;
 
@@ -18,3 +22,4 @@
     grid-template-columns: 280px 1fr 320px;
   }
 }
+

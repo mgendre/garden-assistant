@@ -1,0 +1,52 @@
+<div class="guild-card"
+     [class.guild-card-clickable]="!showOpenButton"
+     (click)="onCardClick()">
+  <div class="guild-card-header">
+    <span class="guild-card-icon">{{ guild.isOfficial ? '🌐' : '🌱' }}</span>
+    <span class="guild-card-name">{{ guild.name }}</span>
+  </div>
+  @if (guild.description) {
+    <p class="guild-card-desc">{{ guild.description }}</p>
+  }
+  @if (guild.plants?.length) {
+    <div class="guild-card-chips">
+      @for (plant of guild.plants; track plant.id) {
+        <span class="guild-plant-chip">
+          <span class="guild-plant-chip-name" (click)="onPlantClick(plant.id, $event)">{{ plant.name }}</span>
+          @if (showPlantAdd) {
+            <span class="guild-plant-chip-add" (click)="onPlantAddClick(plant.id, $event)">
+              <fa-icon [icon]="faPlus"></fa-icon>
+            </span>
+          }
+        </span>
+      }
+    </div>
+  }
+  <div class="guild-card-footer">
+    <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plants?.length ?? 0 } }}</span>
+    <div class="guild-card-actions">
+      @if (showOpenButton) {
+        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="view.emit(); $event.stopPropagation()">
+          <fa-icon [icon]="faView"></fa-icon>
+          <span [translate]="'Guilds.Open'"></span>
+        </button>
+      }
+      @if (guild.isOfficial) {
+        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="onEditClick($event)">
+          <fa-icon [icon]="faCustomize"></fa-icon>
+          <span [translate]="'Guilds.Customize'"></span>
+        </button>
+      } @else {
+        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="onEditClick($event)">
+          <fa-icon [icon]="faPen"></fa-icon>
+          <span [translate]="'Guilds.Edit'"></span>
+        </button>
+      }
+      @if (showDelete) {
+        <button class="icon-btn icon-btn-danger" (click)="onDeleteClick($event)" [attr.aria-label]="'Guilds.Delete' | translate">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      }
+    </div>
+  </div>
+</div>

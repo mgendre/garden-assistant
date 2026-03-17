@@ -1,6 +1,7 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using GardenAssistant.DTOs;
+using GardenAssistant.DTOs.Companions;
+using GardenAssistant.DTOs.Plantings;
 using GardenAssistant.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

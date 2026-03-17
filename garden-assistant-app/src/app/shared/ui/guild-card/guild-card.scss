@@ -1,0 +1,71 @@
+@reference "tailwindcss";
+
+.guild-card {
+  @apply flex flex-col gap-2 rounded-2xl;
+  padding: 1.25rem;
+  background: white;
+  border: 1px solid rgba(45, 106, 79, 0.1);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.guild-card-clickable {
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(45, 106, 79, 0.25);
+    box-shadow: 0 2px 8px rgba(45, 106, 79, 0.08);
+  }
+}
+
+.guild-card-header {
+  @apply flex items-center gap-2;
+}
+
+.guild-card-icon {
+  @apply text-lg;
+}
+
+.guild-card-name {
+  @apply font-semibold text-base;
+  color: var(--color-text);
+}
+
+
+.guild-card-chips {
+  @apply flex flex-wrap gap-1.5;
+}
+
+.guild-card-footer {
+  @apply flex items-center justify-between mt-auto pt-2;
+}
+
+.guild-card-count {
+  @apply text-xs font-medium;
+  color: var(--color-text-muted);
+}
+
+.guild-card-actions {
+  @apply flex flex-wrap items-center gap-1;
+}
+
+.icon-btn {
+  @apply flex items-center justify-center rounded-full cursor-pointer;
+  width: 30px;
+  height: 30px;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    background: rgba(45, 106, 79, 0.08);
+    color: var(--color-text);
+  }
+}
+
+.icon-btn-danger {
+  &:hover {
+    background: #fce4ec;
+    color: var(--color-danger);
+  }
+}

@@ -1,0 +1,9 @@
+<div class="search-field">
+  <fa-icon class="search-field-icon" [icon]="faSearch"></fa-icon>
+  <input
+    #input
+    type="text"
+    [placeholder]="placeholder"
+    (input)="valueChange.emit(input.value)"
+  />
+</div>

@@ -1,0 +1,119 @@
+<div class="guilds-column flex-col">
+  <div class="guild-container" [class.guild-active]="store.selectedPlants().length">
+
+    @if (store.selectedPlants().length) {
+
+      <!-- Viewing mode: name & description as labels -->
+      @if (store.guildMode() === 'viewing') {
+        <div class="guild-container-header">
+          <span>🌱</span>
+          <span>{{ store.guildName() }}</span>
+        </div>
+        @if (store.guildDescription()) {
+          <p class="guild-card-desc guild-view-desc">{{ store.guildDescription() }}</p>
+        }
+      }
+
+      <!-- Creating / Editing mode: form fields -->
+      @if (store.isFormVisible()) {
+        <div class="guild-container-header">
+          <span>🌱</span>
+          @if (store.guildMode() === 'creating') {
+            <span [translate]="'Companions.NewGuild'"></span>
+          } @else {
+            <span [translate]="'Guilds.FormEditTitle'"></span>
+          }
+        </div>
+        <div class="guild-form">
+          <input
+            #guildNameInput
+            type="text"
+            class="guild-form-input"
+            [placeholder]="'Guilds.FormName' | translate"
+            [value]="store.guildName()"
+            (input)="store.guildName.set(guildNameInput.value)" />
+          <textarea
+            #guildDescInput
+            class="guild-form-textarea"
+            rows="5"
+            [placeholder]="'Guilds.FormDescription' | translate"
+            [value]="store.guildDescription()"
+            (input)="store.guildDescription.set(guildDescInput.value)"></textarea>
+        </div>
+      }
+    }
+
+    <!-- Plant detail panel -->
+    <app-plant-detail-panel></app-plant-detail-panel>
+
+    <!-- Mechanisms section -->
+    @if (store.guildMechanisms().length) {
+      <div class="guild-mechanisms">
+        <div class="guild-container-header">
+          <span>🔬</span>
+          <span [translate]="'Guilds.MechanismsTitle'"></span>
+        </div>
+        <div class="guild-mechanisms-chips">
+          @for (m of store.guildMechanisms(); track m) {
+            <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
+              {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+            </span>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Viewing mode: actions below the plant list -->
+    @if (store.guildMode() === 'viewing') {
+      <div class="guild-form-actions">
+        <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
+        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.startGuildEditing()">
+          <fa-icon [icon]="faPen"></fa-icon>
+          <span [translate]="'Guilds.Edit'"></span>
+        </button>
+        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.clearSelection()">
+          <fa-icon [icon]="faClose"></fa-icon>
+          <span [translate]="'Guilds.Close'"></span>
+        </button>
+      </div>
+    }
+
+    <!-- Companions mode: "Create guild" button when ≥2 plants -->
+    @if (store.canCreateGuild()) {
+      <div class="guild-create-action">
+        <button class="btn-pill btn-pill-outline" (click)="store.startGuildCreation()">
+          <fa-icon [icon]="faPlus"></fa-icon>
+          <span [translate]="'Guilds.Create'"></span>
+        </button>
+      </div>
+    }
+
+    <!-- Save/Cancel actions for creating/editing -->
+    @if (store.isFormVisible() && store.selectedPlants().length > 0) {
+      <div class="guild-form-actions">
+        <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
+        <button
+          class="btn-pill btn-pill-outline"
+          (click)="store.cancelGuildEditing()"
+          [translate]="'Guilds.FormCancel'">
+        </button>
+        <button
+          class="btn-pill btn-pill-outline"
+          [disabled]="!store.guildName() || store.guildSaving()"
+          (click)="store.saveGuild()">
+          {{ (store.guildSaving() ? 'Guilds.Saving' : 'Guilds.FormSave') | translate }}
+        </button>
+      </div>
+    }
+  </div>
+
+  @if (store.selectedPlants().length > 0 && store.guildsForSelectedPlants().length) {
+    <div class="guild-container guild-active related-guilds">
+      <div class="guild-container-header">
+        <span>🌐</span>
+        <span [translate]="'Guilds.SectionTitle'"></span>
+      </div>
+      <app-guild-panel></app-guild-panel>
+    </div>
+  }
+</div>

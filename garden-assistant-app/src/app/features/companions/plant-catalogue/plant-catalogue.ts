@@ -2,23 +2,25 @@ import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faMagnifyingGlass, faHeart as faHeartSolid, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import { CompanionStore } from '../companion.store';
-import { MyPlantsStore } from '../../my-plants/my-plants.store';
+import { faHeart as faHeartSolid, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { CompanionStore } from '../../../shared/services/companion.store';
+import { MyPlantsStore } from '../../../shared/services/my-plants.store';
+import { PlantStore } from '../../../shared/services/plant.store';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { SearchInput } from '../../../shared/ui/search-input/search-input';
 import { PlantDto } from '../../../api/garden-assistant-api';
 
 @Component({
   selector: 'app-plant-catalogue',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule],
+  imports: [TranslateModule, FontAwesomeModule, SearchInput],
   templateUrl: './plant-catalogue.html',
   styleUrl: './plant-catalogue.scss'
 })
 export class PlantCatalogue {
   protected readonly store = inject(CompanionStore);
   protected readonly myPlantsStore = inject(MyPlantsStore);
-  protected readonly faSearch = faMagnifyingGlass;
+  protected readonly plantStore = inject(PlantStore);
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faInfo = faCircleInfo;
   private readonly dialog = inject(MatDialog);
