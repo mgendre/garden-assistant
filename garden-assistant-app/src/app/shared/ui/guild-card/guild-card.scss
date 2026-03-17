@@ -30,10 +30,6 @@
   color: var(--color-text);
 }
 
-.guild-card-desc {
-  @apply text-base leading-relaxed;
-  color: var(--color-text-muted);
-}
 
 .guild-card-chips {
   @apply flex flex-wrap gap-1.5;

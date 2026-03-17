@@ -1,5 +1,10 @@
 @reference "tailwindcss";
 
+.guild-card-desc {
+  @apply text-base leading-relaxed;
+  color: var(--color-text-muted);
+}
+
 .guild-plant-chip {
   @apply inline-flex items-center font-semibold rounded-full transition-all;
   font-size: 0.6875rem;
