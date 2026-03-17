@@ -34,8 +34,9 @@
     <button
       class="chip"
       [class.active]="store.myPlantsOnly()"
-      (click)="store.toggleMyPlantsOnly()"
-      [translate]="'Companions.MyPlantsOnly'">
+      (click)="store.toggleMyPlantsOnly()">
+      <fa-icon [icon]="faHeartSolid"></fa-icon>
+      <span [translate]="'Companions.MyPlantsOnly'"></span>
     </button>
   </div>
 
