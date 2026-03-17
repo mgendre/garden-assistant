@@ -27,6 +27,12 @@
   border-bottom: 1px solid #d8f3dc;
 }
 
+.sort-divider {
+  width: 1px;
+  height: 16px;
+  background: rgba(45, 106, 79, 0.15);
+}
+
 .chip {
   @apply text-xs font-medium rounded-full cursor-pointer transition-all;
   padding: 0.2rem 0.65rem;

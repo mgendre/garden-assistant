@@ -19,6 +19,12 @@
     background: rgba(244, 132, 95, 0.06);
   }
 
+  .guild-view-desc {
+    @apply text-xs leading-relaxed px-5 py-3;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+  }
+
   .guild-form {
     @apply flex flex-col gap-3 px-5 py-4;
     border-bottom: 1px solid rgba(45, 106, 79, 0.1);

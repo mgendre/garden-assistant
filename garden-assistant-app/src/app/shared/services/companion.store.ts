@@ -5,6 +5,7 @@ import {
   CompanionRecommendationRequest,
   GuildDetailDto,
   GuildInfoDto,
+  GuildSummaryDto,
   AssociationMechanism,
   CreateGuildRequest,
   UpdateGuildRequest,
@@ -73,6 +74,7 @@ export class CompanionStore {
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
   readonly sortMode = signal<'alpha' | 'family' | 'compat'>('alpha');
+  readonly myPlantsOnly = signal(false);
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
   readonly guildDetails = signal<Map<string, GuildDetailDto>>(new Map());
@@ -82,9 +84,15 @@ export class CompanionStore {
   readonly guildName = signal('');
   readonly guildDescription = signal('');
   readonly guildSaving = signal(false);
+  readonly guildMode = signal<'companions' | 'creating' | 'viewing' | 'editing'>('companions');
 
-  readonly isEditingGuild = computed(() => this.editingGuild() !== null);
-  readonly isNewGuild = computed(() => !this.editingGuild()?.id);
+  readonly isFormVisible = computed(() =>
+    this.guildMode() === 'creating' || this.guildMode() === 'editing'
+  );
+
+  readonly canCreateGuild = computed(() =>
+    this.guildMode() === 'companions' && this.selectedPlants().length >= 2
+  );
 
   readonly selectedPlantIds = computed(() =>
     new Set(this.selectedPlants().map(p => p.id))
@@ -120,6 +128,11 @@ export class CompanionStore {
     const selectedIds = this.selectedPlantIds();
 
     let result = this.plantStore.allPlants().filter(p => !selectedIds.has(p.id));
+
+    if (this.myPlantsOnly()) {
+      const myIds = this.myPlantsStore.plantIds();
+      result = result.filter(p => myIds.has(p.id));
+    }
 
     if (query) {
       result = result.filter(p =>
@@ -163,19 +176,18 @@ export class CompanionStore {
       return fav !== 0 ? fav : byName(a, b);
     });
 
-    return sorted;
+    return sorted.slice(0, 20);
   });
 
   readonly guildsForSelectedPlants = computed(() => {
-    const guilds = new Map<string, GuildDetailDto>();
-    for (const plant of this.selectedPlants()) {
-      for (const guild of this.getGuildsForPlant(plant.id)) {
-        if (guild.id) {
-          guilds.set(guild.id, guild);
-        }
-      }
+    const selectedIds = this.selectedPlantIds();
+    if (selectedIds.size === 0) {
+      return [];
     }
-    return Array.from(guilds.values());
+    const editingId = this.editingGuild()?.id;
+    return this.guildStore.guilds()
+      .filter(g => g.id !== editingId && g.plants?.some(p => selectedIds.has(p.id)))
+      .sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'));
   });
 
   constructor() {
@@ -202,19 +214,33 @@ export class CompanionStore {
       return;
     }
     this.selectedPlants.update(list => [...list, plant]);
+    if (this.guildMode() === 'viewing') {
+      this.guildMode.set('editing');
+    }
   }
 
   removePlant(plant: PlantDto): void {
     this.selectedPlants.update(list => list.filter(p => p.id !== plant.id));
+    if (this.selectedPlants().length === 0) {
+      this.editingGuild.set(null);
+      this.guildName.set('');
+      this.guildDescription.set('');
+      this.guildMode.set('companions');
+    } else if (this.guildMode() === 'viewing') {
+      this.guildMode.set('editing');
+    }
   }
 
   clearSelection(): void {
     this.selectedPlants.set([]);
-    this.clearGuildEditing();
+    this.editingGuild.set(null);
+    this.guildName.set('');
+    this.guildDescription.set('');
+    this.guildMode.set('companions');
   }
 
   loadGuildForEditing(guild: GuildDetailDto): void {
-    this.clearSelection();
+    this.selectedPlants.set([]);
     this.editingGuild.set(guild);
     this.guildName.set(guild.name ?? '');
     this.guildDescription.set(guild.description ?? '');
@@ -224,19 +250,44 @@ export class CompanionStore {
         this.selectedPlants.update(list => [...list, plant]);
       }
     }
+    this.guildMode.set('viewing');
   }
 
   startNewGuild(): void {
     this.clearSelection();
+  }
+
+  startGuildCreation(): void {
     this.editingGuild.set({ id: undefined, name: '', description: '' });
     this.guildName.set('');
     this.guildDescription.set('');
+    this.guildMode.set('creating');
   }
 
-  clearGuildEditing(): void {
-    this.editingGuild.set(null);
-    this.guildName.set('');
-    this.guildDescription.set('');
+  startGuildEditing(): void {
+    this.guildMode.set('editing');
+  }
+
+  cancelGuildEditing(): void {
+    if (this.guildMode() === 'creating') {
+      this.editingGuild.set(null);
+      this.guildName.set('');
+      this.guildDescription.set('');
+      this.guildMode.set('companions');
+    } else if (this.guildMode() === 'editing') {
+      const guild = this.editingGuild();
+      this.guildName.set(guild?.name ?? '');
+      this.guildDescription.set(guild?.description ?? '');
+      const originalPlants: PlantDto[] = [];
+      for (const gp of guild?.plants ?? []) {
+        const plant = this.plantStore.allPlants().find(p => p.id === gp.id);
+        if (plant) {
+          originalPlants.push(plant);
+        }
+      }
+      this.selectedPlants.set(originalPlants);
+      this.guildMode.set('viewing');
+    }
   }
 
   async saveGuild(): Promise<void> {
@@ -265,6 +316,7 @@ export class CompanionStore {
         const created = await this.guildService.create(request);
         this.editingGuild.set(created);
       }
+      this.guildMode.set('viewing');
       await this.guildStore.load();
     } finally {
       this.guildSaving.set(false);
@@ -273,6 +325,10 @@ export class CompanionStore {
 
   setSearch(query: string): void {
     this.searchQuery.set(query);
+  }
+
+  toggleMyPlantsOnly(): void {
+    this.myPlantsOnly.update(v => !v);
   }
 
   setSort(mode: 'alpha' | 'family' | 'compat'): void {
@@ -324,7 +380,7 @@ export class CompanionStore {
       .filter(guild => guild.plants?.some(p => p.id === plantId));
   }
 
-  async addGuild(guild: GuildInfoDto | GuildDetailDto): Promise<void> {
+  async addGuild(guild: GuildInfoDto | GuildDetailDto | GuildSummaryDto): Promise<void> {
     const guildId = guild.id;
     if (!guildId || this.guildLoading()) {
       return;

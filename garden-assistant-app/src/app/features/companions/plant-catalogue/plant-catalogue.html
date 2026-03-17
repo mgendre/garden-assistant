@@ -30,6 +30,13 @@
       (click)="store.setSort('family')"
       [translate]="'Companions.SortFamily'">
     </button>
+    <span class="sort-divider"></span>
+    <button
+      class="chip"
+      [class.active]="store.myPlantsOnly()"
+      (click)="store.toggleMyPlantsOnly()"
+      [translate]="'Companions.MyPlantsOnly'">
+    </button>
   </div>
 
   <div class="plant-list">

@@ -1,45 +1,30 @@
 @reference "tailwindcss";
 
-.guild-panel-grid {
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-}
-
-.guild-card {
-  @apply flex flex-col gap-2 p-4 mb-4;
-}
-
-.guild-header {
-  @apply flex items-center gap-2;
-}
-
-.guild-icon {
-  @apply text-lg;
-}
-
-.guild-name {
-  @apply text-sm font-bold;
-  color: #8b3a0f;
-}
-
-.guild-desc {
-  @apply text-xs leading-relaxed;
-  color: #a0521f;
-}
-
-.guild-plants {
-  @apply flex flex-wrap gap-1.5;
-}
-
 .guild-plant-chip {
-  @apply font-semibold rounded-full cursor-pointer transition-all;
+  @apply inline-flex items-center font-semibold rounded-full transition-all;
   font-size: 0.6875rem;
-  padding: 0.15rem 0.5rem;
   background: rgba(244, 132, 95, 0.15);
   color: #c45f30;
   border: 1px solid rgba(244, 132, 95, 0.25);
+}
+
+.guild-plant-chip-name {
+  @apply cursor-pointer;
+  padding: 0.15rem 0 0.15rem 0.5rem;
 
   &:hover {
-    background: rgba(244, 132, 95, 0.3);
-    border-color: #f4845f;
+    text-decoration: underline;
+  }
+}
+
+.guild-plant-chip-add {
+  @apply cursor-pointer flex items-center;
+  padding: 0.15rem 0.35rem 0.15rem 0.2rem;
+  font-size: 0.65rem;
+  color: rgba(196, 95, 48, 0.4);
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-forest);
   }
 }

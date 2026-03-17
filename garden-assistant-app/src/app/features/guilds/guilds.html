@@ -9,7 +9,7 @@
       [placeholder]="'Guilds.SearchPlaceholder' | translate"
       (valueChange)="searchQuery.set($event)">
     </app-search-input>
-    <button class="btn-pill btn-pill-earth btn-pill-sm guild-toolbar-btn" (click)="createGuild()">
+    <button class="btn-pill btn-pill-outline btn-pill-sm guild-toolbar-btn" (click)="createGuild()">
       <fa-icon [icon]="faPlus"></fa-icon>
       <span [translate]="'Guilds.Create'"></span>
     </button>
@@ -24,35 +24,14 @@
       @if (filteredUserGuilds().length > 0) {
         <div class="guild-grid">
           @for (guild of filteredUserGuilds(); track guild.id) {
-            <div class="guild-card" (click)="editGuild(guild)">
-              <div class="guild-card-header">
-                <span class="guild-card-icon">🌱</span>
-                <span class="guild-card-name">{{ guild.name }}</span>
-              </div>
-              @if (guild.description) {
-                <p class="guild-card-desc">{{ guild.description }}</p>
-              }
-              @if (guild.plants?.length) {
-                <div class="guild-plant-chips">
-                  @for (plant of guild.plants; track plant.id) {
-                    <span class="guild-plant-chip" (click)="openPlantDetail(plant.id, $event)">
-                      {{ plant.name }}
-                    </span>
-                  }
-                </div>
-              }
-              <div class="guild-card-footer">
-                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plants?.length ?? 0 } }}</span>
-                <div class="guild-card-actions">
-                  <button class="icon-btn" (click)="editGuild(guild); $event.stopPropagation()" [attr.aria-label]="'Guilds.Edit' | translate">
-                    <fa-icon [icon]="faPen"></fa-icon>
-                  </button>
-                  <button class="icon-btn icon-btn-danger" (click)="deleteGuild(guild, $event)" [attr.aria-label]="'Guilds.Delete' | translate">
-                    <fa-icon [icon]="faTrash"></fa-icon>
-                  </button>
-                </div>
-              </div>
-            </div>
+            <app-guild-card
+              [guild]="guild"
+              [showDelete]="true"
+              (view)="viewGuild(guild)"
+              (edit)="editGuild(guild)"
+              (delete)="deleteGuild(guild)"
+              (plantClick)="openPlantDetail($event)">
+            </app-guild-card>
           }
         </div>
       } @else if (!store.loading()) {
@@ -71,31 +50,12 @@
       @if (filteredOfficialGuilds().length > 0) {
         <div class="guild-grid">
           @for (guild of filteredOfficialGuilds(); track guild.id) {
-            <div class="guild-card official-guild-card">
-              <div class="guild-card-header">
-                <span class="guild-card-icon">🌐</span>
-                <span class="guild-card-name">{{ guild.name }}</span>
-              </div>
-              @if (guild.description) {
-                <p class="guild-card-desc">{{ guild.description }}</p>
-              }
-              @if (guild.plants?.length) {
-                <div class="guild-plant-chips">
-                  @for (plant of guild.plants; track plant.id) {
-                    <span class="guild-plant-chip" (click)="openPlantDetail(plant.id, $event)">
-                      {{ plant.name }}
-                    </span>
-                  }
-                </div>
-              }
-              <div class="guild-card-footer">
-                <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plants?.length ?? 0 } }}</span>
-                <button class="btn-pill btn-pill-earth btn-pill-sm" (click)="customizeGuild(guild, $event)">
-                  <fa-icon [icon]="faCustomize"></fa-icon>
-                  <span [translate]="'Guilds.Customize'"></span>
-                </button>
-              </div>
-            </div>
+            <app-guild-card
+              [guild]="guild"
+              (view)="viewGuild(guild)"
+              (edit)="editGuild(guild)"
+              (plantClick)="openPlantDetail($event)">
+            </app-guild-card>
           }
         </div>
       } @else if (!store.loading()) {

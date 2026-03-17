@@ -1,5 +1,9 @@
 @reference "tailwindcss";
 
-.btn-pill {
-  @apply self-start;
+.guild-panel-search {
+  @apply mb-3;
+}
+
+.guild-panel-grid {
+  @apply flex flex-col gap-3;
 }
