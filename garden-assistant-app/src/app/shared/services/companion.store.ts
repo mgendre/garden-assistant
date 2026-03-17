@@ -1,4 +1,5 @@
 import { Injectable, inject, signal, computed, effect, untracked } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import {
   PlantDto,
   CompanionSearchResultDto,
@@ -70,6 +71,7 @@ export class CompanionStore {
   private readonly guildStore = inject(GuildStore);
   private readonly myPlantsStore = inject(MyPlantsStore);
   private readonly plantStore = inject(PlantStore);
+  private readonly translate = inject(TranslateService);
 
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
@@ -177,6 +179,29 @@ export class CompanionStore {
     });
 
     return sorted.slice(0, 20);
+  });
+
+  readonly guildMechanismsByPlant = computed(() => {
+    const map = new Map<string, number[]>();
+    for (const entry of this.recommendations()?.selectedPlantsMechanisms ?? []) {
+      if (!entry.plantId) { continue; }
+      const sorted = [...(entry.mechanisms ?? [])].sort((a, b) => {
+        const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
+        const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
+        return keyA.localeCompare(keyB, 'fr');
+      });
+      map.set(entry.plantId, sorted);
+    }
+    return map;
+  });
+
+  readonly guildMechanisms = computed(() => {
+    const mechanisms = this.recommendations()?.selectedPlantMechanisms ?? [];
+    return [...mechanisms].sort((a, b) => {
+      const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
+      const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
+      return keyA.localeCompare(keyB, 'fr');
+    });
   });
 
   readonly guildsForSelectedPlants = computed(() => {

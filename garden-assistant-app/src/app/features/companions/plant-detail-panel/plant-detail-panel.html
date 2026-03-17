@@ -14,6 +14,15 @@
           [removable]="true"
           (remove)="store.removePlant(plant)">
         </app-plant-card>
+        @if (store.guildMechanismsByPlant().get(plant.id!); as mechanisms) {
+          <div class="plant-mechanisms">
+            @for (m of mechanisms; track m) {
+              <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
+                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+              </span>
+            }
+          </div>
+        }
       </div>
     }
   </div>

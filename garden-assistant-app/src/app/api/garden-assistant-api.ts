@@ -1428,6 +1428,8 @@ export interface CompanionSearchResultDto {
     goodCompanions?: CompanionRecommendationDto[];
     plantsToAvoid?: PlantToAvoidDto[];
     selectedPlantConflicts?: SelectedPlantConflictDto[];
+    selectedPlantMechanisms?: AssociationMechanism[];
+    selectedPlantsMechanisms?: PlantMechanismsDto[];
 }
 
 export interface CompanionRecommendationDto {
@@ -1457,6 +1459,11 @@ export interface SelectedPlantConflictDto {
     plantAName?: string;
     plantBId?: string;
     plantBName?: string;
+    mechanisms?: AssociationMechanism[];
+}
+
+export interface PlantMechanismsDto {
+    plantId?: string;
     mechanisms?: AssociationMechanism[];
 }
 

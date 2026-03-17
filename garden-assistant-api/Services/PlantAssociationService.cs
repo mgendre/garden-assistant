@@ -31,7 +31,7 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
 
         if (candidates.Count == 0)
         {
-            return new CompanionSearchResultDto([], [], []);
+            return new CompanionSearchResultDto([], [], [], [], []);
         }
 
         var allPlantIds = candidates.Select(c => c.Id).ToList();
@@ -72,7 +72,27 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
             .ToDictionaryAsync(p => p.Id);
         var conflicts = BuildSelectedPlantConflicts(selectedPlantIds, selectedPlants, associations);
 
-        return new CompanionSearchResultDto(goodCompanions, plantsToAvoid, conflicts);
+        var intraGuildAssociations = associations
+            .Where(a => selectedPlantIds.Contains(a.SourcePlantId) && selectedPlantIds.Contains(a.TargetPlantId))
+            .ToList();
+
+        var selectedPlantMechanisms = intraGuildAssociations
+            .Select(a => a.Mechanism)
+            .Distinct()
+            .ToList();
+
+        var selectedPlantsMechanisms = selectedPlantIds
+            .Select(plantId => new PlantMechanismsDto(
+                plantId,
+                intraGuildAssociations
+                    .Where(a => a.SourcePlantId == plantId || a.TargetPlantId == plantId)
+                    .Select(a => a.Mechanism)
+                    .Distinct()
+                    .ToList()))
+            .Where(p => p.Mechanisms.Count > 0)
+            .ToList();
+
+        return new CompanionSearchResultDto(goodCompanions, plantsToAvoid, conflicts, selectedPlantMechanisms, selectedPlantsMechanisms);
     }
 
     public async Task<PlantAssociationDto> CreateAsync(CreatePlantAssociationRequest request)
