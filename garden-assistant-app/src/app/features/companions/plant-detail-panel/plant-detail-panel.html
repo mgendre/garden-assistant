@@ -14,10 +14,20 @@
           [removable]="true"
           (remove)="store.removePlant(plant)">
         </app-plant-card>
-        @if (store.guildMechanismsByPlant().get(plant.id!); as mechanisms) {
+        @if (store.intrinsicMechanismsByPlant().get(plant.id!); as intrinsicMechanisms) {
           <div class="plant-mechanisms">
-            @for (m of mechanisms; track m) {
+            @for (m of intrinsicMechanisms; track m) {
+              <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m)">
+                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+              </span>
+            }
+          </div>
+        }
+        @if (store.relationalMechanismsByPlant().get(plant.id!); as relationalMechanisms) {
+          <div class="plant-mechanisms">
+            @for (m of relationalMechanisms; track m) {
               <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
+                <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
                 {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
               </span>
             }

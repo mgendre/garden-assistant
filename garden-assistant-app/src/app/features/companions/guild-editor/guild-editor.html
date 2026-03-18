@@ -47,15 +47,21 @@
     <app-plant-detail-panel></app-plant-detail-panel>
 
     <!-- Mechanisms section -->
-    @if (store.guildMechanisms().length) {
+    @if (store.guildIntrinsicMechanisms().length || store.guildRelationalOnlyMechanisms().length) {
       <div class="guild-mechanisms">
         <div class="guild-container-header">
           <span>🔬</span>
           <span [translate]="'Guilds.MechanismsTitle'"></span>
         </div>
         <div class="guild-mechanisms-chips">
-          @for (m of store.guildMechanisms(); track m) {
+          @for (m of store.guildIntrinsicMechanisms(); track m) {
+            <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m)">
+              {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+            </span>
+          }
+          @for (m of store.guildRelationalOnlyMechanisms(); track m) {
             <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
+              <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
               {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
             </span>
           }

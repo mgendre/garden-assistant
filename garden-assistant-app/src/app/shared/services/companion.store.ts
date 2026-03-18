@@ -181,7 +181,21 @@ export class CompanionStore {
     return sorted.slice(0, 20);
   });
 
-  readonly guildMechanismsByPlant = computed(() => {
+  readonly intrinsicMechanismsByPlant = computed(() => {
+    const map = new Map<string, number[]>();
+    for (const entry of this.recommendations()?.intrinsicMechanismsByPlant ?? []) {
+      if (!entry.plantId) { continue; }
+      const sorted = [...(entry.mechanisms ?? [])].sort((a, b) => {
+        const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
+        const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
+        return keyA.localeCompare(keyB, 'fr');
+      });
+      map.set(entry.plantId, sorted);
+    }
+    return map;
+  });
+
+  readonly relationalMechanismsByPlant = computed(() => {
     const map = new Map<string, number[]>();
     for (const entry of this.recommendations()?.selectedPlantsMechanisms ?? []) {
       if (!entry.plantId) { continue; }
@@ -195,9 +209,25 @@ export class CompanionStore {
     return map;
   });
 
-  readonly guildMechanisms = computed(() => {
-    const mechanisms = this.recommendations()?.selectedPlantMechanisms ?? [];
-    return [...mechanisms].sort((a, b) => {
+  readonly guildIntrinsicMechanisms = computed(() => {
+    const intrinsic = new Set(
+      (this.recommendations()?.intrinsicMechanismsByPlant ?? [])
+        .flatMap(entry => entry.mechanisms ?? [])
+    );
+    return [...intrinsic].sort((a, b) => {
+      const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
+      const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
+      return keyA.localeCompare(keyB, 'fr');
+    });
+  });
+
+  readonly guildRelationalOnlyMechanisms = computed(() => {
+    const relational = this.recommendations()?.selectedPlantMechanisms ?? [];
+    const intrinsicSet = new Set(
+      (this.recommendations()?.intrinsicMechanismsByPlant ?? [])
+        .flatMap(entry => entry.mechanisms ?? [])
+    );
+    return relational.filter(m => !intrinsicSet.has(m)).sort((a, b) => {
       const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
       const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
       return keyA.localeCompare(keyB, 'fr');

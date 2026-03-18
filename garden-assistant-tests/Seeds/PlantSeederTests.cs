@@ -3,6 +3,7 @@ using GardenAssistant.Data.Entities.Enums;
 using GardenAssistant.Data.Seeders;
 using GardenAssistant.Tests.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using Shouldly;
 
@@ -56,9 +57,6 @@ public class PlantSeederTests : DatabaseTestBase
             "rootDepth": "Medium",
             "sunRequirement": "FullSun",
             "waterNeeds": "Medium",
-            "nitrogenFixer": false,
-            "allelopathicRisk": false,
-            "pollinatorPlant": false,
             "maxAltitudeM": 1000
           },
           {
@@ -73,10 +71,8 @@ public class PlantSeederTests : DatabaseTestBase
             "rootDepth": "Shallow",
             "sunRequirement": "FullSun",
             "waterNeeds": "Medium",
-            "nitrogenFixer": false,
-            "allelopathicRisk": false,
-            "pollinatorPlant": true,
-            "maxAltitudeM": 800
+            "maxAltitudeM": 800,
+            "intrinsicMechanisms": ["PollinatorAttraction"]
           }
         ]
         """);
@@ -103,21 +99,19 @@ public class PlantSeederTests : DatabaseTestBase
             "rootDepth": "Shallow",
             "sunRequirement": "FullSun",
             "waterNeeds": "Medium",
-            "nitrogenFixer": true,
-            "allelopathicRisk": false,
-            "pollinatorPlant": true,
-            "maxAltitudeM": 2500
+            "maxAltitudeM": 2500,
+            "intrinsicMechanisms": ["NitrogenFixation", "PollinatorAttraction"]
           }
         ]
         """);
 
         await CreateSeeder().SeedAsync();
 
-        var plant = DbContext.Plants.Single();
+        var plant = DbContext.Plants.Include(p => p.IntrinsicMechanisms).Single();
         plant.Name.ShouldBe("Trèfle blanc");
         plant.ScientificName.ShouldBe("Trifolium repens");
-        plant.NitrogenFixer.ShouldBeTrue();
-        plant.PollinatorPlant.ShouldBeTrue();
+        plant.IntrinsicMechanisms.ShouldContain(im => im.Mechanism == AssociationMechanism.NitrogenFixation);
+        plant.IntrinsicMechanisms.ShouldContain(im => im.Mechanism == AssociationMechanism.PollinatorAttraction);
         plant.LifeCycle.ShouldBe(LifeCycle.Perennial);
         plant.MaxAltitudeM.ShouldBe(2500);
     }

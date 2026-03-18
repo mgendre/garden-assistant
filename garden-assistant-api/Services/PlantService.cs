@@ -12,6 +12,7 @@ public class PlantService(AppDbContext dbContext) : IPlantService
     public async Task<List<PlantDto>> GetAllAsync()
     {
         return await dbContext.Plants
+            .Include(p => p.IntrinsicMechanisms)
             .OrderBy(p => p.Name)
             .Select(p => ToDto(p))
             .ToListAsync();
@@ -19,7 +20,9 @@ public class PlantService(AppDbContext dbContext) : IPlantService
 
     public async Task<PlantDto?> GetByIdAsync(Guid id)
     {
-        var plant = await dbContext.Plants.FindAsync(id);
+        var plant = await dbContext.Plants
+            .Include(p => p.IntrinsicMechanisms)
+            .FirstOrDefaultAsync(p => p.Id == id);
         return plant is null ? null : ToDto(plant);
     }
 
@@ -37,14 +40,25 @@ public class PlantService(AppDbContext dbContext) : IPlantService
             HeightAtMaturityCm = request.HeightAtMaturityCm,
             RootDepth = request.RootDepth,
             SunRequirement = request.SunRequirement,
-            WaterNeeds = request.WaterNeeds,
-            NitrogenFixer = request.NitrogenFixer,
-            AllelopathicRisk = request.AllelopathicRisk,
-            PollinatorPlant = request.PollinatorPlant
+            WaterNeeds = request.WaterNeeds
         };
 
         dbContext.Plants.Add(plant);
+
+        foreach (var mechanism in request.IntrinsicMechanisms ?? [])
+        {
+            dbContext.PlantIntrinsicMechanisms.Add(new PlantIntrinsicMechanism
+            {
+                PlantId = plant.Id,
+                Mechanism = mechanism
+            });
+        }
+
         await dbContext.SaveChangesAsync();
+
+        plant.IntrinsicMechanisms = await dbContext.PlantIntrinsicMechanisms
+            .Where(pim => pim.PlantId == plant.Id)
+            .ToListAsync();
 
         return ToDto(plant);
     }
@@ -75,8 +89,6 @@ public class PlantService(AppDbContext dbContext) : IPlantService
         p.RootDepth,
         p.SunRequirement,
         p.WaterNeeds,
-        p.NitrogenFixer,
-        p.AllelopathicRisk,
-        p.PollinatorPlant
+        p.IntrinsicMechanisms.Select(im => im.Mechanism).ToList()
     );
 }

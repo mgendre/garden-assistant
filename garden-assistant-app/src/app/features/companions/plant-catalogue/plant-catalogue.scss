@@ -38,3 +38,8 @@
     .plant-icon { background: #fff; }
   }
 }
+
+.plant-mechanisms-inline {
+  @apply flex flex-wrap gap-1;
+  margin-top: 0.25rem;
+}

@@ -88,9 +88,7 @@ public class PlantServiceTests : DatabaseTestBase
             RootDepth.Medium,
             SunRequirement.FullSun,
             WaterNeeds.Low,
-            false,
-            false,
-            true
+            [AssociationMechanism.PollinatorAttraction]
         );
 
         var result = await _sut.CreateAsync(request);
@@ -99,7 +97,7 @@ public class PlantServiceTests : DatabaseTestBase
         result.Name.ShouldBe("Rosemary");
         result.ScientificName.ShouldBe("Salvia rosmarinus");
         result.LifeCycle.ShouldBe(LifeCycle.Perennial);
-        result.PollinatorPlant.ShouldBeTrue();
+        result.IntrinsicMechanisms.ShouldContain(AssociationMechanism.PollinatorAttraction);
         (await DbContext.Plants.CountAsync()).ShouldBe(1);
     }
 

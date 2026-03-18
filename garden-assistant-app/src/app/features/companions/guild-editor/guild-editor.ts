@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPlus, faXmark, faLink } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { PlantDetailPanel } from '../plant-detail-panel/plant-detail-panel';
@@ -20,6 +20,7 @@ export class GuildEditor {
   protected readonly faPen = faPen;
   protected readonly faPlus = faPlus;
   protected readonly faClose = faXmark;
+  protected readonly faLink = faLink;
   private readonly dialog = inject(MatDialog);
 
   openMechanismInfo(mechanism: number): void {

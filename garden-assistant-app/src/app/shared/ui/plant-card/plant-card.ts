@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { firstValueFrom } from 'rxjs';
-import { PlantDto, SunRequirement, WaterNeeds, LifeCycle } from '../../../api/garden-assistant-api';
+import { PlantDto, SunRequirement, WaterNeeds, LifeCycle, AssociationMechanism } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../services/companion.store';
 import { MyPlantsStore } from '../../services/my-plants.store';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog';
@@ -68,12 +68,12 @@ export class PlantCard {
     return `${plant.heightAtMaturityCm} cm`;
   }
 
-  getBadgeKeys(plant: PlantDto): string[] {
-    const keys: string[] = [];
-    if (plant.nitrogenFixer) keys.push('Plant.Trait.NitrogenFixer');
-    if (plant.pollinatorPlant) keys.push('Plant.Trait.Pollinator');
-    if (plant.allelopathicRisk) keys.push('Plant.Trait.Allelopathic');
-    return keys;
+  getIntrinsicMechanisms(plant: PlantDto): AssociationMechanism[] {
+    return plant.intrinsicMechanisms ?? [];
+  }
+
+  hasAllelopathicRisk(plant: PlantDto): boolean {
+    return (plant.intrinsicMechanisms ?? []).includes(AssociationMechanism.RootAllelopathy);
   }
 
   openBadgeInfo(titleKey: string, descriptionKey: string): void {
@@ -99,10 +99,6 @@ export class PlantCard {
       case WaterNeeds.High: return 'High';
       default: return '';
     }
-  }
-
-  getTraitBadgeKey(translationKey: string): string {
-    return translationKey.replace('Plant.Trait.', '');
   }
 
   async toggleFav(event: Event): Promise<void> {

@@ -26,26 +26,36 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
         var records = JsonSerializer.Deserialize<List<PlantSeedRecord>>(json, JsonOptions)
             ?? throw new InvalidOperationException("Failed to deserialize plant seed data.");
 
-        var plants = records.Select(r => new Plant
+        foreach (var r in records)
         {
-            Id = Guid.NewGuid(),
-            Name = r.Name,
-            ScientificName = r.ScientificName,
-            Description = r.Description,
-            Family = r.Family,
-            Genus = r.Genus,
-            LifeCycle = r.LifeCycle,
-            HeightAtMaturityCm = r.HeightAtMaturityCm,
-            RootDepth = r.RootDepth,
-            SunRequirement = r.SunRequirement,
-            WaterNeeds = r.WaterNeeds,
-            NitrogenFixer = r.NitrogenFixer,
-            AllelopathicRisk = r.AllelopathicRisk,
-            PollinatorPlant = r.PollinatorPlant,
-            MaxAltitudeM = r.MaxAltitudeM
-        }).ToList();
+            var plant = new Plant
+            {
+                Id = Guid.NewGuid(),
+                Name = r.Name,
+                ScientificName = r.ScientificName,
+                Description = r.Description,
+                Family = r.Family,
+                Genus = r.Genus,
+                LifeCycle = r.LifeCycle,
+                HeightAtMaturityCm = r.HeightAtMaturityCm,
+                RootDepth = r.RootDepth,
+                SunRequirement = r.SunRequirement,
+                WaterNeeds = r.WaterNeeds,
+                MaxAltitudeM = r.MaxAltitudeM
+            };
 
-        db.Plants.AddRange(plants);
+            db.Plants.Add(plant);
+
+            foreach (var mechanism in r.IntrinsicMechanisms ?? [])
+            {
+                db.PlantIntrinsicMechanisms.Add(new PlantIntrinsicMechanism
+                {
+                    PlantId = plant.Id,
+                    Mechanism = mechanism
+                });
+            }
+        }
+
         await db.SaveChangesAsync();
     }
 
@@ -61,9 +71,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
         RootDepth RootDepth,
         SunRequirement SunRequirement,
         WaterNeeds WaterNeeds,
-        bool NitrogenFixer,
-        bool AllelopathicRisk,
-        bool PollinatorPlant,
-        int? MaxAltitudeM
+        int? MaxAltitudeM,
+        List<AssociationMechanism>? IntrinsicMechanisms
     );
 }

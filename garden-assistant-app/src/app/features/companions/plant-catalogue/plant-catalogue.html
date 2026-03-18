@@ -54,6 +54,15 @@
           @if (plant.family) {
             <div class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</div>
           }
+          @if (plant.intrinsicMechanisms?.length) {
+            <div class="plant-mechanisms-inline">
+              @for (m of plant.intrinsicMechanisms; track m) {
+                <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m, $event)">
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </span>
+              }
+            </div>
+          }
         </div>
         @if (myPlantsStore.isSaved(plant.id)) {
           <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
