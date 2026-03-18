@@ -1,35 +1,106 @@
 # Garden Assistant
 
-Application de gestion de jardin en permaculture — Angular + .NET 10 + PostgreSQL.
+Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL 17.
 
 ## Documentation
 
-- [Vue d'ensemble de la documentation](docs/README.md)
+- [Documentation overview](docs/README.md)
 
-## Démarrage rapide
+## Quick start
 
-### Prérequis
+> **Just want to run the app?** You only need Podman. See [One-command startup](#one-command-startup).
+
+### Prerequisites (local development)
 
 - .NET 10 SDK
 - Node.js 20+
-- PostgreSQL 17
 - Podman
+
+### Database
+
+Start PostgreSQL via Podman Compose from the repository root:
+
+```bash
+cp .env.example .env
+# Edit .env with your credentials
+podman compose up -d db
+```
 
 ### Backend
 
 ```bash
-cd garden-assistant-api
-dotnet user-secrets set "ConnectionStrings:Default" "Host=localhost;Database=garden_assistant;Username=postgres;Password=yourpassword"
-dotnet user-secrets set "Jwt:Key" "votre-clé-secrète-minimum-32-caractères"
-dotnet run
+dotnet user-secrets --project garden-assistant-api set "ConnectionStrings:Default" "Host=localhost;Database=garden_assistant;Username=garden_user;Password=yourpassword"
+dotnet user-secrets --project garden-assistant-api set "Jwt:Key" "your-secret-key-minimum-32-characters"
+dotnet run --project garden-assistant-api
 ```
 
 ### Frontend
 
 ```bash
-cd garden-assistant-app
-npm install
-npm start
+npm install --prefix garden-assistant-app
+npm run start --prefix garden-assistant-app
 ```
 
-L'application est accessible sur `http://localhost:4200`.
+The application is available at `http://localhost:4200`.
+
+## Hosting
+
+The `hosting/` directory contains a production-ready Podman Compose setup with PostgreSQL, the .NET API, the Angular frontend, and Traefik as a reverse proxy. The only prerequisite is **Podman**.
+
+### One-command startup
+
+The startup script creates a `.env` file with generated secrets and starts all services:
+
+```bash
+# Linux / macOS
+./hosting/start.sh
+
+# Windows (PowerShell)
+.\hosting\start.ps1
+```
+
+On first run, the script generates secure random values for `JWT_KEY` and `POSTGRES_PASSWORD`. Edit `hosting/.env` afterwards to set `APP_DOMAIN` and `ACME_EMAIL` if you need TLS.
+
+### Manual setup
+
+All hosting commands run from the `hosting/` directory:
+
+```bash
+cd hosting
+cp .env.prod.example .env
+```
+
+Edit `.env` with your values:
+
+| Variable | Description |
+|---|---|
+| `POSTGRES_DB` | Database name |
+| `POSTGRES_USER` | Database user |
+| `POSTGRES_PASSWORD` | Database password |
+| `APP_DOMAIN` | Domain name (e.g. `garden.example.com`) |
+| `JWT_KEY` | JWT signing key (minimum 32 characters) |
+| `ACME_EMAIL` | Email for Let's Encrypt certificates (TLS only) |
+
+Start the full stack (HTTP, no TLS):
+
+```bash
+podman compose up -d --build
+```
+
+The application is available at `http://<APP_DOMAIN>:8080`.
+
+Start with TLS via Let's Encrypt:
+
+```bash
+podman compose -f docker-compose.yaml -f docker-compose.tls.yaml up -d --build
+```
+
+The application is available at `https://<APP_DOMAIN>:8443`.
+
+To force a complete rebuild from scratch (no cache):
+
+```bash
+podman compose down
+podman compose build --no-cache
+podman compose up -d
+```

@@ -1,91 +1,91 @@
-# Authentification JWT
+# JWT Authentication
 
-## Principe
+## Overview
 
-Garden Assistant utilise un système JWT à deux jetons :
+Garden Assistant uses a two-token JWT system:
 
-| Jeton | Durée | Stockage | Usage |
+| Token | Lifetime | Storage | Purpose |
 |---|---|---|---|
-| **Access token** | 15 min | Mémoire (signal Angular) | Envoyé à chaque requête API |
-| **Refresh token** | 30 jours | Mémoire uniquement | Renouvelle l'access token |
+| **Access token** | 15 min | Memory (Angular signal) | Sent with every API request |
+| **Refresh token** | 30 days | Memory only | Renews the access token |
 
-Les jetons ne sont **jamais** écrits en `localStorage` ni en `sessionStorage` — ils disparaissent à la fermeture de l'onglet.
+Tokens are **never** written to `localStorage` or `sessionStorage` — they are cleared when the browser tab closes.
 
 ---
 
-## Flux de démarrage
+## Bootstrap flow
 
 ```
-App Angular démarre
+Angular app starts
   └─ APP_INITIALIZER → AuthService.initialize()
-       └─ GET /api/auth/token   (pas d'auth requise)
-            └─ Backend retourne { accessToken, refreshToken }
-                 └─ Stockés en mémoire dans AuthService
+       └─ GET /api/auth/token   (no auth required)
+            └─ Backend returns { accessToken, refreshToken }
+                 └─ Stored in memory within AuthService
 ```
 
-Toutes les requêtes API suivantes incluent automatiquement l'en-tête :
+All subsequent API requests automatically include the header:
 ```
 Authorization: Bearer <accessToken>
 ```
 
 ---
 
-## Flux de renouvellement
+## Renewal flow
 
 ```
-Requête API → 401 Unauthorized
-  └─ createAuthFetch() intercepte le 401
+API request → 401 Unauthorized
+  └─ createAuthFetch() intercepts the 401
        └─ POST /api/auth/refresh  { refreshToken }
-            ├─ Succès → nouveaux jetons stockés → requête rejouée une fois
-            └─ Échec  → jetons effacés, requête échoue
+            ├─ Success → new tokens stored → request retried once
+            └─ Failure → tokens cleared, request fails
 ```
 
 ---
 
-## Architecture frontend
+## Frontend architecture
 
 ### `AuthService` (`src/app/core/auth/auth.service.ts`)
 
-| Membre | Type | Rôle |
+| Member | Type | Role |
 |---|---|---|
-| `accessToken` | `Signal<string \| null>` | Jeton courant lisible par les composants |
-| `refreshToken` | `string \| null` (privé) | Jeton de renouvellement, jamais exposé |
-| `initialize()` | `Promise<void>` | Appelé au démarrage via `APP_INITIALIZER` |
-| `refresh()` | `Promise<void>` | Renouvelle les jetons via le refresh token |
-| `createAuthFetch()` | fetch wrapper | Injecté dans chaque client NSwag |
+| `accessToken` | `Signal<string \| null>` | Current token readable by components |
+| `refreshToken` | `string \| null` (private) | Renewal token, never exposed |
+| `initialize()` | `Promise<void>` | Called at startup via `APP_INITIALIZER` |
+| `refresh()` | `Promise<void>` | Renews tokens using the refresh token |
+| `createAuthFetch()` | fetch wrapper | Injected into each NSwag client |
 
 ### `createAuthFetch()`
 
-Les clients NSwag (générés automatiquement) utilisent `fetch` natif, pas `HttpClient`. Le wrapper retourné par `createAuthFetch()` :
+NSwag clients (auto-generated) use native `fetch`, not `HttpClient`. The wrapper returned by `createAuthFetch()`:
 
-1. Ajoute l'en-tête `Authorization: Bearer` à chaque requête
-2. Ignore l'en-tête pour les URLs `/api/auth/` (évite les boucles infinies)
-3. Sur 401 : tente un refresh puis rejoue la requête une fois
+1. Adds the `Authorization: Bearer` header to every request
+2. Skips the header for `/api/auth/` URLs (prevents infinite loops)
+3. On 401: attempts a refresh then retries the request once
 
-### Intercepteur Angular (`src/app/core/auth/auth.interceptor.ts`)
+### Angular interceptor (`src/app/core/auth/auth.interceptor.ts`)
 
-Couverture identique pour tout usage futur de `HttpClient` dans l'application.
+Provides identical coverage for any future use of `HttpClient` in the application.
 
 ---
 
-## Architecture backend
+## Backend architecture
 
 ### `AuthController`
 
 | Endpoint | Auth | Description |
 |---|---|---|
-| `GET /api/auth/token` | Aucune | Retourne des jetons pour le premier utilisateur en base (dev) |
-| `POST /api/auth/refresh` | Aucune | Échange un refresh token valide contre de nouveaux jetons |
+| `GET /api/auth/token` | None | Returns tokens for the first user in the database (dev) |
+| `POST /api/auth/refresh` | None | Exchanges a valid refresh token for new tokens |
 
 ### `AuthService`
 
-- `GetDevelopmentTokenAsync()` — récupère le premier utilisateur et génère les deux jetons
-- `CreateTokensAsync(user)` — génère l'access token (HMAC-SHA256) et stocke le refresh token en base
-- `RefreshAsync(refreshToken)` — vérifie l'expiration, supprime l'ancien refresh token (rotation), génère de nouveaux jetons
+- `GetDevelopmentTokenAsync()` — retrieves the first user and generates both tokens
+- `CreateTokensAsync(user)` — generates the access token (HMAC-SHA256) and stores the refresh token in the database
+- `RefreshAsync(refreshToken)` — checks expiration, deletes the old refresh token (rotation), generates new tokens
 
-### Rotation des refresh tokens
+### Refresh token rotation
 
-À chaque refresh, l'ancien token est **supprimé** et un nouveau est émis. Cela garantit qu'un token volé ne peut être utilisé qu'une seule fois.
+On each refresh, the old token is **deleted** and a new one is issued. This ensures a stolen token can only be used once.
 
 ---
 
@@ -94,7 +94,7 @@ Couverture identique pour tout usage futur de `HttpClient` dans l'application.
 ```json
 {
   "Jwt": {
-    "Key": "<min 32 caractères, via user-secrets en dev>",
+    "Key": "<min 32 characters, via user-secrets in dev>",
     "Issuer": "garden-assistant",
     "Audience": "garden-assistant-app",
     "AccessTokenMinutes": 15,
@@ -103,4 +103,4 @@ Couverture identique pour tout usage futur de `HttpClient` dans l'application.
 }
 ```
 
-La clé JWT est validée au démarrage : une exception est levée si elle est absente ou inférieure à 32 caractères.
+The JWT key is validated at startup: an exception is thrown if it is missing or shorter than 32 characters.

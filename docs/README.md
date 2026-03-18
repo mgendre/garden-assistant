@@ -1,19 +1,19 @@
 # Documentation — Garden Assistant
 
-## Domaine métier
+## Business domain
 
-- [Associations de plantes](plant-associations.md) — Modèle de données, mécanismes biologiques, et principes de compagnonnage
+- [Plant associations](plant-associations.md) — Data model, biological mechanisms, and companion planting principles
 
-## Sécurité
+## Security
 
-- [Authentification JWT](authentication.md) — Access token + refresh token, flux de démarrage et renouvellement
+- [JWT Authentication](authentication.md) — Access token + refresh token, bootstrap and renewal flows
 
-## Architecture technique
+## Technical architecture
 
-| Couche | Technologie |
+| Layer | Technology |
 |---|---|
 | Frontend | Angular 21, Tailwind CSS v4, Angular Signals |
 | Backend | .NET 10 / ASP.NET Core, EF Core Code-First |
-| Base de données | PostgreSQL 17, snake_case via EFCore.NamingConventions |
-| Auth | JWT — access token (15 min) + refresh token (30 jours) |
-| Conteneurs | Podman, rootless |
+| Database | PostgreSQL 17, snake_case via EFCore.NamingConventions |
+| Auth | JWT — access token (15 min) + refresh token (30 days) |
+| Containers | Podman, rootless |
