@@ -40,24 +40,24 @@
     </button>
   </div>
 
-  <div class="mechanism-filter-wrap">
+  <div class="filter-wrap">
     @for (m of store.availableMechanisms(); track m) {
       <button
         class="mechanism-chip"
         [class.mechanism-blue]="store.mechanismFilter() === m"
-        [class.mechanism-filter-inactive]="store.mechanismFilter() !== m"
+        [class.filter-inactive]="store.mechanismFilter() !== m"
         (click)="store.toggleMechanismFilter(m)">
         {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
       </button>
     }
   </div>
 
-  <div class="root-depth-filter-wrap">
+  <div class="filter-wrap">
     @for (rd of rootDepths; track rd.value) {
       <button
         class="mechanism-chip"
-        [class.root-depth-active]="store.rootDepthFilter() === rd.value"
-        [class.mechanism-filter-inactive]="store.rootDepthFilter() !== rd.value"
+        [class.badge-root]="store.rootDepthFilter() === rd.value"
+        [class.filter-inactive]="store.rootDepthFilter() !== rd.value"
         (click)="store.toggleRootDepthFilter(rd.value)">
         {{ rd.labelKey | translate }}
       </button>
