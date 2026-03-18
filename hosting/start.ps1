@@ -4,6 +4,9 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $EnvFile = Join-Path $ScriptDir ".env"
 
 if (-not (Test-Path $EnvFile)) {
+    $AppDomain = Read-Host "Domain name (e.g. garden.example.com or localhost)"
+    if (-not $AppDomain) { $AppDomain = "localhost" }
+
     Copy-Item (Join-Path $ScriptDir ".env.prod.example") $EnvFile
 
     $JwtKey = [Convert]::ToBase64String((1..48 | ForEach-Object { Get-Random -Maximum 256 }) -as [byte[]])
@@ -11,16 +14,14 @@ if (-not (Test-Path $EnvFile)) {
 
     (Get-Content $EnvFile) `
         -replace 'changeme-minimum-32-characters-long', $JwtKey `
-        -replace 'POSTGRES_PASSWORD=changeme', "POSTGRES_PASSWORD=$PostgresPassword" |
+        -replace 'POSTGRES_PASSWORD=changeme', "POSTGRES_PASSWORD=$PostgresPassword" `
+        -replace 'APP_DOMAIN=garden.example.com', "APP_DOMAIN=$AppDomain" |
         Set-Content $EnvFile
 
     Write-Host "Created $EnvFile with generated secrets."
-    Write-Host "Edit APP_DOMAIN and ACME_EMAIL before starting with TLS."
 }
 
 Set-Location $ScriptDir
-
-$ComposeFiles = @("-f", "docker-compose.yaml")
 
 $EnvVars = @{}
 Get-Content $EnvFile | ForEach-Object {
@@ -29,11 +30,22 @@ Get-Content $EnvFile | ForEach-Object {
     }
 }
 
+$ComposeFiles = @("-f", "docker-compose.yaml")
+$Tls = $false
+
 if ($EnvVars["ACME_EMAIL"] -and $EnvVars["ACME_EMAIL"] -ne "admin@example.com") {
     $ComposeFiles += @("-f", "docker-compose.tls.yaml")
+    $Tls = $true
     Write-Host "TLS enabled (ACME_EMAIL=$($EnvVars["ACME_EMAIL"]))."
 } else {
-    Write-Host "TLS disabled (ACME_EMAIL not set). Starting HTTP only."
+    Write-Host "Starting without TLS."
 }
 
 podman compose @ComposeFiles up -d --build
+
+$Domain = $EnvVars["APP_DOMAIN"]
+if ($Tls) {
+    Write-Host "`nApplication available at: https://${Domain}:8443"
+} else {
+    Write-Host "`nApplication available at: http://${Domain}:8080"
+}
