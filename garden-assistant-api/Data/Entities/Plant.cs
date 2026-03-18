@@ -15,8 +15,6 @@ public class Plant
     public RootDepth RootDepth { get; set; }
     public SunRequirement SunRequirement { get; set; }
     public WaterNeeds WaterNeeds { get; set; }
-    public bool NitrogenFixer { get; set; }
-    public bool AllelopathicRisk { get; set; }
-    public bool PollinatorPlant { get; set; }
     public int? MaxAltitudeM { get; set; }
+    public List<PlantIntrinsicMechanism> IntrinsicMechanisms { get; set; } = [];
 }

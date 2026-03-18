@@ -10,27 +10,39 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
 {
     public async Task<IEnumerable<PlantDto>> GetAllAsync(Guid userId)
     {
-        return await dbContext.UserPlants
+        var userPlantIds = await dbContext.UserPlants
             .Where(up => up.UserId == userId)
             .OrderByDescending(up => up.AddedAtUtc)
-            .Join(dbContext.Plants,
-                up => up.PlantId,
-                p => p.Id,
-                (up, p) => ToDto(p))
+            .Select(up => up.PlantId)
             .ToListAsync();
+
+        var plants = await dbContext.Plants
+            .Include(p => p.IntrinsicMechanisms)
+            .Where(p => userPlantIds.Contains(p.Id))
+            .ToDictionaryAsync(p => p.Id);
+
+        return userPlantIds
+            .Where(id => plants.ContainsKey(id))
+            .Select(id => ToDto(plants[id]));
     }
 
     public async Task<PlantDto?> AddAsync(Guid plantId, Guid userId)
     {
-        var plant = await dbContext.Plants.FindAsync(plantId);
+        var plant = await dbContext.Plants
+            .Include(p => p.IntrinsicMechanisms)
+            .FirstOrDefaultAsync(p => p.Id == plantId);
         if (plant is null)
+        {
             return null;
+        }
 
         var existing = await dbContext.UserPlants
             .FirstOrDefaultAsync(up => up.UserId == userId && up.PlantId == plantId);
 
         if (existing is not null)
+        {
             return ToDto(plant);
+        }
 
         dbContext.UserPlants.Add(new UserPlant
         {
@@ -50,7 +62,9 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
             .FirstOrDefaultAsync(up => up.UserId == userId && up.PlantId == plantId);
 
         if (userPlant is null)
+        {
             return false;
+        }
 
         dbContext.UserPlants.Remove(userPlant);
         await dbContext.SaveChangesAsync();
@@ -70,8 +84,6 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
         p.RootDepth,
         p.SunRequirement,
         p.WaterNeeds,
-        p.NitrogenFixer,
-        p.AllelopathicRisk,
-        p.PollinatorPlant
+        p.IntrinsicMechanisms.Select(im => im.Mechanism).ToList()
     );
 }

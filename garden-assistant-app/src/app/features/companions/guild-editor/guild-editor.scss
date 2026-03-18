@@ -13,6 +13,106 @@
   border-bottom: 1px solid rgba(45, 106, 79, 0.1);
 }
 
+.guild-panel-header {
+  border-bottom: none;
+}
+
+.guild-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  margin-left: auto;
+  background: #f4845f;
+  color: #fff;
+}
+
+.guild-conflict-header {
+  background: rgba(239, 83, 80, 0.06);
+  border-bottom-color: rgba(239, 83, 80, 0.15);
+}
+
+.guild-conflict-list {
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+}
+
+.guild-conflict-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.guild-conflict-names {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #c62828;
+}
+
+.guild-conflict-mechanisms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.guild-associations-header {
+  background: transparent;
+  border-bottom: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.guild-association-list {
+  padding: 0.5rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.guild-association-item {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(45, 106, 79, 0.03);
+  border: 1px solid rgba(45, 106, 79, 0.08);
+
+  &.guild-association-harmful {
+    background: rgba(239, 83, 80, 0.03);
+    border-color: rgba(239, 83, 80, 0.12);
+  }
+}
+
+.guild-association-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.guild-association-plants {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.guild-association-arrow {
+  color: var(--color-text-muted);
+  margin: 0 0.15rem;
+}
+
+.guild-association-notes {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
+}
+
 .guild-plant-count {
   font-size: 0.75rem;
   font-weight: 500;

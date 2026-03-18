@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using GardenAssistant.Data.Entities;
 using GardenAssistant.Data.Entities.Enums;
 
 namespace GardenAssistant.DTOs.Plants;
@@ -15,7 +14,5 @@ public record CreatePlantRequest(
     RootDepth RootDepth,
     SunRequirement SunRequirement,
     WaterNeeds WaterNeeds,
-    bool NitrogenFixer,
-    bool AllelopathicRisk,
-    bool PollinatorPlant
+    List<AssociationMechanism>? IntrinsicMechanisms
 );

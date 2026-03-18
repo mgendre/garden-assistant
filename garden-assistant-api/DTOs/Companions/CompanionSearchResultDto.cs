@@ -7,5 +7,7 @@ public record CompanionSearchResultDto(
     List<PlantToAvoidDto> PlantsToAvoid,
     List<SelectedPlantConflictDto> SelectedPlantConflicts,
     List<AssociationMechanism> SelectedPlantMechanisms,
-    List<PlantMechanismsDto> SelectedPlantsMechanisms
+    List<PlantMechanismsDto> SelectedPlantsMechanisms,
+    List<PlantMechanismsDto> IntrinsicMechanismsByPlant,
+    List<GuildAssociationDto> SelectedPlantAssociations
 );

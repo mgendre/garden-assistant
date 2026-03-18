@@ -47,19 +47,82 @@
     <app-plant-detail-panel></app-plant-detail-panel>
 
     <!-- Mechanisms section -->
-    @if (store.guildMechanisms().length) {
+    @if (store.guildIntrinsicMechanisms().length || store.guildRelationalOnlyMechanisms().length) {
       <div class="guild-mechanisms">
         <div class="guild-container-header">
           <span>🔬</span>
           <span [translate]="'Guilds.MechanismsTitle'"></span>
         </div>
         <div class="guild-mechanisms-chips">
-          @for (m of store.guildMechanisms(); track m) {
+          @for (m of store.guildIntrinsicMechanisms(); track m) {
+            <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m)">
+              {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+            </span>
+          }
+          @for (m of store.guildRelationalOnlyMechanisms(); track m) {
             <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
+              <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
               {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
             </span>
           }
         </div>
+      </div>
+    }
+
+    <!-- Conflict warnings -->
+    @if (store.recommendations()?.selectedPlantConflicts?.length) {
+      <div class="guild-conflicts">
+        <div class="guild-container-header guild-conflict-header">
+          <span>⚠️</span>
+          <span [translate]="'Guilds.ConflictsTitle'"></span>
+        </div>
+        <div class="guild-conflict-list">
+          @for (conflict of store.recommendations()!.selectedPlantConflicts!; track $index) {
+            <div class="guild-conflict-item">
+              <span class="guild-conflict-names">{{ conflict.plantAName }} & {{ conflict.plantBName }}</span>
+              <div class="guild-conflict-mechanisms">
+                @for (m of conflict.mechanisms ?? []; track m) {
+                  <span class="mechanism-chip mechanism-red" (click)="openMechanismInfo(m)">
+                    {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                  </span>
+                }
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- Associations detail -->
+    @if (store.recommendations()?.selectedPlantAssociations?.length) {
+      <div class="guild-associations">
+        <app-collapsible>
+          <div collapsible-header class="guild-container-header guild-associations-header">
+            <span>🔗</span>
+            <span [translate]="'Guilds.AssociationsTitle'"></span>
+          </div>
+          <div collapsible-body>
+            <div class="guild-association-list">
+              @for (assoc of store.recommendations()!.selectedPlantAssociations!; track $index) {
+                <div class="guild-association-item" [class.guild-association-harmful]="assoc.effect === 1">
+                  <div class="guild-association-header">
+                    <span class="guild-association-plants">
+                      {{ assoc.sourcePlantName }}
+                      <span class="guild-association-arrow">→</span>
+                      {{ assoc.targetPlantName }}
+                    </span>
+                    <span class="mechanism-chip" [class.mechanism-green]="assoc.effect === 0" [class.mechanism-red]="assoc.effect === 1" (click)="openMechanismInfo(assoc.mechanism!)">
+                      {{ 'Plant.Mechanism.' + store.getMechanismKey(assoc.mechanism!) | translate }}
+                    </span>
+                  </div>
+                  @if (assoc.notes) {
+                    <p class="guild-association-notes">{{ assoc.notes }}</p>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </app-collapsible>
       </div>
     }
 
@@ -107,13 +170,19 @@
     }
   </div>
 
-  @if (store.selectedPlants().length > 0 && store.guildsForSelectedPlants().length) {
-    <div class="guild-container guild-active related-guilds">
-      <div class="guild-container-header">
-        <span>🌐</span>
-        <span [translate]="'Guilds.SectionTitle'"></span>
+  <div class="panel related-guilds">
+    <app-collapsible>
+      <div collapsible-header class="panel-header guild-panel-header">
+        @if (store.selectedPlants().length) {
+          <span class="panel-title" [translate]="'Guilds.SectionTitle'"></span>
+        } @else {
+          <span class="panel-title" [translate]="'Guilds.PanelTitle'"></span>
+        }
+        <span class="plant-count">{{ 'Guilds.PanelCount' | translate:{ count: guildPanel.filteredGuilds().length } }}</span>
       </div>
-      <app-guild-panel></app-guild-panel>
-    </div>
-  }
+      <div collapsible-body>
+        <app-guild-panel #guildPanel></app-guild-panel>
+      </div>
+    </app-collapsible>
+  </div>
 </div>

@@ -3,14 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { PlantCatalogue } from './plant-catalogue/plant-catalogue';
 import { GuildEditor } from './guild-editor/guild-editor';
-import { RecommendationsPanel } from './recommendations-panel/recommendations-panel';
 import { CompanionStore } from '../../shared/services/companion.store';
 import { GuildService } from '../../shared/services/guild.service';
 
 @Component({
   selector: 'app-companions',
   standalone: true,
-  imports: [TranslateModule, PlantCatalogue, GuildEditor, RecommendationsPanel],
+  imports: [TranslateModule, PlantCatalogue, GuildEditor],
   templateUrl: './companions.html',
   styleUrl: './companions.scss'
 })

@@ -11,9 +11,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1000
   },
   {
@@ -28,10 +25,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "carotte",
@@ -45,10 +42,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1800
+    "maxAltitudeM": 1800,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "poireau",
@@ -62,9 +59,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1500
   },
   {
@@ -79,10 +73,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "oignon",
@@ -96,9 +90,6 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1500
   },
   {
@@ -113,10 +104,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "haricot-nain",
@@ -130,10 +121,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "NitrogenFixation"
+    ]
   },
   {
     "key": "haricot-a-rames",
@@ -147,10 +138,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation"
+    ]
   },
   {
     "key": "mais",
@@ -164,9 +155,6 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1000
   },
   {
@@ -181,10 +169,12 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "potiron",
@@ -198,10 +188,12 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "courgette",
@@ -215,10 +207,11 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "pois",
@@ -232,10 +225,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation"
+    ]
   },
   {
     "key": "feve",
@@ -249,10 +242,11 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1800
+    "maxAltitudeM": 1800,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "trefle-blanc",
@@ -266,10 +260,13 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction",
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "trefle-rouge",
@@ -283,10 +280,11 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "luzerne",
@@ -300,10 +298,13 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction",
+      "DynamicAccumulation",
+      "HydraulicLift"
+    ]
   },
   {
     "key": "lupin",
@@ -317,10 +318,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "consoude",
@@ -334,10 +336,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "ortie",
@@ -351,10 +354,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "pissenlit",
@@ -368,10 +371,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 3000
+    "maxAltitudeM": 3000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "capucine",
@@ -385,10 +389,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "tagete",
@@ -402,10 +407,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "souci",
@@ -419,10 +425,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "bourrache",
@@ -436,10 +442,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "phacelie",
@@ -453,10 +460,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "achillee-millefeuille",
@@ -470,10 +478,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "fenouil",
@@ -487,10 +496,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "intrinsicMechanisms": [
+      "RootAllelopathy",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "aneth",
@@ -504,10 +514,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "coriandre",
@@ -521,10 +531,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "persil",
@@ -538,10 +548,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "thym",
@@ -555,10 +565,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "romarin",
@@ -572,10 +583,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "lavande",
@@ -589,10 +600,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1800
+    "maxAltitudeM": 1800,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "sauge-officinale",
@@ -606,10 +617,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "menthe-poivree",
@@ -623,10 +634,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "melisse",
@@ -640,10 +652,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "origan",
@@ -657,10 +669,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "hysope",
@@ -674,10 +687,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "valeriane",
@@ -691,10 +704,11 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "grande-camomille",
@@ -708,10 +722,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "camomille-allemande",
@@ -725,10 +739,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "absinthe",
@@ -742,10 +757,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "tanaisie",
@@ -759,10 +774,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "tournesol",
@@ -776,10 +791,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "RootAllelopathy",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "chou-kale",
@@ -793,10 +809,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "brocoli",
@@ -810,10 +826,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "radis",
@@ -827,10 +843,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "navet",
@@ -844,10 +860,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1800
+    "maxAltitudeM": 1800,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "laitue",
@@ -861,10 +877,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "SoilCover"
+    ]
   },
   {
     "key": "epinard",
@@ -878,10 +894,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "SoilCover"
+    ]
   },
   {
     "key": "roquette",
@@ -895,10 +911,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "betterave",
@@ -912,9 +928,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1500
   },
   {
@@ -929,10 +942,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "celeri",
@@ -946,9 +959,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1200
   },
   {
@@ -963,9 +973,6 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 800
   },
   {
@@ -980,9 +987,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 600
   },
   {
@@ -997,10 +1001,11 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "asperge",
@@ -1014,9 +1019,6 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1000
   },
   {
@@ -1031,10 +1033,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 600
+    "maxAltitudeM": 600,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "topinambour",
@@ -1048,10 +1051,12 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "RootAllelopathy",
+      "PollinatorAttraction",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "oseille",
@@ -1065,10 +1070,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "fraisier",
@@ -1082,10 +1087,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "fraisier-des-bois",
@@ -1099,10 +1105,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "Shade",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "framboisier",
@@ -1116,10 +1123,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1800
+    "maxAltitudeM": 1800,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "cassis",
@@ -1133,10 +1140,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "myrtille",
@@ -1150,10 +1157,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "aronia",
@@ -1167,10 +1175,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "argousier",
@@ -1184,10 +1192,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation"
+    ]
   },
   {
     "key": "sureau-noir",
@@ -1201,10 +1209,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "cornouiller-male",
@@ -1218,10 +1226,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "noisetier",
@@ -1235,10 +1243,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "prunellier",
@@ -1252,10 +1260,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "viorne-obier",
@@ -1269,10 +1277,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "pommier",
@@ -1286,10 +1294,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "poirier",
@@ -1303,10 +1311,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "prunier",
@@ -1320,10 +1328,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "cerisier",
@@ -1337,10 +1345,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "figuier",
@@ -1354,9 +1362,6 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 600
   },
   {
@@ -1371,10 +1376,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "chataignier",
@@ -1388,9 +1393,6 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1200
   },
   {
@@ -1405,10 +1407,12 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "HydraulicLift",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "robinier",
@@ -1422,10 +1426,12 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": true,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "RootAllelopathy",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "tilleul-a-petites-feuilles",
@@ -1439,10 +1445,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "saule-blanc",
@@ -1456,10 +1463,12 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "HydraulicLift",
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "chene-pedoncule",
@@ -1473,10 +1482,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "HydraulicLift",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "vigne",
@@ -1490,10 +1500,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "intrinsicMechanisms": [
+      "HydraulicLift"
+    ]
   },
   {
     "key": "houblon",
@@ -1507,9 +1517,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1200
   },
   {
@@ -1524,10 +1531,12 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "vesce-commune",
@@ -1541,10 +1550,12 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "sarrasin",
@@ -1558,10 +1569,13 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "RootAllelopathy",
+      "PollinatorAttraction",
+      "WeedSuppression",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "plantain-lanceole",
@@ -1575,10 +1589,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "prele-des-champs",
@@ -1592,10 +1606,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "Shade",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "millepertuis",
@@ -1609,10 +1623,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "estragon",
@@ -1626,10 +1641,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "sarriette-des-montagnes",
@@ -1643,10 +1658,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "sainfoin",
@@ -1660,10 +1675,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "mache",
@@ -1677,10 +1693,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "SoilCover"
+    ]
   },
   {
     "key": "seigle",
@@ -1694,10 +1710,12 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "RootAllelopathy",
+      "WeedSuppression",
+      "SoilCover"
+    ]
   },
   {
     "key": "avoine",
@@ -1711,10 +1729,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "quinoa",
@@ -1728,9 +1747,6 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 2000
   },
   {
@@ -1745,10 +1761,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "cresson-de-fontaine",
@@ -1762,10 +1778,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "souchet-comestible",
@@ -1779,9 +1795,6 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 800
   },
   {
@@ -1796,10 +1809,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "murier-blanc",
@@ -1813,9 +1826,6 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 800
   },
   {
@@ -1830,10 +1840,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "neflier",
@@ -1847,10 +1857,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "sorbier-des-oiseleurs",
@@ -1864,10 +1874,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "genevrier-commun",
@@ -1881,10 +1891,10 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "pois-chiche",
@@ -1898,10 +1908,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "intrinsicMechanisms": [
+      "NitrogenFixation"
+    ]
   },
   {
     "key": "lentille",
@@ -1915,10 +1925,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "SoilCover"
+    ]
   },
   {
     "key": "thym-rampant",
@@ -1932,10 +1943,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2500
+    "maxAltitudeM": 2500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "ajuga-rampant",
@@ -1949,10 +1961,12 @@
     "rootDepth": "Shallow",
     "sunRequirement": "Shade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "veronique-petit-chene",
@@ -1966,10 +1980,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "primevere",
@@ -1983,10 +1998,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "violette-odorante",
@@ -2000,10 +2015,11 @@
     "rootDepth": "Shallow",
     "sunRequirement": "Shade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover"
+    ]
   },
   {
     "key": "sarriette",
@@ -2017,10 +2033,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "chou",
@@ -2034,10 +2050,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "chou-fleur",
@@ -2051,10 +2067,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "concombre",
@@ -2068,9 +2084,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 800
   },
   {
@@ -2085,10 +2098,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 600
+    "maxAltitudeM": 600,
+    "intrinsicMechanisms": [
+      "SoilCover"
+    ]
   },
   {
     "key": "groseillier",
@@ -2102,10 +2115,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "moutarde-blanche",
@@ -2119,10 +2132,13 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "RootAllelopathy",
+      "PollinatorAttraction",
+      "Biofumigation",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "chrysantheme-des-jardins",
@@ -2136,10 +2152,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "rue-officinale",
@@ -2153,10 +2169,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "intrinsicMechanisms": [
+      "RootAllelopathy"
+    ]
   },
   {
     "key": "cerfeuil",
@@ -2170,10 +2186,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "ciboulette-ail",
@@ -2187,10 +2203,10 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "echalote",
@@ -2204,9 +2220,6 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1500
   },
   {
@@ -2221,9 +2234,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1200
   },
   {
@@ -2238,10 +2248,11 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "agastache",
@@ -2255,10 +2266,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "melilot",
@@ -2272,10 +2283,12 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "nitrogenFixer": true,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction",
+      "DynamicAccumulation"
+    ]
   },
   {
     "key": "rhubarbe",
@@ -2289,10 +2302,13 @@
     "rootDepth": "Deep",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": true,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "RootAllelopathy",
+      "DynamicAccumulation",
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "blette",
@@ -2306,9 +2322,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 1500
   },
   {
@@ -2323,10 +2336,10 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "Biofumigation"
+    ]
   },
   {
     "key": "patate-douce",
@@ -2340,10 +2353,12 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": true,
-    "maxAltitudeM": 600
+    "maxAltitudeM": 600,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction",
+      "SoilCover",
+      "WeedSuppression"
+    ]
   },
   {
     "key": "piment",
@@ -2357,9 +2372,6 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
     "maxAltitudeM": 800
   },
   {
@@ -2374,9 +2386,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "nitrogenFixer": false,
-    "allelopathicRisk": false,
-    "pollinatorPlant": false,
-    "maxAltitudeM": 600
+    "maxAltitudeM": 600,
+    "intrinsicMechanisms": [
+      "SoilCover"
+    ]
   }
 ]

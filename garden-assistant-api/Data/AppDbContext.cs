@@ -15,6 +15,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Guild> Guilds => Set<Guild>();
     public DbSet<GuildPlant> GuildPlants => Set<GuildPlant>();
     public DbSet<UserPlant> UserPlants => Set<UserPlant>();
+    public DbSet<PlantIntrinsicMechanism> PlantIntrinsicMechanisms => Set<PlantIntrinsicMechanism>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -101,6 +102,15 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasKey(up => new { up.UserId, up.PlantId });
             entity.HasOne<User>().WithMany().HasForeignKey(up => up.UserId).OnDelete(DeleteBehavior.Cascade);
             entity.HasOne<Plant>().WithMany().HasForeignKey(up => up.PlantId).OnDelete(DeleteBehavior.Restrict);
+        });
+
+        modelBuilder.Entity<PlantIntrinsicMechanism>(entity =>
+        {
+            entity.HasKey(pim => new { pim.PlantId, pim.Mechanism });
+            entity.HasOne<Plant>()
+                  .WithMany(p => p.IntrinsicMechanisms)
+                  .HasForeignKey(pim => pim.PlantId)
+                  .OnDelete(DeleteBehavior.Cascade);
         });
 
         modelBuilder.Entity<User>().HasData(new User
