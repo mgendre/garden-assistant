@@ -1,117 +1,117 @@
-kloi# Associations de plantes — Modèle de données
+# Plant Associations — Data Model
 
-## Pourquoi ce modèle ?
+## Why this model?
 
-Le compagnonnage végétal (companion planting) est au cœur de la permaculture. Deux plantes voisines interagissent via des mécanismes biologiques précis : exsudats racinaires, composés volatils, attraction d'insectes, fixation d'azote… Ces interactions ne sont **ni binaires ni symétriques**.
+Companion planting is at the heart of permaculture. Two neighbouring plants interact through specific biological mechanisms: root exudates, volatile compounds, insect attraction, nitrogen fixation... These interactions are **neither binary nor symmetric**.
 
-Le modèle de données a été conçu avec l'aide d'un expert en permaculture pour refléter cette réalité.
+The data model was designed with the help of a permaculture expert to reflect this reality.
 
 ---
 
-## Principes fondamentaux
+## Core principles
 
-### 1. Une association par mécanisme
+### 1. One association per mechanism
 
-Une même paire de plantes peut avoir **plusieurs mécanismes actifs simultanément**. Par exemple, le basilic planté près de la tomate :
+The same pair of plants can have **multiple active mechanisms simultaneously**. For example, basil planted near tomato:
 
-- repousse les aleurodes par confusion olfactive
-- attire des pollinisateurs bénéfiques pour la nouaison
-- améliorerait le goût des fruits (usage traditionnel)
+- repels whiteflies through olfactory confusion
+- attracts pollinators beneficial for fruit set
+- is said to improve fruit flavour (traditional use)
 
-Chaque mécanisme est stocké dans **une ligne séparée** dans `plant_associations`. Cela permet de requêter par mécanisme, d'attacher un niveau de confiance scientifique à chaque effet, et d'étendre le modèle sans migration destructive.
+Each mechanism is stored as **a separate row** in `plant_associations`. This allows querying by mechanism, attaching a scientific confidence level to each effect, and extending the model without destructive migrations.
 
-### 2. Les associations sont directionnelles
+### 2. Associations are directional
 
-Une association n'est **pas symétrique**. L'effet de A sur B n'est pas le même que l'effet de B sur A.
+An association is **not symmetric**. The effect of A on B is not the same as the effect of B on A.
 
-| Source | Cible | Mécanisme | Effet |
+| Source | Target | Mechanism | Effect |
 |---|---|---|---|
-| Haricot | Maïs | NitrogenFixation | Beneficial |
-| Maïs | Haricot | PhysicalSupport | Beneficial |
-| Capucine | Rosier | TrapCrop | Beneficial (pour le rosier) |
-| Fenouil | Tomate | RootAllelopathy | Harmful |
+| Bean | Corn | NitrogenFixation | Beneficial |
+| Corn | Bean | PhysicalSupport | Beneficial |
+| Nasturtium | Rose | TrapCrop | Beneficial (for the rose) |
+| Fennel | Tomato | RootAllelopathy | Harmful |
 
-Le modèle utilise `SourcePlantId` et `TargetPlantId` explicites. Pas de symétrie forcée.
+The model uses explicit `SourcePlantId` and `TargetPlantId`. No forced symmetry.
 
-### 3. La distance compte
+### 3. Distance matters
 
-Un effet allélopathique racinaire n'a de sens qu'au contact ou à moins de 50 cm. Une confusion olfactive peut opérer jusqu'à 2 mètres. Le champ `DistanceEffect` encode cette réalité pour permettre de valider qu'une association déclarée est effectivement activée dans le plan spatial de l'utilisateur.
+A root allelopathic effect only applies at contact or within 50 cm. Olfactory confusion can operate up to 2 metres. The `DistanceEffect` field encodes this reality to validate whether a declared association is actually active in the user's spatial plan.
 
 ---
 
-## Schéma de la table `plant_associations`
+## `plant_associations` table schema
 
 ```
 Id              Guid  PK
-SourcePlantId   Guid  FK → plants   (la plante qui produit l'effet)
-TargetPlantId   Guid  FK → plants   (la plante qui reçoit l'effet)
-Mechanism       enum  voir ci-dessous
+SourcePlantId   Guid  FK → plants   (the plant producing the effect)
+TargetPlantId   Guid  FK → plants   (the plant receiving the effect)
+Mechanism       enum  see below
 Effect          enum  Beneficial | Harmful | Neutral
 DistanceEffect  enum  Contact | Short | Medium | Field
 ConfidenceLevel enum  Anecdotal | FieldObserved | PeerReviewed
 Notes           string?
 ```
 
-**Contrainte unique sur `(SourcePlantId, TargetPlantId, Mechanism)`** : un seul enregistrement par mécanisme et par paire directionnelle.
+**Unique constraint on `(SourcePlantId, TargetPlantId, Mechanism)`**: one record per mechanism per directional pair.
 
 ---
 
-## Mécanismes disponibles
+## Available mechanisms
 
-| Mécanisme | Description | Exemple |
+| Mechanism | Description | Example |
 |---|---|---|
-| `OlfactoryConfusion` | Composés volatils qui brouillent les ravageurs | Basilic → Tomate (aleurodes) |
-| `PollinatorAttraction` | Fleurs qui attirent abeilles, bourdons, syrphes | Bourrache → Cucurbitacées |
-| `TrapCrop` | Plante sacrifiée pour attirer les ravageurs loin de la cible | Capucine → Rosier (pucerons) |
-| `RootAllelopathy` | Exsudats racinaires inhibant la germination ou la croissance | Fenouil → Tomate |
-| `AerialRepulsion` | Terpènes volatils repoussant les insectes | Tagète → Tomate (aleurodes) |
-| `NitrogenFixation` | Légumineuses enrichissant le sol en azote via rhizobiums | Haricot → Maïs |
-| `PredatorAttraction` | Attire les auxiliaires (coccinelles, chrysopes) | Capucine → voisins (via pucerons) |
-| `PhysicalSupport` | Support structurel (tuteur vivant) | Maïs → Haricot grimpant |
-| `SoilCover` | Couvre le sol, limite l'évaporation et les adventices | Courge → Maïs+Haricot |
-| `DynamicAccumulation` | Remonte les minéraux profonds vers la surface | Consoude → voisins |
+| `OlfactoryConfusion` | Volatile compounds that confuse pests | Basil → Tomato (whiteflies) |
+| `PollinatorAttraction` | Flowers that attract bees, bumblebees, hoverflies | Borage → Cucurbits |
+| `TrapCrop` | Sacrificial plant that lures pests away from the target | Nasturtium → Rose (aphids) |
+| `RootAllelopathy` | Root exudates inhibiting germination or growth | Fennel → Tomato |
+| `AerialRepulsion` | Volatile terpenes repelling insects | Marigold → Tomato (whiteflies) |
+| `NitrogenFixation` | Legumes enriching the soil with nitrogen via rhizobia | Bean → Corn |
+| `PredatorAttraction` | Attracts beneficial insects (ladybugs, lacewings) | Nasturtium → neighbours (via aphids) |
+| `PhysicalSupport` | Structural support (living trellis) | Corn → Climbing bean |
+| `SoilCover` | Covers soil, reduces evaporation and weeds | Squash → Corn+Bean |
+| `DynamicAccumulation` | Brings deep minerals to the surface | Comfrey → neighbours |
 
 ---
 
-## Catalogue de plantes (`plants`)
+## Plant catalogue (`plants`)
 
-La table `plants` est un catalogue global (non lié à un utilisateur). Elle contient les données biologiques nécessaires aux recommandations.
+The `plants` table is a global catalogue (not user-scoped). It contains the biological data needed for recommendations.
 
-### Champs fonctionnels clés
+### Key functional fields
 
-| Champ | Type | Rôle |
+| Field | Type | Role |
 |---|---|---|
-| `NitrogenFixer` | bool | Détecte les légumineuses à rhizobiums |
-| `AllelopathicRisk` | bool | Signal d'alerte avant association |
-| `PollinatorPlant` | bool | Valorisation de la biodiversité |
-| `RootDepth` | enum | Shallow / Medium / Deep — complémentarité verticale |
-| `HeightAtMaturityCm` | int? | Calcul des conflits d'ombrage |
-| `LifeCycle` | enum | Annual / Biennial / Perennial — planification temporelle |
+| `NitrogenFixer` | bool | Identifies legumes with rhizobia |
+| `AllelopathicRisk` | bool | Warning signal before association |
+| `PollinatorPlant` | bool | Biodiversity value |
+| `RootDepth` | enum | Shallow / Medium / Deep — vertical complementarity |
+| `HeightAtMaturityCm` | int? | Shade conflict calculation |
+| `LifeCycle` | enum | Annual / Biennial / Perennial — temporal planning |
 
 ---
 
-## Plans de plantation (`plantings` + `planting_entries`)
+## Planting plans (`plantings` + `planting_entries`)
 
-Un plan de plantation appartient à un utilisateur via son jardin.
+A planting plan belongs to a user through their garden.
 
-### `planting_entries` — une plante dans un plan
+### `planting_entries` — a plant in a plan
 
 ```
 PlantId          Guid  FK → plants
-PositionX / Y    float  coordonnées en mètres
+PositionX / Y    float  coordinates in metres
 Layer            enum   Canopy | SubCanopy | Shrub | Herbaceous | GroundCover | Climber | Root
 PlannedSowDate   DateOnly?
 PlannedHarvestDate DateOnly?
 ActualHarvestDate  DateOnly?
 ```
 
-Les strates verticales (`Layer`) permettent de modéliser les forêts-jardins selon les 7 strates de Robert Hart (canopée, sous-canopée, arbustif, herbacé, couvre-sol, grimpant, racinaire).
+The vertical layers (`Layer`) model forest gardens according to Robert Hart's 7 layers (canopy, sub-canopy, shrub, herbaceous, ground cover, climber, root).
 
 ---
 
-## Score de compatibilité
+## Compatibility score
 
-L'endpoint `GET /api/plantings/{id}/compatibility` calcule le score d'une plantation en croisant `planting_entries` avec `plant_associations` :
+The endpoint `GET /api/plantings/{id}/compatibility` calculates a planting's score by cross-referencing `planting_entries` with `plant_associations`:
 
 ```
 Beneficial : 4
@@ -120,31 +120,31 @@ Neutral    : 2
 Total      : 7
 ```
 
-Ce score permet d'afficher un indicateur visuel et d'alerter l'utilisateur sur les associations problématiques avant qu'il sème.
+This score provides a visual indicator and alerts the user to problematic associations before sowing.
 
 ---
 
-## Exemple : les Trois Sœurs
+## Example: the Three Sisters
 
-La guilde traditionnelle amérindienne (maïs + haricot + courge) génère ces associations dans le modèle :
+The traditional Native American guild (corn + bean + squash) generates these associations in the model:
 
-| Source | Cible | Mécanisme | Effet |
+| Source | Target | Mechanism | Effect |
 |---|---|---|---|
-| Haricot | Maïs | NitrogenFixation | Beneficial |
-| Maïs | Haricot | PhysicalSupport | Beneficial |
-| Courge | Maïs | SoilCover | Beneficial |
-| Courge | Haricot | SoilCover | Beneficial |
+| Bean | Corn | NitrogenFixation | Beneficial |
+| Corn | Bean | PhysicalSupport | Beneficial |
+| Squash | Corn | SoilCover | Beneficial |
+| Squash | Bean | SoilCover | Beneficial |
 
-Score de compatibilité pour une plantation Trois Sœurs : **4 Beneficial, 0 Harmful**.
+Compatibility score for a Three Sisters planting: **4 Beneficial, 0 Harmful**.
 
 ---
 
-## Niveau de confiance (`ConfidenceLevel`)
+## Confidence level (`ConfidenceLevel`)
 
-| Valeur | Signification |
+| Value | Meaning |
 |---|---|
-| `Anecdotal` | Tradition populaire, jardinage empirique |
-| `FieldObserved` | Observations de terrain reproductibles |
-| `PeerReviewed` | Étude scientifique publiée et révisée par des pairs |
+| `Anecdotal` | Folk tradition, empirical gardening |
+| `FieldObserved` | Reproducible field observations |
+| `PeerReviewed` | Published, peer-reviewed scientific study |
 
-Toujours afficher le niveau de confiance à l'utilisateur pour qu'il puisse pondérer les recommandations.
+Always display the confidence level to the user so they can weigh recommendations accordingly.
