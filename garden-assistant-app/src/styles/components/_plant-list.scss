@@ -1,17 +1,6 @@
 @use 'family-badges' as *;
 @reference "tailwindcss";
 
-.panel-header {
-  @apply flex items-center justify-between px-5 pt-4 pb-3;
-  border-bottom: 1px solid #d8f3dc;
-}
-
-.panel-title {
-  @apply text-xs font-semibold uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-}
-
 .plant-count {
   @apply text-xs;
   color: var(--color-text-muted);
@@ -75,17 +64,24 @@
   @apply min-w-0 flex-1;
 }
 
+.plant-name-row {
+  @apply flex items-center gap-1.5;
+
+  .plant-family {
+    @apply ml-auto;
+  }
+}
+
 .plant-name {
   @apply text-sm font-semibold truncate;
   color: var(--color-text);
 }
 
 .plant-family {
-  @apply inline-block font-semibold uppercase whitespace-nowrap rounded;
+  @apply inline-block flex-shrink-0 font-semibold uppercase whitespace-nowrap rounded;
   font-size: 0.6rem;
   letter-spacing: 0.05em;
   padding: 0.1rem 0.35rem;
-  margin-top: 2px;
 }
 
 .my-plant-indicator {

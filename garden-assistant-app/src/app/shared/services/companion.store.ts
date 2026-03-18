@@ -6,6 +6,7 @@ import {
   CompanionRecommendationRequest,
   GuildDetailDto,
   AssociationMechanism,
+  RootDepth,
   CreateGuildRequest,
   UpdateGuildRequest,
 } from '../../api/garden-assistant-api';
@@ -76,6 +77,7 @@ export class CompanionStore {
   readonly sortMode = signal<'alpha' | 'family' | 'compat'>('alpha');
   readonly myPlantsOnly = signal(false);
   readonly mechanismFilter = signal<number | null>(null);
+  readonly rootDepthFilter = signal<RootDepth | null>(null);
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
 
@@ -173,6 +175,11 @@ export class CompanionStore {
         const assoc = assocMap.get(p.id!);
         return assoc?.beneficial.includes(mFilter) || assoc?.harmful.includes(mFilter);
       });
+    }
+
+    const rdFilter = this.rootDepthFilter();
+    if (rdFilter !== null) {
+      result = result.filter(p => p.rootDepth === rdFilter);
     }
 
     if (query) {
@@ -410,6 +417,10 @@ export class CompanionStore {
 
   toggleMechanismFilter(mechanism: number): void {
     this.mechanismFilter.update(v => v === mechanism ? null : mechanism);
+  }
+
+  toggleRootDepthFilter(depth: RootDepth): void {
+    this.rootDepthFilter.update(v => v === depth ? null : depth);
   }
 
   setSort(mode: 'alpha' | 'family' | 'compat'): void {

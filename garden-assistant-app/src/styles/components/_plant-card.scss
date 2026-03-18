@@ -126,23 +126,6 @@
   @apply grid grid-cols-2 gap-3;
 }
 
-.info-card {
-  @apply rounded-[10px] py-3 px-4;
-  background: var(--color-parchment);
-  border: 1px solid rgba(45, 106, 79, 0.08);
-}
-
-.info-card-label {
-  @apply font-semibold uppercase mb-1;
-  font-size: 0.6875rem;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
-}
-
-.info-card-value {
-  @apply text-sm font-medium;
-  color: var(--color-text);
-}
 
 .plant-detail-dialog {
   @apply flex flex-col gap-4 p-4;

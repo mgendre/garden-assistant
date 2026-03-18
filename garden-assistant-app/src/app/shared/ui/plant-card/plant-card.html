@@ -25,6 +25,12 @@
             {{ key | translate }}
           </span>
         }
+        @if (getRootDepthKey(plant().rootDepth); as key) {
+          <span class="detail-badge badge-root"
+            (click)="openBadgeInfo('BadgeInfo.RootDepth.' + getRootDepthBadgeKey(plant().rootDepth) + '.Title', 'BadgeInfo.RootDepth.' + getRootDepthBadgeKey(plant().rootDepth) + '.Description'); $event.stopPropagation()">
+            {{ key | translate }}
+          </span>
+        }
         @if (!hideMechanisms()) {
           @for (m of getIntrinsicMechanisms(plant()); track m) {
             <span class="detail-badge badge-trait"
@@ -32,6 +38,13 @@
               {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
             </span>
           }
+        }
+        @for (m of relationalMechanisms(); track m) {
+          <span class="detail-badge badge-positive"
+            (click)="openBadgeInfo('BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Title', 'BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Description'); $event.stopPropagation()">
+            <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+            {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+          </span>
         }
       </div>
     </div>
@@ -71,13 +84,20 @@
           <div class="info-card-label">{{ 'Plant.Season' | translate }}</div>
           <div class="info-card-value">📅 {{ getLifeCycleKey(plant().lifeCycle) | translate }}</div>
         </div>
-        <div class="info-card">
+        <div class="info-card info-card-clickable"
+          (click)="openBadgeInfo('BadgeInfo.Sun.' + getSunBadgeKey(plant().sunRequirement) + '.Title', 'BadgeInfo.Sun.' + getSunBadgeKey(plant().sunRequirement) + '.Description')">
           <div class="info-card-label">{{ 'Plant.Sun.Label' | translate }}</div>
-          <div class="info-card-value">{{ getSunKey(plant().sunRequirement) | translate }}</div>
+          <div class="info-card-value">{{ getSunKey(plant().sunRequirement) | translate }}<span class="info-card-detail-right">{{ getSunHours(plant().sunRequirement) }}</span></div>
         </div>
-        <div class="info-card">
+        <div class="info-card info-card-clickable"
+          (click)="openBadgeInfo('BadgeInfo.Water.' + getWaterBadgeKey(plant().waterNeeds) + '.Title', 'BadgeInfo.Water.' + getWaterBadgeKey(plant().waterNeeds) + '.Description')">
           <div class="info-card-label">{{ 'Plant.Water.Label' | translate }}</div>
           <div class="info-card-value">{{ getWaterKey(plant().waterNeeds) | translate }}</div>
+        </div>
+        <div class="info-card info-card-clickable"
+          (click)="openBadgeInfo('BadgeInfo.RootDepth.' + getRootDepthBadgeKey(plant().rootDepth) + '.Title', 'BadgeInfo.RootDepth.' + getRootDepthBadgeKey(plant().rootDepth) + '.Description')">
+          <div class="info-card-label">{{ 'Plant.RootDepth.Label' | translate }}</div>
+          <div class="info-card-value">{{ getRootDepthKey(plant().rootDepth) | translate }}<span class="info-card-detail-right">{{ getRootDepthCm(plant().rootDepth) }}</span></div>
         </div>
       </div>
     </div>

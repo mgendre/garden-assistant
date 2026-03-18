@@ -55,12 +55,12 @@
         </div>
         <div class="guild-mechanisms-chips">
           @for (m of store.guildIntrinsicMechanisms(); track m) {
-            <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m)">
+            <span class="detail-badge badge-trait" (click)="openMechanismInfo(m)">
               {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
             </span>
           }
           @for (m of store.guildRelationalOnlyMechanisms(); track m) {
-            <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
+            <span class="detail-badge badge-positive" (click)="openMechanismInfo(m)">
               <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
               {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
             </span>
@@ -141,12 +141,18 @@
       </div>
     }
 
-    <!-- Companions mode: "Create guild" button when ≥2 plants -->
-    @if (store.canCreateGuild()) {
-      <div class="guild-create-action">
-        <button class="btn-pill btn-pill-outline" (click)="store.startGuildCreation()">
-          <fa-icon [icon]="faPlus"></fa-icon>
-          <span [translate]="'Guilds.Create'"></span>
+    @if (store.guildMode() === 'companions' && store.selectedPlants().length) {
+      <div class="guild-form-actions">
+        <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
+        @if (store.selectedPlants().length >= 2) {
+          <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.startGuildCreation()">
+            <fa-icon [icon]="faPlus"></fa-icon>
+            <span [translate]="'Guilds.Create'"></span>
+          </button>
+        }
+        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.clearSelection()">
+          <fa-icon [icon]="faClose"></fa-icon>
+          <span [translate]="'Companions.ClearSelection'"></span>
         </button>
       </div>
     }

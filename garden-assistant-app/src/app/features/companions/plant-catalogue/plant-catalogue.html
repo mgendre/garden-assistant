@@ -52,6 +52,18 @@
     }
   </div>
 
+  <div class="root-depth-filter-wrap">
+    @for (rd of rootDepths; track rd.value) {
+      <button
+        class="mechanism-chip"
+        [class.root-depth-active]="store.rootDepthFilter() === rd.value"
+        [class.mechanism-filter-inactive]="store.rootDepthFilter() !== rd.value"
+        (click)="store.toggleRootDepthFilter(rd.value)">
+        {{ rd.labelKey | translate }}
+      </button>
+    }
+  </div>
+
   <div class="plant-list">
     @for (plant of store.filteredPlants(); track plant.id) {
       <div
@@ -62,31 +74,34 @@
         (click)="store.addPlant(plant)">
         <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
         <div class="plant-info">
-          <div class="plant-name">{{ plant.name }}</div>
-          @if (plant.family) {
-            <div class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</div>
-          }
-          @if (plant.intrinsicMechanisms?.length || store.catalogAssociationMechanisms().get(plant.id!)) {
-            <div class="plant-mechanisms-inline">
-              @for (m of plant.intrinsicMechanisms ?? []; track m) {
-                <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m, $event)">
-                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                </span>
-              }
-              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.beneficial ?? []; track m) {
-                <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m, $event)">
-                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                </span>
-              }
-              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.harmful ?? []; track m) {
-                <span class="mechanism-chip mechanism-red" (click)="openMechanismInfo(m, $event)">
-                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                </span>
-              }
-            </div>
-          }
+          <div class="plant-name-row">
+            <span class="plant-name">{{ plant.name }}</span>
+            @if (plant.family) {
+              <span class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</span>
+            }
+          </div>
+          <div class="plant-mechanisms-inline">
+            @if (getRootDepthKey(plant.rootDepth); as rdKey) {
+              <span class="mechanism-chip badge-root">{{ rdKey | translate }}</span>
+            }
+            @for (m of plant.intrinsicMechanisms ?? []; track m) {
+              <span class="mechanism-chip badge-trait">
+                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+              </span>
+            }
+            @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.beneficial ?? []; track m) {
+              <span class="mechanism-chip badge-positive">
+                <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+              </span>
+            }
+            @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.harmful ?? []; track m) {
+              <span class="mechanism-chip mechanism-red">
+                <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+              </span>
+            }
+          </div>
         </div>
         @if (myPlantsStore.isSaved(plant.id)) {
           <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>

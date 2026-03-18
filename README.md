@@ -29,7 +29,7 @@ podman compose up -d db
 ### Backend
 
 ```bash
-dotnet user-secrets --project garden-assistant-api set "ConnectionStrings:Default" "Host=localhost;Database=garden_assistant;Username=garden_user;Password=yourpassword"
+dotnet user-secrets --project garden-assistant-api set "ConnectionStrings:Default" "Host=localhost;Database=garden_assistant;Username=garden_user;Password=changeme"
 dotnet user-secrets --project garden-assistant-api set "Jwt:Key" "your-secret-key-minimum-32-characters"
 dotnet run --project garden-assistant-api
 ```

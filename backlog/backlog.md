@@ -133,6 +133,22 @@
 
 ---
 
+## E09 — Root depth awareness
+
+> Leverage root depth data already present on plants to improve companion planting recommendations and guild design.
+
+| ID | Title | Priority | Points | Status |
+|----|-------|----------|--------|--------|
+| US-054 | Root depth badge on plant cards | Must | 1 | Done |
+| US-055 | Root depth filter in catalogue | Must | 1 | Done |
+| US-056 | Root stratification indicator in guild editor | Should | 3 | Todo |
+| US-057 | Root depth bonus in scoring algorithm | Should | 3 | Todo |
+| US-058 | Root competition warnings for same-depth plants | Could | 2 | Todo |
+
+**Total E09: 10 points (2 Done / 8 Todo)**
+
+---
+
 ## Summary
 
 | Epic | Points | Done | In Progress | Todo |
@@ -145,7 +161,8 @@
 | E06 — Permaculture UI overhaul | 27 | 27 | 0 | 0 |
 | E07 — My Plants | 17 | 15 | 0 | 2 |
 | E08 — Associations UX polish | 10 | 9 | 0 | 1 |
-| **Total (active)** | **135** | **51** | **4** | **77** |
+| E09 — Root depth awareness | 10 | 2 | 0 | 8 |
+| **Total (active)** | **145** | **53** | **4** | **85** |
 
 ---
 
