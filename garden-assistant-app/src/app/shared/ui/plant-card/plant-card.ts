@@ -26,6 +26,7 @@ export class PlantCard {
   readonly initialExpanded = input(false);
   readonly forceExpanded = input(false);
   readonly removable = input(false);
+  readonly hideMechanisms = input(false);
 
   readonly remove = output<void>();
 

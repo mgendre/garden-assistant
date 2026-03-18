@@ -25,11 +25,13 @@
             {{ key | translate }}
           </span>
         }
-        @for (m of getIntrinsicMechanisms(plant()); track m) {
-          <span class="detail-badge badge-trait"
-            (click)="openBadgeInfo('BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Title', 'BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Description'); $event.stopPropagation()">
-            {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-          </span>
+        @if (!hideMechanisms()) {
+          @for (m of getIntrinsicMechanisms(plant()); track m) {
+            <span class="detail-badge badge-trait"
+              (click)="openBadgeInfo('BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Title', 'BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Description'); $event.stopPropagation()">
+              {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+            </span>
+          }
         }
       </div>
     </div>

@@ -12,6 +12,7 @@
         <app-plant-card
           [plant]="plant"
           [removable]="true"
+          [hideMechanisms]="true"
           (remove)="store.removePlant(plant)">
         </app-plant-card>
         @if (store.intrinsicMechanismsByPlant().get(plant.id!); as intrinsicMechanisms) {

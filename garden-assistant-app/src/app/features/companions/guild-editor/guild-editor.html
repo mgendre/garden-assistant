@@ -113,13 +113,11 @@
     }
   </div>
 
-  @if (store.selectedPlants().length > 0 && store.guildsForSelectedPlants().length) {
-    <div class="guild-container guild-active related-guilds">
-      <div class="guild-container-header">
-        <span>🌐</span>
-        <span [translate]="'Guilds.SectionTitle'"></span>
-      </div>
-      <app-guild-panel></app-guild-panel>
+  <div class="guild-container guild-active related-guilds">
+    <div class="guild-container-header">
+      <span>🌐</span>
+      <span [translate]="'Guilds.SectionTitle'"></span>
     </div>
-  }
+    <app-guild-panel></app-guild-panel>
+  </div>
 </div>
