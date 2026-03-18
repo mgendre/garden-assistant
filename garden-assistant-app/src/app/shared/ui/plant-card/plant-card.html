@@ -25,11 +25,13 @@
             {{ key | translate }}
           </span>
         }
-        @for (badgeKey of getBadgeKeys(plant()); track badgeKey) {
-          <span class="detail-badge badge-trait"
-            (click)="openBadgeInfo('BadgeInfo.Trait.' + getTraitBadgeKey(badgeKey) + '.Title', 'BadgeInfo.Trait.' + getTraitBadgeKey(badgeKey) + '.Description'); $event.stopPropagation()">
-            {{ badgeKey | translate }}
-          </span>
+        @if (!hideMechanisms()) {
+          @for (m of getIntrinsicMechanisms(plant()); track m) {
+            <span class="detail-badge badge-trait"
+              (click)="openBadgeInfo('BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Title', 'BadgeInfo.Mechanism.' + store.getMechanismKey(m) + '.Description'); $event.stopPropagation()">
+              {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+            </span>
+          }
         }
       </div>
     </div>
@@ -44,7 +46,7 @@
   </div>
 
   <div collapsible-body>
-    @if (plant().allelopathicRisk) {
+    @if (hasAllelopathicRisk(plant())) {
       <div class="allelopathic-warning">
         <span class="allelopathic-warning-icon">⚠️</span>
         <span [translate]="'Plant.AllelopathicWarning'"></span>
@@ -79,6 +81,8 @@
         </div>
       </div>
     </div>
+
+    <ng-content></ng-content>
 
     <button
       class="fav-btn-action"

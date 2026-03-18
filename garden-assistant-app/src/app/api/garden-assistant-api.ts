@@ -1430,6 +1430,8 @@ export interface CompanionSearchResultDto {
     selectedPlantConflicts?: SelectedPlantConflictDto[];
     selectedPlantMechanisms?: AssociationMechanism[];
     selectedPlantsMechanisms?: PlantMechanismsDto[];
+    intrinsicMechanismsByPlant?: PlantMechanismsDto[];
+    selectedPlantAssociations?: GuildAssociationDto[];
 }
 
 export interface CompanionRecommendationDto {
@@ -1465,6 +1467,16 @@ export interface SelectedPlantConflictDto {
 export interface PlantMechanismsDto {
     plantId?: string;
     mechanisms?: AssociationMechanism[];
+}
+
+export interface GuildAssociationDto {
+    sourcePlantId?: string;
+    sourcePlantName?: string;
+    targetPlantId?: string;
+    targetPlantName?: string;
+    mechanism?: AssociationMechanism;
+    effect?: AssociationEffect;
+    notes?: string | undefined;
 }
 
 export interface CompanionRecommendationRequest {
@@ -1541,9 +1553,7 @@ export interface PlantDto {
     rootDepth?: RootDepth;
     sunRequirement?: SunRequirement;
     waterNeeds?: WaterNeeds;
-    nitrogenFixer?: boolean;
-    allelopathicRisk?: boolean;
-    pollinatorPlant?: boolean;
+    intrinsicMechanisms?: AssociationMechanism[];
 }
 
 export enum LifeCycle {
@@ -1581,9 +1591,7 @@ export interface CreatePlantRequest {
     rootDepth?: RootDepth;
     sunRequirement?: SunRequirement;
     waterNeeds?: WaterNeeds;
-    nitrogenFixer?: boolean;
-    allelopathicRisk?: boolean;
-    pollinatorPlant?: boolean;
+    intrinsicMechanisms?: AssociationMechanism[] | undefined;
 }
 
 export class SwaggerException extends Error {

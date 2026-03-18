@@ -26,7 +26,14 @@
 }
 
 .mechanism-green { background: #e8f5e9; color: #2e7d32; }
+.mechanism-blue  { background: #e3f2fd; color: #1565c0; }
 .mechanism-red   { background: #ffebee; color: #c62828; }
+
+.mechanism-icon {
+  font-size: 0.55rem;
+  margin-right: 0.2rem;
+  opacity: 0.7;
+}
 
 // ─── Stat badges (circular count) ────────────────────────────────────────────
 

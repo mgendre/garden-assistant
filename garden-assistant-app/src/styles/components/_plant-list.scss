@@ -106,9 +106,7 @@
     color: #2d6a4f;
   }
 
-  .plant-item:hover &,
-  .companion-item:hover &,
-  .avoid-item:hover & {
+  .plant-item:hover & {
     opacity: 0.6;
   }
 }

@@ -27,10 +27,7 @@ public class UserPlantServiceTests : DatabaseTestBase
         LifeCycle = LifeCycle.Annual,
         RootDepth = RootDepth.Medium,
         SunRequirement = SunRequirement.FullSun,
-        WaterNeeds = WaterNeeds.Medium,
-        NitrogenFixer = false,
-        AllelopathicRisk = false,
-        PollinatorPlant = false
+        WaterNeeds = WaterNeeds.Medium
     };
 
     private async Task SeedUserPlantAsync(Guid plantId, Guid userId, DateTime? addedAtUtc = null)
