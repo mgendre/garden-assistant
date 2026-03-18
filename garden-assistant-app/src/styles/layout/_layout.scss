@@ -14,12 +14,3 @@
   }
 }
 
-.three-col {
-  @apply flex flex-col gap-5;
-
-  @include respond-to('lg') {
-    @apply grid items-start;
-    grid-template-columns: 280px 1fr 320px;
-  }
-}
-

@@ -29,9 +29,13 @@ export class GuildPanel {
   readonly filteredGuilds = computed(() => {
     const query = this.searchQuery().toLowerCase();
     const editingId = this.store.editingGuild()?.id;
+    const selectedIds = this.store.selectedPlantIds();
     let guilds = this.guildStore.guilds()
       .filter(g => g.id !== editingId)
       .sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'));
+    if (selectedIds.size > 0) {
+      guilds = guilds.filter(g => g.plants?.some(p => selectedIds.has(p.id)));
+    }
     if (query) {
       guilds = guilds.filter(g =>
         (g.name ?? '').toLowerCase().includes(query) ||

@@ -5,8 +5,6 @@ import {
   CompanionSearchResultDto,
   CompanionRecommendationRequest,
   GuildDetailDto,
-  GuildInfoDto,
-  GuildSummaryDto,
   AssociationMechanism,
   CreateGuildRequest,
   UpdateGuildRequest,
@@ -80,8 +78,6 @@ export class CompanionStore {
   readonly mechanismFilter = signal<number | null>(null);
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
-  readonly guildDetails = signal<Map<string, GuildDetailDto>>(new Map());
-  readonly guildLoading = signal<string | null>(null);
 
   readonly editingGuild = signal<GuildDetailDto | null>(null);
   readonly guildName = signal('');
@@ -130,25 +126,14 @@ export class CompanionStore {
     return map;
   });
 
-  readonly goodCompanions = computed(() => {
+  readonly goodCompanionIds = computed(() => {
     const avoid = this.avoidPlantIds();
     const selected = this.selectedPlantIds();
-    const myPlants = this.myPlantsStore.plantIds();
-    const filtered = this.recommendations()?.goodCompanions
-      ?.filter(c => !avoid.has(c.plantId) && !selected.has(c.plantId)) ?? [];
-    return [...filtered].sort((a, b) => {
-      const aFav = myPlants.has(a.plantId) ? 0 : 1;
-      const bFav = myPlants.has(b.plantId) ? 0 : 1;
-      if (aFav !== bFav) {
-        return aFav - bFav;
-      }
-      return (a.plantName ?? '').localeCompare(b.plantName ?? '', 'fr');
-    });
+    const ids = this.recommendations()?.goodCompanions
+      ?.filter(c => c.plantId && !avoid.has(c.plantId) && !selected.has(c.plantId))
+      .map(c => c.plantId) ?? [];
+    return new Set(ids);
   });
-
-  readonly goodCompanionIds = computed(() =>
-    new Set(this.goodCompanions().map(c => c.plantId).filter(Boolean))
-  );
 
   readonly availableMechanisms = computed(() => {
     const mechanisms = new Set<number>();
@@ -288,33 +273,16 @@ export class CompanionStore {
     });
   });
 
-  readonly guildsForSelectedPlants = computed(() => {
-    const selectedIds = this.selectedPlantIds();
-    if (selectedIds.size === 0) {
-      return [];
-    }
-    const editingId = this.editingGuild()?.id;
-    return this.guildStore.guilds()
-      .filter(g => g.id !== editingId && g.plants?.some(p => selectedIds.has(p.id)))
-      .sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'));
-  });
-
   constructor() {
     effect(() => {
       const selected = this.selectedPlants();
       untracked(() => {
         if (selected.length === 0) {
           this.recommendations.set(null);
-          this.guildDetails.set(new Map());
           return;
         }
         this.fetchRecommendations(selected);
       });
-    });
-
-    effect(() => {
-      const recs = this.recommendations();
-      untracked(() => this.loadAllGuildDetails(recs));
     });
   }
 
@@ -456,14 +424,6 @@ export class CompanionStore {
     return FAMILY_EMOJI_MAP[plant.family ?? ''] ?? '🌱';
   }
 
-  getPlantEmojiById(plantId: string | undefined): string {
-    if (!plantId) {
-      return '🌱';
-    }
-    const plant = this.plantStore.allPlants().find(p => p.id === plantId);
-    return plant ? this.getPlantEmoji(plant) : '🌱';
-  }
-
   getFamilyClass(family: string | undefined): string {
     return FAMILY_CLASS_MAP[family ?? ''] ?? '';
   }
@@ -485,33 +445,6 @@ export class CompanionStore {
     return 'neutral';
   }
 
-  getGuildsForPlant(plantId: string | undefined): GuildDetailDto[] {
-    if (!plantId) {
-      return [];
-    }
-    return Array.from(this.guildDetails().values())
-      .filter(guild => guild.plants?.some(p => p.id === plantId));
-  }
-
-  async addGuild(guild: GuildInfoDto | GuildDetailDto | GuildSummaryDto): Promise<void> {
-    const guildId = guild.id;
-    if (!guildId || this.guildLoading()) {
-      return;
-    }
-    this.guildLoading.set(guildId);
-    try {
-      const detail = this.guildDetails().get(guildId) ?? await this.service.getGuildById(guildId);
-      for (const guildPlant of detail.plants ?? []) {
-        const plant = this.plantStore.allPlants().find(p => p.id === guildPlant.id);
-        if (plant) {
-          this.addPlant(plant);
-        }
-      }
-    } finally {
-      this.guildLoading.set(null);
-    }
-  }
-
   private async fetchRecommendations(plants: PlantDto[]): Promise<void> {
     this.loading.set(true);
     try {
@@ -528,31 +461,4 @@ export class CompanionStore {
     }
   }
 
-  private async loadAllGuildDetails(recs: CompanionSearchResultDto | null): Promise<void> {
-    if (!recs?.goodCompanions) {
-      return;
-    }
-    const current = this.guildDetails();
-    const toLoad: string[] = [];
-    for (const companion of recs.goodCompanions) {
-      for (const guild of companion.guilds ?? []) {
-        if (guild.id && !current.has(guild.id) && !toLoad.includes(guild.id)) {
-          toLoad.push(guild.id);
-        }
-      }
-    }
-    if (toLoad.length === 0) {
-      return;
-    }
-    const results = await Promise.all(toLoad.map(id => this.service.getGuildById(id)));
-    this.guildDetails.update(map => {
-      const next = new Map(map);
-      for (const detail of results) {
-        if (detail.id) {
-          next.set(detail.id, detail);
-        }
-      }
-      return next;
-    });
-  }
 }

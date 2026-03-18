@@ -1431,6 +1431,7 @@ export interface CompanionSearchResultDto {
     selectedPlantMechanisms?: AssociationMechanism[];
     selectedPlantsMechanisms?: PlantMechanismsDto[];
     intrinsicMechanismsByPlant?: PlantMechanismsDto[];
+    selectedPlantAssociations?: GuildAssociationDto[];
 }
 
 export interface CompanionRecommendationDto {
@@ -1466,6 +1467,16 @@ export interface SelectedPlantConflictDto {
 export interface PlantMechanismsDto {
     plantId?: string;
     mechanisms?: AssociationMechanism[];
+}
+
+export interface GuildAssociationDto {
+    sourcePlantId?: string;
+    sourcePlantName?: string;
+    targetPlantId?: string;
+    targetPlantName?: string;
+    mechanism?: AssociationMechanism;
+    effect?: AssociationEffect;
+    notes?: string | undefined;
 }
 
 export interface CompanionRecommendationRequest {

@@ -82,6 +82,8 @@
       </div>
     </div>
 
+    <ng-content></ng-content>
+
     <button
       class="fav-btn-action"
       [class.saved]="myPlantsStore.isSaved(plant().id)"

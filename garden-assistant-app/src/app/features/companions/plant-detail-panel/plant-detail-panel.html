@@ -14,26 +14,22 @@
           [removable]="true"
           [hideMechanisms]="true"
           (remove)="store.removePlant(plant)">
+          @if (store.intrinsicMechanismsByPlant().get(plant.id!)?.length || store.relationalMechanismsByPlant().get(plant.id!)?.length) {
+            <div class="plant-mechanisms">
+              @for (m of store.intrinsicMechanismsByPlant().get(plant.id!) ?? []; track m) {
+                <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m)">
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </span>
+              }
+              @for (m of store.relationalMechanismsByPlant().get(plant.id!) ?? []; track m) {
+                <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
+                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </span>
+              }
+            </div>
+          }
         </app-plant-card>
-        @if (store.intrinsicMechanismsByPlant().get(plant.id!); as intrinsicMechanisms) {
-          <div class="plant-mechanisms">
-            @for (m of intrinsicMechanisms; track m) {
-              <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m)">
-                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-              </span>
-            }
-          </div>
-        }
-        @if (store.relationalMechanismsByPlant().get(plant.id!); as relationalMechanisms) {
-          <div class="plant-mechanisms">
-            @for (m of relationalMechanisms; track m) {
-              <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
-                <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-              </span>
-            }
-          </div>
-        }
       </div>
     }
   </div>
