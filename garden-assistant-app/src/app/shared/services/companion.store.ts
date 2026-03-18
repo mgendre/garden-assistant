@@ -77,6 +77,7 @@ export class CompanionStore {
   readonly searchQuery = signal('');
   readonly sortMode = signal<'alpha' | 'family' | 'compat'>('alpha');
   readonly myPlantsOnly = signal(false);
+  readonly mechanismFilter = signal<number | null>(null);
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
   readonly guildDetails = signal<Map<string, GuildDetailDto>>(new Map());
@@ -104,6 +105,31 @@ export class CompanionStore {
     new Set(this.recommendations()?.plantsToAvoid?.map(p => p.plantId).filter(Boolean) ?? [])
   );
 
+  readonly catalogAssociationMechanisms = computed(() => {
+    const map = new Map<string, { beneficial: number[]; harmful: number[] }>();
+    const sortMechanisms = (mechanisms: number[]) =>
+      [...mechanisms].sort((a, b) => {
+        const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
+        const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
+        return keyA.localeCompare(keyB, 'fr');
+      });
+    for (const c of this.recommendations()?.goodCompanions ?? []) {
+      if (c.plantId && c.mechanisms?.length) {
+        const entry = map.get(c.plantId) ?? { beneficial: [], harmful: [] };
+        entry.beneficial = sortMechanisms(c.mechanisms);
+        map.set(c.plantId, entry);
+      }
+    }
+    for (const a of this.recommendations()?.plantsToAvoid ?? []) {
+      if (a.plantId && a.mechanisms?.length) {
+        const entry = map.get(a.plantId) ?? { beneficial: [], harmful: [] };
+        entry.harmful = sortMechanisms(a.mechanisms);
+        map.set(a.plantId, entry);
+      }
+    }
+    return map;
+  });
+
   readonly goodCompanions = computed(() => {
     const avoid = this.avoidPlantIds();
     const selected = this.selectedPlantIds();
@@ -124,6 +150,24 @@ export class CompanionStore {
     new Set(this.goodCompanions().map(c => c.plantId).filter(Boolean))
   );
 
+  readonly availableMechanisms = computed(() => {
+    const mechanisms = new Set<number>();
+    for (const plant of this.plantStore.allPlants()) {
+      for (const m of plant.intrinsicMechanisms ?? []) {
+        mechanisms.add(m);
+      }
+    }
+    for (const [, entry] of this.catalogAssociationMechanisms()) {
+      for (const m of entry.beneficial) { mechanisms.add(m); }
+      for (const m of entry.harmful) { mechanisms.add(m); }
+    }
+    return [...mechanisms].sort((a, b) => {
+      const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
+      const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
+      return keyA.localeCompare(keyB, 'fr');
+    });
+  });
+
   readonly filteredPlants = computed(() => {
     const query = this.searchQuery().toLowerCase();
     const sort = this.sortMode();
@@ -134,6 +178,16 @@ export class CompanionStore {
     if (this.myPlantsOnly()) {
       const myIds = this.myPlantsStore.plantIds();
       result = result.filter(p => myIds.has(p.id));
+    }
+
+    const mFilter = this.mechanismFilter();
+    if (mFilter !== null) {
+      const assocMap = this.catalogAssociationMechanisms();
+      result = result.filter(p => {
+        if (p.intrinsicMechanisms?.includes(mFilter)) { return true; }
+        const assoc = assocMap.get(p.id!);
+        return assoc?.beneficial.includes(mFilter) || assoc?.harmful.includes(mFilter);
+      });
     }
 
     if (query) {
@@ -384,6 +438,10 @@ export class CompanionStore {
 
   toggleMyPlantsOnly(): void {
     this.myPlantsOnly.update(v => !v);
+  }
+
+  toggleMechanismFilter(mechanism: number): void {
+    this.mechanismFilter.update(v => v === mechanism ? null : mechanism);
   }
 
   setSort(mode: 'alpha' | 'family' | 'compat'): void {

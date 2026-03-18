@@ -40,6 +40,18 @@
     </button>
   </div>
 
+  <div class="mechanism-filter-wrap">
+    @for (m of store.availableMechanisms(); track m) {
+      <button
+        class="mechanism-chip"
+        [class.mechanism-blue]="store.mechanismFilter() === m"
+        [class.mechanism-filter-inactive]="store.mechanismFilter() !== m"
+        (click)="store.toggleMechanismFilter(m)">
+        {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+      </button>
+    }
+  </div>
+
   <div class="plant-list">
     @for (plant of store.filteredPlants(); track plant.id) {
       <div
@@ -54,10 +66,22 @@
           @if (plant.family) {
             <div class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</div>
           }
-          @if (plant.intrinsicMechanisms?.length) {
+          @if (plant.intrinsicMechanisms?.length || store.catalogAssociationMechanisms().get(plant.id!)) {
             <div class="plant-mechanisms-inline">
-              @for (m of plant.intrinsicMechanisms; track m) {
+              @for (m of plant.intrinsicMechanisms ?? []; track m) {
                 <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m, $event)">
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </span>
+              }
+              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.beneficial ?? []; track m) {
+                <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m, $event)">
+                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </span>
+              }
+              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.harmful ?? []; track m) {
+                <span class="mechanism-chip mechanism-red" (click)="openMechanismInfo(m, $event)">
+                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
                   {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
                 </span>
               }

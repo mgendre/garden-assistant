@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHeart as faHeartSolid, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartSolid, faCircleInfo, faLink } from '@fortawesome/free-solid-svg-icons';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { MyPlantsStore } from '../../../shared/services/my-plants.store';
 import { PlantStore } from '../../../shared/services/plant.store';
@@ -24,6 +24,7 @@ export class PlantCatalogue {
   protected readonly plantStore = inject(PlantStore);
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faInfo = faCircleInfo;
+  protected readonly faLink = faLink;
   private readonly dialog = inject(MatDialog);
 
   openPlantDetail(plant: PlantDto, event: Event): void {
