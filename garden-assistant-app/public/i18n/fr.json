@@ -99,6 +99,12 @@
       "Medium": "\ud83d\udca7\ud83d\udca7 Moyen",
       "High": "\ud83d\udca7\ud83d\udca7\ud83d\udca7 Abondant"
     },
+    "RootDepth": {
+      "Label": "Enracinement",
+      "Shallow": "\ud83c\udf31 Superficiel",
+      "Medium": "\ud83c\udf3f Moyen",
+      "Deep": "\ud83c\udf33 Profond"
+    },
     "LifeCycle": {
       "Annual": "Annuelle",
       "Biennial": "Bisannuelle",
@@ -187,7 +193,8 @@
     "SearchPlaceholder": "Rechercher une plante\u2026",
     "NoResults": "Aucune plante trouv\u00e9e",
     "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
-    "SavePlant": "Ajouter {{name}} \u00e0 ma collection"
+    "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
+    "ClearSelection": "Effacer"
   },
   "BadgeInfo": {
     "Close": "Fermer",
@@ -301,6 +308,20 @@
       "NursePlant": {
         "Title": "Plante nurse",
         "Description": "Une plante nurse prot\u00e8ge une jeune pousse fragile en lui offrant ombre, abri du vent et humidit\u00e9. Elle cr\u00e9e un microclimat favorable \u00e0 l'installation de plantes plus exigeantes."
+      }
+    },
+    "RootDepth": {
+      "Shallow": {
+        "Title": "Enracinement superficiel",
+        "Description": "Les racines restent dans les 15\u201330 premiers centim\u00e8tres du sol. Ces plantes acc\u00e8dent \u00e0 l'humidit\u00e9 de surface et aux nutriments issus du paillage. Elles se combinent id\u00e9alement avec des plantes \u00e0 enracinement moyen ou profond pour \u00e9viter la comp\u00e9tition dans la m\u00eame couche de sol."
+      },
+      "Medium": {
+        "Title": "Enracinement moyen",
+        "Description": "Les racines explorent la zone de 30 \u00e0 60 cm, la couche de transition du sol. La plupart des l\u00e9gumes annuels se situent dans cette cat\u00e9gorie. Associez-les \u00e0 des plantes superficielles ou profondes pour une meilleure stratification racinaire."
+      },
+      "Deep": {
+        "Title": "Enracinement profond",
+        "Description": "Les racines descendent au-del\u00e0 de 60 cm, acc\u00e9dant \u00e0 l'eau et aux min\u00e9raux des couches profondes. Ces plantes jouent un r\u00f4le de \u00ab pompe \u00e0 nutriments \u00bb : elles remontent potassium, calcium et oligo-\u00e9l\u00e9ments vers la surface au b\u00e9n\u00e9fice des plantes voisines."
       }
     },
     "Sun": {

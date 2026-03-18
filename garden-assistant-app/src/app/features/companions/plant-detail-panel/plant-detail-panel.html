@@ -12,23 +12,8 @@
         <app-plant-card
           [plant]="plant"
           [removable]="true"
-          [hideMechanisms]="true"
+          [relationalMechanisms]="store.relationalMechanismsByPlant().get(plant.id!) ?? []"
           (remove)="store.removePlant(plant)">
-          @if (store.intrinsicMechanismsByPlant().get(plant.id!)?.length || store.relationalMechanismsByPlant().get(plant.id!)?.length) {
-            <div class="plant-mechanisms">
-              @for (m of store.intrinsicMechanismsByPlant().get(plant.id!) ?? []; track m) {
-                <span class="mechanism-chip mechanism-blue" (click)="openMechanismInfo(m)">
-                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                </span>
-              }
-              @for (m of store.relationalMechanismsByPlant().get(plant.id!) ?? []; track m) {
-                <span class="mechanism-chip mechanism-green" (click)="openMechanismInfo(m)">
-                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                </span>
-              }
-            </div>
-          }
         </app-plant-card>
       </div>
     }

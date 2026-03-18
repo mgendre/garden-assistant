@@ -2,10 +2,10 @@ import { Component, input, output, inject, ViewEncapsulation } from '@angular/co
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHeart as faHeartSolid } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartSolid, faLink } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { firstValueFrom } from 'rxjs';
-import { PlantDto, SunRequirement, WaterNeeds, LifeCycle, AssociationMechanism } from '../../../api/garden-assistant-api';
+import { PlantDto, SunRequirement, WaterNeeds, LifeCycle, RootDepth, AssociationMechanism } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../services/companion.store';
 import { MyPlantsStore } from '../../services/my-plants.store';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog';
@@ -27,6 +27,7 @@ export class PlantCard {
   readonly forceExpanded = input(false);
   readonly removable = input(false);
   readonly hideMechanisms = input(false);
+  readonly relationalMechanisms = input<number[]>([]);
 
   readonly remove = output<void>();
 
@@ -34,6 +35,7 @@ export class PlantCard {
   protected readonly myPlantsStore = inject(MyPlantsStore);
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faHeartRegular = faHeartRegular;
+  protected readonly faLink = faLink;
   private readonly dialog = inject(MatDialog);
   private readonly translate = inject(TranslateService);
 
@@ -60,6 +62,42 @@ export class PlantCard {
       case LifeCycle.Annual: return 'Plant.LifeCycle.Annual';
       case LifeCycle.Biennial: return 'Plant.LifeCycle.Biennial';
       case LifeCycle.Perennial: return 'Plant.LifeCycle.Perennial';
+      default: return '';
+    }
+  }
+
+  getRootDepthKey(rootDepth: RootDepth | undefined): string {
+    switch (rootDepth) {
+      case RootDepth.Shallow: return 'Plant.RootDepth.Shallow';
+      case RootDepth.Medium: return 'Plant.RootDepth.Medium';
+      case RootDepth.Deep: return 'Plant.RootDepth.Deep';
+      default: return '';
+    }
+  }
+
+  getRootDepthBadgeKey(rootDepth: RootDepth | undefined): string {
+    switch (rootDepth) {
+      case RootDepth.Shallow: return 'Shallow';
+      case RootDepth.Medium: return 'Medium';
+      case RootDepth.Deep: return 'Deep';
+      default: return '';
+    }
+  }
+
+  getSunHours(sun: SunRequirement | undefined): string {
+    switch (sun) {
+      case SunRequirement.FullSun: return '6h+';
+      case SunRequirement.PartialShade: return '3–6h';
+      case SunRequirement.Shade: return '< 3h';
+      default: return '';
+    }
+  }
+
+  getRootDepthCm(rootDepth: RootDepth | undefined): string {
+    switch (rootDepth) {
+      case RootDepth.Shallow: return '15–30 cm';
+      case RootDepth.Medium: return '30–60 cm';
+      case RootDepth.Deep: return '60 cm+';
       default: return '';
     }
   }

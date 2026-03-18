@@ -17,19 +17,6 @@
   border-bottom: none;
 }
 
-.guild-count-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  border-radius: 9999px;
-  font-size: 0.6875rem;
-  font-weight: 700;
-  margin-left: auto;
-  background: #f4845f;
-  color: #fff;
-}
 
 .guild-conflict-header {
   background: rgba(239, 83, 80, 0.06);
@@ -65,12 +52,10 @@
 .guild-associations-header {
   background: transparent;
   border-bottom: none;
-  padding-top: 0.5rem;
-  padding-bottom: 0.25rem;
+  padding: 0;
 }
 
 .guild-association-list {
-  padding: 0.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

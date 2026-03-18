@@ -1,17 +1,6 @@
 @use 'family-badges' as *;
 @reference "tailwindcss";
 
-.panel-header {
-  @apply flex items-center justify-between px-5 pt-4 pb-3;
-  border-bottom: 1px solid #d8f3dc;
-}
-
-.panel-title {
-  @apply text-xs font-semibold uppercase;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-}
-
 .plant-count {
   @apply text-xs;
   color: var(--color-text-muted);
@@ -62,6 +51,41 @@
   &:last-child { border-bottom: none; }
 
   &:hover { background: #d8f3dc; }
+
+  &.compat-good {
+    background: #f0faf4;
+    &::before {
+      content: '';
+      @apply absolute left-0 top-0 bottom-0 rounded-r;
+      width: 3px;
+      background: #52b788;
+    }
+    &:hover { background: #d8f3dc; }
+    .plant-icon { background: #d8f3dc; }
+  }
+
+  &.compat-avoid {
+    background: #fff5f5;
+    &::before {
+      content: '';
+      @apply absolute left-0 top-0 bottom-0 rounded-r;
+      width: 3px;
+      background: #ef5350;
+    }
+    &:hover { background: #fde8e8; }
+    .plant-icon { background: #fde8e8; }
+  }
+
+  &.selected {
+    background: #d8f3dc;
+    &::before {
+      content: '';
+      @apply absolute left-0 top-0 bottom-0 rounded-r;
+      width: 3px;
+      background: #2d6a4f;
+    }
+    .plant-icon { background: #fff; }
+  }
 }
 
 .plant-icon {
@@ -75,17 +99,24 @@
   @apply min-w-0 flex-1;
 }
 
+.plant-name-row {
+  @apply flex items-center gap-1.5;
+
+  .plant-family {
+    @apply ml-auto;
+  }
+}
+
 .plant-name {
   @apply text-sm font-semibold truncate;
   color: var(--color-text);
 }
 
 .plant-family {
-  @apply inline-block font-semibold uppercase whitespace-nowrap rounded;
+  @apply inline-block flex-shrink-0 font-semibold uppercase whitespace-nowrap rounded;
   font-size: 0.6rem;
   letter-spacing: 0.05em;
   padding: 0.1rem 0.35rem;
-  margin-top: 2px;
 }
 
 .my-plant-indicator {

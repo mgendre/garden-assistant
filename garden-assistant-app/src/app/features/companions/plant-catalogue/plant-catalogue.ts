@@ -9,7 +9,7 @@ import { PlantStore } from '../../../shared/services/plant.store';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { SearchInput } from '../../../shared/ui/search-input/search-input';
-import { PlantDto } from '../../../api/garden-assistant-api';
+import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 
 @Component({
   selector: 'app-plant-catalogue',
@@ -25,7 +25,21 @@ export class PlantCatalogue {
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faInfo = faCircleInfo;
   protected readonly faLink = faLink;
+  protected readonly rootDepths = [
+    { value: RootDepth.Shallow, labelKey: 'Plant.RootDepth.Shallow' },
+    { value: RootDepth.Medium, labelKey: 'Plant.RootDepth.Medium' },
+    { value: RootDepth.Deep, labelKey: 'Plant.RootDepth.Deep' },
+  ];
   private readonly dialog = inject(MatDialog);
+
+  getRootDepthKey(rootDepth: RootDepth | undefined): string {
+    switch (rootDepth) {
+      case RootDepth.Shallow: return 'Plant.RootDepth.Shallow';
+      case RootDepth.Medium: return 'Plant.RootDepth.Medium';
+      case RootDepth.Deep: return 'Plant.RootDepth.Deep';
+      default: return '';
+    }
+  }
 
   openPlantDetail(plant: PlantDto, event: Event): void {
     event.stopPropagation();

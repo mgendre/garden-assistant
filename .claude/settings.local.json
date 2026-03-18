@@ -5,7 +5,12 @@
       "Bash(podman build:*)",
       "Bash(podman compose:*)",
       "Bash(podman logs:*)",
-      "Bash(podman exec:*)"
+      "Bash(podman exec:*)",
+      "Bash(npm run:*)",
+      "Bash(npx --prefix garden-assistant-app ng build --project garden-assistant-app)",
+      "Bash(npx ng:*)",
+      "Bash(ls:*)",
+      "Bash(npm install:*)"
     ]
   }
 }
