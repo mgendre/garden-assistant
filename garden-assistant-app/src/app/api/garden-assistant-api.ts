@@ -88,184 +88,6 @@ export class AuthClient {
     }
 }
 
-export class GardensClient {
-    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
-        this.http = http ? http : window as any;
-        this.baseUrl = baseUrl ?? "";
-    }
-
-    getAll(): Promise<GardenDto[]> {
-        let url_ = this.baseUrl + "/api/Gardens";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetAll(_response);
-        });
-    }
-
-    protected processGetAll(response: Response): Promise<GardenDto[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GardenDto[];
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<GardenDto[]>(null as any);
-    }
-
-    create(request: CreateGardenRequest): Promise<GardenDto> {
-        let url_ = this.baseUrl + "/api/Gardens";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(request);
-
-        let options_: RequestInit = {
-            body: content_,
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processCreate(_response);
-        });
-    }
-
-    protected processCreate(response: Response): Promise<GardenDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 201) {
-            return response.text().then((_responseText) => {
-            let result201: any = null;
-            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GardenDto;
-            return result201;
-            });
-        } else if (status === 400) {
-            return response.text().then((_responseText) => {
-            let result400: any = null;
-            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<GardenDto>(null as any);
-    }
-
-    update(id: string, request: UpdateGardenRequest): Promise<GardenDto> {
-        let url_ = this.baseUrl + "/api/Gardens/{id}";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(request);
-
-        let options_: RequestInit = {
-            body: content_,
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processUpdate(_response);
-        });
-    }
-
-    protected processUpdate(response: Response): Promise<GardenDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GardenDto;
-            return result200;
-            });
-        } else if (status === 400) {
-            return response.text().then((_responseText) => {
-            let result400: any = null;
-            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<GardenDto>(null as any);
-    }
-
-    delete(id: string): Promise<void> {
-        let url_ = this.baseUrl + "/api/Gardens/{id}";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "DELETE",
-            headers: {
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processDelete(_response);
-        });
-    }
-
-    protected processDelete(response: Response): Promise<void> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 204) {
-            return response.text().then((_responseText) => {
-            return;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<void>(null as any);
-    }
-}
-
 export class GuildsClient {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
@@ -276,7 +98,7 @@ export class GuildsClient {
         this.baseUrl = baseUrl ?? "";
     }
 
-    getAll(): Promise<GuildSummaryDto[]> {
+    getAll(): Promise<GuildDto[]> {
         let url_ = this.baseUrl + "/api/Guilds";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -292,13 +114,13 @@ export class GuildsClient {
         });
     }
 
-    protected processGetAll(response: Response): Promise<GuildSummaryDto[]> {
+    protected processGetAll(response: Response): Promise<GuildDto[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildSummaryDto[];
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDto[];
             return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -306,10 +128,10 @@ export class GuildsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<GuildSummaryDto[]>(null as any);
+        return Promise.resolve<GuildDto[]>(null as any);
     }
 
-    create(request: CreateGuildRequest): Promise<GuildDetailDto> {
+    create(request: CreateGuildRequest): Promise<GuildDto> {
         let url_ = this.baseUrl + "/api/Guilds";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -329,13 +151,13 @@ export class GuildsClient {
         });
     }
 
-    protected processCreate(response: Response): Promise<GuildDetailDto> {
+    protected processCreate(response: Response): Promise<GuildDto> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 201) {
             return response.text().then((_responseText) => {
             let result201: any = null;
-            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDetailDto;
+            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDto;
             return result201;
             });
         } else if (status === 400) {
@@ -349,10 +171,10 @@ export class GuildsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<GuildDetailDto>(null as any);
+        return Promise.resolve<GuildDto>(null as any);
     }
 
-    getById(id: string): Promise<GuildDetailDto> {
+    getById(id: string): Promise<GuildDto> {
         let url_ = this.baseUrl + "/api/Guilds/{id}";
         if (id === undefined || id === null)
             throw new globalThis.Error("The parameter 'id' must be defined.");
@@ -371,13 +193,13 @@ export class GuildsClient {
         });
     }
 
-    protected processGetById(response: Response): Promise<GuildDetailDto> {
+    protected processGetById(response: Response): Promise<GuildDto> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDetailDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDto;
             return result200;
             });
         } else if (status === 404) {
@@ -391,10 +213,10 @@ export class GuildsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<GuildDetailDto>(null as any);
+        return Promise.resolve<GuildDto>(null as any);
     }
 
-    update(id: string, request: UpdateGuildRequest): Promise<GuildDetailDto> {
+    update(id: string, request: UpdateGuildRequest): Promise<GuildDto> {
         let url_ = this.baseUrl + "/api/Guilds/{id}";
         if (id === undefined || id === null)
             throw new globalThis.Error("The parameter 'id' must be defined.");
@@ -417,13 +239,13 @@ export class GuildsClient {
         });
     }
 
-    protected processUpdate(response: Response): Promise<GuildDetailDto> {
+    protected processUpdate(response: Response): Promise<GuildDto> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDetailDto;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as GuildDto;
             return result200;
             });
         } else if (status === 400) {
@@ -443,7 +265,7 @@ export class GuildsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<GuildDetailDto>(null as any);
+        return Promise.resolve<GuildDto>(null as any);
     }
 
     delete(id: string): Promise<void> {
@@ -496,86 +318,6 @@ export class PlantAssociationsClient {
         this.baseUrl = baseUrl ?? "";
     }
 
-    getForPlant(plantId: string | undefined): Promise<PlantAssociationDto[]> {
-        let url_ = this.baseUrl + "/api/plant-associations?";
-        if (plantId === null)
-            throw new globalThis.Error("The parameter 'plantId' cannot be null.");
-        else if (plantId !== undefined)
-            url_ += "plantId=" + encodeURIComponent("" + plantId) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetForPlant(_response);
-        });
-    }
-
-    protected processGetForPlant(response: Response): Promise<PlantAssociationDto[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantAssociationDto[];
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantAssociationDto[]>(null as any);
-    }
-
-    create(request: CreatePlantAssociationRequest): Promise<PlantAssociationDto> {
-        let url_ = this.baseUrl + "/api/plant-associations";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(request);
-
-        let options_: RequestInit = {
-            body: content_,
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processCreate(_response);
-        });
-    }
-
-    protected processCreate(response: Response): Promise<PlantAssociationDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 201) {
-            return response.text().then((_responseText) => {
-            let result201: any = null;
-            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantAssociationDto;
-            return result201;
-            });
-        } else if (status === 400) {
-            return response.text().then((_responseText) => {
-            let result400: any = null;
-            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantAssociationDto>(null as any);
-    }
-
     getCompanionRecommendations(request: CompanionRecommendationRequest): Promise<CompanionSearchResultDto> {
         let url_ = this.baseUrl + "/api/plant-associations/companions";
         url_ = url_.replace(/[?&]$/, "");
@@ -617,393 +359,6 @@ export class PlantAssociationsClient {
             });
         }
         return Promise.resolve<CompanionSearchResultDto>(null as any);
-    }
-
-    delete(id: string): Promise<void> {
-        let url_ = this.baseUrl + "/api/plant-associations/{id}";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "DELETE",
-            headers: {
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processDelete(_response);
-        });
-    }
-
-    protected processDelete(response: Response): Promise<void> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 204) {
-            return response.text().then((_responseText) => {
-            return;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<void>(null as any);
-    }
-}
-
-export class PlantingEntriesClient {
-    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
-        this.http = http ? http : window as any;
-        this.baseUrl = baseUrl ?? "";
-    }
-
-    removeEntry(entryId: string): Promise<void> {
-        let url_ = this.baseUrl + "/api/planting-entries/{entryId}";
-        if (entryId === undefined || entryId === null)
-            throw new globalThis.Error("The parameter 'entryId' must be defined.");
-        url_ = url_.replace("{entryId}", encodeURIComponent("" + entryId));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "DELETE",
-            headers: {
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processRemoveEntry(_response);
-        });
-    }
-
-    protected processRemoveEntry(response: Response): Promise<void> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 204) {
-            return response.text().then((_responseText) => {
-            return;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<void>(null as any);
-    }
-}
-
-export class PlantingsClient {
-    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
-    private baseUrl: string;
-    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
-
-    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
-        this.http = http ? http : window as any;
-        this.baseUrl = baseUrl ?? "";
-    }
-
-    getAll(): Promise<PlantingDto[]> {
-        let url_ = this.baseUrl + "/api/Plantings";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetAll(_response);
-        });
-    }
-
-    protected processGetAll(response: Response): Promise<PlantingDto[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingDto[];
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantingDto[]>(null as any);
-    }
-
-    create(request: CreatePlantingRequest): Promise<PlantingDto> {
-        let url_ = this.baseUrl + "/api/Plantings";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(request);
-
-        let options_: RequestInit = {
-            body: content_,
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processCreate(_response);
-        });
-    }
-
-    protected processCreate(response: Response): Promise<PlantingDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 201) {
-            return response.text().then((_responseText) => {
-            let result201: any = null;
-            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingDto;
-            return result201;
-            });
-        } else if (status === 400) {
-            return response.text().then((_responseText) => {
-            let result400: any = null;
-            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantingDto>(null as any);
-    }
-
-    getById(id: string): Promise<PlantingDto> {
-        let url_ = this.baseUrl + "/api/Plantings/{id}";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetById(_response);
-        });
-    }
-
-    protected processGetById(response: Response): Promise<PlantingDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingDto;
-            return result200;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantingDto>(null as any);
-    }
-
-    delete(id: string): Promise<void> {
-        let url_ = this.baseUrl + "/api/Plantings/{id}";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "DELETE",
-            headers: {
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processDelete(_response);
-        });
-    }
-
-    protected processDelete(response: Response): Promise<void> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 204) {
-            return response.text().then((_responseText) => {
-            return;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<void>(null as any);
-    }
-
-    getCompatibilityScore(id: string): Promise<CompatibilityScoreDto> {
-        let url_ = this.baseUrl + "/api/Plantings/{id}/compatibility";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetCompatibilityScore(_response);
-        });
-    }
-
-    protected processGetCompatibilityScore(response: Response): Promise<CompatibilityScoreDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as CompatibilityScoreDto;
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<CompatibilityScoreDto>(null as any);
-    }
-
-    getEntries(plantingId: string): Promise<PlantingEntryDto[]> {
-        let url_ = this.baseUrl + "/api/Plantings/{plantingId}/entries";
-        if (plantingId === undefined || plantingId === null)
-            throw new globalThis.Error("The parameter 'plantingId' must be defined.");
-        url_ = url_.replace("{plantingId}", encodeURIComponent("" + plantingId));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetEntries(_response);
-        });
-    }
-
-    protected processGetEntries(response: Response): Promise<PlantingEntryDto[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingEntryDto[];
-            return result200;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantingEntryDto[]>(null as any);
-    }
-
-    addEntry(plantingId: string, request: CreatePlantingEntryRequest): Promise<PlantingEntryDto> {
-        let url_ = this.baseUrl + "/api/Plantings/{plantingId}/entries";
-        if (plantingId === undefined || plantingId === null)
-            throw new globalThis.Error("The parameter 'plantingId' must be defined.");
-        url_ = url_.replace("{plantingId}", encodeURIComponent("" + plantingId));
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(request);
-
-        let options_: RequestInit = {
-            body: content_,
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processAddEntry(_response);
-        });
-    }
-
-    protected processAddEntry(response: Response): Promise<PlantingEntryDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 201) {
-            return response.text().then((_responseText) => {
-            let result201: any = null;
-            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantingEntryDto;
-            return result201;
-            });
-        } else if (status === 400) {
-            return response.text().then((_responseText) => {
-            let result400: any = null;
-            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantingEntryDto>(null as any);
     }
 }
 
@@ -1048,130 +403,6 @@ export class PlantsClient {
             });
         }
         return Promise.resolve<PlantDto[]>(null as any);
-    }
-
-    create(request: CreatePlantRequest): Promise<PlantDto> {
-        let url_ = this.baseUrl + "/api/Plants";
-        url_ = url_.replace(/[?&]$/, "");
-
-        const content_ = JSON.stringify(request);
-
-        let options_: RequestInit = {
-            body: content_,
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processCreate(_response);
-        });
-    }
-
-    protected processCreate(response: Response): Promise<PlantDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 201) {
-            return response.text().then((_responseText) => {
-            let result201: any = null;
-            result201 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantDto;
-            return result201;
-            });
-        } else if (status === 400) {
-            return response.text().then((_responseText) => {
-            let result400: any = null;
-            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantDto>(null as any);
-    }
-
-    getById(id: string): Promise<PlantDto> {
-        let url_ = this.baseUrl + "/api/Plants/{id}";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetById(_response);
-        });
-    }
-
-    protected processGetById(response: Response): Promise<PlantDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantDto;
-            return result200;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantDto>(null as any);
-    }
-
-    delete(id: string): Promise<void> {
-        let url_ = this.baseUrl + "/api/Plants/{id}";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "DELETE",
-            headers: {
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processDelete(_response);
-        });
-    }
-
-    protected processDelete(response: Response): Promise<void> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 204) {
-            return response.text().then((_responseText) => {
-            return;
-            });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<void>(null as any);
     }
 }
 
@@ -1314,43 +545,19 @@ export interface RefreshRequest {
     refreshToken?: string;
 }
 
-export interface GardenDto {
-    id?: string;
-    name?: string;
-    description?: string | undefined;
-}
-
-export interface CreateGardenRequest {
-    name?: string;
-    description?: string | undefined;
-}
-
-export interface UpdateGardenRequest {
-    name?: string;
-    description?: string | undefined;
-}
-
-export interface GuildSummaryDto {
-    id?: string;
-    name?: string;
-    description?: string | undefined;
-    plants?: GuildPlantMemberDto[];
-    isOfficial?: boolean;
-}
-
-export interface GuildPlantMemberDto {
-    id?: string;
-    name?: string;
-    scientificName?: string | undefined;
-}
-
-export interface GuildDetailDto {
+export interface GuildDto {
     id?: string;
     name?: string;
     description?: string | undefined;
     plants?: GuildPlantMemberDto[];
     isOfficial?: boolean;
     isOwner?: boolean;
+}
+
+export interface GuildPlantMemberDto {
+    id?: string;
+    name?: string;
+    scientificName?: string | undefined;
 }
 
 export interface CreateGuildRequest {
@@ -1365,15 +572,19 @@ export interface UpdateGuildRequest {
     plantIds?: string[];
 }
 
-export interface PlantAssociationDto {
-    id?: string;
-    sourcePlantId?: string;
-    targetPlantId?: string;
-    mechanism?: AssociationMechanism;
-    effect?: AssociationEffect;
-    distanceEffect?: DistanceEffect;
-    confidenceLevel?: ConfidenceLevel;
-    notes?: string | undefined;
+export interface CompanionSearchResultDto {
+    goodCompanions?: CompanionRecommendationDto[];
+    plantsToAvoid?: CompanionRecommendationDto[];
+    selectedPlantConflicts?: SelectedPlantConflictDto[];
+    selectedPlantMechanisms?: AssociationMechanism[];
+    selectedPlantsMechanisms?: PlantMechanismsDto[];
+    intrinsicMechanismsByPlant?: PlantMechanismsDto[];
+    selectedPlantAssociations?: GuildAssociationDto[];
+}
+
+export interface CompanionRecommendationDto {
+    plantId?: string;
+    mechanisms?: AssociationMechanism[];
 }
 
 export enum AssociationMechanism {
@@ -1395,72 +606,9 @@ export enum AssociationMechanism {
     NursePlant = 15,
 }
 
-export enum AssociationEffect {
-    Beneficial = 0,
-    Harmful = 1,
-    Neutral = 2,
-}
-
-export enum DistanceEffect {
-    Contact = 0,
-    Short = 1,
-    Medium = 2,
-    Field = 3,
-}
-
-export enum ConfidenceLevel {
-    Anecdotal = 0,
-    FieldObserved = 1,
-    PeerReviewed = 2,
-}
-
-export interface CreatePlantAssociationRequest {
-    sourcePlantId?: string;
-    targetPlantId?: string;
-    mechanism?: AssociationMechanism;
-    effect?: AssociationEffect;
-    distanceEffect?: DistanceEffect;
-    confidenceLevel?: ConfidenceLevel;
-    notes?: string | undefined;
-}
-
-export interface CompanionSearchResultDto {
-    goodCompanions?: CompanionRecommendationDto[];
-    plantsToAvoid?: PlantToAvoidDto[];
-    selectedPlantConflicts?: SelectedPlantConflictDto[];
-    selectedPlantMechanisms?: AssociationMechanism[];
-    selectedPlantsMechanisms?: PlantMechanismsDto[];
-    intrinsicMechanismsByPlant?: PlantMechanismsDto[];
-    selectedPlantAssociations?: GuildAssociationDto[];
-}
-
-export interface CompanionRecommendationDto {
-    plantId?: string;
-    plantName?: string;
-    scientificName?: string | undefined;
-    score?: number;
-    mechanisms?: AssociationMechanism[];
-    guilds?: GuildInfoDto[];
-}
-
-export interface GuildInfoDto {
-    id?: string;
-    name?: string;
-    description?: string | undefined;
-}
-
-export interface PlantToAvoidDto {
-    plantId?: string;
-    plantName?: string;
-    scientificName?: string | undefined;
-    mechanisms?: AssociationMechanism[];
-}
-
 export interface SelectedPlantConflictDto {
     plantAId?: string;
-    plantAName?: string;
     plantBId?: string;
-    plantBName?: string;
     mechanisms?: AssociationMechanism[];
 }
 
@@ -1471,74 +619,21 @@ export interface PlantMechanismsDto {
 
 export interface GuildAssociationDto {
     sourcePlantId?: string;
-    sourcePlantName?: string;
     targetPlantId?: string;
-    targetPlantName?: string;
     mechanism?: AssociationMechanism;
     effect?: AssociationEffect;
     notes?: string | undefined;
 }
 
+export enum AssociationEffect {
+    Beneficial = 0,
+    Harmful = 1,
+    Neutral = 2,
+}
+
 export interface CompanionRecommendationRequest {
     plantIds?: string[];
     minScore?: number | undefined;
-}
-
-export interface PlantingDto {
-    id?: string;
-    gardenId?: string;
-    name?: string;
-    description?: string | undefined;
-    plannedDate?: Date | undefined;
-}
-
-export interface CreatePlantingRequest {
-    gardenId?: string;
-    name?: string;
-    description?: string | undefined;
-    plannedDate?: Date | undefined;
-}
-
-export interface CompatibilityScoreDto {
-    beneficial?: number;
-    harmful?: number;
-    neutral?: number;
-    total?: number;
-}
-
-export interface PlantingEntryDto {
-    id?: string;
-    plantingId?: string;
-    plantId?: string;
-    quantity?: number | undefined;
-    positionX?: number | undefined;
-    positionY?: number | undefined;
-    layer?: PlantingLayer | undefined;
-    plannedSowDate?: Date | undefined;
-    plannedHarvestDate?: Date | undefined;
-    actualHarvestDate?: Date | undefined;
-    notes?: string | undefined;
-}
-
-export enum PlantingLayer {
-    Canopy = 0,
-    SubCanopy = 1,
-    Shrub = 2,
-    Herbaceous = 3,
-    GroundCover = 4,
-    Climber = 5,
-    Root = 6,
-}
-
-export interface CreatePlantingEntryRequest {
-    plantId?: string;
-    quantity?: number | undefined;
-    positionX?: number | undefined;
-    positionY?: number | undefined;
-    layer?: PlantingLayer | undefined;
-    plannedSowDate?: Date | undefined;
-    plannedHarvestDate?: Date | undefined;
-    notes?: string | undefined;
 }
 
 export interface PlantDto {
@@ -1578,20 +673,6 @@ export enum WaterNeeds {
     Low = 0,
     Medium = 1,
     High = 2,
-}
-
-export interface CreatePlantRequest {
-    name?: string;
-    scientificName?: string | undefined;
-    description?: string | undefined;
-    family?: string | undefined;
-    genus?: string | undefined;
-    lifeCycle?: LifeCycle;
-    heightAtMaturityCm?: number | undefined;
-    rootDepth?: RootDepth;
-    sunRequirement?: SunRequirement;
-    waterNeeds?: WaterNeeds;
-    intrinsicMechanisms?: AssociationMechanism[] | undefined;
 }
 
 export class SwaggerException extends Error {

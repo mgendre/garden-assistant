@@ -1,169 +1,214 @@
 # Backlog — Garden Assistant
 
-> **Priority legend:** Must . Should . Could . Won't (this version)
-> **Status:** Todo . In Progress . Done
+> **Legende des priorites :** Indispensable - Important - Optionnel - Hors scope (cette version)
+> **Statuts :** A faire - En cours - Termine
 
 ---
 
-## E01 — Garden and bed management
+## E01 — Gestion des jardins et des planches
 
-> Allow the gardener to create and organise growing spaces as gardens and beds.
+> Permettre au jardinier de creer et d'organiser ses espaces de culture sous forme de jardins et de planches.
 
-| ID | Title | Priority | Points | Status |
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-001](epics/E01-gestion-jardin-planches/US-001-creer-un-jardin.md) | Create a garden | Must | 2 | In Progress |
-| [US-002](epics/E01-gestion-jardin-planches/US-002-lister-mes-jardins.md) | List my gardens | Must | 2 | In Progress |
-| [US-003](epics/E01-gestion-jardin-planches/US-003-modifier-un-jardin.md) | Edit a garden | Must | 1 | In Progress |
-| [US-004](epics/E01-gestion-jardin-planches/US-004-supprimer-un-jardin.md) | Delete a garden | Should | 2 | In Progress |
-| [US-005](epics/E01-gestion-jardin-planches/US-005-ajouter-une-planche.md) | Add a bed to a garden | Must | 3 | Todo |
-| [US-006](epics/E01-gestion-jardin-planches/US-006-modifier-une-planche.md) | Edit a bed | Should | 2 | Todo |
-| [US-007](epics/E01-gestion-jardin-planches/US-007-supprimer-une-planche.md) | Delete a bed | Should | 2 | Todo |
+| [US-001](epics/E01-gestion-jardin-planches/US-001-creer-un-jardin.md) | Creer un jardin | Indispensable | 2 | En cours |
+| [US-002](epics/E01-gestion-jardin-planches/US-002-lister-mes-jardins.md) | Lister mes jardins | Indispensable | 2 | En cours |
+| [US-003](epics/E01-gestion-jardin-planches/US-003-modifier-un-jardin.md) | Modifier un jardin | Indispensable | 1 | En cours |
+| [US-004](epics/E01-gestion-jardin-planches/US-004-supprimer-un-jardin.md) | Supprimer un jardin | Important | 2 | En cours |
+| [US-005](epics/E01-gestion-jardin-planches/US-005-ajouter-une-planche.md) | Ajouter une planche a un jardin | Indispensable | 3 | A faire |
+| [US-006](epics/E01-gestion-jardin-planches/US-006-modifier-une-planche.md) | Modifier une planche | Important | 2 | A faire |
+| [US-007](epics/E01-gestion-jardin-planches/US-007-supprimer-une-planche.md) | Supprimer une planche | Important | 2 | A faire |
 
-**Total E01: 14 points (0 Done / 4 In Progress / 7 Todo)**
+**Total E01 : 14 points (0 Termine / 7 En cours / 7 A faire)**
 
-> Note: US-001 to US-004 have a working backend API but no frontend UI (no page, route, or components). Marked as In Progress.
+> Note : US-001 a US-004 disposent d'une API backend fonctionnelle mais sans interface frontend. Les controleurs backend (GardenController, PlantingController, PlantingEntryController) ont ete supprimes dans le cadre du nettoyage E11/US-075. L'API devra etre reconstruite lors de la reprise de cet epic.
 
 ---
 
-## E02 — Plant associations (residual)
+## E02 — Associations vegetales (residuel)
 
-> Remaining stories after the E05 overhaul. US-008/009/010/012 were removed (replaced by E05).
+> Stories restantes apres la refonte E05. Les US-008/009/010/012 ont ete supprimees (remplacees par E05).
 
-| ID | Title | Priority | Points | Status |
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-011](epics/E02-association-plantes/US-011-ajouter-plante-a-planche.md) | Add a plant to a bed | Must | 5 | Todo |
-| [US-013](epics/E02-association-plantes/US-013-supprimer-plante-planche.md) | Remove a plant from a bed | Should | 3 | Todo |
+| [US-011](epics/E02-association-plantes/US-011-ajouter-plante-a-planche.md) | Ajouter une plante a une planche | Indispensable | 5 | A faire |
+| [US-013](epics/E02-association-plantes/US-013-supprimer-plante-planche.md) | Retirer une plante d'une planche | Important | 3 | A faire |
 
-**Total E02: 8 points (0 Done / 8 Todo)**
+**Total E02 : 8 points (0 Termine / 8 A faire)**
 
 ---
 
-## E03 — Visual garden editor
+## E03 — Editeur graphique du jardin
 
-> Provide a visual editor to faithfully represent the terrain, position beds, and visualise crops.
+> Fournir un editeur visuel pour representer fidelement le terrain, positionner les planches et visualiser les cultures.
 
-| ID | Title | Priority | Points | Status |
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-014](epics/E03-outil-graphique/US-014-dessiner-contours-jardin.md) | Draw garden outlines | Must | 8 | Todo |
-| [US-015](epics/E03-outil-graphique/US-015-placer-planches-sur-plan.md) | Place beds on the map | Must | 8 | Todo |
-| [US-016](epics/E03-outil-graphique/US-016-visualiser-plantes-sur-plan.md) | Visualise plants on the map | Should | 5 | Todo |
-| [US-017](epics/E03-outil-graphique/US-017-ajouter-elements-fixes.md) | Add fixed elements to the map | Could | 5 | Todo |
-| [US-018](epics/E03-outil-graphique/US-018-exporter-plan.md) | Export the garden plan | Could | 3 | Todo |
+| [US-014](epics/E03-outil-graphique/US-014-dessiner-contours-jardin.md) | Dessiner les contours du jardin | Indispensable | 8 | A faire |
+| [US-015](epics/E03-outil-graphique/US-015-placer-planches-sur-plan.md) | Placer les planches sur le plan | Indispensable | 8 | A faire |
+| [US-016](epics/E03-outil-graphique/US-016-visualiser-plantes-sur-plan.md) | Visualiser les plantes sur le plan | Important | 5 | A faire |
+| [US-017](epics/E03-outil-graphique/US-017-ajouter-elements-fixes.md) | Ajouter des elements fixes sur le plan | Optionnel | 5 | A faire |
+| [US-018](epics/E03-outil-graphique/US-018-exporter-plan.md) | Exporter le plan du jardin | Optionnel | 3 | A faire |
 
-**Total E03: 29 points (0 Done / 29 Todo)**
+**Total E03 : 29 points (0 Termine / 29 A faire)**
 
 ---
 
-## E04 — Crop rotation management
+## E04 — Gestion des rotations de cultures
 
-> Allow the gardener to track crop history and plan rotations to maintain soil health.
+> Permettre au jardinier de suivre l'historique des cultures et de planifier les rotations pour maintenir la sante du sol.
 
-| ID | Title | Priority | Points | Status |
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-019](epics/E04-rotations-culture/US-019-enregistrer-culture.md) | Record a crop on a bed | Must | 3 | Todo |
-| [US-020](epics/E04-rotations-culture/US-020-consulter-historique-planche.md) | View crop history for a bed | Must | 3 | Todo |
-| [US-021](epics/E04-rotations-culture/US-021-planifier-rotation.md) | Plan next season's rotation | Must | 8 | Todo |
-| [US-022](epics/E04-rotations-culture/US-022-alerte-rotation.md) | Receive bad-rotation alerts | Should | 5 | Todo |
-| [US-023](epics/E04-rotations-culture/US-023-visualiser-rotations-multi-annees.md) | Visualise multi-year rotations | Should | 8 | Todo |
-| [US-024](epics/E04-rotations-culture/US-024-export-historique.md) | Export crop history | Could | 3 | Todo |
+| [US-019](epics/E04-rotations-culture/US-019-enregistrer-culture.md) | Enregistrer une culture sur une planche | Indispensable | 3 | A faire |
+| [US-020](epics/E04-rotations-culture/US-020-consulter-historique-planche.md) | Consulter l'historique d'une planche | Indispensable | 3 | A faire |
+| [US-021](epics/E04-rotations-culture/US-021-planifier-rotation.md) | Planifier la rotation de la saison suivante | Indispensable | 8 | A faire |
+| [US-022](epics/E04-rotations-culture/US-022-alerte-rotation.md) | Recevoir des alertes de mauvaise rotation | Important | 5 | A faire |
+| [US-023](epics/E04-rotations-culture/US-023-visualiser-rotations-multi-annees.md) | Visualiser les rotations sur plusieurs annees | Important | 8 | A faire |
+| [US-024](epics/E04-rotations-culture/US-024-export-historique.md) | Exporter l'historique des cultures | Optionnel | 3 | A faire |
 
-**Total E04: 30 points (0 Done / 30 Todo)**
-
----
-
-## ~~E05 — Companion planting (overhaul)~~ REMOVED
-
-> Epic removed. All stories (US-025 to US-032) were delivered then replaced by the E06 UI overhaul. Files have been deleted from the backlog.
+**Total E04 : 30 points (0 Termine / 30 A faire)**
 
 ---
 
-## E06 — Permaculture UI overhaul (3-column layout)
+## ~~E05 — Plantes compagnes (refonte)~~ SUPPRIME
 
-> Rebuild the frontend with a 3-column layout: plant catalogue on the left, multi-select detail cards in the centre, companion and guild recommendations on the right.
+> Epique supprimee. Toutes les stories (US-025 a US-032) ont ete livrees puis remplacees par la refonte UI E06. Les fichiers ont ete supprimes du backlog.
 
-| ID | Title | Priority | Points | Status |
+---
+
+## E06 — Refonte UI permaculture (mise en page initiale)
+
+> Reconstruire le frontend avec un catalogue de plantes, une selection multi-plantes, et des recommandations. Layout initial a 3 colonnes, evolue vers 2 colonnes dans E11.
+
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-033](epics/E06-refonte-ui-permaculture/US-033-app-shell-header-navigation.md) | App shell with header and navigation | Must | 3 | Done |
-| [US-034](epics/E06-refonte-ui-permaculture/US-034-page-associations-layout-trois-colonnes.md) | Associations page 3-column layout | Must | 2 | Done |
-| [US-035](epics/E06-refonte-ui-permaculture/US-035-catalogue-plantes-panneau-gauche.md) | Plant catalogue (left panel) | Must | 3 | Done |
-| [US-036](epics/E06-refonte-ui-permaculture/US-036-recherche-plantes-catalogue.md) | Catalogue search | Must | 1 | Done |
-| [US-037](epics/E06-refonte-ui-permaculture/US-037-tri-catalogue-plantes.md) | Sort the plant catalogue | Should | 1 | Done |
-| [US-038](epics/E06-refonte-ui-permaculture/US-038-selection-multi-plantes-panneau-centre.md) | Multi-plant selection (centre panel) | Must | 5 | Done |
-| [US-039](epics/E06-refonte-ui-permaculture/US-039-panneau-compagnons-recommandations.md) | Companion recommendations panel | Must | 5 | Done |
-| [US-040](epics/E06-refonte-ui-permaculture/US-040-interactions-compagnons-et-guildes.md) | Add from companions and guilds | Must | 3 | Done |
-| [US-041](epics/E06-refonte-ui-permaculture/US-041-etats-vides-et-accueil.md) | Empty states and welcome messages | Should | 1 | Done |
-| [US-042](epics/E06-refonte-ui-permaculture/US-042-responsive-mobile-tablette.md) | Responsive mobile/tablet adaptation | Should | 3 | Done |
+| [US-033](epics/E06-refonte-ui-permaculture/US-033-app-shell-header-navigation.md) | App shell avec header et navigation | Indispensable | 3 | Termine |
+| [US-034](epics/E06-refonte-ui-permaculture/US-034-page-associations-layout-trois-colonnes.md) | Page Associations — mise en page 3 colonnes | Indispensable | 2 | Termine |
+| [US-035](epics/E06-refonte-ui-permaculture/US-035-catalogue-plantes-panneau-gauche.md) | Catalogue des plantes (panneau gauche) | Indispensable | 3 | Termine |
+| [US-036](epics/E06-refonte-ui-permaculture/US-036-recherche-plantes-catalogue.md) | Recherche dans le catalogue | Indispensable | 1 | Termine |
+| [US-037](epics/E06-refonte-ui-permaculture/US-037-tri-catalogue-plantes.md) | Tri du catalogue de plantes | Important | 1 | Termine |
+| [US-038](epics/E06-refonte-ui-permaculture/US-038-selection-multi-plantes-panneau-centre.md) | Selection multi-plantes (panneau central) | Indispensable | 5 | Termine |
+| [US-039](epics/E06-refonte-ui-permaculture/US-039-panneau-compagnons-recommandations.md) | Panneau de recommandations compagnes | Indispensable | 5 | Termine |
+| [US-040](epics/E06-refonte-ui-permaculture/US-040-interactions-compagnons-et-guildes.md) | Ajouter depuis compagnons et guildes | Indispensable | 3 | Termine |
+| [US-041](epics/E06-refonte-ui-permaculture/US-041-etats-vides-et-accueil.md) | Etats vides et messages d'accueil | Important | 1 | Termine |
+| [US-042](epics/E06-refonte-ui-permaculture/US-042-responsive-mobile-tablette.md) | Adaptation responsive mobile/tablette | Important | 3 | Termine |
 
-**Total E06: 27 points (27 Done / 0 Todo)**
+**Total E06 : 27 points (27 Termine / 0 A faire)**
+
+> Note : Le layout 3 colonnes (US-034) a evolue vers 2 colonnes dans US-072 (E11). US-039 (panneau de recommandations) a ete integre dans l'editeur de guilde (E11).
 
 ---
 
-## E07 — My Plants (personal list)
+## E07 — Mes plantes (liste personnelle)
 
-> Allow the gardener to maintain a personal list of plants they grow or wish to grow, integrated with the catalogue and the Associations page recommendations.
+> Permettre au jardinier de tenir une liste personnelle des plantes qu'il cultive ou souhaite cultiver, integree au catalogue et aux recommandations de la page Associations.
 
-| ID | Title | Priority | Points | Status |
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-043](epics/E07-mes-plantes/US-043-api-mes-plantes.md) | "My Plants" API and persistence | Must | 3 | Done |
-| [US-044](epics/E07-mes-plantes/US-044-store-mes-plantes.md) | Signal store for "My Plants" | Must | 2 | Done |
-| [US-045](epics/E07-mes-plantes/US-045-page-mes-plantes.md) | "My Plants" page with list management | Must | 5 | Done |
-| [US-046](epics/E07-mes-plantes/US-046-info-box-reusable.md) | Reusable info-box component | Should | 2 | Todo |
-| [US-047](epics/E07-mes-plantes/US-047-integration-catalogue-tri.md) | Prioritise "My Plants" in catalogue | Must | 3 | Done |
-| [US-048](epics/E07-mes-plantes/US-048-bouton-ajouter-depuis-associations.md) | Add to "My Plants" from Associations | Must | 2 | Done |
+| [US-043](epics/E07-mes-plantes/US-043-api-mes-plantes.md) | API et persistance « Mes plantes » | Indispensable | 3 | Termine |
+| [US-044](epics/E07-mes-plantes/US-044-store-mes-plantes.md) | Store de signaux « Mes plantes » | Indispensable | 2 | Termine |
+| [US-045](epics/E07-mes-plantes/US-045-page-mes-plantes.md) | Page « Mes plantes » avec gestion de la liste | Indispensable | 5 | Termine |
+| [US-046](epics/E07-mes-plantes/US-046-info-box-reusable.md) | Composant info-box reutilisable | Important | 2 | A faire |
+| [US-047](epics/E07-mes-plantes/US-047-integration-catalogue-tri.md) | Prioriser « Mes plantes » dans le catalogue | Indispensable | 3 | Termine |
+| [US-048](epics/E07-mes-plantes/US-048-bouton-ajouter-depuis-associations.md) | Ajouter a « Mes plantes » depuis Associations | Indispensable | 2 | Termine |
 
-**Total E07: 17 points (15 Done / 2 Todo)**
+**Total E07 : 17 points (15 Termine / 2 A faire)**
 
 ---
 
-## E08 — Associations page UX polish
+## E08 — Finitions UX — page Associations
 
-> UX improvements for the Associations page: info popups, plant detail card, guild visual container, Sass refactoring, and API optimisation.
+> Ameliorations UX de la page Associations : popups d'information, fiche detail plante, conteneur visuel de guilde, refactoring Sass et optimisation API.
 
-| ID | Title | Priority | Points | Status |
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-049](epics/E08-polish-ux-associations/US-049-badge-info-popup.md) | Explanatory badge popup | Should | 3 | Done |
-| [US-050](epics/E08-polish-ux-associations/US-050-plant-detail-dialog.md) | Plant detail dialog | Should | 2 | Done |
-| [US-051](epics/E08-polish-ux-associations/US-051-guild-container-visual.md) | Guild visual container | Could | 1 | Done |
-| [US-052](epics/E08-polish-ux-associations/US-052-sass-7-1-refactoring.md) | Sass 7-1 style refactoring | Should | 3 | Done |
-| [US-053](epics/E08-polish-ux-associations/US-053-limiter-catalogue-api.md) | Limit catalogue API to 20 results | Must | 1 | Todo |
+| [US-049](epics/E08-polish-ux-associations/US-049-badge-info-popup.md) | Popup d'information sur les badges | Important | 3 | Termine |
+| [US-050](epics/E08-polish-ux-associations/US-050-plant-detail-dialog.md) | Dialog detail d'une plante | Important | 2 | Termine |
+| [US-051](epics/E08-polish-ux-associations/US-051-guild-container-visual.md) | Conteneur visuel de guilde | Optionnel | 1 | Termine |
+| [US-052](epics/E08-polish-ux-associations/US-052-sass-7-1-refactoring.md) | Refactoring styles Sass 7-1 | Important | 3 | Termine |
+| [US-053](epics/E08-polish-ux-associations/US-053-limiter-catalogue-api.md) | Limiter l'API catalogue a 20 resultats | Indispensable | 1 | A faire |
+| [US-065](epics/E08-polish-ux-associations/US-065-associations-manquantes.md) | Indicateur d'associations importantes manquantes | Important | 5 | A faire |
 
-**Total E08: 10 points (9 Done / 1 Todo)**
+**Total E08 : 15 points (9 Termine / 6 A faire)**
 
-> Note: US-053 was previously marked Done but no pagination or limiting exists in the backend. Reverted to Todo.
+> Note : US-053 reste A faire (aucune pagination ni limitation dans le backend).
 
 ---
 
-## E09 — Root depth awareness
+## E09 — Conscience de l'enracinement
 
-> Leverage root depth data already present on plants to improve companion planting recommendations and guild design.
+> Exploiter les donnees de profondeur racinaire deja presentes sur les plantes pour ameliorer les recommandations de plantes compagnes et la conception des guildes.
 
-| ID | Title | Priority | Points | Status |
+| ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| US-054 | Root depth badge on plant cards | Must | 1 | Done |
-| US-055 | Root depth filter in catalogue | Must | 1 | Done |
-| US-056 | Root stratification indicator in guild editor | Should | 3 | Todo |
-| US-057 | Root depth bonus in scoring algorithm | Should | 3 | Todo |
-| US-058 | Root competition warnings for same-depth plants | Could | 2 | Todo |
+| [US-054](epics/E09-enracinement/US-054-badge-enracinement-fiche-plante.md) | Badge d'enracinement sur les fiches plantes | Indispensable | 1 | Termine |
+| [US-055](epics/E09-enracinement/US-055-filtre-enracinement-catalogue.md) | Filtre enracinement dans le catalogue | Indispensable | 1 | Termine |
+| [US-056](epics/E09-enracinement/US-056-indicateur-stratification-guilde.md) | Indicateur de stratification dans l'editeur de guilde | Important | 3 | Termine |
+| [US-057](epics/E09-enracinement/US-057-bonus-enracinement-algorithme-score.md) | Bonus enracinement dans l'algorithme de score | Important | 3 | A faire |
+| [US-058](epics/E09-enracinement/US-058-alerte-competition-enracinement.md) | Alertes de densite racinaire par zone | Optionnel | 1 | Termine |
 
-**Total E09: 10 points (2 Done / 8 Todo)**
+**Total E09 : 9 points (6 Termine / 3 A faire)**
 
----
-
-## Summary
-
-| Epic | Points | Done | In Progress | Todo |
-|------|--------|------|-------------|------|
-| E01 — Garden & bed management | 14 | 0 | 4 | 7 |
-| E02 — Plant associations (residual) | 8 | 0 | 0 | 8 |
-| E03 — Visual garden editor | 29 | 0 | 0 | 29 |
-| E04 — Crop rotation management | 30 | 0 | 0 | 30 |
-| ~~E05 — Companion planting~~ | ~~19~~ | — | — | — |
-| E06 — Permaculture UI overhaul | 27 | 27 | 0 | 0 |
-| E07 — My Plants | 17 | 15 | 0 | 2 |
-| E08 — Associations UX polish | 10 | 9 | 0 | 1 |
-| E09 — Root depth awareness | 10 | 2 | 0 | 8 |
-| **Total (active)** | **145** | **53** | **4** | **85** |
+> Note : US-056 livree avec une approche colonnes (au lieu de coupe SVG). US-058 simplifiee : avertissement de densite par zone au lieu de badges par paire. US-057 reste a faire (bonus algorithmique cote backend).
 
 ---
 
-*Backlog managed by the Product Owner agent — last updated: 2026-03-18*
+## E10 — Calendrier cultural des plantes
+
+> Fournir aux jardiniers un calendrier cultural personnalise base sur leur liste « Mes plantes », affichant les actions cles (semis, repiquage, mise en place, recolte, taille) avec leurs fenetres de realisation recommandees.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-059](epics/E10-calendrier-cultural/US-059-modele-action-culturale.md) | Modele de donnees des actions culturales | Indispensable | 5 | A faire |
+| [US-060](epics/E10-calendrier-cultural/US-060-page-calendrier.md) | Page calendrier (grille annuelle) | Indispensable | 5 | A faire |
+| [US-061](epics/E10-calendrier-cultural/US-061-widget-actions-du-mois.md) | Widget « Ce mois-ci » | Important | 3 | A faire |
+| [US-062](epics/E10-calendrier-cultural/US-062-filtre-type-action-calendrier.md) | Filtre par type d'action sur le calendrier | Important | 2 | A faire |
+| [US-063](epics/E10-calendrier-cultural/US-063-semis-successifs.md) | Suggestions de semis successifs | Optionnel | 5 | A faire |
+| [US-064](epics/E10-calendrier-cultural/US-064-alertes-taille-pincage.md) | Alertes taille et pincage | Important | 3 | A faire |
+
+**Total E10 : 23 points (0 Termine / 23 A faire)**
+
+---
+
+## E11 — Guildes, mecanismes et refonte editeur
+
+> Enrichir l'editeur de guilde avec les mecanismes intrinseques et relationnels, les avertissements de conflit, le detail des associations, et elargir la base de donnees a 50 guildes et 356 associations. Simplifier le layout en 2 colonnes et nettoyer le backend.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-066](epics/E11-guildes-et-mecanismes/US-066-systeme-mecanismes-intrinseques.md) | Systeme de mecanismes intrinseques des plantes | Indispensable | 5 | Termine |
+| [US-067](epics/E11-guildes-et-mecanismes/US-067-filtres-mecanismes-catalogue.md) | Filtres par mecanisme dans le catalogue | Important | 2 | Termine |
+| [US-068](epics/E11-guildes-et-mecanismes/US-068-avertissements-conflits-guilde.md) | Avertissements de conflits dans la guilde | Indispensable | 2 | Termine |
+| [US-069](epics/E11-guildes-et-mecanismes/US-069-details-associations-guilde.md) | Details des associations dans la guilde | Important | 2 | Termine |
+| [US-070](epics/E11-guildes-et-mecanismes/US-070-resume-mecanismes-guilde.md) | Resume des mecanismes de la guilde | Important | 1 | Termine |
+| [US-071](epics/E11-guildes-et-mecanismes/US-071-panneau-guildes-permanent.md) | Panneau des guildes toujours visible | Important | 2 | Termine |
+| [US-072](epics/E11-guildes-et-mecanismes/US-072-layout-deux-colonnes.md) | Layout deux colonnes (catalogue + editeur) | Indispensable | 2 | Termine |
+| [US-073](epics/E11-guildes-et-mecanismes/US-073-50-guildes-officielles.md) | 50 guildes officielles de permaculture | Indispensable | 5 | Termine |
+| [US-074](epics/E11-guildes-et-mecanismes/US-074-356-associations.md) | 356 associations vegetales documentees | Indispensable | 3 | Termine |
+| [US-075](epics/E11-guildes-et-mecanismes/US-075-nettoyage-backend.md) | Nettoyage backend (controleurs et DTOs) | Important | 2 | Termine |
+
+**Total E11 : 26 points (26 Termine / 0 A faire)**
+
+---
+
+## Recapitulatif
+
+| Epique | Points | Termine | En cours | A faire |
+|--------|--------|---------|----------|---------|
+| E01 — Gestion des jardins et planches | 14 | 0 | 7 | 7 |
+| E02 — Associations vegetales (residuel) | 8 | 0 | 0 | 8 |
+| E03 — Editeur graphique du jardin | 29 | 0 | 0 | 29 |
+| E04 — Gestion des rotations de cultures | 30 | 0 | 0 | 30 |
+| ~~E05 — Plantes compagnes (refonte)~~ | ~~19~~ | — | — | — |
+| E06 — Refonte UI permaculture | 27 | 27 | 0 | 0 |
+| E07 — Mes plantes | 17 | 15 | 0 | 2 |
+| E08 — Finitions UX Associations | 15 | 9 | 0 | 6 |
+| E09 — Conscience de l'enracinement | 9 | 6 | 0 | 3 |
+| E10 — Calendrier cultural | 23 | 0 | 0 | 23 |
+| E11 — Guildes, mecanismes et refonte editeur | 26 | 26 | 0 | 0 |
+| **Total (actif)** | **198** | **83** | **7** | **108** |
+
+---
+
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-19*

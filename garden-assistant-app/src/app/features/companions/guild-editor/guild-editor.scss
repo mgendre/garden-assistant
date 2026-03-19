@@ -18,38 +18,27 @@
 }
 
 
-.guild-conflict-header {
-  background: rgba(239, 83, 80, 0.06);
-  border-bottom-color: rgba(239, 83, 80, 0.15);
+.guild-association-header-warning {
+  margin-left: auto;
+  color: #ef5350;
+  font-size: 0.875rem;
 }
 
-.guild-conflict-list {
-  padding: 0.75rem 1.25rem;
+.guild-association-alert {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid rgba(45, 106, 79, 0.1);
-}
-
-.guild-conflict-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.guild-conflict-names {
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(239, 83, 80, 0.08);
+  border: 1px solid rgba(239, 83, 80, 0.2);
   font-size: 0.8125rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #c62828;
 }
 
-.guild-conflict-mechanisms {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-}
-
-.guild-associations-header {
+.guild-collapsible-header {
   background: transparent;
   border-bottom: none;
   padding: 0;
@@ -68,8 +57,9 @@
   border: 1px solid rgba(45, 106, 79, 0.08);
 
   &.guild-association-harmful {
-    background: rgba(239, 83, 80, 0.03);
-    border-color: rgba(239, 83, 80, 0.12);
+    background: rgba(239, 83, 80, 0.07);
+    border-color: rgba(239, 83, 80, 0.25);
+    border-left: 3px solid #ef5350;
   }
 }
 
@@ -84,6 +74,25 @@
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-text);
+
+  .guild-association-harmful-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #ef5350;
+    color: white;
+    font-size: 0.625rem;
+    font-weight: 700;
+    margin-right: 0.25rem;
+    vertical-align: middle;
+  }
+}
+
+.guild-association-harmful .guild-association-plants {
+  color: #c62828;
 }
 
 .guild-association-arrow {

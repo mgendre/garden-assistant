@@ -5,7 +5,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { firstValueFrom } from 'rxjs';
-import { GuildSummaryDto } from '../../api/garden-assistant-api';
+import { GuildDto } from '../../api/garden-assistant-api';
 import { GuildStore } from '../../shared/services/guild.store';
 import { CompanionStore } from '../../shared/services/companion.store';
 import { PlantStore } from '../../shared/services/plant.store';
@@ -36,7 +36,7 @@ export class Guilds {
   readonly filteredUserGuilds = computed(() => this.filterGuilds(this.store.userGuilds()));
   readonly filteredOfficialGuilds = computed(() => this.filterGuilds(this.store.officialGuilds()));
 
-  private filterGuilds(guilds: GuildSummaryDto[]): GuildSummaryDto[] {
+  private filterGuilds(guilds: GuildDto[]): GuildDto[] {
     const query = this.searchQuery().toLowerCase();
     if (!query) {
       return guilds;
@@ -60,19 +60,19 @@ export class Guilds {
     });
   }
 
-  viewGuild(guild: GuildSummaryDto): void {
+  viewGuild(guild: GuildDto): void {
     if (guild.id) {
       this.router.navigate(['/companions'], { queryParams: { guild: guild.id } });
     }
   }
 
-  editGuild(guild: GuildSummaryDto): void {
+  editGuild(guild: GuildDto): void {
     if (guild.id) {
       this.router.navigate(['/companions'], { queryParams: { guild: guild.id, mode: 'edit' } });
     }
   }
 
-  async deleteGuild(guild: GuildSummaryDto): Promise<void> {
+  async deleteGuild(guild: GuildDto): Promise<void> {
     if (!guild.id) {
       return;
     }

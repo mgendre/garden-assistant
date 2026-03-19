@@ -6,7 +6,7 @@ import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/pla
 import { PlantStore } from '../../../shared/services/plant.store';
 import { GuildService } from '../../../shared/services/guild.service';
 import { GuildStore } from '../../../shared/services/guild.store';
-import { GuildSummaryDto } from '../../../api/garden-assistant-api';
+import { GuildDto } from '../../../api/garden-assistant-api';
 import { SearchInput } from '../../../shared/ui/search-input/search-input';
 import { GuildCard } from '../../../shared/ui/guild-card/guild-card';
 
@@ -46,7 +46,7 @@ export class GuildPanel {
     return guilds;
   });
 
-  async viewGuild(guild: GuildSummaryDto): Promise<void> {
+  async viewGuild(guild: GuildDto): Promise<void> {
     if (!guild.id) {
       return;
     }
@@ -54,7 +54,7 @@ export class GuildPanel {
     this.store.loadGuildForEditing(detail);
   }
 
-  async editGuild(guild: GuildSummaryDto): Promise<void> {
+  async editGuild(guild: GuildDto): Promise<void> {
     if (!guild.id) {
       return;
     }

@@ -4,7 +4,7 @@ import {
   PlantDto,
   CompanionSearchResultDto,
   CompanionRecommendationRequest,
-  GuildDetailDto,
+  GuildDto,
   AssociationMechanism,
   RootDepth,
   CreateGuildRequest,
@@ -81,7 +81,7 @@ export class CompanionStore {
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
 
-  readonly editingGuild = signal<GuildDetailDto | null>(null);
+  readonly editingGuild = signal<GuildDto | null>(null);
   readonly guildName = signal('');
   readonly guildDescription = signal('');
   readonly guildSaving = signal(false);
@@ -90,6 +90,20 @@ export class CompanionStore {
   readonly isFormVisible = computed(() =>
     this.guildMode() === 'creating' || this.guildMode() === 'editing'
   );
+
+  readonly rootDepthGroups = computed(() => {
+    const groups = new Map<RootDepth, PlantDto[]>();
+    for (const plant of this.selectedPlants()) {
+      if (plant.rootDepth == null) { continue; }
+      const list = groups.get(plant.rootDepth) ?? [];
+      list.push(plant);
+      groups.set(plant.rootDepth, list);
+    }
+    for (const [key, list] of groups) {
+      groups.set(key, list.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr')));
+    }
+    return groups;
+  });
 
   readonly canCreateGuild = computed(() =>
     this.guildMode() === 'companions' && this.selectedPlants().length >= 2
@@ -323,7 +337,7 @@ export class CompanionStore {
     this.guildMode.set('companions');
   }
 
-  loadGuildForEditing(guild: GuildDetailDto): void {
+  loadGuildForEditing(guild: GuildDto): void {
     this.selectedPlants.set([]);
     this.editingGuild.set(guild);
     this.guildName.set(guild.name ?? '');

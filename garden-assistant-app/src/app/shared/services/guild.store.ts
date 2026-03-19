@@ -1,12 +1,12 @@
 import { Injectable, inject, signal, computed } from '@angular/core';
-import { GuildSummaryDto } from '../../api/garden-assistant-api';
+import { GuildDto } from '../../api/garden-assistant-api';
 import { GuildService } from './guild.service';
 
 @Injectable({ providedIn: 'root' })
 export class GuildStore {
   private readonly service = inject(GuildService);
 
-  readonly guilds = signal<GuildSummaryDto[]>([]);
+  readonly guilds = signal<GuildDto[]>([]);
   readonly loading = signal(false);
 
   readonly officialGuilds = computed(() =>

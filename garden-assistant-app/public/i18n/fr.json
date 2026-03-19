@@ -146,6 +146,7 @@
     "MechanismsTitle": "M\u00e9canismes",
     "ConflictsTitle": "Associations n\u00e9fastes",
     "AssociationsTitle": "D\u00e9tail des associations",
+    "HarmfulAlert": "Certaines associations sont n\u00e9fastes \u2014 attention aux incompatibilit\u00e9s.",
     "Add": "Tout ajouter",
     "UserSectionTitle": "Mes guildes",
     "OfficialSectionTitle": "Guildes officielles",
@@ -195,6 +196,17 @@
     "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
     "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
     "ClearSelection": "Effacer"
+  },
+  "Stratification": {
+    "SectionTitle": "Stratification racinaire",
+    "ShallowLabel": "Superficiel",
+    "ShallowRange": "0 – 30 cm",
+    "MediumLabel": "Moyen",
+    "MediumRange": "30 – 60 cm",
+    "DeepLabel": "Profond",
+    "DeepRange": "> 60 cm",
+    "EmptyBand": "Aucune plante dans cette couche",
+    "DensityWarning": "Risque potentiel de compétition racinaire"
   },
   "BadgeInfo": {
     "Close": "Fermer",

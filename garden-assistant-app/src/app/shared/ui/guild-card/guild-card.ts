@@ -2,7 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPen, faTrash, faWandMagicSparkles, faEye, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { GuildSummaryDto } from '../../../api/garden-assistant-api';
+import { GuildDto } from '../../../api/garden-assistant-api';
 
 @Component({
   selector: 'app-guild-card',
@@ -12,7 +12,7 @@ import { GuildSummaryDto } from '../../../api/garden-assistant-api';
   styleUrl: './guild-card.scss'
 })
 export class GuildCard {
-  @Input({ required: true }) guild!: GuildSummaryDto;
+  @Input({ required: true }) guild!: GuildDto;
   @Input() showDelete = false;
   @Input() showOpenButton = false;
   @Input() showPlantAdd = false;
