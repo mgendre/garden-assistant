@@ -3,12 +3,13 @@ using GardenAssistant.Data.Entities;
 using GardenAssistant.Data.Entities.Enums;
 using GardenAssistant.DTOs.Companions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 using GardenAssistant.Services.Interfaces;
 
 namespace GardenAssistant.Services;
 
-public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociationService
+public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssociationService> logger) : IPlantAssociationService
 {
     private const double BeneficialScore = 1.0;
     private const double NeutralScore = 0.0;
@@ -36,11 +37,28 @@ public class PlantAssociationService(AppDbContext dbContext) : IPlantAssociation
 
         var associationLookup = BuildAssociationLookup(associations);
 
+        var selectedRootDepths = candidates
+            .Where(c => selectedPlantIds.Contains(c.Id))
+            .ToDictionary(c => c.Id, c => c.RootDepth);
+
         var scores = new Dictionary<Guid, double>();
         foreach (var candidate in candidates)
         {
             scores[candidate.Id] = selectedPlantIds.Sum(selectedId =>
-                ScorePair(candidate.Id, selectedId, associationLookup));
+            {
+                var pairScore = ScorePair(candidate.Id, selectedId, associationLookup);
+                if (pairScore > 0
+                    && selectedRootDepths.TryGetValue(selectedId, out var selectedDepth)
+                    && candidate.RootDepth != selectedDepth)
+                {
+                    var boosted = pairScore * 1.10;
+                    logger.LogDebug(
+                        "Root depth bonus applied: {CandidateId} ({CandidateDepth}) vs {SelectedId} ({SelectedDepth}): {Before:F4} → {After:F4}",
+                        candidate.Id, candidate.RootDepth, selectedId, selectedDepth, pairScore, boosted);
+                    return boosted;
+                }
+                return pairScore;
+            });
         }
 
         var goodCompanions = candidates

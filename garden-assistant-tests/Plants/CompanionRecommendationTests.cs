@@ -2,6 +2,8 @@ using GardenAssistant.Data.Entities;
 using GardenAssistant.Data.Entities.Enums;
 using GardenAssistant.Services;
 using GardenAssistant.Tests.Infrastructure;
+using Microsoft.Extensions.Logging;
+using Moq;
 using Shouldly;
 
 namespace GardenAssistant.Tests.Plants;
@@ -12,7 +14,8 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
     public CompanionRecommendationTests()
     {
-        _sut = new PlantAssociationService(DbContext);
+        var logger = new Mock<ILogger<PlantAssociationService>>();
+        _sut = new PlantAssociationService(DbContext, logger.Object);
     }
 
     private Plant CreatePlant(string name, string? scientificName = null)

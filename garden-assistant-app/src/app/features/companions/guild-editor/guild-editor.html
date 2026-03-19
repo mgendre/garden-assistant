@@ -69,44 +69,32 @@
       </div>
     }
 
-    <!-- Conflict warnings -->
-    @if (store.recommendations()?.selectedPlantConflicts?.length) {
-      <div class="guild-conflicts">
-        <div class="guild-container-header guild-conflict-header">
-          <span>⚠️</span>
-          <span [translate]="'Guilds.ConflictsTitle'"></span>
-        </div>
-        <div class="guild-conflict-list">
-          @for (conflict of store.recommendations()!.selectedPlantConflicts!; track $index) {
-            <div class="guild-conflict-item">
-              <span class="guild-conflict-names">{{ plantName(conflict.plantAId) }} & {{ plantName(conflict.plantBId) }}</span>
-              <div class="guild-conflict-mechanisms">
-                @for (m of conflict.mechanisms ?? []; track m) {
-                  <span class="mechanism-chip mechanism-red" (click)="openMechanismInfo(m)">
-                    {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                  </span>
-                }
-              </div>
-            </div>
-          }
-        </div>
-      </div>
-    }
-
     <!-- Associations detail -->
     @if (store.recommendations()?.selectedPlantAssociations?.length) {
       <div class="guild-associations">
         <app-collapsible>
-          <div collapsible-header class="guild-container-header guild-associations-header">
+          <div collapsible-header class="guild-container-header guild-collapsible-header">
             <span>🔗</span>
             <span [translate]="'Guilds.AssociationsTitle'"></span>
+            @if (hasHarmfulAssociations()) {
+              <fa-icon [icon]="faWarning" class="guild-association-header-warning"></fa-icon>
+            }
           </div>
           <div collapsible-body>
+            @if (hasHarmfulAssociations()) {
+              <div class="guild-association-alert">
+                <span>⚠️</span>
+                <span [translate]="'Guilds.HarmfulAlert'"></span>
+              </div>
+            }
             <div class="guild-association-list">
               @for (assoc of store.recommendations()!.selectedPlantAssociations!; track $index) {
                 <div class="guild-association-item" [class.guild-association-harmful]="assoc.effect === 1">
                   <div class="guild-association-header">
                     <span class="guild-association-plants">
+                      @if (assoc.effect === 1) {
+                        <span class="guild-association-harmful-icon">✕</span>
+                      }
                       {{ plantName(assoc.sourcePlantId) }}
                       <span class="guild-association-arrow">→</span>
                       {{ plantName(assoc.targetPlantId) }}
@@ -121,6 +109,21 @@
                 </div>
               }
             </div>
+          </div>
+        </app-collapsible>
+      </div>
+    }
+
+    <!-- Root stratification indicator (US-056) -->
+    @if (store.selectedPlants().length >= 2) {
+      <div class="guild-stratification">
+        <app-collapsible>
+          <div collapsible-header class="guild-container-header guild-collapsible-header">
+            <span>&#x1F30D;</span>
+            <span [translate]="'Stratification.SectionTitle'"></span>
+          </div>
+          <div collapsible-body>
+            <app-root-stratification></app-root-stratification>
           </div>
         </app-collapsible>
       </div>

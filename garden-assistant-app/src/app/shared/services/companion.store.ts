@@ -91,6 +91,20 @@ export class CompanionStore {
     this.guildMode() === 'creating' || this.guildMode() === 'editing'
   );
 
+  readonly rootDepthGroups = computed(() => {
+    const groups = new Map<RootDepth, PlantDto[]>();
+    for (const plant of this.selectedPlants()) {
+      if (plant.rootDepth == null) { continue; }
+      const list = groups.get(plant.rootDepth) ?? [];
+      list.push(plant);
+      groups.set(plant.rootDepth, list);
+    }
+    for (const [key, list] of groups) {
+      groups.set(key, list.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr')));
+    }
+    return groups;
+  });
+
   readonly canCreateGuild = computed(() =>
     this.guildMode() === 'companions' && this.selectedPlants().length >= 2
   );

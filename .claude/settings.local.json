@@ -10,7 +10,10 @@
       "Bash(npx --prefix garden-assistant-app ng build --project garden-assistant-app)",
       "Bash(npx ng:*)",
       "Bash(ls:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(source ~/.nvm/nvm.sh)",
+      "Bash(nvm use:*)",
+      "Bash(PATH=\"/home/mg/.nvm/versions/node/v22.22.1/bin:$PATH\" npm run build --prefix garden-assistant-app 2>&1)"
     ]
   }
 }
