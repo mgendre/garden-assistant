@@ -16,12 +16,12 @@ public class GuildsController(IGuildService guildService) : ControllerBase
         Guid.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)!);
 
     [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<GuildSummaryDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<GuildDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll() =>
         Ok(await guildService.GetAllAsync(CallerId));
 
     [HttpGet("{id:guid}")]
-    [ProducesResponseType(typeof(GuildDetailDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(GuildDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById(Guid id)
     {
@@ -30,7 +30,7 @@ public class GuildsController(IGuildService guildService) : ControllerBase
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(GuildDetailDto), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(GuildDto), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Create(CreateGuildRequest request)
     {
@@ -39,7 +39,7 @@ public class GuildsController(IGuildService guildService) : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
-    [ProducesResponseType(typeof(GuildDetailDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(GuildDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> Update(Guid id, UpdateGuildRequest request)

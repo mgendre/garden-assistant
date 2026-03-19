@@ -4,7 +4,7 @@ namespace GardenAssistant.DTOs.Companions;
 
 public record CompanionSearchResultDto(
     List<CompanionRecommendationDto> GoodCompanions,
-    List<PlantToAvoidDto> PlantsToAvoid,
+    List<CompanionRecommendationDto> PlantsToAvoid,
     List<SelectedPlantConflictDto> SelectedPlantConflicts,
     List<AssociationMechanism> SelectedPlantMechanisms,
     List<PlantMechanismsDto> SelectedPlantsMechanisms,

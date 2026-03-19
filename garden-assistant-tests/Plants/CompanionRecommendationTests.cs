@@ -38,17 +38,6 @@ public class CompanionRecommendationTests : DatabaseTestBase
         });
     }
 
-    private Guild CreateGuild(string name, string description, params Plant[] plants)
-    {
-        var guild = new Guild { Id = Guid.NewGuid(), Name = name, Description = description };
-        DbContext.Guilds.Add(guild);
-        foreach (var plant in plants)
-        {
-            DbContext.GuildPlants.Add(new GuildPlant { GuildId = guild.Id, PlantId = plant.Id });
-        }
-        return guild;
-    }
-
     [Fact]
     public async Task GetCompanionRecommendationsAsync_WhenOnlySelectedPlant_ShouldReturnItInResults()
     {
@@ -80,7 +69,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenNoAssociation_ShouldScoreSlightlyBelowNeutral()
+    public async Task GetCompanionRecommendationsAsync_WhenNoAssociation_ShouldRankBelowNeutral()
     {
         var tomato = CreatePlant("Tomato");
         var unknown = CreatePlant("Unknown Plant");
@@ -90,9 +79,9 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        var neutralScore = result.GoodCompanions.First(r => r.PlantId == neutral.Id).Score;
-        var unknownScore = result.GoodCompanions.First(r => r.PlantId == unknown.Id).Score;
-        neutralScore.ShouldBeGreaterThan(unknownScore);
+        var neutralIndex = result.GoodCompanions.FindIndex(r => r.PlantId == neutral.Id);
+        var unknownIndex = result.GoodCompanions.FindIndex(r => r.PlantId == unknown.Id);
+        neutralIndex.ShouldBeLessThan(unknownIndex);
     }
 
     [Fact]
@@ -126,7 +115,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_ShouldReturnPlantNameAndScientificName()
+    public async Task GetCompanionRecommendationsAsync_WhenBeneficialAssociation_ShouldReturnPlantId()
     {
         var tomato = CreatePlant("Tomato");
         var basil = CreatePlant("Basil", "Ocimum basilicum");
@@ -135,8 +124,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.GoodCompanions[0].PlantName.ShouldBe("Basil");
-        result.GoodCompanions[0].ScientificName.ShouldBe("Ocimum basilicum");
+        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
     }
 
     [Fact]
@@ -158,19 +146,22 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenMultipleAssociationsForSamePair_ShouldSumAll()
+    public async Task GetCompanionRecommendationsAsync_WhenMultipleAssociationsForSamePair_ShouldRankFirst()
     {
         var tomato = CreatePlant("Tomato");
         var basil = CreatePlant("Basil");
+        var carrot = CreatePlant("Carrot");
         CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial,
             AssociationMechanism.OlfactoryConfusion);
         CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial,
             AssociationMechanism.PredatorAttraction);
+        CreateAssociation(tomato.Id, carrot.Id, AssociationEffect.Beneficial,
+            AssociationMechanism.OlfactoryConfusion);
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
-        result.GoodCompanions[0].Score.ShouldBeGreaterThan(1.0);
+        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
     }
 
     [Fact]
@@ -184,7 +175,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
         result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
-        result.GoodCompanions[0].Score.ShouldBeGreaterThan(0);
+        result.GoodCompanions[0].Mechanisms.ShouldNotBeEmpty();
     }
 
     [Fact]
@@ -231,35 +222,6 @@ public class CompanionRecommendationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenGuildExists_ShouldIncludeGuildInfo()
-    {
-        var tomato = CreatePlant("Tomato");
-        var basil = CreatePlant("Basil");
-        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
-        CreateGuild("Tomato Guild", "Tomato and basil work great together", tomato, basil);
-        await DbContext.SaveChangesAsync();
-
-        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
-
-        result.GoodCompanions[0].PlantId.ShouldBe(basil.Id);
-        result.GoodCompanions[0].Guilds.Count.ShouldBe(1);
-        result.GoodCompanions[0].Guilds[0].Name.ShouldBe("Tomato Guild");
-    }
-
-    [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenNoGuild_ShouldReturnEmptyGuilds()
-    {
-        var tomato = CreatePlant("Tomato");
-        var basil = CreatePlant("Basil");
-        CreateAssociation(tomato.Id, basil.Id, AssociationEffect.Beneficial);
-        await DbContext.SaveChangesAsync();
-
-        var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
-
-        result.GoodCompanions[0].Guilds.ShouldBeEmpty();
-    }
-
-    [Fact]
     public async Task GetCompanionRecommendationsAsync_ShouldSortByScoreDescending()
     {
         var tomato = CreatePlant("Tomato");
@@ -269,15 +231,12 @@ public class CompanionRecommendationTests : DatabaseTestBase
         CreateAssociation(tomato.Id, carrot.Id, AssociationEffect.Beneficial);
         CreateAssociation(tomato.Id, carrot.Id, AssociationEffect.Beneficial,
             AssociationMechanism.PredatorAttraction);
-        CreateGuild("Tomato Guild", "Classic guild", tomato, basil);
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomato.Id]);
 
         result.GoodCompanions[0].PlantId.ShouldBe(carrot.Id);
-        result.GoodCompanions[0].Score.ShouldBeGreaterThan(result.GoodCompanions[1].Score);
         result.GoodCompanions[1].PlantId.ShouldBe(basil.Id);
-        result.GoodCompanions[1].Guilds.Count.ShouldBeGreaterThan(0);
     }
 
     [Fact]

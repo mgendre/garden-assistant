@@ -1,8 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import {
   GuildsClient,
-  GuildSummaryDto,
-  GuildDetailDto,
+  GuildDto,
   CreateGuildRequest,
   UpdateGuildRequest,
 } from '../../api/garden-assistant-api';
@@ -11,19 +10,19 @@ import {
 export class GuildService {
   private readonly client = inject(GuildsClient);
 
-  getAll(): Promise<GuildSummaryDto[]> {
+  getAll(): Promise<GuildDto[]> {
     return this.client.getAll();
   }
 
-  getById(id: string): Promise<GuildDetailDto> {
+  getById(id: string): Promise<GuildDto> {
     return this.client.getById(id);
   }
 
-  create(request: CreateGuildRequest): Promise<GuildDetailDto> {
+  create(request: CreateGuildRequest): Promise<GuildDto> {
     return this.client.create(request);
   }
 
-  update(id: string, request: UpdateGuildRequest): Promise<GuildDetailDto> {
+  update(id: string, request: UpdateGuildRequest): Promise<GuildDto> {
     return this.client.update(id, request);
   }
 

@@ -8,7 +8,7 @@ namespace GardenAssistant.Services;
 
 public class GuildService(AppDbContext dbContext) : IGuildService
 {
-    public async Task<IEnumerable<GuildSummaryDto>> GetAllAsync(Guid userId)
+    public async Task<IEnumerable<GuildDto>> GetAllAsync(Guid userId)
     {
         var guilds = await dbContext.Guilds
             .Where(g => g.UserId == null || g.UserId == userId)
@@ -27,16 +27,17 @@ public class GuildService(AppDbContext dbContext) : IGuildService
             .GroupBy(x => x.GuildId)
             .ToDictionary(g => g.Key, g => g.Select(x => new GuildPlantMemberDto(x.Id, x.Name, x.ScientificName)).ToList());
 
-        return guilds.Select(g => new GuildSummaryDto(
+        return guilds.Select(g => new GuildDto(
             g.Id,
             g.Name,
             g.Description,
             plantsByGuild.GetValueOrDefault(g.Id, []),
-            g.UserId == null
+            g.UserId == null,
+            g.UserId == userId
         ));
     }
 
-    public async Task<GuildDetailDto?> GetByIdAsync(Guid id, Guid userId)
+    public async Task<GuildDto?> GetByIdAsync(Guid id, Guid userId)
     {
         var guild = await dbContext.Guilds
             .Where(g => g.Id == id && (g.UserId == null || g.UserId == userId))
@@ -54,7 +55,7 @@ public class GuildService(AppDbContext dbContext) : IGuildService
             .Select(p => new GuildPlantMemberDto(p.Id, p.Name, p.ScientificName))
             .ToListAsync();
 
-        return new GuildDetailDto(
+        return new GuildDto(
             guild.Id,
             guild.Name,
             guild.Description,
@@ -64,7 +65,7 @@ public class GuildService(AppDbContext dbContext) : IGuildService
         );
     }
 
-    public async Task<GuildDetailDto> CreateAsync(CreateGuildRequest request, Guid userId)
+    public async Task<GuildDto> CreateAsync(CreateGuildRequest request, Guid userId)
     {
         var validPlantIds = await dbContext.Plants
             .Where(p => request.PlantIds.Contains(p.Id))
@@ -99,7 +100,7 @@ public class GuildService(AppDbContext dbContext) : IGuildService
             .Select(p => new GuildPlantMemberDto(p.Id, p.Name, p.ScientificName))
             .ToListAsync();
 
-        return new GuildDetailDto(
+        return new GuildDto(
             guild.Id,
             guild.Name,
             guild.Description,
@@ -109,7 +110,7 @@ public class GuildService(AppDbContext dbContext) : IGuildService
         );
     }
 
-    public async Task<GuildDetailDto?> UpdateAsync(Guid id, UpdateGuildRequest request, Guid userId)
+    public async Task<GuildDto?> UpdateAsync(Guid id, UpdateGuildRequest request, Guid userId)
     {
         var guild = await dbContext.Guilds
             .Where(g => g.Id == id && g.UserId == userId)
@@ -152,7 +153,7 @@ public class GuildService(AppDbContext dbContext) : IGuildService
             .Select(p => new GuildPlantMemberDto(p.Id, p.Name, p.ScientificName))
             .ToListAsync();
 
-        return new GuildDetailDto(
+        return new GuildDto(
             guild.Id,
             guild.Name,
             guild.Description,

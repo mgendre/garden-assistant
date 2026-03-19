@@ -2140,5 +2140,1067 @@
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
     "notes": "L'épinard, plante à feuillage tendre et système racinaire peu profond, est particulièrement vulnérable aux exsudats allélopathiques du fenouil dans la rhizosphère."
+  },
+  {
+    "sourcePlantKey": "figuier",
+    "targetPlantKey": "consoude",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude au pied du figuier accumule le potassium indispensable à la qualité des figues et fournit un paillis nutritif par ses feuilles coupées."
+  },
+  {
+    "sourcePlantKey": "trefle-blanc",
+    "targetPlantKey": "figuier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le trèfle blanc en couvre-sol sous le figuier fixe l'azote, supprime les adventices et protège le sol du dessèchement estival."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "figuier",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La bourrache attire les pollinisateurs et les insectes auxiliaires bénéfiques à l'écosystème du verger méditerranéen au pied du figuier."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "figuier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'ail planté au pied du figuier repousse les pucerons et réduit les maladies fongiques grâce à ses composés soufrés volatils."
+  },
+  {
+    "sourcePlantKey": "trefle-blanc",
+    "targetPlantKey": "vigne",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le trèfle blanc en enherbement du vignoble fixe l'azote, réduit l'érosion et la vigueur excessive de la vigne, pratique validée en viticulture biologique."
+  },
+  {
+    "sourcePlantKey": "achillee-millefeuille",
+    "targetPlantKey": "vigne",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'achillée millefeuille en bordure de vigne attire les typhlodromes et autres acariens prédateurs qui contrôlent les acariens ravageurs de la vigne."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "vigne",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail planté au pied de la vigne réduit l'incidence du mildiou et de l'oïdium par ses composés soufrés antifongiques, pratique traditionnelle en viticulture."
+  },
+  {
+    "sourcePlantKey": "romarin",
+    "targetPlantKey": "vigne",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le romarin en bordure de vigne désoriente les ravageurs par ses terpènes volatils et attire les insectes auxiliaires par sa floraison précoce."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "trefle-blanc",
+    "mechanism": "RootAllelopathy",
+    "effect": "Neutral",
+    "distanceEffect": "Field",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le trèfle blanc est tolérant à la juglone du noyer et prospère sous sa canopée, fixant l'azote en couvre-sol permanent."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "consoude",
+    "mechanism": "RootAllelopathy",
+    "effect": "Neutral",
+    "distanceEffect": "Field",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude tolère la juglone et prospère sous le noyer, accumulant potassium et bore par ses racines profondes au bénéfice de l'arbre."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "sureau-noir",
+    "mechanism": "RootAllelopathy",
+    "effect": "Neutral",
+    "distanceEffect": "Field",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le sureau noir est documenté comme tolérant à la juglone du noyer et pousse naturellement en lisière des noyers dans les haies champêtres."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "pissenlit",
+    "mechanism": "RootAllelopathy",
+    "effect": "Neutral",
+    "distanceEffect": "Field",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le pissenlit tolère la juglone et colonise spontanément les sous-bois de noyers, décompactant le sol par sa racine pivotante."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "melisse",
+    "mechanism": "RootAllelopathy",
+    "effect": "Neutral",
+    "distanceEffect": "Field",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La mélisse tolère la juglone et pousse correctement sous la canopée du noyer, attirant les pollinisateurs par son parfum citronné."
+  },
+  {
+    "sourcePlantKey": "tanaisie",
+    "targetPlantKey": "poirier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La tanaisie repousse le psylle du poirier (Cacopsylla pyri) par ses composés terpéniques volatils, ravageur majeur de cet arbre fruitier."
+  },
+  {
+    "sourcePlantKey": "ciboulette",
+    "targetPlantKey": "poirier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette au pied du poirier réduit l'incidence de la tavelure par ses composés soufrés, comme elle le fait pour le pommier."
+  },
+  {
+    "sourcePlantKey": "phacelie",
+    "targetPlantKey": "poirier",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La phacélie semée au pied du poirier attire massivement les pollinisateurs indispensables à la nouaison de cet arbre à floraison précoce."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "prunier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail planté au pied du prunier réduit les maladies fongiques (moniliose, tavelure) par ses composés soufrés antifongiques volatils."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "prunier",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La capucine au pied du prunier attire les pucerons loin de l'arbre, servant de plante piège sacrificielle."
+  },
+  {
+    "sourcePlantKey": "trefle-blanc",
+    "targetPlantKey": "prunier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le trèfle blanc en couvre-sol sous le prunier fixe l'azote, supprime les adventices et favorise les auxiliaires prédateurs."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "prunier",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les pollinisateurs indispensables à la fructification du prunier, dont la floraison précoce coïncide avec des populations d'insectes encore faibles."
+  },
+  {
+    "sourcePlantKey": "ciboulette",
+    "targetPlantKey": "prunier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette au pied du prunier réduit les attaques de pucerons et les maladies fongiques par ses composés soufrés."
+  },
+  {
+    "sourcePlantKey": "chataignier",
+    "targetPlantKey": "consoude",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le châtaignier crée un sous-bois ombragé où la consoude prospère, accumulant les minéraux profonds et fournissant un paillis nutritif au pied de l'arbre."
+  },
+  {
+    "sourcePlantKey": "chataignier",
+    "targetPlantKey": "myrtille",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le châtaignier acidifie le sol par sa litière riche en tanins, créant les conditions acides (pH 4.5-5.5) que la myrtille exige pour prospérer."
+  },
+  {
+    "sourcePlantKey": "trefle-rouge",
+    "targetPlantKey": "chataignier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le trèfle rouge fixe l'azote en mi-ombre sous le châtaignier, compensant l'appauvrissement du sol causé par la litière acidifiante."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "pomme-de-terre",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine attire les doryphores loin des plants de pomme de terre, servant de plante piège dans la lutte biologique traditionnelle."
+  },
+  {
+    "sourcePlantKey": "coriandre",
+    "targetPlantKey": "pomme-de-terre",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La coriandre en fleur attire les syrphes et les guêpes parasitoïdes qui contrôlent les populations de pucerons et de doryphores de la pomme de terre."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "pomme-de-terre",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La bourrache en bordure de parcelle de pommes de terre attire les insectes auxiliaires et repousse certains ravageurs."
+  },
+  {
+    "sourcePlantKey": "camomille-allemande",
+    "targetPlantKey": "sauge-officinale",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La camomille attire les syrphes et les chrysopes dont les larves contrôlent les pucerons qui s'attaquent parfois à la sauge."
+  },
+  {
+    "sourcePlantKey": "valeriane",
+    "targetPlantKey": "camomille-allemande",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La valériane stimule l'activité des vers de terre et l'activité microbienne du sol, améliorant la croissance de la camomille voisine."
+  },
+  {
+    "sourcePlantKey": "hysope",
+    "targetPlantKey": "sauge-officinale",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'hysope et la sauge, toutes deux Lamiacées méditerranéennes, attirent ensemble un large spectre de pollinisateurs par leurs floraisons complémentaires."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "courge",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les abeilles et bourdons indispensables à la pollinisation des fleurs de courge, dont la fenêtre de réceptivité est très courte."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "potiron",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache assure la pollinisation du potiron dont les grandes fleurs nécessitent de multiples visites d'insectes pour une fructification correcte."
+  },
+  {
+    "sourcePlantKey": "haricot-nain",
+    "targetPlantKey": "courge",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot nain fixe l'azote dont la courge, plante très gourmande, a besoin pour développer ses fruits volumineux."
+  },
+  {
+    "sourcePlantKey": "haricot-nain",
+    "targetPlantKey": "potiron",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot nain en inter-rang fixe l'azote au bénéfice du potiron, variante naine du trio des Trois Sœurs."
+  },
+  {
+    "sourcePlantKey": "tagete",
+    "targetPlantKey": "courge",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les tagètes assainissent le sol contre les nématodes qui peuvent affecter le système racinaire des courges."
+  },
+  {
+    "sourcePlantKey": "tagete",
+    "targetPlantKey": "potiron",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les exsudats racinaires nématicides des tagètes protègent le système racinaire du potiron des nématodes phytophages du sol."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "courge",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La capucine en bordure attire les pucerons loin des courges et couvre le sol, complétant la protection de la parcelle."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "courge",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le tournesol sert de brise-vent naturel protégeant les larges feuilles de courge des vents desséchants et des coups de soleil."
+  },
+  {
+    "sourcePlantKey": "consoude",
+    "targetPlantKey": "rhubarbe",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude fournit à la rhubarbe un paillis riche en potassium essentiel à la vigueur de ses pétioles épais."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "rhubarbe",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'ail planté au pied de la rhubarbe protège contre la pourriture du collet par ses composés soufrés antifongiques."
+  },
+  {
+    "sourcePlantKey": "cerfeuil",
+    "targetPlantKey": "rhubarbe",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le cerfeuil repousse les limaces par son arôme anisé, protégeant les jeunes pousses de rhubarbe au printemps."
+  },
+  {
+    "sourcePlantKey": "fraisier",
+    "targetPlantKey": "rhubarbe",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le fraisier couvre le sol entre les grands pieds de rhubarbe, limitant les adventices et l'évaporation sous les larges feuilles."
+  },
+  {
+    "sourcePlantKey": "topinambour",
+    "targetPlantKey": "haricot-a-rames",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le topinambour, atteignant 2-3 mètres, sert de tuteur vivant au haricot à rames qui grimpe sur ses tiges robustes, reproduisant le principe des Trois Sœurs."
+  },
+  {
+    "sourcePlantKey": "haricot-a-rames",
+    "targetPlantKey": "topinambour",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot à rames fixe l'azote au bénéfice du topinambour, plante gourmande en nutriments pour la formation de ses tubercules."
+  },
+  {
+    "sourcePlantKey": "consoude",
+    "targetPlantKey": "topinambour",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La consoude à la base du topinambour accumule le potassium favorisant la tubérisation et fournit un paillis nutritif permanent."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "topinambour",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La capucine couvre le sol au pied du topinambour et attire les pucerons loin de ses tiges, servant de plante piège."
+  },
+  {
+    "sourcePlantKey": "tagete",
+    "targetPlantKey": "patate-douce",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les tagètes sont essentiels autour de la patate douce, très sensible aux nématodes à galles (Meloidogyne). Les exsudats racinaires de thiophènes réduisent significativement les populations."
+  },
+  {
+    "sourcePlantKey": "basilic",
+    "targetPlantKey": "patate-douce",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le basilic repousse les aleurodes et les thrips qui s'attaquent au feuillage de la patate douce en culture chaude."
+  },
+  {
+    "sourcePlantKey": "mais",
+    "targetPlantKey": "patate-douce",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le maïs sert de brise-vent protégeant la patate douce, association traditionnelle des cultures tropicales intercalaires."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "coriandre",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La coriandre, Apiacée comme le fenouil, tolère son voisinage et leurs floraisons combinées en ombelles attirent une grande diversité de parasitoïdes et syrphes."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "souci",
+    "mechanism": "PredatorAttraction",
+    "effect": "Neutral",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le souci, plante robuste, tolère la proximité du fenouil allélopathique et attire les auxiliaires prédateurs des pucerons du fenouil."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "bourrache",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Neutral",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La bourrache, plante très vigoureuse, tolère la proximité du fenouil et complète sa floraison pour l'attraction des pollinisateurs."
+  },
+  {
+    "sourcePlantKey": "souci",
+    "targetPlantKey": "artichaut",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le souci attire les syrphes dont les larves dévorent les pucerons noirs (Aphis fabae) qui colonisent massivement les capitules d'artichaut."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "artichaut",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La bourrache attire les pollinisateurs et les insectes auxiliaires bénéfiques à l'écosystème autour de l'artichaut."
+  },
+  {
+    "sourcePlantKey": "thym-rampant",
+    "targetPlantKey": "artichaut",
+    "mechanism": "WeedSuppression",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le thym rampant couvre le sol au pied de l'artichaut, supprimant les adventices et repoussant les limaces par ses huiles essentielles."
+  },
+  {
+    "sourcePlantKey": "feve",
+    "targetPlantKey": "artichaut",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La fève en inter-rang fixe l'azote dont l'artichaut est très demandeur pour produire ses gros capitules."
+  },
+  {
+    "sourcePlantKey": "trefle-blanc",
+    "targetPlantKey": "cognassier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le trèfle blanc en couvre-sol sous le cognassier fixe l'azote et supprime les adventices, pratique standard en verger biologique."
+  },
+  {
+    "sourcePlantKey": "ciboulette",
+    "targetPlantKey": "cognassier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette au pied du cognassier réduit les maladies fongiques (entomosporiose, moniliose) par ses composés soufrés volatils."
+  },
+  {
+    "sourcePlantKey": "phacelie",
+    "targetPlantKey": "cognassier",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La phacélie attire massivement les pollinisateurs indispensables à la nouaison du cognassier, arbre à floraison tardive."
+  },
+  {
+    "sourcePlantKey": "ajuga-rampant",
+    "targetPlantKey": "cognassier",
+    "mechanism": "WeedSuppression",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'ajuga rampant forme un tapis dense et persistant sous le cognassier, supprimant les adventices sans concurrencer l'arbre."
+  },
+  {
+    "sourcePlantKey": "consoude",
+    "targetPlantKey": "neflier",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude au pied du néflier fournit un paillis riche en potassium essentiel à la qualité des nèfles, tout en accumulant les minéraux profonds."
+  },
+  {
+    "sourcePlantKey": "neflier",
+    "targetPlantKey": "fraisier-des-bois",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le néflier crée une ombre tachetée idéale pour le fraisier des bois, qui prospère en sous-étage comme dans son habitat naturel de lisière."
+  },
+  {
+    "sourcePlantKey": "feve",
+    "targetPlantKey": "chou-kale",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La fève d'automne fixe l'azote dont le chou kale, Brassicacée très gourmande, a besoin pour développer son feuillage abondant."
+  },
+  {
+    "sourcePlantKey": "feve",
+    "targetPlantKey": "chou-de-bruxelles",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La fève en inter-rang fixe l'azote au bénéfice du chou de Bruxelles qui nécessite un apport azoté constant pour former ses pommes."
+  },
+  {
+    "sourcePlantKey": "estragon",
+    "targetPlantKey": "chou-kale",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'estragon en bordure désoriente la piéride du chou par ses composés aromatiques, protégeant le kale en saison froide."
+  },
+  {
+    "sourcePlantKey": "estragon",
+    "targetPlantKey": "chou-de-bruxelles",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'estragon repousse la piéride du chou et les altises par ses huiles essentielles, protégeant le chou de Bruxelles."
+  },
+  {
+    "sourcePlantKey": "mache",
+    "targetPlantKey": "chou-kale",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La mâche couvre le sol entre les pieds de kale en hiver, limitant l'érosion et les adventices tout en produisant une récolte complémentaire."
+  },
+  {
+    "sourcePlantKey": "haricot-nain",
+    "targetPlantKey": "amarante",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot nain en inter-rang fixe l'azote dont l'amarante a besoin pour développer ses grandes panicules de graines, association inspirée des pratiques mésoaméricaines."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "amarante",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le tournesol sert de brise-vent pour l'amarante dont les tiges hautes mais fines sont sensibles à la verse en terrain exposé."
+  },
+  {
+    "sourcePlantKey": "sarrasin",
+    "targetPlantKey": "quinoa",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le sarrasin solubilise le phosphore peu disponible dans le sol grâce à ses exsudats racinaires, le rendant accessible au quinoa voisin."
+  },
+  {
+    "sourcePlantKey": "aulne-glutineux",
+    "targetPlantKey": "consoude",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "L'aulne glutineux fixe jusqu'à 300 kg d'azote/ha/an grâce à Frankia alni, enrichissant considérablement le sol au profit de la consoude qui pousse dans sa zone d'influence."
+  },
+  {
+    "sourcePlantKey": "aulne-glutineux",
+    "targetPlantKey": "cresson-de-fontaine",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'azote fixé par l'aulne est lessivé vers les zones humides en contrebas, enrichissant l'eau au profit du cresson de fontaine."
+  },
+  {
+    "sourcePlantKey": "prele-des-champs",
+    "targetPlantKey": "consoude",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La prêle accumule la silice et la consoude accumule le potassium : ensemble elles fournissent une palette minérale complémentaire enrichissant le sol humide."
+  },
+  {
+    "sourcePlantKey": "trefle-blanc",
+    "targetPlantKey": "chene-pedoncule",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le trèfle blanc en couvre-sol sous le chêne fixe l'azote et favorise les mycorhizes, pratique documentée en agroforesterie pour améliorer la croissance des jeunes chênes."
+  },
+  {
+    "sourcePlantKey": "lotier-cornicule",
+    "targetPlantKey": "chene-pedoncule",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le lotier corniculé en lisière du chêne fixe l'azote et attire les pollinisateurs avec son nectar abondant, enrichissant l'écosystème forestier."
+  },
+  {
+    "sourcePlantKey": "chene-pedoncule",
+    "targetPlantKey": "groseillier",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le chêne pédonculé fournit une ombre légère favorable au groseillier qui fructifie bien en mi-ombre, reproduisant l'écosystème de lisière forestière."
+  },
+  {
+    "sourcePlantKey": "trefle-blanc",
+    "targetPlantKey": "murier-blanc",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le trèfle blanc en couvre-sol sous le mûrier blanc fixe l'azote et supprime les adventices, soutenant la croissance vigoureuse de cet arbre productif."
+  },
+  {
+    "sourcePlantKey": "melisse",
+    "targetPlantKey": "murier-blanc",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La mélisse attire les abeilles au pied du mûrier blanc, favorisant la pollinisation et l'écosystème du verger."
+  },
+  {
+    "sourcePlantKey": "murier-blanc",
+    "targetPlantKey": "fraisier-des-bois",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le mûrier blanc crée une ombre tachetée favorable au fraisier des bois qui tapisse le sol en sous-étage."
+  },
+  {
+    "sourcePlantKey": "ciboulette-ail",
+    "targetPlantKey": "murier-blanc",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette chinoise au pied du mûrier blanc repousse les pucerons et réduit les maladies fongiques par ses composés soufrés."
+  },
+  {
+    "sourcePlantKey": "pois-chiche",
+    "targetPlantKey": "coriandre",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le pois chiche fixe l'azote par Mesorhizobium ciceri, enrichissant le sol au bénéfice de la coriandre voisine dans les associations méditerranéennes."
+  },
+  {
+    "sourcePlantKey": "lentille",
+    "targetPlantKey": "coriandre",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La lentille fixe l'azote par Rhizobium leguminosarum, fournissant de l'azote assimilable à la coriandre en culture intercalaire."
+  },
+  {
+    "sourcePlantKey": "sarriette",
+    "targetPlantKey": "pois-chiche",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sarriette repousse la bruche du pois chiche (Callosobruchus) par ses huiles essentielles riches en carvacrol, compagnon traditionnel des légumineuses."
+  },
+  {
+    "sourcePlantKey": "sarriette",
+    "targetPlantKey": "lentille",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sarriette repousse la bruche de la lentille par ses composés aromatiques volatils, association traditionnelle du bassin méditerranéen."
+  },
+  {
+    "sourcePlantKey": "coriandre",
+    "targetPlantKey": "pois-chiche",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La coriandre en fleur attire les parasitoïdes et les syrphes qui contrôlent les pucerons du pois chiche."
+  },
+  {
+    "sourcePlantKey": "aneth",
+    "targetPlantKey": "lentille",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'aneth en fleur attire les insectes auxiliaires contrôlant les pucerons de la lentille, ses ombelles servant de refuge aux parasitoïdes."
+  },
+  {
+    "sourcePlantKey": "romarin",
+    "targetPlantKey": "pois-chiche",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le romarin en bordure de parcelle repousse un large spectre d'insectes nuisibles par ses huiles essentielles volatiles, protégeant le pois chiche."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "morelle-de-balbis",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La capucine attire les pucerons loin de la morelle de Balbis, servant de plante piège comme pour les autres Solanacées."
+  },
+  {
+    "sourcePlantKey": "basilic",
+    "targetPlantKey": "morelle-de-balbis",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le basilic repousse les aleurodes et les pucerons de la morelle de Balbis, association classique avec les Solanacées."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "morelle-de-balbis",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La bourrache attire les pollinisateurs nécessaires à la fructification de la morelle de Balbis."
+  },
+  {
+    "sourcePlantKey": "sainfoin",
+    "targetPlantKey": "achillee-millefeuille",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le sainfoin fixe l'azote par ses nodosités profondes, enrichissant le sol au profit de l'achillée millefeuille dans la prairie permanente."
+  },
+  {
+    "sourcePlantKey": "lotier-cornicule",
+    "targetPlantKey": "achillee-millefeuille",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le lotier corniculé fixe l'azote en couvre-sol bas, enrichissant la prairie au bénéfice de l'achillée et des autres espèces non-fixatrices."
+  },
+  {
+    "sourcePlantKey": "melilot",
+    "targetPlantKey": "phacelie",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le mélilot, puissante légumineuse fixatrice d'azote, enrichit le sol au profit de la phacélie dans les mélanges fleuris."
+  },
+  {
+    "sourcePlantKey": "sainfoin",
+    "targetPlantKey": "lotier-cornicule",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Sainfoin et lotier exploitent des niches complémentaires : le sainfoin en profondeur et le lotier en surface, maximisant la fixation d'azote dans la prairie."
+  },
+  {
+    "sourcePlantKey": "plantain-lanceole",
+    "targetPlantKey": "achillee-millefeuille",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le plantain lancéolé accumule le calcium et le silicium par ses racines, enrichissant la couche superficielle du sol au profit de l'achillée voisine."
+  },
+  {
+    "sourcePlantKey": "haricot-a-rames",
+    "targetPlantKey": "concombre",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot à rames fixe l'azote au bénéfice du concombre, plante gourmande en nutriments pour sa production de fruits."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "concombre",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les abeilles et bourdons indispensables à la pollinisation du concombre, améliorant la nouaison et la forme des fruits."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "concombre",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La capucine attire les pucerons loin du concombre, couvrant le sol au pied des structures verticales."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "concombre",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le tournesol robuste sert de support au concombre qui peut s'accrocher à sa tige par ses vrilles, combinant production sur la verticale."
+  },
+  {
+    "sourcePlantKey": "oignon",
+    "targetPlantKey": "betterave",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'oignon repousse les pucerons et les altises qui s'attaquent aux feuilles de betterave par ses composés soufrés volatils."
+  },
+  {
+    "sourcePlantKey": "oignon",
+    "targetPlantKey": "blette",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'oignon intercalé entre les blettes repousse les pucerons et les altises par ses composés soufrés, association documentée pour les Amaranthacées."
+  },
+  {
+    "sourcePlantKey": "oignon",
+    "targetPlantKey": "epinard",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'oignon en rang alterné protège l'épinard des pucerons et des altises par confusion olfactive."
+  },
+  {
+    "sourcePlantKey": "camomille-allemande",
+    "targetPlantKey": "blette",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La camomille est réputée améliorer la croissance des Amaranthacées et attire les auxiliaires prédateurs des pucerons de la blette."
+  },
+  {
+    "sourcePlantKey": "camomille-allemande",
+    "targetPlantKey": "betterave",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La camomille allemande est traditionnellement créditée d'améliorer la santé et la croissance de la betterave, attirant les insectes auxiliaires."
+  },
+  {
+    "sourcePlantKey": "haricot-nain",
+    "targetPlantKey": "epinard",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot nain fixe l'azote dont l'épinard, plante à feuillage riche en protéines, a besoin pour produire un feuillage abondant et nutritif."
+  },
+  {
+    "sourcePlantKey": "haricot-nain",
+    "targetPlantKey": "blette",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "Le haricot nain en inter-rang fixe l'azote bénéficiant à la blette, Amaranthacée exigeante en nutriments pour son feuillage luxuriant."
+  },
+  {
+    "sourcePlantKey": "argousier",
+    "targetPlantKey": "cornouiller-male",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "L'argousier fixe l'azote par symbiose avec Frankia, enrichissant le sol au profit du cornouiller mâle et des autres arbustes de la haie défensive."
+  },
+  {
+    "sourcePlantKey": "argousier",
+    "targetPlantKey": "sorbier-des-oiseleurs",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "L'azote fixé par l'argousier via Frankia bénéficie au sorbier des oiseleurs en haie mixte, accélérant l'établissement de la lisière défensive."
+  },
+  {
+    "sourcePlantKey": "prunellier",
+    "targetPlantKey": "argousier",
+    "mechanism": "NursePlant",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le prunellier épineux protège les jeunes plants d'argousier du broutage en haie, facilitant leur établissement dans la lisière défensive."
+  },
+  {
+    "sourcePlantKey": "sorbier-des-oiseleurs",
+    "targetPlantKey": "cornouiller-male",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le sorbier attire les oiseaux insectivores par ses baies, créant une faune auxiliaire qui profite à l'ensemble de la haie incluant le cornouiller."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "pommier",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache au pied du pommier attire les pollinisateurs essentiels à la nouaison, compagnon classique du verger en permaculture."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "pommier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail planté au pied du pommier réduit l'incidence de la tavelure et repousse les pucerons par ses composés soufrés, pratique traditionnelle du verger."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "cerisier",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail au pied du cerisier repousse les pucerons noirs du cerisier (Myzus cerasi) par ses composés soufrés volatils."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "cerisier",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les pollinisateurs indispensables à la fructification du cerisier, dont la courte période de floraison nécessite une pollinisation rapide et intense."
+  },
+  {
+    "sourcePlantKey": "tomate",
+    "targetPlantKey": "asperge",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La tomate produit de la solanine toxique pour le criocère de l'asperge (Crioceris asparagi), compagnon classique documenté dans toute la littérature de compagnonnage."
+  },
+  {
+    "sourcePlantKey": "asperge",
+    "targetPlantKey": "tomate",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les racines de l'asperge libèrent un glycoside toxique pour les nématodes qui attaquent la tomate, protection réciproque documentée."
+  },
+  {
+    "sourcePlantKey": "ciboulette",
+    "targetPlantKey": "asperge",
+    "mechanism": "AerialRepulsion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La ciboulette repousse le criocère de l'asperge par ses composés soufrés, compagnon traditionnel de l'aspergière."
+  },
+  {
+    "sourcePlantKey": "souci",
+    "targetPlantKey": "asperge",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le souci assainit le sol contre les nématodes parasites des racines d'asperge et attire les insectes auxiliaires par ses fleurs vives."
   }
 ]

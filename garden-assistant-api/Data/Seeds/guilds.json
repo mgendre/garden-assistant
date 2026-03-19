@@ -248,5 +248,367 @@
       "thym-rampant",
       "sainfoin"
     ]
+  },
+  {
+    "name": "La Guilde du Figuier",
+    "description": "La guilde du figuier associe des plantes adaptées au climat méditerranéen. La consoude fournit du potassium essentiel à la qualité des fruits, le trèfle blanc fixe l'azote en couvre-sol vivant, la bourrache attire les pollinisateurs, l'ail protège contre les maladies fongiques et le thym supprime les adventices en couvre-sol aromatique.",
+    "plantKeys": [
+      "figuier",
+      "consoude",
+      "trefle-blanc",
+      "bourrache",
+      "ail",
+      "thym"
+    ]
+  },
+  {
+    "name": "La Guilde de la Vigne",
+    "description": "Inspirée des pratiques viticoles en permaculture, cette guilde protège la vigne grâce à l'ail antifongique, au trèfle blanc fixateur d'azote, à l'achillée et l'hysope qui attirent les insectes auxiliaires contre le ver de la grappe, et au romarin dont les arômes désorientent les ravageurs.",
+    "plantKeys": [
+      "vigne",
+      "trefle-blanc",
+      "achillee-millefeuille",
+      "hysope",
+      "ail",
+      "romarin"
+    ]
+  },
+  {
+    "name": "La Guilde du Noyer",
+    "description": "Le noyer produit de la juglone, un composé allélopathique. Cette guilde réunit uniquement des plantes tolérantes à la juglone : trèfle blanc, consoude, sureau noir, pissenlit et mélisse, qui prospèrent sous le noyer tout en fixant l'azote, accumulant les minéraux et attirant les pollinisateurs.",
+    "plantKeys": [
+      "noyer",
+      "trefle-blanc",
+      "consoude",
+      "sureau-noir",
+      "pissenlit",
+      "melisse"
+    ]
+  },
+  {
+    "name": "La Guilde du Poirier",
+    "description": "Adaptée au profil de ravageurs du poirier, cette guilde combine la consoude pour le potassium, la tanaisie contre le psylle du poirier, la ciboulette contre la tavelure, le trèfle blanc comme couvre-sol fixateur d'azote et la phacélie pour attirer les auxiliaires.",
+    "plantKeys": [
+      "poirier",
+      "consoude",
+      "tanaisie",
+      "ciboulette",
+      "trefle-blanc",
+      "phacelie"
+    ]
+  },
+  {
+    "name": "La Guilde du Prunier",
+    "description": "Le prunier est sensible aux pucerons et aux maladies fongiques. L'ail et la ciboulette assurent une protection antifongique par leurs composés soufrés, la capucine piège les pucerons, la consoude fournit du potassium, le trèfle blanc fixe l'azote et la bourrache attire les pollinisateurs indispensables à la fructification.",
+    "plantKeys": [
+      "prunier",
+      "ail",
+      "consoude",
+      "capucine",
+      "trefle-blanc",
+      "bourrache",
+      "ciboulette"
+    ]
+  },
+  {
+    "name": "La Guilde du Châtaignier",
+    "description": "Le châtaignier crée une ombre dense et une litière acide. Cette guilde sélectionne des plantes adaptées : la consoude tolère l'ombre et accumule les minéraux, le fraisier des bois tapisse le sol, la myrtille apprécie l'acidité, le trèfle rouge fixe l'azote en mi-ombre et la violette offre du nectar précoce aux pollinisateurs.",
+    "plantKeys": [
+      "chataignier",
+      "consoude",
+      "fraisier-des-bois",
+      "myrtille",
+      "trefle-rouge",
+      "violette-odorante"
+    ]
+  },
+  {
+    "name": "La Guilde de la Pomme de Terre",
+    "description": "Cette guilde répond aux besoins de la pomme de terre, plante gourmande vulnérable au doryphore et au mildiou. Le haricot nain fixe l'azote, le tagète assainit le sol contre les nématodes, la coriandre attire les syrphes, la capucine piège les doryphores et la bourrache repousse les ravageurs.",
+    "plantKeys": [
+      "pomme-de-terre",
+      "haricot-nain",
+      "tagete",
+      "coriandre",
+      "capucine",
+      "bourrache"
+    ]
+  },
+  {
+    "name": "La Guilde du Jardin de Simples",
+    "description": "Inspirée des jardins monastiques médiévaux, cette guilde réunit des plantes médicinales et aromatiques synergiques. La sauge, la mélisse, l'origan et l'hysope forment un ensemble aromatique qui désoriente les ravageurs. La camomille améliore la santé des plantes voisines et la valériane stimule l'activité des vers de terre.",
+    "plantKeys": [
+      "sauge-officinale",
+      "melisse",
+      "camomille-allemande",
+      "origan",
+      "valeriane",
+      "hysope"
+    ]
+  },
+  {
+    "name": "La Guilde des Courges d'Hiver",
+    "description": "Distincte de la guilde des cucurbitacées estivales, cette guilde accompagne les courges et potirons à cycle long. Le tournesol sert de brise-vent, le tagète assainit le sol, la bourrache assure la pollinisation sur la longue floraison, la capucine piège les ravageurs et le haricot nain fixe l'azote pour ces cultures gourmandes.",
+    "plantKeys": [
+      "courge",
+      "potiron",
+      "tournesol",
+      "tagete",
+      "bourrache",
+      "capucine",
+      "haricot-nain"
+    ]
+  },
+  {
+    "name": "La Guilde de la Rhubarbe",
+    "description": "La rhubarbe est une vivace de longue durée (15-20 ans) qui bénéficie de compagnons adaptés à sa mi-ombre. La consoude fournit du potassium, l'ail protège contre la pourriture du collet, le fraisier couvre le sol entre les grandes feuilles, le cerfeuil tolère l'ombre et repousse les limaces, et la bourrache décompacte le sol.",
+    "plantKeys": [
+      "rhubarbe",
+      "consoude",
+      "ail",
+      "fraisier",
+      "cerfeuil",
+      "bourrache"
+    ]
+  },
+  {
+    "name": "La Guilde du Noisetier",
+    "description": "Le noisetier produit une ombre légère et tachetée favorable à un sous-étage riche. Le groseillier et le cassis fructifient en mi-ombre, le fraisier des bois tapisse le sol, la consoude accumule les minéraux, la primevère nourrit les pollinisateurs très tôt en saison et le trèfle blanc fixe l'azote.",
+    "plantKeys": [
+      "noisetier",
+      "groseillier",
+      "cassis",
+      "fraisier-des-bois",
+      "consoude",
+      "primevere",
+      "trefle-blanc"
+    ]
+  },
+  {
+    "name": "La Guilde du Topinambour",
+    "description": "Le topinambour, parent du tournesol, atteint 2-3 mètres et sert de structure vivante. Le haricot à rames grimpe sur ses tiges robustes, reproduisant le principe des Trois Sœurs. La consoude accumule les minéraux à la base, la capucine couvre le sol et piège les pucerons, la bourrache attire les pollinisateurs.",
+    "plantKeys": [
+      "topinambour",
+      "haricot-a-rames",
+      "consoude",
+      "capucine",
+      "bourrache"
+    ]
+  },
+  {
+    "name": "La Guilde de la Patate Douce",
+    "description": "Adaptée aux climats chauds, cette guilde entoure la patate douce de compagnons protecteurs. Le haricot nain fixe l'azote, le tagète supprime les nématodes (auxquels la patate douce est très sensible), le basilic repousse aleurodes et thrips, la bourrache attire les auxiliaires et le maïs sert de brise-vent.",
+    "plantKeys": [
+      "patate-douce",
+      "haricot-nain",
+      "tagete",
+      "basilic",
+      "bourrache",
+      "mais"
+    ]
+  },
+  {
+    "name": "La Guilde des Plantes Utilitaires",
+    "description": "Cette guilde fonctionnelle réunit les plantes utilisées pour préparer des purins, décoctions et infusions au jardin. L'ortie fournit le purin d'ortie, la tanaisie et l'absinthe repoussent les ravageurs, l'achillée et la camomille activent le compost, la valériane protège du gel et la prêle fournit une décoction antifongique riche en silice.",
+    "plantKeys": [
+      "ortie",
+      "tanaisie",
+      "absinthe",
+      "achillee-millefeuille",
+      "camomille-allemande",
+      "valeriane",
+      "prele-des-champs"
+    ]
+  },
+  {
+    "name": "La Guilde du Fenouil",
+    "description": "Le fenouil est allélopathique et inhibe de nombreux légumes. Cette guilde réunit des plantes qui tolèrent sa présence : l'aneth et la coriandre (Apiacées apparentées), le souci et la bourrache (robustes). Le céleri, autre Apiacée, cohabite bien avec le fenouil.",
+    "plantKeys": [
+      "fenouil",
+      "aneth",
+      "coriandre",
+      "souci",
+      "bourrache",
+      "celeri"
+    ]
+  },
+  {
+    "name": "La Guilde de l'Artichaut",
+    "description": "L'artichaut, vivace imposante atteignant 2 mètres, constitue un brise-vent naturel et un puissant accumulateur dynamique de potassium. La fève fixe l'azote au printemps, le souci attire les syrphes qui contrôlent les pucerons noirs, la bourrache assure la pollinisation et le thym rampant couvre le sol en repoussant les limaces.",
+    "plantKeys": [
+      "artichaut",
+      "feve",
+      "souci",
+      "bourrache",
+      "thym-rampant"
+    ]
+  },
+  {
+    "name": "La Guilde du Fraisier",
+    "description": "Le fraisier s'épanouit dans un entourage protecteur. La bourrache, son compagnon classique, attire les pollinisateurs et repousse certains ravageurs. L'ail et la ciboulette protègent contre la pourriture grise par leurs composés soufrés. Le thym rampant éloigne les limaces et la laitue exploite l'espace entre les rangs.",
+    "plantKeys": [
+      "fraisier",
+      "bourrache",
+      "ail",
+      "ciboulette",
+      "thym-rampant",
+      "laitue"
+    ]
+  },
+  {
+    "name": "La Guilde du Cognassier",
+    "description": "Le cognassier, arbre fruitier rustique à floraison tardive, forme une guilde compacte. La consoude accumule le potassium, le trèfle blanc fixe l'azote, la ciboulette protège contre les maladies fongiques, la phacélie attire les pollinisateurs et l'ajuga rampant tapisse le sol à l'ombre de l'arbre.",
+    "plantKeys": [
+      "cognassier",
+      "consoude",
+      "trefle-blanc",
+      "ciboulette",
+      "phacelie",
+      "ajuga-rampant"
+    ]
+  },
+  {
+    "name": "La Guilde du Nèflier",
+    "description": "Le néflier, arbre fruitier très rustique tolérant la mi-ombre, est souvent oublié en permaculture. La consoude fournit du potassium, le trèfle blanc fixe l'azote, la primevère et la violette nourrissent les pollinisateurs précoces au printemps et le fraisier des bois tapisse le sol sous l'ombre tachetée.",
+    "plantKeys": [
+      "neflier",
+      "consoude",
+      "trefle-blanc",
+      "primevere",
+      "violette-odorante",
+      "fraisier-des-bois"
+    ]
+  },
+  {
+    "name": "La Guilde du Potager d'Hiver",
+    "description": "Cette guilde réunit les légumes résistants au froid pour une production continue d'automne à printemps. Le chou kale et le chou de Bruxelles bénéficient de l'azote fixé par la fève d'automne. La mâche couvre le sol entre les rangs, l'oseille fournit des feuilles dès les premiers redoux et l'estragon désoriente la piéride du chou.",
+    "plantKeys": [
+      "chou-kale",
+      "chou-de-bruxelles",
+      "feve",
+      "mache",
+      "oseille",
+      "estragon"
+    ]
+  },
+  {
+    "name": "La Guilde des Pseudo-Céréales",
+    "description": "L'amarante et le quinoa, pseudo-céréales ancestrales, partagent une résistance exceptionnelle à la sécheresse. Associées au tournesol comme brise-vent, au sarrasin qui mobilise le phosphore, au haricot nain fixateur d'azote et au tagète qui assainit le sol, elles forment une guilde productive adaptée aux étés chauds.",
+    "plantKeys": [
+      "amarante",
+      "quinoa",
+      "tournesol",
+      "sarrasin",
+      "haricot-nain",
+      "tagete"
+    ]
+  },
+  {
+    "name": "La Guilde du Jardin Humide",
+    "description": "Cette guilde réunit les plantes adaptées aux sols humides ou aux bordures de mare. L'aulne glutineux fixe l'azote par symbiose avec Frankia et forme la canopée. Le saule blanc fournit de la biomasse, le cresson de fontaine tapisse les zones humides, la prêle accumule la silice et la consoude complète en accumulant les minéraux profonds.",
+    "plantKeys": [
+      "aulne-glutineux",
+      "saule-blanc",
+      "cresson-de-fontaine",
+      "prele-des-champs",
+      "consoude"
+    ]
+  },
+  {
+    "name": "La Guilde du Chêne Pédonculé",
+    "description": "Le chêne pédonculé, arbre emblématique hébergeant plus de 500 espèces d'invertébrés, forme le cœur d'une guilde forestière à long terme. Son ascenseur hydraulique remonte l'eau profonde. Le noisetier occupe la strate arbustive, le groseillier la strate basse, le fraisier des bois tapisse le sol, le trèfle blanc fixe l'azote et le lotier s'installe en lisière.",
+    "plantKeys": [
+      "chene-pedoncule",
+      "noisetier",
+      "groseillier",
+      "fraisier-des-bois",
+      "trefle-blanc",
+      "lotier-cornicule"
+    ]
+  },
+  {
+    "name": "La Guilde du Mûrier Blanc",
+    "description": "Le mûrier blanc, arbre à croissance rapide produisant des fruits abondants, forme une guilde productive. La consoude accumule le potassium, le trèfle blanc fixe l'azote, la mélisse attire les abeilles et repousse les pucerons, le fraisier des bois tapisse le sol à la mi-ombre et la ciboulette-ail renforce la protection fongique.",
+    "plantKeys": [
+      "murier-blanc",
+      "consoude",
+      "trefle-blanc",
+      "melisse",
+      "fraisier-des-bois",
+      "ciboulette-ail"
+    ]
+  },
+  {
+    "name": "La Guilde des Légumineuses Méditerranéennes",
+    "description": "Le pois chiche et la lentille, légumineuses adaptées à la sécheresse, fixent l'azote dans les sols chauds. La coriandre et l'aneth attirent les auxiliaires contre les pucerons, la sarriette repousse la bruche de la lentille et du pois chiche, et le romarin borde la parcelle en repoussant un large spectre d'insectes nuisibles.",
+    "plantKeys": [
+      "pois-chiche",
+      "lentille",
+      "coriandre",
+      "aneth",
+      "sarriette",
+      "romarin"
+    ]
+  },
+  {
+    "name": "La Guilde de la Morelle de Balbis",
+    "description": "La morelle de Balbis est surtout connue comme plante piège à nématodes — ses racines attirent les nématodes à kystes qui ne peuvent pas compléter leur cycle. Associée au tagète nématicide, à la capucine piège à pucerons, au basilic répulsif et à la bourrache pollinisatrice, elle forme une guilde défensive pour assainir le sol.",
+    "plantKeys": [
+      "morelle-de-balbis",
+      "tagete",
+      "capucine",
+      "basilic",
+      "bourrache"
+    ]
+  },
+  {
+    "name": "La Guilde de la Prairie Mellifère",
+    "description": "Cette guilde compose une prairie fleurie permanente maximisant les ressources pour les pollinisateurs. Le sainfoin et le lotier fixent l'azote avec un nectar abondant, le mélilot prolonge la floraison en été, l'achillée et le plantain accumulent les minéraux, la véronique tapisse les zones basses et la phacélie comble les vides de floraison.",
+    "plantKeys": [
+      "sainfoin",
+      "lotier-cornicule",
+      "melilot",
+      "achillee-millefeuille",
+      "plantain-lanceole",
+      "veronique-petit-chene",
+      "phacelie"
+    ]
+  },
+  {
+    "name": "La Guilde du Potager Vertical",
+    "description": "Cette guilde exploite la dimension verticale du jardin. Le haricot à rames grimpe sur le tournesol et le houblon, reproduisant le principe des plantes-tuteurs vivants. Le concombre s'accroche aux mêmes structures par ses vrilles. La bourrache attire les pollinisateurs et la capucine couvre le sol en piégeant les pucerons.",
+    "plantKeys": [
+      "haricot-a-rames",
+      "tournesol",
+      "houblon",
+      "concombre",
+      "bourrache",
+      "capucine"
+    ]
+  },
+  {
+    "name": "La Guilde des Blettes et Amaranthacées",
+    "description": "Cette guilde réunit les Amaranthacées comestibles — blette, betterave et épinard — qui partagent des besoins en sol riche et frais. L'oignon repousse pucerons et altises, la camomille améliore la croissance des Amaranthacées, le haricot nain fixe l'azote et le souci attire les auxiliaires en rompant visuellement les rangs.",
+    "plantKeys": [
+      "blette",
+      "betterave",
+      "epinard",
+      "oignon",
+      "camomille-allemande",
+      "haricot-nain",
+      "souci"
+    ]
+  },
+  {
+    "name": "La Guilde de la Lisière Défensive",
+    "description": "Cette guilde crée une barrière végétale protectrice autour du jardin. Le genévrier et le prunellier, tous deux épineux, forment un écran physique. L'argousier fixe l'azote et produit des baies, le cornouiller mâle offre une floraison précoce, le sorbier attire les oiseaux insectivores et la rue officinale repousse chats et chevreuils.",
+    "plantKeys": [
+      "genevrier-commun",
+      "prunellier",
+      "argousier",
+      "cornouiller-male",
+      "sorbier-des-oiseleurs",
+      "rue-officinale"
+    ]
   }
 ]

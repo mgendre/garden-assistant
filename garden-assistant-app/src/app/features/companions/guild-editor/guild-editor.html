@@ -79,7 +79,7 @@
         <div class="guild-conflict-list">
           @for (conflict of store.recommendations()!.selectedPlantConflicts!; track $index) {
             <div class="guild-conflict-item">
-              <span class="guild-conflict-names">{{ conflict.plantAName }} & {{ conflict.plantBName }}</span>
+              <span class="guild-conflict-names">{{ plantName(conflict.plantAId) }} & {{ plantName(conflict.plantBId) }}</span>
               <div class="guild-conflict-mechanisms">
                 @for (m of conflict.mechanisms ?? []; track m) {
                   <span class="mechanism-chip mechanism-red" (click)="openMechanismInfo(m)">
@@ -107,9 +107,9 @@
                 <div class="guild-association-item" [class.guild-association-harmful]="assoc.effect === 1">
                   <div class="guild-association-header">
                     <span class="guild-association-plants">
-                      {{ assoc.sourcePlantName }}
+                      {{ plantName(assoc.sourcePlantId) }}
                       <span class="guild-association-arrow">→</span>
-                      {{ assoc.targetPlantName }}
+                      {{ plantName(assoc.targetPlantId) }}
                     </span>
                     <span class="mechanism-chip" [class.mechanism-green]="assoc.effect === 0" [class.mechanism-red]="assoc.effect === 1" (click)="openMechanismInfo(assoc.mechanism!)">
                       {{ 'Plant.Mechanism.' + store.getMechanismKey(assoc.mechanism!) | translate }}

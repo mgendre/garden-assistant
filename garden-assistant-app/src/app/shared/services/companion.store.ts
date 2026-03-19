@@ -4,7 +4,7 @@ import {
   PlantDto,
   CompanionSearchResultDto,
   CompanionRecommendationRequest,
-  GuildDetailDto,
+  GuildDto,
   AssociationMechanism,
   RootDepth,
   CreateGuildRequest,
@@ -81,7 +81,7 @@ export class CompanionStore {
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
 
-  readonly editingGuild = signal<GuildDetailDto | null>(null);
+  readonly editingGuild = signal<GuildDto | null>(null);
   readonly guildName = signal('');
   readonly guildDescription = signal('');
   readonly guildSaving = signal(false);
@@ -323,7 +323,7 @@ export class CompanionStore {
     this.guildMode.set('companions');
   }
 
-  loadGuildForEditing(guild: GuildDetailDto): void {
+  loadGuildForEditing(guild: GuildDto): void {
     this.selectedPlants.set([]);
     this.editingGuild.set(guild);
     this.guildName.set(guild.name ?? '');

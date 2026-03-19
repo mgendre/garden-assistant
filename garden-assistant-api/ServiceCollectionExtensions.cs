@@ -13,12 +13,9 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISeeder, GuildSeeder>();
         services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 
-        services.AddScoped<IGardenService, GardenService>();
         services.AddScoped<IAuthService, AuthService>();
         services.AddScoped<IPlantService, PlantService>();
         services.AddScoped<IPlantAssociationService, PlantAssociationService>();
-        services.AddScoped<IPlantingService, PlantingService>();
-        services.AddScoped<IPlantingEntryService, PlantingEntryService>();
         services.AddScoped<IGuildService, GuildService>();
         services.AddScoped<IUserPlantService, UserPlantService>();
 
