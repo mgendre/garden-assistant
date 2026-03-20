@@ -25,6 +25,8 @@ public class PlantService(AppDbContext dbContext) : IPlantService
                 p.RootDepth,
                 p.SunRequirement,
                 p.WaterNeeds,
+                p.PropagationMethod,
+                p.FrostSensitive,
                 p.IntrinsicMechanisms.Select(im => im.Mechanism).ToList()
             ))
             .ToListAsync();

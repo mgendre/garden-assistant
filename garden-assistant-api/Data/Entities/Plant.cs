@@ -16,5 +16,7 @@ public class Plant
     public SunRequirement SunRequirement { get; set; }
     public WaterNeeds WaterNeeds { get; set; }
     public int? MaxAltitudeM { get; set; }
+    public PropagationMethod PropagationMethod { get; set; }
+    public bool FrostSensitive { get; set; }
     public List<PlantIntrinsicMechanism> IntrinsicMechanisms { get; set; } = [];
 }
