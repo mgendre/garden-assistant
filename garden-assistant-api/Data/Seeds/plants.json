@@ -11,7 +11,9 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "basilic",
@@ -28,7 +30,9 @@
     "maxAltitudeM": 800,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "carotte",
@@ -45,7 +49,9 @@
     "maxAltitudeM": 1800,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "poireau",
@@ -59,7 +65,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "ail",
@@ -76,7 +84,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Bulb",
+    "frostSensitive": false
   },
   {
     "key": "oignon",
@@ -90,7 +100,9 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "propagationMethod": "Bulb",
+    "frostSensitive": false
   },
   {
     "key": "ciboulette",
@@ -107,7 +119,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Division",
+    "frostSensitive": false
   },
   {
     "key": "haricot-nain",
@@ -124,7 +138,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "NitrogenFixation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "haricot-a-rames",
@@ -141,7 +157,9 @@
     "maxAltitudeM": 1000,
     "intrinsicMechanisms": [
       "NitrogenFixation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "mais",
@@ -155,7 +173,9 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "courge",
@@ -174,7 +194,9 @@
       "PollinatorAttraction",
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "potiron",
@@ -193,7 +215,9 @@
       "PollinatorAttraction",
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "courgette",
@@ -211,7 +235,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "pois",
@@ -228,7 +254,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "NitrogenFixation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "feve",
@@ -246,7 +274,9 @@
     "intrinsicMechanisms": [
       "NitrogenFixation",
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "trefle-blanc",
@@ -266,7 +296,9 @@
       "PollinatorAttraction",
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "trefle-rouge",
@@ -284,7 +316,9 @@
     "intrinsicMechanisms": [
       "NitrogenFixation",
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "luzerne",
@@ -304,7 +338,9 @@
       "PollinatorAttraction",
       "DynamicAccumulation",
       "HydraulicLift"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "lupin",
@@ -322,7 +358,9 @@
     "intrinsicMechanisms": [
       "NitrogenFixation",
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "consoude",
@@ -340,7 +378,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Division",
+    "frostSensitive": false
   },
   {
     "key": "ortie",
@@ -357,7 +397,9 @@
     "maxAltitudeM": 2500,
     "intrinsicMechanisms": [
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "pissenlit",
@@ -375,7 +417,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "capucine",
@@ -393,7 +437,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "tagete",
@@ -411,7 +457,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "souci",
@@ -428,7 +476,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "bourrache",
@@ -446,7 +496,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "phacelie",
@@ -464,7 +516,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "achillee-millefeuille",
@@ -482,7 +536,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "fenouil",
@@ -500,7 +556,9 @@
     "intrinsicMechanisms": [
       "RootAllelopathy",
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "aneth",
@@ -517,7 +575,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "coriandre",
@@ -534,7 +594,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "persil",
@@ -551,7 +613,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "thym",
@@ -569,7 +633,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "romarin",
@@ -586,7 +652,9 @@
     "maxAltitudeM": 800,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "lavande",
@@ -603,7 +671,9 @@
     "maxAltitudeM": 1800,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "sauge-officinale",
@@ -620,7 +690,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "menthe-poivree",
@@ -638,7 +710,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Division",
+    "frostSensitive": false
   },
   {
     "key": "melisse",
@@ -655,7 +729,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "origan",
@@ -673,7 +749,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "hysope",
@@ -690,7 +768,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "valeriane",
@@ -708,7 +788,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "grande-camomille",
@@ -725,7 +807,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "camomille-allemande",
@@ -743,7 +827,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "absinthe",
@@ -760,7 +846,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "tanaisie",
@@ -777,7 +865,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "tournesol",
@@ -795,7 +885,9 @@
     "intrinsicMechanisms": [
       "RootAllelopathy",
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "chou-kale",
@@ -812,7 +904,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "brocoli",
@@ -829,7 +923,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "radis",
@@ -846,7 +942,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "navet",
@@ -863,7 +961,9 @@
     "maxAltitudeM": 1800,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "laitue",
@@ -880,7 +980,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "epinard",
@@ -897,7 +999,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "roquette",
@@ -914,7 +1018,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "betterave",
@@ -928,7 +1034,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "panais",
@@ -945,7 +1053,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "celeri",
@@ -959,7 +1069,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "High",
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "poivron",
@@ -973,7 +1085,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "aubergine",
@@ -987,7 +1101,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 600
+    "maxAltitudeM": 600,
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "pomme-de-terre",
@@ -1005,7 +1121,9 @@
     "intrinsicMechanisms": [
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Tuber",
+    "frostSensitive": false
   },
   {
     "key": "asperge",
@@ -1019,7 +1137,9 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "maxAltitudeM": 1000
+    "maxAltitudeM": 1000,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "artichaut",
@@ -1037,7 +1157,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "topinambour",
@@ -1056,7 +1178,9 @@
       "RootAllelopathy",
       "PollinatorAttraction",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "oseille",
@@ -1073,7 +1197,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "fraisier",
@@ -1091,7 +1217,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "fraisier-des-bois",
@@ -1109,7 +1237,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "framboisier",
@@ -1126,7 +1256,9 @@
     "maxAltitudeM": 1800,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "cassis",
@@ -1143,7 +1275,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "myrtille",
@@ -1161,7 +1295,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "aronia",
@@ -1178,7 +1314,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "argousier",
@@ -1195,7 +1333,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "NitrogenFixation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "sureau-noir",
@@ -1212,7 +1352,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "cornouiller-male",
@@ -1229,7 +1371,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "noisetier",
@@ -1246,7 +1390,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "prunellier",
@@ -1263,7 +1409,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "viorne-obier",
@@ -1280,7 +1428,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "pommier",
@@ -1297,7 +1447,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "poirier",
@@ -1314,7 +1466,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "prunier",
@@ -1331,7 +1485,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "cerisier",
@@ -1348,7 +1504,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "figuier",
@@ -1362,7 +1520,9 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "maxAltitudeM": 600
+    "maxAltitudeM": 600,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "noyer",
@@ -1379,7 +1539,9 @@
     "maxAltitudeM": 1000,
     "intrinsicMechanisms": [
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "chataignier",
@@ -1393,7 +1555,9 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "aulne-glutineux",
@@ -1412,7 +1576,9 @@
       "NitrogenFixation",
       "HydraulicLift",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "robinier",
@@ -1431,7 +1597,9 @@
       "NitrogenFixation",
       "RootAllelopathy",
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "tilleul-a-petites-feuilles",
@@ -1449,7 +1617,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "saule-blanc",
@@ -1468,7 +1638,9 @@
       "PollinatorAttraction",
       "HydraulicLift",
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "chene-pedoncule",
@@ -1486,7 +1658,9 @@
     "intrinsicMechanisms": [
       "HydraulicLift",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "vigne",
@@ -1503,7 +1677,9 @@
     "maxAltitudeM": 800,
     "intrinsicMechanisms": [
       "HydraulicLift"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "houblon",
@@ -1517,7 +1693,9 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "lotier-cornicule",
@@ -1536,7 +1714,9 @@
       "NitrogenFixation",
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "vesce-commune",
@@ -1555,7 +1735,9 @@
       "NitrogenFixation",
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "sarrasin",
@@ -1575,7 +1757,9 @@
       "PollinatorAttraction",
       "WeedSuppression",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "plantain-lanceole",
@@ -1592,7 +1776,9 @@
     "maxAltitudeM": 2500,
     "intrinsicMechanisms": [
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "prele-des-champs",
@@ -1609,7 +1795,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "millepertuis",
@@ -1627,7 +1815,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "estragon",
@@ -1644,7 +1834,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "sarriette-des-montagnes",
@@ -1661,7 +1853,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "sainfoin",
@@ -1679,7 +1873,9 @@
     "intrinsicMechanisms": [
       "NitrogenFixation",
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "mache",
@@ -1696,7 +1892,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "seigle",
@@ -1715,7 +1913,9 @@
       "RootAllelopathy",
       "WeedSuppression",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "avoine",
@@ -1733,7 +1933,9 @@
     "intrinsicMechanisms": [
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "quinoa",
@@ -1747,7 +1949,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "maxAltitudeM": 2000
+    "maxAltitudeM": 2000,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "amarante",
@@ -1764,7 +1968,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "cresson-de-fontaine",
@@ -1781,7 +1987,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "souchet-comestible",
@@ -1795,7 +2003,9 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "morelle-de-balbis",
@@ -1812,7 +2022,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "murier-blanc",
@@ -1826,7 +2038,9 @@
     "rootDepth": "Deep",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "cognassier",
@@ -1843,7 +2057,9 @@
     "maxAltitudeM": 1000,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "neflier",
@@ -1860,7 +2076,9 @@
     "maxAltitudeM": 1000,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "sorbier-des-oiseleurs",
@@ -1877,7 +2095,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "genevrier-commun",
@@ -1894,7 +2114,9 @@
     "maxAltitudeM": 2500,
     "intrinsicMechanisms": [
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "pois-chiche",
@@ -1911,7 +2133,9 @@
     "maxAltitudeM": 800,
     "intrinsicMechanisms": [
       "NitrogenFixation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "lentille",
@@ -1929,7 +2153,9 @@
     "intrinsicMechanisms": [
       "NitrogenFixation",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "thym-rampant",
@@ -1947,7 +2173,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "ajuga-rampant",
@@ -1966,7 +2194,9 @@
       "PollinatorAttraction",
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "veronique-petit-chene",
@@ -1984,7 +2214,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "primevere",
@@ -2001,7 +2233,9 @@
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "violette-odorante",
@@ -2019,7 +2253,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "sarriette",
@@ -2036,7 +2272,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "chou",
@@ -2053,7 +2291,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "chou-fleur",
@@ -2070,7 +2310,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "concombre",
@@ -2084,7 +2326,9 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true
   },
   {
     "key": "melon",
@@ -2101,7 +2345,9 @@
     "maxAltitudeM": 600,
     "intrinsicMechanisms": [
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "groseillier",
@@ -2118,7 +2364,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "moutarde-blanche",
@@ -2138,7 +2386,9 @@
       "PollinatorAttraction",
       "Biofumigation",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "chrysantheme-des-jardins",
@@ -2155,7 +2405,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "rue-officinale",
@@ -2172,7 +2424,9 @@
     "maxAltitudeM": 1200,
     "intrinsicMechanisms": [
       "RootAllelopathy"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "cerfeuil",
@@ -2189,7 +2443,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "ciboulette-ail",
@@ -2206,7 +2462,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "echalote",
@@ -2220,7 +2478,9 @@
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "propagationMethod": "Bulb",
+    "frostSensitive": false
   },
   {
     "key": "celeri-rave",
@@ -2234,7 +2494,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "High",
-    "maxAltitudeM": 1200
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "scorsonere",
@@ -2252,7 +2514,9 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "agastache",
@@ -2269,7 +2533,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "melilot",
@@ -2288,7 +2554,9 @@
       "NitrogenFixation",
       "PollinatorAttraction",
       "DynamicAccumulation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "rhubarbe",
@@ -2308,7 +2576,9 @@
       "DynamicAccumulation",
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "blette",
@@ -2322,7 +2592,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 1500
+    "maxAltitudeM": 1500,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "chou-de-bruxelles",
@@ -2339,7 +2611,9 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "Biofumigation"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "patate-douce",
@@ -2358,7 +2632,9 @@
       "PollinatorAttraction",
       "SoilCover",
       "WeedSuppression"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "piment",
@@ -2372,7 +2648,9 @@
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 800
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   },
   {
     "key": "pasteque",
@@ -2389,6 +2667,8 @@
     "maxAltitudeM": 600,
     "intrinsicMechanisms": [
       "SoilCover"
-    ]
+    ],
+    "propagationMethod": "Seed",
+    "frostSensitive": false
   }
 ]

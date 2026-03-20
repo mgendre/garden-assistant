@@ -41,7 +41,9 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
                 RootDepth = r.RootDepth,
                 SunRequirement = r.SunRequirement,
                 WaterNeeds = r.WaterNeeds,
-                MaxAltitudeM = r.MaxAltitudeM
+                MaxAltitudeM = r.MaxAltitudeM,
+                PropagationMethod = r.PropagationMethod ?? PropagationMethod.Seed,
+                FrostSensitive = r.FrostSensitive ?? false
             };
 
             db.Plants.Add(plant);
@@ -72,6 +74,8 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
         SunRequirement SunRequirement,
         WaterNeeds WaterNeeds,
         int? MaxAltitudeM,
-        List<AssociationMechanism>? IntrinsicMechanisms
+        List<AssociationMechanism>? IntrinsicMechanisms,
+        PropagationMethod? PropagationMethod,
+        bool? FrostSensitive
     );
 }
