@@ -16,6 +16,9 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<GuildPlant> GuildPlants => Set<GuildPlant>();
     public DbSet<UserPlant> UserPlants => Set<UserPlant>();
     public DbSet<PlantIntrinsicMechanism> PlantIntrinsicMechanisms => Set<PlantIntrinsicMechanism>();
+    public DbSet<PlantAction> PlantActions => Set<PlantAction>();
+    public DbSet<HarvestReadiness> HarvestReadiness => Set<HarvestReadiness>();
+    public DbSet<HarvestReadinessCriterion> HarvestReadinessCriteria => Set<HarvestReadinessCriterion>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -110,6 +113,37 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasOne<Plant>()
                   .WithMany(p => p.IntrinsicMechanisms)
                   .HasForeignKey(pim => pim.PlantId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<PlantAction>(entity =>
+        {
+            entity.HasKey(pa => pa.Id);
+            entity.Property(pa => pa.Notes).HasMaxLength(1000);
+            entity.HasOne(pa => pa.Plant)
+                  .WithMany(p => p.Actions)
+                  .HasForeignKey(pa => pa.PlantId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<HarvestReadiness>(entity =>
+        {
+            entity.HasKey(hr => hr.Id);
+            entity.Property(hr => hr.Description).IsRequired().HasMaxLength(2000);
+            entity.HasOne(hr => hr.Plant)
+                  .WithOne(p => p.HarvestReadiness)
+                  .HasForeignKey<HarvestReadiness>(hr => hr.PlantId)
+                  .OnDelete(DeleteBehavior.Cascade);
+            entity.HasIndex(hr => hr.PlantId).IsUnique();
+        });
+
+        modelBuilder.Entity<HarvestReadinessCriterion>(entity =>
+        {
+            entity.HasKey(c => c.Id);
+            entity.Property(c => c.Description).IsRequired().HasMaxLength(1000);
+            entity.HasOne(c => c.HarvestReadiness)
+                  .WithMany(hr => hr.Criteria)
+                  .HasForeignKey(c => c.HarvestReadinessId)
                   .OnDelete(DeleteBehavior.Cascade);
         });
 

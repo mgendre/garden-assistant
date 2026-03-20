@@ -19,4 +19,6 @@ public class Plant
     public PropagationMethod PropagationMethod { get; set; }
     public bool FrostSensitive { get; set; }
     public List<PlantIntrinsicMechanism> IntrinsicMechanisms { get; set; } = [];
+    public List<PlantAction> Actions { get; set; } = [];
+    public HarvestReadiness? HarvestReadiness { get; set; }
 }
