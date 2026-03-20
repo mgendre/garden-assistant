@@ -11,6 +11,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISeeder, PlantSeeder>();
         services.AddScoped<ISeeder, AssociationSeeder>();
         services.AddScoped<ISeeder, GuildSeeder>();
+        services.AddScoped<ISeeder, PlantActionSeeder>();
         services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 
         services.AddScoped<IAuthService, AuthService>();
