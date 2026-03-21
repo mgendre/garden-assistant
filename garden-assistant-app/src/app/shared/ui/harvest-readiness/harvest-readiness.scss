@@ -1,0 +1,40 @@
+@reference "tailwindcss";
+
+.harvest-readiness {
+  @apply pb-2;
+}
+
+.harvest-readiness__description {
+  @apply text-sm leading-7 mb-3;
+  color: var(--color-text);
+}
+
+.harvest-readiness__timing {
+  @apply text-sm italic mb-3;
+  color: var(--color-text-muted);
+}
+
+.harvest-readiness__criteria {
+  @apply list-none p-0 m-0 flex flex-col gap-2;
+}
+
+.harvest-readiness__criterion {
+  @apply flex items-start gap-2 text-sm;
+}
+
+.harvest-readiness__criterion-icon {
+  @apply flex-shrink-0 mt-0.5;
+  color: var(--color-canopy);
+  width: 1rem;
+  text-align: center;
+}
+
+.harvest-readiness__criterion-label {
+  @apply font-semibold flex-shrink-0;
+  color: var(--color-text);
+  min-width: 5rem;
+}
+
+.harvest-readiness__criterion-text {
+  color: var(--color-text);
+}

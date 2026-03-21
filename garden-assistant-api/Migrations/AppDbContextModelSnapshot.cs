@@ -103,6 +103,71 @@ namespace GardenAssistant.Migrations
                     b.ToTable("guild_plants", (string)null);
                 });
 
+            modelBuilder.Entity("GardenAssistant.Data.Entities.HarvestReadiness", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<int?>("DaysFromSowing")
+                        .HasColumnType("integer")
+                        .HasColumnName("days_from_sowing");
+
+                    b.Property<int?>("DaysFromTransplant")
+                        .HasColumnType("integer")
+                        .HasColumnName("days_from_transplant");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)")
+                        .HasColumnName("description");
+
+                    b.Property<Guid>("PlantId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("plant_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_harvest_readiness");
+
+                    b.HasIndex("PlantId")
+                        .IsUnique()
+                        .HasDatabaseName("ix_harvest_readiness_plant_id");
+
+                    b.ToTable("harvest_readiness", (string)null);
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.HarvestReadinessCriterion", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<int>("CriterionType")
+                        .HasColumnType("integer")
+                        .HasColumnName("criterion_type");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)")
+                        .HasColumnName("description");
+
+                    b.Property<Guid>("HarvestReadinessId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("harvest_readiness_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_harvest_readiness_criteria");
+
+                    b.HasIndex("HarvestReadinessId")
+                        .HasDatabaseName("ix_harvest_readiness_criteria_harvest_readiness_id");
+
+                    b.ToTable("harvest_readiness_criteria", (string)null);
+                });
+
             modelBuilder.Entity("GardenAssistant.Data.Entities.Plant", b =>
                 {
                     b.Property<Guid>("Id")
@@ -119,6 +184,10 @@ namespace GardenAssistant.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)")
                         .HasColumnName("family");
+
+                    b.Property<bool>("FrostSensitive")
+                        .HasColumnType("boolean")
+                        .HasColumnName("frost_sensitive");
 
                     b.Property<string>("Genus")
                         .HasMaxLength(128)
@@ -143,6 +212,10 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("character varying(256)")
                         .HasColumnName("name");
 
+                    b.Property<int>("PropagationMethod")
+                        .HasColumnType("integer")
+                        .HasColumnName("propagation_method");
+
                     b.Property<int>("RootDepth")
                         .HasColumnType("integer")
                         .HasColumnName("root_depth");
@@ -164,6 +237,43 @@ namespace GardenAssistant.Migrations
                         .HasName("pk_plants");
 
                     b.ToTable("plants", (string)null);
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.PlantAction", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<int>("ActionType")
+                        .HasColumnType("integer")
+                        .HasColumnName("action_type");
+
+                    b.Property<int>("HalfMonthEnd")
+                        .HasColumnType("integer")
+                        .HasColumnName("half_month_end");
+
+                    b.Property<int>("HalfMonthStart")
+                        .HasColumnType("integer")
+                        .HasColumnName("half_month_start");
+
+                    b.Property<string>("Notes")
+                        .HasMaxLength(1000)
+                        .HasColumnType("character varying(1000)")
+                        .HasColumnName("notes");
+
+                    b.Property<Guid>("PlantId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("plant_id");
+
+                    b.HasKey("Id")
+                        .HasName("pk_plant_actions");
+
+                    b.HasIndex("PlantId")
+                        .HasDatabaseName("ix_plant_actions_plant_id");
+
+                    b.ToTable("plant_actions", (string)null);
                 });
 
             modelBuilder.Entity("GardenAssistant.Data.Entities.PlantAssociation", b =>
@@ -453,6 +563,42 @@ namespace GardenAssistant.Migrations
                         .HasConstraintName("fk_guild_plants_plants_plant_id");
                 });
 
+            modelBuilder.Entity("GardenAssistant.Data.Entities.HarvestReadiness", b =>
+                {
+                    b.HasOne("GardenAssistant.Data.Entities.Plant", "Plant")
+                        .WithOne("HarvestReadiness")
+                        .HasForeignKey("GardenAssistant.Data.Entities.HarvestReadiness", "PlantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_harvest_readiness_plants_plant_id");
+
+                    b.Navigation("Plant");
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.HarvestReadinessCriterion", b =>
+                {
+                    b.HasOne("GardenAssistant.Data.Entities.HarvestReadiness", "HarvestReadiness")
+                        .WithMany("Criteria")
+                        .HasForeignKey("HarvestReadinessId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_harvest_readiness_criteria_harvest_readiness_harvest_readin");
+
+                    b.Navigation("HarvestReadiness");
+                });
+
+            modelBuilder.Entity("GardenAssistant.Data.Entities.PlantAction", b =>
+                {
+                    b.HasOne("GardenAssistant.Data.Entities.Plant", "Plant")
+                        .WithMany("Actions")
+                        .HasForeignKey("PlantId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_plant_actions_plants_plant_id");
+
+                    b.Navigation("Plant");
+                });
+
             modelBuilder.Entity("GardenAssistant.Data.Entities.PlantAssociation", b =>
                 {
                     b.HasOne("GardenAssistant.Data.Entities.Plant", null)
@@ -541,8 +687,17 @@ namespace GardenAssistant.Migrations
                         .HasConstraintName("fk_user_plants_users_user_id");
                 });
 
+            modelBuilder.Entity("GardenAssistant.Data.Entities.HarvestReadiness", b =>
+                {
+                    b.Navigation("Criteria");
+                });
+
             modelBuilder.Entity("GardenAssistant.Data.Entities.Plant", b =>
                 {
+                    b.Navigation("Actions");
+
+                    b.Navigation("HarvestReadiness");
+
                     b.Navigation("IntrinsicMechanisms");
                 });
 #pragma warning restore 612, 618

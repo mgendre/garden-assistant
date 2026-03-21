@@ -1,43 +1,83 @@
-import { Component, input, output, inject, ViewEncapsulation } from '@angular/core';
+import { Component, input, output, inject, signal, ViewEncapsulation, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart as faHeartSolid, faLink } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
 import { firstValueFrom } from 'rxjs';
-import { PlantDto, SunRequirement, WaterNeeds, LifeCycle, RootDepth, AssociationMechanism } from '../../../api/garden-assistant-api';
+import { PlantDto, PlantActionDto, HarvestReadinessDto, SunRequirement, WaterNeeds, LifeCycle, RootDepth, PropagationMethod, AssociationMechanism } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../services/companion.store';
 import { MyPlantsStore } from '../../services/my-plants.store';
+import { CalendarService } from '../../services/calendar.service';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../badge-info-dialog/badge-info-dialog';
+import { PlantCalendarGantt } from '../plant-calendar-gantt/plant-calendar-gantt';
+import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../harvest-readiness/harvest-readiness-dialog';
 import { Collapsible } from '../collapsible/collapsible';
 
 @Component({
   selector: 'app-plant-card',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, Collapsible],
+  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCalendarGantt],
   templateUrl: './plant-card.html',
   styleUrl: './plant-card.scss',
   encapsulation: ViewEncapsulation.None,
   host: { class: 'plant-card' }
 })
-export class PlantCard {
+export class PlantCard implements OnInit {
   readonly plant = input.required<PlantDto>();
   readonly initialExpanded = input(false);
   readonly forceExpanded = input(false);
   readonly removable = input(false);
   readonly hideMechanisms = input(false);
+  readonly hideFavButton = input(false);
   readonly relationalMechanisms = input<number[]>([]);
 
   readonly remove = output<void>();
 
   protected readonly store = inject(CompanionStore);
   protected readonly myPlantsStore = inject(MyPlantsStore);
+  private readonly calendarService = inject(CalendarService);
+
+  readonly plantActions = signal<PlantActionDto[]>([]);
+  readonly harvestReadiness = signal<HarvestReadinessDto | null>(null);
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faHeartRegular = faHeartRegular;
   protected readonly faLink = faLink;
   private readonly dialog = inject(MatDialog);
   private readonly translate = inject(TranslateService);
+
+  async ngOnInit(): Promise<void> {
+    const plantId = this.plant().id;
+    if (!plantId) {
+      return;
+    }
+    const [actions, readiness] = await Promise.all([
+      this.calendarService.getPlantActions(plantId),
+      this.calendarService.getHarvestReadiness(plantId),
+    ]);
+    this.plantActions.set(actions);
+    this.harvestReadiness.set(readiness);
+  }
+
+  get propagationMethod(): PropagationMethod {
+    return this.plant().propagationMethod ?? PropagationMethod.Seed;
+  }
+
+  get frostSensitive(): boolean {
+    return this.plant().frostSensitive ?? false;
+  }
+
+  openHarvestReadiness(): void {
+    const readiness = this.harvestReadiness();
+    if (readiness) {
+      this.dialog.open<HarvestReadinessDialog, HarvestReadinessDialogData>(HarvestReadinessDialog, {
+        data: { readiness, plantName: this.plant().name! },
+        maxWidth: '500px',
+        width: '90vw',
+      });
+    }
+  }
 
   getSunKey(sun: SunRequirement | undefined): string {
     switch (sun) {

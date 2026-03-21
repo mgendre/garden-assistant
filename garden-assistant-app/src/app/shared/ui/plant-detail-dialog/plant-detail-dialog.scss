@@ -1,0 +1,7 @@
+@reference "tailwindcss";
+
+.plant-detail-dialog__section {
+  @apply mt-2;
+  font-size: 0.875rem;
+  color: var(--color-text);
+}

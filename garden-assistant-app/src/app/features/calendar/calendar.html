@@ -1,0 +1,72 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 [translate]="'Calendar.Title'"></h1>
+  </div>
+
+  @if (store.loading()) {
+    <div class="calendar-loading">
+      <div class="calendar-loading-spinner"></div>
+    </div>
+  } @else if (store.calendarData()?.plants?.length === 0) {
+    <div class="empty-state">
+      <div class="empty-state-icon">📅</div>
+      <h3 class="empty-state-title" [translate]="'Calendar.EmptyState'"></h3>
+      <a routerLink="/companions" class="empty-state-link" [translate]="'Calendar.EmptyStateAction'"></a>
+    </div>
+  } @else {
+    <app-calendar-this-month></app-calendar-this-month>
+
+    <div class="panel">
+      <div class="panel-header">
+        <span class="panel-title" [translate]="'Calendar.Title'"></span>
+      </div>
+
+      <div class="calendar-filter-chips">
+        @for (filter of filters; track filter.key) {
+          @if (availableFilterKeys().has(filter.key)) {
+            <button class="calendar-chip"
+                    [class.calendar-chip--active]="!hasActiveFilter() || isFilterActive(filter.key)"
+                    [class.calendar-chip--inactive]="hasActiveFilter() && !isFilterActive(filter.key)"
+                    [style.--chip-color]="filter.color"
+                    (click)="toggleFilter(filter.key)">
+              <span class="calendar-chip-dot" [style.background-color]="(!hasActiveFilter() || isFilterActive(filter.key)) ? filter.color : '#9ca3af'"></span>
+              <span class="calendar-chip-label">{{ filter.labelKey | translate }}</span>
+            </button>
+          }
+        }
+      </div>
+
+      <div class="calendar-month-header-row">
+        <div class="calendar-name-spacer"></div>
+        <div class="calendar-label-spacer"></div>
+        <div class="calendar-month-headers">
+          @for (label of monthLabels; track $index) {
+            <div class="calendar-month-header"
+                 [class.calendar-month-header--current]="$index === currentMonthIndex">
+              {{ label }}
+            </div>
+          }
+        </div>
+      </div>
+
+      @for (plant of store.filteredPlants(); track plant.plantId; let last = $last; let idx = $index) {
+        @let plantInfo = plantStore.findById(plant.plantId);
+        @if (plantInfo) {
+          <div class="calendar-plant-section" [class.calendar-plant-section--last]="last">
+            <app-plant-calendar-gantt
+              [actions]="plant.actions ?? []"
+              [propagationMethod]="plantInfo.propagationMethod!"
+              [frostSensitive]="plantInfo.frostSensitive ?? false"
+              [showHeader]="false"
+              [activeFilters]="ganttFilters()"
+              [plantName]="plantInfo.name!"
+              [oddPlant]="idx % 2 === 1"
+              (plantNameClick)="openPlantDetail(plantInfo)"
+              (harvestReadinessClick)="openHarvestReadiness(plant.plantId!)">
+            </app-plant-calendar-gantt>
+          </div>
+        }
+      }
+    </div>
+  }
+</div>

@@ -14,5 +14,7 @@ public record PlantDto(
     RootDepth RootDepth,
     SunRequirement SunRequirement,
     WaterNeeds WaterNeeds,
+    PropagationMethod PropagationMethod,
+    bool FrostSensitive,
     List<AssociationMechanism> IntrinsicMechanisms
 );

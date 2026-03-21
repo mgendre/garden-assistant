@@ -1,0 +1,25 @@
+<div class="calendar-bar flex flex-1 min-w-0">
+  @for (month of months(); track $index) {
+    <div class="calendar-bar-month flex flex-1 min-w-0"
+         [class.calendar-bar-month--border-left]="$index > 0">
+      @for (cell of month.cells; track cell.halfMonth) {
+        <div class="calendar-bar-cell flex-1 relative flex flex-col items-stretch justify-end"
+             [class.calendar-bar-cell--current]="cell.isCurrent"
+             [class.calendar-bar-cell--second]="!cell.isFirstHalf">
+          @if (showFrostIndicator(cell.halfMonth)) {
+            <div class="calendar-bar-frost absolute top-0 left-1/2 -translate-x-1/2 text-blue-400 text-[8px] leading-none z-10">
+              <fa-icon [icon]="faSnowflake"></fa-icon>
+            </div>
+          }
+          <div class="flex flex-col gap-px mt-auto">
+            @for (bar of getActionBarsForCell(cell.halfMonth); track bar.actionType) {
+              <div class="calendar-bar-action rounded-sm"
+                   [style.background-color]="bar.color">
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPen, faPlus, faXmark, faLink, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
@@ -6,16 +6,28 @@ import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { GuildStore } from '../../../shared/services/guild.store';
 import { PlantStore } from '../../../shared/services/plant.store';
+import { CalendarService } from '../../../shared/services/calendar.service';
+import { PlantActionDto, PropagationMethod } from '../../../api/garden-assistant-api';
 import { PlantDetailPanel } from '../plant-detail-panel/plant-detail-panel';
 import { GuildPanel } from '../guild-panel/guild-panel';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
+import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
+import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../../shared/ui/harvest-readiness/harvest-readiness-dialog';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { RootStratification } from '../root-stratification/root-stratification';
+
+interface PlantCalendarEntry {
+  plantId: string;
+  name: string;
+  propagationMethod: PropagationMethod;
+  frostSensitive: boolean;
+  actions: PlantActionDto[];
+}
 
 @Component({
   selector: 'app-guild-editor',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, RootStratification],
+  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, RootStratification, PlantCalendarGantt],
   templateUrl: './guild-editor.html',
   styleUrl: './guild-editor.scss'
 })
@@ -29,6 +41,37 @@ export class GuildEditor {
   protected readonly faLink = faLink;
   protected readonly faWarning = faTriangleExclamation;
   private readonly dialog = inject(MatDialog);
+  private readonly calendarService = inject(CalendarService);
+
+  readonly plantCalendars = signal<PlantCalendarEntry[]>([]);
+
+  constructor() {
+    effect(async () => {
+      const plants = this.store.selectedPlants();
+      if (plants.length < 2) {
+        this.plantCalendars.set([]);
+        return;
+      }
+      const entries: PlantCalendarEntry[] = [];
+      const plantIds = plants.map(p => p.id!).filter(Boolean);
+      const actionsPromises = plantIds.map(id => this.calendarService.getPlantActions(id));
+      const allActions = await Promise.all(actionsPromises);
+      for (let i = 0; i < plantIds.length; i++) {
+        const plant = this.plantStore.findById(plantIds[i]);
+        if (plant) {
+          entries.push({
+            plantId: plantIds[i],
+            name: plant.name!,
+            propagationMethod: plant.propagationMethod ?? PropagationMethod.Seed,
+            frostSensitive: plant.frostSensitive ?? false,
+            actions: allActions[i],
+          });
+        }
+      }
+      entries.sort((a, b) => a.name.localeCompare(b.name));
+      this.plantCalendars.set(entries);
+    });
+  }
 
   protected readonly hasHarmfulAssociations = computed(() => {
     const associations = this.store.recommendations()?.selectedPlantAssociations;
@@ -37,6 +80,25 @@ export class GuildEditor {
 
   plantName(id: string | undefined): string {
     return this.plantStore.findById(id)?.name ?? '';
+  }
+
+  async openHarvestReadiness(plantId: string, plantName: string): Promise<void> {
+    const readiness = await this.calendarService.getHarvestReadiness(plantId);
+    if (readiness) {
+      this.dialog.open<HarvestReadinessDialog, HarvestReadinessDialogData>(HarvestReadinessDialog, {
+        data: { readiness, plantName },
+        maxWidth: '500px',
+        width: '90vw',
+      });
+    } else {
+      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
+        data: {
+          titleKey: 'BadgeInfo.Action.Harvest.Title',
+          descriptionKey: 'BadgeInfo.Action.Harvest.Description',
+        },
+        maxWidth: '400px',
+      });
+    }
   }
 
   openMechanismInfo(mechanism: number): void {

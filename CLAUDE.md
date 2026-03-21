@@ -46,6 +46,7 @@ These apply across all layers. Agents reference this section rather than restati
 - Use `async/await` throughout the backend; no `.Result` or `.Wait()`
 - Validate at system boundaries (API input, external calls); trust internal code
 - **Services must implement an interface** (e.g. `IGardenService` / `GardenService`). Inject via the interface, not the concrete class
+- **Avoid N+1 queries** — never load related data in a loop (`foreach` + single-entity query). Use batch queries (`WHERE IN`), eager loading (`Include`), or projection (`.Select()`) to fetch all needed data in one or few roundtrips
 
 ### Security by default
 - The `security-engineer` agent reviews every feature that touches auth, secrets, or data access
@@ -74,6 +75,7 @@ These apply across all layers. Agents reference this section rather than restati
 - **Mobile-first**: all pages and components must work on mobile viewports (≥ 320px). Use responsive Tailwind breakpoints (`sm:`, `md:`, `lg:`) to progressively enhance for larger screens
 - **Separate template files**: always use `templateUrl` pointing to a `.html` file — never inline `template` in components
 - **i18n with ngx-translate**: all user-facing text must use `{{ 'Key' | translate }}` or `[translate]="'Key'"`. Translation keys use **PascalCase** (e.g. `Companions.GoodTitle`, `Snackbar.GardenCreated`). Translation files live in `public/i18n/{lang}.json`. Default language is `fr`
+- **Panel pattern**: use the `.panel` class (defined in `_panels.scss`) for all content sections — white background, rounded corners, subtle shadow and border. Use `.panel-header` + `.panel-title` for section headers. Never create custom card/container styling; always reuse the panel pattern
 - **After every frontend change, run `npm run build --prefix garden-assistant-app` and fix all errors before considering the task done**
 
 ### Frontend styling — 7-1 Sass + Tailwind CSS
@@ -98,7 +100,7 @@ These apply across all layers. Agents reference this section rather than restati
 
 ### Running commands from the repo root
 
-Always run commands from the repo root — never `cd` into subdirectories.
+**Never use `cd`** — all commands (git, dotnet, npm, podman) must run from the repo root. Use `--prefix`, `--project`, or path arguments to target subdirectories.
 
 | Task | Command |
 |---|---|
@@ -110,6 +112,7 @@ Always run commands from the repo root — never `cd` into subdirectories.
 | EF migrations | `dotnet ef migrations add <Name> --project garden-assistant-api` |
 | EF update DB | `dotnet ef database update --project garden-assistant-api` |
 | Compose (DB) | `podman compose up -d db` |
+| Git | `git status`, `git add <file>`, etc. — always from root, never `cd` first |
 
 ---
 

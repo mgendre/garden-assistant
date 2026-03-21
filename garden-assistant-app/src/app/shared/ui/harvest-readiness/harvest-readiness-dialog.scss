@@ -1,0 +1,15 @@
+@reference "tailwindcss";
+
+.harvest-readiness-dialog {
+  @apply p-4;
+}
+
+.harvest-readiness-dialog__title {
+  @apply text-base font-semibold mb-3;
+  color: var(--color-text);
+}
+
+.harvest-readiness-dialog__plant-name {
+  @apply font-normal;
+  color: var(--color-text-muted);
+}

@@ -8,10 +8,27 @@ namespace GardenAssistant.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public class PlantsController(IPlantService plantService) : ControllerBase
+public class PlantsController(
+    IPlantService plantService,
+    IPlantActionService plantActionService,
+    IHarvestReadinessService harvestReadinessService) : ControllerBase
 {
     [HttpGet]
     [ProducesResponseType(typeof(List<PlantDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll() =>
         Ok(await plantService.GetAllAsync());
+
+    [HttpGet("{id:guid}/actions")]
+    [ProducesResponseType(typeof(List<PlantActionDto>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetActions(Guid id) =>
+        Ok(await plantActionService.GetByPlantIdAsync(id));
+
+    [HttpGet("{id:guid}/harvest-readiness")]
+    [ProducesResponseType(typeof(HarvestReadinessDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetHarvestReadiness(Guid id)
+    {
+        var result = await harvestReadinessService.GetByPlantIdAsync(id);
+        return result is null ? NotFound() : Ok(result);
+    }
 }

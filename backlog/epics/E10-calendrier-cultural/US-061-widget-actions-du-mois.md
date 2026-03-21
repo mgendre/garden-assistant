@@ -1,21 +1,23 @@
-## [US-061] Widget "Ce mois-ci" sur le tableau de bord
+## [US-061] Widget « En ce moment / Prochainement » sur le calendrier
 
 **En tant que** jardinier,
-**je veux** voir en un coup d'oeil les actions culturales a realiser ce mois-ci pour mes plantes,
+**je veux** voir en un coup d'oeil les actions culturales a realiser en ce moment et celles a venir,
 **afin de** ne rien oublier sans avoir a parcourir tout le calendrier.
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : Une section "Ce mois-ci" est visible en haut de la page Calendrier (ou sur le tableau de bord si celui-ci existe) et liste toutes les actions dont la fenetre mensuelle inclut le mois courant.
-- [ ] CA2 : Les actions sont regroupees par type (Semis, Repiquage, Recolte, Taille…) avec un intitule de groupe claire.
-- [ ] CA3 : Chaque action affiche le nom de la plante concernee ; cliquer dessus ouvre la fiche plante (dialog existant ou page detail).
-- [ ] CA4 : Si aucune action n'est prevue ce mois-ci, un message d'etat vide adapte est affiche (ex. "Rien a faire ce mois-ci — profitez-en pour observer votre jardin !").
+- [x] CA1 : Deux panels cote a cote (2 colonnes sur desktop, empiles sur mobile) sont affiches en haut de la page Calendrier.
+- [x] CA2 : Le premier panel « En ce moment » affiche les actions du demi-mois courant, groupees par type d'action avec les noms des plantes concernees.
+- [x] CA3 : Le second panel « Prochainement » affiche les actions du demi-mois suivant.
+- [x] CA4 : Le titre de chaque panel inclut le label du demi-mois (ex. « En ce moment — Debut mars »).
+- [x] CA5 : Cliquer sur un nom de plante ouvre la fiche detail plante (dialog existant).
+- [x] CA6 : Si aucune action n'est prevue, un message d'etat vide adapte est affiche.
+- [x] CA7 : Les panels utilisent le style `.panel` standard du projet.
 
 ### Notes & contraintes
-- Le mois courant est determine cote client (`new Date().getMonth()`).
-- Les donnees proviennent des appels deja realises pour la grille (US-060) : pas de nouvel appel API si les deux stories sont livrees ensemble.
-- Le widget est un composant Angular reutilisable (`CalendarThisMonthComponent`).
+- Les labels de demi-mois sont traduits via `Calendar.HalfMonth.1` a `Calendar.HalfMonth.24`.
+- Le filtrage se fait cote client a partir des donnees deja chargees par l'endpoint batch (US-080).
 
 ### Estimation
-- **Priorite :** Should
+- **Priorite :** Important
 - **Points :** 3

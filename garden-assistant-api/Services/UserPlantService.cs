@@ -84,6 +84,8 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
         p.RootDepth,
         p.SunRequirement,
         p.WaterNeeds,
+        p.PropagationMethod,
+        p.FrostSensitive,
         p.IntrinsicMechanisms.Select(im => im.Mechanism).ToList()
     );
 }

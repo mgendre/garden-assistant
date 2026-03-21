@@ -5,7 +5,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { routes } from './app.routes';
-import { AuthClient, GuildsClient, PlantAssociationsClient, PlantsClient, UserPlantsClient } from './api/garden-assistant-api';
+import { AuthClient, CalendarClient, GuildsClient, PlantAssociationsClient, PlantsClient, UserPlantsClient } from './api/garden-assistant-api';
 import { environment } from '../environments/environment';
 import { AuthService } from './core/auth/auth.service';
 import { authInterceptor } from './core/auth/auth.interceptor';
@@ -48,6 +48,11 @@ export const appConfig: ApplicationConfig = {
     {
       provide: GuildsClient,
       useFactory: (authService: AuthService) => new GuildsClient(environment.apiBaseUrl, authService.createAuthFetch()),
+      deps: [AuthService]
+    },
+    {
+      provide: CalendarClient,
+      useFactory: (authService: AuthService) => new CalendarClient(environment.apiBaseUrl, authService.createAuthFetch()),
       deps: [AuthService]
     },
     {

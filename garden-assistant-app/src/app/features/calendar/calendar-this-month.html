@@ -1,0 +1,61 @@
+@if (currentActionGroups().length > 0 || upcomingActionGroups().length > 0) {
+  <div class="this-month-grid">
+    <div class="panel this-month-panel">
+      <div class="panel-header">
+        <span class="panel-title">{{ 'Calendar.ThisMonth.NowTitle' | translate }} — {{ currentPeriodKey() | translate }}</span>
+      </div>
+      <div class="this-month-body">
+        @if (currentActionGroups().length > 0) {
+          <div class="this-month-groups">
+            @for (group of currentActionGroups(); track group.type) {
+              <div class="this-month-group">
+                <div class="this-month-action-label">
+                  <span class="this-month-dot" [style.background-color]="group.color"></span>
+                  <span class="this-month-action-name">{{ group.labelKey | translate }}</span>
+                </div>
+                <div class="this-month-plants">
+                  @for (plant of group.plants; track plant.id; let last = $last) {
+                    <button class="this-month-plant-link" (click)="openPlantDetail(plant.id)">{{ plant.name }}</button>@if (!last) {<span class="this-month-comma">,</span>}
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <p class="this-month-empty-text">{{ 'Calendar.ThisMonth.NowEmpty' | translate }}</p>
+        }
+      </div>
+    </div>
+
+    @if (upcomingActionGroups().length > 0) {
+      <div class="panel this-month-panel">
+        <div class="panel-header">
+          <span class="panel-title">{{ 'Calendar.ThisMonth.UpcomingToggle' | translate }} — {{ nextPeriodKey() | translate }}</span>
+        </div>
+        <div class="this-month-body">
+          <div class="this-month-groups">
+            @for (group of upcomingActionGroups(); track group.type) {
+              <div class="this-month-group">
+                <div class="this-month-action-label">
+                  <span class="this-month-dot" [style.background-color]="group.color"></span>
+                  <span class="this-month-action-name">{{ group.labelKey | translate }}</span>
+                </div>
+                <div class="this-month-plants">
+                  @for (plant of group.plants; track plant.id; let last = $last) {
+                    <button class="this-month-plant-link" (click)="openPlantDetail(plant.id)">{{ plant.name }}</button>@if (!last) {<span class="this-month-comma">,</span>}
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="panel this-month-panel">
+    <div class="this-month-body">
+      <p class="this-month-empty">{{ 'Calendar.ThisMonth.Empty' | translate }}</p>
+    </div>
+  </div>
+}
