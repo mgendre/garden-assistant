@@ -2,43 +2,43 @@
   {
     "plantKey": "tomate",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25C), 6-8 semaines avant la derniere gelee" },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Apres les Saints de Glace (mi-mai). Tuteurer immediatement" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25°C), 6-8 semaines avant la dernière gelée" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace (mi-mai). Tuteurer immédiatement" },
       { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 20 },
-      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Supprimer les gourmands des que la premiere grappe est visible" }
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Supprimer les gourmands dès que la première grappe est visible" }
     ]
   },
   {
     "plantKey": "basilic",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Semer au chaud (20C minimum), ne pas couvrir les graines" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Semer au chaud (20°C minimum), ne pas couvrir les graines" },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12 },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Apres tout risque de gel" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Après tout risque de gel" },
       { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20 },
-      { "actionType": "Pinching", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Pincer les sommites florales pour favoriser la ramification" }
+      { "actionType": "Pinching", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Pincer les sommités florales pour favoriser la ramification" }
     ]
   },
   {
     "plantKey": "carotte",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 14, "notes": "Semer clair en lignes, couvrir a peine. Germination lente (2-3 semaines)" },
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 14, "notes": "Semer clair en lignes, couvrir à peine. Germination lente (2-3 semaines)" },
       { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 22 }
     ]
   },
   {
     "plantKey": "poireau",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 1, "halfMonthEnd": 6, "notes": "Semer en pepiniere ou en terrine au chaud" },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Repiquer en tranchee profonde pour blanchir le fut" },
-      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 6, "notes": "Recolte possible tout l'hiver si paillage" },
-      { "actionType": "Hilling", "halfMonthStart": 14, "halfMonthEnd": 20, "notes": "Butter regulierement pour allonger la partie blanche" }
+      { "actionType": "IndoorSowing", "halfMonthStart": 1, "halfMonthEnd": 6, "notes": "Semer en pépinière ou en terrine au chaud" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Repiquer en tranchée profonde pour blanchir le fût" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 6, "notes": "Récolte possible tout l'hiver si paillage" },
+      { "actionType": "Hilling", "halfMonthStart": 14, "halfMonthEnd": 20, "notes": "Butter régulièrement pour allonger la partie blanche" }
     ]
   },
   {
     "plantKey": "ail",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Planter les caieux pointe vers le haut a 3 cm de profondeur" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Recolter quand le feuillage jaunit et seche" }
+      { "actionType": "DirectSowing", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Planter les caieux pointe vers le haut à 3 cm de profondeur" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Récolter quand le feuillage jaunit et sèche" }
     ]
   },
   {
@@ -47,7 +47,7 @@
       { "actionType": "IndoorSowing", "halfMonthStart": 1, "halfMonthEnd": 4 },
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8 },
       { "actionType": "Transplanting", "halfMonthStart": 7, "halfMonthEnd": 10 },
-      { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 18, "notes": "Recolter par temps sec quand le feuillage se couche" }
+      { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 18, "notes": "Récolter par temps sec quand le feuillage se couche" }
     ]
   },
   {
@@ -55,13 +55,13 @@
     "actions": [
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Diviser les touffes tous les 3 ans" },
       { "actionType": "Division", "halfMonthStart": 17, "halfMonthEnd": 20 },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 22, "notes": "Couper a 2 cm du sol pour favoriser la repousse" }
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 22, "notes": "Couper à 2 cm du sol pour favoriser la repousse" }
     ]
   },
   {
     "plantKey": "haricot-nain",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol a 15C minimum" },
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
       { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },
       { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
     ]
@@ -69,7 +69,7 @@
   {
     "plantKey": "haricot-a-rames",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer au pied des tuteurs, sol a 15C minimum" },
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
       { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },
       { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
     ]
@@ -77,8 +77,8 @@
   {
     "plantKey": "mais",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Semer en poquets de 3 graines, sol a 12C minimum" },
-      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 20, "notes": "Recolter quand les soies brunissent et le grain est laiteux" }
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Semer en poquets de 3 graines, sol à 12°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 20, "notes": "Récolter quand les soies brunissent et le grain est laiteux" }
     ]
   },
   {
@@ -86,8 +86,8 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer en godets individuels, 2 graines par godet" },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 11 },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Apres les Saints de Glace, espacer d'1 metre minimum" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Recolter quand le pedoncule est sec et liege" }
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace, espacer d'1 mètre minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Récolter quand le pédoncule est sec et liégé" }
     ]
   },
   {
@@ -96,7 +96,7 @@
       { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer en godets au chaud, 3 semaines avant repiquage" },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 11 },
       { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11 },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Recolter avant les premieres gelees" }
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Récolter avant les premières gelées" }
     ]
   },
   {
@@ -105,13 +105,13 @@
       { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8 },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12 },
       { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Espacer de 80 cm, sol riche en compost" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20, "notes": "Recolter jeunes (15-20 cm) pour stimuler la production" }
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20, "notes": "Récolter jeunes (15-20 cm) pour stimuler la production" }
     ]
   },
   {
     "plantKey": "pois",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 4, "halfMonthEnd": 8, "notes": "Semer des que le sol est ressuyé, supporte les gelees legeres" },
+      { "actionType": "DirectSowing", "halfMonthStart": 4, "halfMonthEnd": 8, "notes": "Semer dès que le sol est ressuyé, supporte les gelées légères" },
       { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 14 },
       { "actionType": "Hilling", "halfMonthStart": 6, "halfMonthEnd": 10, "notes": "Butter quand les plants ont 10-15 cm, installer des rames" }
     ]
@@ -119,35 +119,35 @@
   {
     "plantKey": "feve",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 3, "halfMonthEnd": 7, "notes": "Semer tot en saison, supporte des gelees jusqu'a -5C" },
+      { "actionType": "DirectSowing", "halfMonthStart": 3, "halfMonthEnd": 7, "notes": "Semer tôt en saison, supporte des gelées jusqu'à -5°C" },
       { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 14 },
-      { "actionType": "Pinching", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Pincer les sommites apres l'apparition de 5-6 etages de fleurs pour limiter les pucerons" }
+      { "actionType": "Pinching", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Pincer les sommités après l'apparition de 5-6 étages de fleurs pour limiter les pucerons" }
     ]
   },
   {
     "plantKey": "trefle-blanc",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 16, "notes": "Semer a la volee sur sol prepare, tasser legerement" }
+      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 16, "notes": "Semer à la volée sur sol préparé, tasser légèrement" }
     ]
   },
   {
     "plantKey": "trefle-rouge",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 16, "notes": "Semer a la volee ou en lignes, sol bien prepare" }
+      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 16, "notes": "Semer à la volée ou en lignes, sol bien préparé" }
     ]
   },
   {
     "plantKey": "luzerne",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 16, "notes": "Semer sur sol propre et bien drainé, inoculer si premiere culture" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Faucher au debut de la floraison" }
+      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 16, "notes": "Semer sur sol propre et bien drainé, inoculer si première culture" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Faucher au début de la floraison" }
     ]
   },
   {
     "plantKey": "lupin",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer en sol acide a neutre, tremper les graines 24h avant" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 18, "notes": "Faucher comme engrais vert avant montee en graines" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer en sol acide à neutre, tremper les graines 24h avant" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 18, "notes": "Faucher comme engrais vert avant montée en graines" }
     ]
   },
   {
@@ -155,22 +155,22 @@
     "actions": [
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Diviser les racines au printemps, chaque morceau reprend facilement" },
       { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 20, "notes": "Couper les feuilles 3-4 fois par saison pour le paillage ou le purin" },
-      { "actionType": "Pruning", "halfMonthStart": 9, "halfMonthEnd": 18, "notes": "Rabattre avant la montee en graines pour une nouvelle pousse" }
+      { "actionType": "Pruning", "halfMonthStart": 9, "halfMonthEnd": 18, "notes": "Rabattre avant la montée en graines pour une nouvelle pousse" }
     ]
   },
   {
     "plantKey": "ortie",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10 },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 18, "notes": "Recolter les jeunes pousses pour le purin ou la consommation" },
-      { "actionType": "Pruning", "halfMonthStart": 10, "halfMonthEnd": 16, "notes": "Faucher avant la floraison pour eviter le ressemis excessif" }
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 18, "notes": "Récolter les jeunes pousses pour le purin ou la consommation" },
+      { "actionType": "Pruning", "halfMonthStart": 10, "halfMonthEnd": 16, "notes": "Faucher avant la floraison pour éviter le ressemis excessif" }
     ]
   },
   {
     "plantKey": "pissenlit",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 14 },
-      { "actionType": "Harvest", "halfMonthStart": 5, "halfMonthEnd": 20, "notes": "Recolter les feuilles jeunes au printemps, les racines en automne" }
+      { "actionType": "Harvest", "halfMonthStart": 5, "halfMonthEnd": 20, "notes": "Récolter les feuilles jeunes au printemps, les racines en automne" }
     ]
   },
   {
@@ -178,7 +178,7 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 6, "halfMonthEnd": 8, "notes": "Tremper les graines 24h avant le semis" },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12 },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Fleurs et feuilles comestibles, les boutons floraux se confisent comme des capres" }
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Fleurs et feuilles comestibles, les boutons floraux se confisent comme des câpres" }
     ]
   },
   {
@@ -186,28 +186,28 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8 },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12 },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Planter au pied des tomates et au potager pour repousser les nematodes" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Recolter les fleurs pour les usages culinaires" }
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Planter au pied des tomates et au potager pour repousser les nématodes" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Récolter les fleurs pour les usages culinaires" }
     ]
   },
   {
     "plantKey": "souci",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 12, "notes": "Semer en place, se resseme facilement" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Recolter les fleurs pour infusions ou macerat huileux" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Récolter les fleurs pour infusions ou macérat huileux" }
     ]
   },
   {
     "plantKey": "bourrache",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 12, "notes": "Semer en place, se resseme abondamment" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Recolter les fleurs pour salades et decorations" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Récolter les fleurs pour salades et decorations" }
     ]
   },
   {
     "plantKey": "phacelie",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 18, "notes": "Semer a la volee comme engrais vert, gelee a -5C" },
+      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 18, "notes": "Semer à la volée comme engrais vert, gelée à -5°C" },
       { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 20, "notes": "Faucher avant floraison pour engrais vert" }
     ]
   },
@@ -216,29 +216,29 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 10 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Recolter les sommites fleuries pour tisanes et preparations" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Récolter les sommités fleuries pour tisanes et préparations" },
       { "actionType": "Pruning", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Rabattre le feuillage sec en fin de saison" }
     ]
   },
   {
     "plantKey": "fenouil",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Semer en place apres le solstice pour eviter la montee en graines prematuree" },
-      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 22, "notes": "Recolter le bulbe quand il atteint la taille d'un poing" }
+      { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Semer en place après le solstice pour éviter la montée en graines prématurée" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 22, "notes": "Récolter le bulbe quand il atteint la taille d'un poing" }
     ]
   },
   {
     "plantKey": "aneth",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Semer en place, ne supporte pas le repiquage" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Recolter les feuilles avant la floraison pour plus de saveur" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Récolter les feuilles avant la floraison pour plus de saveur" }
     ]
   },
   {
     "plantKey": "coriandre",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 16, "notes": "Semer en place tous les 3 semaines pour une recolte continue" },
-      { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 20, "notes": "Recolter les feuilles jeunes, les graines a maturite" }
+      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 16, "notes": "Semer en place tous les 3 semaines pour une récolte continue" },
+      { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 20, "notes": "Récolter les feuilles jeunes, les graines à maturité" }
     ]
   },
   {
@@ -252,22 +252,22 @@
   {
     "plantKey": "thym",
     "actions": [
-      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Tailler apres la floraison pour garder un port compact" },
-      { "actionType": "Harvest", "halfMonthStart": 1, "halfMonthEnd": 24, "notes": "Recolter toute l'annee selon les besoins" }
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Tailler après la floraison pour garder un port compact" },
+      { "actionType": "Harvest", "halfMonthStart": 1, "halfMonthEnd": 24, "notes": "Récolter toute l'année selon les besoins" }
     ]
   },
   {
     "plantKey": "romarin",
     "actions": [
-      { "actionType": "Pruning", "halfMonthStart": 8, "halfMonthEnd": 10, "notes": "Tailler legerement apres la floraison, ne pas couper dans le vieux bois" },
+      { "actionType": "Pruning", "halfMonthStart": 8, "halfMonthEnd": 10, "notes": "Tailler légèrement après la floraison, ne pas couper dans le vieux bois" },
       { "actionType": "Harvest", "halfMonthStart": 1, "halfMonthEnd": 24 }
     ]
   },
   {
     "plantKey": "lavande",
     "actions": [
-      { "actionType": "Pruning", "halfMonthStart": 16, "halfMonthEnd": 18, "notes": "Tailler apres la floraison en boule, ne pas couper dans le vieux bois" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 16, "notes": "Recolter les epis en debut de floraison pour le sechage" }
+      { "actionType": "Pruning", "halfMonthStart": 16, "halfMonthEnd": 18, "notes": "Tailler après la floraison en boule, ne pas couper dans le vieux bois" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 16, "notes": "Récolter les épis en début de floraison pour le séchage" }
     ]
   },
   {
@@ -282,7 +282,7 @@
     "actions": [
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Diviser et replanter en pot pour contenir l'expansion" },
       { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 20 },
-      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Rabattre completement pour une nouvelle pousse vigoureuse" }
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Rabattre complètement pour une nouvelle pousse vigoureuse" }
     ]
   },
   {
@@ -290,8 +290,8 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 12 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Recolter avant la floraison pour plus de saveur" },
-      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Rabattre apres la floraison pour eviter le ressemis excessif" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Récolter avant la floraison pour plus de saveur" },
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Rabattre après la floraison pour éviter le ressemis excessif" }
     ]
   },
   {
@@ -299,7 +299,7 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Recolter pendant la floraison pour le sechage" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Récolter pendant la floraison pour le séchage" },
       { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler au printemps pour stimuler la nouvelle pousse" }
     ]
   },
@@ -307,7 +307,7 @@
     "plantKey": "hysope",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10 },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Recolter les sommites fleuries" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Récolter les sommités fleuries" },
       { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler court au printemps pour rajeunir" }
     ]
   },
@@ -316,7 +316,7 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Recolter les racines en automne de la 2e annee" }
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Récolter les racines en automne de la 2e année" }
     ]
   },
   {
@@ -324,22 +324,22 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Recolter les capitules en pleine floraison" },
-      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Rabattre apres la floraison" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Récolter les capitules en pleine floraison" },
+      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Rabattre après la floraison" }
     ]
   },
   {
     "plantKey": "camomille-allemande",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer en surface, les graines ont besoin de lumiere pour germer" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Recolter les capitules ouverts pour infusions" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Récolter les capitules ouverts pour infusions" }
     ]
   },
   {
     "plantKey": "absinthe",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10 },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Recolter les sommites pour preparations insectifuges" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Récolter les sommités pour préparations insectifuges" },
       { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Rabattre au printemps pour renouveler le feuillage" }
     ]
   },
@@ -348,15 +348,15 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Recolter les feuilles et fleurs pour purins insectifuges" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Récolter les feuilles et fleurs pour purins insectifuges" },
       { "actionType": "Pruning", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Rabattre en fin de saison" }
     ]
   },
   {
     "plantKey": "tournesol",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 11, "notes": "Semer en place apres les gelees, 2-3 cm de profondeur" },
-      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 20, "notes": "Recolter quand les petales tombent et le dos du capitule jaunit" }
+      { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 11, "notes": "Semer en place après les gelées, 2-3 cm de profondeur" },
+      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 20, "notes": "Récolter quand les petales tombent et le dos du capitule jaunit" }
     ]
   },
   {
@@ -365,7 +365,7 @@
       { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8 },
       { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 14 },
       { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14 },
-      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 4, "notes": "Meilleur apres les premieres gelees qui adoucissent le gout" }
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 4, "notes": "Meilleur après les premières gelées qui adoucissent le gout" }
     ]
   },
   {
@@ -373,23 +373,23 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 8 },
       { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Espacer de 50 cm, sol riche et frais" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 22, "notes": "Recolter la pomme centrale avant l'ouverture des fleurs, les rejets lateraux suivront" }
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 22, "notes": "Récolter la pomme centrale avant l'ouverture des fleurs, les rejets lateraux suivront" }
     ]
   },
   {
     "plantKey": "radis",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer toutes les 2 semaines pour une recolte continue" },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 20, "notes": "Recolter des que les racines sont formees, ne pas laisser monter" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer toutes les 2 semaines pour une récolte continue" },
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 20, "notes": "Récolter dès que les racines sont formées, ne pas laisser monter" }
     ]
   },
   {
     "plantKey": "navet",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semis de printemps" },
-      { "actionType": "DirectSowing", "halfMonthStart": 14, "halfMonthEnd": 18, "notes": "Semis d'automne, souvent plus reussi" },
-      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 14, "notes": "Recolte de printemps" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 24, "notes": "Recolte d'automne-hiver" }
+      { "actionType": "DirectSowing", "halfMonthStart": 14, "halfMonthEnd": 18, "notes": "Semis d'automne, souvent plus réussi" },
+      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 14, "notes": "Récolte de printemps" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 24, "notes": "Récolte d'automne-hiver" }
     ]
   },
   {
@@ -398,37 +398,37 @@
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6 },
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer en surface, les graines ont besoin de lumiere" },
       { "actionType": "Transplanting", "halfMonthStart": 6, "halfMonthEnd": 18 },
-      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Recolter le matin pour plus de croquant" }
+      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Récolter le matin pour plus de croquant" }
     ]
   },
   {
-    "plantKey": "epinard",
+    "plantKey": "épinard",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semis de printemps, eviter les jours longs" },
-      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Semis d'automne, souvent meilleur resultat" },
-      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 12, "notes": "Recolte de printemps" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 24, "notes": "Recolte d'automne-hiver" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semis de printemps, éviter les jours longs" },
+      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Semis d'automne, souvent meilleur résultat" },
+      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 12, "notes": "Récolte de printemps" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 24, "notes": "Récolte d'automne-hiver" }
     ]
   },
   {
     "plantKey": "roquette",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer echelonne toutes les 3 semaines" },
-      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Recolter les feuilles jeunes, les anciennes sont piquantes" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer échelonné toutes les 3 semaines" },
+      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Récolter les feuilles jeunes, les anciennes sont piquantes" }
     ]
   },
   {
     "plantKey": "betterave",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Tremper les glomerules 24h, chaque glomerule donne plusieurs plants" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 22, "notes": "Recolter avant les fortes gelees" }
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 22, "notes": "Récolter avant les fortes gelées" }
     ]
   },
   {
     "plantKey": "panais",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer des graines fraiches, germination lente (3-4 semaines)" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 4, "notes": "Le gout s'ameliore apres les premieres gelees" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer des graines fraîches, germination lente (3-4 semaines)" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 4, "notes": "Le gout s'améliore après les premières gelées" }
     ]
   },
   {
@@ -442,33 +442,33 @@
   {
     "plantKey": "poivron",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer au chaud (25C), germination lente (10-15 jours)" },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Apres les Saints de Glace, sol bien rechauffe" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer au chaud (25°C), germination lente (10-15 jours)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace, sol bien réchauffé" },
       { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 20 }
     ]
   },
   {
     "plantKey": "aubergine",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer au chaud (25C), la plus exigeante des solanacees en chaleur" },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Apres les Saints de Glace, emplacement tres chaud" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer au chaud (25°C), la plus exigeante des solanacées en chaleur" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace, emplacement très chaud" },
       { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 20 },
-      { "actionType": "Pruning", "halfMonthStart": 14, "halfMonthEnd": 18, "notes": "Limiter a 5-6 fruits par pied pour une bonne maturite" }
+      { "actionType": "Pruning", "halfMonthStart": 14, "halfMonthEnd": 18, "notes": "Limiter à 5-6 fruits par pied pour une bonne maturité" }
     ]
   },
   {
     "plantKey": "pomme-de-terre",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10, "notes": "Planter les tubercules germes a 10-15 cm, germe vers le haut" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 19, "notes": "Primeurs des juin, conservation quand le feuillage est fane" },
-      { "actionType": "Hilling", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Butter regulierement quand les tiges atteignent 20 cm" }
+      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10, "notes": "Planter les tubercules germés à 10-15 cm, germe vers le haut" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 19, "notes": "Primeurs des juin, conservation quand le feuillage est fané" },
+      { "actionType": "Hilling", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Butter régulièrement quand les tiges atteignent 20 cm" }
     ]
   },
   {
     "plantKey": "asperge",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter les griffes dans une tranchee de 20 cm, ne pas recolter les 2 premieres annees" },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 12, "notes": "Recolter les turions de 15-20 cm pendant 6-8 semaines maximum" },
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter les griffes dans une tranchée de 20 cm, ne pas récolter les 2 premières années" },
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 12, "notes": "Récolter les turions de 15-20 cm pendant 6-8 semaines maximum" },
       { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 24, "notes": "Couper le feuillage sec en fin d'automne" }
     ]
   },
@@ -477,16 +477,16 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6 },
       { "actionType": "Transplanting", "halfMonthStart": 7, "halfMonthEnd": 10 },
-      { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Prelever les oeilletons avec un morceau de racine" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Recolter avant que les ecailles ne s'ouvrent" },
+      { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Prélever les oeilletons avec un morceau de racine" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Récolter avant que les écailles ne s'ouvrent" },
       { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 24, "notes": "Rabattre et pailler contre le gel" }
     ]
   },
   {
     "plantKey": "topinambour",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter les tubercules a 10 cm de profondeur, espacer de 60 cm" },
-      { "actionType": "Harvest", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Recolter au fur et a mesure des besoins, se conserve mieux en terre" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter les tubercules à 10 cm de profondeur, espacer de 60 cm" },
+      { "actionType": "Harvest", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Récolter au fur et à mesure des besoins, se conserve mieux en terre" }
     ]
   },
   {
@@ -494,14 +494,14 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 12 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 22, "notes": "Couper les feuilles exterieures, supprimer les hampes florales" }
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 22, "notes": "Couper les feuilles extérieures, supprimer les hampes florales" }
     ]
   },
   {
     "plantKey": "fraisier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Planter en ete-automne pour une recolte l'annee suivante" },
-      { "actionType": "Division", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Separer les stolons enracines" },
+      { "actionType": "Transplanting", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Planter en été-automne pour une récolte l'année suivante" },
+      { "actionType": "Division", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Séparer les stolons enracines" },
       { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16 },
       { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 18, "notes": "Supprimer les stolons en exces et le vieux feuillage" }
     ]
@@ -517,7 +517,7 @@
   {
     "plantKey": "framboisier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues de novembre a mars" },
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues de novembre à mars" },
       { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 19 },
       { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 4, "notes": "Supprimer les cannes ayant fructifie, garder les nouvelles pousses" }
     ]
@@ -525,9 +525,9 @@
   {
     "plantKey": "cassis",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues en hiver" },
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues en hiver" },
       { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 16 },
-      { "actionType": "Pruning", "halfMonthStart": 23, "halfMonthEnd": 4, "notes": "Supprimer 1/3 du vieux bois chaque annee" }
+      { "actionType": "Pruning", "halfMonthStart": 23, "halfMonthEnd": 4, "notes": "Supprimer 1/3 du vieux bois chaque année" }
     ]
   },
   {
@@ -543,47 +543,47 @@
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter en sol frais, tolere le calcaire" },
       { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20 },
-      { "actionType": "Pruning", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Eclaircir les branches les plus anciennes" }
+      { "actionType": "Pruning", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Éclaircir les branches les plus anciennes" }
     ]
   },
   {
     "plantKey": "argousier",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter male et femelles (1 male pour 6 femelles)" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Recolter en coupant les rameaux fructiferes, congeler avant d'egrener" },
-      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler legerement pour maintenir la forme" }
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Récolter en coupant les rameaux fructiferes, congeler avant d'égrener" },
+      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler légèrement pour maintenir la forme" }
     ]
   },
   {
     "plantKey": "sureau-noir",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Recolter les fleurs en debut d'ete" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 19, "notes": "Recolter les baies mures (noires)" },
-      { "actionType": "Pruning", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Eclaircir les vieilles branches" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Récolter les fleurs en début d'été" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 19, "notes": "Récolter les baies mûres (noires)" },
+      { "actionType": "Pruning", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Éclaircir les vieilles branches" }
     ]
   },
   {
     "plantKey": "cornouiller-male",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Recolter les fruits bien murs (rouge fonce)" },
-      { "actionType": "Pruning", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Tailler legerement apres la floraison" }
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Récolter les fruits bien mûrs (rouge foncé)" },
+      { "actionType": "Pruning", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Tailler légèrement après la floraison" }
     ]
   },
   {
     "plantKey": "noisetier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter en haie ou en isolé, planter au moins 2 varietes pour la pollinisation" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Ramasser les noisettes tombees au sol" },
-      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Supprimer les drageons et eclaircir le centre" }
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter en haie ou en isolé, planter au moins 2 variétés pour la pollinisation" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Ramasser les noisettes tombées au sol" },
+      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Supprimer les drageons et éclaircir le centre" }
     ]
   },
   {
     "plantKey": "prunellier",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Recolter les prunelles apres les premieres gelees" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Récolter les prunelles après les premières gelées" },
       { "actionType": "Pruning", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Tailler la haie pour contenir l'expansion" }
     ]
   },
@@ -592,13 +592,13 @@
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
       { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20 },
-      { "actionType": "Pruning", "halfMonthStart": 13, "halfMonthEnd": 14, "notes": "Tailler apres la floraison si necessaire" }
+      { "actionType": "Pruning", "halfMonthStart": 13, "halfMonthEnd": 14, "notes": "Tailler après la floraison si nécessaire" }
     ]
   },
   {
     "plantKey": "pommier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues en hiver, tuteur solide" },
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues en hiver, tuteur solide" },
       { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 22 },
       { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 6, "notes": "Taille de formation et de fructification en hiver hors gel" }
     ]
@@ -606,7 +606,7 @@
   {
     "plantKey": "poirier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues, exposition chaude et abritee" },
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues, exposition chaude et abritée" },
       { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 22 },
       { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 6, "notes": "Taille douce en hiver, le poirier supporte mal les tailles severes" }
     ]
@@ -616,7 +616,7 @@
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
       { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 20 },
-      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Tailler apres la recolte, le prunier cicatrise mal en hiver" }
+      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Tailler après la récolte, le prunier cicatrise mal en hiver" }
     ]
   },
   {
@@ -624,65 +624,65 @@
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
       { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 14 },
-      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Tailler en ete apres la recolte, jamais en hiver (gommose)" }
+      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Tailler en été après la récolte, jamais en hiver (gommose)" }
     ]
   },
   {
     "plantKey": "figuier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter au printemps en situation chaude et abritee" },
+      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter au printemps en situation chaude et abritée" },
       { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 20 },
-      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler legerement au printemps, supprimer le bois mort" }
+      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler légèrement au printemps, supprimer le bois mort" }
     ]
   },
   {
     "plantKey": "noyer",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues, prevoir beaucoup d'espace (allelopathie)" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Ramasser les noix tombees au sol" },
-      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Taille minimale en fin d'ete, le noyer supporte mal la taille" }
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues, prévoir beaucoup d'espace (allélopathie)" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Ramasser les noix tombées au sol" },
+      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Taille minimale en fin d'été, le noyer supporte mal la taille" }
     ]
   },
   {
     "plantKey": "chataignier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter en sol acide a neutre, bien drainé" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Ramasser les chataignes tombees au sol" },
-      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Eclaircir les branches mortes ou mal placees en hiver" }
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter en sol acide à neutre, bien drainé" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Ramasser les châtaignes tombées au sol" },
+      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Éclaircir les branches mortes ou mal placées en hiver" }
     ]
   },
   {
     "plantKey": "aulne-glutineux",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter en sol humide, berges ou zones inondables" },
-      { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 4, "notes": "Taille de formation si necessaire en hiver" }
+      { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 4, "notes": "Taille de formation si nécessaire en hiver" }
     ]
   },
   {
     "plantKey": "robinier",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Pruning", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Tailler en ete pour limiter les rejets, attention aux epines" }
+      { "actionType": "Pruning", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Tailler en été pour limiter les rejets, attention aux épines" }
     ]
   },
   {
     "plantKey": "tilleul-a-petites-feuilles",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Recolter les fleurs avec leurs bractees pour les tisanes" },
-      { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 4, "notes": "Taille de formation en hiver si necessaire" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Récolter les fleurs avec leurs bractées pour les tisanes" },
+      { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 4, "notes": "Taille de formation en hiver si nécessaire" }
     ]
   },
   {
     "plantKey": "saule-blanc",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Boutures de 30 cm plantees directement en terre humide" },
-      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Tetard ou recepage selon l'usage (osier, biomasse)" },
-      { "actionType": "Harvest", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Recolte de l'osier en hiver" }
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Boutures de 30 cm plantées directement en terre humide" },
+      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Têtard ou recépage selon l'usage (osier, biomasse)" },
+      { "actionType": "Harvest", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Récolte de l'osier en hiver" }
     ]
   },
   {
-    "plantKey": "chene-pedoncule",
+    "plantKey": "chene-pédoncule",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 21, "halfMonthEnd": 24, "notes": "Semer les glands en automne, directement en place" },
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
@@ -692,25 +692,25 @@
   {
     "plantKey": "vigne",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues en exposition sud, sol bien drainé" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Vendange quand le raisin atteint la maturite souhaitee" },
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues en exposition sud, sol bien drainé" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Vendange quand le raisin atteint la maturité souhaitée" },
       { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Taille Guyot ou cordon en hiver hors gel" },
-      { "actionType": "Pinching", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Ebourgeonnage et ecimage pour concentrer la seve sur les grappes" }
+      { "actionType": "Pinching", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Ébourgeonnage et écimage pour concentrer la seve sur les grappes" }
     ]
   },
   {
     "plantKey": "houblon",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter les rhizomes au pied d'un support solide" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 19, "notes": "Recolter les cones quand ils sont papyracés et odorants" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 19, "notes": "Récolter les cones quand ils sont papyracés et odorants" },
       { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Selectionner 3-4 lianes vigoureuses, supprimer les autres" }
     ]
   },
   {
     "plantKey": "lotier-cornicule",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 16, "notes": "Semer a la volee en prairie, sol maigre et sec" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Faucher en melange prairial" }
+      { "actionType": "DirectSowing", "halfMonthStart": 6, "halfMonthEnd": 16, "notes": "Semer à la volée en prairie, sol maigre et sec" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Faucher en mélange prairial" }
     ]
   },
   {
@@ -718,34 +718,34 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer en engrais vert de printemps" },
       { "actionType": "DirectSowing", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Semis d'automne comme couverture hivernale" },
-      { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Faucher comme engrais vert avant la montee en graines" }
+      { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Faucher comme engrais vert avant la montée en graines" }
     ]
   },
   {
     "plantKey": "sarrasin",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer apres les gelees, sol rechauffe, tres sensible au gel" },
-      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Faucher comme engrais vert ou recolter les graines a maturite" }
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer après les gelées, sol réchauffé, très sensible au gel" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Faucher comme engrais vert ou récolter les graines à maturité" }
     ]
   },
   {
     "plantKey": "plantain-lanceole",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 14 },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 20, "notes": "Recolter les jeunes feuilles pour usage medicinal ou culinaire" }
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 20, "notes": "Récolter les jeunes feuilles pour usage médicinal ou culinaire" }
     ]
   },
   {
     "plantKey": "prele-des-champs",
     "actions": [
-      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 16, "notes": "Recolter les tiges steriles pour decoction fongicide" }
+      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 16, "notes": "Récolter les tiges stériles pour décoction fongicide" }
     ]
   },
   {
     "plantKey": "millepertuis",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer en surface, les graines ont besoin de lumiere et de froid" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Recolter les sommites fleuries pour macerat huileux" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Récolter les sommités fleuries pour macérat huileux" },
       { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Rabattre au printemps pour renouveler les tiges" }
     ]
   },
@@ -753,7 +753,7 @@
     "plantKey": "estragon",
     "actions": [
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "L'estragon francais ne se seme pas, multiplier par division" },
-      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 20, "notes": "Recolter les feuilles avant la floraison" },
+      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 20, "notes": "Récolter les feuilles avant la floraison" },
       { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 22, "notes": "Rabattre et pailler avant l'hiver" }
     ]
   },
@@ -761,7 +761,7 @@
     "plantKey": "sarriette-des-montagnes",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Recolter les sommites fleuries pour le sechage" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 20, "notes": "Récolter les sommités fleuries pour le séchage" },
       { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler au printemps pour rajeunir la touffe" }
     ]
   },
@@ -769,14 +769,14 @@
     "plantKey": "sainfoin",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer en prairie, sol calcaire et sec" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Faucher au debut de la floraison pour le foin" }
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Faucher au début de la floraison pour le foin" }
     ]
   },
   {
     "plantKey": "mache",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Semer a la volee ou en lignes, tasser le sol" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 6, "notes": "Recolter tout l'hiver, les rosettes resistent au gel" }
+      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Semer à la volée ou en lignes, tasser le sol" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 6, "notes": "Récolter tout l'hiver, les rosettes résistent au gel" }
     ]
   },
   {
@@ -790,37 +790,37 @@
     "plantKey": "avoine",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semer au printemps comme engrais vert" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 18, "notes": "Faucher avant la montee en graines ou recolter a maturite" }
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 18, "notes": "Faucher avant la montée en graines ou récolter à maturité" }
     ]
   },
   {
     "plantKey": "quinoa",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 8, "halfMonthEnd": 10, "notes": "Semer en place apres les gelees, sol leger" },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Recolter quand les graines se detachent facilement" }
+      { "actionType": "DirectSowing", "halfMonthStart": 8, "halfMonthEnd": 10, "notes": "Semer en place après les gelées, sol leger" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Récolter quand les graines se détachent facilement" }
     ]
   },
   {
     "plantKey": "amarante",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer au chaud, repiquer apres les gelees" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer au chaud, repiquer après les gelées" },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12 },
-      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 20, "notes": "Recolter les graines quand les panicules seches, les feuilles se consomment jeunes" }
+      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 20, "notes": "Récolter les graines quand les panicules sèches, les feuilles se consomment jeunes" }
     ]
   },
   {
     "plantKey": "cresson-de-fontaine",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 16, "notes": "Semer en sol constamment humide ou en bord d'eau" },
-      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 22, "notes": "Recolter les jeunes pousses" }
+      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 22, "notes": "Récolter les jeunes pousses" }
     ]
   },
   {
     "plantKey": "souchet-comestible",
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Tremper les tubercules 24h puis planter en godet au chaud" },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Apres les gelees, sol humide et riche" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Recolter les tubercules quand le feuillage seche" }
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Après les gelées, sol humide et riche" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Récolter les tubercules quand le feuillage sèche" }
     ]
   },
   {
@@ -828,38 +828,38 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer au chaud comme les tomates" },
       { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11 },
-      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Recolter les fruits rouge vif quand ils se detachent facilement" }
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Récolter les fruits rouge vif quand ils se détachent facilement" }
     ]
   },
   {
     "plantKey": "murier-blanc",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Recolter les fruits murs" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Récolter les fruits murs" },
       { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Taille de formation en hiver" }
     ]
   },
   {
     "plantKey": "cognassier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues en hiver" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Recolter les coings bien jaunes avant les gelees" },
-      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Taille legere de formation, supprimer bois mort et branches croisees" }
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues en hiver" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Récolter les coings bien jaunes avant les gelées" },
+      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Taille légère de formation, supprimer bois mort et branches croisées" }
     ]
   },
   {
     "plantKey": "neflier",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Harvest", "halfMonthStart": 21, "halfMonthEnd": 24, "notes": "Recolter apres les gelees (blettissement necessaire)" },
-      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Taille legere en hiver" }
+      { "actionType": "Harvest", "halfMonthStart": 21, "halfMonthEnd": 24, "notes": "Récolter après les gelées (blettissement nécessaire)" },
+      { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Taille légère en hiver" }
     ]
   },
   {
     "plantKey": "sorbier-des-oiseleurs",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6 },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Recolter les baies pour gelees, laisser une part aux oiseaux" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Récolter les baies pour gelées, laisser une part aux oiseaux" },
       { "actionType": "Pruning", "halfMonthStart": 1, "halfMonthEnd": 4, "notes": "Taille minimale, supprimer bois mort" }
     ]
   },
@@ -867,22 +867,22 @@
     "plantKey": "genevrier-commun",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Recolter les baies mures (bleu-noir), maturation sur 2-3 ans" },
-      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Taille legere de mise en forme au printemps" }
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Récolter les baies mûres (bleu-noir), maturation sur 2-3 ans" },
+      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Taille légère de mise en forme au printemps" }
     ]
   },
   {
     "plantKey": "pois-chiche",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10, "notes": "Semer en place, sol chaud et bien drainé" },
-      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Recolter quand les gousses sont seches et brunes" }
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Récolter quand les gousses sont sèches et brunes" }
     ]
   },
   {
     "plantKey": "lentille",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Semer en place, supporte les gelees legeres" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Recolter quand les gousses inferieures sont brunes" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Semer en place, supporte les gelées légères" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Récolter quand les gousses inférieures sont brunes" }
     ]
   },
   {
@@ -891,15 +891,15 @@
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10, "notes": "Semer en surface, graines minuscules" },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
       { "actionType": "Harvest", "halfMonthStart": 1, "halfMonthEnd": 24 },
-      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Tailler apres la floraison pour garder un tapis dense" }
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Tailler après la floraison pour garder un tapis dense" }
     ]
   },
   {
     "plantKey": "ajuga-rampant",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10 },
-      { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Diviser les touffes pour etendre le couvre-sol" },
-      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 12, "notes": "Recolter les sommites fleuries pour usage medicinal" }
+      { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Diviser les touffes pour étendre le couvre-sol" },
+      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 12, "notes": "Récolter les sommités fleuries pour usage médicinal" }
     ]
   },
   {
@@ -907,47 +907,47 @@
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
-      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Recolter les parties aeriennes fleuries" }
+      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Récolter les parties aeriennes fleuries" }
     ]
   },
   {
     "plantKey": "primevere",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Semer en automne pour stratification naturelle" },
-      { "actionType": "Division", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Diviser les touffes agees apres la floraison" },
-      { "actionType": "Harvest", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Recolter les fleurs au printemps pour tisanes" }
+      { "actionType": "Division", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Diviser les touffes âgées après la floraison" },
+      { "actionType": "Harvest", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Récolter les fleurs au printemps pour tisanes" }
     ]
   },
   {
     "plantKey": "violette-odorante",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Semer en automne, stratification necessaire" },
+      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Semer en automne, stratification nécessaire" },
       { "actionType": "Division", "halfMonthStart": 17, "halfMonthEnd": 20 },
-      { "actionType": "Harvest", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Recolter les fleurs au printemps pour confiserie ou tisanes" }
+      { "actionType": "Harvest", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Récolter les fleurs au printemps pour confiserie ou tisanes" }
     ]
   },
   {
     "plantKey": "sarriette",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 12, "notes": "Semer en place, plein soleil" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Recolter les tiges fleuries, compagnon ideal des haricots" }
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Récolter les tiges fleuries, compagnon ideal des haricots" }
     ]
   },
   {
     "plantKey": "chou",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 8, "notes": "Semer en pepiniere ou en terrine" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 8, "notes": "Semer en pépinière ou en terrine" },
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 12 },
-      { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Repiquer profondement jusqu'aux premieres feuilles" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 24, "notes": "Recolter quand la pomme est bien ferme" }
+      { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Repiquer profondément jusqu'aux premières feuilles" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 24, "notes": "Récolter quand la pomme est bien ferme" }
     ]
   },
   {
     "plantKey": "chou-fleur",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en pepiniere, sensible au froid en phase juvenile" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en pépinière, sensible au froid en phase juvenile" },
       { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Espacer de 60 cm, sol riche et frais" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 22, "notes": "Recolter quand la pomme est blanche et compacte, avant l'ouverture" }
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 22, "notes": "Récolter quand la pomme est blanche et compacte, avant l'ouverture" }
     ]
   },
   {
@@ -955,23 +955,23 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer en godets au chaud, 3-4 semaines avant repiquage" },
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12 },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Apres les Saints de Glace, sol chaud" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 18, "notes": "Recolter regulierement pour stimuler la production" }
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace, sol chaud" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 18, "notes": "Récolter régulièrement pour stimuler la production" }
     ]
   },
   {
     "plantKey": "melon",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer en godet au chaud (25C)" },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Apres les gelees, emplacement tres chaud" },
-      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 19, "notes": "Recolter quand le pedoncule se fissure et le fruit embaume" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer en godet au chaud (25°C)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Après les gelées, emplacement très chaud" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 19, "notes": "Récolter quand le pédoncule se fissure et le fruit embaume" },
       { "actionType": "Pinching", "halfMonthStart": 12, "halfMonthEnd": 16, "notes": "Pincer au-dessus de la 2e feuille, puis au-dessus de chaque fruit" }
     ]
   },
   {
     "plantKey": "groseillier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter a racines nues en hiver" },
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter à racines nues en hiver" },
       { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 16 },
       { "actionType": "Pruning", "halfMonthStart": 23, "halfMonthEnd": 4, "notes": "Supprimer le vieux bois de 3 ans et plus" }
     ]
@@ -979,7 +979,7 @@
   {
     "plantKey": "moutarde-blanche",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer a la volee comme engrais vert, croissance rapide (6 semaines)" },
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer à la volée comme engrais vert, croissance rapide (6 semaines)" },
       { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 20, "notes": "Faucher avant la floraison et incorporer au sol" }
     ]
   },
@@ -989,7 +989,7 @@
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6 },
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8 },
       { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 12 },
-      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Fleurs comestibles, recolter a pleine ouverture" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Fleurs comestibles, récolter à pleine ouverture" },
       { "actionType": "Pruning", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Pincer les tiges pour favoriser la ramification" }
     ]
   },
@@ -997,15 +997,15 @@
     "plantKey": "rue-officinale",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10 },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Usage repulsif uniquement, plante toxique par contact" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 18, "notes": "Usage répulsif uniquement, plante toxique par contact" },
       { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Tailler au printemps pour maintenir un port compact" }
     ]
   },
   {
     "plantKey": "cerfeuil",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer en place a mi-ombre, echelonner les semis" },
-      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Recolter les feuilles avant la floraison" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer en place à mi-ombre, échelonner les semis" },
+      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Récolter les feuilles avant la floraison" }
     ]
   },
   {
@@ -1019,23 +1019,23 @@
   {
     "plantKey": "echalote",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Planter les bulbes pointe vers le haut, a peine enfouis" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Recolter quand le feuillage seche, laisser ressuyer au soleil" }
+      { "actionType": "DirectSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Planter les bulbes pointe vers le haut, à peine enfouis" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 14, "notes": "Récolter quand le feuillage sèche, laisser ressuyer au soleil" }
     ]
   },
   {
     "plantKey": "celeri-rave",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en surface au chaud, germination tres lente" },
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en surface au chaud, germination très lente" },
       { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Ne pas enterrer le collet, sol riche et frais" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 24, "notes": "Recolter avant les fortes gelees" }
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 24, "notes": "Récolter avant les fortes gelées" }
     ]
   },
   {
     "plantKey": "scorsonere",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Semer des graines fraiches, germination capricieuse" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 6, "notes": "Recolter les racines en automne-hiver, le gout s'ameliore apres le gel" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Semer des graines fraîches, germination capricieuse" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 6, "notes": "Récolter les racines en automne-hiver, le gout s'améliore après le gel" }
     ]
   },
   {
@@ -1043,31 +1043,31 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8 },
       { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 12 },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Recolter les feuilles et fleurs pour tisanes" },
-      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Rabattre les tiges seches au printemps" }
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Récolter les feuilles et fleurs pour tisanes" },
+      { "actionType": "Pruning", "halfMonthStart": 5, "halfMonthEnd": 6, "notes": "Rabattre les tiges sèches au printemps" }
     ]
   },
   {
     "plantKey": "melilot",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 14, "notes": "Semer en engrais vert ou prairie mellifere" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Faucher au debut de la floraison" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 14, "notes": "Semer en engrais vert ou prairie mellifère" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16, "notes": "Faucher au début de la floraison" }
     ]
   },
   {
     "plantKey": "rhubarbe",
     "actions": [
       { "actionType": "Division", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Diviser les souches avec un morceau de bourgeon, espacer d'1 metre" },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Ne recolter que les petioles, jamais les feuilles (toxiques). Ne pas recolter la 1ere annee" },
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Ne récolter que les pétioles, jamais les feuilles (toxiques). Ne pas récolter la 1ere année" },
       { "actionType": "Pruning", "halfMonthStart": 21, "halfMonthEnd": 24, "notes": "Supprimer les hampes florales des leur apparition" }
     ]
   },
   {
     "plantKey": "blette",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Semer en place ou en pepiniere, eclaircir a 30 cm" },
+      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Semer en place ou en pépinière, éclaircir à 30 cm" },
       { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14 },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 22, "notes": "Couper les feuilles exterieures, le coeur repousse" }
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 22, "notes": "Couper les feuilles extérieures, le cœur repousse" }
     ]
   },
   {
@@ -1075,32 +1075,32 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8 },
       { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 12, "notes": "Espacer de 60 cm, sol riche et ferme" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 6, "notes": "Meilleur apres les premieres gelees, recolter de bas en haut" }
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 6, "notes": "Meilleur après les premières gelées, récolter de bas en haut" }
     ]
   },
   {
     "plantKey": "patate-douce",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Faire germer les tubercules au chaud en eau, prelever les boutures" },
-      { "actionType": "Transplanting", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Planter les boutures quand le sol est bien chaud (18C minimum)" },
-      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Recolter avant les gelees, laisser secher 1 semaine avant stockage" }
+      { "actionType": "IndoorSowing", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Faire germer les tubercules au chaud en eau, prélever les boutures" },
+      { "actionType": "Transplanting", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Planter les boutures quand le sol est bien chaud (18°C minimum)" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Récolter avant les gelées, laisser sècher 1 semaine avant stockage" }
     ]
   },
   {
     "plantKey": "piment",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer au chaud (25-30C), germination lente" },
-      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Apres les Saints de Glace, emplacement tres chaud" },
-      { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 21, "notes": "Recolter vert ou a maturite selon l'usage" }
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer au chaud (25-30°C), germination lente" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace, emplacement très chaud" },
+      { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 21, "notes": "Récolter vert ou à maturité selon l'usage" }
     ]
   },
   {
     "plantKey": "pasteque",
     "actions": [
-      { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer en godet au chaud, tres sensible au froid" },
-      { "actionType": "Transplanting", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Sol tres chaud, plein soleil, espace important" },
-      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 19, "notes": "Recolter quand la vrille pres du fruit seche et le dessous jaunit" },
-      { "actionType": "Pinching", "halfMonthStart": 12, "halfMonthEnd": 16, "notes": "Pincer les tiges apres 3-4 fruits par pied" }
+      { "actionType": "IndoorSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semer en godet au chaud, très sensible au froid" },
+      { "actionType": "Transplanting", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Sol très chaud, plein soleil, espace important" },
+      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 19, "notes": "Récolter quand la vrille pres du fruit sèche et le dessous jaunit" },
+      { "actionType": "Pinching", "halfMonthStart": 12, "halfMonthEnd": 16, "notes": "Pincer les tiges après 3-4 fruits par pied" }
     ]
   }
 ]

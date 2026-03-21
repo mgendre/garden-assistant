@@ -1,0 +1,72 @@
+@reference "tailwindcss";
+
+.this-month-grid {
+  @apply grid gap-4 mb-4;
+  grid-template-columns: 1fr;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.this-month-panel {
+  @apply mb-0;
+}
+
+.this-month-body {
+  @apply px-4 py-3;
+}
+
+.this-month-groups {
+  @apply flex flex-col gap-2;
+}
+
+.this-month-group {
+  @apply flex flex-col gap-0.5;
+
+  @media (min-width: 640px) {
+    @apply flex-row items-baseline gap-2;
+  }
+}
+
+.this-month-action-label {
+  @apply flex items-center gap-1.5 shrink-0;
+}
+
+.this-month-dot {
+  @apply inline-block w-2 h-2 rounded-full shrink-0;
+}
+
+.this-month-action-name {
+  @apply text-xs font-semibold;
+  color: var(--color-text);
+}
+
+.this-month-plants {
+  @apply flex flex-wrap items-baseline gap-x-0.5 gap-y-0.5;
+}
+
+.this-month-plant-link {
+  @apply text-xs underline cursor-pointer bg-transparent border-0 p-0;
+  color: var(--color-canopy);
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-forest);
+  }
+}
+
+.this-month-comma {
+  @apply text-xs;
+  color: var(--color-text-muted);
+}
+
+.this-month-empty {
+  @apply text-sm italic text-center;
+  color: var(--color-text-muted);
+}
+
+.this-month-empty-text {
+  @apply text-xs italic;
+  color: var(--color-text-muted);
+}

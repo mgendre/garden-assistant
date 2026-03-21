@@ -12,6 +12,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISeeder, AssociationSeeder>();
         services.AddScoped<ISeeder, GuildSeeder>();
         services.AddScoped<ISeeder, PlantActionSeeder>();
+        services.AddScoped<ISeeder, HarvestReadinessSeeder>();
         services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 
         services.AddScoped<IAuthService, AuthService>();
@@ -19,6 +20,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IPlantAssociationService, PlantAssociationService>();
         services.AddScoped<IGuildService, GuildService>();
         services.AddScoped<IUserPlantService, UserPlantService>();
+        services.AddScoped<IPlantActionService, PlantActionService>();
+        services.AddScoped<IHarvestReadinessService, HarvestReadinessService>();
 
         return services;
     }

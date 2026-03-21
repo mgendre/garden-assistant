@@ -1,0 +1,35 @@
+@if (readiness(); as r) {
+  <section class="harvest-readiness">
+    @if (r.description) {
+      <p class="harvest-readiness__description">{{ r.description }}</p>
+    }
+
+    @if (r.daysFromTransplant != null || r.daysFromSowing != null) {
+      <p class="harvest-readiness__timing">
+        @if (r.daysFromTransplant != null) {
+          ~{{ r.daysFromTransplant }} {{ 'HarvestReadiness.DaysFromTransplant' | translate }}
+        }
+        @if (r.daysFromTransplant != null && r.daysFromSowing != null) {
+          ·
+        }
+        @if (r.daysFromSowing != null) {
+          ~{{ r.daysFromSowing }} {{ 'HarvestReadiness.DaysFromSowing' | translate }}
+        }
+      </p>
+    }
+
+    @if (r.criteria && r.criteria.length > 0) {
+      <ul class="harvest-readiness__criteria">
+        @for (criterion of r.criteria; track $index) {
+          <li class="harvest-readiness__criterion">
+            <fa-icon class="harvest-readiness__criterion-icon"
+                     [icon]="getCriterionIcon(criterion.criterionType)"></fa-icon>
+            <span class="harvest-readiness__criterion-label"
+                  [translate]="getCriterionLabelKey(criterion.criterionType)"></span>
+            <span class="harvest-readiness__criterion-text">{{ criterion.description }}</span>
+          </li>
+        }
+      </ul>
+    }
+  </section>
+}

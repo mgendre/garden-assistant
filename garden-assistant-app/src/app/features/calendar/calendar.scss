@@ -1,0 +1,103 @@
+@reference "tailwindcss";
+
+.calendar-loading {
+  @apply flex items-center justify-center py-16;
+}
+
+.calendar-loading-spinner {
+  @apply w-8 h-8 rounded-full;
+  border: 3px solid #d8f3dc;
+  border-top-color: var(--color-canopy);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.calendar-filter-chips {
+  @apply flex flex-wrap gap-2 px-5 py-3;
+  border-bottom: 1px solid #d8f3dc;
+}
+
+.calendar-chip {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border-0 cursor-pointer;
+  transition: all var(--transition-fast);
+
+  &--active {
+    background: color-mix(in srgb, var(--chip-color) 15%, transparent);
+    color: var(--color-text);
+  }
+
+  &--inactive {
+    background: #f0f0f0;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+
+.calendar-chip-dot {
+  @apply inline-block w-2 h-2 rounded-full shrink-0;
+  transition: background-color var(--transition-fast);
+}
+
+.calendar-chip-label {
+  @apply whitespace-nowrap;
+}
+
+.calendar-month-header-row {
+  @apply flex items-stretch sticky top-0 z-10 px-4;
+  background: white;
+  border-bottom: 1px solid #d8f3dc;
+}
+
+.calendar-name-spacer {
+  width: 120px;
+  min-width: 120px;
+  @apply shrink-0;
+}
+
+.calendar-label-spacer {
+  width: 110px;
+  min-width: 110px;
+  @apply shrink-0;
+}
+
+.calendar-month-headers {
+  @apply flex flex-1 min-w-0;
+}
+
+.calendar-month-header {
+  @apply flex-1 text-center text-xs py-2 font-normal;
+  color: var(--color-text-muted);
+
+  &--current {
+    color: var(--color-forest);
+    font-weight: 600;
+  }
+}
+
+.calendar-plant-section {
+  @apply px-4;
+  border-bottom: 1px solid #d8f3dc;
+
+  &--last {
+    border-bottom: none;
+  }
+}
+
+.empty-state-link {
+  @apply inline-flex items-center gap-2 mt-4 px-6 py-2 text-sm font-bold text-white rounded-full;
+  background: var(--color-earth);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+
+  &:hover {
+    background: var(--color-earth-dark);
+    transform: translateY(-1px);
+  }
+}

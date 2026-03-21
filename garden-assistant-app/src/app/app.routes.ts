@@ -7,11 +7,15 @@ export const routes: Routes = [
     loadComponent: () => import('./features/companions/companions').then(m => m.Companions)
   },
   {
-    path: 'mes-plantes',
+    path: 'my-plants',
     loadComponent: () => import('./features/my-plants/my-plants').then(m => m.MyPlants)
   },
   {
     path: 'guilds',
     loadComponent: () => import('./features/guilds/guilds').then(m => m.Guilds)
+  },
+  {
+    path: 'calendar',
+    loadComponent: () => import('./features/calendar/calendar').then(m => m.Calendar)
   }
 ];

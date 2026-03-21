@@ -156,18 +156,26 @@
 
 ## E10 — Calendrier cultural des plantes
 
-> Fournir aux jardiniers un calendrier cultural personnalise base sur leur liste « Mes plantes », affichant les actions cles (semis, repiquage, mise en place, recolte, taille) avec leurs fenetres de realisation recommandees.
+> Fournir aux jardiniers un calendrier cultural personnalise base sur leur liste « Mes plantes », affichant les actions cles (semis, repiquage, recolte, taille, pincage, buttage, division) avec leurs fenetres de realisation en demi-mois. Vue Gantt par plante avec indicateurs de maturite.
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-059](epics/E10-calendrier-cultural/US-059-modele-action-culturale.md) | Modele de donnees des actions culturales | Indispensable | 5 | A faire |
-| [US-060](epics/E10-calendrier-cultural/US-060-page-calendrier.md) | Page calendrier (grille annuelle) | Indispensable | 5 | A faire |
-| [US-061](epics/E10-calendrier-cultural/US-061-widget-actions-du-mois.md) | Widget « Ce mois-ci » | Important | 3 | A faire |
-| [US-062](epics/E10-calendrier-cultural/US-062-filtre-type-action-calendrier.md) | Filtre par type d'action sur le calendrier | Important | 2 | A faire |
+| [US-059](epics/E10-calendrier-cultural/US-059-modele-action-culturale.md) | Modele de donnees des actions culturales | Indispensable | 5 | Termine |
+| [US-060](epics/E10-calendrier-cultural/US-060-page-calendrier.md) | Page calendrier (vue Gantt par plante) | Indispensable | 5 | Termine |
+| [US-061](epics/E10-calendrier-cultural/US-061-widget-actions-du-mois.md) | Widget « En ce moment / Prochainement » | Important | 3 | Termine |
+| [US-062](epics/E10-calendrier-cultural/US-062-filtre-type-action-calendrier.md) | Filtre par type d'action sur le calendrier | Important | 2 | Termine |
 | [US-063](epics/E10-calendrier-cultural/US-063-semis-successifs.md) | Suggestions de semis successifs | Optionnel | 5 | A faire |
-| [US-064](epics/E10-calendrier-cultural/US-064-alertes-taille-pincage.md) | Alertes taille et pincage | Important | 3 | A faire |
+| [US-064](epics/E10-calendrier-cultural/US-064-alertes-taille-pincage.md) | Alertes taille et pincage | Important | 3 | Termine |
+| [US-076](epics/E10-calendrier-cultural/US-076-indicateurs-maturite-modele.md) | Indicateurs de maturite — modele et seed | Indispensable | 5 | Termine |
+| [US-077](epics/E10-calendrier-cultural/US-077-section-pret-a-recolter.md) | Popup « Pret a recolter » depuis le calendrier | Indispensable | 3 | Termine |
+| [US-078](epics/E10-calendrier-cultural/US-078-calendrier-fiche-plante.md) | Calendrier cultural dans la fiche plante | Indispensable | 3 | Termine |
+| [US-079](epics/E10-calendrier-cultural/US-079-popups-educatives-actions.md) | Popups educatives des types d'actions | Important | 2 | Termine |
+| [US-080](epics/E10-calendrier-cultural/US-080-endpoint-batch-calendrier.md) | Endpoint batch calendrier « Mes plantes » | Indispensable | 2 | Termine |
+| [US-101](epics/E10-calendrier-cultural/US-101-fiches-techniques-actions.md) | Fiches techniques par action culturale et par plante | Important | 8 | A faire |
 
-**Total E10 : 23 points (0 Termine / 23 A faire)**
+**Total E10 : 46 points (33 Termine / 13 A faire)**
+
+> Livre le 2026-03-20. US-063 (semis successifs) reste a faire. Calendrier integre dans la page dediee, la fiche plante (plant-card collapsible), et le panneau associations/guildes. Indicateurs de maturite accessibles via popup depuis la ligne Recolte du Gantt. Widget demi-mois « En ce moment / Prochainement » en 2 colonnes. Filtre single-select par type d'action avec tri par date. Bouton favori deplace en bas du popup detail.
 
 ---
 
@@ -192,6 +200,63 @@
 
 ---
 
+## E12 — Adaptation climatique
+
+> Permettre au jardinier d'adapter le calendrier cultural a son microclimat en renseignant la date de derniere gelee et en selectionnant une zone climatique. Les fenetres de semis et repiquage sont recalculees en consequence.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-081](epics/E12-adaptation-climatique/US-081-date-derniere-gelee.md) | Parametre « date derniere gelee » sur le jardin | Indispensable | 3 | A faire |
+| [US-082](epics/E12-adaptation-climatique/US-082-fenetres-relatives-gelee.md) | Calcul des fenetres relatives a la derniere gelee | Indispensable | 5 | A faire |
+| [US-083](epics/E12-adaptation-climatique/US-083-zones-climatiques.md) | Zones climatiques avec donnees differenciees | Important | 8 | A faire |
+
+**Total E12 : 16 points (0 Termine / 16 A faire)**
+
+---
+
+## E13 — Infrastructure i18n (backend)
+
+> Mettre en place l'infrastructure de traduction en base de donnees avec une table generique, migrer les donnees de seed existantes, et exposer les traductions via l'API. Architecture ouverte : francais (defaut) + anglais initialement, extensible a toute langue.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-084](epics/E13-infrastructure-i18n/US-084-table-languages.md) | Table `languages` et seed FR + EN | Indispensable | 2 | A faire |
+| [US-085](epics/E13-infrastructure-i18n/US-085-table-translations.md) | Table generique `translations` | Indispensable | 3 | A faire |
+| [US-086](epics/E13-infrastructure-i18n/US-086-service-traduction.md) | Service de traduction (CRUD + resolution par langue) | Indispensable | 5 | A faire |
+| [US-087](epics/E13-infrastructure-i18n/US-087-seed-plantes-fr.md) | Migrer les seed plantes FR dans `translations` | Indispensable | 3 | A faire |
+| [US-088](epics/E13-infrastructure-i18n/US-088-seed-guildes-fr.md) | Migrer les seed guildes FR dans `translations` | Indispensable | 2 | A faire |
+| [US-089](epics/E13-infrastructure-i18n/US-089-seed-maturite-fr.md) | Migrer les seed maturite/criteres FR dans `translations` | Important | 2 | A faire |
+| [US-101](epics/E13-infrastructure-i18n/US-101-seed-associations-fr.md) | Migrer les seed associations FR dans `translations` | Indispensable | 2 | A faire |
+| [US-102](epics/E13-infrastructure-i18n/US-102-seed-actions-culturales-fr.md) | Migrer les seed actions culturales FR dans `translations` | Important | 2 | A faire |
+| [US-090](epics/E13-infrastructure-i18n/US-090-seed-plantes-en.md) | Seed des traductions EN pour les plantes | Indispensable | 5 | A faire |
+| [US-091](epics/E13-infrastructure-i18n/US-091-seed-guildes-maturite-en.md) | Seed des traductions EN pour guildes, maturite, associations et actions | Important | 5 | A faire |
+| [US-092](epics/E13-infrastructure-i18n/US-092-api-accept-language.md) | API: header `Accept-Language` et resolution dans les endpoints existants | Indispensable | 5 | A faire |
+| [US-093](epics/E13-infrastructure-i18n/US-093-fallback-langue-defaut.md) | Fallback langue par defaut (FR) quand traduction absente | Indispensable | 2 | A faire |
+
+**Total E13 : 38 points (0 Termine / 38 A faire)**
+
+---
+
+## E14 — UX i18n (frontend)
+
+> Ajouter le support multilingue cote frontend : fichier de traductions anglais, selecteur de langue, persistance du choix, et nettoyage du fichier francais existant. Depend de E13 pour les donnees traduites de l'API.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-094](epics/E14-ux-i18n/US-094-audit-nettoyage-fr-json.md) | Audit et nettoyage de `fr.json` | Important | 2 | A faire |
+| [US-095](epics/E14-ux-i18n/US-095-creer-en-json.md) | Creer `en.json` avec toutes les traductions UI en anglais | Indispensable | 3 | A faire |
+| [US-096](epics/E14-ux-i18n/US-096-selecteur-langue.md) | Selecteur de langue dans le shell (header) | Indispensable | 3 | A faire |
+| [US-097](epics/E14-ux-i18n/US-097-persistance-langue.md) | Persistance du choix de langue (localStorage) | Indispensable | 1 | A faire |
+| [US-098](epics/E14-ux-i18n/US-098-intercepteur-accept-language.md) | Envoyer `Accept-Language` dans tous les appels API | Indispensable | 2 | A faire |
+| [US-099](epics/E14-ux-i18n/US-099-afficher-donnees-traduites.md) | Afficher les donnees traduites de l'API (plantes, guildes, maturite) | Indispensable | 3 | A faire |
+| [US-100](epics/E14-ux-i18n/US-100-contenu-utilisateur-non-traduit.md) | Gestion du contenu utilisateur non traduit (guildes personnalisees, notes) | Important | 2 | A faire |
+
+**Total E14 : 16 points (0 Termine / 16 A faire)**
+
+> Note : E14 depend de E13 — le selecteur de langue et l'intercepteur HTTP n'ont de sens qu'avec l'infrastructure backend en place. US-094 et US-095 peuvent etre demarrees en parallele de E13.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -205,10 +270,13 @@
 | E07 — Mes plantes | 17 | 15 | 0 | 2 |
 | E08 — Finitions UX Associations | 15 | 9 | 0 | 6 |
 | E09 — Conscience de l'enracinement | 9 | 6 | 0 | 3 |
-| E10 — Calendrier cultural | 23 | 0 | 0 | 23 |
+| E10 — Calendrier cultural | 46 | 33 | 0 | 13 |
 | E11 — Guildes, mecanismes et refonte editeur | 26 | 26 | 0 | 0 |
-| **Total (actif)** | **198** | **83** | **7** | **108** |
+| E12 — Adaptation climatique | 16 | 0 | 0 | 16 |
+| E13 — Infrastructure i18n (backend) | 38 | 0 | 0 | 38 |
+| E14 — UX i18n (frontend) | 16 | 0 | 0 | 16 |
+| **Total (actif)** | **291** | **116** | **7** | **168** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-19*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-20*

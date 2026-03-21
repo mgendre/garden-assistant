@@ -1,0 +1,8 @@
+<div class="harvest-readiness-dialog">
+  <h2 class="harvest-readiness-dialog__title">
+    <span [translate]="'HarvestReadiness.Title'"></span>
+    <span class="harvest-readiness-dialog__plant-name"> — {{ data.plantName }}</span>
+  </h2>
+  <app-harvest-readiness [readiness]="data.readiness"></app-harvest-readiness>
+  <button mat-dialog-close class="badge-info-close" [translate]="'BadgeInfo.Close'"></button>
+</div>

@@ -12,7 +12,8 @@
     "OpenMenu": "Ouvrir le menu",
     "CloseMenu": "Fermer le menu",
     "MainNav": "Navigation principale",
-    "MobileNav": "Menu principal"
+    "MobileNav": "Menu principal",
+    "Calendar": "Calendrier"
   },
   "Dashboard": {
     "Welcome": "Welcome back",
@@ -210,6 +211,40 @@
   },
   "BadgeInfo": {
     "Close": "Fermer",
+    "Action": {
+      "IndoorSowing": {
+        "Title": "Semis int\u00e9rieur",
+        "Description": "Le semis int\u00e9rieur (ou sous abri) consiste \u00e0 d\u00e9marrer les graines dans un environnement contr\u00f4l\u00e9 \u2014 en godets, terrines ou mini-serres \u2014 avant de les repiquer au jardin. Cette technique permet de gagner plusieurs semaines sur la saison, surtout pour les plantes frileuses (tomates, poivrons, aubergines) qui ont besoin de chaleur pour germer. Maintenez une temp\u00e9rature de 18-25\u00b0C et une bonne luminosit\u00e9."
+      },
+      "DirectSowing": {
+        "Title": "Semis en pleine terre",
+        "Description": "Le semis en pleine terre consiste \u00e0 semer directement \u00e0 l'emplacement d\u00e9finitif au jardin. C'est la m\u00e9thode la plus simple et la plus adapt\u00e9e aux plantes qui n'aiment pas \u00eatre d\u00e9plac\u00e9es (carottes, radis, haricots, pois). Pr\u00e9parez un sol fin et meuble, semez \u00e0 la profondeur indiqu\u00e9e, et maintenez le sol humide jusqu'\u00e0 la lev\u00e9e."
+      },
+      "Transplanting": {
+        "Title": "Repiquage",
+        "Description": "Le repiquage consiste \u00e0 transplanter un jeune plant \u00e9lev\u00e9 en godet vers son emplacement d\u00e9finitif au jardin. C'est une \u00e9tape d\u00e9licate : arrosez bien avant et apr\u00e8s, travaillez par temps couvert ou en fin de journ\u00e9e, et prot\u00e9gez les plants du soleil direct les premiers jours. Pour les plantes g\u00e9lives, attendez que les Saints de Glace soient pass\u00e9s (mi-mai)."
+      },
+      "Harvest": {
+        "Title": "R\u00e9colte",
+        "Description": "La r\u00e9colte est le moment de cueillir les fruits de votre travail. Chaque l\u00e9gume a ses propres signes de maturit\u00e9 \u2014 couleur, taille, texture, son. R\u00e9coltez de pr\u00e9f\u00e9rence le matin quand les l\u00e9gumes sont gorg\u00e9s d'eau. Pour les l\u00e9gumes \u00e0 r\u00e9colte continue (courgettes, haricots), cueillez r\u00e9guli\u00e8rement pour stimuler la production."
+      },
+      "Pruning": {
+        "Title": "Taille",
+        "Description": "La taille consiste \u00e0 supprimer certaines parties de la plante pour am\u00e9liorer sa productivit\u00e9, sa sant\u00e9 ou sa forme. Sur les tomates, on supprime les gourmands. Sur les arbustes aromatiques (romarin, lavande, sauge), on taille apr\u00e8s la floraison pour maintenir un port compact. Utilisez toujours des outils propres et coupez net."
+      },
+      "Pinching": {
+        "Title": "Pin\u00e7age",
+        "Description": "Le pin\u00e7age consiste \u00e0 supprimer l'extr\u00e9mit\u00e9 d'une tige avec les doigts pour stopper sa croissance et favoriser la ramification. Sur le basilic, on pince les sommit\u00e9s florales pour prolonger la r\u00e9colte de feuilles. Sur les cucurbitac\u00e9es, on pince apr\u00e8s 4-5 feuilles pour stimuler les rameaux fructif\u00e8res."
+      },
+      "Hilling": {
+        "Title": "Buttage",
+        "Description": "Le buttage consiste \u00e0 ramener de la terre au pied des plantes en formant une butte. Il permet de blanchir les tiges (poireaux, c\u00e9leris), de stabiliser les plants (haricots, pois), ou de prot\u00e9ger les tubercules de la lumi\u00e8re (pommes de terre). Buttez par temps sec avec de la terre fine."
+      },
+      "Division": {
+        "Title": "Division",
+        "Description": "La division consiste \u00e0 s\u00e9parer une touffe de plante vivace en plusieurs morceaux, chacun avec des racines et des pousses. C'est la m\u00e9thode de multiplication la plus simple pour la ciboulette, la menthe, la consoude ou la rhubarbe. Divisez au printemps ou \u00e0 l'automne, quand la plante est au repos."
+      }
+    },
     "Family": {
       "Solanaceae": {
         "Title": "Solanaceae",
@@ -254,6 +289,14 @@
       "Boraginaceae": {
         "Title": "Boraginaceae",
         "Description": "Famille de la bourrache et de la consoude. La bourrache est l'une des meilleures plantes mellif\u00e8res du potager, et la consoude est un accumulateur dynamique de potassium et d'oligo-\u00e9l\u00e9ments."
+      },
+      "Cornaceae": {
+        "Title": "Cornaceae",
+        "Description": "Famille du cornouiller. Arbustes produisant des fruits comestibles riches en vitamine C, appr\u00e9ci\u00e9s des oiseaux. Excellents pour les haies champêtres et les bordures de jardin-for\u00eat."
+      },
+      "Elaeagnaceae": {
+        "Title": "Elaeagnaceae",
+        "Description": "Famille de l'argousier et de l'ol\u00e9astre. Arbustes fixateurs d'azote gr\u00e2ce \u00e0 leur symbiose avec la bact\u00e9rie Frankia. L'argousier produit des baies tr\u00e8s riches en vitamine C et enrichit le sol au profit de ses voisins."
       }
     },
     "Mechanism": {
@@ -363,6 +406,84 @@
         "Title": "Arrosage abondant",
         "Description": "La plante demande un sol constamment frais et un arrosage fr\u00e9quent, surtout en p\u00e9riode estivale. Un paillage \u00e9pais et un emplacement abrit\u00e9 du vent aident \u00e0 maintenir l'humidit\u00e9."
       }
+    }
+  },
+  "HarvestReadiness": {
+    "Title": "Pr\u00eat \u00e0 r\u00e9colter",
+    "DaysFromTransplant": "jours depuis repiquage",
+    "DaysFromSowing": "jours depuis semis",
+    "CriterionVisual": "Visuel",
+    "CriterionTouch": "Toucher",
+    "CriterionTiming": "Calendrier",
+    "CriterionTechnique": "Technique"
+  },
+  "Calendar": {
+    "Title": "Calendrier cultural",
+    "PlantDetail": "Calendrier cultural",
+    "EmptyState": "Ajoutez des plantes \u00e0 votre liste pour voir leur calendrier cultural",
+    "EmptyStateAction": "Parcourir le catalogue",
+    "FrostWarning": "Attention au gel \u2014 ne repiquer qu'apr\u00e8s les Saints de Glace (mi-mai)",
+    "MonthJan": "J",
+    "MonthFeb": "F",
+    "MonthMar": "M",
+    "MonthApr": "A",
+    "MonthMay": "M",
+    "MonthJun": "J",
+    "MonthJul": "J",
+    "MonthAug": "A",
+    "MonthSep": "S",
+    "MonthOct": "O",
+    "MonthNov": "N",
+    "MonthDec": "D",
+    "Legend": "L\u00e9gende",
+    "ThisMonth": {
+      "Title": "Ce mois-ci au jardin",
+      "NowTitle": "En ce moment",
+      "NowEmpty": "Rien de prévu en ce moment",
+      "UpcomingToggle": "Prochainement",
+      "UpcomingCount": "({{count}} actions)",
+      "UpcomingCountSingular": "(1 action)",
+      "Empty": "Rien de prévu — profitez-en pour observer votre jardin !"
+    },
+    "HalfMonth": {
+      "1": "Début janvier",
+      "2": "Mi-janvier",
+      "3": "Début février",
+      "4": "Mi-février",
+      "5": "Début mars",
+      "6": "Mi-mars",
+      "7": "Début avril",
+      "8": "Mi-avril",
+      "9": "Début mai",
+      "10": "Mi-mai",
+      "11": "Début juin",
+      "12": "Mi-juin",
+      "13": "Début juillet",
+      "14": "Mi-juillet",
+      "15": "Début août",
+      "16": "Mi-août",
+      "17": "Début septembre",
+      "18": "Mi-septembre",
+      "19": "Début octobre",
+      "20": "Mi-octobre",
+      "21": "Début novembre",
+      "22": "Mi-novembre",
+      "23": "Début décembre",
+      "24": "Mi-décembre"
+    },
+    "ActionType": {
+      "IndoorSowing": "Semis int\u00e9rieur",
+      "DirectSowing": "Semis direct",
+      "Transplanting": "Repiquage",
+      "Harvest": "R\u00e9colte",
+      "Pruning": "Taille",
+      "Pinching": "Pin\u00e7age",
+      "Hilling": "Buttage",
+      "Division": "Division",
+      "Plantation": "Plantation"
+    },
+    "Filter": {
+      "Sowing": "Semis"
     }
   }
 }

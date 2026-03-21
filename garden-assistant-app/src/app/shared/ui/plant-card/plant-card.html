@@ -102,15 +102,30 @@
       </div>
     </div>
 
+    @if (plantActions().length > 0) {
+      <div class="detail-section">
+        <div class="detail-section-title" [translate]="'Calendar.PlantDetail'"></div>
+        <app-plant-calendar-gantt
+          [actions]="plantActions()"
+          [propagationMethod]="propagationMethod"
+          [frostSensitive]="frostSensitive"
+          [hasHarvestReadiness]="!!harvestReadiness()"
+          (harvestReadinessClick)="openHarvestReadiness()">
+        </app-plant-calendar-gantt>
+      </div>
+    }
+
     <ng-content></ng-content>
 
-    <button
-      class="fav-btn-action"
-      [class.saved]="myPlantsStore.isSaved(plant().id)"
-      (click)="toggleFav($event)"
-      [attr.aria-label]="(myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name }">
-      <fa-icon [icon]="myPlantsStore.isSaved(plant().id) ? faHeartSolid : faHeartRegular"></fa-icon>
-      <span>{{ (myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name } }}</span>
-    </button>
+    @if (!hideFavButton()) {
+      <button
+        class="fav-btn-action"
+        [class.saved]="myPlantsStore.isSaved(plant().id)"
+        (click)="toggleFav($event)"
+        [attr.aria-label]="(myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name }">
+        <fa-icon [icon]="myPlantsStore.isSaved(plant().id) ? faHeartSolid : faHeartRegular"></fa-icon>
+        <span>{{ (myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name } }}</span>
+      </button>
+    }
   </div>
 </app-collapsible>

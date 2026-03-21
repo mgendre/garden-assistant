@@ -88,6 +88,50 @@ export class AuthClient {
     }
 }
 
+export class CalendarClient {
+    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
+        this.http = http ? http : window as any;
+        this.baseUrl = baseUrl ?? "";
+    }
+
+    getMyPlantsCalendar(): Promise<CalendarDto> {
+        let url_ = this.baseUrl + "/api/Calendar/my-plants";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetMyPlantsCalendar(_response);
+        });
+    }
+
+    protected processGetMyPlantsCalendar(response: Response): Promise<CalendarDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as CalendarDto;
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<CalendarDto>(null as any);
+    }
+}
+
 export class GuildsClient {
     private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
     private baseUrl: string;
@@ -404,6 +448,84 @@ export class PlantsClient {
         }
         return Promise.resolve<PlantDto[]>(null as any);
     }
+
+    getActions(id: string): Promise<PlantActionDto[]> {
+        let url_ = this.baseUrl + "/api/Plants/{id}/actions";
+        if (id === undefined || id === null)
+            throw new globalThis.Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetActions(_response);
+        });
+    }
+
+    protected processGetActions(response: Response): Promise<PlantActionDto[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantActionDto[];
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<PlantActionDto[]>(null as any);
+    }
+
+    getHarvestReadiness(id: string): Promise<HarvestReadinessDto> {
+        let url_ = this.baseUrl + "/api/Plants/{id}/harvest-readiness";
+        if (id === undefined || id === null)
+            throw new globalThis.Error("The parameter 'id' must be defined.");
+        url_ = url_.replace("{id}", encodeURIComponent("" + id));
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetHarvestReadiness(_response);
+        });
+    }
+
+    protected processGetHarvestReadiness(response: Response): Promise<HarvestReadinessDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as HarvestReadinessDto;
+            return result200;
+            });
+        } else if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<HarvestReadinessDto>(null as any);
+    }
 }
 
 export class UserPlantsClient {
@@ -545,6 +667,34 @@ export interface RefreshRequest {
     refreshToken?: string;
 }
 
+export interface CalendarDto {
+    plants?: CalendarPlantDto[];
+}
+
+export interface CalendarPlantDto {
+    plantId?: string;
+    actions?: PlantActionDto[];
+}
+
+export interface PlantActionDto {
+    id?: string;
+    actionType?: PlantActionType;
+    halfMonthStart?: number;
+    halfMonthEnd?: number;
+    notes?: string | undefined;
+}
+
+export enum PlantActionType {
+    IndoorSowing = 0,
+    DirectSowing = 1,
+    Transplanting = 2,
+    Harvest = 3,
+    Pruning = 4,
+    Pinching = 5,
+    Hilling = 6,
+    Division = 7,
+}
+
 export interface GuildDto {
     id?: string;
     name?: string;
@@ -648,6 +798,8 @@ export interface PlantDto {
     rootDepth?: RootDepth;
     sunRequirement?: SunRequirement;
     waterNeeds?: WaterNeeds;
+    propagationMethod?: PropagationMethod;
+    frostSensitive?: boolean;
     intrinsicMechanisms?: AssociationMechanism[];
 }
 
@@ -673,6 +825,32 @@ export enum WaterNeeds {
     Low = 0,
     Medium = 1,
     High = 2,
+}
+
+export enum PropagationMethod {
+    Seed = 0,
+    Bulb = 1,
+    Tuber = 2,
+    Division = 3,
+}
+
+export interface HarvestReadinessDto {
+    description?: string;
+    daysFromTransplant?: number | undefined;
+    daysFromSowing?: number | undefined;
+    criteria?: HarvestReadinessCriterionDto[];
+}
+
+export interface HarvestReadinessCriterionDto {
+    criterionType?: HarvestCriterionType;
+    description?: string;
+}
+
+export enum HarvestCriterionType {
+    Visual = 0,
+    Touch = 1,
+    Timing = 2,
+    Technique = 3,
 }
 
 export class SwaggerException extends Error {

@@ -1,0 +1,1061 @@
+[
+  {
+    "plantKey": "tomate",
+    "description": "La tomate est prête quand elle atteint une couleur uniforme et cède légèrement sous la pression du doigt.",
+    "daysFromTransplant": 70,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Couleur uniforme (rouge, jaune ou orange selon la variété), pas d'épaule verte restante" },
+      { "criterionType": "Touch", "description": "Légère souplesse sous la pression, peau lisse et brillante" },
+      { "criterionType": "Timing", "description": "60-85 jours après repiquage selon la variété (précoce: 60j, cœur de bœuf: 80j+)" },
+      { "criterionType": "Technique", "description": "Le fruit se détache facilement en le soulevant et tournant doucement. Récolter légèrement avant maturité si pluie annoncée" }
+    ]
+  },
+  {
+    "plantKey": "basilic",
+    "description": "Le basilic se récolte en continu dès que le plant est bien établi, avant la floraison pour un arôme optimal.",
+    "daysFromSowing": 40,
+    "criteria": [
+      { "criterionType": "Visual", "description": "3-4 paires de vraies feuilles minimum, feuilles vert vif et charnues" },
+      { "criterionType": "Timing", "description": "40-60 jours après semis. Récolter régulièrement avant l'apparition des boutons floraux" },
+      { "criterionType": "Technique", "description": "Pincer au-dessus d'un noeud pour favoriser la ramification. Ne jamais arracher les feuilles isolément" }
+    ]
+  },
+  {
+    "plantKey": "carotte",
+    "description": "La carotte est prête quand le collet orange est visible au ras du sol et que le diamètre atteint 2-3 cm.",
+    "daysFromSowing": 75,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Collet orange visible au niveau du sol, diamètre 2-3 cm, feuillage encore vert et vigoureux" },
+      { "criterionType": "Touch", "description": "Racine ferme et lisse, sans fissures ni craquelures" },
+      { "criterionType": "Timing", "description": "70-80 jours pour les variétés Nantaise, 90-110 jours pour les variétés d'hiver" },
+      { "criterionType": "Technique", "description": "Ameublir le sol à la fourche-bêche avant d'arracher. Tirer droit vers le haut pour ne pas casser la racine" }
+    ]
+  },
+  {
+    "plantKey": "poireau",
+    "description": "Le poireau est prêt quand le fût blanc atteint 2-3 cm de diamètre et reste bien ferme.",
+    "daysFromTransplant": 150,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fût blanc de 2-3 cm de diamètre, feuillage vert-bleu dressé et sain" },
+      { "criterionType": "Touch", "description": "Fût ferme et bien rempli, sans partie molle ou creuse" },
+      { "criterionType": "Timing", "description": "120-180 jours après repiquage selon la variété. Les poireaux d'hiver résistent au gel" },
+      { "criterionType": "Technique", "description": "Ameublir le sol à la fourche avant d'arracher. Soulever plutôt que tirer pour ne pas casser le fût" }
+    ]
+  },
+  {
+    "plantKey": "ail",
+    "description": "L'ail est prêt quand les 3-4 feuilles inférieures sont brunes et les supérieures encore vertes.",
+    "daysFromSowing": 270,
+    "criteria": [
+      { "criterionType": "Visual", "description": "3-4 feuilles inférieures brunes et sèches, feuilles supérieures encore vertes. Hampe florale sèche" },
+      { "criterionType": "Touch", "description": "Bulbe ferme et bien formé, gousses bien individualisées sous les tuniques" },
+      { "criterionType": "Timing", "description": "8-9 mois après plantation d'automne (récolte juin-juillet). Déterrer un bulbe-test pour vérifier" },
+      { "criterionType": "Technique", "description": "Arracher par temps sec. Laisser sécher 2-3 jours au sol puis curer 2-3 semaines à l'abri" }
+    ]
+  },
+  {
+    "plantKey": "oignon",
+    "description": "L'oignon est prêt quand le feuillage jaunit et se couche naturellement au sol.",
+    "daysFromSowing": 110,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuillage jauni et couché naturellement, peau extérieure papyracée et sèche" },
+      { "criterionType": "Touch", "description": "Bulbe ferme, col sec et fin, pas de partie molle" },
+      { "criterionType": "Timing", "description": "90-120 jours selon la variété et le mode de culture (semis ou bulbille)" },
+      { "criterionType": "Technique", "description": "Arracher par temps sec et ensoleillé. Curer 1-2 semaines au soleil avant stockage" }
+    ]
+  },
+  {
+    "plantKey": "ciboulette",
+    "description": "La ciboulette se récolte en continu dès que les brins sont bien établis, en coupant au-dessus de la base.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Brins de 15-20 cm minimum, touffe dense et vigoureuse" },
+      { "criterionType": "Timing", "description": "Récolte continue de mars à novembre. Couper régulièrement pour stimuler la repousse" },
+      { "criterionType": "Technique", "description": "Couper les brins à 2-3 cm du sol avec des ciseaux. Ne jamais arracher les tiges individuellement" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain",
+    "description": "Le haricot nain se récolte quand les gousses sont tendres et se cassent net en les pliant.",
+    "daysFromSowing": 55,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Gousses de 10-15 cm, peau lisse et brillante, graines petites et à peine visibles à l'intérieur" },
+      { "criterionType": "Touch", "description": "La gousse se casse net et proprement quand on la plie, texture croquante" },
+      { "criterionType": "Timing", "description": "55-65 jours après semis. Récolter tous les 2-3 jours pour stimuler la production" },
+      { "criterionType": "Technique", "description": "Cueillir en tenant la tige d'une main et la gousse de l'autre. Ne jamais arracher" }
+    ]
+  },
+  {
+    "plantKey": "haricot-a-rames",
+    "description": "Le haricot à rames se récolte quand les gousses sont tendres et se cassent net en les pliant.",
+    "daysFromSowing": 65,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Gousses de 15-20 cm, peau lisse et brillante, graines à peine visibles" },
+      { "criterionType": "Touch", "description": "La gousse se casse net quand on la plie, pas de fils perceptibles" },
+      { "criterionType": "Timing", "description": "60-70 jours après semis. Récolter tous les 2-3 jours pour prolonger la production" },
+      { "criterionType": "Technique", "description": "Cueillir délicatement sans tirer sur la tige. Utiliser les deux mains pour ne pas abîmer le plant grimpant" }
+    ]
+  },
+  {
+    "plantKey": "mais",
+    "description": "Le mais est prêt quand les soies sont brunes et sèches et que l'épi est bien rempli.",
+    "daysFromSowing": 80,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Soies brunes et séchées, spathes bien serrées autour de l'épi, épi incliné vers le bas" },
+      { "criterionType": "Touch", "description": "Épi bien rempli et ferme. Percer un grain : liquide laiteux blanc = prêt, liquide clair = trop tôt" },
+      { "criterionType": "Timing", "description": "60-100 jours après semis selon la variété (précoce vs tardif)" },
+      { "criterionType": "Technique", "description": "Casser l'épi en le tirant vers le bas d'un mouvement sec. Consommer rapidement car le sucre se transforme vite en amidon" }
+    ]
+  },
+  {
+    "plantKey": "courge",
+    "description": "La courge est prête quand la peau est très dure et que le pédoncule est sec et craquelé.",
+    "daysFromSowing": 110,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Peau de couleur définitive, pédoncule sec et craquelé, vrille la plus proche du fruit brune et sèche" },
+      { "criterionType": "Touch", "description": "Peau très dure, l'ongle ne peut pas l'entamer. Son creux en tapotant" },
+      { "criterionType": "Timing", "description": "90-120 jours après semis. Récolter avant les premières gelées" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule à 5-10 cm du fruit au secateur. Curer au soleil 10 jours avant stockage" }
+    ]
+  },
+  {
+    "plantKey": "potiron",
+    "description": "Le potiron est prêt quand la peau est très dure, le pédoncule sec et la couleur bien prononcée.",
+    "daysFromSowing": 120,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Couleur orange profonde et uniforme, pédoncule lignifié et sec, vrille brune" },
+      { "criterionType": "Touch", "description": "Peau très dure résistante à la pression de l'ongle. Son sourd en tapotant" },
+      { "criterionType": "Timing", "description": "100-130 jours après semis. Récolter impérativement avant les gelées" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule à 5-10 cm du fruit au secateur. Curer au soleil 10-15 jours puis stocker au frais et sec" }
+    ]
+  },
+  {
+    "plantKey": "courgette",
+    "description": "La courgette se récolte jeune quand elle mesure 15-20 cm et que la peau est encore tendre.",
+    "daysFromSowing": 50,
+    "criteria": [
+      { "criterionType": "Visual", "description": "15-20 cm de long, peau lisse, brillante et de couleur uniforme, fleur encore attachée ou juste tombée" },
+      { "criterionType": "Touch", "description": "Peau tendre, l'ongle s'enfonce facilement. Texture ferme mais pas dure" },
+      { "criterionType": "Timing", "description": "45-55 jours après semis. Récolter tous les 2 jours car la croissance est très rapide" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule au couteau à 2-3 cm du fruit. Ne jamais tirer ou arracher" }
+    ]
+  },
+  {
+    "plantKey": "pois",
+    "description": "Le pois se récolte quand les gousses sont bien remplies et vert vif, avant que les graines ne durcissent.",
+    "daysFromSowing": 65,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Gousses dodues et vert vif, graines visibles par transparence mais pas trop grosses" },
+      { "criterionType": "Touch", "description": "Gousse ferme et remplie, graines rondes et tendres à l'intérieur" },
+      { "criterionType": "Timing", "description": "60-70 jours après semis. La récolte s'étale sur 2-3 semaines" },
+      { "criterionType": "Technique", "description": "Cueillir avec les deux mains : une main tient la tige, l'autre détache la gousse. Récolter le matin" }
+    ]
+  },
+  {
+    "plantKey": "feve",
+    "description": "La fève est prête quand les gousses sont bien remplies et que les graines sont encore tendres.",
+    "daysFromSowing": 90,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Gousses épaisses, charnues et vert foncé, graines visibles par renflement de la gousse" },
+      { "criterionType": "Touch", "description": "Gousses bien remplies au toucher, graines tendres (pas encore farineuses)" },
+      { "criterionType": "Timing", "description": "80-100 jours après semis. Récolter échelonné du bas vers le haut du plant" },
+      { "criterionType": "Technique", "description": "Casser la gousse en la tirant vers le bas d'un geste sec. Récolter avant que les graines ne noircissent" }
+    ]
+  },
+  {
+    "plantKey": "fenouil",
+    "description": "Le fenouil bulbeux se récolte quand le bulbe atteint la taille d'une balle de tennis et reste bien blanc.",
+    "daysFromSowing": 90,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Bulbe blanc nacré de la taille d'une balle de tennis (8-10 cm), feuillage plumeteux encore vert" },
+      { "criterionType": "Touch", "description": "Bulbe ferme et dense, pas de partie molle ou fibreuse" },
+      { "criterionType": "Timing", "description": "80-100 jours après semis. Récolter avant la montée en graines" },
+      { "criterionType": "Technique", "description": "Couper au ras du sol ou arracher. Laisser la base en terre pour une éventuelle repousse de pluches" }
+    ]
+  },
+  {
+    "plantKey": "aneth",
+    "description": "L'aneth se récolte en continu pour les feuilles, ou à maturité pour les graines.",
+    "daysFromSowing": 40,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles plumeuses bien développées, vert vif. Pour les graines : ombelles brunes et sèches" },
+      { "criterionType": "Timing", "description": "Feuilles : 40-60 jours après semis. Graines : 70-90 jours. Récolter avant la pleine floraison pour les feuilles" },
+      { "criterionType": "Technique", "description": "Couper les tiges au-dessus d'un noeud. Pour les graines, couper les ombelles et sécher tête en bas dans un sac" }
+    ]
+  },
+  {
+    "plantKey": "coriandre",
+    "description": "La coriandre se récolte en continu pour les feuilles, ou à maturité pour les graines.",
+    "daysFromSowing": 40,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles basales larges et découpées bien développées. Pour les graines : ombelles brunissantes" },
+      { "criterionType": "Timing", "description": "Feuilles : 40-50 jours. Graines : 90-100 jours. Récolter les feuilles avant la montée en fleur" },
+      { "criterionType": "Technique", "description": "Couper les feuilles extérieures à la base. Pour les graines, couper les ombelles et laisser sécher" }
+    ]
+  },
+  {
+    "plantKey": "persil",
+    "description": "Le persil se récolte en continu dès que les tiges portent trois segments de feuilles.",
+    "daysFromSowing": 70,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Tiges à 3 segments de feuilles minimum, feuillage dense et vert foncé" },
+      { "criterionType": "Timing", "description": "70-90 jours après semis (germination lente). Récolte continue jusqu'à la montée en graines la 2e année" },
+      { "criterionType": "Technique", "description": "Couper les tiges extérieures à la base du plant. Laisser le cœur repousser" }
+    ]
+  },
+  {
+    "plantKey": "thym",
+    "description": "Le thym se récolte en continu, idéalement juste avant ou pendant la floraison pour un maximum d'arômes.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Rameaux bien feuillus et vigoureux, feuillage gris-vert dense et parfume" },
+      { "criterionType": "Timing", "description": "Récolte continue toute l'année. Arôme maximal juste avant la floraison (mai-juin)" },
+      { "criterionType": "Technique", "description": "Couper les tiges au-dessus du point de croissance ligneux. Ne jamais couper dans le vieux bois" }
+    ]
+  },
+  {
+    "plantKey": "romarin",
+    "description": "Le romarin se récolte toute l'année en prelevant les extrémités des rameaux.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Rameaux bien garnis de feuilles en aiguille, vert foncé, plant vigoureux" },
+      { "criterionType": "Timing", "description": "Récolte toute l'année. Arôme maximal au printemps et en automne" },
+      { "criterionType": "Technique", "description": "Couper les 10-15 cm des extrémités au secateur. Ne pas prélever plus d'un tiers du plant à la fois" }
+    ]
+  },
+  {
+    "plantKey": "lavande",
+    "description": "La lavande se récolte en début de floraison pour les fleurs, quand les épis sont colorés mais pas complètement ouverts.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Épis floraux bien colorés (bleu-violet), fleurs du bas de l'épi commencent à s'ouvrir" },
+      { "criterionType": "Timing", "description": "Juin-août selon la région. Récolter le matin après l'évaporation de la rosée" },
+      { "criterionType": "Technique", "description": "Couper les tiges florales au secateur au-dessus du feuillage. Sécher en bouquets suspendus tête en bas" }
+    ]
+  },
+  {
+    "plantKey": "sauge-officinale",
+    "description": "La sauge se récolte en continu, idéalement avant la floraison pour un arôme optimal.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles gris-vert veloutées, bien développées et parfumées" },
+      { "criterionType": "Timing", "description": "Récolte de mai à octobre. Arôme maximal juste avant la floraison" },
+      { "criterionType": "Technique", "description": "Couper les tiges au-dessus d'un noeud. Ne pas prélever plus d'un tiers du plant. Éviter de couper dans le vieux bois" }
+    ]
+  },
+  {
+    "plantKey": "menthe-poivree",
+    "description": "La menthe se récolte en continu, idéalement juste avant la floraison pour un maximum de menthol.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Tiges de 15-20 cm minimum, feuilles vert foncé luisantes et dentelées" },
+      { "criterionType": "Timing", "description": "Récolte continue de mai à octobre. Arôme maximal juste avant la floraison" },
+      { "criterionType": "Technique", "description": "Couper les tiges à 5 cm du sol. La repousse est rapide. Récolter le matin pour le meilleur arôme" }
+    ]
+  },
+  {
+    "plantKey": "melisse",
+    "description": "La mélisse se récolte en continu, les feuilles citronnées sont les plus parfumées avant la floraison.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles vert clair gaufrées, odeur citronnée au froissement, tiges de 20 cm minimum" },
+      { "criterionType": "Timing", "description": "Récolte de mai à octobre. Couper 2-3 fois par saison pour stimuler la repousse" },
+      { "criterionType": "Technique", "description": "Couper les tiges au-dessus d'un noeud. Prélever les extrémités pour favoriser la ramification" }
+    ]
+  },
+  {
+    "plantKey": "origan",
+    "description": "L'origan se récolte idéalement en pleine floraison quand l'arôme est le plus intense.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Plant touffu, tiges dressées de 20-30 cm, feuilles aromatiques au froissement" },
+      { "criterionType": "Timing", "description": "Récolte de juin à septembre. Arôme maximal en pleine floraison (juillet-août)" },
+      { "criterionType": "Technique", "description": "Couper les tiges à 5 cm du sol. Sécher en bouquets suspendus pour conservation" }
+    ]
+  },
+  {
+    "plantKey": "hysope",
+    "description": "L'hysope se récolte en début de floraison pour les feuilles et fleurs aromatiques.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Épis floraux bleus bien formes, feuillage dense et parfume" },
+      { "criterionType": "Timing", "description": "Récolte de juin à septembre. Feuilles et fleurs utilisables fraîches ou séchées" },
+      { "criterionType": "Technique", "description": "Couper les tiges au-dessus du vieux bois. Sécher rapidement à l'ombre pour conserver l'arôme" }
+    ]
+  },
+  {
+    "plantKey": "estragon",
+    "description": "L'estragon se récolte en continu, les feuilles fraîches sont les plus aromatiques.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Tiges de 20-30 cm, feuilles longues et étroites vert vif, plant vigoureux" },
+      { "criterionType": "Timing", "description": "Récolte de mai à octobre. Pincer régulièrement pour empêcher la floraison" },
+      { "criterionType": "Technique", "description": "Couper les tiges à 10 cm du sol. Ne pas prélever plus de la moitié du plant à la fois" }
+    ]
+  },
+  {
+    "plantKey": "sarriette-des-montagnes",
+    "description": "La sarriette des montagnes se récolte en continu, l'arôme est maximal juste avant la floraison.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Rameaux bien feuillus, feuilles petites et étroites, très parfumées au froissement" },
+      { "criterionType": "Timing", "description": "Récolte de mai à octobre. Arôme maximal avant la floraison estivale" },
+      { "criterionType": "Technique", "description": "Couper les extrémités des rameaux au-dessus du bois ligneux. Se conserve bien sèchee" }
+    ]
+  },
+  {
+    "plantKey": "sarriette",
+    "description": "La sarriette annuelle se récolte dès que le plant est bien développé, idéalement en début de floraison.",
+    "daysFromSowing": 60,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Plant buissonnant de 20-30 cm, feuilles fines et très aromatiques" },
+      { "criterionType": "Timing", "description": "60-70 jours après semis. Récolte en début de floraison pour le meilleur arôme" },
+      { "criterionType": "Technique", "description": "Couper les tiges à 5 cm du sol. Peut être séchée en bouquets pour conservation hivernale" }
+    ]
+  },
+  {
+    "plantKey": "cerfeuil",
+    "description": "Le cerfeuil se récolte en continu dès que les feuilles sont bien développées, avant la montée en graines.",
+    "daysFromSowing": 40,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles finement découpées, vert tendre, rosette bien fournie" },
+      { "criterionType": "Timing", "description": "40-50 jours après semis. Récolter avant la montée en graines car la saveur se perd vite" },
+      { "criterionType": "Technique", "description": "Couper les feuilles extérieures à la base. Utiliser frais car l'arôme ne se conserve pas bien au séchage" }
+    ]
+  },
+  {
+    "plantKey": "ciboulette-ail",
+    "description": "La ciboulette ail se récolte en continu, feuilles et fleurs sont comestibles.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles plates de 15-20 cm, vert foncé, odeur aillée au froissement" },
+      { "criterionType": "Timing", "description": "Récolte continue de mars à novembre. Les fleurs blanches sont aussi comestibles" },
+      { "criterionType": "Technique", "description": "Couper les feuilles à 3-4 cm du sol. La repousse est rapide et continue" }
+    ]
+  },
+  {
+    "plantKey": "thym-rampant",
+    "description": "Le thym rampant se récolte comme le thym classique, en prelevant les extrémités fleuries.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Tapis dense de petites feuilles aromatiques, floraison rose-mauve" },
+      { "criterionType": "Timing", "description": "Récolte continue. Arôme maximal pendant la floraison (juin-août)" },
+      { "criterionType": "Technique", "description": "Prélever les extrémités aux ciseaux. Ne pas arracher les stolons pour preserver le tapis couvrant" }
+    ]
+  },
+  {
+    "plantKey": "agastache",
+    "description": "L'agastache se récolte pour ses feuilles et fleurs anisées, utilisées en tisanes et en cuisine.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Épis floraux mauves bien formes, feuilles parfumées au froissement" },
+      { "criterionType": "Timing", "description": "Feuilles de mai à octobre. Fleurs de juillet à septembre au pic d'arôme" },
+      { "criterionType": "Technique", "description": "Couper les tiges au-dessus d'un noeud. Sécher les fleurs et feuilles pour les tisanes hivernales" }
+    ]
+  },
+  {
+    "plantKey": "bourrache",
+    "description": "La bourrache se récolte pour ses fleurs et jeunes feuilles comestibles.",
+    "daysFromSowing": 50,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fleurs bleues étoilées complètement ouvertes, jeunes feuilles encore tendres et peu poilues" },
+      { "criterionType": "Timing", "description": "Fleurs : 50-60 jours après semis, récolte continue de juin à octobre" },
+      { "criterionType": "Technique", "description": "Cueillir les fleurs individuellement. Prélever les jeunes feuilles du sommet. Porter des gants car les tiges sont piquantes" }
+    ]
+  },
+  {
+    "plantKey": "tournesol",
+    "description": "Le tournesol se récolte pour ses graines quand le capitule est sec et les graines bien remplies.",
+    "daysFromSowing": 90,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Capitule penché, pétales tombés, dos du capitule jaune-brun, graines striées et remplies" },
+      { "criterionType": "Touch", "description": "Graines dures et bien formées, se détachent facilement du capitule" },
+      { "criterionType": "Timing", "description": "80-100 jours après semis. Récolter quand 2/3 des graines sont brunes" },
+      { "criterionType": "Technique", "description": "Couper le capitule avec 30 cm de tige. Suspendre tête en bas dans un sac pour achever le séchage" }
+    ]
+  },
+  {
+    "plantKey": "chou-kale",
+    "description": "Le chou kale se récolte feuille par feuille, en commençant par les feuilles extérieures les plus basses.",
+    "daysFromTransplant": 60,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles de 15-20 cm, bien frisées ou laciniées, couleur vert intense ou pourpre" },
+      { "criterionType": "Timing", "description": "60-90 jours après repiquage. La saveur s'améliore après les premières gelées" },
+      { "criterionType": "Technique", "description": "Cueillir les feuilles extérieures basses en laissant le bourgeon central. Le plant continue à produire" }
+    ]
+  },
+  {
+    "plantKey": "brocoli",
+    "description": "Le brocoli se récolte quand la tête est bien formée et compacte, avant que les boutons floraux ne s'ouvrent.",
+    "daysFromTransplant": 70,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Tete compacte vert foncé, boutons floraux bien serrés et fermes, pas de jaunissement" },
+      { "criterionType": "Touch", "description": "Tete dense et ferme sous la pression, boutons bien serres" },
+      { "criterionType": "Timing", "description": "60-80 jours après repiquage. Ne pas attendre l'ouverture des fleurs jaunes" },
+      { "criterionType": "Technique", "description": "Couper la tête principale avec 10-15 cm de tige. Des brocolis lateraux plus petits repousseront ensuite" }
+    ]
+  },
+  {
+    "plantKey": "radis",
+    "description": "Le radis se récolte quand la racine atteint 2-3 cm de diamètre au ras du sol, avant qu'il ne devienne creux.",
+    "daysFromSowing": 25,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Racine rouge ou rose de 2-3 cm visible au ras du sol, feuillage vert et sain" },
+      { "criterionType": "Touch", "description": "Racine ferme et croquante, pas spongieuse. Si fibreuse ou creuse, c'est trop tard" },
+      { "criterionType": "Timing", "description": "20-30 jours après semis pour les variétés de printemps. Ne pas laisser trop longtemps en terre (devient creux)" },
+      { "criterionType": "Technique", "description": "Tirer droit vers le haut en tenant le collet. Arroser la veille si le sol est sec pour faciliter l'arrachage" }
+    ]
+  },
+  {
+    "plantKey": "navet",
+    "description": "Le navet se récolte quand la racine atteint 5-8 cm de diamètre et que la peau est lisse.",
+    "daysFromSowing": 50,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Racine de 5-8 cm de diamètre, peau lisse et sans craquelure, collet visible au ras du sol" },
+      { "criterionType": "Touch", "description": "Racine ferme et lisse, pas de partie spongieuse ou filandreuse" },
+      { "criterionType": "Timing", "description": "40-60 jours après semis. Ne pas laisser trop longtemps (devient fibreux et amer)" },
+      { "criterionType": "Technique", "description": "Arracher en tirant le collet. Ameublir le sol si nécessaire avec une fourche" }
+    ]
+  },
+  {
+    "plantKey": "laitue",
+    "description": "La laitue se récolte quand la pomme est ferme au toucher, avant toute montée en graines.",
+    "daysFromSowing": 55,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Pomme bien formée et dense, pas de tige florale visible, feuillage frais sans jaunissement" },
+      { "criterionType": "Touch", "description": "Pomme ferme quand on la presse légèrement, pas de partie molle" },
+      { "criterionType": "Timing", "description": "45-70 jours après semis selon la variété. Récolter tôt le matin pour une meilleure fraîcheur" },
+      { "criterionType": "Technique", "description": "Couper la tige à la base au couteau au ras du sol. Pour les variétés à couper, prélever les feuilles extérieures" }
+    ]
+  },
+  {
+    "plantKey": "épinard",
+    "description": "L'épinard se récolte feuille par feuille quand les feuilles atteignent 10-15 cm, avant la montée en graines.",
+    "daysFromSowing": 40,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles de 10-15 cm, vert foncé, épaisses et charnues, rosette bien fournie" },
+      { "criterionType": "Timing", "description": "40-50 jours après semis. Récolter avant la montée en graines (accélérée par chaleur et jours longs)" },
+      { "criterionType": "Technique", "description": "Cueillir les feuilles extérieures en laissant le cœur. Ou couper la rosette entière à 2 cm du sol pour repousse" }
+    ]
+  },
+  {
+    "plantKey": "roquette",
+    "description": "La roquette se récolte jeune quand les feuilles sont tendres et le gout poivre est modere.",
+    "daysFromSowing": 30,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles de 8-12 cm, bien découpées, vert foncé, pas de tige florale" },
+      { "criterionType": "Timing", "description": "25-35 jours après semis. Récolter avant la montée en fleur (les feuilles deviennent très piquantes)" },
+      { "criterionType": "Technique", "description": "Couper les feuilles extérieures à la base. Le plant repousse pour plusieurs récoltes" }
+    ]
+  },
+  {
+    "plantKey": "betterave",
+    "description": "La betterave est prête quand la racine atteint 5-8 cm de diamètre et que le feuillage est sain.",
+    "daysFromSowing": 60,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Racine de 5-8 cm de diamètre, collet visible au-dessus du sol, feuillage vert et sain" },
+      { "criterionType": "Touch", "description": "Racine ferme au toucher, pas de partie molle ni spongieuse" },
+      { "criterionType": "Timing", "description": "50-70 jours après semis. Ne pas laisser trop longtemps (la chair devient fibreuse)" },
+      { "criterionType": "Technique", "description": "Tordre le feuillage à la main plutôt que de le couper au couteau (évite le saignement rouge). Conserver avec 3 cm de tige" }
+    ]
+  },
+  {
+    "plantKey": "panais",
+    "description": "Le panais est prêt après les premières gelées qui adoucissent sa saveur, quand la racine atteint un bon diamètre.",
+    "daysFromSowing": 100,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Collet de 3-5 cm de diamètre au ras du sol, feuillage jaunissant en fin de saison" },
+      { "criterionType": "Touch", "description": "Racine ferme et lourde, peau lisse sans craquelures profondes" },
+      { "criterionType": "Timing", "description": "90-120 jours après semis. La saveur s'améliore nettement après les premières gelées" },
+      { "criterionType": "Technique", "description": "Ameublir le sol profondément à la fourche-bêche. La racine est longue et fragile, ne pas tirer" }
+    ]
+  },
+  {
+    "plantKey": "celeri",
+    "description": "Le celeri se récolte quand les côtes sont épaisses, fermes et bien blanches ou vertes selon la variété.",
+    "daysFromTransplant": 135,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Côtes épaisses et charnues, feuillage vigoureux, pas de montée en graines" },
+      { "criterionType": "Touch", "description": "Côtes fermes et croquantes, cassantes quand on les plie, pas filandreuses" },
+      { "criterionType": "Timing", "description": "120-150 jours après repiquage. Récolte possible avant les fortes gelées" },
+      { "criterionType": "Technique", "description": "Couper le pied entier à la base ou prélever les côtes extérieures au fur et à mesure" }
+    ]
+  },
+  {
+    "plantKey": "poivron",
+    "description": "Le poivron est comestible vert mais atteint sa pleine maturité en changeant de couleur (rouge, jaune, orange).",
+    "daysFromTransplant": 65,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Taille définitive atteinte, peau lisse et brillante. Vert = comestible mais immature. Pour la couleur : attendre 2-3 semaines de plus" },
+      { "criterionType": "Touch", "description": "Peau ferme et lisse, paroi épaisse et charnue" },
+      { "criterionType": "Timing", "description": "Vert : 60-70 jours après repiquage. Colore : 80-90 jours selon la variété et la chaleur" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule au secateur ou aux ciseaux. Ne jamais arracher, cela endommage le plant" }
+    ]
+  },
+  {
+    "plantKey": "aubergine",
+    "description": "L'aubergine est prête quand la peau est lisse, brillante et d'une couleur uniforme.",
+    "daysFromTransplant": 75,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Peau brillante et lisse, couleur pourpre uniforme et profonde, pas de taches brunes" },
+      { "criterionType": "Touch", "description": "Pression du doigt : légère empreinte qui revient lentement = prête. Rebond immédiat = trop jeune. Molle = trop mûre" },
+      { "criterionType": "Timing", "description": "65-85 jours après repiquage selon la variété et la chaleur" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule au secateur en laissant 2-3 cm de tige. Attention aux épines du calice" }
+    ]
+  },
+  {
+    "plantKey": "pomme-de-terre",
+    "description": "La pomme de terre est prête quand le feuillage jaunit et se dessèche naturellement.",
+    "daysFromSowing": 90,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuillage jauni à sec. Pour les primeurs : feuillage encore vert, fleurs ouvertes ou fanées" },
+      { "criterionType": "Touch", "description": "Peau ne se détache pas en frottant (sauf primeurs). Tubercules fermes et bien formes" },
+      { "criterionType": "Timing", "description": "Primeurs : 70-90 jours. Conservation : 90-120 jours. Laisser 2-3 semaines après desséchément du feuillage" },
+      { "criterionType": "Technique", "description": "Arracher par temps sec à la fourche-bêche. Laisser sécher quelques heures au sol avant stockage au noir" }
+    ]
+  },
+  {
+    "plantKey": "asperge",
+    "description": "L'asperge se récolte au printemps quand les turions emergent du sol et mesurent 15-20 cm.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Turions de 15-20 cm, pointe bien fermée et compacte, pas de ramification" },
+      { "criterionType": "Touch", "description": "Turion ferme et cassant, pas mou ni fibreux à la base" },
+      { "criterionType": "Timing", "description": "Récolte d'avril à juin (6-8 semaines). Pas de récolte les 2-3 premières années après plantation" },
+      { "criterionType": "Technique", "description": "Couper à 2 cm sous le sol avec une gouge à asperge. Récolter tous les 2-3 jours en saison" }
+    ]
+  },
+  {
+    "plantKey": "artichaut",
+    "description": "L'artichaut se récolte quand les capitules sont bien formés et les écailles encore serrées.",
+    "daysFromTransplant": 150,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Capitule de 8-12 cm, écailles bien serrées et vertes, pas de fleur violette visible" },
+      { "criterionType": "Touch", "description": "Capitule ferme et dense, écailles souples mais bien jointes à la pression" },
+      { "criterionType": "Timing", "description": "Mai-juin (tête principale) puis juillet (rejets). 150-180 jours après plantation des oeilletons" },
+      { "criterionType": "Technique", "description": "Couper la tige à 10 cm sous le capitule au secateur. Le capitule principal est le plus gros" }
+    ]
+  },
+  {
+    "plantKey": "topinambour",
+    "description": "Le topinambour se récolte après les premières gelées, quand le feuillage est complètement fané.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuillage complètement sec et fané, tiges brunes et sèches" },
+      { "criterionType": "Touch", "description": "Tubercules fermes, peau lisse, pas de parties molles" },
+      { "criterionType": "Timing", "description": "Récolte de novembre à mars. Les gelées améliorent la saveur. Récolter au fur et à mesure des besoins" },
+      { "criterionType": "Technique", "description": "Fourcher le sol délicatement autour des pieds. Laisser quelques tubercules pour la repousse. Ne se conserve pas longtemps hors sol" }
+    ]
+  },
+  {
+    "plantKey": "oseille",
+    "description": "L'oseille se récolte en continu dès que les feuilles sont bien développées, avant la montée en fleur.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles de 10-15 cm, vert vif, en rosette bien fournie, pas de hampe florale" },
+      { "criterionType": "Timing", "description": "Récolte continue de mars à novembre. Couper les hampes florales pour prolonger la production" },
+      { "criterionType": "Technique", "description": "Cueillir les feuilles extérieures à la base. Le cœur continue de produire. Supprimer les fleurs dès qu'elles apparaissent" }
+    ]
+  },
+  {
+    "plantKey": "mache",
+    "description": "La mache se récolte quand les rosettes sont bien formées, tout au long de l'hiver.",
+    "daysFromSowing": 60,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Rosettes de 5-8 cm de diamètre, feuilles vert foncé bien formées et charnues" },
+      { "criterionType": "Timing", "description": "60-80 jours après semis. Récolte d'octobre à mars, résiste au gel" },
+      { "criterionType": "Technique", "description": "Couper la rosette entière au ras du sol au couteau. Récolter par temps sec pour faciliter le nettoyage" }
+    ]
+  },
+  {
+    "plantKey": "quinoa",
+    "description": "Le quinoa se récolte quand les graines sont dures et que les panicules commencent à sécher.",
+    "daysFromSowing": 110,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Panicules pendantes, feuilles tombées, graines visibles et bien formées" },
+      { "criterionType": "Touch", "description": "Graines dures et difficiles à marquer avec l'ongle. Se détachent facilement de la panicule" },
+      { "criterionType": "Timing", "description": "100-120 jours après semis. Récolter par temps sec avant les pluies d'automne" },
+      { "criterionType": "Technique", "description": "Couper les panicules et sécher 1-2 semaines. Battre pour liberer les graines. Rincer abondamment pour oter les saponines" }
+    ]
+  },
+  {
+    "plantKey": "amarante",
+    "description": "L'amarante se récolte pour ses feuilles jeunes ou pour ses graines à maturité.",
+    "daysFromSowing": 90,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles : jeunes feuilles de 10-15 cm. Graines : panicules brunes et sèches, graines tombant naturellement" },
+      { "criterionType": "Touch", "description": "Graines dures et lisses. Les panicules sont sèches et friables" },
+      { "criterionType": "Timing", "description": "Feuilles : des 30 jours. Graines : 90-120 jours après semis" },
+      { "criterionType": "Technique", "description": "Feuilles : couper les jeunes pousses. Graines : couper les panicules, sécher et battre au-dessus d'un drap" }
+    ]
+  },
+  {
+    "plantKey": "cresson-de-fontaine",
+    "description": "Le cresson se récolte en continu en coupant les tiges au-dessus de l'eau.",
+    "daysFromSowing": 40,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Tiges de 10-15 cm, feuilles rondes vert foncé luisantes, plant vigoureux" },
+      { "criterionType": "Timing", "description": "40-50 jours après semis. Récolte continue, éviter la récolte pendant la floraison" },
+      { "criterionType": "Technique", "description": "Couper les tiges à 5 cm au-dessus de l'eau ou du sol. Les tiges restantes repoussent rapidement" }
+    ]
+  },
+  {
+    "plantKey": "souchet-comestible",
+    "description": "Le souchet se récolte quand le feuillage jaunit et que les tubercules sont bien formes.",
+    "daysFromSowing": 120,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuillage jaunissant et fané, signe de maturité des tubercules" },
+      { "criterionType": "Touch", "description": "Tubercules fermes, ronds, de 1-2 cm, peau brune lisse" },
+      { "criterionType": "Timing", "description": "120-150 jours après plantation. Récolte en automne quand le feuillage jaunit" },
+      { "criterionType": "Technique", "description": "Fouiller le sol délicatement avec les doigts ou une fourche. Laver et sécher les tubercules avant consommation" }
+    ]
+  },
+  {
+    "plantKey": "morelle-de-balbis",
+    "description": "La morelle de Balbis se récolte quand les fruits rouges se détachent facilement du calice épineux.",
+    "daysFromSowing": 90,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruits rouge vif de 1-2 cm, calice épineux ouvert laissant le fruit visible" },
+      { "criterionType": "Touch", "description": "Fruit souple sous la pression, se détache facilement du calice" },
+      { "criterionType": "Timing", "description": "80-100 jours après semis. Récolte échelonnée de juillet à octobre" },
+      { "criterionType": "Technique", "description": "Cueillir les fruits un à un en écartant le calice. Porter des gants car les tiges sont épineuses" }
+    ]
+  },
+  {
+    "plantKey": "chou",
+    "description": "Le chou pomme se récolte quand la tête est ferme et dense au toucher.",
+    "daysFromTransplant": 100,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Pomme bien formee, feuilles extérieures bien serrées, couleur uniforme sans jaunissement" },
+      { "criterionType": "Touch", "description": "Pomme très ferme et dense quand on la presse, pas de souplesse" },
+      { "criterionType": "Timing", "description": "80-120 jours après repiquage selon la variété (précoce ou d'hiver)" },
+      { "criterionType": "Technique", "description": "Couper la tige à la base au couteau. Laisser le trognon en terre, il peut produire de petits choux secondaires" }
+    ]
+  },
+  {
+    "plantKey": "chou-fleur",
+    "description": "Le chou-fleur se récolte quand l'inflorescence est compacte, blanche et bien fermée.",
+    "daysFromTransplant": 80,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Inflorescence (pomme) blanche et compacte, 15-20 cm de diamètre, pas de separation des boutons" },
+      { "criterionType": "Touch", "description": "Pomme ferme et dense, surface lisse et régulière" },
+      { "criterionType": "Timing", "description": "70-90 jours après repiquage. Ne pas attendre que les fleurons se séparent (trop tard)" },
+      { "criterionType": "Technique", "description": "Couper la tige sous l'inflorescence en conservant quelques feuilles protectrices. Récolter le matin" }
+    ]
+  },
+  {
+    "plantKey": "concombre",
+    "description": "Le concombre se récolte jeune et ferme, avant que les graines ne grossissent et que la peau ne jaunisse.",
+    "daysFromSowing": 55,
+    "criteria": [
+      { "criterionType": "Visual", "description": "15-25 cm selon la variété, peau vert foncé et uniforme, pas de jaunissement" },
+      { "criterionType": "Touch", "description": "Fruit ferme et lourd, peau lisse ou légèrement épineuse selon la variété" },
+      { "criterionType": "Timing", "description": "50-60 jours après semis. Récolter tous les 2-3 jours pour stimuler la production" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule au couteau ou au secateur. Ne pas arracher pour ne pas abîmer la tige grimpante" }
+    ]
+  },
+  {
+    "plantKey": "melon",
+    "description": "Le melon est prêt quand il degage un parfum sucre, que le pédoncule se craquelle et que l'écorce change de teinte.",
+    "daysFromSowing": 85,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Écorce virant au jaune, pédoncule craquelé formant un anneau, vrille opposée au fruit sèche" },
+      { "criterionType": "Touch", "description": "Léger ramollissement au niveau du pédoncule, parfum sucré prononcé à ce point" },
+      { "criterionType": "Timing", "description": "80-100 jours après semis. Le fruit doit se détacher presque seul" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule au secateur en laissant 2-3 cm. Ne pas arracher. Consommer rapidement après récolte" }
+    ]
+  },
+  {
+    "plantKey": "echalote",
+    "description": "L'échalote est prête quand le feuillage se couche et jaunit naturellement.",
+    "daysFromSowing": 100,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuillage jauni et couché au sol, peau extérieure cuivrée et sèche" },
+      { "criterionType": "Touch", "description": "Bulbes fermes, bien individualisées dans la touffe, col sec" },
+      { "criterionType": "Timing", "description": "90-110 jours après plantation. Récolte en juin-juillet" },
+      { "criterionType": "Technique", "description": "Arracher par temps sec et ensoleillé. Curer au soleil 1-2 semaines avant stockage au sec et aéré" }
+    ]
+  },
+  {
+    "plantKey": "celeri-rave",
+    "description": "Le celeri-rave est prêt quand la boule atteint 10-12 cm de diamètre et reste bien ferme.",
+    "daysFromTransplant": 150,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Boule de 10-12 cm de diamètre, peau rugueuse brun clair, feuillage encore vigoureux" },
+      { "criterionType": "Touch", "description": "Boule très ferme et lourde, sans partie creuse ni spongieuse" },
+      { "criterionType": "Timing", "description": "140-160 jours après repiquage. Récolter avant les fortes gelées (résiste aux gelées légères)" },
+      { "criterionType": "Technique", "description": "Arracher en soulevant à la fourche. Couper les racines et le feuillage, conserver 2-3 cm de tiges" }
+    ]
+  },
+  {
+    "plantKey": "scorsonère",
+    "description": "La scorsonère se récolte à partir de l'automne quand la racine est bien développée.",
+    "daysFromSowing": 120,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuillage bien développé, racine noire visible au collet, au moins 2 cm de diamètre" },
+      { "criterionType": "Touch", "description": "Racine longue et ferme, peau noire lisse" },
+      { "criterionType": "Timing", "description": "120-150 jours après semis. La saveur s'améliore après les gelées. Récolte d'octobre à mars" },
+      { "criterionType": "Technique", "description": "Bêcher profondément autour de la racine (30-40 cm). Ne pas casser la racine car elle saigne un latex blanc" }
+    ]
+  },
+  {
+    "plantKey": "rhubarbe",
+    "description": "La rhubarbe se récolte quand les pétioles sont épais et rouges (ou verts selon la variété), bien tendus.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Petioles de 30-40 cm, épais (2-3 cm), rouges ou verts selon variété, feuilles complètement déployées" },
+      { "criterionType": "Touch", "description": "Petioles fermes et croquants, pas mous ni fibreux" },
+      { "criterionType": "Timing", "description": "Récolte d'avril à juin. Ne pas récolter la première année. Arrêter en été pour reconstituer les réserves" },
+      { "criterionType": "Technique", "description": "Tirer le pétiole en le tordant à la base (ne pas couper). Ne jamais prélever plus d'un tiers des pétioles" }
+    ]
+  },
+  {
+    "plantKey": "blette",
+    "description": "La blette se récolte feuille par feuille quand les côtes sont bien développées et charnues.",
+    "daysFromSowing": 55,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuilles de 20-30 cm, côtes larges et charnues (blanches, rouges ou jaunes), feuillage brillant" },
+      { "criterionType": "Timing", "description": "50-60 jours après semis. Récolte continue de juin à novembre" },
+      { "criterionType": "Technique", "description": "Couper ou casser les feuilles extérieures à la base en laissant le cœur. Le plant continue à produire" }
+    ]
+  },
+  {
+    "plantKey": "chou-de-bruxelles",
+    "description": "Le chou de Bruxelles se récolte quand les petits choux sont fermes et de 2-3 cm de diamètre.",
+    "daysFromTransplant": 100,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Petits choux de 2-3 cm, bien serrés et vert vif, encore bien fermes contre la tige" },
+      { "criterionType": "Touch", "description": "Pommes bien fermes et denses au toucher, pas de feuilles molles" },
+      { "criterionType": "Timing", "description": "90-120 jours après repiquage. La saveur s'améliore après les premières gelées" },
+      { "criterionType": "Technique", "description": "Détacher les choux du bas vers le haut en les cassant ou tournant. Couper le bourgeon terminal pour grossir les derniers" }
+    ]
+  },
+  {
+    "plantKey": "patate-douce",
+    "description": "La patate douce se récolte quand le feuillage commence à jaunir, avant les premières gelées.",
+    "daysFromTransplant": 110,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Feuillage commençant à jaunir, parfois fissures du sol autour du pied indiquant de gros tubercules" },
+      { "criterionType": "Touch", "description": "Tubercules fermes et lisses, peau intacte (très fragile, manipuler avec soin)" },
+      { "criterionType": "Timing", "description": "100-120 jours après repiquage des boutures. Récolter impérativement avant les gelées" },
+      { "criterionType": "Technique", "description": "Bêcher délicatement à 30 cm du pied. Les tubercules sont fragiles. Curer 10 jours à 25-30°C pour durcir la peau" }
+    ]
+  },
+  {
+    "plantKey": "piment",
+    "description": "Le piment se récolte vert (immature) ou coloré (mature) selon l'usage souhaite.",
+    "daysFromTransplant": 70,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Taille définitive atteinte. Vert = comestible. Pour le piquant maximal : attendre la couleur définitive (rouge, jaune)" },
+      { "criterionType": "Touch", "description": "Fruit ferme, peau lisse et brillante sans ride" },
+      { "criterionType": "Timing", "description": "Vert : 60-70 jours après repiquage. Colore : 80-100 jours" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule au secateur. Porter des gants pour les variétés très piquantes. Sécher les fruits pour conservation" }
+    ]
+  },
+  {
+    "plantKey": "pasteque",
+    "description": "La pasteque est prête quand la tache au sol est jaune et que le fruit sonne creux en tapotant.",
+    "daysFromSowing": 90,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Tache de contact au sol passée du blanc au jaune crème, vrille la plus proche brune et sèche" },
+      { "criterionType": "Touch", "description": "Son creux et profond en tapotant avec le poing. Peau résistante à l'ongle" },
+      { "criterionType": "Timing", "description": "80-100 jours après semis selon la variété. Besoin de chaleur continue" },
+      { "criterionType": "Technique", "description": "Couper le pédoncule au secateur. Ne pas arracher. Consommer dans les jours suivant la récolte" }
+    ]
+  },
+  {
+    "plantKey": "sarrasin",
+    "description": "Le sarrasin se récolte quand la majorité des graines sont brunes et que la plante commence à sécher.",
+    "daysFromSowing": 80,
+    "criteria": [
+      { "criterionType": "Visual", "description": "75% des graines brunes et dures, tiges rougeatres, quelques fleurs encore presentes" },
+      { "criterionType": "Touch", "description": "Graines triangulaires dures, brunes, se détachent facilement" },
+      { "criterionType": "Timing", "description": "70-90 jours après semis. Récolter avant que toutes les graines ne tombent naturellement" },
+      { "criterionType": "Technique", "description": "Faucher tôt le matin quand les tiges sont humides (moins d'égrenage). Sécher en gerbes puis battre" }
+    ]
+  },
+  {
+    "plantKey": "pois-chiche",
+    "description": "Le pois chiche se récolte quand les gousses sont sèches et brunes et que les graines sont dures.",
+    "daysFromSowing": 110,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Gousses gonflées et brunes, feuillage sec, plante entièrement jaunie" },
+      { "criterionType": "Touch", "description": "Gousses sèches et craquantes, graines dures à l'intérieur" },
+      { "criterionType": "Timing", "description": "100-120 jours après semis. Récolter par temps sec en été" },
+      { "criterionType": "Technique", "description": "Arracher les plants entiers et sécher en bottes. Battre pour liberer les graines. Trier et stocker au sec" }
+    ]
+  },
+  {
+    "plantKey": "lentille",
+    "description": "La lentille se récolte quand les gousses sont sèches et que les graines sont dures.",
+    "daysFromSowing": 100,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Gousses aplaties et brunes, plante entièrement jaunie et sèche" },
+      { "criterionType": "Touch", "description": "Gousses cassantes, graines dures et bombées à l'intérieur" },
+      { "criterionType": "Timing", "description": "90-110 jours après semis. Récolter par temps sec pour faciliter le séchage" },
+      { "criterionType": "Technique", "description": "Arracher ou faucher les plants. Sécher en bottes puis battre. Les gousses s'ouvrent facilement" }
+    ]
+  },
+  {
+    "plantKey": "fraisier",
+    "description": "La fraise est prête quand elle est uniformement rouge et se détache facilement du pédoncule.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruit uniformement rouge (pas de parties blanches ou vertes), peau brillante" },
+      { "criterionType": "Touch", "description": "Fruit souple mais pas mou, parfum sucré intense" },
+      { "criterionType": "Timing", "description": "Récolte de mai à octobre selon les variétés (non-remontantes ou remontantes)" },
+      { "criterionType": "Technique", "description": "Cueillir avec le pédoncule en le pincant entre le pouce et l'index. Ne pas tirer sur le fruit. Récolter le matin" }
+    ]
+  },
+  {
+    "plantKey": "fraisier-des-bois",
+    "description": "La fraise des bois est prête quand elle est rouge foncé et très parfumée.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Petits fruits rouge foncé de 1-2 cm, parfum intense" },
+      { "criterionType": "Touch", "description": "Fruit tendre qui se détache très facilement du pédoncule" },
+      { "criterionType": "Timing", "description": "Récolte de juin à octobre en continu. Production échelonnée" },
+      { "criterionType": "Technique", "description": "Cueillir délicatement un par un. Fruits très fragiles, à consommer rapidement" }
+    ]
+  },
+  {
+    "plantKey": "framboisier",
+    "description": "La framboise est prête quand elle se détache du receptacle sans resistance et a une couleur intense.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Couleur rouge foncé (ou jaune selon variété), fruit opaque et mat (plus brillant = pas mûr)" },
+      { "criterionType": "Touch", "description": "Le fruit se détache du receptacle blanc en le tirant très légèrement, sans effort" },
+      { "criterionType": "Timing", "description": "Non-remontants : juin-juillet. Remontants : août-octobre. Récolte tous les 2-3 jours" },
+      { "criterionType": "Technique", "description": "Tirer délicatement le fruit qui doit se détacher seul du receptacle. Ne pas ecraser. Récolter par temps sec" }
+    ]
+  },
+  {
+    "plantKey": "cassis",
+    "description": "Le cassis est prêt quand les baies sont noires, brillantes et se détachent facilement de la grappe.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Baies noires et brillantes, grappe entière colorée, pas de baies vertes restantes" },
+      { "criterionType": "Touch", "description": "Baies souples et juteuses, se détachent facilement" },
+      { "criterionType": "Timing", "description": "Récolte en juillet. Les baies mûrissent simultanément sur la grappe" },
+      { "criterionType": "Technique", "description": "Cueillir les grappes entières plutôt que les baies individuellement. Transformer rapidement (fragile)" }
+    ]
+  },
+  {
+    "plantKey": "myrtille",
+    "description": "La myrtille est prête quand elle est uniformement bleu foncé et se détache facilement.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Baies bleu foncé uniformes avec une pruine gris-bleu, pas de parties rouges ou vertes" },
+      { "criterionType": "Touch", "description": "Baie souple, se détache facilement de la grappe" },
+      { "criterionType": "Timing", "description": "Récolte de juillet à septembre selon la variété et l'altitude" },
+      { "criterionType": "Technique", "description": "Cueillir les baies individuellement à la main. Elles ne mûrissent pas toutes en même temps, récolter en plusieurs passages" }
+    ]
+  },
+  {
+    "plantKey": "aronia",
+    "description": "L'aronia est prêt quand les baies sont noires et que la grappe pend sous le poids des fruits.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Baies noires brillantes de 8-10 mm, grappes pendantes et lourdes" },
+      { "criterionType": "Touch", "description": "Baies fermes mais juteuses quand pressées, se détachent facilement" },
+      { "criterionType": "Timing", "description": "Récolte en août-septembre. Laisser mûrir complètement pour reduire l'astringence" },
+      { "criterionType": "Technique", "description": "Couper les grappes entières au secateur. Transformer rapidement (jus, confiture) car les baies fraîches sont très astringentes" }
+    ]
+  },
+  {
+    "plantKey": "argousier",
+    "description": "L'argousier se récolte quand les baies orange sont bien colorées mais encore fermes.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Baies orange vif, bien gonflées, couvrant densément les rameaux" },
+      { "criterionType": "Touch", "description": "Baies fermes mais juteuses, pas encore molles ni éclatées" },
+      { "criterionType": "Timing", "description": "Récolte en août-septembre. Ne pas attendre trop car les baies eclatent et le jus tache" },
+      { "criterionType": "Technique", "description": "Couper les rameaux charges au secateur et congeler. Battre les rameaux congeles pour détacher les baies facilement. Porter des gants (épines)" }
+    ]
+  },
+  {
+    "plantKey": "sureau-noir",
+    "description": "Le sureau noir se récolte pour les fleurs au printemps et les baies en automne.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fleurs : corymbes blanc crème complètement ouverts. Baies : noires et brillantes, grappes pendantes" },
+      { "criterionType": "Touch", "description": "Baies souples et juteuses, se détachent facilement de la grappe avec les doigts" },
+      { "criterionType": "Timing", "description": "Fleurs : juin. Baies : septembre-octobre. Ne jamais consommer les baies crues (toxiques), cuire avant" },
+      { "criterionType": "Technique", "description": "Fleurs : couper les corymbes au secateur. Baies : couper les grappes entières et égrapper à la fourchette" }
+    ]
+  },
+  {
+    "plantKey": "cornouiller-male",
+    "description": "La cornouille se récolte quand les fruits sont rouge foncé et tombent naturellement.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruits rouge foncé a brun, ovales de 1-2 cm, tombant facilement de l'arbre" },
+      { "criterionType": "Touch", "description": "Fruit mou et juteux, se détache très facilement de la branche" },
+      { "criterionType": "Timing", "description": "Récolte en août-septembre. Laisser mûrir complètement (fruits acides avant maturité)" },
+      { "criterionType": "Technique", "description": "Secouer les branches et recueillir les fruits sur un drap étalé au sol. Les fruits bien mûrs tombent seuls" }
+    ]
+  },
+  {
+    "plantKey": "noisetier",
+    "description": "La noisette est prête quand l'involucre brunit et que la coque est bien dure et brune.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Involucre (enveloppe) jauni a brun, coque brune visible, fruits commençant a tomber" },
+      { "criterionType": "Touch", "description": "Coque dure et brune, noisette bien remplie (pas de bruit en secouant)" },
+      { "criterionType": "Timing", "description": "Récolte en septembre-octobre. Ramasser les noisettes tombées au sol" },
+      { "criterionType": "Technique", "description": "Ramasser régulièrement au sol pour éviter les rongeurs. Sécher 2-3 semaines en couche fine dans un lieu aéré" }
+    ]
+  },
+  {
+    "plantKey": "prunellier",
+    "description": "La prunelle se récolte après les premières gelées qui adoucissent le fruit très acide.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruits bleu-noir couverts de pruine, 1-2 cm de diamètre" },
+      { "criterionType": "Touch", "description": "Fruits légèrement ramollis après le gel, se détachent facilement" },
+      { "criterionType": "Timing", "description": "Récolte après les premières gelées (octobre-novembre). Le gel brise les tannins astringents" },
+      { "criterionType": "Technique", "description": "Cueillir à la main ou secouer les branches. Astuce : congeler les fruits avant utilisation si pas de gelée naturelle" }
+    ]
+  },
+  {
+    "plantKey": "pommier",
+    "description": "La pomme est prête quand elle se détache facilement de l'arbre en la soulevant et tournant légèrement.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Couleur de fond passant du vert au jaune, pepins bruns, pas de taches de pourriture" },
+      { "criterionType": "Touch", "description": "Le fruit se détache facilement quand on le souleve et le tourne d'un quart de tour" },
+      { "criterionType": "Timing", "description": "Aout (variétés précoces) à novembre (variétés tardives). Les pepins bruns confirment la maturité" },
+      { "criterionType": "Technique", "description": "Soulever et tourner doucement le fruit, il doit se détacher avec le pédoncule. Ne pas tirer. Stocker au frais et sombre" }
+    ]
+  },
+  {
+    "plantKey": "poirier",
+    "description": "La poire se récolte avant pleine maturité et mûrit en stockage, contrairement à la pomme.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Couleur de fond virant au jaune-vert, lenticelles bien visibles, pepins commençant a brunir" },
+      { "criterionType": "Touch", "description": "Le fruit se détache facilement en le soulevant à l'horizontale. Chair encore ferme" },
+      { "criterionType": "Timing", "description": "Aout à octobre selon la variété. Récolter 1-2 semaines avant la pleine maturité" },
+      { "criterionType": "Technique", "description": "Soulever le fruit à l'horizontale. S'il se détache avec le pédoncule, c'est prêt. Mûrir en chambre fraîche" }
+    ]
+  },
+  {
+    "plantKey": "prunier",
+    "description": "La prune est prête quand elle se détache facilement et que la peau a sa couleur définitive.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Couleur définitive (bleue, jaune, rouge selon variété), pruine blanchatre en surface, pas de tache verte" },
+      { "criterionType": "Touch", "description": "Chair souple sous la pression du doigt, le fruit se détache facilement" },
+      { "criterionType": "Timing", "description": "Juillet à septembre selon la variété (mirabelle, reine-claude, quetsche)" },
+      { "criterionType": "Technique", "description": "Cueillir délicatement à la main en soulevant le fruit. Récolter en plusieurs passages car la maturité est échelonnée" }
+    ]
+  },
+  {
+    "plantKey": "cerisier",
+    "description": "La cerise est prête quand elle a sa couleur définitive et que la queue se détache facilement.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Couleur rouge foncé (bigarreau) ou rouge clair (cerise acide), peau brillante et lisse" },
+      { "criterionType": "Touch", "description": "Fruit ferme mais souple, se détache facilement avec la queue" },
+      { "criterionType": "Timing", "description": "Mai a juillet selon la variété et la région. Récolte rapide car le fruit se conserve mal" },
+      { "criterionType": "Technique", "description": "Cueillir avec la queue pour une meilleure conservation. Utiliser une échelle et un panier. Récolter par temps sec" }
+    ]
+  },
+  {
+    "plantKey": "figuier",
+    "description": "La figue est prête quand elle est souple, que le col plie et qu'une goutte de sucré perle à l'ostiole.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruit pendant, col plie, peau de couleur définitive (verte, violette ou brune), goutte de nectar à l'ostiole" },
+      { "criterionType": "Touch", "description": "Fruit souple et cédant à la pression, pas dur. Le pédoncule se sépare facilement" },
+      { "criterionType": "Timing", "description": "Figues-fleurs : juillet. Figues d'automne : août-octobre. La récolte est échelonnée" },
+      { "criterionType": "Technique", "description": "Cueillir délicatement en tirant vers le haut. Le fruit doit se détacher facilement. Consommer très rapidement (fragile)" }
+    ]
+  },
+  {
+    "plantKey": "noyer",
+    "description": "La noix est prête quand le brou (enveloppe verte) se fend naturellement et que la noix tombe.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Brou vert fendillé et noircissant, noix brune visible, début de chute naturelle" },
+      { "criterionType": "Touch", "description": "Coque dure et brune, cerneau bien rempli (pas de bruit en secouant)" },
+      { "criterionType": "Timing", "description": "Récolte en septembre-octobre. Ramasser régulièrement les noix tombées" },
+      { "criterionType": "Technique", "description": "Gauler ou ramasser au sol. Débarrasser du brou, laver et sécher 3-4 semaines en couche fine dans un lieu aéré" }
+    ]
+  },
+  {
+    "plantKey": "chataignier",
+    "description": "La chataigne est prête quand les bogues s'ouvrent et que les fruits tombent au sol.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Bogues ouvertes au sol, chataignes brunes et brillantes, pas de trous de vers" },
+      { "criterionType": "Touch", "description": "Chataignes fermes et lourdes (les légères sont souvent véreuses ou vides)" },
+      { "criterionType": "Timing", "description": "Récolte en octobre-novembre. Ramasser quotidiennement pour éviter la vermiculure" },
+      { "criterionType": "Technique", "description": "Ramasser au sol avec des gants (bogues piquantes). Tremper 24h pour eliminer les véreuses (flottantes). Sécher ou consommer vite" }
+    ]
+  },
+  {
+    "plantKey": "vigne",
+    "description": "Le raisin est prêt quand les grains sont translucides, sucres et que la rafle commence à lignifier.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Grains translucides, couleur définitive (vert-dore ou bleu-noir), pruine blanchatre, rafle brunissante" },
+      { "criterionType": "Touch", "description": "Grains souples et juteux, se détachent facilement. Gouter : sucré et parfume" },
+      { "criterionType": "Timing", "description": "Raisin de table : août-octobre. Laisser mûrir complètement sur le cep pour le sucré maximal" },
+      { "criterionType": "Technique", "description": "Couper la grappe au secateur en tenant par la rafle. Ne pas toucher les grains pour preserver la pruine" }
+    ]
+  },
+  {
+    "plantKey": "houblon",
+    "description": "Le houblon se récolte quand les cônes sont bien formes, secs au toucher et degagent une odeur résineuse.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Cônes vert-jaune papyraceux, lupuline jaune visible à la base des bractées" },
+      { "criterionType": "Touch", "description": "Cônes secs et papyraceux au toucher, qui grincent quand on les presse, laissant une poudre jaune sur les doigts" },
+      { "criterionType": "Timing", "description": "Récolte en août-septembre. Les cônes doivent être secs mais pas bruns" },
+      { "criterionType": "Technique", "description": "Cueillir les cônes à la main ou couper les lianes. Sécher rapidement à l'ombre pour conserver les arômes" }
+    ]
+  },
+  {
+    "plantKey": "murier-blanc",
+    "description": "La mûre blanche est prête quand le fruit est mou et se détache très facilement de la branche.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruits blancs a roses, translucides et gonflés, pendant sur la branche" },
+      { "criterionType": "Touch", "description": "Fruit très mou et juteux, se détache au moindre contact" },
+      { "criterionType": "Timing", "description": "Récolte en juin-juillet. Les fruits mûrissent de maniere échelonnée" },
+      { "criterionType": "Technique", "description": "Étendre un drap sous l'arbre et secouer les branches. Les fruits mûrs tombent seuls. Consommer ou transformer immédiatement" }
+    ]
+  },
+  {
+    "plantKey": "cognassier",
+    "description": "Le coing est prêt quand il est jaune dore, parfume et se détache facilement de l'arbre.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruit jaune dore uniforme, duvet cotonneux s'estompant, pédoncule brunissant" },
+      { "criterionType": "Touch", "description": "Fruit ferme mais parfume, se détache facilement en le soulevant" },
+      { "criterionType": "Timing", "description": "Récolte en octobre-novembre, avant les fortes gelées. Le coing ne se mange pas cru" },
+      { "criterionType": "Technique", "description": "Cueillir délicatement car le fruit marque facilement. Stocker au frais et aéré. Transformer en gelée, pâte ou confiture" }
+    ]
+  },
+  {
+    "plantKey": "neflier",
+    "description": "La nèfle se récolte après les premières gelées et se consomme blette (après ramollissement naturel).",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fruit brun foncé, peau ridée, chair molle visible par transparence" },
+      { "criterionType": "Touch", "description": "Fruit complètement mou et pateux au toucher (blettissement)" },
+      { "criterionType": "Timing", "description": "Récolte après les premières gelées (novembre). Laisser blettir 2-3 semaines avant consommation" },
+      { "criterionType": "Technique", "description": "Cueillir et laisser blettir sur de la paille dans un endroit frais. Le fruit est prêt quand la chair est brune et molle" }
+    ]
+  },
+  {
+    "plantKey": "sorbier-des-oiseleurs",
+    "description": "Les sorbes se récoltent après les premières gelées pour les transformations (gelée, liqueur).",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Grappes de baies rouge-orange vif, pendantes et bien garnies" },
+      { "criterionType": "Touch", "description": "Baies légèrement ramollies après le gel, se détachent facilement" },
+      { "criterionType": "Timing", "description": "Récolte après les premières gelées (octobre-novembre). Le gel reduit l'amertume et l'astringence" },
+      { "criterionType": "Technique", "description": "Couper les grappes entières au secateur. Congeler avant utilisation si pas de gelée naturelle. Ne pas consommer cru en grande quantité" }
+    ]
+  },
+  {
+    "plantKey": "genevrier-commun",
+    "description": "Les baies de genevrier se récoltent quand elles sont bleu-noir et bien matures (2e ou 3e année).",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Baies bleu-noir avec pruine grisatre, 6-8 mm de diamètre. Ignorer les baies vertes (immatures)" },
+      { "criterionType": "Touch", "description": "Baies légèrement souples, parfum resineux et poivre au froissement" },
+      { "criterionType": "Timing", "description": "Récolte en automne (septembre-novembre). Les baies mettent 2-3 ans a mûrir sur l'arbuste" },
+      { "criterionType": "Technique", "description": "Cueillir les baies mûres à la main ou secouer les branches au-dessus d'un drap. Porter des gants (feuillage piquant)" }
+    ]
+  },
+  {
+    "plantKey": "groseillier",
+    "description": "La groseille est prête quand les grappes sont entièrement colorées et que les baies sont juteuses.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Grappes entièrement rouges (ou blanches selon variété), baies translucides et brillantes" },
+      { "criterionType": "Touch", "description": "Baies souples et juteuses, se détachent facilement de la grappe" },
+      { "criterionType": "Timing", "description": "Récolte en juin-juillet. Récolter en une ou deux fois car les grappes mûrissent ensemble" },
+      { "criterionType": "Technique", "description": "Couper les grappes entières au ciseau. Égrapper à la fourchette pour les transformations (gelée, confiture)" }
+    ]
+  },
+  {
+    "plantKey": "capucine",
+    "description": "La capucine se récolte pour ses fleurs, feuilles et boutons floraux comestibles (gout poivre).",
+    "daysFromSowing": 50,
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fleurs complètement ouvertes (orange, jaune, rouge), feuilles rondes bien vertes" },
+      { "criterionType": "Timing", "description": "Fleurs : de juin à octobre en continu. Boutons : récolter avant l'ouverture pour les câpres" },
+      { "criterionType": "Technique", "description": "Cueillir les fleurs et feuilles à la main. Boutons floraux : confire au vinaigre comme des câpres" }
+    ]
+  },
+  {
+    "plantKey": "violette-odorante",
+    "description": "La violette se récolte pour ses fleurs comestibles parfumées, utilisées en confiserie et en cuisine.",
+    "criteria": [
+      { "criterionType": "Visual", "description": "Fleurs violettes complètement ouvertes, parfumées, sur des tiges de 5-10 cm" },
+      { "criterionType": "Timing", "description": "Récolte au printemps (mars-avril). Floraison breve et précoce" },
+      { "criterionType": "Technique", "description": "Cueillir les fleurs individuellement avec un peu de tige. Utiliser fraîches ou cristalliser au sucre" }
+    ]
+  }
+]
+

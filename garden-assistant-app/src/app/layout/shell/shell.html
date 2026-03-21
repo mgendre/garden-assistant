@@ -7,8 +7,9 @@
 
     <nav class="desktop-nav" [attr.aria-label]="'Nav.MainNav' | translate">
       <a routerLink="/companions" routerLinkActive="active" [translate]="'Nav.Companions'"></a>
-      <a routerLink="/mes-plantes" routerLinkActive="active" [translate]="'Nav.MyPlants'"></a>
+      <a routerLink="/my-plants" routerLinkActive="active" [translate]="'Nav.MyPlants'"></a>
       <a routerLink="/guilds" routerLinkActive="active" [translate]="'Nav.Guilds'"></a>
+      <a routerLink="/calendar" routerLinkActive="active" [translate]="'Nav.Calendar'"></a>
       <a routerLink="/garden" routerLinkActive="active" [translate]="'Nav.Garden'"></a>
     </nav>
 
@@ -30,8 +31,9 @@
   <div class="mobile-overlay" (click)="closeMobileMenu()"></div>
   <nav class="mobile-nav" [attr.aria-label]="'Nav.MobileNav' | translate">
     <a routerLink="/companions" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.Companions'"></a>
-    <a routerLink="/mes-plantes" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.MyPlants'"></a>
+    <a routerLink="/my-plants" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.MyPlants'"></a>
     <a routerLink="/guilds" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.Guilds'"></a>
+    <a routerLink="/calendar" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.Calendar'"></a>
     <a routerLink="/garden" routerLinkActive="active" (click)="closeMobileMenu()" [translate]="'Nav.Garden'"></a>
   </nav>
 }
