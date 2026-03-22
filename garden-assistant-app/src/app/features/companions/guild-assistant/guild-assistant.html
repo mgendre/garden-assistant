@@ -64,6 +64,7 @@
             (click)="filterMechanism(row.mechanism)">
             {{ 'Plant.Mechanism.' + row.key | translate }}
           </span>
+          <button class="assistant-info-btn" (click)="openMechanismInfo(row.mechanism)">?</button>
           @if (row.satisfied) {
             <span class="assistant-provider-badge">{{ 'GuildAssistant.Via' | translate }} {{ row.providers.join(', ') }}</span>
           }
@@ -86,6 +87,7 @@
             (click)="filterRootDepth(row.depth)">
             {{ row.translationKey | translate }}
           </span>
+          <button class="assistant-info-btn" (click)="openRootDepthInfo(row.badgeInfoKey)">?</button>
           @if (row.satisfied) {
             <span class="assistant-provider-badge">{{ row.providers.join(', ') }}</span>
           }
