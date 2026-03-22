@@ -91,12 +91,12 @@ export class GuildAssistant {
   readonly isBalanced = computed(() => this.store.assistantGapCount() === 0);
 
   filterMechanism(mechanism: AssociationMechanism): void {
-    this.store.toggleMechanismFilter(mechanism);
+    this.store.mechanismFilter.set(mechanism);
     this.scrollToCatalog();
   }
 
   filterRootDepth(depth: RootDepth): void {
-    this.store.toggleRootDepthFilter(depth);
+    this.store.rootDepthFilter.set(depth);
     this.scrollToCatalog();
   }
 
