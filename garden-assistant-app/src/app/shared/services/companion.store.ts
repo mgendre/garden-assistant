@@ -6,6 +6,7 @@ import {
   CompanionRecommendationRequest,
   GuildDto,
   AssociationMechanism,
+  AssociationEffect,
   RootDepth,
   CreateGuildRequest,
   UpdateGuildRequest,
@@ -62,6 +63,14 @@ const MECHANISM_KEY_MAP: Record<number, string> = {
   [AssociationMechanism.Biofumigation]: 'Biofumigation',
   [AssociationMechanism.NursePlant]: 'NursePlant',
 };
+
+export const PRIORITY_MECHANISMS: AssociationMechanism[] = [
+  AssociationMechanism.NitrogenFixation,
+  AssociationMechanism.SoilCover,
+  AssociationMechanism.PollinatorAttraction,
+  AssociationMechanism.DynamicAccumulation,
+  AssociationMechanism.PredatorAttraction,
+];
 
 @Injectable({ providedIn: 'root' })
 export class CompanionStore {
@@ -293,6 +302,91 @@ export class CompanionStore {
       return keyA.localeCompare(keyB, 'fr');
     });
   });
+
+  readonly allGuildMechanisms = computed(() => {
+    const intrinsic = new Set(this.guildIntrinsicMechanisms());
+    for (const m of this.guildRelationalOnlyMechanisms()) {
+      intrinsic.add(m);
+    }
+    return intrinsic;
+  });
+
+  readonly missingPriorityMechanisms = computed(() => {
+    const covered = this.allGuildMechanisms();
+    return PRIORITY_MECHANISMS.filter(m => !covered.has(m));
+  });
+
+  readonly mechanismProviders = computed(() => {
+    const map = new Map<AssociationMechanism, string[]>();
+    const intrinsicByPlant = this.recommendations()?.intrinsicMechanismsByPlant ?? [];
+    for (const entry of intrinsicByPlant) {
+      if (!entry.plantId) { continue; }
+      const plant = this.plantStore.findById(entry.plantId);
+      if (!plant) { continue; }
+      for (const m of entry.mechanisms ?? []) {
+        if (!PRIORITY_MECHANISMS.includes(m)) { continue; }
+        const names = map.get(m) ?? [];
+        names.push(plant.name ?? '');
+        map.set(m, names);
+      }
+    }
+    return map;
+  });
+
+  readonly emptyRootLayers = computed(() => {
+    const groups = this.rootDepthGroups();
+    const empty: RootDepth[] = [];
+    if (!groups.has(RootDepth.Shallow)) { empty.push(RootDepth.Shallow); }
+    if (!groups.has(RootDepth.Medium)) { empty.push(RootDepth.Medium); }
+    if (!groups.has(RootDepth.Deep)) { empty.push(RootDepth.Deep); }
+    return empty;
+  });
+
+  readonly rootLayerProviders = computed(() => {
+    const map = new Map<RootDepth, string[]>();
+    for (const [depth, plants] of this.rootDepthGroups()) {
+      map.set(depth, plants.map(p => p.name ?? ''));
+    }
+    return map;
+  });
+
+  readonly familyDiversityWarnings = computed(() => {
+    const plants = this.selectedPlants();
+    if (plants.length < 3) { return []; }
+    const familyCounts = new Map<string, number>();
+    for (const p of plants) {
+      if (!p.family) { continue; }
+      familyCounts.set(p.family, (familyCounts.get(p.family) ?? 0) + 1);
+    }
+    const warnings: { family: string; count: number; total: number }[] = [];
+    for (const [family, count] of familyCounts) {
+      if (count >= 3 && count / plants.length > 0.4) {
+        warnings.push({ family, count, total: plants.length });
+      }
+    }
+    return warnings;
+  });
+
+  readonly harmfulAssociationPairs = computed(() => {
+    const associations = this.recommendations()?.selectedPlantAssociations ?? [];
+    const harmful = associations.filter(a => a.effect === AssociationEffect.Harmful);
+    const seen = new Set<string>();
+    const pairs: { plantA: string; plantB: string }[] = [];
+    for (const a of harmful) {
+      const key = [a.sourcePlantId, a.targetPlantId].sort().join('-');
+      if (seen.has(key)) { continue; }
+      seen.add(key);
+      pairs.push({
+        plantA: this.plantStore.findById(a.sourcePlantId)?.name ?? '',
+        plantB: this.plantStore.findById(a.targetPlantId)?.name ?? '',
+      });
+    }
+    return pairs;
+  });
+
+  readonly assistantGapCount = computed(() =>
+    this.missingPriorityMechanisms().length + this.emptyRootLayers().length
+  );
 
   constructor() {
     effect(() => {
