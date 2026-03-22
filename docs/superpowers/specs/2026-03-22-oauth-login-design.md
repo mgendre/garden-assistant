@@ -25,12 +25,12 @@ Add social login (Google, Discord) to the Garden Assistant using the OAuth Autho
 User
   Id: Guid (existing)
   Email: string? (existing → now nullable)
-  ConsentEmail: bool (new, default false)
+  ConsentEmail: bool (new, default true)
 ```
 
-- `Email` is null when user hasn't consented to store it
+- `ConsentEmail` defaults to true — email is stored on first login
+- User can opt out via profile toggle, which sets `ConsentEmail = false` and `Email = null`
 - `ConsentEmail` controls whether email is captured on next login
-- Toggling `ConsentEmail` off sets `Email` to null
 - Unique index on `Email` (when not null) to prevent race conditions during cross-provider linking
 
 ### ExternalLogin Entity (new)
@@ -51,10 +51,10 @@ ExternalLogin
 ### Migration
 
 - Make `User.Email` nullable
-- Add `User.ConsentEmail` column (bool, default false)
+- Add `User.ConsentEmail` column (bool, default true)
 - Add unique filtered index on `User.Email` (WHERE Email IS NOT NULL)
 - Create `external_logins` table with indexes
-- Existing seed user: set `ConsentEmail = true` to preserve its existing email
+- Existing seed user: `ConsentEmail = true` (the default), preserving its existing email
 - Update `GenerateAccessToken` to conditionally include email claim only when `User.Email` is not null
 
 ## Backend Architecture
@@ -224,8 +224,8 @@ No new controllers, services, or database changes needed.
 - `FindOrCreateUser_WhenNewProvider_ShouldCreateUserAndExternalLogin`
 - `FindOrCreateUser_WhenExistingExternalLogin_ShouldReturnExistingUser`
 - `FindOrCreateUser_WhenEmailMatchesExistingUser_ShouldLinkToExistingUser`
-- `FindOrCreateUser_WhenNoEmailConsent_ShouldCreateNewUser`
-- `FindOrCreateUser_WhenConsentEmail_ShouldUpdateEmail`
+- `FindOrCreateUser_WhenConsentEmail_ShouldStoreEmail`
+- `FindOrCreateUser_WhenNoEmailConsent_ShouldNotStoreEmail`
 
 **One-Time Code Service:**
 - `GenerateCode_ShouldReturnUniqueCode`
