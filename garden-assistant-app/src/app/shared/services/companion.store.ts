@@ -162,12 +162,20 @@ export class CompanionStore {
 
   readonly availableMechanisms = computed(() => {
     const all = Object.keys(MECHANISM_KEY_MAP).map(Number);
+    const missingSet = new Set(this.missingPriorityMechanisms());
     return all.sort((a, b) => {
+      const aMissing = missingSet.has(a) ? 0 : 1;
+      const bMissing = missingSet.has(b) ? 0 : 1;
+      if (aMissing !== bMissing) { return aMissing - bMissing; }
       const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
       const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
       return keyA.localeCompare(keyB, 'fr');
     });
   });
+
+  isMissingMechanism(mechanism: number): boolean {
+    return this.missingPriorityMechanisms().includes(mechanism);
+  }
 
   readonly filteredPlants = computed(() => {
     const query = this.searchQuery().toLowerCase();
