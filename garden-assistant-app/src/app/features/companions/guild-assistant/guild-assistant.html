@@ -65,13 +65,11 @@
           } @else {
             <span class="assistant-empty">○</span>
           }
-          <span class="assistant-row-label">{{ 'Plant.Mechanism.' + row.key | translate }}</span>
+          <button class="assistant-row-label assistant-row-label--clickable" (click)="filterMechanism(row.mechanism)">
+            {{ 'Plant.Mechanism.' + row.key | translate }}
+          </button>
           @if (row.satisfied) {
             <span class="assistant-provider-badge">{{ 'GuildAssistant.Via' | translate }} {{ row.providers.join(', ') }}</span>
-          } @else {
-            <button class="assistant-filter-chip" (click)="filterMechanism(row.mechanism)">
-              ↗ {{ 'GuildAssistant.Filter' | translate }}
-            </button>
           }
         </div>
         @if (row.highlighted) {
@@ -94,13 +92,11 @@
           } @else {
             <span class="assistant-empty">○</span>
           }
-          <span class="assistant-row-label" [translate]="row.translationKey"></span>
+          <button class="assistant-row-label assistant-row-label--clickable" (click)="filterRootDepth(row.depth)">
+            {{ row.translationKey | translate }}
+          </button>
           @if (row.satisfied) {
             <span class="assistant-provider-badge">{{ row.providers.join(', ') }}</span>
-          } @else {
-            <button class="assistant-filter-chip" (click)="filterRootDepth(row.depth)">
-              ↗ {{ 'GuildAssistant.Filter' | translate }}
-            </button>
           }
         </div>
         @if (row.highlighted) {

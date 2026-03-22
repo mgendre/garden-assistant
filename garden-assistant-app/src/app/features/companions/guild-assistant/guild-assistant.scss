@@ -154,6 +154,27 @@
   .assistant-row--highlighted & {
     font-weight: 600;
   }
+
+  &--clickable {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.75rem;
+    color: #5e35b1;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+
+    .assistant-row--highlighted & {
+      font-weight: 600;
+    }
+
+    &:hover {
+      text-decoration-style: solid;
+    }
+  }
 }
 
 .assistant-provider-badge {
@@ -164,24 +185,6 @@
   padding: 0.1rem 0.4rem;
   border-radius: 0.25rem;
   white-space: nowrap;
-}
-
-.assistant-filter-chip {
-  background: #ede7f6;
-  color: #5e35b1;
-  padding: 0.0625rem 0.5rem;
-  border-radius: 0.625rem;
-  font-size: 0.625rem;
-  cursor: pointer;
-  border: none;
-  font-weight: 600;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
-  min-height: 1.5rem;
-
-  &:hover {
-    opacity: 0.8;
-  }
 }
 
 .assistant-row-explanation {
@@ -209,12 +212,6 @@
   .assistant-row {
     padding: 0.5rem 0.375rem;
     min-height: 2.75rem;
-  }
-
-  .assistant-filter-chip {
-    min-height: 2.75rem;
-    padding: 0.375rem 0.75rem;
-    font-size: 0.6875rem;
   }
 
   .assistant-body {
