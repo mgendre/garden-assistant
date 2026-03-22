@@ -25,10 +25,10 @@ public class PlantsController(
 
     [HttpGet("{id:guid}/harvest-readiness")]
     [ProducesResponseType(typeof(HarvestReadinessDto), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> GetHarvestReadiness(Guid id)
     {
         var result = await harvestReadinessService.GetByPlantIdAsync(id);
-        return result is null ? NotFound() : Ok(result);
+        return result is null ? NoContent() : Ok(result);
     }
 }

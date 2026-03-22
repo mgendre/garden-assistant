@@ -53,12 +53,11 @@ export class PlantCard implements OnInit {
       return;
     }
     try {
-      const actions = await this.calendarService.getPlantActions(plantId);
+      const [actions, readiness] = await Promise.all([
+        this.calendarService.getPlantActions(plantId),
+        this.calendarService.getHarvestReadiness(plantId),
+      ]);
       this.plantActions.set(actions ?? []);
-    } catch {
-    }
-    try {
-      const readiness = await this.calendarService.getHarvestReadiness(plantId);
       this.harvestReadiness.set(readiness);
     } catch {
     }

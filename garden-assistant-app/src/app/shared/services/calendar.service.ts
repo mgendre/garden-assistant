@@ -22,13 +22,6 @@ export class CalendarService {
   }
 
   async getHarvestReadiness(plantId: string): Promise<HarvestReadinessDto | null> {
-    try {
-      return await this.plantsClient.getHarvestReadiness(plantId);
-    } catch (error) {
-      if (error instanceof SwaggerException && error.status === 404) {
-        return null;
-      }
-      throw error;
-    }
+    return await this.plantsClient.getHarvestReadiness(plantId) ?? null;
   }
 }
