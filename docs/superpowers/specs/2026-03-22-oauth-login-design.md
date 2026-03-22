@@ -12,7 +12,7 @@ Add social login (Google, Discord) to the Garden Assistant using the OAuth Autho
 - **OAuth flow:** Backend-driven Authorization Code flow (ASP.NET Core OAuth middleware + custom JWT bridge)
 - **Provider extensibility:** ASP.NET middleware schemes — adding a provider = NuGet package + config + one `Add*()` call
 - **Auto-registration:** First login with a provider creates an account automatically
-- **Email storage:** Opt-in via user profile. Default is no email stored (privacy-first)
+- **Email storage:** Consent checkbox on first login (checked by default). Can be changed later in profile
 - **Cross-provider linking:** Only when user has consented to store email — accounts with same email merge
 - **Dev token flow:** Kept as-is, restricted to development environment only
 - **Deployment:** Single-instance assumed (no horizontal scaling requirement)
@@ -95,7 +95,7 @@ Add `[Authorize]` at class level. Add `[AllowAnonymous]` explicitly on each publ
 |---|---|---|---|
 | GET | `/api/auth/oauth/{provider}/login` | AllowAnonymous | Challenge → redirect to provider |
 | GET | `/api/auth/oauth/{provider}/callback` | AllowAnonymous | Middleware exchanges code, our code finds/creates user, redirects to frontend with one-time code |
-| POST | `/api/auth/complete` | AllowAnonymous | Frontend sends one-time code, backend issues JWT + refresh token |
+| POST | `/api/auth/complete` | AllowAnonymous | Frontend sends one-time code + email consent (for new users), backend issues JWT + refresh token |
 | GET | `/api/auth/token` | AllowAnonymous | Dev-only: returns tokens for seed user (existing, restricted to `IsDevelopment()`) |
 | POST | `/api/auth/refresh` | AllowAnonymous | Refresh token rotation (existing) |
 
@@ -107,14 +107,15 @@ Add `[Authorize]` at class level. Add `[AllowAnonymous]` explicitly on each publ
 4. **ASP.NET middleware** exchanges code for Google tokens, populates `ClaimsPrincipal` with user info (sub, email, name)
 5. **Callback handler** extracts provider user ID and email from claims
 6. **Lookup** `ExternalLogin` by (Provider="Google", ProviderUserId=sub)
-   - **Found** → load existing user
-   - **Not found + user has ConsentEmail + email matches existing user** → link to existing user (create ExternalLogin)
-   - **Not found + no match** → create new User + ExternalLogin
-7. If `user.ConsentEmail == true`, update `user.Email` from provider claims
-8. **Generate one-time code** (random, stored in `IMemoryCache`, expires in 5 minutes)
-9. **Redirect** to `{FrontendCallbackUrl}/auth/callback?code=xxx&isNew={true|false}`
-10. **Frontend** calls `POST /api/auth/complete` with `{ code }`
-11. **Backend** validates one-time code, issues JWT access token + refresh token
+   - **Found** → existing user, mark `isNew = false`
+   - **Not found** → mark `isNew = true`
+7. **Generate one-time code** (random, stored in `IMemoryCache`, expires in 5 minutes). Store alongside it: provider, provider user ID, provider email, and `isNew` flag
+8. **Redirect** to `{FrontendCallbackUrl}/auth/callback?code=xxx&isNew={true|false}`
+9. **If `isNew = true`**: frontend shows email consent screen with pre-checked checkbox, user clicks "Continue"
+10. **Frontend** calls `POST /api/auth/complete` with `{ code, storeEmail }` (`storeEmail` only sent for new users; ignored for existing users)
+11. **Backend** validates one-time code, then:
+    - **Existing user** → issue JWT + refresh token
+    - **New user** → create User with `ConsentEmail = storeEmail`. If `storeEmail == true`, set `Email` from provider claims; otherwise `Email = null`. If email matches existing user, link to that user instead of creating a new one. Create ExternalLogin. Issue JWT + refresh token
 
 ### One-Time Code Storage
 
@@ -139,9 +140,19 @@ Move the existing `RefreshRequest` record from `AuthController.cs` to its own fi
 ### New Route: `/auth/callback`
 
 - Receives `code` and `isNew` query params from backend redirect
-- Calls `POST /api/auth/complete` with the one-time code
+- If `isNew=true`: shows email consent screen with pre-checked checkbox and "Continue" button
+- If `isNew=false`: immediately calls complete endpoint
+- Calls `POST /api/auth/complete` with `{ code, storeEmail }` (`storeEmail` reflects checkbox state for new users, `true` for existing users)
 - On success: stores tokens in auth service, navigates to `/companions`
 - On error: navigates to login page with error message
+
+### Email Consent Screen (new users only)
+
+- Displayed within the `/auth/callback` route for new users
+- Shows the provider email address (fetched from a lightweight `GET /api/auth/pending-email?code=xxx` endpoint, or passed as a query param)
+- Pre-checked checkbox: "Store my email to enable notifications and link accounts across providers"
+- Brief explanation below: unchecking means each provider creates a separate account and no notifications
+- "Continue" button submits the choice
 
 ### Login Page (`/login`)
 
@@ -161,7 +172,7 @@ Move the existing `RefreshRequest` record from `AuthController.cs` to its own fi
 - `initialize()` in dev mode: keeps current auto-token behavior, then `startupService.loadAll()` runs normally
 - `initialize()` in prod mode: if no token, does nothing — guard redirects to `/login`
 - `startupService.loadAll()` must be deferred in prod mode: only called after successful login (from the auth callback component or after a successful token refresh)
-- New method: `completeOAuthLogin(code: string): Promise<void>` — calls `POST /api/auth/complete`, stores tokens, then calls `startupService.loadAll()`
+- New method: `completeOAuthLogin(code: string, storeEmail: boolean): Promise<void>` — calls `POST /api/auth/complete`, stores tokens, then calls `startupService.loadAll()`
 - Token storage stays in-memory (unchanged)
 
 ### Profile Page — Email Consent Toggle
