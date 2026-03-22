@@ -154,27 +154,6 @@
   .assistant-row--highlighted & {
     font-weight: 600;
   }
-
-  &--clickable {
-    background: none;
-    border: none;
-    padding: 0;
-    font-size: 0.75rem;
-    color: #5e35b1;
-    cursor: pointer;
-    text-align: left;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-underline-offset: 2px;
-
-    .assistant-row--highlighted & {
-      font-weight: 600;
-    }
-
-    &:hover {
-      text-decoration-style: solid;
-    }
-  }
 }
 
 .assistant-provider-badge {

@@ -65,9 +65,13 @@
           } @else {
             <span class="assistant-empty">○</span>
           }
-          <button class="assistant-row-label assistant-row-label--clickable" (click)="filterMechanism(row.mechanism)">
+          <span
+            class="mechanism-chip"
+            [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
+            [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
+            (click)="filterMechanism(row.mechanism)">
             {{ 'Plant.Mechanism.' + row.key | translate }}
-          </button>
+          </span>
           @if (row.satisfied) {
             <span class="assistant-provider-badge">{{ 'GuildAssistant.Via' | translate }} {{ row.providers.join(', ') }}</span>
           }
@@ -92,9 +96,13 @@
           } @else {
             <span class="assistant-empty">○</span>
           }
-          <button class="assistant-row-label assistant-row-label--clickable" (click)="filterRootDepth(row.depth)">
+          <span
+            class="mechanism-chip"
+            [class.mechanism-blue]="store.rootDepthFilter() === row.depth"
+            [class.filter-inactive]="store.rootDepthFilter() !== row.depth"
+            (click)="filterRootDepth(row.depth)">
             {{ row.translationKey | translate }}
-          </button>
+          </span>
           @if (row.satisfied) {
             <span class="assistant-provider-badge">{{ row.providers.join(', ') }}</span>
           }
