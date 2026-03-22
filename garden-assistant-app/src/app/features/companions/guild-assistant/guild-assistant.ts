@@ -82,7 +82,7 @@ export class GuildAssistant {
   openPlantDetail(plant: PlantDto): void {
     this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
       data: { plant },
-      maxWidth: '500px',
+      maxWidth: '600px',
       width: '90vw',
     });
   }

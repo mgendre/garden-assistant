@@ -140,7 +140,8 @@
                   [showHeader]="first"
                   [plantName]="entry.name"
                   [oddPlant]="idx % 2 === 1"
-                  (harvestReadinessClick)="openHarvestReadiness(entry.plantId, entry.name)">
+                  (harvestReadinessClick)="openHarvestReadiness(entry.plantId, entry.name)"
+                  (plantNameClick)="openPlantDetail(entry.plantId)">
                 </app-plant-calendar-gantt>
               </div>
             }

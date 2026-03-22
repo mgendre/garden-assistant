@@ -68,7 +68,7 @@ export class GuildPanel {
     if (plant) {
       this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
         data: { plant },
-        maxWidth: '500px',
+        maxWidth: '600px',
         width: '90vw',
       });
     }
