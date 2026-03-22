@@ -3,8 +3,10 @@ import { NgClass } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
-import { RootDepth } from '../../../api/garden-assistant-api';
+import { MatDialog } from '@angular/material/dialog';
+import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../../shared/services/companion.store';
+import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 
 @Component({
     selector: 'app-root-stratification',
@@ -16,6 +18,7 @@ import { CompanionStore } from '../../../shared/services/companion.store';
 export class RootStratification {
     protected readonly store = inject(CompanionStore);
     protected readonly faFilter = faFilter;
+    private readonly dialog = inject(MatDialog);
     private readonly COMPETITION_THRESHOLD = 3;
 
     protected readonly layers = [
@@ -23,6 +26,14 @@ export class RootStratification {
         { depth: RootDepth.Medium,  labelKey: 'Stratification.MediumLabel',  rangeKey: 'Stratification.MediumRange',  cssClass: 'soil-band-medium' },
         { depth: RootDepth.Deep,    labelKey: 'Stratification.DeepLabel',    rangeKey: 'Stratification.DeepRange',    cssClass: 'soil-band-deep' },
     ];
+
+    openPlantDetail(plant: PlantDto): void {
+        this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
+            data: { plant },
+            maxWidth: '600px',
+            width: '90vw',
+        });
+    }
 
     hasCompetitionRisk(): boolean {
         for (const [, plants] of this.store.rootDepthGroups()) {

@@ -11,7 +11,7 @@
                     <span class="soil-empty">{{ 'Stratification.EmptyBand' | translate }}</span>
                 }
                 @for (plant of plants; track plant.id) {
-                    <span class="soil-plant-chip">{{ plant.name }}</span>
+                    <span class="soil-plant-chip soil-plant-chip--clickable" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
                 }
             </div>
             <button class="soil-filter-btn"
