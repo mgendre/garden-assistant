@@ -308,17 +308,30 @@ export class CompanionStore {
   });
 
   readonly mechanismProviders = computed(() => {
-    const map = new Map<AssociationMechanism, string[]>();
-    const intrinsicByPlant = this.recommendations()?.intrinsicMechanismsByPlant ?? [];
-    for (const entry of intrinsicByPlant) {
+    const map = new Map<AssociationMechanism, PlantDto[]>();
+    const seen = new Map<AssociationMechanism, Set<string>>();
+    const addProvider = (plantId: string, mechanism: AssociationMechanism) => {
+      if (!PRIORITY_MECHANISMS.includes(mechanism)) { return; }
+      const seenIds = seen.get(mechanism) ?? new Set();
+      if (seenIds.has(plantId)) { return; }
+      seenIds.add(plantId);
+      seen.set(mechanism, seenIds);
+      const plant = this.plantStore.findById(plantId);
+      if (!plant) { return; }
+      const plants = map.get(mechanism) ?? [];
+      plants.push(plant);
+      map.set(mechanism, plants);
+    };
+    for (const entry of this.recommendations()?.intrinsicMechanismsByPlant ?? []) {
       if (!entry.plantId) { continue; }
-      const plant = this.plantStore.findById(entry.plantId);
-      if (!plant) { continue; }
       for (const m of entry.mechanisms ?? []) {
-        if (!PRIORITY_MECHANISMS.includes(m)) { continue; }
-        const names = map.get(m) ?? [];
-        names.push(plant.name ?? '');
-        map.set(m, names);
+        addProvider(entry.plantId, m);
+      }
+    }
+    for (const entry of this.recommendations()?.selectedPlantsMechanisms ?? []) {
+      if (!entry.plantId) { continue; }
+      for (const m of entry.mechanisms ?? []) {
+        addProvider(entry.plantId, m);
       }
     }
     return map;
@@ -331,14 +344,6 @@ export class CompanionStore {
     if (!groups.has(RootDepth.Medium)) { empty.push(RootDepth.Medium); }
     if (!groups.has(RootDepth.Deep)) { empty.push(RootDepth.Deep); }
     return empty;
-  });
-
-  readonly rootLayerProviders = computed(() => {
-    const map = new Map<RootDepth, string[]>();
-    for (const [depth, plants] of this.rootDepthGroups()) {
-      map.set(depth, plants.map(p => p.name ?? ''));
-    }
-    return map;
   });
 
   readonly familyDiversityWarnings = computed(() => {

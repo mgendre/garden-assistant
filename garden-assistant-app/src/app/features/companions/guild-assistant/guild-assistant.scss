@@ -123,6 +123,24 @@
   }
 }
 
+.guild-assistant-wrap {
+  border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+
+  .collapsible-trigger {
+    padding: 0;
+  }
+
+  .collapsible-body {
+    padding: 0;
+  }
+}
+
+.assistant-provider-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
 .assistant-provider-badge {
   font-size: 0.625rem;
   font-weight: 600;
@@ -131,6 +149,11 @@
   padding: 0.1rem 0.4rem;
   border-radius: 0.25rem;
   white-space: nowrap;
+  cursor: pointer;
+
+  &:hover {
+    background: #c8e6c9;
+  }
 }
 
 .assistant-balanced-message {

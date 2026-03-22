@@ -2,15 +2,16 @@ import { Component, inject, computed } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore, PRIORITY_MECHANISMS } from '../../../shared/services/companion.store';
-import { AssociationMechanism, RootDepth } from '../../../api/garden-assistant-api';
+import { AssociationMechanism, PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
+import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 
 interface MechanismRow {
   mechanism: AssociationMechanism;
   key: string;
   satisfied: boolean;
-  providers: string[];
+  providers: PlantDto[];
 }
 
 interface RootDepthRow {
@@ -18,7 +19,7 @@ interface RootDepthRow {
   translationKey: string;
   badgeInfoKey: string;
   satisfied: boolean;
-  providers: string[];
+  providers: PlantDto[];
 }
 
 const ROOT_DEPTH_KEYS: Record<RootDepth, string> = {
@@ -61,13 +62,13 @@ export class GuildAssistant {
 
   readonly rootDepthRows = computed<RootDepthRow[]>(() => {
     const empty = new Set(this.store.emptyRootLayers());
-    const providers = this.store.rootLayerProviders();
+    const groups = this.store.rootDepthGroups();
     return [RootDepth.Shallow, RootDepth.Medium, RootDepth.Deep].map(depth => ({
       depth,
       translationKey: ROOT_DEPTH_KEYS[depth],
       badgeInfoKey: ROOT_DEPTH_BADGE_INFO_KEYS[depth],
       satisfied: !empty.has(depth),
-      providers: providers.get(depth) ?? [],
+      providers: groups.get(depth) ?? [],
     }));
   });
 
@@ -81,6 +82,14 @@ export class GuildAssistant {
   filterRootDepth(depth: RootDepth): void {
     this.store.mechanismFilter.set(null);
     this.store.rootDepthFilter.set(depth);
+  }
+
+  openPlantDetail(plant: PlantDto): void {
+    this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
+      data: { plant },
+      maxWidth: '500px',
+      width: '90vw',
+    });
   }
 
   openMechanismInfo(mechanism: AssociationMechanism): void {
@@ -105,5 +114,4 @@ export class GuildAssistant {
       maxWidth: '400px',
     });
   }
-
 }
