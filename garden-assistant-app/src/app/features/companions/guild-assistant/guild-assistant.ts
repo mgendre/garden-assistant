@@ -51,16 +51,12 @@ export class GuildAssistant {
   readonly mechanismRows = computed<MechanismRow[]>(() => {
     const covered = this.store.allGuildMechanisms();
     const providers = this.store.mechanismProviders();
-    const rows = PRIORITY_MECHANISMS.map(m => ({
+    return PRIORITY_MECHANISMS.map(m => ({
       mechanism: m,
       key: this.store.getMechanismKey(m),
       satisfied: covered.has(m),
       providers: providers.get(m) ?? [],
     }));
-    return rows.sort((a, b) => {
-      if (a.satisfied !== b.satisfied) { return a.satisfied ? 1 : -1; }
-      return 0;
-    });
   });
 
   readonly rootDepthRows = computed<RootDepthRow[]>(() => {
