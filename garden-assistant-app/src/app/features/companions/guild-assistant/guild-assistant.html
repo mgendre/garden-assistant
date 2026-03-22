@@ -67,7 +67,7 @@
           }
           <span class="assistant-row-label">{{ 'Plant.Mechanism.' + row.key | translate }}</span>
           @if (row.satisfied) {
-            <span class="assistant-row-provider">{{ 'GuildAssistant.Via' | translate }} {{ row.providers.join(', ') }}</span>
+            <span class="assistant-provider-badge">{{ 'GuildAssistant.Via' | translate }} {{ row.providers.join(', ') }}</span>
           } @else {
             <button class="assistant-filter-chip" (click)="filterMechanism(row.mechanism)">
               ↗ {{ 'GuildAssistant.Filter' | translate }}
@@ -96,7 +96,7 @@
           }
           <span class="assistant-row-label" [translate]="row.translationKey"></span>
           @if (row.satisfied) {
-            <span class="assistant-row-provider">{{ row.providers.join(', ') }}</span>
+            <span class="assistant-provider-badge">{{ row.providers.join(', ') }}</span>
           } @else {
             <button class="assistant-filter-chip" (click)="filterRootDepth(row.depth)">
               ↗ {{ 'GuildAssistant.Filter' | translate }}

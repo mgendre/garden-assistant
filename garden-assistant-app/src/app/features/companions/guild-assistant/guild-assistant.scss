@@ -156,10 +156,14 @@
   }
 }
 
-.assistant-row-provider {
-  font-size: 0.6875rem;
-  color: #888;
-  text-align: right;
+.assistant-provider-badge {
+  font-size: 0.625rem;
+  font-weight: 600;
+  color: #2e7d32;
+  background: #e8f5e9;
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.25rem;
+  white-space: nowrap;
 }
 
 .assistant-filter-chip {
