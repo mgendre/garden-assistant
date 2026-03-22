@@ -1,20 +1,16 @@
 <app-collapsible [initialExpanded]="initialExpanded()">
-  <div collapsible-header class="assistant-header">
-    <div class="assistant-header-left">
-      @if (isBalanced()) {
-        <span class="assistant-icon">✓</span>
-      } @else {
-        <span class="assistant-icon">🌱</span>
-      }
-      <span class="assistant-title" [translate]="'GuildAssistant.Title'"></span>
-    </div>
-    <div class="assistant-header-right">
-      @if (isBalanced()) {
-        <span class="assistant-gap-count assistant-gap-count--balanced" [translate]="'GuildAssistant.Balanced'"></span>
-      } @else {
-        <span class="assistant-gap-count">{{ 'GuildAssistant.GapCount' | translate:{ count: store.assistantGapCount() } }}</span>
-      }
-    </div>
+  <div collapsible-header class="guild-container-header guild-collapsible-header">
+    @if (isBalanced()) {
+      <span>✓</span>
+    } @else {
+      <span>🌱</span>
+    }
+    <span [translate]="'GuildAssistant.Title'"></span>
+    @if (isBalanced()) {
+      <span class="assistant-gap-count assistant-gap-count--balanced" [translate]="'GuildAssistant.Balanced'"></span>
+    } @else {
+      <span class="assistant-gap-count">{{ 'GuildAssistant.GapCount' | translate:{ count: store.assistantGapCount() } }}</span>
+    }
   </div>
 
   <div collapsible-body>
