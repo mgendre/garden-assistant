@@ -109,7 +109,17 @@
     }
 
     @if (store.selectedPlants().length >= 2) {
-      <app-guild-assistant></app-guild-assistant>
+      <div class="guild-assistant">
+        <app-collapsible [initialExpanded]="true">
+          <div collapsible-header class="guild-container-header guild-collapsible-header">
+            <span>🌱</span>
+            <span [translate]="'GuildAssistant.Title'"></span>
+          </div>
+          <div collapsible-body>
+            <app-guild-assistant></app-guild-assistant>
+          </div>
+        </app-collapsible>
+      </div>
     }
 
     <!-- Calendar panel -->

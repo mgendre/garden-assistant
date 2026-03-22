@@ -1,15 +1,3 @@
-.assistant-gap-count {
-  font-size: 0.6875rem;
-  color: #5a7a5a;
-  background: #e0ede0;
-  padding: 0.125rem 0.5rem;
-  border-radius: 0.625rem;
-
-  &--balanced {
-    color: #2e7d32;
-  }
-}
-
 .assistant-body {
   padding: 0.5rem 1.25rem;
 }
@@ -120,18 +108,6 @@
     background: var(--color-parchment);
     border-color: rgba(45, 106, 79, 0.4);
     color: var(--color-text);
-  }
-}
-
-.guild-assistant-wrap {
-  border-bottom: 1px solid rgba(45, 106, 79, 0.1);
-
-  .collapsible-trigger {
-    padding: 0;
-  }
-
-  .collapsible-body {
-    padding: 0;
   }
 }
 

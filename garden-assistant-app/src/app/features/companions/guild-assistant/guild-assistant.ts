@@ -3,7 +3,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore, PRIORITY_MECHANISMS } from '../../../shared/services/companion.store';
 import { AssociationMechanism, PlantDto, RootDepth } from '../../../api/garden-assistant-api';
-import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 
@@ -37,17 +36,13 @@ const ROOT_DEPTH_BADGE_INFO_KEYS: Record<RootDepth, string> = {
 @Component({
   selector: 'app-guild-assistant',
   standalone: true,
-  imports: [TranslateModule, Collapsible],
+  imports: [TranslateModule],
   templateUrl: './guild-assistant.html',
   styleUrl: './guild-assistant.scss'
 })
 export class GuildAssistant {
   protected readonly store = inject(CompanionStore);
   private readonly dialog = inject(MatDialog);
-
-  readonly initialExpanded = computed(() =>
-    window.innerWidth > 640 || this.store.selectedPlants().length < 3
-  );
 
   readonly mechanismRows = computed<MechanismRow[]>(() => {
     const covered = this.store.allGuildMechanisms();

@@ -1,105 +1,85 @@
-<div class="guild-assistant-wrap">
-  <app-collapsible [initialExpanded]="initialExpanded()">
-    <div collapsible-header class="guild-container-header guild-collapsible-header">
-      @if (isBalanced()) {
-        <span>✓</span>
-      } @else {
-        <span>🌱</span>
-      }
-      <span [translate]="'GuildAssistant.Title'"></span>
-      @if (isBalanced()) {
-        <span class="assistant-gap-count assistant-gap-count--balanced" [translate]="'GuildAssistant.Balanced'"></span>
-      } @else {
-        <span class="assistant-gap-count">{{ 'GuildAssistant.GapCount' | translate:{ count: store.assistantGapCount() } }}</span>
-      }
-    </div>
-
-    <div collapsible-body>
-      <div class="assistant-body">
-        @if (store.harmfulAssociationPairs().length) {
-          <div class="assistant-warning assistant-warning--harmful">
-            <div class="assistant-warning-header">
-              <span>⚠️</span>
-              <strong>{{ 'GuildAssistant.HarmfulCount' | translate:{ count: store.harmfulAssociationPairs().length } }}</strong>
-            </div>
-            <div class="assistant-warning-body">
-              @for (pair of store.harmfulAssociationPairs(); track $index) {
-                <span class="assistant-conflict-pair">{{ pair.plantA }} ↔ {{ pair.plantB }}</span>
-              }
-            </div>
-          </div>
-        }
-
-        @for (warning of store.familyDiversityWarnings(); track warning.family) {
-          <div class="assistant-warning assistant-warning--family">
-            <div class="assistant-warning-header">
-              <span>⚠️</span>
-              <strong [translate]="'GuildAssistant.FamilyDiversityTitle'"></strong>
-            </div>
-            <div class="assistant-warning-body">
-              <span>{{ 'GuildAssistant.FamilyDiversityMessage' | translate:{ count: warning.count, total: warning.total, family: warning.family } }}</span>
-            </div>
-          </div>
-        }
-
-        <div class="assistant-section-header" [translate]="'GuildAssistant.SectionMechanisms'"></div>
-
-        @for (row of mechanismRows(); track row.mechanism) {
-          <div class="assistant-row" [class.assistant-row--satisfied]="row.satisfied">
-            @if (row.satisfied) {
-              <span class="assistant-check">✓</span>
-            } @else {
-              <span class="assistant-empty">○</span>
-            }
-            <span
-              class="mechanism-chip"
-              [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
-              [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
-              (click)="filterMechanism(row.mechanism)">
-              {{ 'Plant.Mechanism.' + row.key | translate }}
-            </span>
-            <button class="assistant-info-btn" (click)="openMechanismInfo(row.mechanism)">?</button>
-            @if (row.satisfied) {
-              <div class="assistant-provider-badges">
-                @for (plant of row.providers; track plant.id) {
-                  <span class="assistant-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
-                }
-              </div>
-            }
-          </div>
-        }
-
-        <div class="assistant-section-header assistant-section-header--roots" [translate]="'GuildAssistant.SectionRootDepth'"></div>
-
-        @for (row of rootDepthRows(); track row.depth) {
-          <div class="assistant-row" [class.assistant-row--satisfied]="row.satisfied">
-            @if (row.satisfied) {
-              <span class="assistant-check">✓</span>
-            } @else {
-              <span class="assistant-empty">○</span>
-            }
-            <span
-              class="mechanism-chip"
-              [class.mechanism-blue]="store.rootDepthFilter() === row.depth"
-              [class.filter-inactive]="store.rootDepthFilter() !== row.depth"
-              (click)="filterRootDepth(row.depth)">
-              {{ row.translationKey | translate }}
-            </span>
-            <button class="assistant-info-btn" (click)="openRootDepthInfo(row.badgeInfoKey)">?</button>
-            @if (row.satisfied) {
-              <div class="assistant-provider-badges">
-                @for (plant of row.providers; track plant.id) {
-                  <span class="assistant-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
-                }
-              </div>
-            }
-          </div>
-        }
-
-        @if (isBalanced()) {
-          <div class="assistant-balanced-message" [translate]="'GuildAssistant.BalancedMessage'"></div>
+<div class="assistant-body">
+  @if (store.harmfulAssociationPairs().length) {
+    <div class="assistant-warning assistant-warning--harmful">
+      <div class="assistant-warning-header">
+        <span>⚠️</span>
+        <strong>{{ 'GuildAssistant.HarmfulCount' | translate:{ count: store.harmfulAssociationPairs().length } }}</strong>
+      </div>
+      <div class="assistant-warning-body">
+        @for (pair of store.harmfulAssociationPairs(); track $index) {
+          <span class="assistant-conflict-pair">{{ pair.plantA }} ↔ {{ pair.plantB }}</span>
         }
       </div>
     </div>
-  </app-collapsible>
+  }
+
+  @for (warning of store.familyDiversityWarnings(); track warning.family) {
+    <div class="assistant-warning assistant-warning--family">
+      <div class="assistant-warning-header">
+        <span>⚠️</span>
+        <strong [translate]="'GuildAssistant.FamilyDiversityTitle'"></strong>
+      </div>
+      <div class="assistant-warning-body">
+        <span>{{ 'GuildAssistant.FamilyDiversityMessage' | translate:{ count: warning.count, total: warning.total, family: warning.family } }}</span>
+      </div>
+    </div>
+  }
+
+  <div class="assistant-section-header" [translate]="'GuildAssistant.SectionMechanisms'"></div>
+
+  @for (row of mechanismRows(); track row.mechanism) {
+    <div class="assistant-row" [class.assistant-row--satisfied]="row.satisfied">
+      @if (row.satisfied) {
+        <span class="assistant-check">✓</span>
+      } @else {
+        <span class="assistant-empty">○</span>
+      }
+      <span
+        class="mechanism-chip"
+        [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
+        [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
+        (click)="filterMechanism(row.mechanism)">
+        {{ 'Plant.Mechanism.' + row.key | translate }}
+      </span>
+      <button class="assistant-info-btn" (click)="openMechanismInfo(row.mechanism)">?</button>
+      @if (row.satisfied) {
+        <div class="assistant-provider-badges">
+          @for (plant of row.providers; track plant.id) {
+            <span class="assistant-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
+          }
+        </div>
+      }
+    </div>
+  }
+
+  <div class="assistant-section-header assistant-section-header--roots" [translate]="'GuildAssistant.SectionRootDepth'"></div>
+
+  @for (row of rootDepthRows(); track row.depth) {
+    <div class="assistant-row" [class.assistant-row--satisfied]="row.satisfied">
+      @if (row.satisfied) {
+        <span class="assistant-check">✓</span>
+      } @else {
+        <span class="assistant-empty">○</span>
+      }
+      <span
+        class="mechanism-chip"
+        [class.mechanism-blue]="store.rootDepthFilter() === row.depth"
+        [class.filter-inactive]="store.rootDepthFilter() !== row.depth"
+        (click)="filterRootDepth(row.depth)">
+        {{ row.translationKey | translate }}
+      </span>
+      <button class="assistant-info-btn" (click)="openRootDepthInfo(row.badgeInfoKey)">?</button>
+      @if (row.satisfied) {
+        <div class="assistant-provider-badges">
+          @for (plant of row.providers; track plant.id) {
+            <span class="assistant-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
+          }
+        </div>
+      }
+    </div>
+  }
+
+  @if (isBalanced()) {
+    <div class="assistant-balanced-message" [translate]="'GuildAssistant.BalancedMessage'"></div>
+  }
 </div>
