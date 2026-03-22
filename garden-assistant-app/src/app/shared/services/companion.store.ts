@@ -161,17 +161,8 @@ export class CompanionStore {
   });
 
   readonly availableMechanisms = computed(() => {
-    const mechanisms = new Set<number>();
-    for (const plant of this.plantStore.allPlants()) {
-      for (const m of plant.intrinsicMechanisms ?? []) {
-        mechanisms.add(m);
-      }
-    }
-    for (const [, entry] of this.catalogAssociationMechanisms()) {
-      for (const m of entry.beneficial) { mechanisms.add(m); }
-      for (const m of entry.harmful) { mechanisms.add(m); }
-    }
-    return [...mechanisms].sort((a, b) => {
+    const all = Object.keys(MECHANISM_KEY_MAP).map(Number);
+    return all.sort((a, b) => {
       const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
       const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
       return keyA.localeCompare(keyB, 'fr');
