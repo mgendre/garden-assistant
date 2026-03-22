@@ -44,6 +44,10 @@ export class GuildAssistant {
   readonly helpOpen = signal(false);
   protected readonly helpChips = HELP_MECHANISM_CHIPS;
 
+  readonly initialExpanded = computed(() =>
+    window.innerWidth > 640 || this.store.selectedPlants().length < 3
+  );
+
   readonly mechanismRows = computed<MechanismRow[]>(() => {
     const covered = this.store.allGuildMechanisms();
     const providers = this.store.mechanismProviders();
@@ -111,7 +115,7 @@ export class GuildAssistant {
   }
 
   private scrollToCatalog(): void {
-    const el = document.querySelector('.plant-catalogue');
+    const el = document.querySelector('app-plant-catalogue');
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
