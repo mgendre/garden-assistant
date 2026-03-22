@@ -44,8 +44,8 @@
     @for (m of store.availableMechanisms(); track m) {
       <button
         class="mechanism-chip"
-        [class.mechanism-blue]="store.mechanismFilter() === m || (store.mechanismFilter() !== m && store.isMissingMechanism(m))"
-        [class.filter-inactive]="store.mechanismFilter() !== m && !store.isMissingMechanism(m)"
+        [class.mechanism-blue]="store.mechanismFilter() === m"
+        [class.filter-inactive]="store.mechanismFilter() !== m"
         (click)="store.toggleMechanismFilter(m)">
         {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
       </button>

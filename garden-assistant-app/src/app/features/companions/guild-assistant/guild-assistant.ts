@@ -52,7 +52,7 @@ export class GuildAssistant {
     const covered = this.store.allGuildMechanisms();
     const providers = this.store.mechanismProviders();
     let firstMissing = true;
-    return PRIORITY_MECHANISMS.map(m => {
+    const rows = PRIORITY_MECHANISMS.map(m => {
       const satisfied = covered.has(m);
       let highlighted = false;
       if (!satisfied && firstMissing) {
@@ -66,6 +66,11 @@ export class GuildAssistant {
         providers: providers.get(m) ?? [],
         highlighted,
       };
+    });
+    return rows.sort((a, b) => {
+      if (a.highlighted !== b.highlighted) { return a.highlighted ? -1 : 1; }
+      if (a.satisfied !== b.satisfied) { return a.satisfied ? 1 : -1; }
+      return 0;
     });
   });
 
