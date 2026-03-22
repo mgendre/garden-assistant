@@ -46,6 +46,10 @@
     <!-- Plant detail panel -->
     <app-plant-detail-panel></app-plant-detail-panel>
 
+    @if (store.selectedPlants().length >= 1) {
+      <app-guild-assistant></app-guild-assistant>
+    }
+
     <!-- Mechanisms section -->
     @if (store.guildIntrinsicMechanisms().length || store.guildRelationalOnlyMechanisms().length) {
       <div class="guild-mechanisms">

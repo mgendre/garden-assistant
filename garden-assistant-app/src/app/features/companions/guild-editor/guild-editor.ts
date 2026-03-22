@@ -15,6 +15,7 @@ import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plan
 import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../../shared/ui/harvest-readiness/harvest-readiness-dialog';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { RootStratification } from '../root-stratification/root-stratification';
+import { GuildAssistant } from '../guild-assistant/guild-assistant';
 
 interface PlantCalendarEntry {
   plantId: string;
@@ -27,7 +28,7 @@ interface PlantCalendarEntry {
 @Component({
   selector: 'app-guild-editor',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, RootStratification, PlantCalendarGantt],
+  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, RootStratification, PlantCalendarGantt, GuildAssistant],
   templateUrl: './guild-editor.html',
   styleUrl: './guild-editor.scss'
 })
