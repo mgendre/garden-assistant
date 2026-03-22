@@ -257,6 +257,26 @@
 
 ---
 
+## E15 — Assistant de creation de guilde
+
+> Guider le jardinier pas a pas dans la composition d'une guilde equilibree : analyse des lacunes (mecanismes manquants, couches racinaires vides, conflits), texte educatif, et filtres cliquables pour trouver rapidement les plantes complementaires.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-103](epics/E15-assistant-creation-guilde/US-103-analyse-lacunes-mecanismes.md) | Analyse des lacunes de mecanismes dans la guilde | Indispensable | 5 | A faire |
+| [US-104](epics/E15-assistant-creation-guilde/US-104-lacunes-stratification-racinaire.md) | Lacunes de stratification racinaire dans l'assistant | Indispensable | 3 | A faire |
+| [US-105](epics/E15-assistant-creation-guilde/US-105-texte-educatif-mecanismes-cles.md) | Texte educatif sur les mecanismes cles d'une bonne guilde | Important | 2 | A faire |
+| [US-106](epics/E15-assistant-creation-guilde/US-106-panneau-assistant-guilde.md) | Panneau assistant dans l'editeur de guilde | Indispensable | 3 | A faire |
+| [US-107](epics/E15-assistant-creation-guilde/US-107-alerte-associations-nefastes-assistant.md) | Alerte associations nefastes dans l'assistant | Important (MVP) | 2 | A faire |
+| [US-108](epics/E15-assistant-creation-guilde/US-108-indicateur-sante-guilde.md) | Indicateur de sante de la guilde | Optionnel | 2 | A faire |
+| [US-109](epics/E15-assistant-creation-guilde/US-109-alerte-diversite-familles-botaniques.md) | Alerte diversite des familles botaniques | Important | 2 | A faire |
+
+**Total E15 : 19 points (0 Termine / 19 A faire)**
+
+> Note : Aucune dependance backend — toute la logique s'appuie sur les signaux et DTOs existants dans le `CompanionStore`. L'ordre de livraison recommande est : US-106 (conteneur) en parallele de US-103 + US-104 (logique), puis US-105, US-107 et US-109 (enrichissement), et enfin US-108 (optionnel). US-107 est confirme pour le MVP.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -275,8 +295,9 @@
 | E12 — Adaptation climatique | 16 | 0 | 0 | 16 |
 | E13 — Infrastructure i18n (backend) | 38 | 0 | 0 | 38 |
 | E14 — UX i18n (frontend) | 16 | 0 | 0 | 16 |
-| **Total (actif)** | **291** | **116** | **7** | **168** |
+| E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
+| **Total (actif)** | **310** | **116** | **7** | **187** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-20*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-21*
