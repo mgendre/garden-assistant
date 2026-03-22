@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { CompanionStore, PRIORITY_MECHANISMS } from '../../../shared/services/companion.store';
 import { AssociationMechanism, RootDepth } from '../../../api/garden-assistant-api';
@@ -26,12 +26,6 @@ const ROOT_DEPTH_KEYS: Record<RootDepth, string> = {
   [RootDepth.Deep]: 'GuildAssistant.RootDeep',
 };
 
-const HELP_MECHANISM_CHIPS: { mechanism: AssociationMechanism; key: string }[] = [
-  { mechanism: AssociationMechanism.NitrogenFixation, key: 'NitrogenFixation' },
-  { mechanism: AssociationMechanism.SoilCover, key: 'SoilCover' },
-  { mechanism: AssociationMechanism.PollinatorAttraction, key: 'PollinatorAttraction' },
-];
-
 @Component({
   selector: 'app-guild-assistant',
   standalone: true,
@@ -41,8 +35,6 @@ const HELP_MECHANISM_CHIPS: { mechanism: AssociationMechanism; key: string }[] =
 })
 export class GuildAssistant {
   protected readonly store = inject(CompanionStore);
-  readonly helpOpen = signal(false);
-  protected readonly helpChips = HELP_MECHANISM_CHIPS;
 
   readonly initialExpanded = computed(() =>
     window.innerWidth > 640 || this.store.selectedPlants().length < 3
@@ -97,10 +89,6 @@ export class GuildAssistant {
   });
 
   readonly isBalanced = computed(() => this.store.assistantGapCount() === 0);
-
-  toggleHelp(): void {
-    this.helpOpen.update(v => !v);
-  }
 
   filterMechanism(mechanism: AssociationMechanism): void {
     this.store.toggleMechanismFilter(mechanism);

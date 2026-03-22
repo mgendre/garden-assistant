@@ -7,11 +7,6 @@
         <span class="assistant-icon">🌱</span>
       }
       <span class="assistant-title" [translate]="'GuildAssistant.Title'"></span>
-      <button
-        class="assistant-help-badge"
-        [class.assistant-help-badge--active]="helpOpen()"
-        [title]="'GuildAssistant.HelpToggle' | translate"
-        (click)="toggleHelp(); $event.stopPropagation()">?</button>
     </div>
     <div class="assistant-header-right">
       @if (isBalanced()) {
@@ -23,18 +18,9 @@
   </div>
 
   <div collapsible-body>
-    @if (helpOpen()) {
-      <div class="assistant-help-text">
-        <span [translate]="'GuildAssistant.HelpText'"></span>
-        <div class="assistant-help-chips">
-          @for (chip of helpChips; track chip.mechanism) {
-            <button class="assistant-filter-chip" (click)="filterMechanism(chip.mechanism)">
-              {{ 'Plant.Mechanism.' + chip.key | translate }}
-            </button>
-          }
-        </div>
-      </div>
-    }
+    <div class="assistant-help-text">
+      <span [translate]="'GuildAssistant.HelpText'"></span>
+    </div>
 
     <div class="assistant-body">
       @if (store.harmfulAssociationPairs().length) {
