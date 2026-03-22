@@ -46,10 +46,6 @@
     <!-- Plant detail panel -->
     <app-plant-detail-panel></app-plant-detail-panel>
 
-    @if (store.selectedPlants().length >= 2) {
-      <app-guild-assistant></app-guild-assistant>
-    }
-
     <!-- Mechanisms section -->
     @if (store.guildIntrinsicMechanisms().length || store.guildRelationalOnlyMechanisms().length) {
       <div class="guild-mechanisms">
@@ -131,6 +127,10 @@
           </div>
         </app-collapsible>
       </div>
+    }
+
+    @if (store.selectedPlants().length >= 2) {
+      <app-guild-assistant></app-guild-assistant>
     }
 
     <!-- Calendar panel -->
