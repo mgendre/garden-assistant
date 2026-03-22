@@ -76,16 +76,6 @@
   flex-shrink: 0;
 }
 
-.assistant-row-label {
-  flex: 1;
-  font-size: 0.75rem;
-  min-width: 0;
-
-  .assistant-row--highlighted & {
-    font-weight: 600;
-  }
-}
-
 .assistant-info-btn {
   display: inline-flex;
   align-items: center;

@@ -384,7 +384,7 @@ export class CompanionStore {
   });
 
   readonly assistantGapCount = computed(() =>
-    this.missingPriorityMechanisms().length + this.emptyRootLayers().length
+    this.missingPriorityMechanisms().length
   );
 
   constructor() {

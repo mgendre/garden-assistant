@@ -28,6 +28,15 @@
     white-space: nowrap;
     flex-shrink: 0;
     min-width: 90px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-align: left;
+
+    &:hover {
+        color: #5a3f1a;
+    }
 }
 
 .soil-row-range {

@@ -93,21 +93,6 @@
       </div>
     }
 
-    <!-- Root stratification indicator (US-056) -->
-    @if (store.selectedPlants().length >= 2) {
-      <div class="guild-stratification">
-        <app-collapsible>
-          <div collapsible-header class="guild-container-header guild-collapsible-header">
-            <span>&#x1F30D;</span>
-            <span [translate]="'Stratification.SectionTitle'"></span>
-          </div>
-          <div collapsible-body>
-            <app-root-stratification></app-root-stratification>
-          </div>
-        </app-collapsible>
-      </div>
-    }
-
     @if (store.selectedPlants().length >= 2) {
       <div class="guild-assistant">
         <app-collapsible [initialExpanded]="true">
