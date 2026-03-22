@@ -4,7 +4,7 @@
   @apply flex flex-col gap-2 rounded-2xl;
   padding: 1.25rem;
   background: white;
-  border: 1px solid rgba(45, 106, 79, 0.1);
+  border: 1px solid var(--color-border-subtle);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -58,7 +58,7 @@
   transition: all var(--transition-fast);
 
   &:hover {
-    background: rgba(45, 106, 79, 0.08);
+    background: var(--color-surface-hover);
     color: var(--color-text);
   }
 }

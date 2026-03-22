@@ -133,7 +133,7 @@
   }
 
   &--second {
-    border-left: 1px dashed rgba(45, 106, 79, 0.12);
+    border-left: 1px dashed var(--color-border-subtle);
   }
 }
 

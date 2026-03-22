@@ -7,6 +7,6 @@
 
 .filter-wrap {
   @apply flex flex-wrap gap-1.5 px-4 py-3;
-  border-bottom: 1px solid rgba(45, 106, 79, 0.1);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
