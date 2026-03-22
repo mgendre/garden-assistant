@@ -60,7 +60,6 @@ export class PlantCard implements OnInit {
       this.plantActions.set(actions ?? []);
       this.harvestReadiness.set(readiness);
     } catch {
-      // Silently handled — calendar section simply won't show
     }
   }
 
@@ -77,7 +76,7 @@ export class PlantCard implements OnInit {
     if (readiness) {
       this.dialog.open<HarvestReadinessDialog, HarvestReadinessDialogData>(HarvestReadinessDialog, {
         data: { readiness, plantName: this.plant().name! },
-        maxWidth: '500px',
+        maxWidth: '600px',
         width: '90vw',
       });
     }

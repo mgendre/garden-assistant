@@ -46,28 +46,7 @@
     <!-- Plant detail panel -->
     <app-plant-detail-panel></app-plant-detail-panel>
 
-    <!-- Mechanisms section -->
-    @if (store.guildIntrinsicMechanisms().length || store.guildRelationalOnlyMechanisms().length) {
-      <div class="guild-mechanisms">
-        <div class="guild-container-header">
-          <span>🔬</span>
-          <span [translate]="'Guilds.MechanismsTitle'"></span>
-        </div>
-        <div class="guild-mechanisms-chips">
-          @for (m of store.guildIntrinsicMechanisms(); track m) {
-            <span class="detail-badge badge-trait" (click)="openMechanismInfo(m)">
-              {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-            </span>
-          }
-          @for (m of store.guildRelationalOnlyMechanisms(); track m) {
-            <span class="detail-badge badge-positive" (click)="openMechanismInfo(m)">
-              <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-              {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-            </span>
-          }
-        </div>
-      </div>
-    }
+
 
     <!-- Associations detail -->
     @if (store.recommendations()?.selectedPlantAssociations?.length) {
@@ -114,16 +93,15 @@
       </div>
     }
 
-    <!-- Root stratification indicator (US-056) -->
     @if (store.selectedPlants().length >= 2) {
-      <div class="guild-stratification">
-        <app-collapsible>
+      <div class="guild-assistant">
+        <app-collapsible [initialExpanded]="true">
           <div collapsible-header class="guild-container-header guild-collapsible-header">
-            <span>&#x1F30D;</span>
-            <span [translate]="'Stratification.SectionTitle'"></span>
+            <span>🌱</span>
+            <span [translate]="'GuildAssistant.Title'"></span>
           </div>
           <div collapsible-body>
-            <app-root-stratification></app-root-stratification>
+            <app-guild-assistant></app-guild-assistant>
           </div>
         </app-collapsible>
       </div>
@@ -147,7 +125,8 @@
                   [showHeader]="first"
                   [plantName]="entry.name"
                   [oddPlant]="idx % 2 === 1"
-                  (harvestReadinessClick)="openHarvestReadiness(entry.plantId, entry.name)">
+                  (harvestReadinessClick)="openHarvestReadiness(entry.plantId, entry.name)"
+                  (plantNameClick)="openPlantDetail(entry.plantId)">
                 </app-plant-calendar-gantt>
               </div>
             }

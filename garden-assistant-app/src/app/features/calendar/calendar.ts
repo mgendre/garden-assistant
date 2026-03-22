@@ -84,7 +84,7 @@ export class Calendar implements OnInit {
     if (readiness && plant) {
       this.dialog.open<HarvestReadinessDialog, HarvestReadinessDialogData>(HarvestReadinessDialog, {
         data: { readiness, plantName: plant.name! },
-        maxWidth: '500px',
+        maxWidth: '600px',
         width: '90vw',
       });
     } else {

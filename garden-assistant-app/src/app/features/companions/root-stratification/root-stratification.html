@@ -2,16 +2,16 @@
     @for (layer of layers; track layer.depth) {
         @let plants = store.rootDepthGroups().get(layer.depth) ?? [];
         <div class="soil-row" [ngClass]="layer.cssClass">
-            <div class="soil-row-label">
+            <button class="soil-row-label" (click)="store.toggleRootDepthFilter(layer.depth)">
                 {{ layer.labelKey | translate }}
                 <span class="soil-row-range">{{ layer.rangeKey | translate }}</span>
-            </div>
+            </button>
             <div class="soil-plant-chips">
                 @if (plants.length === 0) {
                     <span class="soil-empty">{{ 'Stratification.EmptyBand' | translate }}</span>
                 }
                 @for (plant of plants; track plant.id) {
-                    <span class="soil-plant-chip">{{ plant.name }}</span>
+                    <span class="soil-plant-chip soil-plant-chip--clickable" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
                 }
             </div>
             <button class="soil-filter-btn"

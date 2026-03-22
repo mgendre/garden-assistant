@@ -32,6 +32,17 @@
 .mechanism-blue  { background: #e3f2fd; color: #1565c0; }
 .mechanism-red   { background: #ffebee; color: #c62828; }
 
+.filter-inactive {
+  background: var(--color-parchment);
+  color: var(--color-text-muted);
+  border: 1px solid rgba(45, 106, 79, 0.12);
+
+  &:hover {
+    border-color: rgba(45, 106, 79, 0.3);
+    color: var(--color-text);
+  }
+}
+
 .mechanism-icon {
   font-size: 0.55rem;
   margin-right: 0.2rem;

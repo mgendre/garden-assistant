@@ -170,6 +170,33 @@
     "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e.",
     "SearchPlaceholder": "Rechercher par nom, description ou plante\u2026"
   },
+  "GuildAssistant": {
+    "Title": "Assistant de guilde",
+    "GapCount": "{{count}} lacune(s)",
+    "Balanced": "Guilde équilibrée",
+    "BalancedMessage": "Votre guilde couvre tous les critères essentiels !",
+    "Filter": "Filtrer",
+    "HelpToggle": "Qu'est-ce qu'une bonne guilde ?",
+    "HelpText": "Une bonne guilde combine des plantes aux rôles complémentaires : fixation d'azote, couverture du sol, attraction de pollinisateurs et une diversité de profondeurs racinaires. Chaque plante apporte un rôle : nourrir le sol, le protéger, attirer les auxiliaires ou ramener les minéraux profonds.",
+    "SectionMechanisms": "Mécanismes essentiels",
+    "SectionRootDepth": "Stratification racinaire",
+    "Via": "via",
+    "HarmfulCount": "{{count}} association(s) néfaste(s) détectée(s)",
+    "HarmfulDetails": "voir les détails",
+    "FamilyDiversityTitle": "Faible diversité de familles",
+    "FamilyDiversityMessage": "{{count}} plantes sur {{total}} sont des {{family}}. Les plantes d'une même famille partagent ravageurs et maladies.",
+    "RootShallow": "Superficiel (0-30 cm)",
+    "RootMedium": "Moyen (30-60 cm)",
+    "RootDeep": "Profond (60+ cm)",
+    "Gap": {
+      "NitrogenFixation": "Sans légumineuse, le sol s'appauvrira en azote et vos plantes auront besoin d'engrais.",
+      "SoilCover": "Un sol nu perd son humidité, s'érode et se fait coloniser par les adventices.",
+      "PollinatorAttraction": "Sans fleurs mellifères, la pollinisation sera insuffisante et vos récoltes réduites.",
+      "DynamicAccumulation": "Il manque une plante qui ramène les minéraux profonds vers la surface (consoude, pissenlit...).",
+      "PredatorAttraction": "Ajoutez des plantes qui attirent les auxiliaires (aneth, achillée) pour un contrôle naturel des ravageurs.",
+      "RootDepth": "Diversifiez les profondeurs racinaires pour que chaque plante occupe sa propre niche souterraine."
+    }
+  },
   "MyPlants": {
     "Category": "Collection",
     "Title": "Mes plantes",

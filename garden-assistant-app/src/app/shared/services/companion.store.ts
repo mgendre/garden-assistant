@@ -6,6 +6,7 @@ import {
   CompanionRecommendationRequest,
   GuildDto,
   AssociationMechanism,
+  AssociationEffect,
   RootDepth,
   CreateGuildRequest,
   UpdateGuildRequest,
@@ -62,6 +63,14 @@ const MECHANISM_KEY_MAP: Record<number, string> = {
   [AssociationMechanism.Biofumigation]: 'Biofumigation',
   [AssociationMechanism.NursePlant]: 'NursePlant',
 };
+
+export const PRIORITY_MECHANISMS: AssociationMechanism[] = [
+  AssociationMechanism.NitrogenFixation,
+  AssociationMechanism.SoilCover,
+  AssociationMechanism.PollinatorAttraction,
+  AssociationMechanism.DynamicAccumulation,
+  AssociationMechanism.PredatorAttraction,
+];
 
 @Injectable({ providedIn: 'root' })
 export class CompanionStore {
@@ -152,17 +161,8 @@ export class CompanionStore {
   });
 
   readonly availableMechanisms = computed(() => {
-    const mechanisms = new Set<number>();
-    for (const plant of this.plantStore.allPlants()) {
-      for (const m of plant.intrinsicMechanisms ?? []) {
-        mechanisms.add(m);
-      }
-    }
-    for (const [, entry] of this.catalogAssociationMechanisms()) {
-      for (const m of entry.beneficial) { mechanisms.add(m); }
-      for (const m of entry.harmful) { mechanisms.add(m); }
-    }
-    return [...mechanisms].sort((a, b) => {
+    const all = Object.keys(MECHANISM_KEY_MAP).map(Number);
+    return all.sort((a, b) => {
       const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
       const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
       return keyA.localeCompare(keyB, 'fr');
@@ -293,6 +293,99 @@ export class CompanionStore {
       return keyA.localeCompare(keyB, 'fr');
     });
   });
+
+  readonly allGuildMechanisms = computed(() => {
+    const intrinsic = new Set(this.guildIntrinsicMechanisms());
+    for (const m of this.guildRelationalOnlyMechanisms()) {
+      intrinsic.add(m);
+    }
+    return intrinsic;
+  });
+
+  readonly missingPriorityMechanisms = computed(() => {
+    const covered = this.allGuildMechanisms();
+    return PRIORITY_MECHANISMS.filter(m => !covered.has(m));
+  });
+
+  readonly mechanismProviders = computed(() => {
+    const map = new Map<AssociationMechanism, PlantDto[]>();
+    const seen = new Map<AssociationMechanism, Set<string>>();
+    const addProvider = (plantId: string, mechanism: AssociationMechanism) => {
+      if (!PRIORITY_MECHANISMS.includes(mechanism)) { return; }
+      const seenIds = seen.get(mechanism) ?? new Set();
+      if (seenIds.has(plantId)) { return; }
+      seenIds.add(plantId);
+      seen.set(mechanism, seenIds);
+      const plant = this.plantStore.findById(plantId);
+      if (!plant) { return; }
+      const plants = map.get(mechanism) ?? [];
+      plants.push(plant);
+      map.set(mechanism, plants);
+    };
+    for (const entry of this.recommendations()?.intrinsicMechanismsByPlant ?? []) {
+      if (!entry.plantId) { continue; }
+      for (const m of entry.mechanisms ?? []) {
+        addProvider(entry.plantId, m);
+      }
+    }
+    for (const entry of this.recommendations()?.selectedPlantsMechanisms ?? []) {
+      if (!entry.plantId) { continue; }
+      for (const m of entry.mechanisms ?? []) {
+        addProvider(entry.plantId, m);
+      }
+    }
+    for (const [mechanism, plants] of map) {
+      map.set(mechanism, plants.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr')));
+    }
+    return map;
+  });
+
+  readonly emptyRootLayers = computed(() => {
+    const groups = this.rootDepthGroups();
+    const empty: RootDepth[] = [];
+    if (!groups.has(RootDepth.Shallow)) { empty.push(RootDepth.Shallow); }
+    if (!groups.has(RootDepth.Medium)) { empty.push(RootDepth.Medium); }
+    if (!groups.has(RootDepth.Deep)) { empty.push(RootDepth.Deep); }
+    return empty;
+  });
+
+  readonly familyDiversityWarnings = computed(() => {
+    const plants = this.selectedPlants();
+    if (plants.length < 3) { return []; }
+    const familyCounts = new Map<string, number>();
+    for (const p of plants) {
+      if (!p.family) { continue; }
+      familyCounts.set(p.family, (familyCounts.get(p.family) ?? 0) + 1);
+    }
+    const warnings: { family: string; count: number; total: number }[] = [];
+    for (const [family, count] of familyCounts) {
+      if (count >= 3 && count / plants.length > 0.4) {
+        warnings.push({ family, count, total: plants.length });
+      }
+    }
+    return warnings;
+  });
+
+  readonly harmfulAssociationPairs = computed(() => {
+    const associations = this.recommendations()?.selectedPlantAssociations ?? [];
+    const harmful = associations.filter(a => a.effect === AssociationEffect.Harmful);
+    const seen = new Set<string>();
+    const pairs: { plantA: string; plantB: string }[] = [];
+    for (const a of harmful) {
+      const key = [a.sourcePlantId, a.targetPlantId].sort().join('-');
+      if (seen.has(key)) { continue; }
+      seen.add(key);
+      pairs.push({
+        plantA: this.plantStore.findById(a.sourcePlantId)?.name ?? '',
+        plantB: this.plantStore.findById(a.targetPlantId)?.name ?? '',
+      });
+    }
+    return pairs;
+  });
+
+  readonly assistantGapCount = computed(() =>
+    this.missingPriorityMechanisms().length
+  );
 
   constructor() {
     effect(() => {
