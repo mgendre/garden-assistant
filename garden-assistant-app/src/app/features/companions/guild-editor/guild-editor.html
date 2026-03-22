@@ -142,16 +142,18 @@
             <span [translate]="'Calendar.Title'"></span>
           </div>
           <div collapsible-body>
-            @for (entry of plantCalendars(); track entry.plantId; let first = $first; let idx = $index) {
-              <app-plant-calendar-gantt
-                [actions]="entry.actions"
-                [propagationMethod]="entry.propagationMethod"
-                [frostSensitive]="entry.frostSensitive"
-                [showHeader]="first"
-                [plantName]="entry.name"
-                [oddPlant]="idx % 2 === 1"
-                (harvestReadinessClick)="openHarvestReadiness(entry.plantId, entry.name)">
-              </app-plant-calendar-gantt>
+            @for (entry of plantCalendars(); track entry.plantId; let first = $first; let last = $last; let idx = $index) {
+              <div class="guild-calendar-plant" [class.guild-calendar-plant--separator]="!last">
+                <app-plant-calendar-gantt
+                  [actions]="entry.actions"
+                  [propagationMethod]="entry.propagationMethod"
+                  [frostSensitive]="entry.frostSensitive"
+                  [showHeader]="first"
+                  [plantName]="entry.name"
+                  [oddPlant]="idx % 2 === 1"
+                  (harvestReadinessClick)="openHarvestReadiness(entry.plantId, entry.name)">
+                </app-plant-calendar-gantt>
+              </div>
             }
           </div>
         </app-collapsible>
