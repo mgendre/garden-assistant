@@ -71,12 +71,12 @@ export class GuildAssistant {
 
   filterMechanism(mechanism: AssociationMechanism): void {
     this.store.rootDepthFilter.set(null);
-    this.store.mechanismFilter.set(mechanism);
+    this.store.toggleMechanismFilter(mechanism);
   }
 
   filterRootDepth(depth: RootDepth): void {
     this.store.mechanismFilter.set(null);
-    this.store.rootDepthFilter.set(depth);
+    this.store.toggleRootDepthFilter(depth);
   }
 
   openPlantDetail(plant: PlantDto): void {
