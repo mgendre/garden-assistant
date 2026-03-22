@@ -1,5 +1,5 @@
 <app-collapsible [initialExpanded]="initialExpanded()">
-  <div collapsible-header class="guild-container-header">
+  <div collapsible-header class="guild-container-header guild-collapsible-header">
     @if (isBalanced()) {
       <span>✓</span>
     } @else {
@@ -25,9 +25,6 @@
             @for (pair of store.harmfulAssociationPairs(); track $index) {
               <span class="assistant-conflict-pair">{{ pair.plantA }} ↔ {{ pair.plantB }}</span>
             }
-            <a class="assistant-details-link" (click)="scrollToAssociations()">
-              {{ 'GuildAssistant.HarmfulDetails' | translate }}
-            </a>
           </div>
         </div>
       }

@@ -76,13 +76,11 @@ export class GuildAssistant {
   filterMechanism(mechanism: AssociationMechanism): void {
     this.store.rootDepthFilter.set(null);
     this.store.mechanismFilter.set(mechanism);
-    this.scrollToCatalog();
   }
 
   filterRootDepth(depth: RootDepth): void {
     this.store.mechanismFilter.set(null);
     this.store.rootDepthFilter.set(depth);
-    this.scrollToCatalog();
   }
 
   openMechanismInfo(mechanism: AssociationMechanism): void {
@@ -108,17 +106,4 @@ export class GuildAssistant {
     });
   }
 
-  scrollToAssociations(): void {
-    const el = document.querySelector('.guild-associations');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  }
-
-  private scrollToCatalog(): void {
-    const el = document.querySelector('app-plant-catalogue');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
 }
