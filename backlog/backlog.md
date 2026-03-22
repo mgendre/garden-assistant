@@ -257,6 +257,50 @@
 
 ---
 
+## E15 — Assistant de creation de guilde
+
+> Guider le jardinier pas a pas dans la composition d'une guilde equilibree : analyse des lacunes (mecanismes manquants, couches racinaires vides, conflits), texte educatif, et filtres cliquables pour trouver rapidement les plantes complementaires.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-103](epics/E15-assistant-creation-guilde/US-103-analyse-lacunes-mecanismes.md) | Analyse des lacunes de mecanismes dans la guilde | Indispensable | 5 | A faire |
+| [US-104](epics/E15-assistant-creation-guilde/US-104-lacunes-stratification-racinaire.md) | Lacunes de stratification racinaire dans l'assistant | Indispensable | 3 | A faire |
+| [US-105](epics/E15-assistant-creation-guilde/US-105-texte-educatif-mecanismes-cles.md) | Texte educatif sur les mecanismes cles d'une bonne guilde | Important | 2 | A faire |
+| [US-106](epics/E15-assistant-creation-guilde/US-106-panneau-assistant-guilde.md) | Panneau assistant dans l'editeur de guilde | Indispensable | 3 | A faire |
+| [US-107](epics/E15-assistant-creation-guilde/US-107-alerte-associations-nefastes-assistant.md) | Alerte associations nefastes dans l'assistant | Important (MVP) | 2 | A faire |
+| [US-108](epics/E15-assistant-creation-guilde/US-108-indicateur-sante-guilde.md) | Indicateur de sante de la guilde | Optionnel | 2 | A faire |
+| [US-109](epics/E15-assistant-creation-guilde/US-109-alerte-diversite-familles-botaniques.md) | Alerte diversite des familles botaniques | Important | 2 | A faire |
+
+**Total E15 : 19 points (0 Termine / 19 A faire)**
+
+> Note : Aucune dependance backend — toute la logique s'appuie sur les signaux et DTOs existants dans le `CompanionStore`. L'ordre de livraison recommande est : US-106 (conteneur) en parallele de US-103 + US-104 (logique), puis US-105, US-107 et US-109 (enrichissement), et enfin US-108 (optionnel). US-107 est confirme pour le MVP.
+
+---
+
+## E16 — Authentification OAuth (Google & Discord)
+
+> Ajouter l'authentification sociale via Google et Discord en utilisant le flux Authorization Code. Auto-enregistrement au premier login, consentement email, cross-provider linking, et restriction du dev-token a l'environnement de developpement.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-110](epics/E16-oauth-login/US-110-migration-user-external-login.md) | Migration BDD : User modifie et ExternalLogin | Indispensable | 3 | A faire |
+| [US-111](epics/E16-oauth-login/US-111-middleware-oauth-google-discord.md) | Middleware OAuth Google et Discord | Indispensable | 2 | A faire |
+| [US-112](epics/E16-oauth-login/US-112-backend-auth-flow.md) | Flux OAuth backend (login, callback, complete) | Indispensable | 8 | A faire |
+| [US-113](epics/E16-oauth-login/US-113-backend-profile-email-consent.md) | Endpoint profil : toggle consentement email | Indispensable | 3 | A faire |
+| [US-114](epics/E16-oauth-login/US-114-dev-token-environment-gating.md) | Restriction dev-token a l'environnement dev | Indispensable | 1 | A faire |
+| [US-115](epics/E16-oauth-login/US-115-frontend-login-page.md) | Page de login frontend | Indispensable | 3 | A faire |
+| [US-116](epics/E16-oauth-login/US-116-frontend-auth-callback.md) | Callback OAuth et consentement email | Indispensable | 5 | A faire |
+| [US-117](epics/E16-oauth-login/US-117-frontend-auth-guard-startup.md) | Auth guard et flux de demarrage | Indispensable | 3 | A faire |
+| [US-118](epics/E16-oauth-login/US-118-frontend-profile-email-consent.md) | Toggle consentement email dans le profil | Important | 3 | A faire |
+| [US-119](epics/E16-oauth-login/US-119-tests-unitaires-services-oauth.md) | Tests unitaires services OAuth | Indispensable | 5 | A faire |
+| [US-120](epics/E16-oauth-login/US-120-tests-integration-oauth.md) | Tests d'integration OAuth | Indispensable | 5 | A faire |
+
+**Total E16 : 41 points (0 Termine / 41 A faire)**
+
+> Ordre de livraison : US-110 (migration) → US-111 (middleware) → US-112 (flux backend) → US-113 (profil) et US-114 (dev-token) en parallele → US-115 (login page) → US-116 (callback) → US-117 (guard) → US-118 (profil frontend) → US-119 et US-120 (tests). US-114 peut etre livree a tout moment (aucune dependance). Spec de reference : `docs/superpowers/specs/2026-03-22-oauth-login-design.md`.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -275,8 +319,10 @@
 | E12 — Adaptation climatique | 16 | 0 | 0 | 16 |
 | E13 — Infrastructure i18n (backend) | 38 | 0 | 0 | 38 |
 | E14 — UX i18n (frontend) | 16 | 0 | 0 | 16 |
-| **Total (actif)** | **291** | **116** | **7** | **168** |
+| E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
+| E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
+| **Total (actif)** | **351** | **116** | **7** | **228** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-20*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-22*

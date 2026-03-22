@@ -52,12 +52,16 @@ export class PlantCard implements OnInit {
     if (!plantId) {
       return;
     }
-    const [actions, readiness] = await Promise.all([
-      this.calendarService.getPlantActions(plantId),
-      this.calendarService.getHarvestReadiness(plantId),
-    ]);
-    this.plantActions.set(actions);
-    this.harvestReadiness.set(readiness);
+    try {
+      const [actions, readiness] = await Promise.all([
+        this.calendarService.getPlantActions(plantId),
+        this.calendarService.getHarvestReadiness(plantId),
+      ]);
+      this.plantActions.set(actions ?? []);
+      this.harvestReadiness.set(readiness);
+    } catch {
+      // Silently handled — calendar section simply won't show
+    }
   }
 
   get propagationMethod(): PropagationMethod {

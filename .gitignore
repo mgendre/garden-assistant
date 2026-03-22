@@ -9,6 +9,7 @@
 
 .idea
 .superpowers
+.worktrees
 
 # Build results
 [Dd]ebug/
