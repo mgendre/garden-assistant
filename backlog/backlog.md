@@ -277,6 +277,30 @@
 
 ---
 
+## E16 — Authentification OAuth (Google & Discord)
+
+> Ajouter l'authentification sociale via Google et Discord en utilisant le flux Authorization Code. Auto-enregistrement au premier login, consentement email, cross-provider linking, et restriction du dev-token a l'environnement de developpement.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-110](epics/E16-oauth-login/US-110-migration-user-external-login.md) | Migration BDD : User modifie et ExternalLogin | Indispensable | 3 | A faire |
+| [US-111](epics/E16-oauth-login/US-111-middleware-oauth-google-discord.md) | Middleware OAuth Google et Discord | Indispensable | 2 | A faire |
+| [US-112](epics/E16-oauth-login/US-112-backend-auth-flow.md) | Flux OAuth backend (login, callback, complete) | Indispensable | 8 | A faire |
+| [US-113](epics/E16-oauth-login/US-113-backend-profile-email-consent.md) | Endpoint profil : toggle consentement email | Indispensable | 3 | A faire |
+| [US-114](epics/E16-oauth-login/US-114-dev-token-environment-gating.md) | Restriction dev-token a l'environnement dev | Indispensable | 1 | A faire |
+| [US-115](epics/E16-oauth-login/US-115-frontend-login-page.md) | Page de login frontend | Indispensable | 3 | A faire |
+| [US-116](epics/E16-oauth-login/US-116-frontend-auth-callback.md) | Callback OAuth et consentement email | Indispensable | 5 | A faire |
+| [US-117](epics/E16-oauth-login/US-117-frontend-auth-guard-startup.md) | Auth guard et flux de demarrage | Indispensable | 3 | A faire |
+| [US-118](epics/E16-oauth-login/US-118-frontend-profile-email-consent.md) | Toggle consentement email dans le profil | Important | 3 | A faire |
+| [US-119](epics/E16-oauth-login/US-119-tests-unitaires-services-oauth.md) | Tests unitaires services OAuth | Indispensable | 5 | A faire |
+| [US-120](epics/E16-oauth-login/US-120-tests-integration-oauth.md) | Tests d'integration OAuth | Indispensable | 5 | A faire |
+
+**Total E16 : 41 points (0 Termine / 41 A faire)**
+
+> Ordre de livraison : US-110 (migration) → US-111 (middleware) → US-112 (flux backend) → US-113 (profil) et US-114 (dev-token) en parallele → US-115 (login page) → US-116 (callback) → US-117 (guard) → US-118 (profil frontend) → US-119 et US-120 (tests). US-114 peut etre livree a tout moment (aucune dependance). Spec de reference : `docs/superpowers/specs/2026-03-22-oauth-login-design.md`.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -296,8 +320,9 @@
 | E13 — Infrastructure i18n (backend) | 38 | 0 | 0 | 38 |
 | E14 — UX i18n (frontend) | 16 | 0 | 0 | 16 |
 | E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
-| **Total (actif)** | **310** | **116** | **7** | **187** |
+| E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
+| **Total (actif)** | **351** | **116** | **7** | **228** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-21*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-22*
