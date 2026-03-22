@@ -513,12 +513,6 @@ export class PlantsClient {
             result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as HarvestReadinessDto;
             return result200;
             });
-        } else if (status === 404) {
-            return response.text().then((_responseText) => {
-            let result404: any = null;
-            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
-            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
-            });
         } else if (status !== 200 && status !== 204) {
             return response.text().then((_responseText) => {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
