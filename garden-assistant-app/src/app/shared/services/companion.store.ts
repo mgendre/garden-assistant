@@ -334,6 +334,9 @@ export class CompanionStore {
         addProvider(entry.plantId, m);
       }
     }
+    for (const [mechanism, plants] of map) {
+      map.set(mechanism, plants.sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr')));
+    }
     return map;
   });
 
