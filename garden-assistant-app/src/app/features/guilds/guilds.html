@@ -9,7 +9,7 @@
       [placeholder]="'Guilds.SearchPlaceholder' | translate"
       (valueChange)="searchQuery.set($event)">
     </app-search-input>
-    <button class="btn-pill btn-pill-outline btn-pill-sm guild-toolbar-btn" (click)="createGuild()">
+    <button class="btn btn-primary btn-sm" (click)="createGuild()">
       <fa-icon [icon]="faPlus"></fa-icon>
       <span [translate]="'Guilds.Create'"></span>
     </button>

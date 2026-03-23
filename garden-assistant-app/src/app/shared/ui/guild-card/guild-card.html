@@ -26,18 +26,18 @@
     <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plants?.length ?? 0 } }}</span>
     <div class="guild-card-actions">
       @if (showOpenButton) {
-        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="view.emit(); $event.stopPropagation()">
+        <button class="btn btn-secondary btn-xs" (click)="view.emit(); $event.stopPropagation()">
           <fa-icon [icon]="faView"></fa-icon>
           <span [translate]="'Guilds.Open'"></span>
         </button>
       }
       @if (guild.isOfficial) {
-        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="onEditClick($event)">
+        <button class="btn btn-secondary btn-xs" (click)="onEditClick($event)">
           <fa-icon [icon]="faCustomize"></fa-icon>
           <span [translate]="'Guilds.Customize'"></span>
         </button>
       } @else {
-        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="onEditClick($event)">
+        <button class="btn btn-secondary btn-xs" (click)="onEditClick($event)">
           <fa-icon [icon]="faPen"></fa-icon>
           <span [translate]="'Guilds.Edit'"></span>
         </button>

@@ -139,11 +139,11 @@
     @if (store.guildMode() === 'viewing') {
       <div class="guild-form-actions">
         <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
-        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.startGuildEditing()">
+        <button class="btn btn-secondary btn-sm" (click)="store.startGuildEditing()">
           <fa-icon [icon]="faPen"></fa-icon>
           <span [translate]="'Guilds.Edit'"></span>
         </button>
-        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.clearSelection()">
+        <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
           <fa-icon [icon]="faClose"></fa-icon>
           <span [translate]="'Guilds.Close'"></span>
         </button>
@@ -154,12 +154,12 @@
       <div class="guild-form-actions">
         <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
         @if (store.selectedPlants().length >= 2) {
-          <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.startGuildCreation()">
+          <button class="btn btn-primary btn-sm" (click)="store.startGuildCreation()">
             <fa-icon [icon]="faPlus"></fa-icon>
             <span [translate]="'Guilds.Create'"></span>
           </button>
         }
-        <button class="btn-pill btn-pill-outline btn-pill-sm" (click)="store.clearSelection()">
+        <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
           <fa-icon [icon]="faClose"></fa-icon>
           <span [translate]="'Companions.ClearSelection'"></span>
         </button>
@@ -171,12 +171,12 @@
       <div class="guild-form-actions">
         <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
         <button
-          class="btn-pill btn-pill-outline"
+          class="btn btn-secondary btn-sm"
           (click)="store.cancelGuildEditing()"
           [translate]="'Guilds.FormCancel'">
         </button>
         <button
-          class="btn-pill btn-pill-outline"
+          class="btn btn-primary btn-sm"
           [disabled]="!store.guildName() || store.guildSaving()"
           (click)="store.saveGuild()">
           {{ (store.guildSaving() ? 'Guilds.Saving' : 'Guilds.FormSave') | translate }}

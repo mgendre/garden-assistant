@@ -5,3 +5,11 @@
   font-size: 0.875rem;
   color: var(--color-text);
 }
+
+.plant-detail-dialog-footer {
+  @apply flex gap-3;
+
+  .btn-fav {
+    @apply mt-0;
+  }
+}

@@ -41,7 +41,7 @@
         (click)="filterMechanism(row.mechanism)">
         {{ 'Plant.Mechanism.' + row.key | translate }}
       </span>
-      <button class="assistant-info-btn" (click)="openMechanismInfo(row.mechanism)">?</button>
+      <button class="btn-info" (click)="openMechanismInfo(row.mechanism)">?</button>
       @if (row.satisfied) {
         <div class="assistant-provider-badges">
           @for (plant of row.providers; track plant.id) {

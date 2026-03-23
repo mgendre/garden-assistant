@@ -48,24 +48,3 @@
   @apply flex flex-wrap items-center gap-1;
 }
 
-.icon-btn {
-  @apply flex items-center justify-center rounded-full cursor-pointer;
-  width: 30px;
-  height: 30px;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  background: transparent;
-  transition: all var(--transition-fast);
-
-  &:hover {
-    background: var(--color-surface-hover);
-    color: var(--color-text);
-  }
-}
-
-.icon-btn-danger {
-  &:hover {
-    background: #fce4ec;
-    color: var(--color-danger);
-  }
-}

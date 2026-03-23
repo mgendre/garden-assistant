@@ -87,16 +87,3 @@
   color: var(--color-text);
 }
 
-.badge-info-close {
-  @apply w-full rounded-lg cursor-pointer text-sm font-medium;
-  padding: 0.5rem 1rem;
-  background: var(--color-parchment);
-  border: 1px solid var(--color-border-subtle);
-  color: var(--color-text);
-  transition: all var(--transition-fast);
-
-  &:hover {
-    border-color: #52b788;
-    background: var(--color-surface-hover);
-  }
-}

@@ -27,7 +27,8 @@
       "Bash(grep -o --color-[a-z-]* garden-assistant-app/dist/garden-assistant-app/browser/styles-*.css)",
       "Bash(grep \"color-border\\\\|color-divider\" garden-assistant-app/dist/garden-assistant-app/browser/styles-*.css)",
       "Bash(chmod:*)",
-      "Bash(dotnet nswag:*)"
+      "Bash(dotnet nswag:*)",
+      "WebFetch(domain:flowbite.com)"
     ]
   }
 }

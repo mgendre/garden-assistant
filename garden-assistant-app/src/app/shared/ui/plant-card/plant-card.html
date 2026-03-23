@@ -48,6 +48,15 @@
         }
       </div>
     </div>
+    @if (!hideFavButton()) {
+      <button
+        class="header-fav-btn"
+        [class.saved]="myPlantsStore.isSaved(plant().id)"
+        (click)="toggleFav($event)"
+        [attr.aria-label]="(myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name }">
+        <fa-icon [icon]="myPlantsStore.isSaved(plant().id) ? faHeartSolid : faHeartRegular"></fa-icon>
+      </button>
+    }
     @if (removable()) {
       <button
         class="remove-btn"
@@ -117,15 +126,5 @@
 
     <ng-content></ng-content>
 
-    @if (!hideFavButton()) {
-      <button
-        class="fav-btn-action"
-        [class.saved]="myPlantsStore.isSaved(plant().id)"
-        (click)="toggleFav($event)"
-        [attr.aria-label]="(myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name }">
-        <fa-icon [icon]="myPlantsStore.isSaved(plant().id) ? faHeartSolid : faHeartRegular"></fa-icon>
-        <span>{{ (myPlantsStore.isSaved(plant().id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: plant().name } }}</span>
-      </button>
-    }
   </div>
 </app-collapsible>

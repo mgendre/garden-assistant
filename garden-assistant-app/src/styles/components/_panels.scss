@@ -1,7 +1,7 @@
 @reference "tailwindcss";
 
 @mixin panel {
-  @apply bg-white rounded-2xl overflow-hidden;
+  @apply bg-white rounded-lg overflow-hidden;
   border: 1px solid var(--color-border);
   box-shadow: var(--shadow-base);
 }

@@ -15,7 +15,7 @@
     @for (plant of filteredPlants(); track plant.id) {
       <div
         class="plant-item"
-        (click)="onPlantClick(plant)">
+        (click)="addPlant(plant)">
         <div class="plant-icon">{{ companionStore.getPlantEmoji(plant) }}</div>
         <div class="plant-info">
           <div class="plant-name">{{ plant.name }}</div>
@@ -23,7 +23,7 @@
             <div class="plant-family" [class]="companionStore.getFamilyClass(plant.family)">{{ plant.family }}</div>
           }
         </div>
-        <fa-icon class="add-icon" [icon]="faPlus"></fa-icon>
+        <fa-icon class="plant-info-btn" [icon]="faInfo" (click)="openPlantDetail(plant, $event)"></fa-icon>
       </div>
     }
 

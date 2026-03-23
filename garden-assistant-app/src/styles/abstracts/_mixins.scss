@@ -39,58 +39,6 @@
   }
 }
 
-@mixin btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 24px;
-  background: var(--color-earth);
-  color: white;
-  border-radius: 9999px;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.875rem;
-  letter-spacing: 0.02em;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-  box-shadow: 0 2px 8px rgba(196, 125, 46, 0.3);
-
-  &:hover {
-    background: var(--color-earth-dark);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(196, 125, 46, 0.4);
-  }
-
-  &:focus-visible {
-    outline: none;
-    box-shadow: var(--shadow-focus);
-  }
-}
-
-@mixin btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: transparent;
-  color: var(--color-canopy);
-  border-radius: var(--radius-base);
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 0.875rem;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  transition: background var(--transition-fast), color var(--transition-fast);
-
-  &:hover {
-    background: color-mix(in srgb, var(--color-moss) 50%, transparent);
-    color: var(--color-canopy);
-  }
-}
-
 @mixin form-input {
   width: 100%;
   padding: 8px 16px;
