@@ -6,7 +6,7 @@
 
 .calendar-loading-spinner {
   @apply w-8 h-8 rounded-full;
-  border: 3px solid #d8f3dc;
+  border: 3px solid var(--color-border-subtle);
   border-top-color: var(--color-canopy);
   animation: spin 0.8s linear infinite;
 }
@@ -17,7 +17,7 @@
 
 .calendar-filter-chips {
   @apply flex flex-wrap gap-2 px-5 py-3;
-  border-bottom: 1px solid #d8f3dc;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .calendar-chip {
@@ -53,7 +53,7 @@
 .calendar-month-header-row {
   @apply flex items-stretch sticky top-0 z-10 px-4;
   background: white;
-  border-bottom: 1px solid #d8f3dc;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .calendar-name-spacer {
@@ -84,7 +84,7 @@
 
 .calendar-plant-section {
   @apply px-4;
-  border-bottom: 1px solid #d8f3dc;
+  border-bottom: 1px solid var(--color-border-subtle);
 
   &--last {
     border-bottom: none;

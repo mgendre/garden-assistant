@@ -1,14 +1,16 @@
 <div class="plant-detail-dialog">
   <app-plant-card [plant]="data.plant" [forceExpanded]="true" [hideFavButton]="true"></app-plant-card>
 
-  <button
-    class="fav-btn-action"
-    [class.saved]="myPlantsStore.isSaved(data.plant.id)"
-    (click)="toggleFav()"
-    [attr.aria-label]="(myPlantsStore.isSaved(data.plant.id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: data.plant.name }">
-    <fa-icon [icon]="myPlantsStore.isSaved(data.plant.id) ? faHeartSolid : faHeartRegular"></fa-icon>
-    <span>{{ (myPlantsStore.isSaved(data.plant.id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: data.plant.name } }}</span>
-  </button>
+  <div class="plant-detail-dialog-footer">
+    <button
+      class="btn-fav"
+      [class.saved]="myPlantsStore.isSaved(data.plant.id)"
+      (click)="toggleFav()"
+      [attr.aria-label]="(myPlantsStore.isSaved(data.plant.id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: data.plant.name }">
+      <fa-icon [icon]="myPlantsStore.isSaved(data.plant.id) ? faHeartSolid : faHeartRegular"></fa-icon>
+      <span>{{ (myPlantsStore.isSaved(data.plant.id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: data.plant.name } }}</span>
+    </button>
 
-  <button mat-dialog-close class="badge-info-close" [translate]="'BadgeInfo.Close'"></button>
+    <button mat-dialog-close class="btn-close" [translate]="'BadgeInfo.Close'"></button>
+  </div>
 </div>

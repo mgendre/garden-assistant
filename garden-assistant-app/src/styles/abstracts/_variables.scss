@@ -24,12 +24,15 @@
   --color-success: #237227;
   --color-danger: #9b1c1c;
   --color-warning: #e69900;
-  --color-text: #1a2e1a;
-  --color-text-muted: #5a7a5a;
-  --color-text-dark: #333333;
-  --color-border: #c2e0c8;
-  --color-border-green: #b8d8b0;
-  --color-divider: #e0f0dc;
+  --color-text: #2c2c2c;
+  --color-text-secondary: #4b5563;
+  --color-text-muted: #6b7280;
+  --color-text-dark: #1f2937;
+  --color-border: #d1d5db;
+  --color-border-subtle: #e5e7eb;
+  --color-divider: #e5e7eb;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f3f4f6;
 
   --color-soil-shallow: #f5efe6;
   --color-soil-shallow-border: #ddd0b8;
@@ -42,8 +45,9 @@
   --radius-base: 12px;
   --radius-lg: 20px;
 
-  --shadow-sm: 0 1px 4px rgba(30, 61, 30, 0.08);
-  --shadow-base: 0 2px 16px rgba(30, 61, 30, 0.10);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-base: 0 2px 8px rgba(0, 0, 0, 0.08), 0 4px 16px rgba(0, 0, 0, 0.04);
+  --ring-forest: rgba(26, 92, 30, 0.3);
   --shadow-focus: 0 0 0 3px rgba(74, 139, 74, 0.35);
 
   --transition-fast: 150ms ease;

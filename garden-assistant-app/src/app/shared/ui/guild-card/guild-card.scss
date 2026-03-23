@@ -4,7 +4,7 @@
   @apply flex flex-col gap-2 rounded-2xl;
   padding: 1.25rem;
   background: white;
-  border: 1px solid rgba(45, 106, 79, 0.1);
+  border: 1px solid var(--color-border-subtle);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -48,24 +48,3 @@
   @apply flex flex-wrap items-center gap-1;
 }
 
-.icon-btn {
-  @apply flex items-center justify-center rounded-full cursor-pointer;
-  width: 30px;
-  height: 30px;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  background: transparent;
-  transition: all var(--transition-fast);
-
-  &:hover {
-    background: rgba(45, 106, 79, 0.08);
-    color: var(--color-text);
-  }
-}
-
-.icon-btn-danger {
-  &:hover {
-    background: #fce4ec;
-    color: var(--color-danger);
-  }
-}

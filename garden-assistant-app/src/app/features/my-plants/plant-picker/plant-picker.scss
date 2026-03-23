@@ -4,14 +4,3 @@
   max-height: 60vh;
   overflow-y: auto;
 }
-
-.add-icon {
-  @apply flex-shrink-0 text-sm;
-  color: var(--color-text-muted);
-  opacity: 0;
-  transition: opacity var(--transition-fast);
-
-  .plant-item:hover & {
-    opacity: 0.6;
-  }
-}

@@ -4,7 +4,7 @@
 
 .detail-badge {
   @apply font-semibold uppercase whitespace-nowrap rounded-md;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
   padding: 0.15rem 0.5rem;
   cursor: pointer;
@@ -23,7 +23,7 @@
 
 .mechanism-chip {
   @apply font-semibold rounded;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   padding: 0.1rem 0.4rem;
   cursor: pointer;
 }
@@ -35,7 +35,7 @@
 .filter-inactive {
   background: var(--color-parchment);
   color: var(--color-text-muted);
-  border: 1px solid rgba(45, 106, 79, 0.12);
+  border: 1px solid var(--color-border-subtle);
 
   &:hover {
     border-color: rgba(45, 106, 79, 0.3);
@@ -44,7 +44,7 @@
 }
 
 .mechanism-icon {
-  font-size: 0.55rem;
+  font-size: 0.625rem;
   margin-right: 0.2rem;
   opacity: 0.7;
 }
@@ -66,7 +66,7 @@
 
 .family-badge {
   @apply ml-auto flex-shrink-0 font-semibold uppercase whitespace-nowrap rounded;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.05em;
   padding: 0.15rem 0.4rem;
 }
@@ -87,16 +87,3 @@
   color: var(--color-text);
 }
 
-.badge-info-close {
-  @apply w-full rounded-lg cursor-pointer text-sm font-medium;
-  padding: 0.5rem 1rem;
-  background: var(--color-parchment);
-  border: 1px solid rgba(45, 106, 79, 0.12);
-  color: var(--color-text);
-  transition: all var(--transition-fast);
-
-  &:hover {
-    border-color: #52b788;
-    background: #d8f3dc;
-  }
-}

@@ -3,7 +3,7 @@
 .info-card {
   @apply rounded-[10px] py-3 px-4;
   background: var(--color-parchment);
-  border: 1px solid rgba(45, 106, 79, 0.08);
+  border: 1px solid var(--color-border-subtle);
 
   &.info-card-clickable {
     cursor: pointer;
@@ -17,7 +17,7 @@
 
 .info-card-label {
   @apply font-semibold uppercase mb-1;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   color: var(--color-text-muted);
 }
@@ -29,6 +29,6 @@
 
 .info-card-detail-right {
   @apply ml-auto font-normal;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
 }

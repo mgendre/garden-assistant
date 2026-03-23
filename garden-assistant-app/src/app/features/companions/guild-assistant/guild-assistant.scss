@@ -76,30 +76,6 @@
   flex-shrink: 0;
 }
 
-.assistant-info-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.125rem;
-  height: 1.125rem;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--color-text-muted);
-  font-size: 0.625rem;
-  font-weight: 700;
-  cursor: pointer;
-  border: 1px solid rgba(45, 106, 79, 0.2);
-  padding: 0;
-  line-height: 1;
-  flex-shrink: 0;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: var(--color-parchment);
-    border-color: rgba(45, 106, 79, 0.4);
-    color: var(--color-text);
-  }
-}
 
 .assistant-provider-badges {
   display: flex;
