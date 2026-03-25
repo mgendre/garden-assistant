@@ -7,7 +7,7 @@
     <p class="text-sm leading-relaxed text-stone-600">{{ data.message }}</p>
   </mat-dialog-content>
 
-  <mat-dialog-actions class="dialog-actions !pt-4">
+  <mat-dialog-actions class="dialog-actions !pt-4 !flex !justify-end !gap-2">
     <button class="btn btn-secondary"
             (click)="cancel()">
       {{ data.cancelLabel ?? ('ConfirmDialog.Cancel' | translate) }}

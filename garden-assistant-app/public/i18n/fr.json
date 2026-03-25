@@ -130,6 +130,10 @@
       "NursePlant": "Plante nurse"
     }
   },
+  "PlantDetail": {
+    "AddToCollection": "Ajouter \u00e0 ma collection",
+    "RemoveFromCollection": "Retirer de ma collection"
+  },
   "Guilds": {
     "Category": "Permaculture",
     "Title": "Guildes v\u00e9g\u00e9tales",

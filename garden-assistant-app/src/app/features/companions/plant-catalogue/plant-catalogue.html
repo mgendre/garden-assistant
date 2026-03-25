@@ -1,77 +1,81 @@
 <div class="panel">
   <div class="panel-header">
-    <span class="panel-title" [translate]="'Companions.Catalogue'"></span>
-    <span class="plant-count">{{ plantStore.allPlants().length }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
+    <span class="panel-title" [translate]="mode() === 'collection' ? 'MyPlants.PickerTitle' : 'Companions.Catalogue'"></span>
+    <span class="plant-count">{{ displayedPlants().length }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
   </div>
 
   <div class="search-wrap">
     <app-search-input
       [placeholder]="'Companions.SearchPlaceholder' | translate"
-      (valueChange)="store.setSearch($event)">
+      (valueChange)="onSearch($event)">
     </app-search-input>
   </div>
 
-  <div class="sort-wrap">
-    <button
-      class="chip"
-      [class.active]="store.sortMode() === 'alpha'"
-      (click)="store.setSort('alpha')"
-      [translate]="'Companions.SortAlpha'">
-    </button>
-    <button
-      class="chip"
-      [class.active]="store.sortMode() === 'compat'"
-      (click)="store.setSort('compat')"
-      [translate]="'Companions.SortCompat'">
-    </button>
-    <button
-      class="chip"
-      [class.active]="store.sortMode() === 'family'"
-      (click)="store.setSort('family')"
-      [translate]="'Companions.SortFamily'">
-    </button>
-    <span class="sort-divider"></span>
-    <button
-      class="chip"
-      [class.active]="store.myPlantsOnly()"
-      (click)="store.toggleMyPlantsOnly()">
-      <fa-icon [icon]="faHeartSolid"></fa-icon>
-      <span [translate]="'Companions.MyPlantsOnly'"></span>
-    </button>
-  </div>
-
-  <div class="filter-wrap">
-    @for (m of store.availableMechanisms(); track m) {
+  @if (mode() === 'association') {
+    <div class="sort-wrap">
       <button
-        class="mechanism-chip"
-        [class.mechanism-blue]="store.mechanismFilter() === m"
-        [class.filter-inactive]="store.mechanismFilter() !== m"
-        (click)="store.toggleMechanismFilter(m)">
-        {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+        class="chip"
+        [class.active]="store.sortMode() === 'alpha'"
+        (click)="store.setSort('alpha')"
+        [translate]="'Companions.SortAlpha'">
       </button>
-    }
-  </div>
-
-  <div class="filter-wrap">
-    @for (rd of rootDepths; track rd.value) {
       <button
-        class="mechanism-chip"
-        [class.badge-root]="store.rootDepthFilter() === rd.value"
-        [class.filter-inactive]="store.rootDepthFilter() !== rd.value"
-        (click)="store.toggleRootDepthFilter(rd.value)">
-        {{ rd.labelKey | translate }}
+        class="chip"
+        [class.active]="store.sortMode() === 'compat'"
+        (click)="store.setSort('compat')"
+        [translate]="'Companions.SortCompat'">
       </button>
-    }
-  </div>
+      <button
+        class="chip"
+        [class.active]="store.sortMode() === 'family'"
+        (click)="store.setSort('family')"
+        [translate]="'Companions.SortFamily'">
+      </button>
+      <span class="sort-divider"></span>
+      <button
+        class="chip"
+        [class.active]="store.myPlantsOnly()"
+        (click)="store.toggleMyPlantsOnly()">
+        <fa-icon [icon]="faHeartSolid"></fa-icon>
+        <span [translate]="'Companions.MyPlantsOnly'"></span>
+      </button>
+    </div>
+  }
+
+  @if (mode() === 'association') {
+    <div class="filter-wrap">
+      @for (m of store.availableMechanisms(); track m) {
+        <button
+          class="mechanism-chip"
+          [class.mechanism-blue]="store.mechanismFilter() === m"
+          [class.filter-inactive]="store.mechanismFilter() !== m"
+          (click)="store.toggleMechanismFilter(m)">
+          {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+        </button>
+      }
+    </div>
+
+    <div class="filter-wrap">
+      @for (rd of rootDepths; track rd.value) {
+        <button
+          class="mechanism-chip"
+          [class.badge-root]="store.rootDepthFilter() === rd.value"
+          [class.filter-inactive]="store.rootDepthFilter() !== rd.value"
+          (click)="store.toggleRootDepthFilter(rd.value)">
+          {{ rd.labelKey | translate }}
+        </button>
+      }
+    </div>
+  }
 
   <div class="plant-list">
-    @for (plant of store.filteredPlants(); track plant.id) {
+    @for (plant of displayedPlants(); track plant.id) {
       <div
         class="plant-item"
-        [class.selected]="store.isSelected(plant)"
-        [class.compat-good]="store.getCompatibility(plant.id) === 'good'"
-        [class.compat-avoid]="store.getCompatibility(plant.id) === 'avoid'"
-        (click)="store.addPlant(plant)">
+        [class.selected]="mode() === 'association' && store.isSelected(plant)"
+        [class.compat-good]="mode() === 'association' && store.getCompatibility(plant.id) === 'good'"
+        [class.compat-avoid]="mode() === 'association' && store.getCompatibility(plant.id) === 'avoid'"
+        (click)="onPlantClick(plant)">
         <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
         <div class="plant-info">
           <div class="plant-name-row">
@@ -80,37 +84,41 @@
               <span class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</span>
             }
           </div>
-          <div class="plant-mechanisms-inline">
-            @if (getRootDepthKey(plant.rootDepth); as rdKey) {
-              <span class="mechanism-chip badge-root">{{ rdKey | translate }}</span>
-            }
-            @for (m of plant.intrinsicMechanisms ?? []; track m) {
-              <span class="mechanism-chip badge-trait">
-                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-              </span>
-            }
-            @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.beneficial ?? []; track m) {
-              <span class="mechanism-chip badge-positive">
-                <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-              </span>
-            }
-            @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.harmful ?? []; track m) {
-              <span class="mechanism-chip mechanism-red">
-                <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-                {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-              </span>
-            }
-          </div>
+          @if (mode() === 'association') {
+            <div class="plant-mechanisms-inline">
+              @if (getRootDepthKey(plant.rootDepth); as rdKey) {
+                <button class="mechanism-chip badge-root" (click)="openRootDepthInfo(plant.rootDepth, $event)">{{ rdKey | translate }}</button>
+              }
+              @for (m of plant.intrinsicMechanisms ?? []; track m) {
+                <button class="mechanism-chip badge-trait" (click)="openMechanismInfo(m, $event)">
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </button>
+              }
+              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.beneficial ?? []; track m) {
+                <button class="mechanism-chip badge-positive" (click)="openMechanismInfo(m, $event)">
+                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </button>
+              }
+              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.harmful ?? []; track m) {
+                <button class="mechanism-chip mechanism-red" (click)="openMechanismInfo(m, $event)">
+                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
+                </button>
+              }
+            </div>
+          }
         </div>
         @if (myPlantsStore.isSaved(plant.id)) {
           <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
         }
-        <fa-icon class="plant-info-btn" [icon]="faInfo" (click)="openPlantDetail(plant, $event)"></fa-icon>
+        <button class="plant-info-btn" (click)="openPlantDetail(plant, $event)" [attr.aria-label]="'Plant.ViewDetails' | translate:{ name: plant.name }">
+          <fa-icon [icon]="faInfo"></fa-icon>
+        </button>
       </div>
     }
 
-    @if (store.filteredPlants().length === 0 && !plantStore.loading()) {
+    @if (displayedPlants().length === 0 && !plantStore.loading()) {
       <div class="empty-state">
         <p class="empty-state-text" [translate]="'Companions.NoResults'"></p>
       </div>
