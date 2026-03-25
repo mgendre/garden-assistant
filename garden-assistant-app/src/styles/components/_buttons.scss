@@ -101,7 +101,7 @@
 
 // ─── Close (dialog close) ───────────────────────────────────────────────────
 .btn-close {
-  @apply w-full rounded-lg cursor-pointer text-sm font-medium;
+  @apply w-full rounded cursor-pointer text-sm font-medium;
   padding: 0.625rem 1.25rem;
   background: var(--color-parchment);
   border: 1px solid var(--color-border-subtle);
@@ -121,7 +121,7 @@
 
 // ─── Favorite toggle ────────────────────────────────────────────────────────
 .btn-fav {
-  @apply flex items-center justify-center gap-2 w-full rounded-lg cursor-pointer text-sm font-medium;
+  @apply flex items-center justify-center gap-2 w-full rounded cursor-pointer text-sm font-medium;
   padding: 0.625rem 1.25rem;
   background: var(--color-parchment);
   border: 1px solid var(--color-border-subtle);
@@ -150,54 +150,31 @@
   }
 }
 
-// ─── Icon button (circular) ─────────────────────────────────────────────────
-.icon-btn {
-  @apply flex items-center justify-center rounded-full cursor-pointer;
-  width: 30px;
-  height: 30px;
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-  background: transparent;
-  transition: all var(--transition-fast);
-
-  &:hover {
-    background: var(--color-surface-hover);
-    color: var(--color-text);
-  }
-}
-
-.icon-btn-danger {
-  &:hover {
-    background: #fce4ec;
-    color: var(--color-danger);
-  }
-}
-
-// ─── Remove button (small circular ✕) ───────────────────────────────────────
+// ─── Remove button (small ✕) ─────────────────────────────────────────────────
 .remove-btn {
-  @apply flex items-center justify-center rounded-full text-xs flex-shrink-0 cursor-pointer transition-all;
-  width: 26px;
-  height: 26px;
+  @apply flex items-center justify-center rounded flex-shrink-0 cursor-pointer transition-all;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.8rem;
   color: var(--color-text-muted);
   background: transparent;
+  border: 1px solid transparent;
 
   &:hover {
     background: #fce4ec;
     color: #c62828;
+    border-color: rgba(198, 40, 40, 0.2);
   }
 }
 
-// ─── Info button (small circular ?) ─────────────────────────────────────────
+// ─── Info button (small ?) ───────────────────────────────────────────────────
 .btn-info {
-  @apply inline-flex items-center justify-center rounded-full cursor-pointer flex-shrink-0;
-  width: 1.125rem;
-  height: 1.125rem;
+  @apply inline-flex items-center justify-center rounded cursor-pointer flex-shrink-0;
+  padding: 0.125rem 0.35rem;
   background: transparent;
   color: var(--color-text-muted);
   font-size: 0.625rem;
   font-weight: 700;
   border: 1px solid rgba(45, 106, 79, 0.2);
-  padding: 0;
   line-height: 1;
   transition: all var(--transition-fast);
 

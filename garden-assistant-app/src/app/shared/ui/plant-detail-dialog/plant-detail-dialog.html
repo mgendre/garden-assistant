@@ -8,7 +8,7 @@
       (click)="toggleFav()"
       [attr.aria-label]="(myPlantsStore.isSaved(data.plant.id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: data.plant.name }">
       <fa-icon [icon]="myPlantsStore.isSaved(data.plant.id) ? faHeartSolid : faHeartRegular"></fa-icon>
-      <span>{{ (myPlantsStore.isSaved(data.plant.id) ? 'MyPlants.Remove' : 'Companions.SavePlant') | translate:{ name: data.plant.name } }}</span>
+      <span>{{ (myPlantsStore.isSaved(data.plant.id) ? 'PlantDetail.RemoveFromCollection' : 'PlantDetail.AddToCollection') | translate }}</span>
     </button>
 
     <button mat-dialog-close class="btn-close" [translate]="'BadgeInfo.Close'"></button>

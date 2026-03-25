@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -32,11 +32,59 @@ export class PlantCatalogue {
   ];
   private readonly dialog = inject(MatDialog);
 
+  readonly mode = input<'association' | 'collection'>('association');
+
+  readonly collectionSearch = signal('');
+
+  readonly collectionPlants = computed(() => {
+    const query = this.collectionSearch().toLowerCase();
+    const savedIds = this.myPlantsStore.plantIds();
+    let result = this.plantStore.allPlants().filter(p => !savedIds.has(p.id));
+
+    if (query) {
+      result = result.filter(p =>
+        (p.name ?? '').toLowerCase().includes(query) ||
+        (p.scientificName ?? '').toLowerCase().includes(query)
+      );
+    }
+
+    return [...result].sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'));
+  });
+
+  readonly displayedPlants = computed(() => {
+    return this.mode() === 'collection' ? this.collectionPlants() : this.store.filteredPlants();
+  });
+
+  onSearch(query: string): void {
+    if (this.mode() === 'collection') {
+      this.collectionSearch.set(query);
+    } else {
+      this.store.setSearch(query);
+    }
+  }
+
+  onPlantClick(plant: PlantDto): void {
+    if (this.mode() === 'collection') {
+      this.myPlantsStore.toggle(plant);
+    } else {
+      this.store.addPlant(plant);
+    }
+  }
+
   getRootDepthKey(rootDepth: RootDepth | undefined): string {
     switch (rootDepth) {
       case RootDepth.Shallow: return 'Plant.RootDepth.Shallow';
       case RootDepth.Medium: return 'Plant.RootDepth.Medium';
       case RootDepth.Deep: return 'Plant.RootDepth.Deep';
+      default: return '';
+    }
+  }
+
+  private getRootDepthBadgeKey(rootDepth: RootDepth | undefined): string {
+    switch (rootDepth) {
+      case RootDepth.Shallow: return 'Shallow';
+      case RootDepth.Medium: return 'Medium';
+      case RootDepth.Deep: return 'Deep';
       default: return '';
     }
   }
@@ -58,6 +106,20 @@ export class PlantCatalogue {
         data: {
           titleKey: `BadgeInfo.Mechanism.${key}.Title`,
           descriptionKey: `BadgeInfo.Mechanism.${key}.Description`,
+        },
+        maxWidth: '400px',
+      });
+    }
+  }
+
+  openRootDepthInfo(rootDepth: RootDepth | undefined, event: Event): void {
+    event.stopPropagation();
+    const key = this.getRootDepthBadgeKey(rootDepth);
+    if (key) {
+      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
+        data: {
+          titleKey: `BadgeInfo.RootDepth.${key}.Title`,
+          descriptionKey: `BadgeInfo.RootDepth.${key}.Description`,
         },
         maxWidth: '400px',
       });
