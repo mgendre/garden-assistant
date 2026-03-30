@@ -9,6 +9,7 @@ import {
   AssociationEffect,
   AssociationMechanism,
   RootDepth,
+  WaterNeeds,
   PlantActionDto,
   PropagationMethod,
 } from '../../../api/garden-assistant-api';
@@ -111,6 +112,30 @@ export class PlantAssociationPanel {
   readonly gapCount = computed(() =>
     this.mechanismRows().filter(r => !r.satisfied).length
   );
+
+  readonly hasRootCompetition = computed(() => {
+    for (const [, plants] of this.rootDepthGroups()) {
+      if (plants.length > 3) {
+        return true;
+      }
+    }
+    return false;
+  });
+
+  readonly hasWaterConflict = computed(() => {
+    const plants = this.plants();
+    return plants.some(p => p.waterNeeds === WaterNeeds.Low) && plants.some(p => p.waterNeeds === WaterNeeds.High);
+  });
+
+  readonly waterConflict = computed(() => {
+    const plants = this.plants();
+    const hasLow = plants.some(p => p.waterNeeds === WaterNeeds.Low);
+    const hasHigh = plants.some(p => p.waterNeeds === WaterNeeds.High);
+    if (!hasLow || !hasHigh) { return null; }
+    const lowPlants = plants.filter(p => p.waterNeeds === WaterNeeds.Low).map(p => p.name ?? '');
+    const highPlants = plants.filter(p => p.waterNeeds === WaterNeeds.High).map(p => p.name ?? '');
+    return { lowPlants, highPlants };
+  });
 
   plantName(plantId: string | undefined): string {
     if (!plantId) { return ''; }

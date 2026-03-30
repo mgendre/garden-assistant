@@ -58,11 +58,39 @@
 @if (plants().length >= 2) {
   <div class="panel-section">
     <app-collapsible [initialExpanded]="true">
-      <div collapsible-header class="section-header">
-        <span>🌱</span>
-        <span [translate]="'GuildAssistant.Title'"></span>
+      <div collapsible-header class="section-header section-header--assistant">
+        <span class="section-header-label">
+          <span>🌱</span>
+          <span [translate]="'GuildAssistant.Title'"></span>
+        </span>
+        <div class="health-badges-inline">
+          @if (hasWaterConflict()) {
+            <span class="health-badge health-badge--water">
+              💧 {{ 'GuildAssistant.BadgeWater' | translate }}
+            </span>
+          }
+          @if (hasRootCompetition()) {
+            <span class="health-badge health-badge--root">
+              🌱 {{ 'GuildAssistant.BadgeRootCompetition' | translate }}
+            </span>
+          }
+        </div>
       </div>
       <div collapsible-body>
+        @if (waterConflict(); as conflict) {
+          <div class="assistant-warning assistant-warning--water">
+            <div class="assistant-warning-header">
+              <span>💧</span>
+              <strong [translate]="'GuildAssistant.WaterConflictTitle'"></strong>
+            </div>
+            <div class="assistant-warning-body">
+              <span>{{ 'GuildAssistant.WaterConflictLow' | translate }} {{ conflict.lowPlants.join(', ') }}</span>
+              <span>{{ 'GuildAssistant.WaterConflictHigh' | translate }} {{ conflict.highPlants.join(', ') }}</span>
+            </div>
+            <p class="assistant-warning-tip" [translate]="'GuildAssistant.WaterConflictTip'"></p>
+          </div>
+        }
+
         @for (row of mechanismRows(); track row.mechanism) {
           <div class="mechanism-row" [class.mechanism-row--satisfied]="row.satisfied">
             @if (row.satisfied) {

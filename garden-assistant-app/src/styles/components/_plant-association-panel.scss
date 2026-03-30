@@ -18,21 +18,23 @@
   padding: 0.25rem 0.625rem;
 
   &--beneficial {
-    background: rgba(35, 114, 39, 0.08);
-    border: 1px solid rgba(35, 114, 39, 0.2);
+    background: var(--color-success-bg);
+    border: 1px solid var(--color-success-border);
     color: var(--color-forest);
   }
 
   &--harmful {
-    background: rgba(239, 83, 80, 0.08);
-    border: 1px solid rgba(239, 83, 80, 0.2);
-    color: #c62828;
+    background: var(--color-danger-bg);
+    border: 1px solid var(--color-danger-border);
+    color: var(--color-danger-text);
   }
 
-  &--gap {
-    background: rgba(230, 153, 0, 0.08);
-    border: 1px solid rgba(230, 153, 0, 0.2);
-    color: var(--color-earth-dark);
+  &--gap,
+  &--water,
+  &--root {
+    background: var(--color-warning-bg);
+    border: 1px solid var(--color-warning-border);
+    color: var(--color-warning);
   }
 }
 
@@ -54,9 +56,9 @@
 .association-alert {
   @apply flex items-center gap-2 text-xs rounded-lg mx-5 mb-3;
   padding: 0.5rem 0.75rem;
-  background: #fff5f5;
-  border: 1px solid rgba(229, 57, 53, 0.2);
-  color: #c62828;
+  background: var(--color-danger-bg);
+  border: 1px solid var(--color-danger-border);
+  color: var(--color-danger-text);
 }
 
 .association-list {
@@ -101,6 +103,34 @@
 .association-notes {
   @apply text-xs mt-1;
   color: var(--color-text-muted);
+}
+
+.assistant-warning--water {
+  @apply flex flex-col gap-1 text-xs rounded-lg;
+  padding: 0.6rem 0.75rem;
+  margin: 0 1.25rem 0.75rem;
+  background: var(--color-warning-bg);
+  border: 1px solid var(--color-warning-border);
+  color: var(--color-warning);
+}
+
+.assistant-warning-header {
+  @apply flex items-center gap-2;
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.assistant-warning-body {
+  @apply flex flex-col gap-0.5;
+  padding-left: 1.5rem;
+}
+
+.assistant-warning-tip {
+  @apply italic mt-1;
+  padding-left: 1.5rem;
+  opacity: 0.85;
 }
 
 .mechanism-row {
