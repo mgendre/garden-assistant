@@ -2,6 +2,13 @@
 
 Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL 17.
 
+## Nouveautes
+
+Pas encore de nouveautes publiees. Cette section sera mise a jour par l'agent community-writer.
+
+- [Nouveautes pour les jardiniers](changelogs/users/)
+- [Changelog technique](changelogs/devs/)
+
 ## Documentation
 
 - [Documentation overview](docs/README.md)
