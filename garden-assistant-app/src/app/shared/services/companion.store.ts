@@ -85,7 +85,7 @@ export class CompanionStore {
 
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
-  readonly sortMode = signal<'alpha' | 'family' | 'compat'>('alpha');
+  readonly sortMode = signal<'compat' | 'alpha' | 'family'>('compat');
   readonly myPlantsOnly = signal(false);
   readonly mechanismFilter = signal<number | null>(null);
   readonly rootDepthFilter = signal<RootDepth | null>(null);
