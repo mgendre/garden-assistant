@@ -15,15 +15,15 @@
     <div class="sort-wrap">
       <button
         class="chip"
-        [class.active]="store.sortMode() === 'alpha'"
-        (click)="store.setSort('alpha')"
-        [translate]="'Companions.SortAlpha'">
-      </button>
-      <button
-        class="chip"
         [class.active]="store.sortMode() === 'compat'"
         (click)="store.setSort('compat')"
         [translate]="'Companions.SortCompat'">
+      </button>
+      <button
+        class="chip"
+        [class.active]="store.sortMode() === 'alpha'"
+        (click)="store.setSort('alpha')"
+        [translate]="'Companions.SortAlpha'">
       </button>
       <button
         class="chip"

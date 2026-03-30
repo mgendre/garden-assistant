@@ -64,6 +64,9 @@
           <span [translate]="'GuildAssistant.Title'"></span>
         </span>
         <div class="health-badges-inline">
+          <span class="health-badge" [class.health-badge--beneficial]="gapCount() === 0" [class.health-badge--neutral]="gapCount() > 0">
+            {{ satisfiedCount() }}/{{ totalMechanisms() }} {{ 'GuildAssistant.BadgeMechanisms' | translate }}
+          </span>
           @if (hasWaterConflict()) {
             <span class="health-badge health-badge--water">
               💧 {{ 'GuildAssistant.BadgeWater' | translate }}
@@ -91,36 +94,49 @@
           </div>
         }
 
-        @for (row of mechanismRows(); track row.mechanism) {
-          <div class="mechanism-row" [class.mechanism-row--satisfied]="row.satisfied">
-            @if (row.satisfied) {
-              <span class="mechanism-check">✓</span>
-            } @else {
-              <span class="mechanism-empty">○</span>
-            }
-            @if (interactive()) {
-              <span class="mechanism-chip"
-                [class.mechanism-chip--inactive]="!row.satisfied"
-                [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
-                [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
-                (click)="filterMechanism(row.mechanism)">
-                {{ 'Plant.Mechanism.' + row.key | translate }}
-              </span>
-              <button class="btn-info" (click)="openMechanismInfo(row.mechanism)">?</button>
-            } @else {
-              <span class="mechanism-chip" [class.mechanism-chip--inactive]="!row.satisfied" (click)="openMechanismInfo(row.mechanism)">
-                {{ 'Plant.Mechanism.' + row.key | translate }}
-              </span>
-            }
-            @if (row.satisfied) {
-              <div class="mechanism-providers">
-                @for (plant of row.providers; track plant.id) {
-                  <span class="mechanism-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
-                }
-              </div>
-            }
+        <div class="mechanism-grid">
+          <div class="mechanism-grid-header">
+            <span></span>
+            <span [translate]="'GuildAssistant.ColMechanism'"></span>
+            <span [translate]="'GuildAssistant.ColProviders'"></span>
           </div>
-        }
+          @for (row of mechanismRows(); track row.mechanism) {
+            <div class="mechanism-grid-row" [class.mechanism-grid-row--satisfied]="row.satisfied">
+              <span class="mechanism-status">
+                @if (row.satisfied) {
+                  <span class="mechanism-check">✓</span>
+                } @else {
+                  <span class="mechanism-empty">○</span>
+                }
+              </span>
+              <span class="mechanism-name">
+                @if (interactive()) {
+                  <span class="mechanism-chip"
+                    [class.mechanism-chip--inactive]="!row.satisfied"
+                    [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
+                    [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
+                    (click)="filterMechanism(row.mechanism)">
+                    {{ 'Plant.Mechanism.' + row.key | translate }}
+                  </span>
+                  <button class="btn-info" (click)="openMechanismInfo(row.mechanism)">?</button>
+                } @else {
+                  <span class="mechanism-chip" [class.mechanism-chip--inactive]="!row.satisfied" (click)="openMechanismInfo(row.mechanism)">
+                    {{ 'Plant.Mechanism.' + row.key | translate }}
+                  </span>
+                }
+              </span>
+              <span class="mechanism-providers">
+                @if (row.satisfied) {
+                  @for (plant of row.providers; track plant.id) {
+                    <span class="mechanism-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
+                  }
+                } @else {
+                  <span class="mechanism-provider-empty">—</span>
+                }
+              </span>
+            </div>
+          }
+        </div>
 
         <div class="stratification-divider">
           <div class="section-sublabel" [translate]="'GuildAssistant.SectionRootDepth'"></div>

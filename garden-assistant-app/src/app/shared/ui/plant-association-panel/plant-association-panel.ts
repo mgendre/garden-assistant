@@ -113,6 +113,14 @@ export class PlantAssociationPanel {
     this.mechanismRows().filter(r => !r.satisfied).length
   );
 
+  readonly satisfiedCount = computed(() =>
+    this.mechanismRows().filter(r => r.satisfied).length
+  );
+
+  readonly totalMechanisms = computed(() =>
+    this.mechanismRows().length
+  );
+
   readonly hasRootCompetition = computed(() => {
     for (const [, plants] of this.rootDepthGroups()) {
       if (plants.length > 3) {
