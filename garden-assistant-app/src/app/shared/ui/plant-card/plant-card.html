@@ -3,6 +3,10 @@
     <div class="detail-icon-sm">{{ store.getPlantEmoji(plant()) }}</div>
     <div class="detail-hero-info">
       <div class="detail-name-row">
+        @if (showCentralIndicator() && isCentral()) {
+          <fa-icon [icon]="faStarSolid" class="central-indicator"
+            [attr.aria-label]="'Guild.CentralPlant' | translate"></fa-icon>
+        }
         <span class="detail-name">{{ plant().name }}</span>
         <span class="detail-latin-inline">{{ plant().scientificName }}</span>
       </div>
@@ -48,6 +52,15 @@
         }
       </div>
     </div>
+    @if (showCentralToggle()) {
+      <button
+        class="header-central-btn"
+        [class.central]="isCentral()"
+        (click)="toggleCentral($event)"
+        [attr.aria-label]="(isCentral() ? 'Guild.ToggleCompanion' : 'Guild.ToggleCentral') | translate">
+        <fa-icon [icon]="isCentral() ? faStarSolid : faStarRegular"></fa-icon>
+      </button>
+    }
     @if (!hideFavButton()) {
       <button
         class="header-fav-btn"

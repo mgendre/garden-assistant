@@ -2,7 +2,7 @@ import { Component, inject, computed } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore, PRIORITY_MECHANISMS } from '../../../shared/services/companion.store';
-import { AssociationMechanism, PlantDto } from '../../../api/garden-assistant-api';
+import { AssociationMechanism, PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 import { RootStratification } from '../root-stratification/root-stratification';
@@ -37,6 +37,11 @@ export class GuildAssistant {
   });
 
   readonly isBalanced = computed(() => this.store.assistantGapCount() === 0);
+
+  readonly filterRootDepth = (depth: RootDepth) => {
+    this.store.mechanismFilter.set(null);
+    this.store.toggleRootDepthFilter(depth);
+  };
 
   filterMechanism(mechanism: AssociationMechanism): void {
     this.store.rootDepthFilter.set(null);

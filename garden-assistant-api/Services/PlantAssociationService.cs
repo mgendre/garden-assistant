@@ -66,12 +66,13 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         {
             Plant = p,
             Score = Math.Round(scores[p.Id], 2),
-            Mechanisms = CollectBeneficialMechanisms(p.Id, selectedPlantIds, associationLookup)
+            Mechanisms = CollectBeneficialMechanisms(p.Id, selectedPlantIds, associationLookup),
+            LinkedPlantIds = CollectLinkedPlantIds(p.Id, selectedPlantIds, associationLookup)
         })
         .Where(c => !minScore.HasValue || c.Score >= minScore.Value)
         .OrderByDescending(c => c.Score)
         .ThenBy(c => c.Plant.Name, StringComparer.OrdinalIgnoreCase)
-        .Select(c => new CompanionRecommendationDto(c.Plant.Id, c.Mechanisms))
+        .Select(c => new CompanionRecommendationDto(c.Plant.Id, c.Mechanisms, c.LinkedPlantIds))
         .ToList();
 
         var plantsToAvoid = BuildPlantsToAvoid(selectedPlantIds, associations);
@@ -156,34 +157,38 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         List<Guid> selectedPlantIds,
         List<PlantAssociation> associations)
     {
-        var harmfulByPlant = new Dictionary<Guid, HashSet<AssociationMechanism>>();
+        var harmfulByPlant = new Dictionary<Guid, (HashSet<AssociationMechanism> Mechanisms, HashSet<Guid> LinkedIds)>();
 
         foreach (var a in associations.Where(a => a.Effect == AssociationEffect.Harmful))
         {
             Guid candidateId;
+            Guid linkedId;
             if (selectedPlantIds.Contains(a.SourcePlantId) && !selectedPlantIds.Contains(a.TargetPlantId))
             {
                 candidateId = a.TargetPlantId;
+                linkedId = a.SourcePlantId;
             }
             else if (selectedPlantIds.Contains(a.TargetPlantId) && !selectedPlantIds.Contains(a.SourcePlantId))
             {
                 candidateId = a.SourcePlantId;
+                linkedId = a.TargetPlantId;
             }
             else
             {
                 continue;
             }
 
-            if (!harmfulByPlant.TryGetValue(candidateId, out var mechanisms))
+            if (!harmfulByPlant.TryGetValue(candidateId, out var entry))
             {
-                mechanisms = [];
-                harmfulByPlant[candidateId] = mechanisms;
+                entry = ([], []);
+                harmfulByPlant[candidateId] = entry;
             }
-            mechanisms.Add(a.Mechanism);
+            entry.Mechanisms.Add(a.Mechanism);
+            entry.LinkedIds.Add(linkedId);
         }
 
         return harmfulByPlant
-            .Select(kv => new CompanionRecommendationDto(kv.Key, kv.Value.ToList()))
+            .Select(kv => new CompanionRecommendationDto(kv.Key, kv.Value.Mechanisms.ToList(), kv.Value.LinkedIds.ToList()))
             .OrderBy(p => p.PlantId)
             .ToList();
     }
@@ -241,6 +246,21 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             }
         }
         return mechanisms.ToList();
+    }
+
+    private static List<Guid> CollectLinkedPlantIds(Guid candidateId, List<Guid> selectedPlantIds,
+        Dictionary<(Guid, Guid), List<(AssociationEffect Effect, AssociationMechanism Mechanism)>> lookup)
+    {
+        var linked = new HashSet<Guid>();
+        foreach (var selectedId in selectedPlantIds)
+        {
+            var key = NormalizeKey(candidateId, selectedId);
+            if (lookup.TryGetValue(key, out var entries) && entries.Any(e => e.Effect == AssociationEffect.Beneficial))
+            {
+                linked.Add(selectedId);
+            }
+        }
+        return linked.ToList();
     }
 
     private static (Guid, Guid) NormalizeKey(Guid a, Guid b) =>

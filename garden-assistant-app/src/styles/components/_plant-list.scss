@@ -64,6 +64,18 @@
     .plant-icon { background: var(--color-surface-hover); }
   }
 
+  &.compat-central {
+    background: var(--color-accent-tint);
+    &::before {
+      content: '';
+      @apply absolute left-0 top-0 bottom-0 rounded-r;
+      width: 3px;
+      background: var(--color-accent);
+    }
+    &:hover { background: var(--color-surface-hover); }
+    .plant-icon { background: var(--color-accent-tint); }
+  }
+
   &.compat-avoid {
     background: #fff5f5;
     &::before {

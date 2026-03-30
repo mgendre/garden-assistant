@@ -1,8 +1,8 @@
 <div class="soil-rows">
     @for (layer of layers; track layer.depth) {
-        @let plants = store.rootDepthGroups().get(layer.depth) ?? [];
+        @let plants = rootDepthGroups().get(layer.depth) ?? [];
         <div class="soil-row" [ngClass]="layer.cssClass">
-            <button class="soil-row-label" (click)="store.toggleRootDepthFilter(layer.depth)">
+            <button class="soil-row-label" [disabled]="!interactive()" (click)="onFilterClick(layer.depth)">
                 {{ layer.labelKey | translate }}
                 <span class="soil-row-range">{{ layer.rangeKey | translate }}</span>
             </button>
@@ -14,11 +14,13 @@
                     <span class="soil-plant-chip soil-plant-chip--clickable" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
                 }
             </div>
-            <button class="soil-filter-btn"
-                [class.soil-filter-active]="store.rootDepthFilter() === layer.depth"
-                (click)="store.toggleRootDepthFilter(layer.depth)">
-                <fa-icon [icon]="faFilter"></fa-icon>
-            </button>
+            @if (interactive()) {
+                <button class="soil-filter-btn"
+                    [class.soil-filter-active]="rootDepthFilter() === layer.depth"
+                    (click)="onFilterClick(layer.depth)">
+                    <fa-icon [icon]="faFilter"></fa-icon>
+                </button>
+            }
         </div>
     }
 </div>

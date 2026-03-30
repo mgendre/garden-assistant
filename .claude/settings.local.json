@@ -21,11 +21,6 @@
       "Bash(git:*)",
       "Bash(python -m json.tool garden-assistant-api/Data/Seeds/plant-actions.json)",
       "Bash(python -m json.tool garden-assistant-api/Data/Seeds/harvest-readiness.json)",
-      "Bash(grep -r color-border garden-assistant-app/dist/garden-assistant-app/browser/*.css)",
-      "Bash(grep color-border:*)",
-      "Bash(grep color-forest:*)",
-      "Bash(grep -o --color-[a-z-]* garden-assistant-app/dist/garden-assistant-app/browser/styles-*.css)",
-      "Bash(grep \"color-border\\\\|color-divider\" garden-assistant-app/dist/garden-assistant-app/browser/styles-*.css)",
       "Bash(chmod:*)",
       "Bash(dotnet nswag:*)",
       "WebFetch(domain:flowbite.com)"

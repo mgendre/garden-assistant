@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ViewEncapsulation } from '@angular/core';
 import { MarkdownComponent } from 'ngx-markdown';
 
 @Component({
@@ -6,7 +6,8 @@ import { MarkdownComponent } from 'ngx-markdown';
   standalone: true,
   imports: [MarkdownComponent],
   templateUrl: './whats-new-entry.html',
-  styleUrl: './whats-new-entry.scss'
+  styleUrl: './whats-new-entry.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class WhatsNewEntry {
   readonly title = input.required<string>();

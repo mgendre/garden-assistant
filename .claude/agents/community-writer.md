@@ -35,7 +35,7 @@ date: YYYY-MM-DD
 title: "A short, engaging title in French"
 ---
 
-## Feature Theme
+### Feature Theme
 
 Description of what the user can now do, written warmly as if talking
 to a fellow gardener. No technical jargon.
@@ -51,15 +51,15 @@ date: YYYY-MM-DD
 title: "Short technical summary in French"
 ---
 
-## Backend
+### Backend
 
 - What changed in the API, entities, services, migrations
 
-## Frontend
+### Frontend
 
 - What changed in components, stores, routing
 
-## Infrastructure
+### Infrastructure
 
 - Container, hosting, CI/CD changes
 ```

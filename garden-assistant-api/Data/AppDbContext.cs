@@ -1,4 +1,5 @@
 using GardenAssistant.Data.Entities;
+using GardenAssistant.Data.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace GardenAssistant.Data;
@@ -98,6 +99,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasKey(gp => new { gp.GuildId, gp.PlantId });
             entity.HasOne<Guild>().WithMany().HasForeignKey(gp => gp.GuildId).OnDelete(DeleteBehavior.Cascade);
             entity.HasOne<Plant>().WithMany().HasForeignKey(gp => gp.PlantId).OnDelete(DeleteBehavior.Restrict);
+            entity.Property(gp => gp.Role).HasDefaultValue(GuildPlantRole.Companion);
         });
 
         modelBuilder.Entity<UserPlant>(entity =>
