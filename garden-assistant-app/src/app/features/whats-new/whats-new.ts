@@ -1,5 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { WhatsNewEntry } from './whats-new-entry/whats-new-entry';
 
@@ -23,8 +22,6 @@ interface WhatsNewItem {
   styleUrl: './whats-new.scss'
 })
 export class WhatsNew implements OnInit {
-  private readonly http = inject(HttpClient);
-
   readonly loading = signal(true);
   readonly entries = signal<WhatsNewItem[]>([]);
 
@@ -42,11 +39,17 @@ export class WhatsNew implements OnInit {
 
   private async fetchIndex(): Promise<WhatsNewIndexEntry[]> {
     const response = await fetch('/changelogs/whats-new.index.json');
+    if (!response.ok) {
+      return [];
+    }
     return response.json();
   }
 
   private async fetchEntry(entry: WhatsNewIndexEntry): Promise<WhatsNewItem> {
     const response = await fetch(`/changelogs/${entry.file}`);
+    if (!response.ok) {
+      return { date: entry.date, title: entry.title, content: '' };
+    }
     const raw = await response.text();
     const content = this.stripFrontmatter(raw);
     return { date: entry.date, title: entry.title, content };
