@@ -7,15 +7,25 @@
   </div>
 } @else {
   <div class="plants-scroll">
-    @for (plant of store.selectedPlants(); track plant.id) {
-      <div class="plant-detail">
+    @for (plant of store.sortedSelectedPlants(); track plant.id) {
+      <div class="plant-detail" [class.plant-detail--central]="store.isCentralPlant(plant.id)">
         <app-plant-card
           [plant]="plant"
           [removable]="true"
+          [showCentralToggle]="store.selectedPlants().length >= 2"
+          [isCentral]="store.isCentralPlant(plant.id)"
+          [showCentralIndicator]="store.isCentralPlant(plant.id)"
           [relationalMechanisms]="store.relationalMechanismsByPlant().get(plant.id!) ?? []"
-          (remove)="store.removePlant(plant)">
+          (remove)="store.removePlant(plant)"
+          (centralToggle)="store.toggleCentralPlant(plant.id!)">
         </app-plant-card>
       </div>
     }
   </div>
+  @if (store.selectedPlants().length >= 2 && !store.hasCentralPlants()) {
+    <div class="central-plant-hint">
+      <span>⭐</span>
+      <span [translate]="'Guild.CentralPlantHint'"></span>
+    </div>
+  }
 }

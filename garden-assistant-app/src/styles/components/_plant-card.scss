@@ -51,6 +51,8 @@
   @apply flex-shrink-0 cursor-pointer rounded flex items-center justify-center;
   padding: 0.375rem 0.5rem;
   font-size: 0.8rem;
+  min-width: 44px;
+  min-height: 44px;
   color: var(--color-text-muted);
   background: transparent;
   border: 1px solid transparent;
@@ -115,4 +117,36 @@
 
 .plant-detail-dialog {
   @apply flex flex-col gap-4 p-4;
+}
+
+.header-central-btn {
+  @apply flex-shrink-0 cursor-pointer rounded flex items-center justify-center;
+  padding: 0.375rem 0.5rem;
+  font-size: 0.8rem;
+  min-width: 44px;
+  min-height: 44px;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all var(--transition-fast);
+
+  &:hover {
+    color: var(--color-accent-dark);
+    background: var(--color-accent-tint);
+    border-color: rgba(230, 153, 0, 0.2);
+  }
+
+  &.central {
+    color: var(--color-accent);
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.central-indicator {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  flex-shrink: 0;
 }

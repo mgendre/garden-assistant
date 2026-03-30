@@ -1,35 +1,26 @@
-import { Component, computed, inject, signal, effect } from '@angular/core';
+import { Component, inject, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPen, faPlus, faXmark, faLink, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { GuildStore } from '../../../shared/services/guild.store';
 import { PlantStore } from '../../../shared/services/plant.store';
 import { CalendarService } from '../../../shared/services/calendar.service';
-import { PlantActionDto, PlantActionType, PropagationMethod } from '../../../api/garden-assistant-api';
+import { PlantActionDto, PlantActionType, PropagationMethod, AssociationMechanism, RootDepth } from '../../../api/garden-assistant-api';
 import { SOWING_ACTIONS } from '../../../shared/constants/plant-action.constants';
 import { PlantDetailPanel } from '../plant-detail-panel/plant-detail-panel';
 import { GuildPanel } from '../guild-panel/guild-panel';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
-import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
 import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../../shared/ui/harvest-readiness/harvest-readiness-dialog';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
-import { GuildAssistant } from '../guild-assistant/guild-assistant';
-
-interface PlantCalendarEntry {
-  plantId: string;
-  name: string;
-  propagationMethod: PropagationMethod;
-  frostSensitive: boolean;
-  actions: PlantActionDto[];
-}
+import { PlantAssociationPanel, PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
 
 @Component({
   selector: 'app-guild-editor',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, PlantCalendarGantt, GuildAssistant],
+  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, PlantAssociationPanel],
   templateUrl: './guild-editor.html',
   styleUrl: './guild-editor.scss'
 })
@@ -40,8 +31,6 @@ export class GuildEditor {
   protected readonly faPen = faPen;
   protected readonly faPlus = faPlus;
   protected readonly faClose = faXmark;
-  protected readonly faLink = faLink;
-  protected readonly faWarning = faTriangleExclamation;
   private readonly dialog = inject(MatDialog);
   private readonly calendarService = inject(CalendarService);
 
@@ -86,15 +75,6 @@ export class GuildEditor {
     });
   }
 
-  protected readonly hasHarmfulAssociations = computed(() => {
-    const associations = this.store.recommendations()?.selectedPlantAssociations;
-    return associations?.some(a => a.effect === 1) ?? false;
-  });
-
-  plantName(id: string | undefined): string {
-    return this.plantStore.findById(id)?.name ?? '';
-  }
-
   async openHarvestReadiness(plantId: string, plantName: string): Promise<void> {
     const readiness = await this.calendarService.getHarvestReadiness(plantId);
     if (readiness) {
@@ -135,16 +115,4 @@ export class GuildEditor {
     }
   }
 
-  openMechanismInfo(mechanism: number): void {
-    const key = this.store.getMechanismKey(mechanism);
-    if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.Mechanism.${key}.Title`,
-          descriptionKey: `BadgeInfo.Mechanism.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
-    }
-  }
 }

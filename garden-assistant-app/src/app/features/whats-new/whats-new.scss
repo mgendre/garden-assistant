@@ -1,0 +1,22 @@
+@reference "tailwindcss";
+
+.whats-new-loading {
+  @apply flex items-center justify-center py-16;
+}
+
+.whats-new-loading-spinner {
+  @apply w-8 h-8 rounded-full;
+  border: 3px solid var(--color-border-subtle);
+  border-top-color: var(--color-canopy);
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.whats-new-entries {
+  @apply flex flex-col gap-6 mt-4;
+}

@@ -2,8 +2,8 @@ import { Component, input, output, inject, signal, ViewEncapsulation, OnInit } f
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHeart as faHeartSolid, faLink } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as faHeartRegular } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faHeartSolid, faLink, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faHeartRegular, faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
 import { firstValueFrom } from 'rxjs';
 import { PlantDto, PlantActionDto, HarvestReadinessDto, SunRequirement, WaterNeeds, LifeCycle, RootDepth, PropagationMethod, AssociationMechanism } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../services/companion.store';
@@ -32,8 +32,12 @@ export class PlantCard implements OnInit {
   readonly hideMechanisms = input(false);
   readonly hideFavButton = input(false);
   readonly relationalMechanisms = input<number[]>([]);
+  readonly showCentralToggle = input(false);
+  readonly isCentral = input(false);
+  readonly showCentralIndicator = input(false);
 
   readonly remove = output<void>();
+  readonly centralToggle = output<void>();
 
   protected readonly store = inject(CompanionStore);
   protected readonly myPlantsStore = inject(MyPlantsStore);
@@ -43,6 +47,8 @@ export class PlantCard implements OnInit {
   readonly harvestReadiness = signal<HarvestReadinessDto | null>(null);
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faHeartRegular = faHeartRegular;
+  protected readonly faStarSolid = faStarSolid;
+  protected readonly faStarRegular = faStarRegular;
   protected readonly faLink = faLink;
   private readonly dialog = inject(MatDialog);
   private readonly translate = inject(TranslateService);
@@ -181,6 +187,11 @@ export class PlantCard implements OnInit {
       case WaterNeeds.High: return 'High';
       default: return '';
     }
+  }
+
+  toggleCentral(event: Event): void {
+    event.stopPropagation();
+    this.centralToggle.emit();
   }
 
   async toggleFav(event: Event): Promise<void> {

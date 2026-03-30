@@ -94,6 +94,12 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("plant_id");
 
+                    b.Property<int>("Role")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0)
+                        .HasColumnName("role");
+
                     b.HasKey("GuildId", "PlantId")
                         .HasName("pk_guild_plants");
 

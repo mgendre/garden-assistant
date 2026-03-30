@@ -1,5 +1,10 @@
 @reference "tailwindcss";
 
+.plant-list {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
 .plant-mechanisms-inline {
   @apply flex flex-wrap gap-1;
   margin-top: 0.25rem;

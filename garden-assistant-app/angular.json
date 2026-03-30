@@ -50,6 +50,16 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*.md",
+                "input": "../changelogs/users",
+                "output": "/changelogs"
+              },
+              {
+                "glob": "whats-new.index.json",
+                "input": "../changelogs",
+                "output": "/changelogs"
               }
             ],
             "styles": [

@@ -2,6 +2,13 @@
 
 Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL 17.
 
+## Nouveautes
+
+Designez vos plantes centrales dans l'editeur de guildes ! Une etoile doree distingue les plantes principales des compagnes, avec tri automatique et aide contextuelle pour bien structurer vos guildes de permaculture.
+
+- [Nouveautes pour les jardiniers](changelogs/users/2026-03-30-plante-centrale.md)
+- [Changelog technique](changelogs/devs/2026-03-30-plante-centrale.md)
+
 ## Documentation
 
 - [Documentation overview](docs/README.md)

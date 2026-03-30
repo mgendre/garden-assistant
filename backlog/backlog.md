@@ -7,7 +7,7 @@
 
 ## E01 — Gestion des jardins et des planches
 
-> Permettre au jardinier de creer et d'organiser ses espaces de culture sous forme de jardins et de planches.
+> Permettre au jardinier de creer et d'organiser ses espaces de culture sous forme de jardins et de planches. La vue jardin affiche les planches en collapsibles avec detail complet des associations en lecture seule (Option C hybride). L'edition des plantes se fait via redirection vers la page associations.
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
@@ -15,13 +15,17 @@
 | [US-002](epics/E01-gestion-jardin-planches/US-002-lister-mes-jardins.md) | Lister mes jardins | Indispensable | 2 | En cours |
 | [US-003](epics/E01-gestion-jardin-planches/US-003-modifier-un-jardin.md) | Modifier un jardin | Indispensable | 1 | En cours |
 | [US-004](epics/E01-gestion-jardin-planches/US-004-supprimer-un-jardin.md) | Supprimer un jardin | Important | 2 | En cours |
-| [US-005](epics/E01-gestion-jardin-planches/US-005-ajouter-une-planche.md) | Ajouter une planche a un jardin | Indispensable | 3 | A faire |
-| [US-006](epics/E01-gestion-jardin-planches/US-006-modifier-une-planche.md) | Modifier une planche | Important | 2 | A faire |
+| [US-005](epics/E01-gestion-jardin-planches/US-005-ajouter-une-planche.md) | Ajouter une planche a un jardin | Indispensable | 2 | A faire |
+| [US-006](epics/E01-gestion-jardin-planches/US-006-modifier-une-planche.md) | Modifier une planche (nom) | Important | 1 | A faire |
 | [US-007](epics/E01-gestion-jardin-planches/US-007-supprimer-une-planche.md) | Supprimer une planche | Important | 2 | A faire |
+| [US-124](epics/E01-gestion-jardin-planches/US-124-vue-jardin-liste-planches.md) | Vue jardin avec liste des planches en collapsibles | Indispensable | 3 | A faire |
+| [US-125](epics/E01-gestion-jardin-planches/US-125-detail-planche-associations-readonly.md) | Detail d'une planche avec associations en lecture seule | Indispensable | 8 | En cours |
+| [US-126](epics/E01-gestion-jardin-planches/US-126-modifier-planche-redirect-associations.md) | Modifier les plantes d'une planche via la page associations | Indispensable | 3 | A faire |
+| [US-127](epics/E01-gestion-jardin-planches/US-127-calendrier-global-jardin.md) | Calendrier global du jardin avec groupement par planches | Important | 5 | A faire |
 
-**Total E01 : 14 points (0 Termine / 7 En cours / 7 A faire)**
+**Total E01 : 31 points (0 Termine / 8 En cours / 23 A faire)**
 
-> Note : US-001 a US-004 disposent d'une API backend fonctionnelle mais sans interface frontend. Les controleurs backend (GardenController, PlantingController, PlantingEntryController) ont ete supprimes dans le cadre du nettoyage E11/US-075. L'API devra etre reconstruite lors de la reprise de cet epic.
+> Note : US-001 a US-004 disposent d'une API backend fonctionnelle mais sans interface frontend. Les controleurs backend (GardenController, PlantingController, PlantingEntryController) ont ete supprimes dans le cadre du nettoyage E11/US-075. L'API devra etre reconstruite lors de la reprise de cet epic. La vue jardin utilise l'approche hybride (Option C) : lecture complete sur place, edition via redirection vers `/companions?guild={bedGuildId}&returnTo=/garden`. Spec de reference : `docs/superpowers/specs/2026-03-30-vue-jardin-planches-design.md`. US-125 partiellement avancee : le composant shared `PlantAssociationPanel` est cree et integre dans le guild editor (CA8 termine). Le reste (integration dans la vue planche) est a faire.
 
 ---
 
@@ -40,7 +44,7 @@
 
 ## E03 — Editeur graphique du jardin
 
-> Fournir un editeur visuel pour representer fidelement le terrain, positionner les planches et visualiser les cultures.
+> Fournir un editeur visuel pour representer fidelement le terrain, positionner les planches et visualiser les cultures. Inclut les dimensions et formes des planches (ex-E17).
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
@@ -49,8 +53,13 @@
 | [US-016](epics/E03-outil-graphique/US-016-visualiser-plantes-sur-plan.md) | Visualiser les plantes sur le plan | Important | 5 | A faire |
 | [US-017](epics/E03-outil-graphique/US-017-ajouter-elements-fixes.md) | Ajouter des elements fixes sur le plan | Optionnel | 5 | A faire |
 | [US-018](epics/E03-outil-graphique/US-018-exporter-plan.md) | Exporter le plan du jardin | Optionnel | 3 | A faire |
+| [US-121](epics/E03-outil-graphique/US-121-definir-dimensions-planche.md) | Definir les dimensions d'une planche | Indispensable | 3 | A faire |
+| [US-122](epics/E03-outil-graphique/US-122-modifier-dimensions-planche.md) | Modifier les dimensions d'une planche | Important | 2 | A faire |
+| [US-123](epics/E03-outil-graphique/US-123-forme-planche.md) | Choisir la forme d'une planche | Important | 5 | A faire |
 
-**Total E03 : 29 points (0 Termine / 29 A faire)**
+**Total E03 : 39 points (0 Termine / 39 A faire)**
+
+> Note : US-121/122/123 proviennent de l'ex-E17 (dimensions et formes des planches), fusionne dans E03 car les dimensions et formes n'ont de sens que dans le contexte de l'editeur graphique.
 
 ---
 
@@ -127,12 +136,12 @@
 | [US-050](epics/E08-polish-ux-associations/US-050-plant-detail-dialog.md) | Dialog detail d'une plante | Important | 2 | Termine |
 | [US-051](epics/E08-polish-ux-associations/US-051-guild-container-visual.md) | Conteneur visuel de guilde | Optionnel | 1 | Termine |
 | [US-052](epics/E08-polish-ux-associations/US-052-sass-7-1-refactoring.md) | Refactoring styles Sass 7-1 | Important | 3 | Termine |
-| [US-053](epics/E08-polish-ux-associations/US-053-limiter-catalogue-api.md) | Limiter l'API catalogue a 20 resultats | Indispensable | 1 | A faire |
+| ~~US-053~~ | ~~Limiter l'API catalogue a 20 resultats~~ | ~~Indispensable~~ | ~~1~~ | Abandonne |
 | [US-065](epics/E08-polish-ux-associations/US-065-associations-manquantes.md) | Indicateur d'associations importantes manquantes | Important | 5 | A faire |
 
-**Total E08 : 15 points (9 Termine / 6 A faire)**
+**Total E08 : 14 points (9 Termine / 5 A faire)**
 
-> Note : US-053 reste A faire (aucune pagination ni limitation dans le backend).
+> Note : US-053 abandonnee — la limite de 20 plantes dans le catalogue a ete supprimee. Le catalogue affiche maintenant toutes les plantes avec une scrollbar (max-height 70vh).
 
 ---
 
@@ -181,7 +190,7 @@
 
 ## E11 — Guildes, mecanismes et refonte editeur
 
-> Enrichir l'editeur de guilde avec les mecanismes intrinseques et relationnels, les avertissements de conflit, le detail des associations, et elargir la base de donnees a 50 guildes et 356 associations. Simplifier le layout en 2 colonnes et nettoyer le backend.
+> Enrichir l'editeur de guilde avec les mecanismes intrinseques et relationnels, les avertissements de conflit, le detail des associations, et elargir la base de donnees a 50 guildes et 356 associations. Simplifier le layout en 2 colonnes et nettoyer le backend. Ajouter la notion de plante centrale dans les guildes.
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
@@ -195,8 +204,13 @@
 | [US-073](epics/E11-guildes-et-mecanismes/US-073-50-guildes-officielles.md) | 50 guildes officielles de permaculture | Indispensable | 5 | Termine |
 | [US-074](epics/E11-guildes-et-mecanismes/US-074-356-associations.md) | 356 associations vegetales documentees | Indispensable | 3 | Termine |
 | [US-075](epics/E11-guildes-et-mecanismes/US-075-nettoyage-backend.md) | Nettoyage backend (controleurs et DTOs) | Important | 2 | Termine |
+| [US-128](epics/E11-guildes-et-mecanismes/US-128-role-plante-guilde-backend.md) | Role de la plante dans la guilde (backend) | Indispensable | 5 | Termine |
+| [US-129](epics/E11-guildes-et-mecanismes/US-129-role-central-seed-guildes.md) | Role central et completude associations dans les guildes | Indispensable | 8 | A faire |
+| [US-130](epics/E11-guildes-et-mecanismes/US-130-indicateur-visuel-role-central.md) | Indicateur visuel du role central dans l'editeur | Important | 5 | Termine |
 
-**Total E11 : 26 points (26 Termine / 0 A faire)**
+**Total E11 : 44 points (36 Termine / 8 A faire)**
+
+> Note : US-128 et US-130 livres le 2026-03-30. Inclut : enum GuildPlantRole (Central/Companion), migration EF, API mise a jour, etoile doree toggle dans le plant card, tri des plantes centrales en premier, bordure doree sur les compagnons de la plante centrale dans le catalogue, composant shared PlantAssociationPanel (associations, mecanismes, stratification, calendrier) integre dans le guild editor. API enrichie avec LinkedPlantIds sur CompanionRecommendationDto. US-129 reste a faire : les 3 premieres guildes ont des roles, 47 restantes + completude associations a valider avec le plant-expert.
 
 ---
 
@@ -301,28 +315,35 @@
 
 ---
 
+## ~~E17 — Dimensions et formes des planches~~ FUSIONNE DANS E03
+
+> Epique fusionnee dans E03 (editeur graphique). Les stories US-121/122/123 sont desormais dans E03.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
 |--------|--------|---------|----------|---------|
-| E01 — Gestion des jardins et planches | 14 | 0 | 7 | 7 |
+| E01 — Gestion des jardins et planches | 31 | 0 | 8 | 23 |
 | E02 — Associations vegetales (residuel) | 8 | 0 | 0 | 8 |
-| E03 — Editeur graphique du jardin | 29 | 0 | 0 | 29 |
+| E03 — Editeur graphique du jardin | 39 | 0 | 0 | 39 |
 | E04 — Gestion des rotations de cultures | 30 | 0 | 0 | 30 |
 | ~~E05 — Plantes compagnes (refonte)~~ | ~~19~~ | — | — | — |
 | E06 — Refonte UI permaculture | 27 | 27 | 0 | 0 |
 | E07 — Mes plantes | 17 | 15 | 0 | 2 |
-| E08 — Finitions UX Associations | 15 | 9 | 0 | 6 |
+| E08 — Finitions UX Associations | 14 | 9 | 0 | 5 |
 | E09 — Conscience de l'enracinement | 9 | 6 | 0 | 3 |
 | E10 — Calendrier cultural | 46 | 33 | 0 | 13 |
-| E11 — Guildes, mecanismes et refonte editeur | 26 | 26 | 0 | 0 |
+| E11 — Guildes, mecanismes et refonte editeur | 44 | 36 | 0 | 8 |
 | E12 — Adaptation climatique | 16 | 0 | 0 | 16 |
 | E13 — Infrastructure i18n (backend) | 38 | 0 | 0 | 38 |
 | E14 — UX i18n (frontend) | 16 | 0 | 0 | 16 |
 | E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
-| **Total (actif)** | **351** | **116** | **7** | **228** |
+| ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
+| **Total (actif)** | **385** | **126** | **8** | **251** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-22*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-30*

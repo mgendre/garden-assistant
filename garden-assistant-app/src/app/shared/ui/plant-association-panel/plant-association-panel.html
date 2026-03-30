@@ -1,0 +1,137 @@
+<!-- Associations detail -->
+@if (associations().length > 0) {
+  <div class="panel-section">
+    <app-collapsible>
+      <div collapsible-header class="section-header section-header--associations">
+        <span class="section-header-label">
+          <span>🔗</span>
+          <span [translate]="'Guilds.AssociationsTitle'"></span>
+        </span>
+        <div class="health-badges-inline">
+          @if (beneficialCount() > 0) {
+            <span class="health-badge health-badge--beneficial">
+              ✓ {{ beneficialCount() }} {{ 'Guild.Beneficial' | translate }}
+            </span>
+          }
+          @if (harmfulCount() > 0) {
+            <span class="health-badge health-badge--harmful">
+              ⚠ {{ harmfulCount() }} {{ 'Guild.Harmful' | translate }}
+            </span>
+          }
+        </div>
+      </div>
+      <div collapsible-body>
+        @if (hasHarmfulAssociations()) {
+          <div class="association-alert">
+            <span>⚠️</span>
+            <span [translate]="'Guilds.HarmfulAlert'"></span>
+          </div>
+        }
+        <div class="association-list">
+          @for (assoc of associations(); track $index) {
+            <div class="association-item" [class.association-item--harmful]="assoc.effect === 1">
+              <div class="association-header">
+                <span class="association-plants">
+                  @if (assoc.effect === 1) {
+                    <span class="association-harmful-icon">✕</span>
+                  }
+                  {{ plantName(assoc.sourcePlantId) }}
+                  <span class="association-arrow">→</span>
+                  {{ plantName(assoc.targetPlantId) }}
+                </span>
+                <span class="mechanism-chip" [class.mechanism-green]="assoc.effect === 0" [class.mechanism-red]="assoc.effect === 1" (click)="openMechanismInfo(assoc.mechanism!)">
+                  {{ 'Plant.Mechanism.' + store.getMechanismKey(assoc.mechanism!) | translate }}
+                </span>
+              </div>
+              @if (assoc.notes) {
+                <p class="association-notes">{{ assoc.notes }}</p>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    </app-collapsible>
+  </div>
+}
+
+<!-- Guild assistant: mechanism overview -->
+@if (plants().length >= 2) {
+  <div class="panel-section">
+    <app-collapsible [initialExpanded]="true">
+      <div collapsible-header class="section-header">
+        <span>🌱</span>
+        <span [translate]="'GuildAssistant.Title'"></span>
+      </div>
+      <div collapsible-body>
+        @for (row of mechanismRows(); track row.mechanism) {
+          <div class="mechanism-row" [class.mechanism-row--satisfied]="row.satisfied">
+            @if (row.satisfied) {
+              <span class="mechanism-check">✓</span>
+            } @else {
+              <span class="mechanism-empty">○</span>
+            }
+            @if (interactive()) {
+              <span class="mechanism-chip"
+                [class.mechanism-chip--inactive]="!row.satisfied"
+                [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
+                [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
+                (click)="filterMechanism(row.mechanism)">
+                {{ 'Plant.Mechanism.' + row.key | translate }}
+              </span>
+              <button class="btn-info" (click)="openMechanismInfo(row.mechanism)">?</button>
+            } @else {
+              <span class="mechanism-chip" [class.mechanism-chip--inactive]="!row.satisfied" (click)="openMechanismInfo(row.mechanism)">
+                {{ 'Plant.Mechanism.' + row.key | translate }}
+              </span>
+            }
+            @if (row.satisfied) {
+              <div class="mechanism-providers">
+                @for (plant of row.providers; track plant.id) {
+                  <span class="mechanism-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
+                }
+              </div>
+            }
+          </div>
+        }
+
+        <div class="stratification-divider">
+          <div class="section-sublabel" [translate]="'GuildAssistant.SectionRootDepth'"></div>
+          <app-root-stratification
+            [rootDepthGroups]="rootDepthGroups()"
+            [rootDepthFilter]="store.rootDepthFilter()"
+            [interactive]="interactive()"
+            [filterToggle]="filterRootDepthFn">
+          </app-root-stratification>
+        </div>
+      </div>
+    </app-collapsible>
+  </div>
+}
+
+<!-- Calendar -->
+@if (calendarEntries().length >= 2) {
+  <div class="panel-section">
+    <app-collapsible>
+      <div collapsible-header class="section-header">
+        <span>📅</span>
+        <span [translate]="'Calendar.Title'"></span>
+      </div>
+      <div collapsible-body>
+        @for (entry of calendarEntries(); track entry.plantId; let first = $first; let last = $last; let idx = $index) {
+          <div class="calendar-plant" [class.calendar-plant--separator]="!last">
+            <app-plant-calendar-gantt
+              [actions]="entry.actions"
+              [propagationMethod]="entry.propagationMethod"
+              [frostSensitive]="entry.frostSensitive"
+              [showHeader]="first"
+              [plantName]="entry.name"
+              [oddPlant]="idx % 2 === 1"
+              (harvestReadinessClick)="onHarvestReadinessClick(entry.plantId, entry.name)"
+              (plantNameClick)="onPlantNameClick(entry.plantId)">
+            </app-plant-calendar-gantt>
+          </div>
+        }
+      </div>
+    </app-collapsible>
+  </div>
+}

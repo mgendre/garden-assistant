@@ -1,0 +1,25 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 [translate]="'WhatsNew.Title'"></h1>
+  </div>
+
+  @if (loading()) {
+    <div class="whats-new-loading">
+      <div class="whats-new-loading-spinner"></div>
+    </div>
+  } @else if (entries().length === 0) {
+    <div class="empty-state">
+      <div class="empty-state-icon">📰</div>
+      <h3 class="empty-state-title" [translate]="'WhatsNew.EmptyState'"></h3>
+    </div>
+  } @else {
+    <div class="whats-new-entries">
+      @for (entry of entries(); track entry.date) {
+        <app-whats-new-entry
+          [title]="entry.title"
+          [date]="entry.date"
+          [markdownContent]="entry.content" />
+      }
+    </div>
+  }
+</div>

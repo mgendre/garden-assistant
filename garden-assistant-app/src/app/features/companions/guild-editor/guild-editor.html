@@ -48,91 +48,19 @@
 
 
 
-    <!-- Associations detail -->
-    @if (store.recommendations()?.selectedPlantAssociations?.length) {
-      <div class="guild-associations">
-        <app-collapsible>
-          <div collapsible-header class="guild-container-header guild-collapsible-header">
-            <span>🔗</span>
-            <span [translate]="'Guilds.AssociationsTitle'"></span>
-            @if (hasHarmfulAssociations()) {
-              <fa-icon [icon]="faWarning" class="guild-association-header-warning"></fa-icon>
-            }
-          </div>
-          <div collapsible-body>
-            @if (hasHarmfulAssociations()) {
-              <div class="guild-association-alert">
-                <span>⚠️</span>
-                <span [translate]="'Guilds.HarmfulAlert'"></span>
-              </div>
-            }
-            <div class="guild-association-list">
-              @for (assoc of store.recommendations()!.selectedPlantAssociations!; track $index) {
-                <div class="guild-association-item" [class.guild-association-harmful]="assoc.effect === 1">
-                  <div class="guild-association-header">
-                    <span class="guild-association-plants">
-                      @if (assoc.effect === 1) {
-                        <span class="guild-association-harmful-icon">✕</span>
-                      }
-                      {{ plantName(assoc.sourcePlantId) }}
-                      <span class="guild-association-arrow">→</span>
-                      {{ plantName(assoc.targetPlantId) }}
-                    </span>
-                    <span class="mechanism-chip" [class.mechanism-green]="assoc.effect === 0" [class.mechanism-red]="assoc.effect === 1" (click)="openMechanismInfo(assoc.mechanism!)">
-                      {{ 'Plant.Mechanism.' + store.getMechanismKey(assoc.mechanism!) | translate }}
-                    </span>
-                  </div>
-                  @if (assoc.notes) {
-                    <p class="guild-association-notes">{{ assoc.notes }}</p>
-                  }
-                </div>
-              }
-            </div>
-          </div>
-        </app-collapsible>
-      </div>
-    }
-
+    <!-- Shared association panel -->
     @if (store.selectedPlants().length >= 2) {
-      <div class="guild-assistant">
-        <app-collapsible [initialExpanded]="true">
-          <div collapsible-header class="guild-container-header guild-collapsible-header">
-            <span>🌱</span>
-            <span [translate]="'GuildAssistant.Title'"></span>
-          </div>
-          <div collapsible-body>
-            <app-guild-assistant></app-guild-assistant>
-          </div>
-        </app-collapsible>
-      </div>
-    }
-
-    <!-- Calendar panel -->
-    @if (plantCalendars().length >= 2) {
-      <div class="guild-calendar">
-        <app-collapsible>
-          <div collapsible-header class="guild-container-header guild-collapsible-header">
-            <span>📅</span>
-            <span [translate]="'Calendar.Title'"></span>
-          </div>
-          <div collapsible-body>
-            @for (entry of plantCalendars(); track entry.plantId; let first = $first; let last = $last; let idx = $index) {
-              <div class="guild-calendar-plant" [class.guild-calendar-plant--separator]="!last">
-                <app-plant-calendar-gantt
-                  [actions]="entry.actions"
-                  [propagationMethod]="entry.propagationMethod"
-                  [frostSensitive]="entry.frostSensitive"
-                  [showHeader]="first"
-                  [plantName]="entry.name"
-                  [oddPlant]="idx % 2 === 1"
-                  (harvestReadinessClick)="openHarvestReadiness(entry.plantId, entry.name)"
-                  (plantNameClick)="openPlantDetail(entry.plantId)">
-                </app-plant-calendar-gantt>
-              </div>
-            }
-          </div>
-        </app-collapsible>
-      </div>
+      <app-plant-association-panel
+        [plants]="store.selectedPlants()"
+        [associations]="store.recommendations()?.selectedPlantAssociations ?? []"
+        [calendarEntries]="plantCalendars()"
+        [centralPlantIds]="store.centralPlantIds()"
+        [interactive]="true"
+        (mechanismFilterToggle)="store.rootDepthFilter.set(null); store.toggleMechanismFilter($event)"
+        (rootDepthFilterToggle)="store.mechanismFilter.set(null); store.toggleRootDepthFilter($event)"
+        (harvestReadinessClick)="openHarvestReadiness($event.plantId, $event.plantName)"
+        (plantNameClick)="openPlantDetail($event)">
+      </app-plant-association-panel>
     }
 
     <!-- Viewing mode: actions below the plant list -->

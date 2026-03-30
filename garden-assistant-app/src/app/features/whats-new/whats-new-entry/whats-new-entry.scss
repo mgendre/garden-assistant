@@ -1,0 +1,20 @@
+@reference "tailwindcss";
+
+app-whats-new-entry {
+  .whats-new-entry-date {
+    @apply text-sm;
+    color: var(--color-text-muted);
+  }
+
+  .whats-new-entry-content {
+    @apply p-5;
+
+    h3 {
+      @apply mt-4 mb-2;
+    }
+
+    h3:first-child {
+      @apply mt-0;
+    }
+  }
+}

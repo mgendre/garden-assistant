@@ -1,0 +1,9 @@
+<article class="panel">
+  <div class="panel-header">
+    <span class="panel-title">{{ title() }}</span>
+    <span class="whats-new-entry-date">{{ date() }}</span>
+  </div>
+  <div class="whats-new-entry-content">
+    <markdown [data]="markdownContent()" />
+  </div>
+</article>

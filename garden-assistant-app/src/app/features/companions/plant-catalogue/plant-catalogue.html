@@ -73,6 +73,7 @@
       <div
         class="plant-item"
         [class.selected]="mode() === 'association' && store.isSelected(plant)"
+        [class.compat-central]="mode() === 'association' && store.getCompatibility(plant.id) === 'central-companion'"
         [class.compat-good]="mode() === 'association' && store.getCompatibility(plant.id) === 'good'"
         [class.compat-avoid]="mode() === 'association' && store.getCompatibility(plant.id) === 'avoid'"
         (click)="onPlantClick(plant)">

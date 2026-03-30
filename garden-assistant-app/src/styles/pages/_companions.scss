@@ -67,6 +67,7 @@
 
   .guild-form-actions {
     @apply flex items-center justify-end gap-3 px-5 py-4;
+    border-top: 1px solid var(--color-border);
   }
 
   .related-guilds app-guild-panel {

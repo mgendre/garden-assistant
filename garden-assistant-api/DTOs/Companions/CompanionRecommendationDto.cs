@@ -4,5 +4,6 @@ namespace GardenAssistant.DTOs.Companions;
 
 public record CompanionRecommendationDto(
     Guid PlantId,
-    List<AssociationMechanism> Mechanisms
+    List<AssociationMechanism> Mechanisms,
+    List<Guid> LinkedPlantIds
 );

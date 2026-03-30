@@ -1,5 +1,7 @@
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using GardenAssistant.Data.Entities;
+using GardenAssistant.Data.Entities.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace GardenAssistant.Data.Seeders;
@@ -8,7 +10,8 @@ public class GuildSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
 {
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
+        Converters = { new JsonStringEnumConverter() }
     };
 
     public async Task SeedAsync()
@@ -42,9 +45,9 @@ public class GuildSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
             };
             db.Guilds.Add(guild);
 
-            foreach (var plantKey in r.PlantKeys)
+            foreach (var entry in r.Plants)
             {
-                if (!keyToName.TryGetValue(plantKey, out var plantName) ||
+                if (!keyToName.TryGetValue(entry.Key, out var plantName) ||
                     !plantsByName.TryGetValue(plantName, out var plantId))
                 {
                     continue;
@@ -53,7 +56,8 @@ public class GuildSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
                 db.GuildPlants.Add(new GuildPlant
                 {
                     GuildId = guild.Id,
-                    PlantId = plantId
+                    PlantId = plantId,
+                    Role = entry.Role ?? GuildPlantRole.Companion
                 });
             }
         }
@@ -66,6 +70,76 @@ public class GuildSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
     private record GuildSeedRecord(
         string Name,
         string? Description,
-        List<string> PlantKeys
+        List<PlantEntry> Plants
     );
+
+    [JsonConverter(typeof(PlantEntryJsonConverter))]
+    private record PlantEntry(string Key, GuildPlantRole? Role);
+
+    private sealed class PlantEntryJsonConverter : JsonConverter<PlantEntry>
+    {
+        public override PlantEntry Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TokenType == JsonTokenType.String)
+            {
+                var key = reader.GetString()!;
+                return new PlantEntry(key, null);
+            }
+
+            if (reader.TokenType == JsonTokenType.StartObject)
+            {
+                string? key = null;
+                GuildPlantRole? role = null;
+
+                while (reader.Read())
+                {
+                    if (reader.TokenType == JsonTokenType.EndObject)
+                    {
+                        break;
+                    }
+
+                    if (reader.TokenType == JsonTokenType.PropertyName)
+                    {
+                        var propertyName = reader.GetString()!;
+                        reader.Read();
+
+                        if (string.Equals(propertyName, "key", StringComparison.OrdinalIgnoreCase))
+                        {
+                            key = reader.GetString();
+                        }
+                        else if (string.Equals(propertyName, "role", StringComparison.OrdinalIgnoreCase))
+                        {
+                            var roleStr = reader.GetString();
+                            if (roleStr is not null && Enum.TryParse<GuildPlantRole>(roleStr, true, out var parsed))
+                            {
+                                role = parsed;
+                            }
+                        }
+                    }
+                }
+
+                return new PlantEntry(
+                    key ?? throw new JsonException("PlantEntry object must have a 'key' property."),
+                    role
+                );
+            }
+
+            throw new JsonException($"Unexpected token type '{reader.TokenType}' when parsing PlantEntry.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, PlantEntry value, JsonSerializerOptions options)
+        {
+            if (value.Role is null)
+            {
+                writer.WriteStringValue(value.Key);
+            }
+            else
+            {
+                writer.WriteStartObject();
+                writer.WriteString("key", value.Key);
+                writer.WriteString("role", value.Role.Value.ToString());
+                writer.WriteEndObject();
+            }
+        }
+    }
 }

@@ -10,6 +10,8 @@ import {
   RootDepth,
   CreateGuildRequest,
   UpdateGuildRequest,
+  GuildPlantRole,
+  GuildPlantRequest,
 } from '../../api/garden-assistant-api';
 import { CompanionService } from './companion.service';
 import { GuildService } from './guild.service';
@@ -95,10 +97,23 @@ export class CompanionStore {
   readonly guildDescription = signal('');
   readonly guildSaving = signal(false);
   readonly guildMode = signal<'companions' | 'creating' | 'viewing' | 'editing'>('companions');
+  readonly centralPlantIds = signal<Set<string>>(new Set());
 
   readonly isFormVisible = computed(() =>
     this.guildMode() === 'creating' || this.guildMode() === 'editing'
   );
+
+  readonly hasCentralPlants = computed(() => this.centralPlantIds().size > 0);
+
+  readonly sortedSelectedPlants = computed(() => {
+    const centralIds = this.centralPlantIds();
+    return [...this.selectedPlants()].sort((a, b) => {
+      const aCentral = centralIds.has(a.id!) ? 0 : 1;
+      const bCentral = centralIds.has(b.id!) ? 0 : 1;
+      if (aCentral !== bCentral) { return aCentral - bCentral; }
+      return (a.name ?? '').localeCompare(b.name ?? '', 'fr');
+    });
+  });
 
   readonly rootDepthGroups = computed(() => {
     const groups = new Map<RootDepth, PlantDto[]>();
@@ -157,6 +172,15 @@ export class CompanionStore {
     const ids = this.recommendations()?.goodCompanions
       ?.filter(c => c.plantId && !avoid.has(c.plantId) && !selected.has(c.plantId))
       .map(c => c.plantId) ?? [];
+    return new Set(ids);
+  });
+
+  readonly centralCompanionIds = computed(() => {
+    const centralIds = this.centralPlantIds();
+    if (centralIds.size === 0) { return new Set<string>(); }
+    const ids = this.recommendations()?.goodCompanions
+      ?.filter(c => c.plantId && c.linkedPlantIds?.some(id => centralIds.has(id)))
+      .map(c => c.plantId!) ?? [];
     return new Set(ids);
   });
 
@@ -219,7 +243,11 @@ export class CompanionStore {
         return famCmp !== 0 ? famCmp : byName(a, b);
       }
       if (sort === 'compat') {
+        const centralCompanions = this.centralCompanionIds();
         const compatScore = (p: PlantDto) => {
+          if (centralCompanions.has(p.id!)) {
+            return -1;
+          }
           if (this.goodCompanionIds().has(p.id)) {
             return 0;
           }
@@ -238,7 +266,7 @@ export class CompanionStore {
       return fav !== 0 ? fav : byName(a, b);
     });
 
-    return sorted.slice(0, 20);
+    return sorted;
   });
 
   readonly intrinsicMechanismsByPlant = computed(() => {
@@ -410,9 +438,34 @@ export class CompanionStore {
     }
   }
 
+  isCentralPlant(plantId: string | undefined): boolean {
+    if (!plantId) { return false; }
+    return this.centralPlantIds().has(plantId);
+  }
+
+  toggleCentralPlant(plantId: string): void {
+    this.centralPlantIds.update(set => {
+      const next = new Set(set);
+      if (next.has(plantId)) {
+        next.delete(plantId);
+      } else {
+        next.add(plantId);
+      }
+      return next;
+    });
+  }
+
   removePlant(plant: PlantDto): void {
     this.selectedPlants.update(list => list.filter(p => p.id !== plant.id));
+    if (plant.id) {
+      this.centralPlantIds.update(set => {
+        const next = new Set(set);
+        next.delete(plant.id!);
+        return next;
+      });
+    }
     if (this.selectedPlants().length === 0) {
+      this.centralPlantIds.set(new Set());
       this.editingGuild.set(null);
       this.guildName.set('');
       this.guildDescription.set('');
@@ -424,6 +477,7 @@ export class CompanionStore {
 
   clearSelection(): void {
     this.selectedPlants.set([]);
+    this.centralPlantIds.set(new Set());
     this.editingGuild.set(null);
     this.guildName.set('');
     this.guildDescription.set('');
@@ -441,6 +495,12 @@ export class CompanionStore {
         this.selectedPlants.update(list => [...list, plant]);
       }
     }
+    const centralIds = new Set<string>(
+      (guild.plants ?? [])
+        .filter(gp => gp.role === GuildPlantRole.Central && gp.id)
+        .map(gp => gp.id!)
+    );
+    this.centralPlantIds.set(centralIds);
     this.guildMode.set('viewing');
   }
 
@@ -461,6 +521,7 @@ export class CompanionStore {
 
   cancelGuildEditing(): void {
     if (this.guildMode() === 'creating') {
+      this.centralPlantIds.set(new Set());
       this.editingGuild.set(null);
       this.guildName.set('');
       this.guildDescription.set('');
@@ -477,13 +538,24 @@ export class CompanionStore {
         }
       }
       this.selectedPlants.set(originalPlants);
+      const centralIds = new Set<string>(
+        (guild?.plants ?? [])
+          .filter(gp => gp.role === GuildPlantRole.Central && gp.id)
+          .map(gp => gp.id!)
+      );
+      this.centralPlantIds.set(centralIds);
       this.guildMode.set('viewing');
     }
   }
 
   async saveGuild(): Promise<void> {
-    const plantIds = this.selectedPlants().map(p => p.id!).filter(Boolean);
-    if (plantIds.length === 0 || !this.guildName()) {
+    const plants: GuildPlantRequest[] = this.selectedPlants()
+      .filter(p => !!p.id)
+      .map(p => ({
+        plantId: p.id!,
+        role: this.centralPlantIds().has(p.id!) ? GuildPlantRole.Central : GuildPlantRole.Companion,
+      }));
+    if (plants.length === 0 || !this.guildName()) {
       return;
     }
 
@@ -494,7 +566,7 @@ export class CompanionStore {
         const request: UpdateGuildRequest = {
           name: this.guildName(),
           description: this.guildDescription() || undefined,
-          plantIds,
+          plants,
         };
         const updated = await this.guildService.update(editing.id, request);
         this.editingGuild.set(updated);
@@ -502,7 +574,7 @@ export class CompanionStore {
         const request: CreateGuildRequest = {
           name: this.guildName(),
           description: this.guildDescription() || undefined,
-          plantIds,
+          plants,
         };
         const created = await this.guildService.create(request);
         this.editingGuild.set(created);
@@ -550,9 +622,12 @@ export class CompanionStore {
     return MECHANISM_KEY_MAP[mechanism] ?? '';
   }
 
-  getCompatibility(plantId: string | undefined): 'good' | 'avoid' | 'neutral' {
+  getCompatibility(plantId: string | undefined): 'central-companion' | 'good' | 'avoid' | 'neutral' {
     if (!plantId || !this.recommendations()) {
       return 'neutral';
+    }
+    if (this.centralCompanionIds().has(plantId)) {
+      return 'central-companion';
     }
     if (this.goodCompanionIds().has(plantId)) {
       return 'good';

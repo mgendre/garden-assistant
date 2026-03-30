@@ -702,18 +702,29 @@ export interface GuildPlantMemberDto {
     id?: string;
     name?: string;
     scientificName?: string | undefined;
+    role?: GuildPlantRole;
+}
+
+export enum GuildPlantRole {
+    Companion = 0,
+    Central = 1,
 }
 
 export interface CreateGuildRequest {
     name?: string;
     description?: string | undefined;
-    plantIds?: string[];
+    plants?: GuildPlantRequest[];
+}
+
+export interface GuildPlantRequest {
+    plantId?: string;
+    role?: GuildPlantRole | undefined;
 }
 
 export interface UpdateGuildRequest {
     name?: string;
     description?: string | undefined;
-    plantIds?: string[];
+    plants?: GuildPlantRequest[];
 }
 
 export interface CompanionSearchResultDto {
@@ -729,6 +740,7 @@ export interface CompanionSearchResultDto {
 export interface CompanionRecommendationDto {
     plantId?: string;
     mechanisms?: AssociationMechanism[];
+    linkedPlantIds?: string[];
 }
 
 export enum AssociationMechanism {

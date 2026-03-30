@@ -54,7 +54,12 @@
 
   <div class="assistant-section-header assistant-section-header--roots" [translate]="'GuildAssistant.SectionRootDepth'"></div>
 
-  <app-root-stratification></app-root-stratification>
+  <app-root-stratification
+      [rootDepthGroups]="store.rootDepthGroups()"
+      [rootDepthFilter]="store.rootDepthFilter()"
+      [interactive]="true"
+      [filterToggle]="filterRootDepth">
+  </app-root-stratification>
 
   @if (isBalanced()) {
     <div class="assistant-balanced-message" [translate]="'GuildAssistant.BalancedMessage'"></div>
