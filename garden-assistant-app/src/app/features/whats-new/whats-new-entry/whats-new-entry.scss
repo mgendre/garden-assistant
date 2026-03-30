@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+
+.whats-new-entry-date {
+  @apply text-sm;
+  color: var(--color-text-muted);
+}
+
+.whats-new-entry-content {
+  @apply px-5 pb-5;
+}
