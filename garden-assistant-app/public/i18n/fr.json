@@ -13,7 +13,8 @@
     "CloseMenu": "Fermer le menu",
     "MainNav": "Navigation principale",
     "MobileNav": "Menu principal",
-    "Calendar": "Calendrier"
+    "Calendar": "Calendrier",
+    "WhatsNew": "Nouveautes"
   },
   "Dashboard": {
     "Welcome": "Welcome back",
@@ -173,6 +174,16 @@
     "Saving": "Enregistrement\u2026",
     "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e.",
     "SearchPlaceholder": "Rechercher par nom, description ou plante\u2026"
+  },
+  "Guild": {
+    "CentralPlant": "Plante centrale",
+    "Companion": "Compagne",
+    "CentralPlantHint": "Designez une ou plusieurs plantes centrales autour desquelles votre guilde est construite.",
+    "ToggleCentral": "Marquer comme plante centrale",
+    "ToggleCompanion": "Retirer le statut de plante centrale",
+    "Beneficial": "benefiques",
+    "Harmful": "nefastes",
+    "MechanismGaps": "lacunes"
   },
   "GuildAssistant": {
     "Title": "Assistant de guilde",
@@ -516,5 +527,9 @@
     "Filter": {
       "Sowing": "Semis"
     }
+  },
+  "WhatsNew": {
+    "Title": "Nouveautes",
+    "EmptyState": "Pas encore de nouveautes publiees. Revenez bientot !"
   }
 }
