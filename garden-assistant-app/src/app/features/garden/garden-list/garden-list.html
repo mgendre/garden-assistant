@@ -1,45 +1,44 @@
 <div class="mx-auto max-w-3xl px-4 py-6">
   <div class="flex items-center justify-between mb-6">
     <h1 [translate]="'Garden.Title'"></h1>
-    <button class="btn-primary flex items-center gap-2" (click)="createGarden()">
-      <fa-icon [icon]="faPlus" size="sm"></fa-icon>
+    <button class="btn btn-primary btn-sm" (click)="createGarden()">
+      <fa-icon [icon]="faPlus"></fa-icon>
       <span [translate]="'Garden.Create'"></span>
     </button>
   </div>
 
   @if (isEmpty()) {
     <div class="empty-state">
-      <p [translate]="'Garden.EmptyState'"></p>
-      <button class="btn-primary mt-4" (click)="createGarden()" [translate]="'Garden.CreateFirst'"></button>
+      <div class="empty-state-icon">🌱</div>
+      <p class="empty-state-text" [translate]="'Garden.EmptyState'"></p>
+      <button class="btn btn-primary btn-sm mt-4" (click)="createGarden()" [translate]="'Garden.CreateFirst'"></button>
     </div>
   }
 
   @if (store.loading()) {
-    <div class="flex justify-center py-12">
-      <div class="loading-spinner"></div>
+    <div class="empty-state">
+      <div class="empty-state-icon">⏳</div>
     </div>
   }
 
   <div class="flex flex-col gap-3">
     @for (garden of gardens(); track garden.id) {
-      <div class="panel cursor-pointer hover:shadow-md transition-shadow" (click)="openGarden(garden)">
-        <div class="p-4">
-          <div class="flex items-start justify-between">
-            <div class="flex-1 min-w-0">
-              <h3 class="font-semibold truncate">{{ garden.name }}</h3>
-              @if (garden.description) {
-                <p class="text-sm text-gray-600 mt-1 line-clamp-2">{{ garden.description }}</p>
-              }
-              <p class="text-xs text-gray-400 mt-2">
-                {{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }}
-              </p>
-            </div>
-            <button class="text-red-400 hover:text-red-600 text-sm px-2 py-1 ml-2 shrink-0"
-              (click)="deleteGarden($event, garden)"
-              [attr.aria-label]="'Garden.Delete' | translate">
-              ✕
-            </button>
+      <div class="panel cursor-pointer" (click)="openGarden(garden)">
+        <div class="p-4 flex items-start justify-between">
+          <div class="flex-1 min-w-0">
+            <h3 class="font-semibold truncate">{{ garden.name }}</h3>
+            @if (garden.description) {
+              <p class="text-sm text-gray-500 mt-1 line-clamp-2">{{ garden.description }}</p>
+            }
+            <p class="text-xs text-gray-500 mt-2">
+              {{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }}
+            </p>
           </div>
+          <button class="remove-btn ml-2 shrink-0"
+            (click)="deleteGarden($event, garden)"
+            [attr.aria-label]="'Garden.Delete' | translate">
+            ✕
+          </button>
         </div>
       </div>
     }

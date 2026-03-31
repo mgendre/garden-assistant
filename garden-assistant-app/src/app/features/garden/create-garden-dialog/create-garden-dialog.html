@@ -4,7 +4,7 @@
     <div>
       <label class="block text-sm font-medium mb-1" [translate]="'Garden.NameLabel'"></label>
       <input type="text"
-        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+        class="form-input"
         [value]="name()"
         (input)="name.set($any($event.target).value)"
         maxlength="100"
@@ -13,7 +13,7 @@
     <div>
       <label class="block text-sm font-medium mb-1" [translate]="'Garden.DescriptionLabel'"></label>
       <textarea
-        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+        class="form-input"
         rows="3"
         [value]="description()"
         (input)="description.set($any($event.target).value)"
@@ -23,8 +23,8 @@
     </div>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="cancel()" [translate]="'Garden.Cancel'"></button>
-  <button mat-flat-button color="primary" [disabled]="!isValid" (click)="save()"
+<mat-dialog-actions class="dialog-actions !pt-4 !flex !justify-end !gap-2">
+  <button class="btn btn-secondary" (click)="cancel()" [translate]="'Garden.Cancel'"></button>
+  <button class="btn btn-primary" [disabled]="!isValid" (click)="save()"
     [translate]="data.mode === 'create' ? 'Garden.DialogCreateAction' : 'Garden.DialogSaveAction'"></button>
 </mat-dialog-actions>

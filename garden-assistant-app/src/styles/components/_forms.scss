@@ -1,0 +1,5 @@
+@use '../abstracts/mixins';
+
+.form-input {
+  @include mixins.form-input;
+}

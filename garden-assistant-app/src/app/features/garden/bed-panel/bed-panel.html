@@ -1,46 +1,48 @@
-<app-collapsible>
-  <div collapsible-header class="flex items-center justify-between w-full gap-2" (click)="onHeaderClick()">
-    <div class="flex items-center gap-2 min-w-0">
-      <span class="font-medium truncate">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>
-      <span class="text-xs text-gray-400">
-        ({{ plantCount() }} {{ (plantCount() === 1 ? 'Bed.PlantSingular' : 'Bed.PlantPlural') | translate }})
-      </span>
-    </div>
-    <div class="flex items-center gap-1 shrink-0">
-      <button class="p-1 text-gray-400 hover:text-gray-600" (click)="editBedName($event)" [attr.aria-label]="'Bed.Edit' | translate">
-        <fa-icon [icon]="faPen" size="xs"></fa-icon>
-      </button>
-      <button class="p-1 text-red-400 hover:text-red-600" (click)="deleteBed($event)" [attr.aria-label]="'Bed.Delete' | translate">
-        <fa-icon [icon]="faTrash" size="xs"></fa-icon>
-      </button>
-    </div>
-  </div>
-  <div collapsible-body>
-    @if (loading()) {
-      <div class="flex justify-center py-8">
-        <div class="loading-spinner"></div>
+<div class="panel">
+  <app-collapsible>
+    <div collapsible-header class="flex items-center justify-between w-full gap-2" (click)="onHeaderClick()">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium truncate">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>
+        <span class="text-xs text-gray-500">
+          ({{ plantCount() }} {{ (plantCount() === 1 ? 'Bed.PlantSingular' : 'Bed.PlantPlural') | translate }})
+        </span>
       </div>
-    } @else if (loaded()) {
-      @if (plantCount() === 0) {
-        <div class="empty-state py-6">
-          <p [translate]="'Bed.EmptyState'"></p>
-          <button class="btn-primary mt-3" (click)="editPlants()" [translate]="'Bed.AddPlants'"></button>
+      <div class="flex items-center gap-1 shrink-0">
+        <button class="btn btn-ghost btn-xs" (click)="editBedName($event)" [attr.aria-label]="'Bed.Edit' | translate">
+          <fa-icon [icon]="faPen" size="xs"></fa-icon>
+        </button>
+        <button class="remove-btn" (click)="deleteBed($event)" [attr.aria-label]="'Bed.Delete' | translate">
+          <fa-icon [icon]="faTrash" size="xs"></fa-icon>
+        </button>
+      </div>
+    </div>
+    <div collapsible-body>
+      @if (loading()) {
+        <div class="empty-state" style="min-height: 100px">
+          <div class="empty-state-icon">⏳</div>
         </div>
-      } @else {
-        <app-plant-association-panel
-          [plants]="plants()"
-          [associations]="associations()"
-          [calendarEntries]="calendarEntries()"
-          [centralPlantIds]="centralPlantIds()"
-          [interactive]="false"
-          (plantNameClick)="openPlantDetail($event)"
-          (harvestReadinessClick)="openHarvestReadiness($event)">
-        </app-plant-association-panel>
+      } @else if (loaded()) {
+        @if (plantCount() === 0) {
+          <div class="empty-state" style="min-height: 120px">
+            <p class="empty-state-text" [translate]="'Bed.EmptyState'"></p>
+            <button class="btn btn-primary btn-sm mt-3" (click)="editPlants()" [translate]="'Bed.AddPlants'"></button>
+          </div>
+        } @else {
+          <app-plant-association-panel
+            [plants]="plants()"
+            [associations]="associations()"
+            [calendarEntries]="calendarEntries()"
+            [centralPlantIds]="centralPlantIds()"
+            [interactive]="false"
+            (plantNameClick)="openPlantDetail($event)"
+            (harvestReadinessClick)="openHarvestReadiness($event)">
+          </app-plant-association-panel>
 
-        <div class="flex justify-center py-4">
-          <button class="btn-primary" (click)="editPlants()" [translate]="'Bed.ModifyPlants'"></button>
-        </div>
+          <div class="flex justify-center py-4">
+            <button class="btn btn-primary btn-sm" (click)="editPlants()" [translate]="'Bed.ModifyPlants'"></button>
+          </div>
+        }
       }
-    }
-  </div>
-</app-collapsible>
+    </div>
+  </app-collapsible>
+</div>
