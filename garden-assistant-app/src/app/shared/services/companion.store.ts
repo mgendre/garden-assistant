@@ -13,6 +13,7 @@ import {
   GuildPlantRole,
   GuildPlantRequest,
 } from '../../api/garden-assistant-api';
+import { Router } from '@angular/router';
 import { CompanionService } from './companion.service';
 import { GuildService } from './guild.service';
 import { GuildStore } from './guild.store';
@@ -82,7 +83,9 @@ export class CompanionStore {
   private readonly myPlantsStore = inject(MyPlantsStore);
   private readonly plantStore = inject(PlantStore);
   private readonly translate = inject(TranslateService);
+  private readonly router = inject(Router);
 
+  readonly returnTo = signal<string | null>(null);
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
   readonly sortMode = signal<'compat' | 'alpha' | 'family'>('compat');
@@ -581,9 +584,18 @@ export class CompanionStore {
       }
       this.guildMode.set('viewing');
       await this.guildStore.load();
+      const returnPath = this.returnTo();
+      if (returnPath) {
+        this.returnTo.set(null);
+        this.router.navigateByUrl(returnPath);
+      }
     } finally {
       this.guildSaving.set(false);
     }
+  }
+
+  setReturnTo(path: string): void {
+    this.returnTo.set(path);
   }
 
   setSearch(query: string): void {

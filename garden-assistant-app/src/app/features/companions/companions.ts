@@ -20,7 +20,13 @@ export class Companions implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const params = this.route.snapshot.queryParams;
+    const returnTo = params['returnTo'];
     const guildId = params['guild'];
+
+    if (returnTo) {
+      this.companionStore.setReturnTo(returnTo);
+    }
+
     if (!guildId) {
       return;
     }
