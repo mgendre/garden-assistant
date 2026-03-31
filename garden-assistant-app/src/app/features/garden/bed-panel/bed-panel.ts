@@ -84,7 +84,9 @@ export class BedPanel {
   readonly plantCount = computed(() => this.bed().plantIds?.length ?? 0);
 
   onHeaderClick(): void {
-    this.loadDetail();
+    if (!this.loaded()) {
+      this.loadDetail();
+    }
   }
 
   async loadDetail(): Promise<void> {
@@ -101,6 +103,7 @@ export class BedPanel {
 
       const plantIds = (guild.plants ?? []).map(p => p.id!).filter(Boolean);
       if (plantIds.length < 2) {
+        this.loaded.set(true);
         return;
       }
 
@@ -176,12 +179,7 @@ export class BedPanel {
     const guildId = this.bed().guildId;
     if (guildId) {
       this.router.navigate(['/companions'], {
-        queryParams: {
-          guild: guildId,
-          mode: 'edit',
-          returnTo: `/garden/${this.gardenId()}`,
-          bedName: this.bed().name || undefined
-        }
+        queryParams: { guild: guildId, mode: 'edit', returnTo: `/garden/${this.gardenId()}` }
       });
     }
   }

@@ -44,8 +44,10 @@
       }
     </div>
 
-    <div class="mt-10">
-      <app-garden-calendar [beds]="beds()"></app-garden-calendar>
-    </div>
+    @if (beds().length > 0) {
+      <div class="mt-8">
+        <app-garden-calendar [beds]="beds()"></app-garden-calendar>
+      </div>
+    }
   }
 </div>

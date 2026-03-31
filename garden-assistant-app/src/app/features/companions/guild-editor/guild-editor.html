@@ -7,11 +7,7 @@
       @if (store.guildMode() === 'viewing') {
         <div class="guild-container-header">
           <span>🌱</span>
-          @if (store.editingBedName()) {
-            <span>{{ store.editingBedName() }}</span>
-          } @else {
-            <span>{{ store.guildName() }}</span>
-          }
+          <span>{{ store.guildName() }}</span>
         </div>
         @if (store.guildDescription()) {
           <p class="guild-card-desc guild-view-desc">{{ store.guildDescription() }}</p>
@@ -24,29 +20,25 @@
           <span>🌱</span>
           @if (store.guildMode() === 'creating') {
             <span [translate]="'Companions.NewGuild'"></span>
-          } @else if (store.editingBedName()) {
-            <span>{{ store.editingBedName() }}</span>
           } @else {
             <span [translate]="'Guilds.FormEditTitle'"></span>
           }
         </div>
         <div class="guild-form">
-          @if (!store.editingBedName()) {
-            <input
-              #guildNameInput
-              type="text"
-              class="guild-form-input"
-              [placeholder]="'Guilds.FormName' | translate"
-              [value]="store.guildName()"
-              (input)="store.guildName.set(guildNameInput.value)" />
-            <textarea
-              #guildDescInput
-              class="guild-form-textarea"
-              rows="5"
-              [placeholder]="'Guilds.FormDescription' | translate"
-              [value]="store.guildDescription()"
-              (input)="store.guildDescription.set(guildDescInput.value)"></textarea>
-          }
+          <input
+            #guildNameInput
+            type="text"
+            class="guild-form-input"
+            [placeholder]="'Guilds.FormName' | translate"
+            [value]="store.guildName()"
+            (input)="store.guildName.set(guildNameInput.value)" />
+          <textarea
+            #guildDescInput
+            class="guild-form-textarea"
+            rows="5"
+            [placeholder]="'Guilds.FormDescription' | translate"
+            [value]="store.guildDescription()"
+            (input)="store.guildDescription.set(guildDescInput.value)"></textarea>
         </div>
       }
     }
