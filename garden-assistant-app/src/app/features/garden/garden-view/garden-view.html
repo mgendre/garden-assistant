@@ -5,8 +5,9 @@
         <fa-icon [icon]="faArrowLeft"></fa-icon>
       </button>
       <h1 class="flex-1 min-w-0 truncate">{{ garden()?.name }}</h1>
-      <button class="btn btn-ghost btn-sm" (click)="editGarden()" [attr.aria-label]="'Garden.Edit' | translate">
+      <button class="btn btn-secondary btn-sm" (click)="editGarden()">
         <fa-icon [icon]="faPen"></fa-icon>
+        <span [translate]="'Garden.Edit'"></span>
       </button>
     </div>
     @if (garden()?.description) {
