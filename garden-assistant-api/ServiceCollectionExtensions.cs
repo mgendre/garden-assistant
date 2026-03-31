@@ -22,6 +22,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUserPlantService, UserPlantService>();
         services.AddScoped<IPlantActionService, PlantActionService>();
         services.AddScoped<IHarvestReadinessService, HarvestReadinessService>();
+        services.AddScoped<IGardenService, GardenService>();
+        services.AddScoped<IBedService, BedService>();
 
         return services;
     }
