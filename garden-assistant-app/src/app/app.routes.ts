@@ -19,6 +19,14 @@ export const routes: Routes = [
     loadComponent: () => import('./features/calendar/calendar').then(m => m.Calendar)
   },
   {
+    path: 'garden',
+    loadComponent: () => import('./features/garden/garden-list/garden-list').then(m => m.GardenList)
+  },
+  {
+    path: 'garden/:id',
+    loadComponent: () => import('./features/garden/garden-view/garden-view').then(m => m.GardenView)
+  },
+  {
     path: 'whats-new',
     loadComponent: () => import('./features/whats-new/whats-new').then(m => m.WhatsNew)
   }

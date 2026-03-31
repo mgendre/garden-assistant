@@ -1,0 +1,57 @@
+<app-collapsible>
+  <div collapsible-header class="section-header">
+    <span [translate]="'GardenCalendar.Title'"></span>
+  </div>
+  <div collapsible-body>
+    @if (loading()) {
+      <div class="flex justify-center py-8">
+        <div class="loading-spinner"></div>
+      </div>
+    } @else if (allEntries().length === 0) {
+      <p class="text-sm text-gray-500 py-4 text-center" [translate]="'GardenCalendar.Empty'"></p>
+    } @else {
+      <div class="flex justify-end mb-3">
+        <button class="text-xs px-3 py-1 rounded-full border"
+          [class.bg-green-100]="groupByBed()"
+          [class.border-green-400]="groupByBed()"
+          [class.border-gray-300]="!groupByBed()"
+          (click)="toggleGrouping()">
+          {{ (groupByBed() ? 'GardenCalendar.GroupedByBed' : 'GardenCalendar.FlatView') | translate }}
+        </button>
+      </div>
+
+      @if (groupByBed()) {
+        @for (group of bedGroups(); track group.bedName) {
+          <div class="mb-4">
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-1">{{ group.bedName }}</div>
+            @for (entry of group.entries; track entry.plantId; let first = $first; let last = $last; let idx = $index) {
+              <div class="calendar-plant" [class.calendar-plant--separator]="!last">
+                <app-plant-calendar-gantt
+                  [actions]="entry.actions"
+                  [propagationMethod]="entry.propagationMethod"
+                  [frostSensitive]="entry.frostSensitive"
+                  [showHeader]="first"
+                  [plantName]="entry.name"
+                  [oddPlant]="idx % 2 === 1">
+                </app-plant-calendar-gantt>
+              </div>
+            }
+          </div>
+        }
+      } @else {
+        @for (entry of allEntries(); track entry.plantId; let first = $first; let last = $last; let idx = $index) {
+          <div class="calendar-plant" [class.calendar-plant--separator]="!last">
+            <app-plant-calendar-gantt
+              [actions]="entry.actions"
+              [propagationMethod]="entry.propagationMethod"
+              [frostSensitive]="entry.frostSensitive"
+              [showHeader]="first"
+              [plantName]="entry.name"
+              [oddPlant]="idx % 2 === 1">
+            </app-plant-calendar-gantt>
+          </div>
+        }
+      }
+    }
+  </div>
+</app-collapsible>

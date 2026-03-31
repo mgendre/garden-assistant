@@ -1,0 +1,19 @@
+<h2 mat-dialog-title [translate]="data.mode === 'create' ? 'Bed.DialogCreateTitle' : 'Bed.DialogEditTitle'"></h2>
+<mat-dialog-content>
+  <div class="flex flex-col gap-4 py-2">
+    <div>
+      <label class="block text-sm font-medium mb-1" [translate]="'Bed.NameLabel'"></label>
+      <input type="text"
+        class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+        [value]="name()"
+        (input)="name.set($any($event.target).value)"
+        maxlength="100"
+        [attr.placeholder]="'Bed.NamePlaceholder' | translate" />
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()" [translate]="'Bed.Cancel'"></button>
+  <button mat-flat-button color="primary" (click)="save()"
+    [translate]="data.mode === 'create' ? 'Bed.DialogCreateAction' : 'Bed.DialogSaveAction'"></button>
+</mat-dialog-actions>
