@@ -1,8 +1,6 @@
 @reference "tailwindcss";
 
 .guild-toolbar {
-  @apply flex items-center gap-3 mb-8;
-
   app-search-input {
     @apply flex-1;
     max-width: 400px;
@@ -11,15 +9,6 @@
 
 .guilds-content {
   @apply flex flex-col gap-10;
-}
-
-.section-header {
-  @apply flex items-center justify-between mb-5;
-}
-
-.section-title {
-  @apply text-lg font-semibold;
-  color: var(--color-text);
 }
 
 .guild-grid {

@@ -86,17 +86,22 @@ The project defines reusable component classes in SCSS (`components/`). **Always
 
 | Need | Use | Never |
 |---|---|---|
-| Button | `.btn .btn-primary .btn-sm` (base + variant + size) | Raw Tailwind `bg-green-600 text-white px-4 py-2 rounded` |
-| Button variants | `.btn-primary`, `.btn-secondary`, `.btn-danger`, `.btn-ghost` | Custom color classes |
-| Button sizes | `.btn-sm`, `.btn-xs` (default is medium) | Inline padding overrides |
-| Small delete | `.remove-btn` | Inline red text buttons |
-| Content container | `.panel` | Raw `bg-white rounded-lg shadow border` |
-| Section header | `.panel-header` + `.panel-title` | Custom heading styles |
-| Empty state | `.empty-state` + `.empty-state-icon` + `.empty-state-text` | Custom centered flex containers |
-| Form inputs | `.form-input` (defined in `_forms.scss`) | Raw Tailwind `border rounded-md px-3 py-2` |
-| Dialog actions | `.dialog-actions` + `.btn .btn-secondary` / `.btn .btn-primary` | Material `mat-flat-button` with Tailwind |
-| Collapsible | `<app-collapsible>` with `[collapsible-header]` / `[collapsible-body]` slots | Custom accordion markup |
-| Section header in collapsible | `.section-header` + `.section-header-label` | Custom flex headers |
+| **Page wrapper** | `.page-container` (max-width, responsive padding, centering) | Raw `mx-auto max-w-… px-…` |
+| **Page title** | `.page-header` > `h1` + optional `.page-description` | Raw `mb-6` on a div |
+| **Title + action row** | `.page-toolbar` (flex, gap, mb) | Raw `flex items-center justify-between mb-…` |
+| **Section header** | `.section-header` > `.section-title` + optional button | Inline flex headers |
+| **Content list** | `.content-list` (flex-col, gap) | Raw `flex flex-col gap-…` |
+| **Button** | `.btn .btn-primary .btn-sm` (base + variant + size) | Raw Tailwind `bg-green-600 text-white px-4 py-2 rounded` |
+| **Button variants** | `.btn-primary`, `.btn-secondary`, `.btn-danger`, `.btn-ghost` | Custom color classes |
+| **Button sizes** | `.btn-sm`, `.btn-xs` (default is medium) | Inline padding overrides |
+| **Small delete** | `.remove-btn` | Inline red text buttons |
+| **Content container** | `.panel` | Raw `bg-white rounded-lg shadow border` |
+| **Panel header** | `.panel-header` + `.panel-title` | Custom heading styles |
+| **Empty state** | `.empty-state` + `.empty-state-icon` + `.empty-state-text` | Custom centered flex containers |
+| **Form inputs** | `.form-input` (defined in `_forms.scss`) | Raw Tailwind `border rounded-md px-3 py-2` |
+| **Dialog actions** | `.dialog-actions` + `.btn .btn-secondary` / `.btn .btn-primary` | Material `mat-flat-button` with Tailwind |
+| **Collapsible** | `<app-collapsible>` with `[collapsible-header]` / `[collapsible-body]` slots | Custom accordion markup |
+| **Section in collapsible** | `.section-header` + `.section-header-label` | Custom flex headers |
 
 **Tailwind is for layout utilities only** (flex, grid, spacing, responsive breakpoints). Component appearance always comes from SCSS classes.
 

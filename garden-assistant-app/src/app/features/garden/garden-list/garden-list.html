@@ -1,6 +1,9 @@
-<div class="mx-auto max-w-3xl px-4 py-6">
-  <div class="flex items-center justify-between mb-6">
+<div class="page-container">
+  <div class="page-header">
     <h1 [translate]="'Garden.Title'"></h1>
+  </div>
+
+  <div class="page-toolbar">
     <button class="btn btn-primary btn-sm" (click)="createGarden()">
       <fa-icon [icon]="faPlus"></fa-icon>
       <span [translate]="'Garden.Create'"></span>
@@ -21,16 +24,16 @@
     </div>
   }
 
-  <div class="flex flex-col gap-3">
+  <div class="content-list">
     @for (garden of gardens(); track garden.id) {
       <div class="panel cursor-pointer" (click)="openGarden(garden)">
         <div class="p-4 flex items-start justify-between">
           <div class="flex-1 min-w-0">
             <h3 class="font-semibold truncate">{{ garden.name }}</h3>
             @if (garden.description) {
-              <p class="text-sm text-gray-500 mt-1 line-clamp-2">{{ garden.description }}</p>
+              <p class="page-description mt-1 line-clamp-2">{{ garden.description }}</p>
             }
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-xs mt-2" style="color: var(--color-text-muted)">
               {{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }}
             </p>
           </div>

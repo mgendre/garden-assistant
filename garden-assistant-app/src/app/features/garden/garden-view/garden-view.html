@@ -1,20 +1,21 @@
-<div class="mx-auto max-w-3xl px-4 py-6">
-  <div class="flex items-center gap-3 mb-2">
-    <button class="btn btn-ghost btn-sm" (click)="goBack()" [attr.aria-label]="'Garden.Back' | translate">
-      <fa-icon [icon]="faArrowLeft"></fa-icon>
-    </button>
-    <h1 class="flex-1 min-w-0 truncate">{{ garden()?.name }}</h1>
-    <button class="btn btn-ghost btn-sm" (click)="editGarden()" [attr.aria-label]="'Garden.Edit' | translate">
-      <fa-icon [icon]="faPen"></fa-icon>
-    </button>
+<div class="page-container">
+  <div class="page-header">
+    <div class="flex items-center gap-3">
+      <button class="btn btn-ghost btn-sm" (click)="goBack()" [attr.aria-label]="'Garden.Back' | translate">
+        <fa-icon [icon]="faArrowLeft"></fa-icon>
+      </button>
+      <h1 class="flex-1 min-w-0 truncate">{{ garden()?.name }}</h1>
+      <button class="btn btn-ghost btn-sm" (click)="editGarden()" [attr.aria-label]="'Garden.Edit' | translate">
+        <fa-icon [icon]="faPen"></fa-icon>
+      </button>
+    </div>
+    @if (garden()?.description) {
+      <p class="page-description ml-10">{{ garden()?.description }}</p>
+    }
   </div>
 
-  @if (garden()?.description) {
-    <p class="text-sm text-gray-500 mb-6 ml-10">{{ garden()?.description }}</p>
-  }
-
-  <div class="flex items-center justify-between mb-4">
-    <h2 [translate]="'Bed.SectionTitle'"></h2>
+  <div class="section-header">
+    <h2 class="section-title" [translate]="'Bed.SectionTitle'"></h2>
     <button class="btn btn-primary btn-sm" (click)="addBed()">
       <fa-icon [icon]="faPlus"></fa-icon>
       <span [translate]="'Bed.Add'"></span>
@@ -32,7 +33,7 @@
       <button class="btn btn-primary btn-sm mt-4" (click)="addBed()" [translate]="'Bed.CreateFirst'"></button>
     </div>
   } @else {
-    <div class="flex flex-col gap-3">
+    <div class="content-list">
       @for (bed of beds(); track bed.id) {
         <app-bed-panel
           [bed]="bed"
