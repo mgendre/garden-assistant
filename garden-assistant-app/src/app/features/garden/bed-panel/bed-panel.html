@@ -22,7 +22,7 @@
           <div class="empty-state-icon">⏳</div>
         </div>
       } @else if (loaded()) {
-        @if (plantCount() === 0) {
+        @if (plants().length === 0) {
           <div class="empty-state" style="min-height: 120px">
             <p class="empty-state-text" [translate]="'Bed.EmptyState'"></p>
             <button class="btn btn-primary btn-sm mt-3" (click)="editPlants()" [translate]="'Bed.AddPlants'"></button>
@@ -38,8 +38,11 @@
             (harvestReadinessClick)="openHarvestReadiness($event)">
           </app-plant-association-panel>
 
-          <div class="flex justify-center py-4">
-            <button class="btn btn-primary btn-sm" (click)="editPlants()" [translate]="'Bed.ModifyPlants'"></button>
+          <div class="flex justify-center py-4 border-t" style="border-color: var(--color-border-subtle)">
+            <button class="btn btn-secondary btn-sm" (click)="editPlants()">
+              <fa-icon [icon]="faPen"></fa-icon>
+              <span [translate]="'Bed.ModifyPlants'"></span>
+            </button>
           </div>
         }
       }

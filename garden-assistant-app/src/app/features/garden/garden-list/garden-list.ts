@@ -2,7 +2,7 @@ import { Component, inject, computed } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { firstValueFrom } from 'rxjs';
 import { GardenDto, CreateGardenRequest } from '../../../api/garden-assistant-api';
@@ -22,6 +22,7 @@ export class GardenList {
   private readonly dialog = inject(MatDialog);
   private readonly translate = inject(TranslateService);
   protected readonly faPlus = faPlus;
+  protected readonly faTrash = faTrash;
 
   readonly gardens = computed(() => this.store.gardens());
   readonly isEmpty = computed(() => this.gardens().length === 0 && !this.store.loading());

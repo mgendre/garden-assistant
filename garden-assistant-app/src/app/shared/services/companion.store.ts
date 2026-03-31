@@ -86,6 +86,7 @@ export class CompanionStore {
   private readonly router = inject(Router);
 
   readonly returnTo = signal<string | null>(null);
+  readonly editingBedName = signal<string | null>(null);
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
   readonly sortMode = signal<'compat' | 'alpha' | 'family'>('compat');
@@ -485,6 +486,8 @@ export class CompanionStore {
     this.guildName.set('');
     this.guildDescription.set('');
     this.guildMode.set('companions');
+    this.returnTo.set(null);
+    this.editingBedName.set(null);
   }
 
   loadGuildForEditing(guild: GuildDto): void {
@@ -552,6 +555,11 @@ export class CompanionStore {
   }
 
   async saveGuild(): Promise<void> {
+    const bedName = this.editingBedName();
+    if (bedName && !this.guildName()) {
+      this.guildName.set(bedName);
+    }
+
     const plants: GuildPlantRequest[] = this.selectedPlants()
       .filter(p => !!p.id)
       .map(p => ({
@@ -596,6 +604,10 @@ export class CompanionStore {
 
   setReturnTo(path: string): void {
     this.returnTo.set(path);
+  }
+
+  setEditingBedName(name: string | null): void {
+    this.editingBedName.set(name);
   }
 
   setSearch(query: string): void {
