@@ -4,10 +4,7 @@
       <span class="text-sm font-medium" style="color: #1565c0; flex: 1">
         🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
       </span>
-      <div style="display: flex; gap: 0.5rem">
-        <button class="btn btn-secondary btn-xs" (click)="store.removeAllPlants()" [translate]="'Companions.CancelChanges'"></button>
-        <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()" [translate]="'Companions.BackToBed'"></button>
-      </div>
+      <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()" [translate]="'Companions.BackToBed'"></button>
     </div>
   }
   <div class="guild-container" [class.guild-active]="store.selectedPlants().length">
