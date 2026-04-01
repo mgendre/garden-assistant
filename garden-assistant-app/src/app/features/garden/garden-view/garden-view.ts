@@ -34,7 +34,9 @@ export class GardenView implements OnInit {
     this.store.gardens().find(g => g.id === this.gardenId())
   );
 
-  readonly beds = computed(() => this.store.beds());
+  readonly beds = computed(() =>
+    [...this.store.beds()].sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'))
+  );
   readonly hasBeds = computed(() => this.beds().length > 0);
 
   async ngOnInit(): Promise<void> {
