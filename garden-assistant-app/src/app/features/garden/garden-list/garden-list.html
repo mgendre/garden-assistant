@@ -27,21 +27,14 @@
   <div class="content-list">
     @for (garden of gardens(); track garden.id) {
       <div class="panel cursor-pointer" (click)="openGarden(garden)">
-        <div class="p-4 flex items-start justify-between">
-          <div class="flex-1 min-w-0">
-            <h3 class="font-semibold truncate">{{ garden.name }}</h3>
-            @if (garden.description) {
-              <p class="page-description mt-1 line-clamp-2">{{ garden.description }}</p>
-            }
-            <p class="text-xs mt-2" style="color: var(--color-text-muted)">
-              {{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }}
-            </p>
-          </div>
-          <button class="remove-btn ml-2 shrink-0"
-            (click)="deleteGarden($event, garden)"
-            [attr.aria-label]="'Garden.Delete' | translate">
-            ✕
-          </button>
+        <div class="p-4">
+          <h3 class="font-semibold truncate">{{ garden.name }}</h3>
+          @if (garden.description) {
+            <p class="page-description mt-1 line-clamp-2">{{ garden.description }}</p>
+          }
+          <p class="text-xs mt-2" style="color: var(--color-text-muted)">
+            {{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }}
+          </p>
         </div>
       </div>
     }
