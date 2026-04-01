@@ -83,6 +83,16 @@ export class BedPanel implements OnInit {
 
   readonly plantCount = computed(() => this.bed().plantIds?.length ?? 0);
 
+  readonly sortedHeaderPlants = computed(() => {
+    const centralIds = this.centralPlantIds();
+    return [...this.plants()].sort((a, b) => {
+      const aCentral = centralIds.has(a.id!) ? 0 : 1;
+      const bCentral = centralIds.has(b.id!) ? 0 : 1;
+      if (aCentral !== bCentral) { return aCentral - bCentral; }
+      return (a.name ?? '').localeCompare(b.name ?? '', 'fr');
+    });
+  });
+
   ngOnInit(): void {
     this.loadDetail();
   }
