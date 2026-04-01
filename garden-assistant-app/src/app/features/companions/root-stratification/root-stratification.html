@@ -25,7 +25,7 @@
     }
 </div>
 @if (hasCompetitionRisk()) {
-    <div class="soil-density-info">
-        ℹ️ {{ 'Stratification.DensityWarning' | translate }}
+    <div style="margin-top: 0.5rem">
+        <app-info-banner emoji="ℹ️" messageKey="Stratification.DensityWarning"></app-info-banner>
     </div>
 }

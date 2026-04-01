@@ -36,11 +36,16 @@
   }
 
   &--gap,
-  &--water,
-  &--root {
+  &--water {
     background: var(--color-warning-bg);
     border: 1px solid var(--color-warning-border);
     color: var(--color-warning);
+  }
+
+  &--root {
+    background: #e3f2fd;
+    border: 1px solid #90caf9;
+    color: #1565c0;
   }
 }
 
