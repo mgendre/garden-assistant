@@ -28,22 +28,13 @@
             <button class="btn btn-primary btn-sm mt-3" (click)="editPlants()" [translate]="'Bed.AddPlants'"></button>
           </div>
         } @else {
-          <div class="plant-list">
-            @for (plant of plants(); track plant.id) {
-              <app-plant-card
-                [plant]="plant"
-                [hideFavButton]="true"
-                [showCentralIndicator]="centralPlantIds().has(plant.id!)">
-              </app-plant-card>
-            }
-          </div>
-
           <app-plant-association-panel
             [plants]="plants()"
             [associations]="associations()"
             [calendarEntries]="calendarEntries()"
             [centralPlantIds]="centralPlantIds()"
             [interactive]="false"
+            [showPlantCards]="true"
             (plantNameClick)="openPlantDetail($event)"
             (harvestReadinessClick)="openHarvestReadiness($event)">
           </app-plant-association-panel>

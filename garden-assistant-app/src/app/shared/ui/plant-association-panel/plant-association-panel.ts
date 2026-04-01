@@ -15,6 +15,7 @@ import {
 } from '../../../api/garden-assistant-api';
 import { CompanionStore, PRIORITY_MECHANISMS } from '../../services/companion.store';
 import { Collapsible } from '../collapsible/collapsible';
+import { PlantCard } from '../plant-card/plant-card';
 import { PlantCalendarGantt } from '../plant-calendar-gantt/plant-calendar-gantt';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../badge-info-dialog/badge-info-dialog';
 import { PlantDetailDialog, PlantDetailDialogData } from '../plant-detail-dialog/plant-detail-dialog';
@@ -38,7 +39,7 @@ interface MechanismRow {
 @Component({
   selector: 'app-plant-association-panel',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCalendarGantt, RootStratification],
+  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCard, PlantCalendarGantt, RootStratification],
   templateUrl: './plant-association-panel.html',
 })
 export class PlantAssociationPanel {
@@ -48,6 +49,7 @@ export class PlantAssociationPanel {
   readonly centralPlantIds = input<Set<string>>(new Set());
 
   readonly interactive = input(false);
+  readonly showPlantCards = input(false);
 
   readonly plantNameClick = output<string>();
   readonly harvestReadinessClick = output<{ plantId: string; plantName: string }>();

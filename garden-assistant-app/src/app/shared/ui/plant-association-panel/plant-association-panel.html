@@ -1,3 +1,16 @@
+<!-- Plant cards -->
+@if (showPlantCards() && plants().length > 0) {
+  <div class="plant-list">
+    @for (plant of plants(); track plant.id) {
+      <app-plant-card
+        [plant]="plant"
+        [hideFavButton]="true"
+        [showCentralIndicator]="centralPlantIds().has(plant.id!)">
+      </app-plant-card>
+    }
+  </div>
+}
+
 <!-- Associations detail -->
 @if (associations().length > 0) {
   <div class="panel-section">
