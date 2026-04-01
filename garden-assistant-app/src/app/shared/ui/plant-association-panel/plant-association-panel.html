@@ -141,7 +141,7 @@
               <span class="mechanism-providers">
                 @if (row.satisfied) {
                   @for (plant of row.providers; track plant.id) {
-                    <span class="mechanism-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
+                    <app-plant-badge [plant]="plant" [central]="centralPlantIds().has(plant.id!)"></app-plant-badge>
                   }
                 } @else {
                   <span class="mechanism-provider-empty">—</span>

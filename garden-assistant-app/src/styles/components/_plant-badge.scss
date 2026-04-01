@@ -1,0 +1,24 @@
+.plant-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  border-radius: 0.375rem;
+  padding: 0.15rem 0.5rem;
+  cursor: pointer;
+  background: var(--color-surface-hover);
+  color: var(--color-text-secondary);
+  transition: background var(--transition-fast);
+
+  &:hover {
+    background: var(--color-border-subtle);
+  }
+
+  &--central {
+    background: var(--color-accent-tint);
+    color: var(--color-accent-dark);
+    border: 1px solid var(--color-accent-light);
+
+    &:hover {
+      background: var(--color-accent-light);
+    }
+  }
+}

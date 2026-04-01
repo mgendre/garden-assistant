@@ -19,6 +19,7 @@ import { GuildService } from '../../../shared/services/guild.service';
 import { CompanionService } from '../../../shared/services/companion.service';
 import { CalendarService } from '../../../shared/services/calendar.service';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
+import { PlantBadge } from '../../../shared/ui/plant-badge/plant-badge';
 import { PlantAssociationPanel, PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../../shared/ui/harvest-readiness/harvest-readiness-dialog';
@@ -30,7 +31,7 @@ import { SOWING_ACTIONS } from '../../../shared/constants/plant-action.constants
 @Component({
   selector: 'app-bed-panel',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantAssociationPanel],
+  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantBadge, PlantAssociationPanel],
   templateUrl: './bed-panel.html',
 })
 export class BedPanel implements OnInit {

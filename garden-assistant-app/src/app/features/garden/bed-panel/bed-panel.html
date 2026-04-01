@@ -10,10 +10,10 @@
       @if (sortedHeaderPlants().length > 0) {
         <div class="flex flex-wrap gap-1 mt-1">
           @for (plant of sortedHeaderPlants(); track plant.id) {
-            <span class="text-xs px-2 py-0.5 rounded-full"
-              [style.background]="centralPlantIds().has(plant.id!) ? 'var(--color-accent-tint)' : 'var(--color-surface-hover)'"
-              [style.color]="centralPlantIds().has(plant.id!) ? 'var(--color-accent-dark)' : 'var(--color-text-muted)'"
-              [style.border]="centralPlantIds().has(plant.id!) ? '1px solid var(--color-accent-light)' : '1px solid var(--color-border-subtle)'">{{ plant.name }}</span>
+            <app-plant-badge
+              [plant]="plant"
+              [central]="centralPlantIds().has(plant.id!)">
+            </app-plant-badge>
           }
         </div>
       }
