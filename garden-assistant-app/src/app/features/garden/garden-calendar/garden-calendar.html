@@ -36,10 +36,7 @@
         @if (groupByBed()) {
           @for (group of bedGroups(); track group.bedName; let first = $first) {
             <div style="margin-bottom: 1.5rem" [style.margin-top]="first ? '0' : '1.5rem'">
-              <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem">
-                <span class="panel-title" style="white-space: nowrap">{{ group.bedName }}</span>
-                <span style="flex: 1; height: 1px; background: var(--color-border-subtle)"></span>
-              </div>
+              <div class="section-divider-title">{{ group.bedName }}</div>
               @for (entry of group.entries; track entry.plantId; let first = $first; let last = $last; let idx = $index) {
                 <div class="calendar-plant" [class.calendar-plant--separator]="!last">
                   <app-plant-calendar-gantt
