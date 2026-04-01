@@ -11,14 +11,11 @@
   @if (guild.plants?.length) {
     <div class="guild-card-chips">
       @for (plant of guild.plants; track plant.id) {
-        <span class="guild-plant-chip">
-          <span class="guild-plant-chip-name" (click)="onPlantClick(plant.id, $event)">{{ plant.name }}</span>
-          @if (showPlantAdd) {
-            <span class="guild-plant-chip-add" (click)="onPlantAddClick(plant.id, $event)">
-              <fa-icon [icon]="faPlus"></fa-icon>
-            </span>
-          }
-        </span>
+        <app-plant-badge
+          [plantId]="plant.id"
+          [plantName]="plant.name"
+          [central]="plant.role === GuildPlantRole.Central">
+        </app-plant-badge>
       }
     </div>
   }

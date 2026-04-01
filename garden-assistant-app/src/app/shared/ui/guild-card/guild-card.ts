@@ -2,12 +2,13 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPen, faTrash, faWandMagicSparkles, faEye, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { GuildDto } from '../../../api/garden-assistant-api';
+import { GuildDto, GuildPlantRole } from '../../../api/garden-assistant-api';
+import { PlantBadge } from '../plant-badge/plant-badge';
 
 @Component({
   selector: 'app-guild-card',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule],
+  imports: [TranslateModule, FontAwesomeModule, PlantBadge],
   templateUrl: './guild-card.html',
   styleUrl: './guild-card.scss'
 })
@@ -28,6 +29,7 @@ export class GuildCard {
   protected readonly faCustomize = faWandMagicSparkles;
   protected readonly faView = faEye;
   protected readonly faPlus = faPlus;
+  protected readonly GuildPlantRole = GuildPlantRole;
 
   onCardClick(): void {
     if (!this.showOpenButton) {
