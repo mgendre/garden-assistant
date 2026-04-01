@@ -463,6 +463,13 @@ export class CompanionStore {
     this.selectedPlants.set([]);
     this.centralPlantIds.set(new Set());
     this.recommendations.set(null);
+    this.editingBedName.set(null);
+    this.returnTo.set(null);
+    this.editingGuild.set(null);
+    this.guildName.set('');
+    this.guildDescription.set('');
+    this.guildMode.set('companions');
+    this.router.navigate(['/companions'], { replaceUrl: true });
   }
 
   removePlant(plant: PlantDto): void {
