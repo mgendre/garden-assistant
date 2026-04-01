@@ -1,6 +1,6 @@
 <div class="guilds-column flex-col">
   @if (store.editingBedName()) {
-    <div class="panel" style="padding: 0.75rem 1.25rem; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: var(--color-accent-tint); border-color: var(--color-accent-light)">
+    <div class="panel" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: var(--color-accent-tint); border-color: var(--color-accent-light)">
       <span class="text-sm font-medium" style="color: var(--color-accent-dark)">
         🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
       </span>
