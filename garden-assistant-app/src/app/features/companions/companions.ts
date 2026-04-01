@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { Subscription, filter } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { PlantCatalogue } from './plant-catalogue/plant-catalogue';
 import { GuildEditor } from './guild-editor/guild-editor';
@@ -16,23 +16,18 @@ import { GuildService } from '../../shared/services/guild.service';
 })
 export class Companions implements OnInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
-  private readonly router = inject(Router);
   protected readonly companionStore = inject(CompanionStore);
   private readonly guildService = inject(GuildService);
-  private navSub?: Subscription;
+  private paramsSub?: Subscription;
 
   ngOnInit(): void {
-    this.handleParams(this.route.snapshot.queryParams);
-
-    this.navSub = this.router.events.pipe(
-      filter(e => e instanceof NavigationEnd)
-    ).subscribe(() => {
-      this.handleParams(this.route.snapshot.queryParams);
+    this.paramsSub = this.route.queryParams.subscribe(params => {
+      this.handleParams(params as Record<string, string>);
     });
   }
 
   ngOnDestroy(): void {
-    this.navSub?.unsubscribe();
+    this.paramsSub?.unsubscribe();
   }
 
   private async handleParams(params: Record<string, string>): Promise<void> {

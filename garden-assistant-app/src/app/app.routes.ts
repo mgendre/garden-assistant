@@ -4,7 +4,8 @@ export const routes: Routes = [
   { path: '', redirectTo: 'garden', pathMatch: 'full' },
   {
     path: 'companions',
-    loadComponent: () => import('./features/companions/companions').then(m => m.Companions)
+    loadComponent: () => import('./features/companions/companions').then(m => m.Companions),
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange'
   },
   {
     path: 'my-plants',
