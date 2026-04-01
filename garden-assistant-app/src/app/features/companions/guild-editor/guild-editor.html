@@ -1,4 +1,14 @@
 <div class="guilds-column flex-col">
+  @if (store.editingBedName()) {
+    <div class="panel" style="padding: 0.75rem 1.25rem; margin-bottom: 0.75rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: var(--color-accent-tint); border-color: var(--color-accent-light)">
+      <span class="text-sm font-medium" style="color: var(--color-accent-dark)">
+        🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
+      </span>
+      <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()">
+        {{ 'Companions.BackToBed' | translate }}
+      </button>
+    </div>
+  }
   <div class="guild-container" [class.guild-active]="store.selectedPlants().length">
 
     @if (store.selectedPlants().length) {
