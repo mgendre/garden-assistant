@@ -34,7 +34,7 @@
       <button class="btn btn-primary btn-sm mt-4" (click)="addBed()" [translate]="'Bed.CreateFirst'"></button>
     </div>
   } @else {
-    <div class="content-list mb-10">
+    <div class="content-list">
       @for (bed of beds(); track bed.id) {
         <app-bed-panel
           [bed]="bed"
@@ -45,6 +45,8 @@
       }
     </div>
 
-    <app-garden-calendar [beds]="beds()"></app-garden-calendar>
+    <div style="margin-top: 2.5rem; display: block">
+      <app-garden-calendar [beds]="beds()"></app-garden-calendar>
+    </div>
   }
 </div>

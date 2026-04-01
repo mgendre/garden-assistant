@@ -1,5 +1,5 @@
 <div class="panel">
-  <app-collapsible (click)="onExpand()">
+  <app-collapsible>
     <div collapsible-header class="flex items-center justify-between w-full gap-2">
       <div class="flex items-center gap-2 min-w-0">
         <span class="font-medium truncate">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>
@@ -21,7 +21,7 @@
         <div class="empty-state" style="min-height: 100px">
           <div class="empty-state-icon">⏳</div>
         </div>
-      } @else if (loaded()) {
+      } @else {
         @if (plants().length === 0) {
           <div class="empty-state" style="min-height: 120px">
             <p class="empty-state-text" [translate]="'Bed.EmptyState'"></p>

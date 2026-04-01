@@ -1,4 +1,4 @@
-import { Component, inject, input, output, signal, computed } from '@angular/core';
+import { Component, inject, input, output, signal, computed, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -33,7 +33,7 @@ import { SOWING_ACTIONS } from '../../../shared/constants/plant-action.constants
   imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantAssociationPanel],
   templateUrl: './bed-panel.html',
 })
-export class BedPanel {
+export class BedPanel implements OnInit {
   readonly bed = input.required<BedDto>();
   readonly gardenId = input.required<string>();
   readonly bedNameChanged = output<string | undefined>();
@@ -83,10 +83,8 @@ export class BedPanel {
 
   readonly plantCount = computed(() => this.bed().plantIds?.length ?? 0);
 
-  onExpand(): void {
-    if (!this.loaded() && !this.loading()) {
-      this.loadDetail();
-    }
+  ngOnInit(): void {
+    this.loadDetail();
   }
 
   async loadDetail(): Promise<void> {
