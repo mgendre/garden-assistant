@@ -5,7 +5,6 @@ import {
   PlantsClient,
   PlantActionDto,
   HarvestReadinessDto,
-  SwaggerException,
 } from '../../api/garden-assistant-api';
 
 @Injectable({ providedIn: 'root' })
@@ -21,7 +20,7 @@ export class CalendarService {
     return this.plantsClient.getActions(plantId);
   }
 
-  async getHarvestReadiness(plantId: string): Promise<HarvestReadinessDto | null> {
-    return await this.plantsClient.getHarvestReadiness(plantId) ?? null;
+  getHarvestReadiness(plantId: string): Promise<HarvestReadinessDto | null> {
+    return this.plantsClient.getHarvestReadiness(plantId);
   }
 }

@@ -133,20 +133,15 @@ export class PlantAssociationPanel {
     return false;
   });
 
-  readonly hasWaterConflict = computed(() => {
-    const plants = this.plants();
-    return plants.some(p => p.waterNeeds === WaterNeeds.Low) && plants.some(p => p.waterNeeds === WaterNeeds.High);
-  });
-
   readonly waterConflict = computed(() => {
     const plants = this.plants();
-    const hasLow = plants.some(p => p.waterNeeds === WaterNeeds.Low);
-    const hasHigh = plants.some(p => p.waterNeeds === WaterNeeds.High);
-    if (!hasLow || !hasHigh) { return null; }
     const lowPlants = plants.filter(p => p.waterNeeds === WaterNeeds.Low).map(p => p.name ?? '');
     const highPlants = plants.filter(p => p.waterNeeds === WaterNeeds.High).map(p => p.name ?? '');
+    if (lowPlants.length === 0 || highPlants.length === 0) { return null; }
     return { lowPlants, highPlants };
   });
+
+  readonly hasWaterConflict = computed(() => this.waterConflict() !== null);
 
   plantName(plantId: string | undefined): string {
     if (!plantId) { return ''; }

@@ -7,8 +7,8 @@ import { CompanionStore } from '../../../shared/services/companion.store';
 import { GuildStore } from '../../../shared/services/guild.store';
 import { PlantStore } from '../../../shared/services/plant.store';
 import { CalendarService } from '../../../shared/services/calendar.service';
-import { PlantActionDto, PlantActionType, PropagationMethod, AssociationMechanism, RootDepth } from '../../../api/garden-assistant-api';
-import { SOWING_ACTIONS } from '../../../shared/constants/plant-action.constants';
+import { PlantActionType, PropagationMethod } from '../../../api/garden-assistant-api';
+import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
 import { PlantDetailPanel } from '../plant-detail-panel/plant-detail-panel';
 import { GuildPanel } from '../guild-panel/guild-panel';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
@@ -45,8 +45,7 @@ export class GuildEditor {
       }
       const entries: PlantCalendarEntry[] = [];
       const plantIds = plants.map(p => p.id!).filter(Boolean);
-      const actionsPromises = plantIds.map(id => this.calendarService.getPlantActions(id));
-      const allActions = await Promise.all(actionsPromises);
+      const allActions = await Promise.all(plantIds.map(id => this.calendarService.getPlantActions(id)));
       for (let i = 0; i < plantIds.length; i++) {
         const plant = this.plantStore.findById(plantIds[i]);
         if (plant) {
@@ -60,14 +59,14 @@ export class GuildEditor {
         }
       }
       entries.sort((a, b) => {
-        const sowA = this.getEarliestHalfMonth(a.actions, SOWING_ACTIONS);
-        const sowB = this.getEarliestHalfMonth(b.actions, SOWING_ACTIONS);
+        const sowA = getEarliestHalfMonth(a.actions, SOWING_ACTIONS);
+        const sowB = getEarliestHalfMonth(b.actions, SOWING_ACTIONS);
         if (sowA !== sowB) { return sowA - sowB; }
-        const transA = this.getEarliestHalfMonth(a.actions, [PlantActionType.Transplanting]);
-        const transB = this.getEarliestHalfMonth(b.actions, [PlantActionType.Transplanting]);
+        const transA = getEarliestHalfMonth(a.actions, [PlantActionType.Transplanting]);
+        const transB = getEarliestHalfMonth(b.actions, [PlantActionType.Transplanting]);
         if (transA !== transB) { return transA - transB; }
-        const harvA = this.getEarliestHalfMonth(a.actions, [PlantActionType.Harvest]);
-        const harvB = this.getEarliestHalfMonth(b.actions, [PlantActionType.Harvest]);
+        const harvA = getEarliestHalfMonth(a.actions, [PlantActionType.Harvest]);
+        const harvB = getEarliestHalfMonth(b.actions, [PlantActionType.Harvest]);
         if (harvA !== harvB) { return harvA - harvB; }
         return a.name.localeCompare(b.name, 'fr');
       });
@@ -92,16 +91,6 @@ export class GuildEditor {
         maxWidth: '400px',
       });
     }
-  }
-
-  private getEarliestHalfMonth(actions: PlantActionDto[], actionTypes: PlantActionType[]): number {
-    const matching = actions.filter(a =>
-      a.actionType !== undefined && actionTypes.includes(a.actionType)
-    );
-    if (matching.length === 0) {
-      return 99;
-    }
-    return Math.min(...matching.map(a => a.halfMonthStart ?? 99));
   }
 
   openPlantDetail(plantId: string): void {

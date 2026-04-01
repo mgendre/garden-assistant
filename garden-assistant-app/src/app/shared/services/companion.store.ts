@@ -147,23 +147,17 @@ export class CompanionStore {
 
   readonly catalogAssociationMechanisms = computed(() => {
     const map = new Map<string, { beneficial: number[]; harmful: number[] }>();
-    const sortMechanisms = (mechanisms: number[]) =>
-      [...mechanisms].sort((a, b) => {
-        const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
-        const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
-        return keyA.localeCompare(keyB, 'fr');
-      });
     for (const c of this.recommendations()?.goodCompanions ?? []) {
       if (c.plantId && c.mechanisms?.length) {
         const entry = map.get(c.plantId) ?? { beneficial: [], harmful: [] };
-        entry.beneficial = sortMechanisms(c.mechanisms);
+        entry.beneficial = this.sortMechanisms(c.mechanisms);
         map.set(c.plantId, entry);
       }
     }
     for (const a of this.recommendations()?.plantsToAvoid ?? []) {
       if (a.plantId && a.mechanisms?.length) {
         const entry = map.get(a.plantId) ?? { beneficial: [], harmful: [] };
-        entry.harmful = sortMechanisms(a.mechanisms);
+        entry.harmful = this.sortMechanisms(a.mechanisms);
         map.set(a.plantId, entry);
       }
     }
@@ -188,14 +182,9 @@ export class CompanionStore {
     return new Set(ids);
   });
 
-  readonly availableMechanisms = computed(() => {
-    const all = Object.keys(MECHANISM_KEY_MAP).map(Number);
-    return all.sort((a, b) => {
-      const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
-      const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
-      return keyA.localeCompare(keyB, 'fr');
-    });
-  });
+  readonly availableMechanisms = computed(() =>
+    this.sortMechanisms(Object.keys(MECHANISM_KEY_MAP).map(Number))
+  );
 
   readonly filteredPlants = computed(() => {
     const query = this.searchQuery().toLowerCase();
@@ -277,12 +266,7 @@ export class CompanionStore {
     const map = new Map<string, number[]>();
     for (const entry of this.recommendations()?.intrinsicMechanismsByPlant ?? []) {
       if (!entry.plantId) { continue; }
-      const sorted = [...(entry.mechanisms ?? [])].sort((a, b) => {
-        const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
-        const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
-        return keyA.localeCompare(keyB, 'fr');
-      });
-      map.set(entry.plantId, sorted);
+      map.set(entry.plantId, this.sortMechanisms(entry.mechanisms ?? []));
     }
     return map;
   });
@@ -291,48 +275,29 @@ export class CompanionStore {
     const map = new Map<string, number[]>();
     for (const entry of this.recommendations()?.selectedPlantsMechanisms ?? []) {
       if (!entry.plantId) { continue; }
-      const sorted = [...(entry.mechanisms ?? [])].sort((a, b) => {
-        const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
-        const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
-        return keyA.localeCompare(keyB, 'fr');
-      });
-      map.set(entry.plantId, sorted);
+      map.set(entry.plantId, this.sortMechanisms(entry.mechanisms ?? []));
     }
     return map;
   });
 
   readonly guildIntrinsicMechanisms = computed(() => {
     const intrinsic = new Set(
-      (this.recommendations()?.intrinsicMechanismsByPlant ?? [])
-        .flatMap(entry => entry.mechanisms ?? [])
+      (this.recommendations()?.intrinsicMechanismsByPlant ?? []).flatMap(e => e.mechanisms ?? [])
     );
-    return [...intrinsic].sort((a, b) => {
-      const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
-      const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
-      return keyA.localeCompare(keyB, 'fr');
-    });
+    return this.sortMechanisms([...intrinsic]);
   });
 
   readonly guildRelationalOnlyMechanisms = computed(() => {
-    const relational = this.recommendations()?.selectedPlantMechanisms ?? [];
     const intrinsicSet = new Set(
-      (this.recommendations()?.intrinsicMechanismsByPlant ?? [])
-        .flatMap(entry => entry.mechanisms ?? [])
+      (this.recommendations()?.intrinsicMechanismsByPlant ?? []).flatMap(e => e.mechanisms ?? [])
     );
-    return relational.filter(m => !intrinsicSet.has(m)).sort((a, b) => {
-      const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
-      const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
-      return keyA.localeCompare(keyB, 'fr');
-    });
+    const relationalOnly = (this.recommendations()?.selectedPlantMechanisms ?? []).filter(m => !intrinsicSet.has(m));
+    return this.sortMechanisms(relationalOnly);
   });
 
-  readonly allGuildMechanisms = computed(() => {
-    const intrinsic = new Set(this.guildIntrinsicMechanisms());
-    for (const m of this.guildRelationalOnlyMechanisms()) {
-      intrinsic.add(m);
-    }
-    return intrinsic;
-  });
+  readonly allGuildMechanisms = computed(() =>
+    new Set([...this.guildIntrinsicMechanisms(), ...this.guildRelationalOnlyMechanisms()])
+  );
 
   readonly missingPriorityMechanisms = computed(() => {
     const covered = this.allGuildMechanisms();
@@ -374,11 +339,7 @@ export class CompanionStore {
 
   readonly emptyRootLayers = computed(() => {
     const groups = this.rootDepthGroups();
-    const empty: RootDepth[] = [];
-    if (!groups.has(RootDepth.Shallow)) { empty.push(RootDepth.Shallow); }
-    if (!groups.has(RootDepth.Medium)) { empty.push(RootDepth.Medium); }
-    if (!groups.has(RootDepth.Deep)) { empty.push(RootDepth.Deep); }
-    return empty;
+    return [RootDepth.Shallow, RootDepth.Medium, RootDepth.Deep].filter(d => !groups.has(d));
   });
 
   readonly familyDiversityWarnings = computed(() => {
@@ -418,6 +379,25 @@ export class CompanionStore {
   readonly assistantGapCount = computed(() =>
     this.missingPriorityMechanisms().length
   );
+
+  private applyGuildPlants(guild: GuildDto): void {
+    const plants = (guild.plants ?? [])
+      .map(gp => this.plantStore.allPlants().find(p => p.id === gp.id))
+      .filter((p): p is PlantDto => !!p);
+    this.selectedPlants.set(plants);
+    const centralIds = new Set<string>(
+      (guild.plants ?? []).filter(gp => gp.role === GuildPlantRole.Central && gp.id).map(gp => gp.id!)
+    );
+    this.centralPlantIds.set(centralIds);
+  }
+
+  private sortMechanisms(mechanisms: number[]): number[] {
+    return [...mechanisms].sort((a, b) => {
+      const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
+      const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
+      return keyA.localeCompare(keyB, 'fr');
+    });
+  }
 
   constructor() {
     effect(() => {
@@ -504,22 +484,10 @@ export class CompanionStore {
   }
 
   loadGuildForEditing(guild: GuildDto): void {
-    this.selectedPlants.set([]);
     this.editingGuild.set(guild);
     this.guildName.set(guild.name ?? '');
     this.guildDescription.set(guild.description ?? '');
-    for (const guildPlant of guild.plants ?? []) {
-      const plant = this.plantStore.allPlants().find(p => p.id === guildPlant.id);
-      if (plant) {
-        this.selectedPlants.update(list => [...list, plant]);
-      }
-    }
-    const centralIds = new Set<string>(
-      (guild.plants ?? [])
-        .filter(gp => gp.role === GuildPlantRole.Central && gp.id)
-        .map(gp => gp.id!)
-    );
-    this.centralPlantIds.set(centralIds);
+    this.applyGuildPlants(guild);
     this.guildMode.set('viewing');
   }
 
@@ -549,20 +517,9 @@ export class CompanionStore {
       const guild = this.editingGuild();
       this.guildName.set(guild?.name ?? '');
       this.guildDescription.set(guild?.description ?? '');
-      const originalPlants: PlantDto[] = [];
-      for (const gp of guild?.plants ?? []) {
-        const plant = this.plantStore.allPlants().find(p => p.id === gp.id);
-        if (plant) {
-          originalPlants.push(plant);
-        }
+      if (guild) {
+        this.applyGuildPlants(guild);
       }
-      this.selectedPlants.set(originalPlants);
-      const centralIds = new Set<string>(
-        (guild?.plants ?? [])
-          .filter(gp => gp.role === GuildPlantRole.Central && gp.id)
-          .map(gp => gp.id!)
-      );
-      this.centralPlantIds.set(centralIds);
       this.guildMode.set('viewing');
     }
   }
