@@ -1,19 +1,17 @@
 import { Component, input, output, inject, signal, ViewEncapsulation, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart as faHeartSolid, faLink, faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faHeartRegular, faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
-import { firstValueFrom } from 'rxjs';
 import { PlantDto, PlantActionDto, HarvestReadinessDto, SunRequirement, WaterNeeds, LifeCycle, RootDepth, PropagationMethod, AssociationMechanism } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../services/companion.store';
 import { MyPlantsStore } from '../../services/my-plants.store';
 import { CalendarService } from '../../services/calendar.service';
-import { ConfirmDialogComponent, ConfirmDialogData } from '../../confirm-dialog/confirm-dialog';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../badge-info-dialog/badge-info-dialog';
+import { DialogService } from '../../services/dialog.service';
 import { PlantCalendarGantt } from '../plant-calendar-gantt/plant-calendar-gantt';
 import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../harvest-readiness/harvest-readiness-dialog';
 import { Collapsible } from '../collapsible/collapsible';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-plant-card',
@@ -42,6 +40,9 @@ export class PlantCard implements OnInit {
   protected readonly store = inject(CompanionStore);
   protected readonly myPlantsStore = inject(MyPlantsStore);
   private readonly calendarService = inject(CalendarService);
+  private readonly dialogService = inject(DialogService);
+  private readonly dialog = inject(MatDialog);
+  private readonly translate = inject(TranslateService);
 
   readonly plantActions = signal<PlantActionDto[]>([]);
   readonly harvestReadiness = signal<HarvestReadinessDto | null>(null);
@@ -50,8 +51,6 @@ export class PlantCard implements OnInit {
   protected readonly faStarSolid = faStarSolid;
   protected readonly faStarRegular = faStarRegular;
   protected readonly faLink = faLink;
-  private readonly dialog = inject(MatDialog);
-  private readonly translate = inject(TranslateService);
 
   async ngOnInit(): Promise<void> {
     const plantId = this.plant().id;
@@ -165,10 +164,7 @@ export class PlantCard implements OnInit {
   }
 
   openBadgeInfo(titleKey: string, descriptionKey: string): void {
-    this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-      data: { titleKey, descriptionKey },
-      maxWidth: '400px',
-    });
+    this.dialogService.openBadgeInfo(titleKey, descriptionKey);
   }
 
   getSunBadgeKey(sun: SunRequirement | undefined): string {
@@ -199,14 +195,11 @@ export class PlantCard implements OnInit {
     const p = this.plant();
     if (this.myPlantsStore.isSaved(p.id)) {
       const message = this.translate.instant('MyPlants.ConfirmRemoveMessage', { name: p.name });
-      const confirmed = await firstValueFrom(
-        this.dialog.open<ConfirmDialogComponent, ConfirmDialogData, boolean>(ConfirmDialogComponent, {
-          data: {
-            title: this.translate.instant('MyPlants.ConfirmRemoveTitle'),
-            message,
-            confirmLabel: this.translate.instant('MyPlants.ConfirmRemoveAction'),
-          },
-        }).afterClosed()
+      const confirmed = await this.dialogService.confirm(
+        this.translate.instant('MyPlants.ConfirmRemoveTitle'),
+        message,
+        this.translate.instant('MyPlants.ConfirmRemoveAction'),
+        true
       );
       if (!confirmed) return;
     }

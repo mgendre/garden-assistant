@@ -1,17 +1,15 @@
 import { Component, inject, OnInit, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart, faSeedling, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { CalendarStore } from '../../shared/services/calendar.store';
 import { PlantStore } from '../../shared/services/plant.store';
+import { DialogService } from '../../shared/services/dialog.service';
+import { PlantDialogService } from '../../shared/services/plant-dialog.service';
 import { PlantCalendarGantt } from '../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { CalendarThisMonth } from './calendar-this-month';
 import { PlantActionType, PlantDto } from '../../api/garden-assistant-api';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../shared/ui/plant-detail-dialog/plant-detail-dialog';
-import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../shared/ui/harvest-readiness/harvest-readiness-dialog';
 import { CalendarService } from '../../shared/services/calendar.service';
 import { ACTION_TYPE_CONFIGS, FILTER_CONFIGS } from '../../shared/constants/plant-action.constants';
 
@@ -25,7 +23,8 @@ import { ACTION_TYPE_CONFIGS, FILTER_CONFIGS } from '../../shared/constants/plan
 export class Calendar implements OnInit {
   protected readonly store = inject(CalendarStore);
   protected readonly plantStore = inject(PlantStore);
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
+  private readonly plantDialogService = inject(PlantDialogService);
   private readonly calendarService = inject(CalendarService);
 
   protected readonly faHeart = faHeart;
@@ -73,37 +72,22 @@ export class Calendar implements OnInit {
   }
 
   openPlantDetail(plant: PlantDto): void {
-    this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-      data: { plant },
-      maxWidth: '700px',
-      width: '95vw',
-    });
+    this.plantDialogService.openDetail(plant);
   }
 
   async openHarvestReadiness(plantId: string): Promise<void> {
     const plant = this.plantStore.findById(plantId);
-    const readiness = await this.calendarService.getHarvestReadiness(plantId);
-    if (readiness && plant) {
-      this.dialog.open<HarvestReadinessDialog, HarvestReadinessDialogData>(HarvestReadinessDialog, {
-        data: { readiness, plantName: plant.name! },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    } else {
-      this.openActionInfo(PlantActionType.Harvest);
-    }
+    const plantName = plant?.name ?? '';
+    await this.plantDialogService.openHarvestReadiness(plantId, plantName);
   }
 
   openActionInfo(type: PlantActionType): void {
     const key = ACTION_TYPE_CONFIGS.find(c => c.type === type)?.badgeKey;
     if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.Action.${key}.Title`,
-          descriptionKey: `BadgeInfo.Action.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
+      this.dialogService.openBadgeInfo(
+        `BadgeInfo.Action.${key}.Title`,
+        `BadgeInfo.Action.${key}.Description`
+      );
     }
   }
 }

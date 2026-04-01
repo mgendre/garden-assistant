@@ -1,10 +1,9 @@
 import { Component, inject, computed } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore, PRIORITY_MECHANISMS } from '../../../shared/services/companion.store';
 import { AssociationMechanism, PlantDto, RootDepth } from '../../../api/garden-assistant-api';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { DialogService } from '../../../shared/services/dialog.service';
+import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { PlantBadge } from '../../../shared/ui/plant-badge/plant-badge';
 import { RootStratification } from '../root-stratification/root-stratification';
 
@@ -24,7 +23,8 @@ interface MechanismRow {
 })
 export class GuildAssistant {
   protected readonly store = inject(CompanionStore);
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
+  private readonly plantDialogService = inject(PlantDialogService);
 
   readonly mechanismRows = computed<MechanismRow[]>(() => {
     const covered = this.store.allGuildMechanisms();
@@ -50,23 +50,16 @@ export class GuildAssistant {
   }
 
   openPlantDetail(plant: PlantDto): void {
-    this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-      data: { plant },
-      maxWidth: '600px',
-      width: '90vw',
-    });
+    this.plantDialogService.openDetail(plant);
   }
 
   openMechanismInfo(mechanism: AssociationMechanism): void {
     const key = this.store.getMechanismKey(mechanism);
     if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.Mechanism.${key}.Title`,
-          descriptionKey: `BadgeInfo.Mechanism.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
+      this.dialogService.openBadgeInfo(
+        `BadgeInfo.Mechanism.${key}.Title`,
+        `BadgeInfo.Mechanism.${key}.Description`
+      );
     }
   }
 }

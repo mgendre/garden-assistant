@@ -1,8 +1,6 @@
 import { Component, inject, input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { PlantDto } from '../../../api/garden-assistant-api';
-import { PlantStore } from '../../services/plant.store';
-import { PlantDetailDialog, PlantDetailDialogData } from '../plant-detail-dialog/plant-detail-dialog';
+import { PlantDialogService } from '../../services/plant-dialog.service';
 
 @Component({
   selector: 'app-plant-badge',
@@ -17,8 +15,7 @@ export class PlantBadge {
   readonly plantName = input<string | undefined>(undefined);
   readonly central = input(false);
 
-  private readonly dialog = inject(MatDialog);
-  private readonly plantStore = inject(PlantStore);
+  private readonly plantDialogService = inject(PlantDialogService);
 
   get displayName(): string {
     return this.plant()?.name ?? this.plantName() ?? '';
@@ -26,13 +23,14 @@ export class PlantBadge {
 
   openDetail(event: Event): void {
     event.stopPropagation();
-    const plant = this.plant() ?? this.plantStore.findById(this.plantId());
+    const plant = this.plant();
     if (plant) {
-      this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-        data: { plant },
-        maxWidth: '600px',
-        width: '90vw',
-      });
+      this.plantDialogService.openDetail(plant);
+    } else {
+      const id = this.plantId();
+      if (id) {
+        this.plantDialogService.openDetail(id);
+      }
     }
   }
 }

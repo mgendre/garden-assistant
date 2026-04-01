@@ -3,9 +3,8 @@ import { NgClass } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
 import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 
 @Component({
     selector: 'app-root-stratification',
@@ -21,7 +20,7 @@ export class RootStratification {
     readonly filterToggle = input<((depth: RootDepth) => void) | null>(null);
 
     protected readonly faFilter = faFilter;
-    private readonly dialog = inject(MatDialog);
+    private readonly plantDialogService = inject(PlantDialogService);
     private readonly COMPETITION_THRESHOLD = 3;
 
     protected readonly layers = [
@@ -31,11 +30,7 @@ export class RootStratification {
     ];
 
     openPlantDetail(plant: PlantDto): void {
-        this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-            data: { plant },
-            maxWidth: '600px',
-            width: '90vw',
-        });
+        this.plantDialogService.openDetail(plant);
     }
 
     onFilterClick(depth: RootDepth): void {

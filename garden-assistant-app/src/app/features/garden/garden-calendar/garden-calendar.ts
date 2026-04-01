@@ -1,10 +1,9 @@
 import { Component, inject, input, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { MatDialog } from '@angular/material/dialog';
 import { BedDto, PropagationMethod } from '../../../api/garden-assistant-api';
 import { PlantStore } from '../../../shared/services/plant.store';
 import { CalendarService } from '../../../shared/services/calendar.service';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
 import { PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
@@ -26,17 +25,10 @@ export class GardenCalendar {
 
   private readonly plantStore = inject(PlantStore);
   private readonly calendarService = inject(CalendarService);
-  private readonly dialog = inject(MatDialog);
+  private readonly plantDialogService = inject(PlantDialogService);
 
   openPlantDetail(plantId: string): void {
-    const plant = this.plantStore.findById(plantId);
-    if (plant) {
-      this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-        data: { plant },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    }
+    this.plantDialogService.openDetail(plantId);
   }
 
   readonly loading = signal(false);

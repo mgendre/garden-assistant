@@ -2,10 +2,9 @@ import { Component, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore } from '../../../shared/services/companion.store';
+import { DialogService } from '../../../shared/services/dialog.service';
 import { PlantCard } from '../../../shared/ui/plant-card/plant-card';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 
 @Component({
   selector: 'app-plant-detail-panel',
@@ -17,18 +16,15 @@ import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-i
 export class PlantDetailPanel {
   protected readonly store = inject(CompanionStore);
   protected readonly faLink = faLink;
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
 
   openMechanismInfo(mechanism: number): void {
     const key = this.store.getMechanismKey(mechanism);
     if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.Mechanism.${key}.Title`,
-          descriptionKey: `BadgeInfo.Mechanism.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
+      this.dialogService.openBadgeInfo(
+        `BadgeInfo.Mechanism.${key}.Title`,
+        `BadgeInfo.Mechanism.${key}.Description`
+      );
     }
   }
 }

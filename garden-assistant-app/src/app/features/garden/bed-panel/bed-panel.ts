@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
-import { firstValueFrom } from 'rxjs';
 import {
   BedDto,
   PlantDto,
@@ -17,14 +15,12 @@ import { PlantStore } from '../../../shared/services/plant.store';
 import { GuildService } from '../../../shared/services/guild.service';
 import { CompanionService } from '../../../shared/services/companion.service';
 import { CalendarService } from '../../../shared/services/calendar.service';
+import { DialogService } from '../../../shared/services/dialog.service';
+import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
+import { GardenDialogService } from '../../../shared/services/garden-dialog.service';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantBadge } from '../../../shared/ui/plant-badge/plant-badge';
 import { PlantAssociationPanel, PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
-import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../../shared/ui/harvest-readiness/harvest-readiness-dialog';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
-import { ConfirmDialogComponent, ConfirmDialogData } from '../../../shared/confirm-dialog/confirm-dialog';
-import { CreateBedDialog, CreateBedDialogData, CreateBedDialogResult } from '../create-bed-dialog/create-bed-dialog';
 import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
 
 @Component({
@@ -44,7 +40,9 @@ export class BedPanel implements OnInit {
   private readonly companionService = inject(CompanionService);
   private readonly calendarService = inject(CalendarService);
   private readonly router = inject(Router);
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
+  private readonly plantDialogService = inject(PlantDialogService);
+  private readonly gardenDialogService = inject(GardenDialogService);
   private readonly translate = inject(TranslateService);
 
   protected readonly faPen = faPen;
@@ -151,13 +149,7 @@ export class BedPanel implements OnInit {
 
   async editBedName(event: Event): Promise<void> {
     event.stopPropagation();
-    const result = await firstValueFrom(
-      this.dialog.open<CreateBedDialog, CreateBedDialogData, CreateBedDialogResult>(CreateBedDialog, {
-        data: { mode: 'edit', name: this.bed().name },
-        maxWidth: '500px',
-        width: '90vw',
-      }).afterClosed()
-    );
+    const result = await this.gardenDialogService.openCreateBed({ mode: 'edit', name: this.bed().name });
     if (result !== undefined) {
       this.bedNameChanged.emit(result.name);
     }
@@ -166,18 +158,13 @@ export class BedPanel implements OnInit {
   async deleteBed(event: Event): Promise<void> {
     event.stopPropagation();
     const plantNames = this.plants().map(p => p.name).join(', ');
-    const confirmed = await firstValueFrom(
-      this.dialog.open<ConfirmDialogComponent, ConfirmDialogData, boolean>(ConfirmDialogComponent, {
-        data: {
-          title: this.translate.instant('Bed.ConfirmDeleteTitle'),
-          message: this.plantCount() > 0
-            ? this.translate.instant('Bed.ConfirmDeleteMessageWithPlants', { name: this.bed().name, plants: plantNames })
-            : this.translate.instant('Bed.ConfirmDeleteMessage', { name: this.bed().name }),
-          confirmLabel: this.translate.instant('Bed.Delete'),
-        },
-        maxWidth: '400px',
-        width: '90vw',
-      }).afterClosed()
+    const confirmed = await this.dialogService.confirm(
+      this.translate.instant('Bed.ConfirmDeleteTitle'),
+      this.plantCount() > 0
+        ? this.translate.instant('Bed.ConfirmDeleteMessageWithPlants', { name: this.bed().name, plants: plantNames })
+        : this.translate.instant('Bed.ConfirmDeleteMessage', { name: this.bed().name }),
+      this.translate.instant('Bed.Delete'),
+      true
     );
     if (confirmed) {
       this.bedDeleted.emit();
@@ -194,33 +181,11 @@ export class BedPanel implements OnInit {
   }
 
   openPlantDetail(plantId: string): void {
-    const plant = this.plantStore.findById(plantId);
-    if (plant) {
-      this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-        data: { plant },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    }
+    this.plantDialogService.openDetail(plantId);
   }
 
   async openHarvestReadiness(event: { plantId: string; plantName: string }): Promise<void> {
-    const readiness = await this.calendarService.getHarvestReadiness(event.plantId);
-    if (readiness) {
-      this.dialog.open<HarvestReadinessDialog, HarvestReadinessDialogData>(HarvestReadinessDialog, {
-        data: { readiness, plantName: event.plantName },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    } else {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: 'BadgeInfo.Action.Harvest.Title',
-          descriptionKey: 'BadgeInfo.Action.Harvest.Description',
-        },
-        maxWidth: '400px',
-      });
-    }
+    await this.plantDialogService.openHarvestReadiness(event.plantId, event.plantName);
   }
 
 }

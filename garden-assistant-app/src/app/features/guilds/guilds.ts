@@ -1,16 +1,13 @@
 import { Component, inject, signal, computed } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { firstValueFrom } from 'rxjs';
 import { GuildDto } from '../../api/garden-assistant-api';
 import { GuildStore } from '../../shared/services/guild.store';
 import { CompanionStore } from '../../shared/services/companion.store';
-import { PlantStore } from '../../shared/services/plant.store';
-import { ConfirmDialogComponent, ConfirmDialogData } from '../../shared/confirm-dialog/confirm-dialog';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { DialogService } from '../../shared/services/dialog.service';
+import { PlantDialogService } from '../../shared/services/plant-dialog.service';
 import { SearchInput } from '../../shared/ui/search-input/search-input';
 import { GuildCard } from '../../shared/ui/guild-card/guild-card';
 
@@ -24,9 +21,9 @@ import { GuildCard } from '../../shared/ui/guild-card/guild-card';
 export class Guilds {
   protected readonly store = inject(GuildStore);
   private readonly companionStore = inject(CompanionStore);
-  private readonly plantStore = inject(PlantStore);
   private readonly router = inject(Router);
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
+  private readonly plantDialogService = inject(PlantDialogService);
   private readonly translate = inject(TranslateService);
 
   protected readonly faPlus = faPlus;
@@ -49,15 +46,7 @@ export class Guilds {
   }
 
   openPlantDetail(plantId: string): void {
-    const plant = this.plantStore.findById(plantId);
-    if (!plant) {
-      return;
-    }
-    this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-      data: { plant },
-      maxWidth: '600px',
-      width: '90vw',
-    });
+    this.plantDialogService.openDetail(plantId);
   }
 
   viewGuild(guild: GuildDto): void {
@@ -76,14 +65,11 @@ export class Guilds {
     if (!guild.id) {
       return;
     }
-    const confirmed = await firstValueFrom(
-      this.dialog.open<ConfirmDialogComponent, ConfirmDialogData, boolean>(ConfirmDialogComponent, {
-        data: {
-          title: this.translate.instant('Guilds.ConfirmDeleteTitle'),
-          message: this.translate.instant('Guilds.ConfirmDeleteMessage', { name: guild.name }),
-          confirmLabel: this.translate.instant('Guilds.Delete'),
-        },
-      }).afterClosed()
+    const confirmed = await this.dialogService.confirm(
+      this.translate.instant('Guilds.ConfirmDeleteTitle'),
+      this.translate.instant('Guilds.ConfirmDeleteMessage', { name: guild.name }),
+      this.translate.instant('Guilds.Delete'),
+      true
     );
     if (confirmed) {
       await this.store.deleteGuild(guild.id);

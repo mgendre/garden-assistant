@@ -23,8 +23,8 @@
     </div>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions class="dialog-actions !pt-4 !flex !justify-end !gap-2">
-  <button class="btn btn-secondary" (click)="cancel()" [translate]="'Garden.Cancel'"></button>
-  <button class="btn btn-primary" [disabled]="!isValid" (click)="save()"
+<div class="dialog-footer">
+  <button class="btn btn-secondary btn-sm" (click)="cancel()" [translate]="'Garden.Cancel'"></button>
+  <button class="btn btn-primary btn-sm" [disabled]="!isValid" (click)="save()"
     [translate]="data.mode === 'create' ? 'Garden.DialogCreateAction' : 'Garden.DialogSaveAction'"></button>
-</mat-dialog-actions>
+</div>

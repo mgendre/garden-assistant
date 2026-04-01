@@ -1,17 +1,13 @@
 import { Component, inject, signal, computed, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlus, faPen, faArrowLeft, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
-import { TranslateService } from '@ngx-translate/core';
-import { firstValueFrom } from 'rxjs';
 import { UpdateGardenRequest, CreateBedRequest, UpdateBedRequest } from '../../../api/garden-assistant-api';
 import { GardenStore } from '../../../shared/services/garden.store';
-import { ConfirmDialogComponent, ConfirmDialogData } from '../../../shared/confirm-dialog/confirm-dialog';
+import { DialogService } from '../../../shared/services/dialog.service';
+import { GardenDialogService } from '../../../shared/services/garden-dialog.service';
 import { BedPanel } from '../bed-panel/bed-panel';
-import { CreateGardenDialog, CreateGardenDialogData, CreateGardenDialogResult } from '../create-garden-dialog/create-garden-dialog';
-import { CreateBedDialog, CreateBedDialogData, CreateBedDialogResult } from '../create-bed-dialog/create-bed-dialog';
 import { GardenCalendar } from '../garden-calendar/garden-calendar';
 
 @Component({
@@ -24,7 +20,8 @@ export class GardenView implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   protected readonly store = inject(GardenStore);
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
+  private readonly gardenDialogService = inject(GardenDialogService);
   private readonly translate = inject(TranslateService);
 
   protected readonly faPlus = faPlus;
@@ -62,13 +59,7 @@ export class GardenView implements OnInit {
     if (!g) {
       return;
     }
-    const result = await firstValueFrom(
-      this.dialog.open<CreateGardenDialog, CreateGardenDialogData, CreateGardenDialogResult>(CreateGardenDialog, {
-        data: { mode: 'edit', name: g.name, description: g.description },
-        maxWidth: '500px',
-        width: '90vw',
-      }).afterClosed()
-    );
+    const result = await this.gardenDialogService.openCreateGarden({ mode: 'edit', name: g.name, description: g.description });
     if (result) {
       await this.store.updateGarden(g.id!, { name: result.name, description: result.description } as UpdateGardenRequest);
     }
@@ -79,16 +70,11 @@ export class GardenView implements OnInit {
     if (!g?.id) {
       return;
     }
-    const confirmed = await firstValueFrom(
-      this.dialog.open<ConfirmDialogComponent, ConfirmDialogData, boolean>(ConfirmDialogComponent, {
-        data: {
-          title: this.translate.instant('Garden.ConfirmDeleteTitle'),
-          message: this.translate.instant('Garden.ConfirmDeleteMessage', { name: g.name }),
-          confirmLabel: this.translate.instant('Garden.Delete'),
-        },
-        maxWidth: '400px',
-        width: '90vw',
-      }).afterClosed()
+    const confirmed = await this.dialogService.confirm(
+      this.translate.instant('Garden.ConfirmDeleteTitle'),
+      this.translate.instant('Garden.ConfirmDeleteMessage', { name: g.name }),
+      this.translate.instant('Garden.Delete'),
+      true
     );
     if (confirmed) {
       await this.store.deleteGarden(g.id);
@@ -97,13 +83,7 @@ export class GardenView implements OnInit {
   }
 
   async addBed(): Promise<void> {
-    const result = await firstValueFrom(
-      this.dialog.open<CreateBedDialog, CreateBedDialogData, CreateBedDialogResult>(CreateBedDialog, {
-        data: { mode: 'create' },
-        maxWidth: '500px',
-        width: '90vw',
-      }).afterClosed()
-    );
+    const result = await this.gardenDialogService.openCreateBed({ mode: 'create' });
     if (result !== undefined) {
       await this.store.createBed(this.gardenId(), { name: result.name } as CreateBedRequest);
     }
