@@ -4,6 +4,17 @@
     <p class="page-subtitle" [translate]="'Companions.Description'"></p>
   </div>
 
+  @if (companionStore.editingBedName()) {
+    <div class="panel" style="padding: 0.75rem 1.25rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: var(--color-accent-tint); border-color: var(--color-accent-light)">
+      <span class="text-sm font-medium" style="color: var(--color-accent-dark)">
+        🌱 {{ 'Companions.EditingBed' | translate:{ name: companionStore.editingBedName() } }}
+      </span>
+      <button class="btn btn-ghost btn-xs" (click)="companionStore.cancelBedEditing()">
+        {{ 'Companions.BackToBed' | translate }}
+      </button>
+    </div>
+  }
+
   <div class="two-col">
     <app-plant-catalogue></app-plant-catalogue>
     <app-guild-editor></app-guild-editor>

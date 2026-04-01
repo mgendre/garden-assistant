@@ -292,7 +292,9 @@
     "NoResults": "Aucune plante trouv\u00e9e",
     "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
     "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
-    "ClearSelection": "Effacer"
+    "ClearSelection": "Effacer",
+    "EditingBed": "Modification de la planche « {{name}} »",
+    "BackToBed": "Retour à la planche"
   },
   "Stratification": {
     "SectionTitle": "Stratification racinaire",

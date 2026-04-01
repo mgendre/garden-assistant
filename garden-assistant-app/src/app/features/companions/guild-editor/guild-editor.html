@@ -7,9 +7,13 @@
       @if (store.guildMode() === 'viewing') {
         <div class="guild-container-header">
           <span>🌱</span>
-          <span>{{ store.guildName() }}</span>
+          @if (store.editingBedName()) {
+            <span>{{ store.editingBedName() }}</span>
+          } @else {
+            <span>{{ store.guildName() }}</span>
+          }
         </div>
-        @if (store.guildDescription()) {
+        @if (!store.editingBedName() && store.guildDescription()) {
           <p class="guild-card-desc guild-view-desc">{{ store.guildDescription() }}</p>
         }
       }
@@ -18,28 +22,32 @@
       @if (store.isFormVisible()) {
         <div class="guild-container-header">
           <span>🌱</span>
-          @if (store.guildMode() === 'creating') {
+          @if (store.editingBedName()) {
+            <span>{{ store.editingBedName() }}</span>
+          } @else if (store.guildMode() === 'creating') {
             <span [translate]="'Companions.NewGuild'"></span>
           } @else {
             <span [translate]="'Guilds.FormEditTitle'"></span>
           }
         </div>
-        <div class="guild-form">
-          <input
-            #guildNameInput
-            type="text"
-            class="guild-form-input"
-            [placeholder]="'Guilds.FormName' | translate"
-            [value]="store.guildName()"
-            (input)="store.guildName.set(guildNameInput.value)" />
-          <textarea
-            #guildDescInput
-            class="guild-form-textarea"
-            rows="5"
-            [placeholder]="'Guilds.FormDescription' | translate"
-            [value]="store.guildDescription()"
-            (input)="store.guildDescription.set(guildDescInput.value)"></textarea>
-        </div>
+        @if (!store.editingBedName()) {
+          <div class="guild-form">
+            <input
+              #guildNameInput
+              type="text"
+              class="guild-form-input"
+              [placeholder]="'Guilds.FormName' | translate"
+              [value]="store.guildName()"
+              (input)="store.guildName.set(guildNameInput.value)" />
+            <textarea
+              #guildDescInput
+              class="guild-form-textarea"
+              rows="5"
+              [placeholder]="'Guilds.FormDescription' | translate"
+              [value]="store.guildDescription()"
+              (input)="store.guildDescription.set(guildDescInput.value)"></textarea>
+          </div>
+        }
       }
     }
 
@@ -71,10 +79,17 @@
           <fa-icon [icon]="faPen"></fa-icon>
           <span [translate]="'Guilds.Edit'"></span>
         </button>
-        <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
-          <fa-icon [icon]="faClose"></fa-icon>
-          <span [translate]="'Guilds.Close'"></span>
-        </button>
+        @if (store.editingBedName()) {
+          <button class="btn btn-ghost btn-sm" (click)="store.cancelBedEditing()">
+            <fa-icon [icon]="faClose"></fa-icon>
+            <span [translate]="'Companions.BackToBed'"></span>
+          </button>
+        } @else {
+          <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
+            <fa-icon [icon]="faClose"></fa-icon>
+            <span [translate]="'Guilds.Close'"></span>
+          </button>
+        }
       </div>
     }
 
@@ -98,11 +113,19 @@
     @if (store.isFormVisible() && store.selectedPlants().length > 0) {
       <div class="guild-form-actions">
         <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
-        <button
-          class="btn btn-secondary btn-sm"
-          (click)="store.cancelGuildEditing()"
-          [translate]="'Guilds.FormCancel'">
-        </button>
+        @if (store.editingBedName()) {
+          <button
+            class="btn btn-secondary btn-sm"
+            (click)="store.cancelBedEditing()"
+            [translate]="'Companions.BackToBed'">
+          </button>
+        } @else {
+          <button
+            class="btn btn-secondary btn-sm"
+            (click)="store.cancelGuildEditing()"
+            [translate]="'Guilds.FormCancel'">
+          </button>
+        }
         <button
           class="btn btn-primary btn-sm"
           [disabled]="!store.guildName() || store.guildSaving()"

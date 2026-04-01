@@ -86,6 +86,7 @@ export class CompanionStore {
   private readonly router = inject(Router);
 
   readonly returnTo = signal<string | null>(null);
+  readonly editingBedName = signal<string | null>(null);
   readonly selectedPlants = signal<PlantDto[]>([]);
   readonly searchQuery = signal('');
   readonly sortMode = signal<'compat' | 'alpha' | 'family'>('compat');
@@ -485,6 +486,8 @@ export class CompanionStore {
     this.guildName.set('');
     this.guildDescription.set('');
     this.guildMode.set('companions');
+    this.editingBedName.set(null);
+    this.returnTo.set(null);
   }
 
   loadGuildForEditing(guild: GuildDto): void {
@@ -558,6 +561,10 @@ export class CompanionStore {
         plantId: p.id!,
         role: this.centralPlantIds().has(p.id!) ? GuildPlantRole.Central : GuildPlantRole.Companion,
       }));
+    const bedName = this.editingBedName();
+    if (bedName && !this.guildName()) {
+      this.guildName.set(bedName);
+    }
     if (plants.length === 0 || !this.guildName()) {
       return;
     }
@@ -596,6 +603,20 @@ export class CompanionStore {
 
   setReturnTo(path: string): void {
     this.returnTo.set(path);
+  }
+
+  setEditingBedName(name: string | null): void {
+    this.editingBedName.set(name);
+  }
+
+  cancelBedEditing(): void {
+    const returnPath = this.returnTo();
+    this.clearSelection();
+    this.returnTo.set(null);
+    this.editingBedName.set(null);
+    if (returnPath) {
+      this.router.navigateByUrl(returnPath);
+    }
   }
 
   setSearch(query: string): void {
