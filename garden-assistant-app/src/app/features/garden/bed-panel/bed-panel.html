@@ -1,20 +1,10 @@
 <div class="panel">
   <app-collapsible>
-    <div collapsible-header class="flex items-center justify-between w-full gap-2">
-      <div class="flex items-center gap-2 min-w-0">
-        <span class="font-medium truncate">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>
-        <span class="text-xs" style="color: var(--color-text-muted)">
-          ({{ plantCount() }} {{ (plantCount() === 1 ? 'Bed.PlantSingular' : 'Bed.PlantPlural') | translate }})
-        </span>
-      </div>
-      <div class="flex items-center gap-1 shrink-0">
-        <button class="btn btn-ghost btn-xs" (click)="editBedName($event)" [attr.aria-label]="'Bed.Edit' | translate">
-          <fa-icon [icon]="faPen" size="xs"></fa-icon>
-        </button>
-        <button class="remove-btn" (click)="deleteBed($event)" [attr.aria-label]="'Bed.Delete' | translate">
-          <fa-icon [icon]="faTrash" size="xs"></fa-icon>
-        </button>
-      </div>
+    <div collapsible-header class="flex items-center gap-2 min-w-0">
+      <span class="font-medium truncate">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>
+      <span class="text-xs" style="color: var(--color-text-muted)">
+        ({{ plantCount() }} {{ (plantCount() === 1 ? 'Bed.PlantSingular' : 'Bed.PlantPlural') | translate }})
+      </span>
     </div>
     <div collapsible-body>
       @if (loading()) {
@@ -38,11 +28,25 @@
             (plantNameClick)="openPlantDetail($event)"
             (harvestReadinessClick)="openHarvestReadiness($event)">
           </app-plant-association-panel>
-
-          <div class="flex justify-center py-4">
-            <button class="btn btn-primary btn-sm" (click)="editPlants()" [translate]="'Bed.ModifyPlants'"></button>
-          </div>
         }
+
+        <div class="panel-section" style="border-top: 1px solid var(--color-border)">
+          <div class="flex items-center justify-between px-5 py-4">
+            <div class="flex items-center gap-2">
+              <button class="btn btn-secondary btn-sm" (click)="editPlants()">
+                <fa-icon [icon]="faPen"></fa-icon>
+                <span [translate]="'Bed.ModifyPlants'"></span>
+              </button>
+              <button class="btn btn-secondary btn-sm" (click)="editBedName($event)">
+                <fa-icon [icon]="faPen"></fa-icon>
+                <span [translate]="'Bed.EditName'"></span>
+              </button>
+            </div>
+            <button class="btn btn-danger btn-sm" (click)="deleteBed($event)">
+              <fa-icon [icon]="faTrash"></fa-icon>
+            </button>
+          </div>
+        </div>
       }
     </div>
   </app-collapsible>
