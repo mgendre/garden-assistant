@@ -162,13 +162,13 @@
 
   <div class="panel related-guilds">
     <app-collapsible>
-      <div collapsible-header class="flex items-center gap-2 w-full">
+      <div collapsible-header style="display: flex; align-items: center; gap: 0.5rem; width: 100%">
         @if (store.selectedPlants().length) {
           <span class="panel-title" [translate]="'Guilds.SectionTitle'"></span>
         } @else {
           <span class="panel-title" [translate]="'Guilds.PanelTitle'"></span>
         }
-        <span class="text-xs" style="color: var(--color-text-muted)">{{ 'Guilds.PanelCount' | translate:{ count: guildPanel.filteredGuilds().length } }}</span>
+        <span style="font-size: 0.75rem; color: var(--color-text-muted)">{{ 'Guilds.PanelCount' | translate:{ count: guildPanel.filteredGuilds().length } }}</span>
       </div>
       <div collapsible-body>
         <app-guild-panel #guildPanel></app-guild-panel>
