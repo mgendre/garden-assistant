@@ -13,11 +13,12 @@ import { PlantDetailPanel } from '../plant-detail-panel/plant-detail-panel';
 import { GuildPanel } from '../guild-panel/guild-panel';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantAssociationPanel, PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
+import { InfoBanner } from '../../../shared/ui/info-banner/info-banner';
 
 @Component({
   selector: 'app-guild-editor',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, PlantAssociationPanel],
+  imports: [TranslateModule, FontAwesomeModule, PlantDetailPanel, GuildPanel, Collapsible, PlantAssociationPanel, InfoBanner],
   templateUrl: './guild-editor.html',
   styleUrl: './guild-editor.scss'
 })

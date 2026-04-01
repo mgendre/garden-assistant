@@ -1,20 +1,21 @@
 <div class="guilds-column flex-col">
   @if (store.editingBedName()) {
-    <div class="panel" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; background: #e3f2fd; border-color: #90caf9; flex-wrap: wrap">
-      <span class="text-sm font-medium" style="color: #1565c0; flex: 1">
-        🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
-      </span>
-      <button class="btn btn-secondary btn-xs" (click)="store.cancelBedEditing()" [translate]="'Companions.BackToBed'"></button>
-    </div>
+    <app-info-banner
+      emoji="🌱"
+      messageKey="Companions.EditingBed"
+      [messageParams]="{ name: store.editingBedName() }"
+      actionLabel="Companions.BackToBed"
+      (actionClick)="store.cancelBedEditing()">
+    </app-info-banner>
   }
 
   @if (!store.editingBedName() && store.isFormVisible()) {
-    <div class="panel" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; background: #e3f2fd; border-color: #90caf9; flex-wrap: wrap">
-      <span class="text-sm font-medium" style="color: #1565c0; flex: 1">
-        🌱 {{ (store.guildMode() === 'creating' ? 'Companions.CreatingGuild' : 'Companions.EditingGuild') | translate }}
-      </span>
-      <button class="btn btn-secondary btn-xs" (click)="store.cancelGuildEditing()" [translate]="'Guilds.FormCancel'"></button>
-    </div>
+    <app-info-banner
+      emoji="🌱"
+      [messageKey]="store.guildMode() === 'creating' ? 'Companions.CreatingGuild' : 'Companions.EditingGuild'"
+      actionLabel="Guilds.FormCancel"
+      (actionClick)="store.cancelGuildEditing()">
+    </app-info-banner>
   }
 
   <div class="guild-container" [class.guild-active]="store.selectedPlants().length || store.isFormVisible()">
@@ -66,8 +67,8 @@
       }
 
       @if (store.selectedPlants().length < 2) {
-        <div style="padding: 0.75rem 1.25rem; margin: 0.5rem 1rem; border-radius: 0.5rem; background: #e3f2fd; border: 1px solid #90caf9; color: #1565c0; font-size: 0.8125rem">
-          {{ 'Guilds.MinPlantsHint' | translate }}
+        <div style="margin: 0.5rem 1rem">
+          <app-info-banner messageKey="Guilds.MinPlantsHint"></app-info-banner>
         </div>
       }
     }
