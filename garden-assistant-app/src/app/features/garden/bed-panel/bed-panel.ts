@@ -175,7 +175,12 @@ export class BedPanel implements OnInit {
     const guildId = this.bed().guildId;
     if (guildId) {
       this.router.navigate(['/companions'], {
-        queryParams: { guild: guildId, mode: 'edit', returnTo: `/garden/${this.gardenId()}`, bedName: this.bed().name || undefined }
+        queryParams: {
+          guild: guildId,
+          mode: 'edit',
+          returnTo: `/garden/${this.gardenId()}`,
+          bedName: this.bed().name || this.translate.instant('Bed.Unnamed')
+        }
       });
     }
   }
