@@ -121,7 +121,7 @@
             <span [translate]="'Guilds.Create'"></span>
           </button>
         }
-        <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
+        <button class="btn btn-secondary btn-sm" (click)="store.clearSelection()">
           <fa-icon [icon]="faClose"></fa-icon>
           <span [translate]="'Companions.ClearSelection'"></span>
         </button>
@@ -162,7 +162,7 @@
 
   <div class="panel related-guilds">
     <app-collapsible>
-      <div collapsible-header class="panel-header guild-panel-header">
+      <div collapsible-header class="flex items-center justify-between w-full">
         @if (store.selectedPlants().length) {
           <span class="panel-title" [translate]="'Guilds.SectionTitle'"></span>
         } @else {
