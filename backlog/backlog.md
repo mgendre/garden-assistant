@@ -321,6 +321,18 @@
 
 ---
 
+## E18 — Page d'accueil / tableau de bord
+
+> Offrir au jardinier une page d'accueil unifiee (`/home`) regroupant les actions du moment, la liste de ses jardins, des raccourcis vers les outils cles (Associations, Guildes), et une plante du jour. La route `/` redirige desormais vers `/home`.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-200](epics/E17-page-accueil/US-200-page-accueil.md) | Page d'accueil avec jardins, actions, raccourcis et plante du jour | Indispensable | 8 | A faire |
+
+**Total E18 : 8 points (0 Termine / 8 A faire)**
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -342,8 +354,9 @@
 | E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
-| **Total (actif)** | **385** | **126** | **8** | **251** |
+| E18 — Page d'accueil / tableau de bord | 8 | 0 | 0 | 8 |
+| **Total (actif)** | **393** | **126** | **8** | **259** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-30*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31*
