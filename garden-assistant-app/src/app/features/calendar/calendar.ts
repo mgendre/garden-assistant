@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faSeedling, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { CalendarStore } from '../../shared/services/calendar.store';
 import { PlantStore } from '../../shared/services/plant.store';
 import { PlantCalendarGantt } from '../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
@@ -29,6 +29,8 @@ export class Calendar implements OnInit {
   private readonly calendarService = inject(CalendarService);
 
   protected readonly faHeart = faHeart;
+  protected readonly faSeedling = faSeedling;
+  protected readonly faLayerGroup = faLayerGroup;
   protected readonly filters = FILTER_CONFIGS;
   protected readonly monthLabels = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   protected readonly currentMonthIndex = new Date().getMonth();

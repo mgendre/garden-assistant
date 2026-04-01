@@ -40,8 +40,9 @@
           <button class="btn btn-xs rounded-l-none border-0"
             [class.btn-primary]="store.sourceFilter() === 'gardenPlants'"
             [class.btn-ghost]="store.sourceFilter() !== 'gardenPlants'"
-            (click)="store.sourceFilter.set('gardenPlants')"
-            [translate]="'Calendar.GardenPlantsOnly'">
+            (click)="store.sourceFilter.set('gardenPlants')">
+            <fa-icon [icon]="faSeedling" size="xs"></fa-icon>
+            <span [translate]="'Calendar.GardenPlantsOnly'"></span>
           </button>
         </div>
 
@@ -56,8 +57,9 @@
           <button class="btn btn-xs rounded-l-none border-0"
             [class.btn-primary]="store.grouping() === 'byGarden'"
             [class.btn-ghost]="store.grouping() !== 'byGarden'"
-            (click)="store.grouping.set('byGarden')"
-            [translate]="'Calendar.ByGarden'">
+            (click)="store.grouping.set('byGarden')">
+            <fa-icon [icon]="faLayerGroup" size="xs"></fa-icon>
+            <span [translate]="'Calendar.ByGarden'"></span>
           </button>
         </div>
 
