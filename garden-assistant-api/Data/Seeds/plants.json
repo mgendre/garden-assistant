@@ -29,7 +29,8 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 800,
     "intrinsicMechanisms": [
-      "PollinatorAttraction"
+      "PollinatorAttraction",
+      "AerialRepulsion"
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true
@@ -66,6 +67,9 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
     "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "AerialRepulsion"
+    ],
     "propagationMethod": "Seed",
     "frostSensitive": false
   },
@@ -76,7 +80,7 @@
     "description": "Bulbe aux propriétés antifongiques et insectifuges, protège les rosiers et de nombreux légumes.",
     "family": "Amaryllidaceae",
     "genus": "Allium",
-    "lifeCycle": "Annual",
+    "lifeCycle": "Biennial",
     "heightAtMaturityCm": 50,
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
@@ -101,6 +105,9 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "AerialRepulsion"
+    ],
     "propagationMethod": "Bulb",
     "frostSensitive": false
   },
@@ -118,7 +125,8 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
-      "PollinatorAttraction"
+      "PollinatorAttraction",
+      "AerialRepulsion"
     ],
     "propagationMethod": "Division",
     "frostSensitive": false
@@ -217,7 +225,7 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "courgette",
@@ -377,7 +385,8 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction",
-      "DynamicAccumulation"
+      "DynamicAccumulation",
+      "HydraulicLift"
     ],
     "propagationMethod": "Division",
     "frostSensitive": false
@@ -396,7 +405,8 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 2500,
     "intrinsicMechanisms": [
-      "DynamicAccumulation"
+      "DynamicAccumulation",
+      "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false
@@ -439,7 +449,7 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "tagete",
@@ -459,7 +469,7 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "souci",
@@ -653,7 +663,7 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction"
     ],
-    "propagationMethod": "Seed",
+    "propagationMethod": "Cutting",
     "frostSensitive": false
   },
   {
@@ -1123,7 +1133,7 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Tuber",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "asperge",
@@ -1759,7 +1769,7 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "plantain-lanceole",
@@ -2014,7 +2024,7 @@
     "description": "Solanacée sauvage à petits fruits comestibles, résistante et utile pour diversifier les strates.",
     "family": "Solanaceae",
     "genus": "Solanum",
-    "lifeCycle": "Perennial",
+    "lifeCycle": "Annual",
     "heightAtMaturityCm": 100,
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
@@ -2024,7 +2034,7 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "murier-blanc",
@@ -2347,7 +2357,7 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "groseillier",
@@ -2479,6 +2489,9 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "AerialRepulsion"
+    ],
     "propagationMethod": "Bulb",
     "frostSensitive": false
   },
@@ -2634,7 +2647,7 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "piment",
@@ -2650,7 +2663,7 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "pasteque",
@@ -2669,6 +2682,6 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   }
 ]

@@ -3202,5 +3202,77 @@
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
     "notes": "Le souci assainit le sol contre les nématodes parasites des racines d'asperge et attire les insectes auxiliaires par ses fleurs vives."
+  },
+  {
+    "sourcePlantKey": "oignon",
+    "targetPlantKey": "pois",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les composés soufrés de l'oignon inhibent la nodulation des bactéries Rhizobium, réduisant la fixation d'azote des légumineuses."
+  },
+  {
+    "sourcePlantKey": "oignon",
+    "targetPlantKey": "haricot-nain",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les composés soufrés de l'oignon inhibent la nodulation des bactéries Rhizobium, réduisant la fixation d'azote des légumineuses."
+  },
+  {
+    "sourcePlantKey": "oignon",
+    "targetPlantKey": "haricot-a-rames",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les composés soufrés de l'oignon inhibent la nodulation des bactéries Rhizobium, réduisant la fixation d'azote des légumineuses."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "haricot-a-rames",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "L'allicine libérée par les racines d'ail inhibe la nodulation des Rhizobium, réduisant la fixation d'azote du haricot."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "pois",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La juglone produite par le noyer est toxique pour les légumineuses, inhibant leur croissance et leur nodulation."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "haricot-nain",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La juglone produite par le noyer est toxique pour les légumineuses, inhibant leur croissance et leur nodulation."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "haricot-a-rames",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La juglone produite par le noyer est toxique pour les légumineuses, inhibant leur croissance et leur nodulation."
+  },
+  {
+    "sourcePlantKey": "noyer",
+    "targetPlantKey": "feve",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La juglone produite par le noyer est toxique pour les légumineuses, inhibant leur croissance et leur nodulation."
   }
 ]
