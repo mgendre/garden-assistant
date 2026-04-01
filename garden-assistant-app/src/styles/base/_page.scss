@@ -2,7 +2,7 @@
 @reference "tailwindcss";
 
 .page-container {
-  @apply max-w-[1400px] mx-auto px-4 pt-4 pb-12;
+  @apply max-w-[1400px] mx-auto px-4 pt-4;
 
   @include respond-to('md') {
     @apply px-12 pt-6;
