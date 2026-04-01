@@ -10,20 +10,14 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
 {
     public async Task<IEnumerable<PlantDto>> GetAllAsync(Guid userId)
     {
-        var userPlantIds = await dbContext.UserPlants
+        var plants = await dbContext.UserPlants
             .Where(up => up.UserId == userId)
             .OrderByDescending(up => up.AddedAtUtc)
-            .Select(up => up.PlantId)
+            .Join(dbContext.Plants.Include(p => p.IntrinsicMechanisms),
+                up => up.PlantId, p => p.Id, (up, p) => p)
             .ToListAsync();
 
-        var plants = await dbContext.Plants
-            .Include(p => p.IntrinsicMechanisms)
-            .Where(p => userPlantIds.Contains(p.Id))
-            .ToDictionaryAsync(p => p.Id);
-
-        return userPlantIds
-            .Where(id => plants.ContainsKey(id))
-            .Select(id => ToDto(plants[id]));
+        return plants.Select(ToDto);
     }
 
     public async Task<PlantDto?> AddAsync(Guid plantId, Guid userId)
