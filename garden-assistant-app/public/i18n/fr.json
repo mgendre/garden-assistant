@@ -217,6 +217,7 @@
     "FormCancel": "Annuler",
     "FormSave": "Enregistrer",
     "Saving": "Enregistrement\u2026",
+    "MinPlantsHint": "Ajoutez au moins 2 plantes depuis le catalogue pour analyser les associations.",
     "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e.",
     "SearchPlaceholder": "Rechercher par nom, description ou plante\u2026"
   },
@@ -295,7 +296,9 @@
     "ClearSelection": "Effacer",
     "EditingBed": "Modification de la planche « {{name}} »",
     "BackToBed": "Retour à la planche",
-    "CancelChanges": "Annuler"
+    "CancelChanges": "Annuler",
+    "CreatingGuild": "Création d'une nouvelle guilde",
+    "EditingGuild": "Modification de la guilde"
   },
   "Stratification": {
     "SectionTitle": "Stratification racinaire",
