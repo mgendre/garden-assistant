@@ -29,12 +29,13 @@
 - [ ] CA11 : Un lien « Voir le calendrier complet » navigate vers `/calendar`.
 - [ ] CA12 : Les donnees proviennent de l'endpoint batch calendrier existant (`GET /calendar/batch` ou equivalent) — aucun nouvel endpoint cote backend n'est necessaire.
 
-#### Section 4 — Plante du jour
+#### Section 4 — Découverte du jour (plante ou guilde aléatoire)
 
-- [ ] CA13 : Une plante est selectionnee aleatoirement parmi le catalogue au chargement de la page.
-- [ ] CA14 : La carte affiche : le nom de la plante, sa famille botanique, ses mecanismes principaux (badges), et une action rapide « Voir ses compagnons » navigant vers `/companions?plant=<id>`.
-- [ ] CA15 : La plante du jour change a chaque nouvelle visite (pas de persistance côte serveur requise — le hasard cote client suffit).
-- [ ] CA16 : Si le catalogue n'est pas encore charge, un skeleton placeholder est affiche.
+- [ ] CA13 : Au chargement de la page, un tirage aléatoire choisit entre une **plante du jour** et une **guilde du jour** (50/50).
+- [ ] CA14a : **Plante du jour** — la carte affiche : le nom de la plante, sa famille botanique, ses mécanismes principaux (badges via `PlantBadge`), et une action rapide « Voir ses compagnons » navigant vers `/companions?plant=<id>`.
+- [ ] CA14b : **Guilde du jour** — la carte affiche : le nom de la guilde, sa description courte, ses plantes membres (via `PlantBadge` avec distinction centrale/compagne), et une action rapide « Explorer cette guilde » navigant vers `/companions?guild=<id>`.
+- [ ] CA15 : La sélection change à chaque nouvelle visite (pas de persistance côté serveur requise — le hasard côté client suffit).
+- [ ] CA16 : Si le catalogue ou les guildes ne sont pas encore chargés, un skeleton placeholder est affiché.
 
 #### Mise en page et navigation
 
