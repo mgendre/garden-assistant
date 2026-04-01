@@ -78,23 +78,22 @@
         }
       </div>
 
-      <div class="calendar-month-header-row">
-        <div class="calendar-name-spacer"></div>
-        <div class="calendar-label-spacer"></div>
-        <div class="calendar-month-headers">
-          @for (label of monthLabels; track $index) {
-            <div class="calendar-month-header"
-                 [class.calendar-month-header--current]="$index === currentMonthIndex">
-              {{ label }}
-            </div>
-          }
-        </div>
-      </div>
-
       @if (store.grouping() === 'byGarden') {
         @for (group of store.gardenGroups(); track group.gardenName; let first = $first) {
-          <div style="margin-bottom: 1rem" [style.margin-top]="first ? '0' : '1rem'">
+          <div style="margin-bottom: 1rem" [style.margin-top]="first ? '0' : '1.5rem'">
             <div class="section-divider-title" style="padding: 0 1rem">{{ group.gardenName }}</div>
+            <div class="calendar-month-header-row">
+              <div class="calendar-name-spacer"></div>
+              <div class="calendar-label-spacer"></div>
+              <div class="calendar-month-headers">
+                @for (label of monthLabels; track $index) {
+                  <div class="calendar-month-header"
+                       [class.calendar-month-header--current]="$index === currentMonthIndex">
+                    {{ label }}
+                  </div>
+                }
+              </div>
+            </div>
             @for (plant of group.plants; track plant.plantId; let last = $last; let idx = $index) {
               @let plantInfo = plantStore.findById(plant.plantId);
               @if (plantInfo) {
@@ -116,6 +115,18 @@
           </div>
         }
       } @else {
+        <div class="calendar-month-header-row">
+          <div class="calendar-name-spacer"></div>
+          <div class="calendar-label-spacer"></div>
+          <div class="calendar-month-headers">
+            @for (label of monthLabels; track $index) {
+              <div class="calendar-month-header"
+                   [class.calendar-month-header--current]="$index === currentMonthIndex">
+                {{ label }}
+              </div>
+            }
+          </div>
+        </div>
         @for (plant of store.filteredPlants(); track plant.plantId; let last = $last; let idx = $index) {
           @let plantInfo = plantStore.findById(plant.plantId);
           @if (plantInfo) {
