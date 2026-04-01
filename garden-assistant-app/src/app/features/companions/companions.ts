@@ -1,5 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { TranslateModule } from '@ngx-translate/core';
 import { PlantCatalogue } from './plant-catalogue/plant-catalogue';
 import { GuildEditor } from './guild-editor/guild-editor';
@@ -13,21 +14,27 @@ import { GuildService } from '../../shared/services/guild.service';
   templateUrl: './companions.html',
   styleUrl: './companions.scss'
 })
-export class Companions implements OnInit {
+export class Companions implements OnInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
   protected readonly companionStore = inject(CompanionStore);
   private readonly guildService = inject(GuildService);
+  private paramsSub?: Subscription;
 
-  async ngOnInit(): Promise<void> {
-    const params = this.route.snapshot.queryParams;
+  ngOnInit(): void {
+    this.paramsSub = this.route.queryParams.subscribe(params => {
+      this.handleParams(params);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.paramsSub?.unsubscribe();
+  }
+
+  private async handleParams(params: Record<string, string>): Promise<void> {
     const returnTo = params['returnTo'];
     const guildId = params['guild'];
-
-    if (returnTo) {
-      this.companionStore.setReturnTo(returnTo);
-    }
-
     const bedName = params['bedName'];
+
     if (bedName) {
       this.companionStore.clearSelection();
       this.companionStore.setEditingBedName(bedName);
@@ -45,6 +52,11 @@ export class Companions implements OnInit {
       }
       return;
     }
+
+    if (returnTo && !bedName) {
+      this.companionStore.setReturnTo(returnTo);
+    }
+
     const detail = await this.guildService.getById(guildId);
     this.companionStore.loadGuildForEditing(detail);
     if (params['mode'] === 'edit') {
