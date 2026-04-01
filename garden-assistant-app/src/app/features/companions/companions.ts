@@ -37,6 +37,9 @@ export class Companions implements OnInit {
     }
 
     if (!guildId) {
+      if (params['mode'] === 'create') {
+        this.companionStore.startGuildCreation();
+      }
       return;
     }
     const detail = await this.guildService.getById(guildId);

@@ -133,9 +133,10 @@
                   </span>
                   <button class="btn-info" (click)="openMechanismInfo(row.mechanism)">?</button>
                 } @else {
-                  <span class="mechanism-chip" [class.mechanism-chip--inactive]="!row.satisfied" (click)="openMechanismInfo(row.mechanism)">
+                  <span class="mechanism-chip" [class.mechanism-chip--inactive]="!row.satisfied">
                     {{ 'Plant.Mechanism.' + row.key | translate }}
                   </span>
+                  <button class="btn-info" (click)="openMechanismInfo(row.mechanism)">?</button>
                 }
               </span>
               <span class="mechanism-providers">
