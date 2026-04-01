@@ -1,9 +1,10 @@
 <div class="page-container">
   <div class="page-header">
+    <button class="btn btn-ghost btn-xs mb-2" (click)="goBack()">
+      <fa-icon [icon]="faArrowLeft"></fa-icon>
+      <span [translate]="'Garden.BackToList'"></span>
+    </button>
     <div class="flex items-center gap-3">
-      <button class="btn btn-ghost btn-sm" (click)="goBack()" [attr.aria-label]="'Garden.Back' | translate">
-        <fa-icon [icon]="faArrowLeft"></fa-icon>
-      </button>
       <h1 class="flex-1 min-w-0 truncate">{{ garden()?.name }}</h1>
       <button class="btn btn-secondary btn-sm" (click)="editGarden()">
         <fa-icon [icon]="faPen"></fa-icon>
@@ -11,7 +12,7 @@
       </button>
     </div>
     @if (garden()?.description) {
-      <p class="page-description ml-10">{{ garden()?.description }}</p>
+      <p class="page-description">{{ garden()?.description }}</p>
     }
   </div>
 
