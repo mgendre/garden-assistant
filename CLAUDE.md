@@ -166,6 +166,7 @@ The project defines reusable component classes in SCSS (`components/`). **Always
 | `technical-writer` | Creates and maintains all project documentation in `docs/` — architecture decisions, domain model explanations, API guides, onboarding — keeping `docs/README.md` as the up-to-date index |
 | `code-simplifier` | Runs after implementation tasks (sonnet model). Reviews changed code for: nested null checks, redundant queries, duplicated logic, overly complex patterns. Simplifies without changing behaviour. Must run tests after each change |
 | `community-writer` | Generates what's new changelogs (sonnet model). Analyses git history since last entry, produces user-facing and developer-facing changelogs in French, updates index and README |
+| `proofreader` | Correcteur orthographique et grammatical (haiku model). Relit traductions (fr + en), changelogs, templates, docs — corrige orthographe, accents, grammaire, ponctuation et typographie. Lancé après chaque tâche d'implémentation |
 
 ---
 

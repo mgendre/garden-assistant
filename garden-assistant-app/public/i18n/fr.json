@@ -14,10 +14,10 @@
     "MainNav": "Navigation principale",
     "MobileNav": "Menu principal",
     "Calendar": "Calendrier",
-    "WhatsNew": "Nouveautes"
+    "WhatsNew": "Nouveautés"
   },
   "Dashboard": {
-    "Welcome": "Welcome back",
+    "Welcome": "Bienvenue",
     "Title": "Votre jardin<br>vous attend.",
     "Description": "Suivez vos plantes, planifiez vos t\u00e2ches et regardez votre jardin prosp\u00e9rer.",
     "Season": "Printemps",
@@ -595,8 +595,8 @@
     }
   },
   "WhatsNew": {
-    "Title": "Nouveautes",
-    "EmptyState": "Pas encore de nouveautes publiees. Revenez bientot !"
+    "Title": "Nouveautés",
+    "EmptyState": "Pas encore de nouveautés publiées. Revenez bientôt !"
   },
   "GardenCalendar": {
     "Title": "Calendrier du jardin",

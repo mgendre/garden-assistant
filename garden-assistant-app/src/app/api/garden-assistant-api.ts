@@ -1197,6 +1197,7 @@ export enum AssociationMechanism {
     WeedSuppression = 13,
     Biofumigation = 14,
     NursePlant = 15,
+    SharedPathogen = 16,
 }
 
 export interface SelectedPlantConflictDto {
@@ -1275,6 +1276,7 @@ export enum PropagationMethod {
     Bulb = 1,
     Tuber = 2,
     Division = 3,
+    Cutting = 4,
 }
 
 export interface HarvestReadinessDto {

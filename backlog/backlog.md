@@ -355,6 +355,25 @@
 
 ---
 
+## E20 — Hierarchie espece-variete
+
+> Ajouter une relation parent/enfant (espece → variete) sur l'entite Plant. Les varietes heritent de la taxonomie, des mecanismes intrinseques et des associations de leur espece parente. Heritage resolu cote serveur — le frontend recoit des donnees completes. Scope MVP : modele + migration + seed data + service + API. Pas d'UI de gestion des varietes.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-306](epics/E20-hierarchie-espece-variete/US-306-parent-plant-id-entity-migration.md) | ParentPlantId sur l'entite Plant + migration EF | Indispensable | 3 | A faire |
+| [US-307](epics/E20-hierarchie-espece-variete/US-307-seed-import-parent-key.md) | Support du champ parentKey dans le seed import | Indispensable | 3 | A faire |
+| [US-308](epics/E20-hierarchie-espece-variete/US-308-seed-data-taxonomie-varietes.md) | Correction taxonomique et ajout des varietes dans les seeds | Indispensable | 5 | A faire |
+| [US-309](epics/E20-hierarchie-espece-variete/US-309-service-heritage-variete.md) | Heritage des proprietes et mecanismes au niveau service | Indispensable | 5 | A faire |
+| [US-310](epics/E20-hierarchie-espece-variete/US-310-heritage-associations-variete.md) | Heritage des associations au niveau service | Indispensable | 5 | A faire |
+| [US-311](epics/E20-hierarchie-espece-variete/US-311-api-dto-variete.md) | PlantDto enrichi pour les varietes | Indispensable | 3 | A faire |
+
+**Total E20 : 24 points (0 Termine / 24 A faire)**
+
+> Ordre de livraison : US-306 (migration) → US-307 (seed import) → US-308 (seed data) → US-309 (heritage proprietes) et US-310 (heritage associations) en parallele → US-311 (API/DTO). US-308 necessite validation botanique par le plant-expert avant merge.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -378,8 +397,9 @@
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
 | E19 — Dette technique frontend | 12 | 7 | 0 | 5 |
-| **Total (actif)** | **413** | **167** | **0** | **246** |
+| E20 — Hierarchie espece-variete | 24 | 0 | 0 | 24 |
+| **Total (actif)** | **437** | **167** | **0** | **270** |
 
 ---
 
-*Backlog géré par l'agent Product Owner — dernière mise à jour : 2026-04-01 (US-300, US-301, US-303 terminés, E01 complet)*
+*Backlog géré par l'agent Product Owner — dernière mise à jour : 2026-04-01 (E20 créé — hierarchie espece-variete, 6 stories, 24 pts)*
