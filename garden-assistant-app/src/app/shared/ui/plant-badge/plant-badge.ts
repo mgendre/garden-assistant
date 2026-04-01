@@ -9,6 +9,7 @@ import { PlantDetailDialog, PlantDetailDialogData } from '../plant-detail-dialog
   standalone: true,
   imports: [],
   templateUrl: './plant-badge.html',
+  host: { style: 'display: inline-block' },
 })
 export class PlantBadge {
   readonly plant = input.required<PlantDto>();

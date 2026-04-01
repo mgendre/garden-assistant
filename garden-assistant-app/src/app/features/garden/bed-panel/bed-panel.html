@@ -8,7 +8,7 @@
         </span>
       </div>
       @if (sortedHeaderPlants().length > 0) {
-        <div class="flex flex-wrap gap-1.5 mt-1.5">
+        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px">
           @for (plant of sortedHeaderPlants(); track plant.id) {
             <app-plant-badge
               [plant]="plant"
