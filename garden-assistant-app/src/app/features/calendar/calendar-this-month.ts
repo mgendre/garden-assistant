@@ -65,8 +65,8 @@ export class CalendarThisMonth {
   }
 
   private buildActionGroups(halfMonth: number): ActionGroup[] {
-    const data = this.store.calendarData();
-    if (!data?.plants) {
+    const plants = this.store.filteredPlants();
+    if (plants.length === 0) {
       return [];
     }
 
@@ -75,7 +75,7 @@ export class CalendarThisMonth {
     for (const config of ACTION_TYPE_CONFIGS) {
       const plantsForAction: { id: string; name: string }[] = [];
 
-      for (const plant of data.plants) {
+      for (const plant of plants) {
         if (!plant.actions || !plant.plantId) {
           continue;
         }
