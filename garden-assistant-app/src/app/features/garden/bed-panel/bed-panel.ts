@@ -83,8 +83,8 @@ export class BedPanel {
 
   readonly plantCount = computed(() => this.bed().plantIds?.length ?? 0);
 
-  onHeaderClick(): void {
-    if (!this.loaded()) {
+  onExpand(): void {
+    if (!this.loaded() && !this.loading()) {
       this.loadDetail();
     }
   }
@@ -103,7 +103,6 @@ export class BedPanel {
 
       const plantIds = (guild.plants ?? []).map(p => p.id!).filter(Boolean);
       if (plantIds.length < 2) {
-        this.loaded.set(true);
         return;
       }
 
