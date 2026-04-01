@@ -6,14 +6,16 @@
 
 ### Critères d'acceptation
 
-- [ ] CA1 : Je peux modifier le nom depuis la fiche de la planche.
-- [ ] CA2 : Les modifications sont sauvegardées et reflétées immédiatement.
-- [ ] CA3 : Les plantes déjà associées à la planche ne sont pas affectées.
+- [x] CA1 : Je peux modifier le nom depuis la fiche de la planche.
+- [x] CA2 : Les modifications sont sauvegardées et reflétées immédiatement.
+- [x] CA3 : Les plantes déjà associées à la planche ne sont pas affectées.
 
 ### Notes & contraintes
 - La modification des dimensions et de la forme est geree dans E03 (editeur graphique).
 - Si la planche est positionnée dans l'outil graphique, la position n'est pas réinitialisée par cette modification.
+- Frontend : bouton "Renommer" dans la section d'actions de la planche, ouvre un dialog de renommage.
 
 ### Estimation
 - **Priorité :** Should
 - **Points :** 1
+- **Statut :** Terminé

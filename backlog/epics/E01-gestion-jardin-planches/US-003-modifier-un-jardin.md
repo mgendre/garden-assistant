@@ -6,14 +6,16 @@
 
 ### Critères d'acceptation
 
-- [ ] CA1 : Je peux modifier le nom et la description depuis la page du jardin.
-- [ ] CA2 : Les modifications sont sauvegardées immédiatement et visibles sans rechargement de page.
-- [ ] CA3 : Un nom vide est refusé avec un message d'erreur explicite.
-- [ ] CA4 : Je ne peux modifier que mes propres jardins (403 pour les autres).
+- [x] CA1 : Je peux modifier le nom et la description depuis la page du jardin.
+- [x] CA2 : Les modifications sont sauvegardées immédiatement et visibles sans rechargement de page.
+- [x] CA3 : Un nom vide est refusé avec un message d'erreur explicite.
+- [x] CA4 : Je ne peux modifier que mes propres jardins (403 pour les autres).
 
 ### Notes & contraintes
 - Les planches et plantes existantes ne sont pas affectées par ce changement.
+- Implémenté via bouton "Modifier" sur la page jardin (dialog d'édition).
 
 ### Estimation
 - **Priorité :** Must
 - **Points :** 1
+- **Statut :** Terminé
