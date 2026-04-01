@@ -31,6 +31,7 @@ export class GardenView implements OnInit {
   protected readonly faTrash = faTrash;
 
   readonly gardenId = signal('');
+  readonly newBedId = signal<string | null>(null);
 
   readonly garden = computed(() =>
     this.store.gardens().find(g => g.id === this.gardenId())
@@ -86,7 +87,8 @@ export class GardenView implements OnInit {
   async addBed(): Promise<void> {
     const result = await this.gardenDialogService.openCreateBed({ mode: 'create' });
     if (result !== undefined) {
-      await this.store.createBed(this.gardenId(), { name: result.name } as CreateBedRequest);
+      const bed = await this.store.createBed(this.gardenId(), { name: result.name } as CreateBedRequest);
+      this.newBedId.set(bed.id ?? null);
     }
   }
 

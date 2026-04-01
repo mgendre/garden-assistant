@@ -35,7 +35,7 @@
           }
         </div>
       } @else if (!store.loading()) {
-        <app-empty-state icon="🌱" messageKey="Guilds.UserEmptyDesc"></app-empty-state>
+        <app-empty-state icon="🌱" messageKey="Guilds.UserEmptyDesc" actionKey="Guilds.Create" (actionClick)="createGuild()"></app-empty-state>
       }
     </div>
 

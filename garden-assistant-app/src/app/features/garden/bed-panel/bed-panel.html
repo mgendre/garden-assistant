@@ -1,5 +1,5 @@
 <div class="panel">
-  <app-collapsible>
+  <app-collapsible [initialExpanded]="initialExpanded()">
     <div collapsible-header class="min-w-0">
       <div class="flex items-center gap-2">
         <span class="font-medium truncate">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>

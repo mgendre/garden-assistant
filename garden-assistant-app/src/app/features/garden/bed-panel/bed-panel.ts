@@ -33,6 +33,7 @@ import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 export class BedPanel implements OnInit {
   readonly bed = input.required<BedDto>();
   readonly gardenId = input.required<string>();
+  readonly initialExpanded = input(false);
   readonly bedNameChanged = output<string | undefined>();
   readonly bedDeleted = output<void>();
 

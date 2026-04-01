@@ -39,6 +39,7 @@
         <app-bed-panel
           [bed]="bed"
           [gardenId]="gardenId()"
+          [initialExpanded]="bed.id === newBedId()"
           (bedNameChanged)="onBedRenamed(bed.id!, $event)"
           (bedDeleted)="onBedDeleted(bed.id!)">
         </app-bed-panel>
