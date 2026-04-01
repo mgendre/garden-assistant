@@ -11,21 +11,23 @@
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-001](epics/E01-gestion-jardin-planches/US-001-creer-un-jardin.md) | Creer un jardin | Indispensable | 2 | En cours |
-| [US-002](epics/E01-gestion-jardin-planches/US-002-lister-mes-jardins.md) | Lister mes jardins | Indispensable | 2 | En cours |
-| [US-003](epics/E01-gestion-jardin-planches/US-003-modifier-un-jardin.md) | Modifier un jardin | Indispensable | 1 | En cours |
-| [US-004](epics/E01-gestion-jardin-planches/US-004-supprimer-un-jardin.md) | Supprimer un jardin | Important | 2 | En cours |
-| [US-005](epics/E01-gestion-jardin-planches/US-005-ajouter-une-planche.md) | Ajouter une planche a un jardin | Indispensable | 2 | A faire |
-| [US-006](epics/E01-gestion-jardin-planches/US-006-modifier-une-planche.md) | Modifier une planche (nom) | Important | 1 | A faire |
-| [US-007](epics/E01-gestion-jardin-planches/US-007-supprimer-une-planche.md) | Supprimer une planche | Important | 2 | A faire |
-| [US-124](epics/E01-gestion-jardin-planches/US-124-vue-jardin-liste-planches.md) | Vue jardin avec liste des planches en collapsibles | Indispensable | 3 | A faire |
-| [US-125](epics/E01-gestion-jardin-planches/US-125-detail-planche-associations-readonly.md) | Detail d'une planche avec associations en lecture seule | Indispensable | 8 | En cours |
-| [US-126](epics/E01-gestion-jardin-planches/US-126-modifier-planche-redirect-associations.md) | Modifier les plantes d'une planche via la page associations | Indispensable | 3 | A faire |
-| [US-127](epics/E01-gestion-jardin-planches/US-127-calendrier-global-jardin.md) | Calendrier global du jardin avec groupement par planches | Important | 5 | A faire |
+| [US-001](epics/E01-gestion-jardin-planches/US-001-creer-un-jardin.md) | Creer un jardin | Indispensable | 2 | ✅ Termine |
+| [US-002](epics/E01-gestion-jardin-planches/US-002-lister-mes-jardins.md) | Lister mes jardins | Indispensable | 2 | ✅ Termine |
+| [US-003](epics/E01-gestion-jardin-planches/US-003-modifier-un-jardin.md) | Modifier un jardin | Indispensable | 1 | ✅ Termine |
+| [US-004](epics/E01-gestion-jardin-planches/US-004-supprimer-un-jardin.md) | Supprimer un jardin | Important | 2 | ✅ Termine |
+| [US-005](epics/E01-gestion-jardin-planches/US-005-ajouter-une-planche.md) | Ajouter une planche a un jardin | Indispensable | 2 | ✅ Termine |
+| [US-006](epics/E01-gestion-jardin-planches/US-006-modifier-une-planche.md) | Modifier une planche (nom) | Important | 1 | ✅ Termine |
+| [US-007](epics/E01-gestion-jardin-planches/US-007-supprimer-une-planche.md) | Supprimer une planche | Important | 2 | ✅ Termine |
+| [US-124](epics/E01-gestion-jardin-planches/US-124-vue-jardin-liste-planches.md) | Vue jardin avec liste des planches en collapsibles | Indispensable | 3 | ✅ Termine |
+| [US-125](epics/E01-gestion-jardin-planches/US-125-detail-planche-associations-readonly.md) | Detail d'une planche avec associations en lecture seule | Indispensable | 8 | ✅ Termine |
+| [US-126](epics/E01-gestion-jardin-planches/US-126-modifier-planche-redirect-associations.md) | Modifier les plantes d'une planche via la page associations | Indispensable | 3 | ✅ Termine |
+| [US-127](epics/E01-gestion-jardin-planches/US-127-calendrier-global-jardin.md) | Calendrier global du jardin avec groupement par planches | Important | 5 | ✅ Termine |
+| [US-128](epics/E01-gestion-jardin-planches/US-128-plant-badge-composant-partage.md) | Composant PlantBadge reutilisable | Indispensable | 1 | ✅ Termine |
+| [US-129](epics/E01-gestion-jardin-planches/US-129-creation-guilde-depuis-page-guildes.md) | Creer une guilde depuis la page Guildes | Important | 2 | ✅ Termine |
 
-**Total E01 : 31 points (0 Termine / 8 En cours / 23 A faire)**
+**Total E01 : 34 points (34 Termine / 0 En cours / 0 A faire)**
 
-> Note : US-001 a US-004 disposent d'une API backend fonctionnelle mais sans interface frontend. Les controleurs backend (GardenController, PlantingController, PlantingEntryController) ont ete supprimes dans le cadre du nettoyage E11/US-075. L'API devra etre reconstruite lors de la reprise de cet epic. La vue jardin utilise l'approche hybride (Option C) : lecture complete sur place, edition via redirection vers `/companions?guild={bedGuildId}&returnTo=/garden`. Spec de reference : `docs/superpowers/specs/2026-03-30-vue-jardin-planches-design.md`. US-125 partiellement avancee : le composant shared `PlantAssociationPanel` est cree et integre dans le guild editor (CA8 termine). Le reste (integration dans la vue planche) est a faire.
+> Epic livre. Backend complet (GardenService, BedService, GardensController, BedsController, 19 tests unitaires). Frontend complet : CRUD jardins et planches, vue jardin avec planches collapsibles, detail planche en lecture seule via PlantAssociationPanel, redirection vers la page associations pour edition, calendrier global avec toggle Vue globale / Groupé par planche. Travaux transverses : composant PlantBadge partage, mode creation de guilde, integration des plantes de jardins dans le calendrier principal avec filtre source.
 
 ---
 
@@ -321,6 +323,19 @@
 
 ---
 
+## E18 — Page d'accueil / tableau de bord
+
+> Offrir au jardinier une page d'accueil unifiee (`/home`) regroupant les actions du moment, la liste de ses jardins, des raccourcis vers les outils cles (Associations, Guildes), et une plante du jour. La route `/` redirige desormais vers `/home`.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-200](epics/E17-page-accueil/US-200-page-accueil.md) | Page d'accueil avec jardins, actions, raccourcis et plante du jour | Indispensable | 8 | A faire |
+| [US-201](epics/E17-page-accueil/US-201-conseils-saisonniers.md) | Conseils permaculturels saisonniers par demi-mois | Important | 5 | A faire |
+
+**Total E18 : 13 points (0 Termine / 13 A faire)**
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -342,8 +357,9 @@
 | E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
-| **Total (actif)** | **385** | **126** | **8** | **251** |
+| E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
+| **Total (actif)** | **398** | **126** | **8** | **264** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-30*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31 (ajout US-201)*

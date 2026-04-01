@@ -225,18 +225,7 @@
   padding-top: 0.75rem;
 }
 
-.section-sublabel {
-  @apply flex items-center gap-2 text-xs font-semibold uppercase mb-3;
-  letter-spacing: 0.1em;
-  color: var(--color-text-muted);
-
-  &::after {
-    content: '';
-    @apply flex-1;
-    height: 1px;
-    background: var(--color-border-subtle);
-  }
-}
+// .section-sublabel migrated to .section-divider-title in _typography.scss
 
 .calendar-plant {
   &--separator {

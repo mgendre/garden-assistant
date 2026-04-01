@@ -1,0 +1,34 @@
+@reference "tailwindcss";
+
+.list-panel-item {
+  @apply cursor-pointer px-5 py-4;
+  transition: background var(--transition-fast);
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--color-surface-hover);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.list-panel-title {
+  @apply font-semibold truncate;
+}
+
+.list-panel-meta {
+  @apply text-xs;
+  color: var(--color-text-muted);
+}
+
+.list-panel-description {
+  @apply text-sm mt-1 line-clamp-2;
+  color: var(--color-text-muted);
+}

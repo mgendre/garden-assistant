@@ -92,6 +92,7 @@ export class Guilds {
 
   createGuild(): void {
     this.companionStore.startNewGuild();
+    this.companionStore.startGuildCreation();
     this.router.navigate(['/companions']);
   }
 }

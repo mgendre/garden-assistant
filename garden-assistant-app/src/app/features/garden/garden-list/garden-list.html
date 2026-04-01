@@ -1,0 +1,49 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 [translate]="'Garden.Title'"></h1>
+  </div>
+
+  <div class="page-toolbar">
+    <button class="btn btn-primary btn-sm" (click)="createGarden()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      <span [translate]="'Garden.Create'"></span>
+    </button>
+  </div>
+
+  @if (isEmpty()) {
+    <div class="empty-state">
+      <div class="empty-state-icon">🌱</div>
+      <p class="empty-state-text" [translate]="'Garden.EmptyState'"></p>
+      <button class="btn btn-primary btn-sm mt-4" (click)="createGarden()" [translate]="'Garden.CreateFirst'"></button>
+    </div>
+  }
+
+  @if (store.loading()) {
+    <div class="empty-state">
+      <div class="empty-state-icon">⏳</div>
+    </div>
+  }
+
+  @if (gardens().length > 0) {
+    <div class="panel">
+      @for (garden of gardens(); track garden.id) {
+        <div class="list-panel-item"
+          (click)="openGarden(garden)"
+          (keydown.enter)="openGarden(garden)"
+          tabindex="0"
+          role="link"
+          [attr.aria-label]="garden.name">
+          <div class="flex items-center gap-2">
+            <span class="list-panel-title">{{ garden.name }}</span>
+            <span class="list-panel-meta">
+              ({{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }})
+            </span>
+          </div>
+          @if (garden.description) {
+            <p class="list-panel-description">{{ garden.description }}</p>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>

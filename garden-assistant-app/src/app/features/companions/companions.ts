@@ -15,12 +15,27 @@ import { GuildService } from '../../shared/services/guild.service';
 })
 export class Companions implements OnInit {
   private readonly route = inject(ActivatedRoute);
-  private readonly companionStore = inject(CompanionStore);
+  protected readonly companionStore = inject(CompanionStore);
   private readonly guildService = inject(GuildService);
 
   async ngOnInit(): Promise<void> {
     const params = this.route.snapshot.queryParams;
+    const returnTo = params['returnTo'];
     const guildId = params['guild'];
+
+    if (returnTo) {
+      this.companionStore.setReturnTo(returnTo);
+    }
+
+    const bedName = params['bedName'];
+    if (bedName) {
+      this.companionStore.clearSelection();
+      this.companionStore.setEditingBedName(bedName);
+      if (returnTo) {
+        this.companionStore.setReturnTo(returnTo);
+      }
+    }
+
     if (!guildId) {
       return;
     }

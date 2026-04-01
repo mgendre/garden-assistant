@@ -1,0 +1,73 @@
+<div class="panel">
+  <app-collapsible [initialExpanded]="true">
+    <div collapsible-header class="section-header">
+      <span class="section-header-label">
+        <span>📅</span>
+        <span [translate]="'GardenCalendar.Title'"></span>
+      </span>
+    </div>
+    <div collapsible-body class="collapsible-body-padded">
+      @if (loading()) {
+        <div class="empty-state" style="min-height: 100px">
+          <div class="empty-state-icon">⏳</div>
+        </div>
+      } @else if (allEntries().length === 0) {
+        <div class="empty-state" style="min-height: 100px">
+          <p class="empty-state-text" [translate]="'GardenCalendar.Empty'"></p>
+        </div>
+      } @else {
+        <div class="flex justify-end mb-4">
+          <div class="inline-flex rounded-md border" style="border-color: var(--color-border)">
+            <button class="btn btn-xs rounded-r-none border-0"
+              [class.btn-primary]="!groupByBed()"
+              [class.btn-ghost]="groupByBed()"
+              (click)="groupByBed.set(false)"
+              [translate]="'GardenCalendar.FlatView'">
+            </button>
+            <button class="btn btn-xs rounded-l-none border-0 -ml-px"
+              [class.btn-primary]="groupByBed()"
+              [class.btn-ghost]="!groupByBed()"
+              (click)="groupByBed.set(true)"
+              [translate]="'GardenCalendar.GroupedByBed'">
+            </button>
+          </div>
+        </div>
+
+        @if (groupByBed()) {
+          @for (group of bedGroups(); track group.bedName; let first = $first) {
+            <div style="margin-bottom: 1.5rem" [style.margin-top]="first ? '0' : '1.5rem'">
+              <div class="section-divider-title">{{ group.bedName }}</div>
+              @for (entry of group.entries; track entry.plantId; let first = $first; let last = $last; let idx = $index) {
+                <div class="calendar-plant" [class.calendar-plant--separator]="!last">
+                  <app-plant-calendar-gantt
+                    [actions]="entry.actions"
+                    [propagationMethod]="entry.propagationMethod"
+                    [frostSensitive]="entry.frostSensitive"
+                    [showHeader]="first"
+                    [plantName]="entry.name"
+                    [oddPlant]="idx % 2 === 1"
+                    (plantNameClick)="openPlantDetail(entry.plantId)">
+                  </app-plant-calendar-gantt>
+                </div>
+              }
+            </div>
+          }
+        } @else {
+          @for (entry of allEntries(); track entry.plantId; let first = $first; let last = $last; let idx = $index) {
+            <div class="calendar-plant" [class.calendar-plant--separator]="!last">
+              <app-plant-calendar-gantt
+                [actions]="entry.actions"
+                [propagationMethod]="entry.propagationMethod"
+                [frostSensitive]="entry.frostSensitive"
+                [showHeader]="first"
+                [plantName]="entry.name"
+                [oddPlant]="idx % 2 === 1"
+                (plantNameClick)="openPlantDetail(entry.plantId)">
+              </app-plant-calendar-gantt>
+            </div>
+          }
+        }
+      }
+    </div>
+  </app-collapsible>
+</div>

@@ -77,6 +77,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.Property(p => p.Name).IsRequired().HasMaxLength(256);
             entity.HasOne<Garden>().WithMany().HasForeignKey(p => p.GardenId).OnDelete(DeleteBehavior.Cascade);
             entity.HasOne<User>().WithMany().HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne<Guild>().WithMany().HasForeignKey(p => p.GuildId).OnDelete(DeleteBehavior.SetNull);
         });
 
         modelBuilder.Entity<PlantingEntry>(entity =>

@@ -38,6 +38,9 @@ These apply across all layers. Agents reference this section rather than restati
 - `.env` files gitignored; `.env.example` committed with placeholder values only
 - Never log or return secrets in API responses, error messages, or container images
 
+### C# file organisation
+- **One public type per file** — each C# class, record, or interface goes in its own file
+
 ### API design
 - Follow RESTful conventions; return consistent HTTP status codes and problem-detail errors
 - Use **kebab-case** for multi-word route segments (e.g. `plant-associations`, `planting-entries` — never `plantassociations`)
@@ -78,6 +81,30 @@ These apply across all layers. Agents reference this section rather than restati
 - **Panel pattern**: use the `.panel` class (defined in `_panels.scss`) for all content sections — white background, rounded corners, subtle shadow and border. Use `.panel-header` + `.panel-title` for section headers. Never create custom card/container styling; always reuse the panel pattern
 - **After every frontend change, run `npm run build --prefix garden-assistant-app` and fix all errors before considering the task done**
 
+### Frontend component classes — use the design system, not raw Tailwind
+The project defines reusable component classes in SCSS (`components/`). **Always use these instead of writing raw Tailwind equivalents.**
+
+| Need | Use | Never |
+|---|---|---|
+| **Page wrapper** | `.page-container` (max-width, responsive padding, centering) | Raw `mx-auto max-w-… px-…` |
+| **Page title** | `.page-header` > `h1` + optional `.page-description` | Raw `mb-6` on a div |
+| **Title + action row** | `.page-toolbar` (flex, gap, mb) | Raw `flex items-center justify-between mb-…` |
+| **Section header** | `.section-header` > `.section-title` + optional button | Inline flex headers |
+| **Content list** | `.content-list` (flex-col, gap) | Raw `flex flex-col gap-…` |
+| **Button** | `.btn .btn-primary .btn-sm` (base + variant + size) | Raw Tailwind `bg-green-600 text-white px-4 py-2 rounded` |
+| **Button variants** | `.btn-primary`, `.btn-secondary`, `.btn-danger`, `.btn-ghost` | Custom color classes |
+| **Button sizes** | `.btn-sm`, `.btn-xs` (default is medium) | Inline padding overrides |
+| **Small delete** | `.remove-btn` | Inline red text buttons |
+| **Content container** | `.panel` | Raw `bg-white rounded-lg shadow border` |
+| **Panel header** | `.panel-header` + `.panel-title` | Custom heading styles |
+| **Empty state** | `.empty-state` + `.empty-state-icon` + `.empty-state-text` | Custom centered flex containers |
+| **Form inputs** | `.form-input` (defined in `_forms.scss`) | Raw Tailwind `border rounded-md px-3 py-2` |
+| **Dialog actions** | `.dialog-actions` + `.btn .btn-secondary` / `.btn .btn-primary` | Material `mat-flat-button` with Tailwind |
+| **Collapsible** | `<app-collapsible>` with `[collapsible-header]` / `[collapsible-body]` slots | Custom accordion markup |
+| **Section in collapsible** | `.section-header` + `.section-header-label` | Custom flex headers |
+
+**Tailwind is for layout utilities only** (flex, grid, spacing, responsive breakpoints). Component appearance always comes from SCSS classes.
+
 ### Frontend styling — 7-1 Sass + Tailwind CSS
 - **7-1 Sass architecture** (`main.scss`) is the structural foundation:
   - `abstracts/` — variables, mixins (no CSS output)
@@ -102,15 +129,20 @@ These apply across all layers. Agents reference this section rather than restati
 
 **Never use `cd`** — all commands (git, dotnet, npm, podman) must run from the repo root. Use `--prefix`, `--project`, or path arguments to target subdirectories.
 
+**Node tools are in PATH via nvm** — call `npm`, `node`, `npx` directly. Never resolve absolute paths to node binaries.
+
+**Use relative paths** — never use absolute paths in commands (e.g. `garden-assistant-api/`, not `/home/.../garden-assistant-api/`).
+
 | Task | Command |
 |---|---|
 | Frontend build | `npm run build --prefix garden-assistant-app` |
 | Frontend dev server | `npm run start --prefix garden-assistant-app` |
 | Frontend tests | `npm run test --prefix garden-assistant-app` |
 | Backend build | `dotnet build garden-assistant-api/garden-assistant-api.csproj` |
+| Backend run | `dotnet run --project garden-assistant-api` |
 | Backend tests | `dotnet test garden-assistant-tests` |
-| EF migrations | `dotnet ef migrations add <Name> --project garden-assistant-api` |
-| EF update DB | `dotnet ef database update --project garden-assistant-api` |
+| EF migrations | `dotnet ef migrations add <Name> --project garden-assistant-api --startup-project garden-assistant-api` |
+| EF update DB | `dotnet ef database update --project garden-assistant-api --startup-project garden-assistant-api` |
 | Compose (DB) | `podman compose up -d db` |
 | Git | `git status`, `git add <file>`, etc. — always from root, never `cd` first |
 

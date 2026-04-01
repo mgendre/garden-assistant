@@ -1,0 +1,30 @@
+<h2 mat-dialog-title [translate]="data.mode === 'create' ? 'Garden.DialogCreateTitle' : 'Garden.DialogEditTitle'"></h2>
+<mat-dialog-content>
+  <div class="flex flex-col gap-4 py-2">
+    <div>
+      <label class="block text-sm font-medium mb-1" [translate]="'Garden.NameLabel'"></label>
+      <input type="text"
+        class="form-input"
+        [value]="name()"
+        (input)="name.set($any($event.target).value)"
+        maxlength="100"
+        [attr.placeholder]="'Garden.NamePlaceholder' | translate" />
+    </div>
+    <div>
+      <label class="block text-sm font-medium mb-1" [translate]="'Garden.DescriptionLabel'"></label>
+      <textarea
+        class="form-input"
+        rows="3"
+        [value]="description()"
+        (input)="description.set($any($event.target).value)"
+        maxlength="2000"
+        [attr.placeholder]="'Garden.DescriptionPlaceholder' | translate">
+      </textarea>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions class="dialog-actions !pt-4 !flex !justify-end !gap-2">
+  <button class="btn btn-secondary" (click)="cancel()" [translate]="'Garden.Cancel'"></button>
+  <button class="btn btn-primary" [disabled]="!isValid" (click)="save()"
+    [translate]="data.mode === 'create' ? 'Garden.DialogCreateAction' : 'Garden.DialogSaveAction'"></button>
+</mat-dialog-actions>

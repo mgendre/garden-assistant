@@ -16,7 +16,7 @@
 }
 
 .calendar-filter-chips {
-  @apply flex flex-wrap gap-2 px-5 py-3;
+  @apply flex flex-wrap gap-2 px-5 py-3 mb-3;
   border-bottom: 1px solid var(--color-border-subtle);
 }
 

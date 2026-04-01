@@ -4,7 +4,7 @@
   },
   "Nav": {
     "Dashboard": "Tableau de bord",
-    "Garden": "Mon jardin",
+    "Garden": "Mes jardins",
     "Tasks": "T\u00e2ches",
     "Companions": "Associations",
     "MyPlants": "Mes plantes",
@@ -38,14 +38,59 @@
     "Category": "Gestion",
     "Title": "Mes jardins",
     "Add": "Ajouter un jardin",
+    "Create": "Nouveau jardin",
+    "CreateFirst": "Créer mon premier jardin",
     "Loading": "Chargement de vos jardins\u2026",
     "EmptyTitle": "Aucun jardin",
     "EmptyDesc": "Commencez \u00e0 cultiver votre espace.",
     "EmptyCta": "Cr\u00e9er mon premier jardin",
+    "EmptyState": "Vous n'avez pas encore de jardin. Créez-en un pour commencer à organiser vos espaces de culture.",
     "ColName": "Nom",
     "ColDescription": "Description",
     "NoDescription": "\u2014",
-    "DeleteAria": "Supprimer {{name}}"
+    "DeleteAria": "Supprimer {{name}}",
+    "BedSingular": "planche",
+    "BedPlural": "planches",
+    "Edit": "Modifier",
+    "Delete": "Supprimer",
+    "Back": "Retour",
+    "BackToList": "Mes jardins",
+    "Cancel": "Annuler",
+    "DialogCreateTitle": "Nouveau jardin",
+    "DialogEditTitle": "Modifier le jardin",
+    "DialogCreateAction": "Créer",
+    "DialogSaveAction": "Enregistrer",
+    "NameLabel": "Nom",
+    "NamePlaceholder": "Ex: Potager principal",
+    "DescriptionLabel": "Description",
+    "DescriptionPlaceholder": "Description optionnelle de votre jardin",
+    "ConfirmDeleteTitle": "Supprimer le jardin",
+    "ConfirmDeleteMessage": "Supprimer le jardin « {{name}} » ? Toutes les planches et leurs données seront définitivement perdues."
+  },
+  "Bed": {
+    "SectionTitle": "Planches",
+    "Add": "Nouvelle planche",
+    "CreateFirst": "Créer une première planche",
+    "EmptyGarden": "Aucune planche. Commencez par en créer une.",
+    "EmptyState": "Aucune plante. Ajoutez des plantes pour voir les associations.",
+    "AddPlants": "Ajouter des plantes",
+    "ModifyPlants": "Modifier les plantes",
+    "EditName": "Renommer",
+    "Unnamed": "Planche sans nom",
+    "PlantSingular": "plante",
+    "PlantPlural": "plantes",
+    "Edit": "Modifier",
+    "Delete": "Supprimer",
+    "Cancel": "Annuler",
+    "DialogCreateTitle": "Nouvelle planche",
+    "DialogEditTitle": "Modifier la planche",
+    "DialogCreateAction": "Créer",
+    "DialogSaveAction": "Enregistrer",
+    "NameLabel": "Nom (optionnel)",
+    "NamePlaceholder": "Ex: Planche tomates 2026",
+    "ConfirmDeleteTitle": "Supprimer la planche",
+    "ConfirmDeleteMessage": "Supprimer la planche « {{name}} » ?",
+    "ConfirmDeleteMessageWithPlants": "Supprimer la planche « {{name}} » ? Les plantes suivantes seront perdues : {{plants}}"
   },
   "GardenDialog": {
     "Title": "Cr\u00e9er un jardin",
@@ -172,13 +217,14 @@
     "FormCancel": "Annuler",
     "FormSave": "Enregistrer",
     "Saving": "Enregistrement\u2026",
+    "MinPlantsHint": "Sélectionnez au moins 2 plantes depuis le catalogue pour composer votre guilde.",
     "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e.",
     "SearchPlaceholder": "Rechercher par nom, description ou plante\u2026"
   },
   "Guild": {
     "CentralPlant": "Plante centrale",
     "Companion": "Compagne",
-    "CentralPlantHint": "Désignez une ou plusieurs plantes centrales autour desquelles votre guilde est construite.",
+    "CentralPlantHint": "Désignez une ou plusieurs plantes centrales autour desquelles votre composition est construite.",
     "ToggleCentral": "Marquer comme plante centrale",
     "ToggleCompanion": "Retirer le statut de plante centrale",
     "Beneficial": "bénéfiques",
@@ -247,7 +293,12 @@
     "NoResults": "Aucune plante trouv\u00e9e",
     "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
     "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
-    "ClearSelection": "Effacer"
+    "ClearSelection": "Effacer",
+    "EditingBed": "Modification de la planche « {{name}} »",
+    "BackToBed": "Retour à la planche",
+    "CancelChanges": "Annuler",
+    "CreatingGuild": "Création d'une nouvelle guilde",
+    "EditingGuild": "Modification de la guilde"
   },
   "Stratification": {
     "SectionTitle": "Stratification racinaire",
@@ -470,6 +521,11 @@
   },
   "Calendar": {
     "Title": "Calendrier cultural",
+    "AllPlants": "Toutes les plantes",
+    "MyPlantsOnly": "Mes plantes",
+    "GardenPlantsOnly": "Plantes de mes jardins",
+    "FlatView": "Vue globale",
+    "ByGarden": "Par jardin",
     "PlantDetail": "Calendrier cultural",
     "EmptyState": "Ajoutez des plantes \u00e0 votre liste pour voir leur calendrier cultural",
     "EmptyStateAction": "Parcourir le catalogue",
@@ -540,5 +596,11 @@
   "WhatsNew": {
     "Title": "Nouveautes",
     "EmptyState": "Pas encore de nouveautes publiees. Revenez bientot !"
+  },
+  "GardenCalendar": {
+    "Title": "Calendrier du jardin",
+    "Empty": "Ajoutez des plantes à vos planches pour voir le calendrier.",
+    "GroupedByBed": "Groupé par planche",
+    "FlatView": "Vue globale"
   }
 }

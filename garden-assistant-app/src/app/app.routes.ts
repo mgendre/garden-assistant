@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'companions', pathMatch: 'full' },
+  { path: '', redirectTo: 'garden', pathMatch: 'full' },
   {
     path: 'companions',
     loadComponent: () => import('./features/companions/companions').then(m => m.Companions)
@@ -17,6 +17,14 @@ export const routes: Routes = [
   {
     path: 'calendar',
     loadComponent: () => import('./features/calendar/calendar').then(m => m.Calendar)
+  },
+  {
+    path: 'garden',
+    loadComponent: () => import('./features/garden/garden-list/garden-list').then(m => m.GardenList)
+  },
+  {
+    path: 'garden/:id',
+    loadComponent: () => import('./features/garden/garden-view/garden-view').then(m => m.GardenView)
   },
   {
     path: 'whats-new',

@@ -29,6 +29,10 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at_utc");
+
                     b.Property<string>("Description")
                         .HasMaxLength(2000)
                         .HasColumnType("character varying(2000)")
@@ -354,6 +358,10 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("timestamp with time zone")
+                        .HasColumnName("created_at_utc");
+
                     b.Property<string>("Description")
                         .HasColumnType("text")
                         .HasColumnName("description");
@@ -361,6 +369,10 @@ namespace GardenAssistant.Migrations
                     b.Property<Guid>("GardenId")
                         .HasColumnType("uuid")
                         .HasColumnName("garden_id");
+
+                    b.Property<Guid?>("GuildId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("guild_id");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -381,6 +393,9 @@ namespace GardenAssistant.Migrations
 
                     b.HasIndex("GardenId")
                         .HasDatabaseName("ix_plantings_garden_id");
+
+                    b.HasIndex("GuildId")
+                        .HasDatabaseName("ix_plantings_guild_id");
 
                     b.HasIndex("UserId")
                         .HasDatabaseName("ix_plantings_user_id");
@@ -640,6 +655,12 @@ namespace GardenAssistant.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_plantings_gardens_garden_id");
+
+                    b.HasOne("GardenAssistant.Data.Entities.Guild", null)
+                        .WithMany()
+                        .HasForeignKey("GuildId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .HasConstraintName("fk_plantings_guilds_guild_id");
 
                     b.HasOne("GardenAssistant.Data.Entities.User", null)
                         .WithMany()

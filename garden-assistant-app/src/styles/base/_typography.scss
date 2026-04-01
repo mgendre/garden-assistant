@@ -38,3 +38,22 @@ h3 {
 }
 
 p { line-height: 1.7; }
+
+.section-divider-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-muted);
+
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border-subtle);
+  }
+}

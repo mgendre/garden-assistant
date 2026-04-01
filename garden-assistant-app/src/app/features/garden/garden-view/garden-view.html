@@ -1,0 +1,58 @@
+<div class="page-container">
+  <div class="page-header">
+    <button class="btn btn-ghost btn-xs mb-2" (click)="goBack()">
+      <fa-icon [icon]="faArrowLeft"></fa-icon>
+      <span [translate]="'Garden.BackToList'"></span>
+    </button>
+    <div class="flex items-center gap-3">
+      <h1 class="flex-1 min-w-0 truncate">{{ garden()?.name }}</h1>
+      <div style="display: flex; align-items: center; gap: 0.5rem">
+        <button class="btn btn-secondary btn-sm" style="display: flex" (click)="editGarden()">
+          <fa-icon [icon]="faPen"></fa-icon>
+          <span [translate]="'Garden.Edit'"></span>
+        </button>
+        <button class="btn btn-danger btn-sm" style="display: flex" (click)="deleteGarden()">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+      </div>
+    </div>
+    @if (garden()?.description) {
+      <p class="page-description">{{ garden()?.description }}</p>
+    }
+  </div>
+
+  <div class="page-toolbar">
+    <h2 [translate]="'Bed.SectionTitle'"></h2>
+    <button class="btn btn-primary btn-sm" (click)="addBed()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+      <span [translate]="'Bed.Add'"></span>
+    </button>
+  </div>
+
+  @if (store.bedsLoading()) {
+    <div class="empty-state">
+      <div class="empty-state-icon">⏳</div>
+    </div>
+  } @else if (!hasBeds()) {
+    <div class="empty-state">
+      <div class="empty-state-icon">🌱</div>
+      <p class="empty-state-text" [translate]="'Bed.EmptyGarden'"></p>
+      <button class="btn btn-primary btn-sm mt-4" (click)="addBed()" [translate]="'Bed.CreateFirst'"></button>
+    </div>
+  } @else {
+    <div class="content-list">
+      @for (bed of beds(); track bed.id) {
+        <app-bed-panel
+          [bed]="bed"
+          [gardenId]="gardenId()"
+          (bedNameChanged)="onBedRenamed(bed.id!, $event)"
+          (bedDeleted)="onBedDeleted(bed.id!)">
+        </app-bed-panel>
+      }
+    </div>
+
+    <div style="margin-top: 2.5rem; display: block">
+      <app-garden-calendar [beds]="beds()"></app-garden-calendar>
+    </div>
+  }
+</div>

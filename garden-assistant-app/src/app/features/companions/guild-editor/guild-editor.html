@@ -1,29 +1,52 @@
 <div class="guilds-column flex-col">
-  <div class="guild-container" [class.guild-active]="store.selectedPlants().length">
+  @if (store.editingBedName()) {
+    <div class="panel" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; background: #e3f2fd; border-color: #90caf9; flex-wrap: wrap">
+      <span class="text-sm font-medium" style="color: #1565c0; flex: 1">
+        🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
+      </span>
+      <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()" [translate]="'Companions.BackToBed'"></button>
+    </div>
+  }
 
-    @if (store.selectedPlants().length) {
+  @if (!store.editingBedName() && store.isFormVisible()) {
+    <div class="panel" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; background: #e3f2fd; border-color: #90caf9; flex-wrap: wrap">
+      <span class="text-sm font-medium" style="color: #1565c0; flex: 1">
+        🌱 {{ (store.guildMode() === 'creating' ? 'Companions.CreatingGuild' : 'Companions.EditingGuild') | translate }}
+      </span>
+      <button class="btn btn-ghost btn-xs" (click)="store.cancelGuildEditing()" [translate]="'Guilds.FormCancel'"></button>
+    </div>
+  }
 
-      <!-- Viewing mode: name & description as labels -->
-      @if (store.guildMode() === 'viewing') {
-        <div class="guild-container-header">
-          <span>🌱</span>
+  <div class="guild-container" [class.guild-active]="store.selectedPlants().length || store.isFormVisible()">
+
+    <!-- Viewing mode: name & description as labels -->
+    @if (store.selectedPlants().length && store.guildMode() === 'viewing') {
+      <div class="guild-container-header">
+        <span>🌱</span>
+        @if (store.editingBedName()) {
+          <span>{{ store.editingBedName() }}</span>
+        } @else {
           <span>{{ store.guildName() }}</span>
-        </div>
-        @if (store.guildDescription()) {
-          <p class="guild-card-desc guild-view-desc">{{ store.guildDescription() }}</p>
         }
+      </div>
+      @if (!store.editingBedName() && store.guildDescription()) {
+        <p class="guild-card-desc guild-view-desc">{{ store.guildDescription() }}</p>
       }
+    }
 
-      <!-- Creating / Editing mode: form fields -->
-      @if (store.isFormVisible()) {
-        <div class="guild-container-header">
-          <span>🌱</span>
-          @if (store.guildMode() === 'creating') {
-            <span [translate]="'Companions.NewGuild'"></span>
-          } @else {
-            <span [translate]="'Guilds.FormEditTitle'"></span>
-          }
-        </div>
+    <!-- Creating / Editing mode: form fields -->
+    @if (store.isFormVisible()) {
+      <div class="guild-container-header">
+        <span>🌱</span>
+        @if (store.editingBedName()) {
+          <span>{{ store.editingBedName() }}</span>
+        } @else if (store.guildMode() === 'creating') {
+          <span [translate]="'Companions.NewGuild'"></span>
+        } @else {
+          <span [translate]="'Guilds.FormEditTitle'"></span>
+        }
+      </div>
+      @if (!store.editingBedName()) {
         <div class="guild-form">
           <input
             #guildNameInput
@@ -41,12 +64,16 @@
             (input)="store.guildDescription.set(guildDescInput.value)"></textarea>
         </div>
       }
+
+      @if (store.selectedPlants().length < 2) {
+        <div style="padding: 0.75rem 1.25rem; margin: 0.5rem 1rem; border-radius: 0.5rem; background: #e3f2fd; border: 1px solid #90caf9; color: #1565c0; font-size: 0.8125rem">
+          {{ 'Guilds.MinPlantsHint' | translate }}
+        </div>
+      }
     }
 
     <!-- Plant detail panel -->
     <app-plant-detail-panel></app-plant-detail-panel>
-
-
 
     <!-- Shared association panel -->
     @if (store.selectedPlants().length >= 2) {
@@ -71,10 +98,17 @@
           <fa-icon [icon]="faPen"></fa-icon>
           <span [translate]="'Guilds.Edit'"></span>
         </button>
-        <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
-          <fa-icon [icon]="faClose"></fa-icon>
-          <span [translate]="'Guilds.Close'"></span>
-        </button>
+        @if (store.editingBedName()) {
+          <button class="btn btn-ghost btn-sm" (click)="store.cancelBedEditing()">
+            <fa-icon [icon]="faClose"></fa-icon>
+            <span [translate]="'Companions.BackToBed'"></span>
+          </button>
+        } @else {
+          <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
+            <fa-icon [icon]="faClose"></fa-icon>
+            <span [translate]="'Guilds.Close'"></span>
+          </button>
+        }
       </div>
     }
 
@@ -98,14 +132,27 @@
     @if (store.isFormVisible() && store.selectedPlants().length > 0) {
       <div class="guild-form-actions">
         <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
-        <button
-          class="btn btn-secondary btn-sm"
-          (click)="store.cancelGuildEditing()"
-          [translate]="'Guilds.FormCancel'">
-        </button>
+        @if (store.editingBedName()) {
+          <button
+            class="btn btn-secondary btn-sm"
+            (click)="store.removeAllPlants()"
+            [translate]="'Companions.CancelChanges'">
+          </button>
+          <button
+            class="btn btn-secondary btn-sm"
+            (click)="store.cancelBedEditing()"
+            [translate]="'Companions.BackToBed'">
+          </button>
+        } @else {
+          <button
+            class="btn btn-secondary btn-sm"
+            (click)="store.cancelGuildEditing()"
+            [translate]="'Guilds.FormCancel'">
+          </button>
+        }
         <button
           class="btn btn-primary btn-sm"
-          [disabled]="!store.guildName() || store.guildSaving()"
+          [disabled]="!store.guildName() || store.guildSaving() || store.selectedPlants().length < 2"
           (click)="store.saveGuild()">
           {{ (store.guildSaving() ? 'Guilds.Saving' : 'Guilds.FormSave') | translate }}
         </button>
@@ -123,7 +170,7 @@
         }
         <span class="plant-count">{{ 'Guilds.PanelCount' | translate:{ count: guildPanel.filteredGuilds().length } }}</span>
       </div>
-      <div collapsible-body>
+      <div collapsible-body class="collapsible-body-padded">
         <app-guild-panel #guildPanel></app-guild-panel>
       </div>
     </app-collapsible>

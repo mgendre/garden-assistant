@@ -45,7 +45,7 @@
       @if (row.satisfied) {
         <div class="assistant-provider-badges">
           @for (plant of row.providers; track plant.id) {
-            <span class="assistant-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
+            <app-plant-badge [plant]="plant" [central]="store.isCentralPlant(plant.id)"></app-plant-badge>
           }
         </div>
       }

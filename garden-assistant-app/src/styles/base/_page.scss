@@ -18,3 +18,12 @@
   @apply text-sm mt-1;
   color: var(--color-text-muted);
 }
+
+.page-toolbar {
+  @apply flex items-center justify-between gap-3 mb-5;
+}
+
+.content-list {
+  @apply flex flex-col gap-4;
+}
+

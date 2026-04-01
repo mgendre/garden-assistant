@@ -2,6 +2,8 @@ import { Component, inject, OnInit, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faHeart, faSeedling, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { CalendarStore } from '../../shared/services/calendar.store';
 import { PlantStore } from '../../shared/services/plant.store';
 import { PlantCalendarGantt } from '../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
@@ -16,7 +18,7 @@ import { ACTION_TYPE_CONFIGS, FILTER_CONFIGS } from '../../shared/constants/plan
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [TranslateModule, RouterLink, PlantCalendarGantt, CalendarThisMonth],
+  imports: [TranslateModule, RouterLink, FontAwesomeModule, PlantCalendarGantt, CalendarThisMonth],
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss'
 })
@@ -26,17 +28,17 @@ export class Calendar implements OnInit {
   private readonly dialog = inject(MatDialog);
   private readonly calendarService = inject(CalendarService);
 
+  protected readonly faHeart = faHeart;
+  protected readonly faSeedling = faSeedling;
+  protected readonly faLayerGroup = faLayerGroup;
   protected readonly filters = FILTER_CONFIGS;
   protected readonly monthLabels = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   protected readonly currentMonthIndex = new Date().getMonth();
 
   protected readonly availableFilterKeys = computed(() => {
-    const data = this.store.calendarData();
-    if (!data?.plants) {
-      return new Set<string>();
-    }
+    const plants = this.store.allCalendarPlants();
     const allTypes = new Set<PlantActionType>();
-    for (const plant of data.plants) {
+    for (const plant of plants) {
       for (const action of plant.actions ?? []) {
         if (action.actionType !== undefined) {
           allTypes.add(action.actionType);

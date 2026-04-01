@@ -1,3 +1,16 @@
+<!-- Plant cards -->
+@if (showPlantCards() && plants().length > 0) {
+  <div class="plant-list">
+    @for (plant of plants(); track plant.id) {
+      <app-plant-card
+        [plant]="plant"
+        [hideFavButton]="true"
+        [showCentralIndicator]="centralPlantIds().has(plant.id!)">
+      </app-plant-card>
+    }
+  </div>
+}
+
 <!-- Associations detail -->
 @if (associations().length > 0) {
   <div class="panel-section">
@@ -20,7 +33,7 @@
           }
         </div>
       </div>
-      <div collapsible-body>
+      <div collapsible-body class="collapsible-body-padded">
         @if (hasHarmfulAssociations()) {
           <div class="association-alert">
             <span>⚠️</span>
@@ -57,7 +70,7 @@
 <!-- Guild assistant: mechanism overview -->
 @if (plants().length >= 2) {
   <div class="panel-section">
-    <app-collapsible [initialExpanded]="true">
+    <app-collapsible>
       <div collapsible-header class="section-header section-header--assistant">
         <span class="section-header-label">
           <span>🌱</span>
@@ -79,7 +92,7 @@
           }
         </div>
       </div>
-      <div collapsible-body>
+      <div collapsible-body class="collapsible-body-padded">
         @if (waterConflict(); as conflict) {
           <div class="assistant-warning assistant-warning--water">
             <div class="assistant-warning-header">
@@ -128,7 +141,7 @@
               <span class="mechanism-providers">
                 @if (row.satisfied) {
                   @for (plant of row.providers; track plant.id) {
-                    <span class="mechanism-provider-badge" (click)="openPlantDetail(plant)">{{ plant.name }}</span>
+                    <app-plant-badge [plant]="plant" [central]="centralPlantIds().has(plant.id!)"></app-plant-badge>
                   }
                 } @else {
                   <span class="mechanism-provider-empty">—</span>
@@ -139,7 +152,7 @@
         </div>
 
         <div class="stratification-divider">
-          <div class="section-sublabel" [translate]="'GuildAssistant.SectionRootDepth'"></div>
+          <div class="section-divider-title" [translate]="'GuildAssistant.SectionRootDepth'"></div>
           <app-root-stratification
             [rootDepthGroups]="rootDepthGroups()"
             [rootDepthFilter]="store.rootDepthFilter()"
@@ -160,7 +173,7 @@
         <span>📅</span>
         <span [translate]="'Calendar.Title'"></span>
       </div>
-      <div collapsible-body>
+      <div collapsible-body class="collapsible-body-padded">
         @for (entry of calendarEntries(); track entry.plantId; let first = $first; let last = $last; let idx = $index) {
           <div class="calendar-plant" [class.calendar-plant--separator]="!last">
             <app-plant-calendar-gantt
