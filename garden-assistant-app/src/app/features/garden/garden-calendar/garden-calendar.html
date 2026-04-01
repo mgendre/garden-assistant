@@ -45,7 +45,8 @@
                     [frostSensitive]="entry.frostSensitive"
                     [showHeader]="first"
                     [plantName]="entry.name"
-                    [oddPlant]="idx % 2 === 1">
+                    [oddPlant]="idx % 2 === 1"
+                    (plantNameClick)="openPlantDetail(entry.plantId)">
                   </app-plant-calendar-gantt>
                 </div>
               }
@@ -60,7 +61,8 @@
                 [frostSensitive]="entry.frostSensitive"
                 [showHeader]="first"
                 [plantName]="entry.name"
-                [oddPlant]="idx % 2 === 1">
+                [oddPlant]="idx % 2 === 1"
+                (plantNameClick)="openPlantDetail(entry.plantId)">
               </app-plant-calendar-gantt>
             </div>
           }
