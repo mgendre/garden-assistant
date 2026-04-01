@@ -342,16 +342,16 @@
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-300](epics/E19-dette-technique/US-300-dialog-service.md) | DialogService — Centraliser l'ouverture des dialogs | Indispensable | 3 | A faire |
-| [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | A faire |
-| [US-302](epics/E19-dette-technique/US-302-composant-toggle-group.md) | Composant `<app-toggle-group>` réutilisable | Important | 2 | A faire |
-| [US-303](epics/E19-dette-technique/US-303-utilitaires-tri-partages.md) | Extraire les utilitaires de tri partagés | Important | 1 | A faire |
-| [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | A faire |
-| [US-305](epics/E19-dette-technique/US-305-refactoring-css-scss.md) | Refactoring CSS/SCSS — Variables et factorisation | Important | 3 | A faire |
+| [US-300](epics/E19-dette-technique/US-300-dialog-service.md) | DialogService — Centraliser l'ouverture des dialogs | Indispensable | 3 | ✅ Terminé |
+| [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | À faire |
+| [US-302](epics/E19-dette-technique/US-302-composant-toggle-group.md) | Composant `<app-toggle-group>` réutilisable | Important | 2 | À faire |
+| [US-303](epics/E19-dette-technique/US-303-utilitaires-tri-partages.md) | Extraire les utilitaires de tri partagés | Important | 1 | ✅ Terminé |
+| [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | À faire |
+| [US-305](epics/E19-dette-technique/US-305-refactoring-css-scss.md) | Refactoring CSS/SCSS — Variables et factorisation | Important | 3 | À faire |
 
-**Total E19 : 12 points (0 Termine / 12 A faire)**
+**Total E19 : 12 points (4 Terminé / 8 À faire)**
 
-> Ordre de livraison recommande : US-300, US-301 et US-303 en parallele (independantes) → US-302 → US-304 → US-305 (US-304 doit preceder US-305 pour les bannières inline). US-303 peut etre livree a tout moment.
+> Prochain : US-305 (refactoring CSS) — les couleurs en dur et styles inline sont le problème le plus visible. US-301 et US-302 peuvent suivre en parallèle.
 
 ---
 
@@ -359,7 +359,7 @@
 
 | Epique | Points | Termine | En cours | A faire |
 |--------|--------|---------|----------|---------|
-| E01 — Gestion des jardins et planches | 31 | 0 | 8 | 23 |
+| E01 — Gestion des jardins et planches | 34 | 34 | 0 | 0 |
 | E02 — Associations vegetales (residuel) | 8 | 0 | 0 | 8 |
 | E03 — Editeur graphique du jardin | 39 | 0 | 0 | 39 |
 | E04 — Gestion des rotations de cultures | 30 | 0 | 0 | 30 |
@@ -377,9 +377,9 @@
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
-| E19 — Dette technique frontend | 12 | 0 | 0 | 12 |
-| **Total (actif)** | **410** | **126** | **8** | **276** |
+| E19 — Dette technique frontend | 12 | 4 | 0 | 8 |
+| **Total (actif)** | **413** | **164** | **0** | **249** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31 (ajout E19 dette technique frontend, US-300 a US-305)*
+*Backlog géré par l'agent Product Owner — dernière mise à jour : 2026-04-01 (US-300 et US-303 terminés, E01 complet)*

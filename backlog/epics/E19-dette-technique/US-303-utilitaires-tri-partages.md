@@ -20,4 +20,9 @@
 ### Estimation
 - **Priorité :** Important
 - **Points :** 1
-- **Statut :** A faire
+- **Statut :** Terminé
+
+### Livré
+- `getEarliestHalfMonth()` extrait dans `shared/constants/plant-action.constants.ts` — remplace 4 copies privées (bed-panel, garden-calendar, guild-editor, calendar.store)
+- `sortMechanisms()` extrait comme méthode privée dans `CompanionStore` — remplace 5 copies inline
+- `sortByNameFr` non extrait en utilitaire car trop simple (1 ligne), laissé inline
