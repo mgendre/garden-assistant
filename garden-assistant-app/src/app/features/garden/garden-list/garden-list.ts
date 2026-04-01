@@ -23,7 +23,9 @@ export class GardenList {
   private readonly translate = inject(TranslateService);
   protected readonly faPlus = faPlus;
 
-  readonly gardens = computed(() => this.store.gardens());
+  readonly gardens = computed(() =>
+    [...this.store.gardens()].sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'))
+  );
   readonly isEmpty = computed(() => this.gardens().length === 0 && !this.store.loading());
 
   openGarden(garden: GardenDto): void {
