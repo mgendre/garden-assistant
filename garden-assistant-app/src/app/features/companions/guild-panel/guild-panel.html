@@ -11,10 +11,12 @@
       [guild]="guild"
       [showOpenButton]="true"
       [showPlantAdd]="true"
+      [showAddAll]="true"
       (view)="viewGuild(guild)"
       (edit)="editGuild(guild)"
       (plantClick)="showPlantDetail($event)"
-      (plantAdd)="addPlant($event)">
+      (plantAdd)="addPlant($event)"
+      (addAllPlants)="addAllPlantsFromGuild(guild)">
     </app-guild-card>
   }
 

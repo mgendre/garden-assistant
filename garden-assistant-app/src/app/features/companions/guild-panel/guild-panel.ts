@@ -72,4 +72,15 @@ export class GuildPanel {
       this.store.addPlant(plant);
     }
   }
+
+  addAllPlantsFromGuild(guild: GuildDto): void {
+    for (const guildPlant of guild.plants ?? []) {
+      if (guildPlant.id) {
+        const plant = this.plantStore.findById(guildPlant.id);
+        if (plant) {
+          this.store.addPlant(plant);
+        }
+      }
+    }
+  }
 }

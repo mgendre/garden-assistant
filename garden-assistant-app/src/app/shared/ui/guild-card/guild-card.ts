@@ -21,8 +21,10 @@ export class GuildCard {
   @Output() view = new EventEmitter<void>();
   @Output() edit = new EventEmitter<void>();
   @Output() delete = new EventEmitter<void>();
+  @Input() showAddAll = false;
   @Output() plantClick = new EventEmitter<string>();
   @Output() plantAdd = new EventEmitter<string>();
+  @Output() addAllPlants = new EventEmitter<void>();
 
   protected readonly faPen = faPen;
   protected readonly faTrash = faTrash;
