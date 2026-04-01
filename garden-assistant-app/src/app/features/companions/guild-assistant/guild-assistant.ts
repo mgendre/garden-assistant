@@ -5,6 +5,7 @@ import { CompanionStore, PRIORITY_MECHANISMS } from '../../../shared/services/co
 import { AssociationMechanism, PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { PlantBadge } from '../../../shared/ui/plant-badge/plant-badge';
 import { RootStratification } from '../root-stratification/root-stratification';
 
 interface MechanismRow {
@@ -17,7 +18,7 @@ interface MechanismRow {
 @Component({
   selector: 'app-guild-assistant',
   standalone: true,
-  imports: [TranslateModule, RootStratification],
+  imports: [TranslateModule, PlantBadge, RootStratification],
   templateUrl: './guild-assistant.html',
   styleUrl: './guild-assistant.scss'
 })
