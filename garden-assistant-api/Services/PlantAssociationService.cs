@@ -99,13 +99,14 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             .Where(p => p.Mechanisms.Count > 0)
             .ToList();
 
+        var candidateById = candidates.ToDictionary(c => c.Id);
+
         var intrinsicMechanismsByPlant = selectedPlantIds
             .Select(plantId =>
             {
-                var plant = candidates.FirstOrDefault(c => c.Id == plantId);
-                var mechanisms = plant?.IntrinsicMechanisms
-                    .Select(im => im.Mechanism)
-                    .ToList() ?? [];
+                var mechanisms = candidateById.TryGetValue(plantId, out var plant)
+                    ? plant.IntrinsicMechanisms.Select(im => im.Mechanism).ToList()
+                    : [];
                 return new PlantMechanismsDto(plantId, mechanisms);
             })
             .Where(p => p.Mechanisms.Count > 0)

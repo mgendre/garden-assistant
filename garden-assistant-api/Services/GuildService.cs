@@ -71,14 +71,6 @@ public class GuildService(AppDbContext dbContext) : IGuildService
 
     public async Task<GuildDto> CreateAsync(CreateGuildRequest request, Guid userId)
     {
-        var plantIds = request.Plants.Select(p => p.PlantId).ToList();
-        var validPlantIds = await dbContext.Plants
-            .Where(p => plantIds.Contains(p.Id))
-            .Select(p => p.Id)
-            .ToListAsync();
-
-        var roleByPlantId = request.Plants.ToDictionary(p => p.PlantId, p => p.Role ?? GuildPlantRole.Companion);
-
         var guild = new Guild
         {
             Id = Guid.NewGuid(),
@@ -88,17 +80,7 @@ public class GuildService(AppDbContext dbContext) : IGuildService
         };
 
         dbContext.Guilds.Add(guild);
-
-        foreach (var plantId in validPlantIds)
-        {
-            dbContext.GuildPlants.Add(new GuildPlant
-            {
-                GuildId = guild.Id,
-                PlantId = plantId,
-                Role = roleByPlantId.GetValueOrDefault(plantId, GuildPlantRole.Companion)
-            });
-        }
-
+        await AddGuildPlantsAsync(guild.Id, request.Plants);
         await dbContext.SaveChangesAsync();
 
         return await GetByIdAsync(guild.Id, userId) ?? throw new InvalidOperationException("Guild not found after creation.");
@@ -123,25 +105,7 @@ public class GuildService(AppDbContext dbContext) : IGuildService
             .ToListAsync();
 
         dbContext.GuildPlants.RemoveRange(existingPlants);
-
-        var plantIds = request.Plants.Select(p => p.PlantId).ToList();
-        var validPlantIds = await dbContext.Plants
-            .Where(p => plantIds.Contains(p.Id))
-            .Select(p => p.Id)
-            .ToListAsync();
-
-        var roleByPlantId = request.Plants.ToDictionary(p => p.PlantId, p => p.Role ?? GuildPlantRole.Companion);
-
-        foreach (var plantId in validPlantIds)
-        {
-            dbContext.GuildPlants.Add(new GuildPlant
-            {
-                GuildId = guild.Id,
-                PlantId = plantId,
-                Role = roleByPlantId.GetValueOrDefault(plantId, GuildPlantRole.Companion)
-            });
-        }
-
+        await AddGuildPlantsAsync(guild.Id, request.Plants);
         await dbContext.SaveChangesAsync();
 
         return await GetByIdAsync(guild.Id, userId);
@@ -161,5 +125,27 @@ public class GuildService(AppDbContext dbContext) : IGuildService
         dbContext.Guilds.Remove(guild);
         await dbContext.SaveChangesAsync();
         return true;
+    }
+
+    private async Task AddGuildPlantsAsync(Guid guildId, IEnumerable<GuildPlantRequest> plants)
+    {
+        var plantRequests = plants.ToList();
+        var plantIds = plantRequests.Select(p => p.PlantId).ToList();
+        var validPlantIds = await dbContext.Plants
+            .Where(p => plantIds.Contains(p.Id))
+            .Select(p => p.Id)
+            .ToListAsync();
+
+        var roleByPlantId = plantRequests.ToDictionary(p => p.PlantId, p => p.Role ?? GuildPlantRole.Companion);
+
+        foreach (var plantId in validPlantIds)
+        {
+            dbContext.GuildPlants.Add(new GuildPlant
+            {
+                GuildId = guildId,
+                PlantId = plantId,
+                Role = roleByPlantId.GetValueOrDefault(plantId, GuildPlantRole.Companion)
+            });
+        }
     }
 }

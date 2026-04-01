@@ -20,24 +20,20 @@ public class AuthService(AppDbContext db, IConfiguration configuration) : IAuthS
 
     public async Task<(string accessToken, string refreshToken)?> RefreshAsync(string refreshToken)
     {
-        var stored = await db.RefreshTokens
-            .FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.ExpiresAt > DateTime.UtcNow);
+        var result = await db.RefreshTokens
+            .Where(rt => rt.Token == refreshToken && rt.ExpiresAt > DateTime.UtcNow)
+            .Join(db.Users, rt => rt.UserId, u => u.Id, (rt, u) => new { Token = rt, User = u })
+            .FirstOrDefaultAsync();
 
-        if (stored is null)
+        if (result is null)
         {
             return null;
         }
 
-        var user = await db.Users.FindAsync(stored.UserId);
-        if (user is null)
-        {
-            return null;
-        }
-
-        db.RefreshTokens.Remove(stored);
+        db.RefreshTokens.Remove(result.Token);
         await db.SaveChangesAsync();
 
-        return await CreateTokensAsync(user);
+        return await CreateTokensAsync(result.User);
     }
     
     private async Task<(string accessToken, string refreshToken)> CreateTokensAsync(User user)
