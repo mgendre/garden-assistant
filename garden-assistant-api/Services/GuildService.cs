@@ -11,8 +11,14 @@ public class GuildService(AppDbContext dbContext) : IGuildService
 {
     public async Task<IEnumerable<GuildDto>> GetAllAsync(Guid userId)
     {
+        var bedGuildIds = await dbContext.Plantings
+            .Where(p => p.GuildId != null)
+            .Select(p => p.GuildId!.Value)
+            .Distinct()
+            .ToListAsync();
+
         var guilds = await dbContext.Guilds
-            .Where(g => g.UserId == null || g.UserId == userId)
+            .Where(g => (g.UserId == null || g.UserId == userId) && !bedGuildIds.Contains(g.Id))
             .OrderBy(g => g.Name)
             .ToListAsync();
 
