@@ -351,7 +351,7 @@
 
 **Total E19 : 12 points (6 Terminé / 6 À faire)**
 
-> Prochain : US-305 (refactoring CSS) — les couleurs en dur et styles inline sont le problème le plus visible. US-301 et US-302 peuvent suivre en parallèle.
+> Prochain recommandé : US-305 (refactoring CSS) puis US-302 (toggle group) et US-304 (info banner).
 
 ---
 
@@ -377,9 +377,9 @@
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
-| E19 — Dette technique frontend | 12 | 4 | 0 | 8 |
-| **Total (actif)** | **413** | **164** | **0** | **249** |
+| E19 — Dette technique frontend | 12 | 6 | 0 | 6 |
+| **Total (actif)** | **413** | **166** | **0** | **247** |
 
 ---
 
-*Backlog géré par l'agent Product Owner — dernière mise à jour : 2026-04-01 (US-300 et US-303 terminés, E01 complet)*
+*Backlog géré par l'agent Product Owner — dernière mise à jour : 2026-04-01 (US-300, US-301, US-303 terminés, E01 complet)*
