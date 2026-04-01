@@ -1,7 +1,7 @@
 <div class="guilds-column flex-col">
   @if (store.editingBedName()) {
-    <div class="panel" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: var(--color-info-bg); border-color: var(--color-info-border)">
-      <span class="text-sm font-medium" style="color: var(--color-info)">
+    <div class="panel" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; background: #e3f2fd; border-color: #90caf9">
+      <span class="text-sm font-medium" style="color: #1565c0">
         🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
       </span>
       <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()">
