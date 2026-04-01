@@ -1,11 +1,11 @@
-@if (store.selectedPlants().length === 0) {
+@if (store.selectedPlants().length === 0 && !store.isFormVisible()) {
   <div class="panel center-panel">
     <div class="empty-state">
       <div class="empty-state-icon">🌱</div>
       <p class="empty-state-text" [translate]="'Companions.SelectPlant'"></p>
     </div>
   </div>
-} @else {
+} @else if (store.selectedPlants().length > 0) {
   <div class="plants-scroll">
     @for (plant of store.sortedSelectedPlants(); track plant.id) {
       <div class="plant-detail" [class.plant-detail--central]="store.isCentralPlant(plant.id)">
