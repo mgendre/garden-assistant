@@ -330,8 +330,9 @@
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
 | [US-200](epics/E17-page-accueil/US-200-page-accueil.md) | Page d'accueil avec jardins, actions, raccourcis et plante du jour | Indispensable | 8 | A faire |
+| [US-201](epics/E17-page-accueil/US-201-conseils-saisonniers.md) | Conseils permaculturels saisonniers par demi-mois | Important | 5 | A faire |
 
-**Total E18 : 8 points (0 Termine / 8 A faire)**
+**Total E18 : 13 points (0 Termine / 13 A faire)**
 
 ---
 
@@ -356,9 +357,9 @@
 | E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
-| E18 — Page d'accueil / tableau de bord | 8 | 0 | 0 | 8 |
-| **Total (actif)** | **393** | **126** | **8** | **259** |
+| E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
+| **Total (actif)** | **398** | **126** | **8** | **264** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31 (ajout US-201)*
