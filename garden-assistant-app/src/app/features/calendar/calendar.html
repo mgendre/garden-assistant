@@ -33,7 +33,7 @@
           <button class="btn btn-xs border-0" style="border-radius: 0"
             [class.btn-primary]="store.sourceFilter() === 'myPlants'"
             [class.btn-ghost]="store.sourceFilter() !== 'myPlants'"
-            (click)="store.sourceFilter.set('myPlants')">
+            (click)="store.sourceFilter.set('myPlants'); store.grouping.set('flat')">
             <fa-icon [icon]="faHeart" size="xs"></fa-icon>
             <span [translate]="'Calendar.MyPlantsOnly'"></span>
           </button>
@@ -47,6 +47,7 @@
         </div>
 
         <!-- Grouping toggle -->
+        @if (store.sourceFilter() !== 'myPlants') {
         <div style="display: inline-flex; border-radius: 0.375rem; border: 1px solid var(--color-border); margin-right: 0.25rem">
           <button class="btn btn-xs rounded-r-none border-0"
             [class.btn-primary]="store.grouping() === 'flat'"
@@ -62,6 +63,7 @@
             <span [translate]="'Calendar.ByGarden'"></span>
           </button>
         </div>
+        }
 
         <!-- Action type filters -->
         @for (filter of filters; track filter.key) {
