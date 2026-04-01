@@ -101,7 +101,7 @@ export class GardenCalendar {
         });
       };
 
-      const flat: PlantCalendarEntry[] = [];
+      const flat = new Map<string, PlantCalendarEntry>();
       const groups: BedCalendarGroup[] = [];
 
       for (const bed of beds) {
@@ -110,7 +110,9 @@ export class GardenCalendar {
           const entry = buildEntry(plantId);
           if (entry) {
             bedEntries.push(entry);
-            flat.push(entry);
+            if (!flat.has(plantId)) {
+              flat.set(plantId, entry);
+            }
           }
         }
         if (bedEntries.length > 0) {
@@ -118,7 +120,7 @@ export class GardenCalendar {
         }
       }
 
-      this.allEntries.set(sortEntries(flat));
+      this.allEntries.set(sortEntries([...flat.values()]));
       this.bedGroups.set(groups);
     } finally {
       this.loading.set(false);
