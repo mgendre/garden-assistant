@@ -346,12 +346,12 @@
 | [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | ✅ Terminé |
 | [US-302](epics/E19-dette-technique/US-302-composant-toggle-group.md) | Composant `<app-toggle-group>` réutilisable | Important | 2 | À faire |
 | [US-303](epics/E19-dette-technique/US-303-utilitaires-tri-partages.md) | Extraire les utilitaires de tri partagés | Important | 1 | ✅ Terminé |
-| [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | À faire |
+| [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | ✅ Terminé |
 | [US-305](epics/E19-dette-technique/US-305-refactoring-css-scss.md) | Refactoring CSS/SCSS — Variables et factorisation | Important | 3 | À faire |
 
-**Total E19 : 12 points (6 Terminé / 6 À faire)**
+**Total E19 : 12 points (7 Terminé / 5 À faire)**
 
-> Prochain recommandé : US-305 (refactoring CSS) puis US-302 (toggle group) et US-304 (info banner).
+> Restant : US-302 (toggle group, 2 pts) et US-305 (refactoring CSS, 3 pts).
 
 ---
 
@@ -377,8 +377,8 @@
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
-| E19 — Dette technique frontend | 12 | 6 | 0 | 6 |
-| **Total (actif)** | **413** | **166** | **0** | **247** |
+| E19 — Dette technique frontend | 12 | 7 | 0 | 5 |
+| **Total (actif)** | **413** | **167** | **0** | **246** |
 
 ---
 
