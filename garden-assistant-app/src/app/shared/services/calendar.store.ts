@@ -4,6 +4,8 @@ import {
   CalendarPlantDto,
   PlantActionType,
   HarvestReadinessDto,
+  BedDto,
+  GardenDto,
 } from '../../api/garden-assistant-api';
 import { CalendarService } from './calendar.service';
 import { PlantStore } from './plant.store';
@@ -11,6 +13,19 @@ import { GardenService } from './garden.service';
 import { GardenStore } from './garden.store';
 import { MyPlantsStore } from './my-plants.store';
 import { FILTER_CONFIGS, SOWING_ACTIONS } from '../constants/plant-action.constants';
+
+export type PlantSourceFilter = 'all' | 'myPlants' | 'gardenPlants';
+export type CalendarGrouping = 'flat' | 'byGarden';
+
+export interface GardenCalendarGroup {
+  gardenName: string;
+  plants: CalendarPlantDto[];
+}
+
+interface GardenBedData {
+  garden: GardenDto;
+  beds: BedDto[];
+}
 
 @Injectable({ providedIn: 'root' })
 export class CalendarStore {
@@ -22,9 +37,11 @@ export class CalendarStore {
 
   readonly calendarData = signal<CalendarDto | null>(null);
   readonly gardenCalendarPlants = signal<CalendarPlantDto[]>([]);
+  readonly gardenBedData = signal<GardenBedData[]>([]);
   readonly loading = signal(false);
   readonly activeFilterKey = signal<string | null>(null);
-  readonly myPlantsOnly = signal(false);
+  readonly sourceFilter = signal<PlantSourceFilter>('all');
+  readonly grouping = signal<CalendarGrouping>('flat');
 
   readonly allCalendarPlants = computed<CalendarPlantDto[]>(() => {
     const myPlants = this.calendarData()?.plants ?? [];
@@ -49,6 +66,18 @@ export class CalendarStore {
     return merged;
   });
 
+  private readonly gardenPlantIds = computed<Set<string>>(() => {
+    const ids = new Set<string>();
+    for (const gbd of this.gardenBedData()) {
+      for (const bed of gbd.beds) {
+        for (const id of bed.plantIds ?? []) {
+          ids.add(String(id));
+        }
+      }
+    }
+    return ids;
+  });
+
   readonly activeActionTypes = computed<PlantActionType[]>(() => {
     const key = this.activeFilterKey();
     if (key === null) {
@@ -60,11 +89,81 @@ export class CalendarStore {
   readonly filteredPlants = computed<CalendarPlantDto[]>(() => {
     let plants = this.allCalendarPlants();
 
-    if (this.myPlantsOnly()) {
+    const source = this.sourceFilter();
+    if (source === 'myPlants') {
       const myIds = this.myPlantsStore.plantIds();
       plants = plants.filter(p => myIds.has(p.plantId));
+    } else if (source === 'gardenPlants') {
+      const gardenIds = this.gardenPlantIds();
+      plants = plants.filter(p => gardenIds.has(p.plantId!));
     }
 
+    return this.sortAndFilterByAction(plants);
+  });
+
+  readonly gardenGroups = computed<GardenCalendarGroup[]>(() => {
+    const calendarMap = new Map<string, CalendarPlantDto>();
+    for (const p of this.allCalendarPlants()) {
+      if (p.plantId) {
+        calendarMap.set(p.plantId, p);
+      }
+    }
+
+    const filterTypes = this.activeActionTypes();
+    const groups: GardenCalendarGroup[] = [];
+
+    for (const gbd of this.gardenBedData()) {
+      const plantIds = new Set<string>();
+      for (const bed of gbd.beds) {
+        for (const id of bed.plantIds ?? []) {
+          plantIds.add(String(id));
+        }
+      }
+
+      let plants: CalendarPlantDto[] = [];
+      for (const id of plantIds) {
+        const cp = calendarMap.get(id);
+        if (cp) {
+          plants.push(cp);
+        }
+      }
+
+      plants = this.sortAndFilterByAction(plants);
+
+      if (plants.length > 0) {
+        groups.push({ gardenName: gbd.garden.name ?? '', plants });
+      }
+    }
+
+    return groups.sort((a, b) => a.gardenName.localeCompare(b.gardenName, 'fr'));
+  });
+
+  async loadCalendar(): Promise<void> {
+    this.loading.set(true);
+    try {
+      const [myPlantsData] = await Promise.all([
+        this.calendarService.getMyPlantsCalendar(),
+        this.loadGardenPlants(),
+      ]);
+      this.calendarData.set(myPlantsData);
+    } finally {
+      this.loading.set(false);
+    }
+  }
+
+  async loadHarvestReadiness(plantId: string): Promise<HarvestReadinessDto | null> {
+    return this.calendarService.getHarvestReadiness(plantId);
+  }
+
+  toggleFilter(filterKey: string): void {
+    this.activeFilterKey.update(current => current === filterKey ? null : filterKey);
+  }
+
+  isFilterActive(filterKey: string): boolean {
+    return this.activeFilterKey() === filterKey;
+  }
+
+  private sortAndFilterByAction(plants: CalendarPlantDto[]): CalendarPlantDto[] {
     const filterTypes = this.activeActionTypes();
 
     if (filterTypes.length === 0) {
@@ -95,48 +194,24 @@ export class CalendarStore {
         const firstB = this.getEarliestHalfMonth(b, filterTypes);
         return firstA - firstB;
       });
-  });
-
-  async loadCalendar(): Promise<void> {
-    this.loading.set(true);
-    try {
-      const [myPlantsData] = await Promise.all([
-        this.calendarService.getMyPlantsCalendar(),
-        this.loadGardenPlants(),
-      ]);
-      this.calendarData.set(myPlantsData);
-    } finally {
-      this.loading.set(false);
-    }
-  }
-
-  async loadHarvestReadiness(plantId: string): Promise<HarvestReadinessDto | null> {
-    return this.calendarService.getHarvestReadiness(plantId);
-  }
-
-  toggleFilter(filterKey: string): void {
-    this.activeFilterKey.update(current => current === filterKey ? null : filterKey);
-  }
-
-  isFilterActive(filterKey: string): boolean {
-    return this.activeFilterKey() === filterKey;
-  }
-
-  toggleMyPlantsOnly(): void {
-    this.myPlantsOnly.update(v => !v);
   }
 
   private async loadGardenPlants(): Promise<void> {
-    const beds = this.gardenStore.beds();
     const allGardens = this.gardenStore.gardens();
 
     if (allGardens.length === 0) {
       this.gardenCalendarPlants.set([]);
+      this.gardenBedData.set([]);
       return;
     }
 
     const allPlantIds = new Set<string>();
-    if (beds.length > 0) {
+    const bedData: GardenBedData[] = [];
+
+    for (const garden of allGardens) {
+      if (!garden.id) { continue; }
+      const beds = await this.gardenService.getBeds(garden.id);
+      bedData.push({ garden, beds });
       for (const bed of beds) {
         for (const id of bed.plantIds ?? []) {
           allPlantIds.add(String(id));
@@ -144,17 +219,7 @@ export class CalendarStore {
       }
     }
 
-    if (allPlantIds.size === 0) {
-      for (const garden of allGardens) {
-        if (!garden.id) { continue; }
-        const gardenBeds = await this.gardenService.getBeds(garden.id);
-        for (const bed of gardenBeds) {
-          for (const id of bed.plantIds ?? []) {
-            allPlantIds.add(String(id));
-          }
-        }
-      }
-    }
+    this.gardenBedData.set(bedData);
 
     if (allPlantIds.size === 0) {
       this.gardenCalendarPlants.set([]);
