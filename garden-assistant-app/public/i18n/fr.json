@@ -223,7 +223,7 @@
   "Guild": {
     "CentralPlant": "Plante centrale",
     "Companion": "Compagne",
-    "CentralPlantHint": "Désignez une ou plusieurs plantes centrales autour desquelles votre guilde est construite.",
+    "CentralPlantHint": "Désignez une ou plusieurs plantes centrales autour desquelles votre composition est construite.",
     "ToggleCentral": "Marquer comme plante centrale",
     "ToggleCompanion": "Retirer le statut de plante centrale",
     "Beneficial": "bénéfiques",
