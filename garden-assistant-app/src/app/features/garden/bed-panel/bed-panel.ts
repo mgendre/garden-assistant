@@ -176,6 +176,8 @@ export class BedPanel implements OnInit {
             : this.translate.instant('Bed.ConfirmDeleteMessage', { name: this.bed().name }),
           confirmLabel: this.translate.instant('Bed.Delete'),
         },
+        maxWidth: '400px',
+        width: '90vw',
       }).afterClosed()
     );
     if (confirmed) {

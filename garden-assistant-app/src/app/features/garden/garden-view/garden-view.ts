@@ -86,6 +86,8 @@ export class GardenView implements OnInit {
           message: this.translate.instant('Garden.ConfirmDeleteMessage', { name: g.name }),
           confirmLabel: this.translate.instant('Garden.Delete'),
         },
+        maxWidth: '400px',
+        width: '90vw',
       }).afterClosed()
     );
     if (confirmed) {
