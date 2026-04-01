@@ -24,26 +24,32 @@
     </div>
   }
 
-  <div class="content-list">
-    @for (garden of gardens(); track garden.id) {
-      <div class="panel cursor-pointer"
-        (click)="openGarden(garden)"
-        (keydown.enter)="openGarden(garden)"
-        tabindex="0"
-        role="link"
-        [attr.aria-label]="garden.name">
-        <div class="p-4 min-w-0">
-          <div class="flex items-center gap-2">
-            <span class="font-medium truncate">{{ garden.name }}</span>
-            <span class="text-xs" style="color: var(--color-text-muted)">
-              ({{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }})
-            </span>
+  @if (gardens().length > 0) {
+    <div class="panel">
+      @for (garden of gardens(); track garden.id; let last = $last) {
+        <div class="cursor-pointer"
+          [style.border-bottom]="last ? 'none' : '1px solid var(--color-border-subtle)'"
+          style="transition: background var(--transition-fast)"
+          (mouseenter)="$any($event.target).style.background='var(--color-surface-hover)'"
+          (mouseleave)="$any($event.target).style.background='transparent'"
+          (click)="openGarden(garden)"
+          (keydown.enter)="openGarden(garden)"
+          tabindex="0"
+          role="link"
+          [attr.aria-label]="garden.name">
+          <div class="px-5 py-4 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="font-medium truncate">{{ garden.name }}</span>
+              <span class="text-xs" style="color: var(--color-text-muted)">
+                ({{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }})
+              </span>
+            </div>
+            @if (garden.description) {
+              <p class="text-sm mt-1 line-clamp-2" style="color: var(--color-text-muted)">{{ garden.description }}</p>
+            }
           </div>
-          @if (garden.description) {
-            <p class="text-sm mt-1 line-clamp-2" style="color: var(--color-text-muted)">{{ garden.description }}</p>
-          }
         </div>
-      </div>
-    }
-  </div>
+      }
+    </div>
+  }
 </div>
