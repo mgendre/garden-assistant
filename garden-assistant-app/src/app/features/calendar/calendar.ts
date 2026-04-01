@@ -31,12 +31,9 @@ export class Calendar implements OnInit {
   protected readonly currentMonthIndex = new Date().getMonth();
 
   protected readonly availableFilterKeys = computed(() => {
-    const data = this.store.calendarData();
-    if (!data?.plants) {
-      return new Set<string>();
-    }
+    const plants = this.store.allCalendarPlants();
     const allTypes = new Set<PlantActionType>();
-    for (const plant of data.plants) {
+    for (const plant of plants) {
       for (const action of plant.actions ?? []) {
         if (action.actionType !== undefined) {
           allTypes.add(action.actionType);

@@ -7,7 +7,7 @@
     <div class="calendar-loading">
       <div class="calendar-loading-spinner"></div>
     </div>
-  } @else if (store.calendarData()?.plants?.length === 0) {
+  } @else if (store.allCalendarPlants().length === 0) {
     <div class="empty-state">
       <div class="empty-state-icon">📅</div>
       <h3 class="empty-state-title" [translate]="'Calendar.EmptyState'"></h3>
@@ -21,7 +21,21 @@
         <span class="panel-title" [translate]="'Calendar.Title'"></span>
       </div>
 
-      <div class="calendar-filter-chips">
+      <div class="calendar-filter-chips" style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem">
+        <div style="display: inline-flex; border-radius: 0.375rem; border: 1px solid var(--color-border); margin-right: 0.5rem">
+          <button class="btn btn-xs rounded-r-none border-0"
+            [class.btn-primary]="!store.myPlantsOnly()"
+            [class.btn-ghost]="store.myPlantsOnly()"
+            (click)="store.myPlantsOnly.set(false)"
+            [translate]="'Calendar.AllPlants'">
+          </button>
+          <button class="btn btn-xs rounded-l-none border-0"
+            [class.btn-primary]="store.myPlantsOnly()"
+            [class.btn-ghost]="!store.myPlantsOnly()"
+            (click)="store.myPlantsOnly.set(true)"
+            [translate]="'Calendar.MyPlantsOnly'">
+          </button>
+        </div>
         @for (filter of filters; track filter.key) {
           @if (availableFilterKeys().has(filter.key)) {
             <button class="calendar-chip"

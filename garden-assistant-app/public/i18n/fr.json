@@ -515,6 +515,8 @@
   },
   "Calendar": {
     "Title": "Calendrier cultural",
+    "AllPlants": "Toutes les plantes",
+    "MyPlantsOnly": "Mes plantes",
     "PlantDetail": "Calendrier cultural",
     "EmptyState": "Ajoutez des plantes \u00e0 votre liste pour voir leur calendrier cultural",
     "EmptyStateAction": "Parcourir le catalogue",
