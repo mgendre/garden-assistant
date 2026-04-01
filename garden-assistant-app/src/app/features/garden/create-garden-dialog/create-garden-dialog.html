@@ -1,6 +1,6 @@
-<h2 mat-dialog-title [translate]="data.mode === 'create' ? 'Garden.DialogCreateTitle' : 'Garden.DialogEditTitle'"></h2>
-<mat-dialog-content>
-  <div class="flex flex-col gap-4 py-2">
+<h2 class="dialog-header" [translate]="data.mode === 'create' ? 'Garden.DialogCreateTitle' : 'Garden.DialogEditTitle'"></h2>
+<div class="dialog-body">
+  <div class="flex flex-col gap-4">
     <div>
       <label class="block text-sm font-medium mb-1" [translate]="'Garden.NameLabel'"></label>
       <input type="text"
@@ -22,7 +22,7 @@
       </textarea>
     </div>
   </div>
-</mat-dialog-content>
+</div>
 <div class="dialog-footer">
   <button class="btn btn-secondary btn-sm" (click)="cancel()" [translate]="'Garden.Cancel'"></button>
   <button class="btn btn-primary btn-sm" [disabled]="!isValid" (click)="save()"

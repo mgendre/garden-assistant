@@ -1,25 +1,18 @@
-<div style="padding: 1.5rem">
-  <h2 style="margin: 0 0 0.75rem 0; font-size: 1.125rem; font-weight: 600">
-    {{ data.title }}
-  </h2>
-
+<h2 class="dialog-header">{{ data.title }}</h2>
+<div class="dialog-body">
   <p class="text-sm leading-relaxed" style="color: var(--color-text-muted); margin: 0">{{ data.message }}</p>
-
-  <div class="dialog-footer">
-    <button class="btn btn-secondary btn-sm"
-            (click)="cancel()">
-      {{ data.cancelLabel ?? ('ConfirmDialog.Cancel' | translate) }}
+</div>
+<div class="dialog-footer">
+  <button class="btn btn-secondary btn-sm" (click)="cancel()">
+    {{ data.cancelLabel ?? ('ConfirmDialog.Cancel' | translate) }}
+  </button>
+  @if (data.danger) {
+    <button class="btn btn-danger btn-sm" (click)="confirm()">
+      {{ data.confirmLabel ?? ('ConfirmDialog.Confirm' | translate) }}
     </button>
-    @if (data.danger) {
-      <button class="btn btn-danger btn-sm"
-              (click)="confirm()">
-        {{ data.confirmLabel ?? ('ConfirmDialog.Confirm' | translate) }}
-      </button>
-    } @else {
-      <button class="btn btn-primary btn-sm"
-              (click)="confirm()">
-        {{ data.confirmLabel ?? ('ConfirmDialog.Confirm' | translate) }}
-      </button>
-    }
-  </div>
+  } @else {
+    <button class="btn btn-primary btn-sm" (click)="confirm()">
+      {{ data.confirmLabel ?? ('ConfirmDialog.Confirm' | translate) }}
+    </button>
+  }
 </div>

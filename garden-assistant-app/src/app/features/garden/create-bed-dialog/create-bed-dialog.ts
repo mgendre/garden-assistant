@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 
 export interface CreateBedDialogData {
@@ -14,7 +14,7 @@ export interface CreateBedDialogResult {
 @Component({
   selector: 'app-create-bed-dialog',
   standalone: true,
-  imports: [MatDialogModule, TranslateModule],
+  imports: [TranslateModule],
   templateUrl: './create-bed-dialog.html',
 })
 export class CreateBedDialog {

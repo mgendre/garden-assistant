@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 
 export interface CreateGardenDialogData {
@@ -16,7 +16,7 @@ export interface CreateGardenDialogResult {
 @Component({
   selector: 'app-create-garden-dialog',
   standalone: true,
-  imports: [MatDialogModule, TranslateModule],
+  imports: [TranslateModule],
   templateUrl: './create-garden-dialog.html',
 })
 export class CreateGardenDialog {
