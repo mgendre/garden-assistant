@@ -17,5 +17,6 @@ public enum AssociationMechanism
     MicroclimateModification,
     WeedSuppression,
     Biofumigation,
-    NursePlant
+    NursePlant,
+    SharedPathogen
 }

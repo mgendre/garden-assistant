@@ -893,7 +893,6 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 1000,
     "intrinsicMechanisms": [
-      "RootAllelopathy",
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
@@ -2683,5 +2682,37 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true
+  },
+  {
+    "key": "goumi",
+    "name": "Goumi",
+    "scientificName": "Elaeagnus umbellata",
+    "description": "Arbuste fixateur d'azote à fruits comestibles, idéal en haie comestible et forêt-jardin. Ses baies rouge-orangé sont riches en lycopène.",
+    "family": "Elaeagnaceae",
+    "genus": "Elaeagnus",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 300,
+    "rootDepth": "Deep",
+    "sunRequirement": "Partial",
+    "waterNeeds": "Low",
+    "propagationMethod": "Cutting",
+    "frostSensitive": false,
+    "intrinsicMechanisms": ["NitrogenFixation", "PollinatorAttraction"]
+  },
+  {
+    "key": "groseillier-a-maquereau",
+    "name": "Groseillier à maquereau",
+    "scientificName": "Ribes uva-crispa",
+    "description": "Arbuste fruitier épineux produisant des baies acidulées, auto-fertile et tolérant l'ombre partielle. Excellent en sous-étage de verger.",
+    "family": "Grossulariaceae",
+    "genus": "Ribes",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 120,
+    "rootDepth": "Medium",
+    "sunRequirement": "Partial",
+    "waterNeeds": "Moderate",
+    "propagationMethod": "Cutting",
+    "frostSensitive": false,
+    "intrinsicMechanisms": ["PollinatorAttraction"]
   }
 ]

@@ -56,7 +56,7 @@
   {
     "sourcePlantKey": "tomate",
     "targetPlantKey": "pomme-de-terre",
-    "mechanism": "OlfactoryConfusion",
+    "mechanism": "SharedPathogen",
     "effect": "Harmful",
     "distanceEffect": "Short",
     "confidenceLevel": "PeerReviewed",
@@ -3274,5 +3274,41 @@
     "distanceEffect": "Short",
     "confidenceLevel": "PeerReviewed",
     "notes": "La juglone produite par le noyer est toxique pour les légumineuses, inhibant leur croissance et leur nodulation."
+  },
+  {
+    "sourcePlantKey": "goumi",
+    "targetPlantKey": "pommier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le goumi fixe l'azote atmosphérique via Frankia, enrichissant le sol au bénéfice des arbres fruitiers voisins."
+  },
+  {
+    "sourcePlantKey": "goumi",
+    "targetPlantKey": "poirier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le goumi fixe l'azote atmosphérique via Frankia, enrichissant le sol au bénéfice des arbres fruitiers voisins."
+  },
+  {
+    "sourcePlantKey": "goumi",
+    "targetPlantKey": "cerisier",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le goumi fixe l'azote atmosphérique via Frankia, enrichissant le sol au bénéfice des arbres fruitiers voisins."
+  },
+  {
+    "sourcePlantKey": "groseillier-a-maquereau",
+    "targetPlantKey": "pommier",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le groseillier à maquereau forme un sous-étage productif qui couvre le sol et réduit l'évaporation au pied des arbres fruitiers."
   }
 ]

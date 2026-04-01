@@ -610,5 +610,17 @@
       "sorbier-des-oiseleurs",
       "rue-officinale"
     ]
+  },
+  {
+    "name": "La Guilde du Sureau",
+    "description": "Le sureau noir est un pionnier essentiel en permaculture. Ses fleurs attirent les pollinisateurs, ses baies nourrissent les oiseaux et ses feuilles enrichissent le compost. Cette guilde l'entoure de plantes couvre-sol et d'accumulatrices dynamiques.",
+    "plants": [
+      { "key": "sureau-noir", "role": "Central" },
+      "consoude",
+      "trefle-blanc",
+      "melisse",
+      "fraisier-des-bois",
+      "violette-odorante"
+    ]
   }
 ]
