@@ -172,7 +172,7 @@ export class BedPanel implements OnInit {
   }
 
   editPlants(): void {
-    const guildId = this.bed().guildId;
+    const guildId = this.bed().guildId ?? this.guild()?.id;
     if (guildId) {
       this.router.navigate(['/companions'], {
         queryParams: {
