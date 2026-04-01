@@ -29,7 +29,11 @@ export class Companions implements OnInit {
 
     const bedName = params['bedName'];
     if (bedName) {
+      this.companionStore.clearSelection();
       this.companionStore.setEditingBedName(bedName);
+      if (returnTo) {
+        this.companionStore.setReturnTo(returnTo);
+      }
     }
 
     if (!guildId) {

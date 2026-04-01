@@ -294,7 +294,8 @@
     "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
     "ClearSelection": "Effacer",
     "EditingBed": "Modification de la planche « {{name}} »",
-    "BackToBed": "Retour à la planche"
+    "BackToBed": "Retour à la planche",
+    "RemoveAll": "Tout supprimer"
   },
   "Stratification": {
     "SectionTitle": "Stratification racinaire",

@@ -459,6 +459,12 @@ export class CompanionStore {
     });
   }
 
+  removeAllPlants(): void {
+    this.selectedPlants.set([]);
+    this.centralPlantIds.set(new Set());
+    this.recommendations.set(null);
+  }
+
   removePlant(plant: PlantDto): void {
     this.selectedPlants.update(list => list.filter(p => p.id !== plant.id));
     if (plant.id) {
