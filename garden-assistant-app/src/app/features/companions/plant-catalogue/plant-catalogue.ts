@@ -9,11 +9,12 @@ import { DialogService } from '../../../shared/services/dialog.service';
 import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { SearchInput } from '../../../shared/ui/search-input/search-input';
 import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
+import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-plant-catalogue',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, SearchInput],
+  imports: [TranslateModule, FontAwesomeModule, SearchInput, EmptyState],
   templateUrl: './plant-catalogue.html',
   styleUrl: './plant-catalogue.scss'
 })

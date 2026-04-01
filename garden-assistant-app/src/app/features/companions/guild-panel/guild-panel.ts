@@ -8,11 +8,12 @@ import { GuildStore } from '../../../shared/services/guild.store';
 import { GuildDto } from '../../../api/garden-assistant-api';
 import { SearchInput } from '../../../shared/ui/search-input/search-input';
 import { GuildCard } from '../../../shared/ui/guild-card/guild-card';
+import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-guild-panel',
   standalone: true,
-  imports: [TranslateModule, SearchInput, GuildCard],
+  imports: [TranslateModule, SearchInput, GuildCard, EmptyState],
   templateUrl: './guild-panel.html',
   styleUrl: './guild-panel.scss'
 })

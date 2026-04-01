@@ -35,10 +35,7 @@
           }
         </div>
       } @else if (!store.loading()) {
-        <div class="empty-state">
-          <div class="empty-state-icon">🌱</div>
-          <p class="empty-state-text" [translate]="'Guilds.UserEmptyDesc'"></p>
-        </div>
+        <app-empty-state icon="🌱" messageKey="Guilds.UserEmptyDesc"></app-empty-state>
       }
     </div>
 
@@ -59,10 +56,7 @@
           }
         </div>
       } @else if (!store.loading()) {
-        <div class="empty-state">
-          <div class="empty-state-icon">🌐</div>
-          <p class="empty-state-text" [translate]="'Guilds.EmptyDesc'"></p>
-        </div>
+        <app-empty-state icon="🌐" messageKey="Guilds.EmptyDesc"></app-empty-state>
       }
     </div>
   </div>

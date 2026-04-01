@@ -21,8 +21,6 @@
   }
 
   @if (filteredGuilds().length === 0 && searchQuery()) {
-    <div class="empty-state">
-      <p class="empty-state-text" [translate]="'Companions.NoResults'"></p>
-    </div>
+    <app-empty-state messageKey="Companions.NoResults"></app-empty-state>
   }
 </div>

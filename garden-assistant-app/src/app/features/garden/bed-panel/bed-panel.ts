@@ -22,11 +22,12 @@ import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantBadge } from '../../../shared/ui/plant-badge/plant-badge';
 import { PlantAssociationPanel, PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
 import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
+import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-bed-panel',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantBadge, PlantAssociationPanel],
+  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantBadge, PlantAssociationPanel, EmptyState],
   templateUrl: './bed-panel.html',
 })
 export class BedPanel implements OnInit {

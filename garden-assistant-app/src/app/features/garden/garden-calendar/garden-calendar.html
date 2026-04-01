@@ -8,13 +8,9 @@
     </div>
     <div collapsible-body class="collapsible-body-padded">
       @if (loading()) {
-        <div class="empty-state" style="min-height: 100px">
-          <div class="empty-state-icon">⏳</div>
-        </div>
+        <app-empty-state icon="⏳" minHeight="100px"></app-empty-state>
       } @else if (allEntries().length === 0) {
-        <div class="empty-state" style="min-height: 100px">
-          <p class="empty-state-text" [translate]="'GardenCalendar.Empty'"></p>
-        </div>
+        <app-empty-state messageKey="GardenCalendar.Empty" minHeight="100px"></app-empty-state>
       } @else {
         <div class="flex justify-end mb-4">
           <div class="inline-flex rounded-md border" style="border-color: var(--color-border)">

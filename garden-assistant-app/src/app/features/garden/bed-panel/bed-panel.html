@@ -20,15 +20,10 @@
     </div>
     <div collapsible-body>
       @if (loading()) {
-        <div class="empty-state" style="min-height: 100px">
-          <div class="empty-state-icon">⏳</div>
-        </div>
+        <app-empty-state icon="⏳" minHeight="100px"></app-empty-state>
       } @else {
         @if (plants().length === 0) {
-          <div class="empty-state" style="min-height: 120px">
-            <p class="empty-state-text" [translate]="'Bed.EmptyState'"></p>
-            <button class="btn btn-primary btn-sm mt-3" (click)="editPlants()" [translate]="'Bed.AddPlants'"></button>
-          </div>
+          <app-empty-state messageKey="Bed.EmptyState" actionKey="Bed.AddPlants" minHeight="120px" (actionClick)="editPlants()"></app-empty-state>
         } @else {
           <app-plant-association-panel
             [plants]="plants()"

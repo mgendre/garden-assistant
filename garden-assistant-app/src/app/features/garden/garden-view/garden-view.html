@@ -30,15 +30,9 @@
   </div>
 
   @if (store.bedsLoading()) {
-    <div class="empty-state">
-      <div class="empty-state-icon">⏳</div>
-    </div>
+    <app-empty-state icon="⏳"></app-empty-state>
   } @else if (!hasBeds()) {
-    <div class="empty-state">
-      <div class="empty-state-icon">🌱</div>
-      <p class="empty-state-text" [translate]="'Bed.EmptyGarden'"></p>
-      <button class="btn btn-primary btn-sm mt-4" (click)="addBed()" [translate]="'Bed.CreateFirst'"></button>
-    </div>
+    <app-empty-state icon="🌱" messageKey="Bed.EmptyGarden" actionKey="Bed.CreateFirst" (actionClick)="addBed()"></app-empty-state>
   } @else {
     <div class="content-list">
       @for (bed of beds(); track bed.id) {

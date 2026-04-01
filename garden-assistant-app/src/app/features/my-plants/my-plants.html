@@ -15,11 +15,7 @@
           }
         </div>
       } @else if (!store.loading()) {
-        <div class="empty-state">
-          <div class="empty-state-icon">🌱</div>
-          <h3 class="empty-state-title" [translate]="'MyPlants.EmptyTitle'"></h3>
-          <p class="empty-state-text" [translate]="'MyPlants.EmptyDesc'"></p>
-        </div>
+        <app-empty-state icon="🌱" titleKey="MyPlants.EmptyTitle" messageKey="MyPlants.EmptyDesc"></app-empty-state>
       }
     </div>
   </div>

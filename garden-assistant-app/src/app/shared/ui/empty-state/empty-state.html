@@ -1,0 +1,17 @@
+<div class="empty-state" [style.min-height]="minHeight()">
+  @if (icon()) {
+    <div class="empty-state-icon">{{ icon() }}</div>
+  }
+  @if (titleKey()) {
+    <h3 class="empty-state-title" [translate]="titleKey()!"></h3>
+  }
+  @if (messageKey()) {
+    <p class="empty-state-text" [translate]="messageKey()!"></p>
+  }
+  @if (actionKey() && !linkRoute()) {
+    <button class="btn btn-primary btn-sm mt-3" (click)="actionClick.emit()" [translate]="actionKey()!"></button>
+  }
+  @if (actionKey() && linkRoute()) {
+    <a [routerLink]="linkRoute()" class="empty-state-link" [translate]="actionKey()!"></a>
+  }
+</div>

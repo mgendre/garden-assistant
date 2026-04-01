@@ -10,11 +10,12 @@ import { DialogService } from '../../shared/services/dialog.service';
 import { PlantDialogService } from '../../shared/services/plant-dialog.service';
 import { SearchInput } from '../../shared/ui/search-input/search-input';
 import { GuildCard } from '../../shared/ui/guild-card/guild-card';
+import { EmptyState } from '../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-guilds',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, SearchInput, GuildCard],
+  imports: [TranslateModule, FontAwesomeModule, SearchInput, GuildCard, EmptyState],
   templateUrl: './guilds.html',
   styleUrl: './guilds.scss'
 })

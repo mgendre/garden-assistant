@@ -8,6 +8,7 @@ import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
 import { PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
 import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
+import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
 interface BedCalendarGroup {
   bedName: string;
@@ -17,7 +18,7 @@ interface BedCalendarGroup {
 @Component({
   selector: 'app-garden-calendar',
   standalone: true,
-  imports: [TranslateModule, Collapsible, PlantCalendarGantt],
+  imports: [TranslateModule, Collapsible, PlantCalendarGantt, EmptyState],
   templateUrl: './garden-calendar.html',
 })
 export class GardenCalendar {

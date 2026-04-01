@@ -8,11 +8,7 @@
       <div class="calendar-loading-spinner"></div>
     </div>
   } @else if (store.allCalendarPlants().length === 0) {
-    <div class="empty-state">
-      <div class="empty-state-icon">📅</div>
-      <h3 class="empty-state-title" [translate]="'Calendar.EmptyState'"></h3>
-      <a routerLink="/companions" class="empty-state-link" [translate]="'Calendar.EmptyStateAction'"></a>
-    </div>
+    <app-empty-state icon="📅" titleKey="Calendar.EmptyState" actionKey="Calendar.EmptyStateAction" linkRoute="/companions"></app-empty-state>
   } @else {
     <!-- Source filter at page level -->
     <!-- Source filter at page level -->

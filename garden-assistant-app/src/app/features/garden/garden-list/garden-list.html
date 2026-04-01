@@ -11,17 +11,11 @@
   </div>
 
   @if (isEmpty()) {
-    <div class="empty-state">
-      <div class="empty-state-icon">🌱</div>
-      <p class="empty-state-text" [translate]="'Garden.EmptyState'"></p>
-      <button class="btn btn-primary btn-sm mt-4" (click)="createGarden()" [translate]="'Garden.CreateFirst'"></button>
-    </div>
+    <app-empty-state icon="🌱" messageKey="Garden.EmptyState" actionKey="Garden.CreateFirst" (actionClick)="createGarden()"></app-empty-state>
   }
 
   @if (store.loading()) {
-    <div class="empty-state">
-      <div class="empty-state-icon">⏳</div>
-    </div>
+    <app-empty-state icon="⏳"></app-empty-state>
   }
 
   @if (gardens().length > 0) {
