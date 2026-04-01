@@ -74,16 +74,15 @@
 // ─── Badge info dialog ──────────────────────────────────────────────────────
 
 .badge-info-dialog {
-  @apply p-6;
   max-width: 400px;
 }
 
 .badge-info-title {
-  @apply mb-3;
+  @apply mb-0;
 }
 
 .badge-info-desc {
-  @apply text-sm leading-relaxed mb-5;
+  @apply text-sm leading-relaxed mb-0;
   color: var(--color-text);
 }
 
