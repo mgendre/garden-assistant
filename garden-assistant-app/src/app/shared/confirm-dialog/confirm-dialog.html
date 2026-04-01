@@ -1,20 +1,18 @@
-<div class="px-1 pb-1">
-  <h2 mat-dialog-title>
+<div style="padding: 1.5rem">
+  <h2 style="margin: 0 0 0.75rem 0; font-size: 1.125rem; font-weight: 600">
     {{ data.title }}
   </h2>
 
-  <mat-dialog-content>
-    <p class="text-sm leading-relaxed text-stone-600">{{ data.message }}</p>
-  </mat-dialog-content>
+  <p class="text-sm leading-relaxed" style="color: var(--color-text-muted); margin: 0">{{ data.message }}</p>
 
-  <mat-dialog-actions class="dialog-actions !pt-4 !flex !justify-end !gap-2">
-    <button class="btn btn-secondary"
+  <div style="display: flex; justify-content: flex-end; gap: 0.5rem; margin-top: 1.25rem">
+    <button class="btn btn-secondary btn-sm"
             (click)="cancel()">
       {{ data.cancelLabel ?? ('ConfirmDialog.Cancel' | translate) }}
     </button>
-    <button class="btn btn-danger"
+    <button class="btn btn-danger btn-sm"
             (click)="confirm()">
       {{ data.confirmLabel ?? ('ConfirmDialog.Confirm' | translate) }}
     </button>
-  </mat-dialog-actions>
+  </div>
 </div>
