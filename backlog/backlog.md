@@ -343,13 +343,13 @@
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
 | [US-300](epics/E19-dette-technique/US-300-dialog-service.md) | DialogService — Centraliser l'ouverture des dialogs | Indispensable | 3 | ✅ Terminé |
-| [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | À faire |
+| [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | ✅ Terminé |
 | [US-302](epics/E19-dette-technique/US-302-composant-toggle-group.md) | Composant `<app-toggle-group>` réutilisable | Important | 2 | À faire |
 | [US-303](epics/E19-dette-technique/US-303-utilitaires-tri-partages.md) | Extraire les utilitaires de tri partagés | Important | 1 | ✅ Terminé |
 | [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | À faire |
 | [US-305](epics/E19-dette-technique/US-305-refactoring-css-scss.md) | Refactoring CSS/SCSS — Variables et factorisation | Important | 3 | À faire |
 
-**Total E19 : 12 points (4 Terminé / 8 À faire)**
+**Total E19 : 12 points (6 Terminé / 6 À faire)**
 
 > Prochain : US-305 (refactoring CSS) — les couleurs en dur et styles inline sont le problème le plus visible. US-301 et US-302 peuvent suivre en parallèle.
 

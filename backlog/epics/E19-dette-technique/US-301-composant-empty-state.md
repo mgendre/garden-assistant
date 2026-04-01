@@ -22,4 +22,10 @@
 ### Estimation
 - **Priorité :** Indispensable
 - **Points :** 2
-- **Statut :** A faire
+- **Statut :** Terminé
+
+### Livré
+- Composant `<app-empty-state>` dans `shared/ui/empty-state/`
+- Inputs : `icon`, `titleKey`, `messageKey`, `actionKey`, `linkRoute`, `minHeight`
+- Output : `actionClick`
+- 42 occurrences remplacées dans 11 templates, 24 fichiers modifiés
