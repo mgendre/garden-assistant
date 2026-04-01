@@ -25,9 +25,13 @@ public class PlantsController(
 
     [HttpGet("{id:guid}/harvest-readiness")]
     [ProducesResponseType(typeof(HarvestReadinessDto), StatusCodes.Status200OK)]
-    public async Task<ActionResult<HarvestReadinessDto?>> GetHarvestReadiness(Guid id)
+    public async Task<ActionResult<HarvestReadinessDto>> GetHarvestReadiness(Guid id)
     {
         var result = await harvestReadinessService.GetByPlantIdAsync(id);
+        if (result is null)
+        {
+            return NotFound();
+        }
         return Ok(result);
     }
 }

@@ -96,18 +96,12 @@ public class GardenService(AppDbContext dbContext) : IGardenService
             return false;
         }
 
-        var bedGuildIds = await dbContext.Plantings
+        var bedGuilds = await dbContext.Plantings
             .Where(p => p.GardenId == id && p.GuildId != null)
-            .Select(p => p.GuildId!.Value)
+            .Join(dbContext.Guilds, p => p.GuildId, g => g.Id, (p, g) => g)
             .ToListAsync();
 
-        if (bedGuildIds.Count > 0)
-        {
-            var guilds = await dbContext.Guilds
-                .Where(g => bedGuildIds.Contains(g.Id))
-                .ToListAsync();
-            dbContext.Guilds.RemoveRange(guilds);
-        }
+        dbContext.Guilds.RemoveRange(bedGuilds);
 
         dbContext.Gardens.Remove(garden);
         await dbContext.SaveChangesAsync();

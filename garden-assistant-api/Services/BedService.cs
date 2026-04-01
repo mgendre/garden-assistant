@@ -92,15 +92,14 @@ public class BedService(AppDbContext dbContext) : IBedService
             return null;
         }
 
-        var newName = request.Name ?? "";
-        bed.Name = newName;
+        bed.Name = request.Name ?? "";
 
         if (bed.GuildId.HasValue)
         {
             var guild = await dbContext.Guilds.FindAsync(bed.GuildId.Value);
             if (guild is not null)
             {
-                guild.Name = newName;
+                guild.Name = bed.Name;
             }
         }
 
@@ -127,18 +126,16 @@ public class BedService(AppDbContext dbContext) : IBedService
             return false;
         }
 
-        var guildId = bed.GuildId;
-        dbContext.Plantings.Remove(bed);
-
-        if (guildId.HasValue)
+        if (bed.GuildId.HasValue)
         {
-            var guild = await dbContext.Guilds.FindAsync(guildId.Value);
+            var guild = await dbContext.Guilds.FindAsync(bed.GuildId.Value);
             if (guild is not null)
             {
                 dbContext.Guilds.Remove(guild);
             }
         }
 
+        dbContext.Plantings.Remove(bed);
         await dbContext.SaveChangesAsync();
         return true;
     }

@@ -35,6 +35,14 @@ export interface FilterConfig {
   actionTypes: PlantActionType[];
 }
 
+export function getEarliestHalfMonth(actions: { actionType?: PlantActionType; halfMonthStart?: number }[], actionTypes: PlantActionType[]): number {
+  const matching = actions.filter(a => a.actionType !== undefined && actionTypes.includes(a.actionType));
+  if (matching.length === 0) {
+    return 99;
+  }
+  return Math.min(...matching.map(a => a.halfMonthStart ?? 99));
+}
+
 export const FILTER_CONFIGS: FilterConfig[] = [
   { key: 'sowing', labelKey: 'Calendar.Filter.Sowing', color: '#3b82f6', actionTypes: [PlantActionType.IndoorSowing, PlantActionType.DirectSowing] },
   { key: 'transplanting', labelKey: 'Calendar.ActionType.Transplanting', color: '#22c55e', actionTypes: [PlantActionType.Transplanting] },

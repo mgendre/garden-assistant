@@ -12,7 +12,7 @@ import { PlantStore } from './plant.store';
 import { GardenService } from './garden.service';
 import { GardenStore } from './garden.store';
 import { MyPlantsStore } from './my-plants.store';
-import { FILTER_CONFIGS, SOWING_ACTIONS } from '../constants/plant-action.constants';
+import { FILTER_CONFIGS, SOWING_ACTIONS, getEarliestHalfMonth } from '../constants/plant-action.constants';
 
 export type PlantSourceFilter = 'all' | 'myPlants' | 'gardenPlants';
 export type CalendarGrouping = 'flat' | 'byGarden';
@@ -67,15 +67,10 @@ export class CalendarStore {
   });
 
   private readonly gardenPlantIds = computed<Set<string>>(() => {
-    const ids = new Set<string>();
-    for (const gbd of this.gardenBedData()) {
-      for (const bed of gbd.beds) {
-        for (const id of bed.plantIds ?? []) {
-          ids.add(String(id));
-        }
-      }
-    }
-    return ids;
+    const ids = this.gardenBedData()
+      .flatMap(gbd => gbd.beds)
+      .flatMap(bed => (bed.plantIds ?? []).map(String));
+    return new Set(ids);
   });
 
   readonly activeActionTypes = computed<PlantActionType[]>(() => {
@@ -168,14 +163,14 @@ export class CalendarStore {
 
     if (filterTypes.length === 0) {
       return [...plants].sort((a, b) => {
-        const sowA = this.getEarliestHalfMonth(a, SOWING_ACTIONS);
-        const sowB = this.getEarliestHalfMonth(b, SOWING_ACTIONS);
+        const sowA = getEarliestHalfMonth(a.actions ?? [], SOWING_ACTIONS);
+        const sowB = getEarliestHalfMonth(b.actions ?? [], SOWING_ACTIONS);
         if (sowA !== sowB) { return sowA - sowB; }
-        const transA = this.getEarliestHalfMonth(a, [PlantActionType.Transplanting]);
-        const transB = this.getEarliestHalfMonth(b, [PlantActionType.Transplanting]);
+        const transA = getEarliestHalfMonth(a.actions ?? [], [PlantActionType.Transplanting]);
+        const transB = getEarliestHalfMonth(b.actions ?? [], [PlantActionType.Transplanting]);
         if (transA !== transB) { return transA - transB; }
-        const harvA = this.getEarliestHalfMonth(a, [PlantActionType.Harvest]);
-        const harvB = this.getEarliestHalfMonth(b, [PlantActionType.Harvest]);
+        const harvA = getEarliestHalfMonth(a.actions ?? [], [PlantActionType.Harvest]);
+        const harvB = getEarliestHalfMonth(b.actions ?? [], [PlantActionType.Harvest]);
         if (harvA !== harvB) { return harvA - harvB; }
         const nameA = this.plantStore.findById(a.plantId)?.name ?? '';
         const nameB = this.plantStore.findById(b.plantId)?.name ?? '';
@@ -190,8 +185,8 @@ export class CalendarStore {
         )
       )
       .sort((a, b) => {
-        const firstA = this.getEarliestHalfMonth(a, filterTypes);
-        const firstB = this.getEarliestHalfMonth(b, filterTypes);
+        const firstA = getEarliestHalfMonth(a.actions ?? [], filterTypes);
+        const firstB = getEarliestHalfMonth(b.actions ?? [], filterTypes);
         return firstA - firstB;
       });
   }
@@ -239,13 +234,4 @@ export class CalendarStore {
     this.gardenCalendarPlants.set(entries);
   }
 
-  private getEarliestHalfMonth(plant: CalendarPlantDto, actionTypes: PlantActionType[]): number {
-    const actions = plant.actions?.filter(a =>
-      a.actionType !== undefined && actionTypes.includes(a.actionType)
-    ) ?? [];
-    if (actions.length === 0) {
-      return 99;
-    }
-    return Math.min(...actions.map(a => a.halfMonthStart ?? 99));
-  }
 }

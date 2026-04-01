@@ -12,7 +12,6 @@ import {
   CompanionRecommendationRequest,
   GuildPlantRole,
   PropagationMethod,
-  PlantActionType,
 } from '../../../api/garden-assistant-api';
 import { PlantStore } from '../../../shared/services/plant.store';
 import { GuildService } from '../../../shared/services/guild.service';
@@ -26,7 +25,7 @@ import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../../sha
 import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
 import { ConfirmDialogComponent, ConfirmDialogData } from '../../../shared/confirm-dialog/confirm-dialog';
 import { CreateBedDialog, CreateBedDialogData, CreateBedDialogResult } from '../create-bed-dialog/create-bed-dialog';
-import { SOWING_ACTIONS } from '../../../shared/constants/plant-action.constants';
+import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
 
 @Component({
   selector: 'app-bed-panel',
@@ -136,8 +135,8 @@ export class BedPanel implements OnInit {
         }
       }
       entries.sort((a, b) => {
-        const sowA = this.getEarliestHalfMonth(a.actions, SOWING_ACTIONS);
-        const sowB = this.getEarliestHalfMonth(b.actions, SOWING_ACTIONS);
+        const sowA = getEarliestHalfMonth(a.actions, SOWING_ACTIONS);
+        const sowB = getEarliestHalfMonth(b.actions, SOWING_ACTIONS);
         if (sowA !== sowB) {
           return sowA - sowB;
         }
@@ -224,13 +223,4 @@ export class BedPanel implements OnInit {
     }
   }
 
-  private getEarliestHalfMonth(actions: any[], actionTypes: PlantActionType[]): number {
-    const matching = actions.filter((a: any) =>
-      a.actionType !== undefined && actionTypes.includes(a.actionType)
-    );
-    if (matching.length === 0) {
-      return 99;
-    }
-    return Math.min(...matching.map((a: any) => a.halfMonthStart ?? 99));
-  }
 }

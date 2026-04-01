@@ -211,7 +211,7 @@ public class PlantsControllerActionTests
         var result = await _sut.GetHarvestReadiness(plantId);
 
         // Assert
-        var okResult = result.ShouldBeOfType<OkObjectResult>();
+        var okResult = result.Result.ShouldBeOfType<OkObjectResult>();
         var returned = okResult.Value.ShouldBeOfType<HarvestReadinessDto>();
         returned.Description.ShouldBe("La tomate est prete quand elle est rouge");
         returned.DaysFromTransplant.ShouldBe(70);
@@ -239,7 +239,7 @@ public class PlantsControllerActionTests
         var result = await _sut.GetHarvestReadiness(plantId);
 
         // Assert
-        result.ShouldBeOfType<NotFoundResult>();
+        result.Result.ShouldBeOfType<NotFoundResult>();
 
         _harvestReadinessServiceMock.Verify(s => s.GetByPlantIdAsync(plantId), Times.Once);
     }

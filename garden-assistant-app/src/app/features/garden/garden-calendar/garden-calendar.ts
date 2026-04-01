@@ -1,14 +1,14 @@
 import { Component, inject, input, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BedDto, PropagationMethod, PlantActionType } from '../../../api/garden-assistant-api';
+import { BedDto, PropagationMethod } from '../../../api/garden-assistant-api';
 import { PlantStore } from '../../../shared/services/plant.store';
 import { CalendarService } from '../../../shared/services/calendar.service';
 import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
 import { PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
-import { SOWING_ACTIONS } from '../../../shared/constants/plant-action.constants';
+import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
 
 interface BedCalendarGroup {
   bedName: string;
@@ -106,8 +106,8 @@ export class GardenCalendar {
 
       const sortEntries = (entries: PlantCalendarEntry[]) => {
         return entries.sort((a, b) => {
-          const sowA = this.getEarliestHalfMonth(a.actions, SOWING_ACTIONS);
-          const sowB = this.getEarliestHalfMonth(b.actions, SOWING_ACTIONS);
+          const sowA = getEarliestHalfMonth(a.actions, SOWING_ACTIONS);
+          const sowB = getEarliestHalfMonth(b.actions, SOWING_ACTIONS);
           if (sowA !== sowB) {
             return sowA - sowB;
           }
@@ -141,13 +141,4 @@ export class GardenCalendar {
     }
   }
 
-  private getEarliestHalfMonth(actions: any[], actionTypes: PlantActionType[]): number {
-    const matching = actions.filter((a: any) =>
-      a.actionType !== undefined && actionTypes.includes(a.actionType)
-    );
-    if (matching.length === 0) {
-      return 99;
-    }
-    return Math.min(...matching.map((a: any) => a.halfMonthStart ?? 99));
-  }
 }
