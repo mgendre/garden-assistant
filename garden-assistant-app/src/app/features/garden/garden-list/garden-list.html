@@ -26,15 +26,27 @@
 
   <div class="content-list">
     @for (garden of gardens(); track garden.id) {
-      <div class="panel cursor-pointer" (click)="openGarden(garden)">
-        <div class="p-4">
-          <h3 class="font-semibold truncate">{{ garden.name }}</h3>
-          @if (garden.description) {
-            <p class="page-description mt-1 line-clamp-2">{{ garden.description }}</p>
-          }
-          <p class="text-xs mt-2" style="color: var(--color-text-muted)">
-            {{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }}
-          </p>
+      <div class="panel garden-card"
+        (click)="openGarden(garden)"
+        (keydown.enter)="openGarden(garden)"
+        tabindex="0"
+        role="link"
+        [attr.aria-label]="garden.name">
+        <div class="flex items-center gap-4 p-4 sm:p-5">
+          <div class="garden-card-icon" aria-hidden="true">🌿</div>
+          <div class="flex-1 min-w-0">
+            <h3 class="truncate">{{ garden.name }}</h3>
+            @if (garden.description) {
+              <p class="text-sm mt-1 line-clamp-2" style="color: var(--color-text-muted)">{{ garden.description }}</p>
+            }
+            <div class="flex items-center gap-1.5 mt-2">
+              <fa-icon [icon]="faLayerGroup" class="text-xs" style="color: var(--color-canopy-muted)"></fa-icon>
+              <span class="text-xs font-medium" style="color: var(--color-text-muted)">
+                {{ garden.bedCount }} {{ (garden.bedCount === 1 ? 'Garden.BedSingular' : 'Garden.BedPlural') | translate }}
+              </span>
+            </div>
+          </div>
+          <fa-icon [icon]="faChevronRight" class="text-sm flex-shrink-0" style="color: var(--color-text-muted)" aria-hidden="true"></fa-icon>
         </div>
       </div>
     }

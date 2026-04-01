@@ -1,0 +1,31 @@
+@reference "tailwindcss";
+
+.garden-card {
+  @apply cursor-pointer;
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast),
+              transform var(--transition-fast);
+
+  &:hover {
+    border-color: var(--color-canopy-muted);
+    box-shadow: 0 4px 12px rgba(26, 92, 30, 0.08);
+    transform: translateY(-1px);
+  }
+
+  &:focus-visible {
+    @apply outline-none;
+    box-shadow: var(--shadow-focus);
+    border-color: var(--color-canopy);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.garden-card-icon {
+  @apply flex items-center justify-center rounded-full flex-shrink-0 text-xl;
+  width: 44px;
+  height: 44px;
+  background: var(--color-moss-tint);
+}
