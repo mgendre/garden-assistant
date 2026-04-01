@@ -162,6 +162,7 @@ The project defines reusable component classes in SCSS (`components/`). **Always
 | `database-engineer` | Schema design, EF Core Fluent API, query performance |
 | `security-engineer` | OWASP Top 10, JWT/auth, secrets, dependency audit — reviews every auth/data feature |
 | `plant-expert` | Permaculture, companion planting, plant families, growth cycles, soil interactions — consulted for any domain model involving plants, associations, or garden planning |
+| `plant-encyclopedia` | Encyclopédie vivante du catalogue (sonnet model). Charge `plants.json`, `associations.json`, `guilds.json` au démarrage. Répond aux questions factuelles sur les plantes : familles, mécanismes, associations, besoins (eau/soleil/sol), calendrier, compatibilités. Identifie les plantes centrales, propose des compléments pour les guildes, valide les données seed |
 | `technical-writer` | Creates and maintains all project documentation in `docs/` — architecture decisions, domain model explanations, API guides, onboarding — keeping `docs/README.md` as the up-to-date index |
 | `code-simplifier` | Runs after implementation tasks (sonnet model). Reviews changed code for: nested null checks, redundant queries, duplicated logic, overly complex patterns. Simplifies without changing behaviour. Must run tests after each change |
 | `community-writer` | Generates what's new changelogs (sonnet model). Analyses git history since last entry, produces user-facing and developer-facing changelogs in French, updates index and README |
