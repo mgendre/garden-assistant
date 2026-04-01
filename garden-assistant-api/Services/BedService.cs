@@ -95,13 +95,10 @@ public class BedService(AppDbContext dbContext) : IBedService
         var newName = request.Name ?? "";
         bed.Name = newName;
 
-        if (bed.GuildId.HasValue)
+        var guild = bed.GuildId.HasValue ? await dbContext.Guilds.FindAsync(bed.GuildId.Value) : null;
+        if (guild is not null)
         {
-            var guild = await dbContext.Guilds.FindAsync(bed.GuildId.Value);
-            if (guild is not null)
-            {
-                guild.Name = newName;
-            }
+            guild.Name = newName;
         }
 
         await dbContext.SaveChangesAsync();
@@ -127,16 +124,12 @@ public class BedService(AppDbContext dbContext) : IBedService
             return false;
         }
 
-        var guildId = bed.GuildId;
+        var guild = bed.GuildId.HasValue ? await dbContext.Guilds.FindAsync(bed.GuildId.Value) : null;
         dbContext.Plantings.Remove(bed);
 
-        if (guildId.HasValue)
+        if (guild is not null)
         {
-            var guild = await dbContext.Guilds.FindAsync(guildId.Value);
-            if (guild is not null)
-            {
-                dbContext.Guilds.Remove(guild);
-            }
+            dbContext.Guilds.Remove(guild);
         }
 
         await dbContext.SaveChangesAsync();
