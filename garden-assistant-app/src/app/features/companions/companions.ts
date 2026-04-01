@@ -34,6 +34,9 @@ export class Companions implements OnInit {
       if (returnTo) {
         this.companionStore.setReturnTo(returnTo);
       }
+    } else if (this.companionStore.editingBedName()) {
+      this.companionStore.setEditingBedName(null);
+      this.companionStore.setReturnTo(null);
     }
 
     if (!guildId) {
