@@ -295,7 +295,7 @@
     "ClearSelection": "Effacer",
     "EditingBed": "Modification de la planche « {{name}} »",
     "BackToBed": "Retour à la planche",
-    "RemoveAll": "Tout supprimer"
+    "CancelChanges": "Annuler"
   },
   "Stratification": {
     "SectionTitle": "Stratification racinaire",

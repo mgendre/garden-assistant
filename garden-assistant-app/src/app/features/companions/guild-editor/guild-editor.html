@@ -5,15 +5,8 @@
         🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
       </span>
       <div style="display: flex; gap: 0.5rem">
-        @if (store.selectedPlants().length > 0) {
-          <button class="btn btn-danger btn-xs" (click)="store.removeAllPlants()">
-            <fa-icon [icon]="faClose"></fa-icon>
-            <span [translate]="'Companions.RemoveAll'"></span>
-          </button>
-        }
-        <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()">
-          {{ 'Companions.BackToBed' | translate }}
-        </button>
+        <button class="btn btn-secondary btn-xs" (click)="store.removeAllPlants()" [translate]="'Companions.CancelChanges'"></button>
+        <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()" [translate]="'Companions.BackToBed'"></button>
       </div>
     </div>
   }
