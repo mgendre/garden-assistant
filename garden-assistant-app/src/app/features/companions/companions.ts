@@ -49,6 +49,8 @@ export class Companions implements OnInit, OnDestroy {
     if (!guildId) {
       if (params['mode'] === 'create') {
         this.companionStore.startGuildCreation();
+      } else if (!bedName && this.companionStore.isFormVisible()) {
+        this.companionStore.clearSelection();
       }
       return;
     }
