@@ -22,6 +22,12 @@
   <div class="guild-card-footer">
     <span class="guild-card-count">{{ 'Guilds.PlantsCount' | translate:{ count: guild.plants?.length ?? 0 } }}</span>
     <div class="guild-card-actions">
+      @if (showAddAll) {
+        <button class="btn btn-primary btn-sm" (click)="addAllPlants.emit(); $event.stopPropagation()">
+          <fa-icon [icon]="faPlus"></fa-icon>
+          <span [translate]="'Guilds.AddAllPlants'"></span>
+        </button>
+      }
       @if (showOpenButton) {
         <button class="btn btn-secondary btn-sm" (click)="view.emit(); $event.stopPropagation()">
           <fa-icon [icon]="faView"></fa-icon>

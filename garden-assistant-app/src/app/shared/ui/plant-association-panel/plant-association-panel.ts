@@ -2,7 +2,6 @@ import { Component, input, output, computed, inject } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faWarning } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
 import {
   PlantDto,
   GuildAssociationDto,
@@ -14,12 +13,12 @@ import {
   PropagationMethod,
 } from '../../../api/garden-assistant-api';
 import { CompanionStore, PRIORITY_MECHANISMS } from '../../services/companion.store';
+import { DialogService } from '../../services/dialog.service';
+import { PlantDialogService } from '../../services/plant-dialog.service';
 import { Collapsible } from '../collapsible/collapsible';
 import { PlantCard } from '../plant-card/plant-card';
 import { PlantBadge } from '../plant-badge/plant-badge';
 import { PlantCalendarGantt } from '../plant-calendar-gantt/plant-calendar-gantt';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../badge-info-dialog/badge-info-dialog';
-import { PlantDetailDialog, PlantDetailDialogData } from '../plant-detail-dialog/plant-detail-dialog';
 import { RootStratification } from '../../../features/companions/root-stratification/root-stratification';
 
 export interface PlantCalendarEntry {
@@ -58,7 +57,8 @@ export class PlantAssociationPanel {
   readonly rootDepthFilterToggle = output<RootDepth>();
 
   protected readonly store = inject(CompanionStore);
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
+  private readonly plantDialogService = inject(PlantDialogService);
   protected readonly faWarning = faWarning;
 
   readonly beneficialCount = computed(() =>
@@ -151,13 +151,10 @@ export class PlantAssociationPanel {
   openMechanismInfo(mechanism: AssociationMechanism): void {
     const key = this.store.getMechanismKey(mechanism);
     if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.Mechanism.${key}.Title`,
-          descriptionKey: `BadgeInfo.Mechanism.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
+      this.dialogService.openBadgeInfo(
+        `BadgeInfo.Mechanism.${key}.Title`,
+        `BadgeInfo.Mechanism.${key}.Description`
+      );
     }
   }
 
@@ -174,11 +171,7 @@ export class PlantAssociationPanel {
   };
 
   openPlantDetail(plant: PlantDto): void {
-    this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-      data: { plant },
-      maxWidth: '600px',
-      width: '90vw',
-    });
+    this.plantDialogService.openDetail(plant);
   }
 
   onHarvestReadinessClick(plantId: string, plantName: string): void {

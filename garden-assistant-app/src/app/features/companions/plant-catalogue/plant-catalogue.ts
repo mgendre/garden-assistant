@@ -1,13 +1,12 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart as faHeartSolid, faCircleInfo, faLink } from '@fortawesome/free-solid-svg-icons';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { MyPlantsStore } from '../../../shared/services/my-plants.store';
 import { PlantStore } from '../../../shared/services/plant.store';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
+import { DialogService } from '../../../shared/services/dialog.service';
+import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { SearchInput } from '../../../shared/ui/search-input/search-input';
 import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 
@@ -30,7 +29,8 @@ export class PlantCatalogue {
     { value: RootDepth.Medium, labelKey: 'Plant.RootDepth.Medium' },
     { value: RootDepth.Deep, labelKey: 'Plant.RootDepth.Deep' },
   ];
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
+  private readonly plantDialogService = inject(PlantDialogService);
 
   readonly mode = input<'association' | 'collection'>('association');
 
@@ -91,24 +91,17 @@ export class PlantCatalogue {
 
   openPlantDetail(plant: PlantDto, event: Event): void {
     event.stopPropagation();
-    this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-      data: { plant },
-      maxWidth: '600px',
-      width: '90vw',
-    });
+    this.plantDialogService.openDetail(plant);
   }
 
   openMechanismInfo(mechanism: number, event: Event): void {
     event.stopPropagation();
     const key = this.store.getMechanismKey(mechanism);
     if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.Mechanism.${key}.Title`,
-          descriptionKey: `BadgeInfo.Mechanism.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
+      this.dialogService.openBadgeInfo(
+        `BadgeInfo.Mechanism.${key}.Title`,
+        `BadgeInfo.Mechanism.${key}.Description`
+      );
     }
   }
 
@@ -116,13 +109,10 @@ export class PlantCatalogue {
     event.stopPropagation();
     const key = this.getRootDepthBadgeKey(rootDepth);
     if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.RootDepth.${key}.Title`,
-          descriptionKey: `BadgeInfo.RootDepth.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
+      this.dialogService.openBadgeInfo(
+        `BadgeInfo.RootDepth.${key}.Title`,
+        `BadgeInfo.RootDepth.${key}.Description`
+      );
     }
   }
 }

@@ -4,7 +4,7 @@
       <span class="text-sm font-medium" style="color: #1565c0; flex: 1">
         🌱 {{ 'Companions.EditingBed' | translate:{ name: store.editingBedName() } }}
       </span>
-      <button class="btn btn-ghost btn-xs" (click)="store.cancelBedEditing()" [translate]="'Companions.BackToBed'"></button>
+      <button class="btn btn-secondary btn-xs" (click)="store.cancelBedEditing()" [translate]="'Companions.BackToBed'"></button>
     </div>
   }
 
@@ -13,7 +13,7 @@
       <span class="text-sm font-medium" style="color: #1565c0; flex: 1">
         🌱 {{ (store.guildMode() === 'creating' ? 'Companions.CreatingGuild' : 'Companions.EditingGuild') | translate }}
       </span>
-      <button class="btn btn-ghost btn-xs" (click)="store.cancelGuildEditing()" [translate]="'Guilds.FormCancel'"></button>
+      <button class="btn btn-secondary btn-xs" (click)="store.cancelGuildEditing()" [translate]="'Guilds.FormCancel'"></button>
     </div>
   }
 
@@ -104,7 +104,7 @@
             <span [translate]="'Companions.BackToBed'"></span>
           </button>
         } @else {
-          <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
+          <button class="btn btn-secondary btn-sm" (click)="store.clearSelection()">
             <fa-icon [icon]="faClose"></fa-icon>
             <span [translate]="'Guilds.Close'"></span>
           </button>
@@ -121,7 +121,7 @@
             <span [translate]="'Guilds.Create'"></span>
           </button>
         }
-        <button class="btn btn-ghost btn-sm" (click)="store.clearSelection()">
+        <button class="btn btn-secondary btn-sm" (click)="store.clearSelection()">
           <fa-icon [icon]="faClose"></fa-icon>
           <span [translate]="'Companions.ClearSelection'"></span>
         </button>
@@ -162,15 +162,15 @@
 
   <div class="panel related-guilds">
     <app-collapsible>
-      <div collapsible-header class="panel-header guild-panel-header">
+      <div collapsible-header style="display: flex; align-items: center; gap: 0.5rem; width: 100%">
         @if (store.selectedPlants().length) {
           <span class="panel-title" [translate]="'Guilds.SectionTitle'"></span>
         } @else {
           <span class="panel-title" [translate]="'Guilds.PanelTitle'"></span>
         }
-        <span class="plant-count">{{ 'Guilds.PanelCount' | translate:{ count: guildPanel.filteredGuilds().length } }}</span>
+        <span style="font-size: 0.75rem; color: var(--color-text-muted)">{{ 'Guilds.PanelCount' | translate:{ count: guildPanel.filteredGuilds().length } }}</span>
       </div>
-      <div collapsible-body class="collapsible-body-padded">
+      <div collapsible-body>
         <app-guild-panel #guildPanel></app-guild-panel>
       </div>
     </app-collapsible>

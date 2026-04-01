@@ -1,10 +1,9 @@
 import { Component, inject, input, computed, output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSnowflake, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { PlantActionDto, PlantActionType, PropagationMethod } from '../../../api/garden-assistant-api';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../badge-info-dialog/badge-info-dialog';
+import { DialogService } from '../../services/dialog.service';
 import { ACTION_COLORS, ACTION_TYPE_CONFIGS, FROST_SENSITIVE_ACTIONS, FROST_HALF_MONTHS_START, FROST_HALF_MONTHS_END, SOWING_ACTIONS } from '../../constants/plant-action.constants';
 
 const MONTH_LABELS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
@@ -34,7 +33,7 @@ interface GanttCell {
   styleUrl: './plant-calendar-gantt.scss',
 })
 export class PlantCalendarGantt {
-  private readonly dialog = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
 
   readonly actions = input<PlantActionDto[]>([]);
   readonly propagationMethod = input<PropagationMethod>(PropagationMethod.Seed);
@@ -127,13 +126,10 @@ export class PlantCalendarGantt {
   openActionInfo(actionType: PlantActionType): void {
     const key = ACTION_TYPE_CONFIGS.find(c => c.type === actionType)?.badgeKey;
     if (key) {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: `BadgeInfo.Action.${key}.Title`,
-          descriptionKey: `BadgeInfo.Action.${key}.Description`,
-        },
-        maxWidth: '400px',
-      });
+      this.dialogService.openBadgeInfo(
+        `BadgeInfo.Action.${key}.Title`,
+        `BadgeInfo.Action.${key}.Description`
+      );
     }
   }
 

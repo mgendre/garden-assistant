@@ -571,7 +571,7 @@ export class CompanionStore {
     }
   }
 
-  setReturnTo(path: string): void {
+  setReturnTo(path: string | null): void {
     this.returnTo.set(path);
   }
 

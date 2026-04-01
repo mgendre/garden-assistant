@@ -1,8 +1,7 @@
 import { Component, inject, signal, computed } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { CompanionStore } from '../../../shared/services/companion.store';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { PlantStore } from '../../../shared/services/plant.store';
 import { GuildService } from '../../../shared/services/guild.service';
 import { GuildStore } from '../../../shared/services/guild.store';
@@ -22,7 +21,7 @@ export class GuildPanel {
   protected readonly guildStore = inject(GuildStore);
   private readonly plantStore = inject(PlantStore);
   private readonly guildService = inject(GuildService);
-  private readonly dialog = inject(MatDialog);
+  private readonly plantDialogService = inject(PlantDialogService);
 
   readonly searchQuery = signal('');
 
@@ -64,20 +63,24 @@ export class GuildPanel {
   }
 
   showPlantDetail(plantId: string): void {
-    const plant = this.plantStore.findById(plantId);
-    if (plant) {
-      this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-        data: { plant },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    }
+    this.plantDialogService.openDetail(plantId);
   }
 
   addPlant(plantId: string): void {
     const plant = this.plantStore.findById(plantId);
     if (plant) {
       this.store.addPlant(plant);
+    }
+  }
+
+  addAllPlantsFromGuild(guild: GuildDto): void {
+    for (const guildPlant of guild.plants ?? []) {
+      if (guildPlant.id) {
+        const plant = this.plantStore.findById(guildPlant.id);
+        if (plant) {
+          this.store.addPlant(plant);
+        }
+      }
     }
   }
 }

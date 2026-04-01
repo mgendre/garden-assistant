@@ -2,19 +2,16 @@ import { Component, inject, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material/dialog';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { GuildStore } from '../../../shared/services/guild.store';
 import { PlantStore } from '../../../shared/services/plant.store';
 import { CalendarService } from '../../../shared/services/calendar.service';
+import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { PlantActionType, PropagationMethod } from '../../../api/garden-assistant-api';
 import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
 import { PlantDetailPanel } from '../plant-detail-panel/plant-detail-panel';
 import { GuildPanel } from '../guild-panel/guild-panel';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
-import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../../../shared/ui/harvest-readiness/harvest-readiness-dialog';
-import { BadgeInfoDialog, BadgeInfoDialogData } from '../../../shared/ui/badge-info-dialog/badge-info-dialog';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../../shared/ui/plant-detail-dialog/plant-detail-dialog';
 import { PlantAssociationPanel, PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
 
 @Component({
@@ -31,8 +28,8 @@ export class GuildEditor {
   protected readonly faPen = faPen;
   protected readonly faPlus = faPlus;
   protected readonly faClose = faXmark;
-  private readonly dialog = inject(MatDialog);
   private readonly calendarService = inject(CalendarService);
+  private readonly plantDialogService = inject(PlantDialogService);
 
   readonly plantCalendars = signal<PlantCalendarEntry[]>([]);
 
@@ -75,33 +72,11 @@ export class GuildEditor {
   }
 
   async openHarvestReadiness(plantId: string, plantName: string): Promise<void> {
-    const readiness = await this.calendarService.getHarvestReadiness(plantId);
-    if (readiness) {
-      this.dialog.open<HarvestReadinessDialog, HarvestReadinessDialogData>(HarvestReadinessDialog, {
-        data: { readiness, plantName },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    } else {
-      this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-        data: {
-          titleKey: 'BadgeInfo.Action.Harvest.Title',
-          descriptionKey: 'BadgeInfo.Action.Harvest.Description',
-        },
-        maxWidth: '400px',
-      });
-    }
+    await this.plantDialogService.openHarvestReadiness(plantId, plantName);
   }
 
   openPlantDetail(plantId: string): void {
-    const plant = this.plantStore.findById(plantId);
-    if (plant) {
-      this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-        data: { plant },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    }
+    this.plantDialogService.openDetail(plantId);
   }
 
 }

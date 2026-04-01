@@ -336,6 +336,25 @@
 
 ---
 
+## E19 — Dette technique frontend
+
+> Factoriser le code frontend pour eliminer les duplications identifiees : dialogs, etats vides, toggles, utilitaires de tri, banniere info, et couleurs CSS non tokenisees. Aucun changement visible pour le jardinier — benefice exclusivement pour la maintenabilite et la coherence du code.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-300](epics/E19-dette-technique/US-300-dialog-service.md) | DialogService — Centraliser l'ouverture des dialogs | Indispensable | 3 | A faire |
+| [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | A faire |
+| [US-302](epics/E19-dette-technique/US-302-composant-toggle-group.md) | Composant `<app-toggle-group>` réutilisable | Important | 2 | A faire |
+| [US-303](epics/E19-dette-technique/US-303-utilitaires-tri-partages.md) | Extraire les utilitaires de tri partagés | Important | 1 | A faire |
+| [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | A faire |
+| [US-305](epics/E19-dette-technique/US-305-refactoring-css-scss.md) | Refactoring CSS/SCSS — Variables et factorisation | Important | 3 | A faire |
+
+**Total E19 : 12 points (0 Termine / 12 A faire)**
+
+> Ordre de livraison recommande : US-300, US-301 et US-303 en parallele (independantes) → US-302 → US-304 → US-305 (US-304 doit preceder US-305 pour les bannières inline). US-303 peut etre livree a tout moment.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -358,8 +377,9 @@
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
-| **Total (actif)** | **398** | **126** | **8** | **264** |
+| E19 — Dette technique frontend | 12 | 0 | 0 | 12 |
+| **Total (actif)** | **410** | **126** | **8** | **276** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31 (ajout US-201)*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31 (ajout E19 dette technique frontend, US-300 a US-305)*

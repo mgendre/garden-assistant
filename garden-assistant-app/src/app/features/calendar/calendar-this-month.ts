@@ -1,10 +1,9 @@
 import { Component, inject, computed } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { CalendarStore } from '../../shared/services/calendar.store';
 import { PlantStore } from '../../shared/services/plant.store';
 import { PlantActionType, CalendarPlantDto } from '../../api/garden-assistant-api';
-import { PlantDetailDialog, PlantDetailDialogData } from '../../shared/ui/plant-detail-dialog/plant-detail-dialog';
+import { PlantDialogService } from '../../shared/services/plant-dialog.service';
 import { ACTION_TYPE_CONFIGS } from '../../shared/constants/plant-action.constants';
 
 interface ActionGroup {
@@ -24,7 +23,7 @@ interface ActionGroup {
 export class CalendarThisMonth {
   private readonly store = inject(CalendarStore);
   private readonly plantStore = inject(PlantStore);
-  private readonly dialog = inject(MatDialog);
+  private readonly plantDialogService = inject(PlantDialogService);
 
   protected readonly currentHalfMonth = computed(() => {
     const now = new Date();
@@ -54,14 +53,7 @@ export class CalendarThisMonth {
   });
 
   openPlantDetail(plantId: string): void {
-    const plant = this.plantStore.findById(plantId);
-    if (plant) {
-      this.dialog.open<PlantDetailDialog, PlantDetailDialogData>(PlantDetailDialog, {
-        data: { plant },
-        maxWidth: '600px',
-        width: '90vw',
-      });
-    }
+    this.plantDialogService.openDetail(plantId);
   }
 
   private buildActionGroups(halfMonth: number): ActionGroup[] {
