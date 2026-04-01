@@ -1,7 +1,7 @@
 <div class="plant-detail-dialog">
   <app-plant-card [plant]="data.plant" [forceExpanded]="true" [hideFavButton]="true"></app-plant-card>
 
-  <div class="plant-detail-dialog-footer">
+  <div class="dialog-footer">
     <button
       class="btn-fav"
       [class.saved]="myPlantsStore.isSaved(data.plant.id)"
@@ -11,6 +11,6 @@
       <span>{{ (myPlantsStore.isSaved(data.plant.id) ? 'PlantDetail.RemoveFromCollection' : 'PlantDetail.AddToCollection') | translate }}</span>
     </button>
 
-    <button mat-dialog-close class="btn-close" [translate]="'BadgeInfo.Close'"></button>
+    <button mat-dialog-close class="btn btn-secondary btn-sm" [translate]="'BadgeInfo.Close'"></button>
   </div>
 </div>

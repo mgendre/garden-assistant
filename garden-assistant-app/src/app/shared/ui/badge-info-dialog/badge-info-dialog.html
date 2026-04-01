@@ -1,5 +1,7 @@
 <div class="badge-info-dialog">
   <h3 class="badge-info-title">{{ data.titleKey | translate }}</h3>
   <p class="badge-info-desc">{{ data.descriptionKey | translate }}</p>
-  <button mat-dialog-close class="btn-close" [translate]="'BadgeInfo.Close'"></button>
+  <div class="dialog-footer">
+    <button mat-dialog-close class="btn btn-secondary btn-sm" [translate]="'BadgeInfo.Close'"></button>
+  </div>
 </div>
