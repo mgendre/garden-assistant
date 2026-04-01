@@ -127,6 +127,11 @@
         @if (store.editingBedName()) {
           <button
             class="btn btn-secondary btn-sm"
+            (click)="store.removeAllPlants()"
+            [translate]="'Companions.CancelChanges'">
+          </button>
+          <button
+            class="btn btn-ghost btn-sm"
             (click)="store.cancelBedEditing()"
             [translate]="'Companions.BackToBed'">
           </button>
