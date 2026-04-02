@@ -1197,6 +1197,7 @@ export enum AssociationMechanism {
     WeedSuppression = 13,
     Biofumigation = 14,
     NursePlant = 15,
+    SharedPathogen = 16,
 }
 
 export interface SelectedPlantConflictDto {
@@ -1242,8 +1243,13 @@ export interface PlantDto {
     sunRequirement?: SunRequirement;
     waterNeeds?: WaterNeeds;
     propagationMethod?: PropagationMethod;
+    maxAltitudeM?: number | undefined;
     frostSensitive?: boolean;
     intrinsicMechanisms?: AssociationMechanism[];
+    isVariety?: boolean;
+    parentPlantId?: string | undefined;
+    parentPlantName?: string | undefined;
+    varieties?: PlantSummaryDto[];
 }
 
 export enum LifeCycle {
@@ -1275,6 +1281,13 @@ export enum PropagationMethod {
     Bulb = 1,
     Tuber = 2,
     Division = 3,
+    Cutting = 4,
+}
+
+export interface PlantSummaryDto {
+    id?: string;
+    name?: string;
+    scientificName?: string | undefined;
 }
 
 export interface HarvestReadinessDto {

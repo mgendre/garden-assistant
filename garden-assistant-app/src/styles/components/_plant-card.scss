@@ -1,11 +1,16 @@
 @use 'family-badges' as *;
+@use 'panels' as *;
 @reference "tailwindcss";
 
 .plant-card {
   @apply block;
-  background: white;
-  border-radius: var(--radius-base);
-  overflow: hidden;
+  @include panel;
+}
+
+app-plant-association-panel .plant-card,
+app-plant-detail-panel .plant-card {
+  border: none;
+  box-shadow: none;
 }
 
 .detail-hero-content {

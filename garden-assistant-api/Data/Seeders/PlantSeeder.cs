@@ -26,39 +26,67 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
         var records = JsonSerializer.Deserialize<List<PlantSeedRecord>>(json, JsonOptions)
             ?? throw new InvalidOperationException("Failed to deserialize plant seed data.");
 
-        foreach (var r in records)
+        var species = records.Where(r => r.ParentKey is null).ToList();
+        var varieties = records.Where(r => r.ParentKey is not null).ToList();
+
+        var plantsByKey = new Dictionary<string, Plant>();
+
+        foreach (var r in species)
         {
-            var plant = new Plant
-            {
-                Id = Guid.NewGuid(),
-                Name = r.Name,
-                ScientificName = r.ScientificName,
-                Description = r.Description,
-                Family = r.Family,
-                Genus = r.Genus,
-                LifeCycle = r.LifeCycle,
-                HeightAtMaturityCm = r.HeightAtMaturityCm,
-                RootDepth = r.RootDepth,
-                SunRequirement = r.SunRequirement,
-                WaterNeeds = r.WaterNeeds,
-                MaxAltitudeM = r.MaxAltitudeM,
-                PropagationMethod = r.PropagationMethod ?? PropagationMethod.Seed,
-                FrostSensitive = r.FrostSensitive ?? false
-            };
-
+            var plant = CreatePlantFromRecord(r);
+            plantsByKey[r.Key] = plant;
             db.Plants.Add(plant);
-
-            foreach (var mechanism in r.IntrinsicMechanisms ?? [])
-            {
-                db.PlantIntrinsicMechanisms.Add(new PlantIntrinsicMechanism
-                {
-                    PlantId = plant.Id,
-                    Mechanism = mechanism
-                });
-            }
+            AddIntrinsicMechanisms(plant.Id, r.IntrinsicMechanisms);
         }
 
         await db.SaveChangesAsync();
+
+        foreach (var r in varieties)
+        {
+            if (!plantsByKey.TryGetValue(r.ParentKey!, out var parent))
+            {
+                throw new InvalidOperationException(
+                    $"Variety '{r.Key}' references parent '{r.ParentKey}' which does not exist in seed data.");
+            }
+
+            var plant = CreatePlantFromRecord(r);
+            plant.ParentPlantId = parent.Id;
+            plantsByKey[r.Key] = plant;
+            db.Plants.Add(plant);
+            AddIntrinsicMechanisms(plant.Id, r.IntrinsicMechanisms);
+        }
+
+        await db.SaveChangesAsync();
+    }
+
+    private static Plant CreatePlantFromRecord(PlantSeedRecord r) => new()
+    {
+        Id = Guid.NewGuid(),
+        Name = r.Name,
+        ScientificName = r.ScientificName,
+        Description = r.Description,
+        Family = r.Family,
+        Genus = r.Genus,
+        LifeCycle = r.LifeCycle,
+        HeightAtMaturityCm = r.HeightAtMaturityCm,
+        RootDepth = r.RootDepth,
+        SunRequirement = r.SunRequirement,
+        WaterNeeds = r.WaterNeeds,
+        MaxAltitudeM = r.MaxAltitudeM,
+        PropagationMethod = r.PropagationMethod ?? PropagationMethod.Seed,
+        FrostSensitive = r.FrostSensitive ?? false
+    };
+
+    private void AddIntrinsicMechanisms(Guid plantId, List<AssociationMechanism>? mechanisms)
+    {
+        foreach (var mechanism in mechanisms ?? [])
+        {
+            db.PlantIntrinsicMechanisms.Add(new PlantIntrinsicMechanism
+            {
+                PlantId = plantId,
+                Mechanism = mechanism
+            });
+        }
     }
 
     private record PlantSeedRecord(
@@ -76,6 +104,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env) : ISeeder
         int? MaxAltitudeM,
         List<AssociationMechanism>? IntrinsicMechanisms,
         PropagationMethod? PropagationMethod,
-        bool? FrostSensitive
+        bool? FrostSensitive,
+        string? ParentKey
     );
 }

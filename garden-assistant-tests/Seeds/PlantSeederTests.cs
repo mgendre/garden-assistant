@@ -116,6 +116,107 @@ public class PlantSeederTests : DatabaseTestBase
         plant.MaxAltitudeM.ShouldBe(2500);
     }
 
+    [Fact]
+    public async Task SeedAsync_WhenVarietyHasParentKey_ShouldSetParentPlantId()
+    {
+        WritePlantsJson("""
+        [
+          {
+            "key": "courge",
+            "name": "Courge",
+            "scientificName": "Cucurbita pepo",
+            "family": "Cucurbitaceae",
+            "genus": "Cucurbita",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium"
+          },
+          {
+            "key": "courgette",
+            "name": "Courgette",
+            "scientificName": "Cucurbita pepo var. cylindrica",
+            "family": "Cucurbitaceae",
+            "genus": "Cucurbita",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium",
+            "parentKey": "courge"
+          }
+        ]
+        """);
+
+        await CreateSeeder().SeedAsync();
+
+        var plants = DbContext.Plants.ToList();
+        plants.Count.ShouldBe(2);
+        var courge = plants.Single(p => p.Name == "Courge");
+        var courgette = plants.Single(p => p.Name == "Courgette");
+        courgette.ParentPlantId.ShouldBe(courge.Id);
+        courge.ParentPlantId.ShouldBeNull();
+    }
+
+    [Fact]
+    public async Task SeedAsync_WhenParentKeyReferencesNonExistentPlant_ShouldThrow()
+    {
+        WritePlantsJson("""
+        [
+          {
+            "key": "courgette",
+            "name": "Courgette",
+            "scientificName": "Cucurbita pepo var. cylindrica",
+            "family": "Cucurbitaceae",
+            "genus": "Cucurbita",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium",
+            "parentKey": "courge"
+          }
+        ]
+        """);
+
+        await Should.ThrowAsync<InvalidOperationException>(CreateSeeder().SeedAsync());
+    }
+
+    [Fact]
+    public async Task SeedAsync_WhenVarietiesListedBeforeParent_ShouldStillResolve()
+    {
+        WritePlantsJson("""
+        [
+          {
+            "key": "courgette",
+            "name": "Courgette",
+            "scientificName": "Cucurbita pepo var. cylindrica",
+            "family": "Cucurbitaceae",
+            "genus": "Cucurbita",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium",
+            "parentKey": "courge"
+          },
+          {
+            "key": "courge",
+            "name": "Courge",
+            "scientificName": "Cucurbita pepo",
+            "family": "Cucurbitaceae",
+            "genus": "Cucurbita",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium"
+          }
+        ]
+        """);
+
+        await CreateSeeder().SeedAsync();
+
+        var courgette = DbContext.Plants.Single(p => p.Name == "Courgette");
+        courgette.ParentPlantId.ShouldNotBeNull();
+    }
+
     ~PlantSeederTests()
     {
         if (Directory.Exists(_tempRoot))

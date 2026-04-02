@@ -14,10 +14,10 @@
     "MainNav": "Navigation principale",
     "MobileNav": "Menu principal",
     "Calendar": "Calendrier",
-    "WhatsNew": "Nouveautes"
+    "WhatsNew": "Nouveautés"
   },
   "Dashboard": {
-    "Welcome": "Welcome back",
+    "Welcome": "Bienvenue",
     "Title": "Votre jardin<br>vous attend.",
     "Description": "Suivez vos plantes, planifiez vos t\u00e2ches et regardez votre jardin prosp\u00e9rer.",
     "Season": "Printemps",
@@ -219,7 +219,7 @@
     "FormSave": "Enregistrer",
     "Saving": "Enregistrement\u2026",
     "MinPlantsHint": "Sélectionnez au moins 2 plantes depuis le catalogue pour composer votre guilde.",
-    "UserEmptyDesc": "Cr\u00e9ez votre premi\u00e8re guilde personnalis\u00e9e.",
+    "UserEmptyDesc": "Composez votre première guilde en associant des plantes compagnes.",
     "SearchPlaceholder": "Rechercher par nom, description ou plante\u2026"
   },
   "Guild": {
@@ -278,7 +278,8 @@
     "Remove": "Retirer {{name}} de ma collection",
     "ConfirmRemoveTitle": "Retirer de ma collection",
     "ConfirmRemoveMessage": "Retirer « {{name}} » de votre collection ?",
-    "ConfirmRemoveAction": "Retirer"
+    "ConfirmRemoveAction": "Retirer",
+    "SearchPlaceholder": "Rechercher dans mes plantes\u2026"
   },
   "Companions": {
     "Title": "Associations de plantes",
@@ -595,8 +596,8 @@
     }
   },
   "WhatsNew": {
-    "Title": "Nouveautes",
-    "EmptyState": "Pas encore de nouveautes publiees. Revenez bientot !"
+    "Title": "Nouveautés",
+    "EmptyState": "Pas encore de nouveautés publiées. Revenez bientôt !"
   },
   "GardenCalendar": {
     "Title": "Calendrier du jardin",

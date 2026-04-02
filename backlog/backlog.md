@@ -342,16 +342,92 @@
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-300](epics/E19-dette-technique/US-300-dialog-service.md) | DialogService — Centraliser l'ouverture des dialogs | Indispensable | 3 | A faire |
-| [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | A faire |
-| [US-302](epics/E19-dette-technique/US-302-composant-toggle-group.md) | Composant `<app-toggle-group>` réutilisable | Important | 2 | A faire |
-| [US-303](epics/E19-dette-technique/US-303-utilitaires-tri-partages.md) | Extraire les utilitaires de tri partagés | Important | 1 | A faire |
-| [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | A faire |
-| [US-305](epics/E19-dette-technique/US-305-refactoring-css-scss.md) | Refactoring CSS/SCSS — Variables et factorisation | Important | 3 | A faire |
+| [US-300](epics/E19-dette-technique/US-300-dialog-service.md) | DialogService — Centraliser l'ouverture des dialogs | Indispensable | 3 | ✅ Terminé |
+| [US-301](epics/E19-dette-technique/US-301-composant-empty-state.md) | Composant `<app-empty-state>` réutilisable | Indispensable | 2 | ✅ Terminé |
+| [US-302](epics/E19-dette-technique/US-302-composant-toggle-group.md) | Composant `<app-toggle-group>` réutilisable | Important | 2 | À faire |
+| [US-303](epics/E19-dette-technique/US-303-utilitaires-tri-partages.md) | Extraire les utilitaires de tri partagés | Important | 1 | ✅ Terminé |
+| [US-304](epics/E19-dette-technique/US-304-composant-info-banner.md) | Composant `<app-info-banner>` réutilisable | Optionnel | 1 | ✅ Terminé |
+| [US-305](epics/E19-dette-technique/US-305-refactoring-css-scss.md) | Refactoring CSS/SCSS — Variables et factorisation | Important | 3 | À faire |
 
-**Total E19 : 12 points (0 Termine / 12 A faire)**
+**Total E19 : 12 points (7 Terminé / 5 À faire)**
 
-> Ordre de livraison recommande : US-300, US-301 et US-303 en parallele (independantes) → US-302 → US-304 → US-305 (US-304 doit preceder US-305 pour les bannières inline). US-303 peut etre livree a tout moment.
+> Restant : US-302 (toggle group, 2 pts) et US-305 (refactoring CSS, 3 pts).
+
+---
+
+## E20 — Hierarchie espece-variete
+
+> Ajouter une relation parent/enfant (espece → variete) sur l'entite Plant. Les varietes heritent de la taxonomie, des mecanismes intrinseques et des associations de leur espece parente. Heritage resolu cote serveur — le frontend recoit des donnees completes. Scope MVP : modele + migration + seed data + service + API. Pas d'UI de gestion des varietes.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-306](epics/E20-hierarchie-espece-variete/US-306-parent-plant-id-entity-migration.md) | ParentPlantId sur l'entite Plant + migration EF | Indispensable | 3 | A faire |
+| [US-307](epics/E20-hierarchie-espece-variete/US-307-seed-import-parent-key.md) | Support du champ parentKey dans le seed import | Indispensable | 3 | A faire |
+| [US-308](epics/E20-hierarchie-espece-variete/US-308-seed-data-taxonomie-varietes.md) | Correction taxonomique et ajout des varietes dans les seeds | Indispensable | 5 | A faire |
+| [US-309](epics/E20-hierarchie-espece-variete/US-309-service-heritage-variete.md) | Heritage des proprietes et mecanismes au niveau service | Indispensable | 5 | A faire |
+| [US-310](epics/E20-hierarchie-espece-variete/US-310-heritage-associations-variete.md) | Heritage des associations au niveau service | Indispensable | 5 | A faire |
+| [US-311](epics/E20-hierarchie-espece-variete/US-311-api-dto-variete.md) | PlantDto enrichi pour les varietes | Indispensable | 3 | A faire |
+| [US-329](epics/E20-hierarchie-espece-variete/US-329-noms-alternatifs-plantes.md) | Noms alternatifs des plantes | Important | 3 | A faire |
+
+**Total E20 : 27 points (0 Termine / 27 A faire)**
+
+> Ordre de livraison : US-306 (migration) → US-307 (seed import) → US-308 (seed data) → US-309 (heritage proprietes) et US-310 (heritage associations) en parallele → US-311 (API/DTO). US-308 necessite validation botanique par le plant-expert avant merge.
+
+---
+
+## E21 — Upsert des seeds et protection des donnees
+
+> Transformer les seeders de "insert if empty" en "upsert by Key" avec protection des plantes personnalisees (`IsCustomized`). Ajouter les champs `Key`, `IsCustomized` et `UserId` sur l'entite Plant. Chaque seeder (plantes, associations, actions, maturite, guildes, mecanismes) est converti individuellement. Spec de reference : `docs/superpowers/specs/2026-04-02-import-management-design.md`.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-312](epics/E21-upsert-seeds-protection/US-312-key-is-customized-plant-entity.md) | Key et IsCustomized sur l'entite Plant + migration EF | Indispensable | 3 | A faire |
+| [US-313](epics/E21-upsert-seeds-protection/US-313-key-dans-fichiers-json-seed.md) | Champ key dans les fichiers JSON de seed | Indispensable | 2 | A faire |
+| [US-314](epics/E21-upsert-seeds-protection/US-314-plant-seeder-upsert.md) | PlantSeeder en mode upsert par Key | Indispensable | 5 | A faire |
+| [US-315](epics/E21-upsert-seeds-protection/US-315-association-seeder-upsert.md) | AssociationSeeder en mode upsert | Indispensable | 3 | A faire |
+| [US-316](epics/E21-upsert-seeds-protection/US-316-plant-action-seeder-upsert.md) | PlantActionSeeder en mode upsert | Indispensable | 3 | A faire |
+| [US-317](epics/E21-upsert-seeds-protection/US-317-harvest-readiness-seeder-upsert.md) | HarvestReadinessSeeder en mode upsert | Indispensable | 3 | A faire |
+| [US-318](epics/E21-upsert-seeds-protection/US-318-guild-seeder-upsert.md) | GuildSeeder en mode upsert | Indispensable | 3 | A faire |
+| [US-319](epics/E21-upsert-seeds-protection/US-319-intrinsic-mechanism-seeder-upsert.md) | PlantIntrinsicMechanismSeeder en mode upsert | Indispensable | 2 | A faire |
+
+**Total E21 : 24 points (0 Termine / 24 A faire)**
+
+> Ordre de livraison : US-312 (entity + migration) et US-313 (JSON keys) en parallele → US-314 (PlantSeeder) en premier (les autres seeders dependent des plantes) → US-315, US-316, US-317, US-318, US-319 en parallele. Pattern commun : charger le set de PlantId verrouilles en un SELECT, puis boucle upsert avec logging Info/Debug.
+
+---
+
+## E22 — Administration du catalogue de plantes
+
+> Interface d'administration pour modifier le catalogue global de plantes. Les modifications admin positionnent automatiquement `IsCustomized = true`, protegeant la plante du seed upsert. Un endpoint de deverrouillage permet de re-soumettre une plante au seed. Depend de E21 pour le champ `IsCustomized`.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-320](epics/E22-administration-catalogue/US-320-endpoint-admin-modifier-plante.md) | Endpoint admin pour modifier une plante du catalogue | Indispensable | 3 | A faire |
+| [US-321](epics/E22-administration-catalogue/US-321-endpoint-admin-deverrouiller-plante.md) | Endpoint admin pour deverrouiller une plante | Important | 2 | A faire |
+| [US-322](epics/E22-administration-catalogue/US-322-endpoint-admin-associations.md) | Endpoint admin pour modifier les associations d'une plante | Important | 3 | A faire |
+| [US-323](epics/E22-administration-catalogue/US-323-ui-admin-catalogue.md) | UI admin de gestion du catalogue | Important | 5 | A faire |
+
+**Total E22 : 13 points (0 Termine / 13 A faire)**
+
+> Ordre de livraison : US-320 (modifier plante) → US-321 (deverrouiller) et US-322 (associations) en parallele → US-323 (UI admin, depend des 3 endpoints). E22 depend de E21 (US-312 minimum).
+
+---
+
+## E23 — Variantes utilisateur
+
+> Permettre aux jardiniers de creer des variantes personnelles a partir du catalogue. Une variante est une Plant avec `UserId` non null et `IsCustomized = true`, invisible aux autres utilisateurs. Backend only — l'UI de gestion des variantes fera l'objet d'un epic separe. Depend de E20 (heritage espece-variete) et E21 (champs Key/IsCustomized/UserId).
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-324](epics/E23-variantes-utilisateur/US-324-creer-variante-utilisateur.md) | Service et endpoints pour creer une variante utilisateur | Indispensable | 5 | A faire |
+| [US-325](epics/E23-variantes-utilisateur/US-325-lister-variantes-utilisateur.md) | Lister les variantes d'un utilisateur | Indispensable | 3 | A faire |
+| [US-326](epics/E23-variantes-utilisateur/US-326-modifier-variante-utilisateur.md) | Modifier une variante utilisateur | Indispensable | 3 | A faire |
+| [US-327](epics/E23-variantes-utilisateur/US-327-supprimer-variante-cascade.md) | Supprimer une variante utilisateur (cascade) | Important | 3 | A faire |
+| [US-328](epics/E23-variantes-utilisateur/US-328-variante-dans-plantations.md) | Utiliser une variante dans les plantations | Important | 3 | A faire |
+
+**Total E23 : 17 points (0 Termine / 17 A faire)**
+
+> Ordre de livraison : US-324 (creation) → US-325 (listing) et US-326 (modification) en parallele → US-327 (suppression cascade) → US-328 (integration plantations). E23 depend de E20 (US-306 ParentPlantId) et E21 (US-312 Key/IsCustomized/UserId).
 
 ---
 
@@ -359,7 +435,7 @@
 
 | Epique | Points | Termine | En cours | A faire |
 |--------|--------|---------|----------|---------|
-| E01 — Gestion des jardins et planches | 31 | 0 | 8 | 23 |
+| E01 — Gestion des jardins et planches | 34 | 34 | 0 | 0 |
 | E02 — Associations vegetales (residuel) | 8 | 0 | 0 | 8 |
 | E03 — Editeur graphique du jardin | 39 | 0 | 0 | 39 |
 | E04 — Gestion des rotations de cultures | 30 | 0 | 0 | 30 |
@@ -377,9 +453,13 @@
 | E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
 | ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
-| E19 — Dette technique frontend | 12 | 0 | 0 | 12 |
-| **Total (actif)** | **410** | **126** | **8** | **276** |
+| E19 — Dette technique frontend | 12 | 7 | 0 | 5 |
+| E20 — Hierarchie espece-variete | 27 | 0 | 0 | 27 |
+| E21 — Upsert des seeds et protection des donnees | 24 | 0 | 0 | 24 |
+| E22 — Administration du catalogue de plantes | 13 | 0 | 0 | 13 |
+| E23 — Variantes utilisateur | 17 | 0 | 0 | 17 |
+| **Total (actif)** | **494** | **167** | **0** | **327** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-03-31 (ajout E19 dette technique frontend, US-300 a US-305)*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-04-02 (E21, E22, E23 crees — upsert seeds 8 stories 24 pts, admin catalogue 4 stories 13 pts, variantes utilisateur 5 stories 17 pts)*

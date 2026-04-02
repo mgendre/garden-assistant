@@ -1,9 +1,6 @@
 @if (store.selectedPlants().length === 0 && !store.isFormVisible()) {
   <div class="panel center-panel">
-    <div class="empty-state">
-      <div class="empty-state-icon">🌱</div>
-      <p class="empty-state-text" [translate]="'Companions.SelectPlant'"></p>
-    </div>
+    <app-empty-state icon="🌱" messageKey="Companions.SelectPlant"></app-empty-state>
   </div>
 } @else if (store.selectedPlants().length > 0) {
   <div class="plants-scroll">

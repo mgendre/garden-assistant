@@ -21,4 +21,11 @@
 ### Estimation
 - **Priorité :** Optionnel
 - **Points :** 1
-- **Statut :** A faire
+- **Statut :** Terminé
+
+### Livré
+- Composant `<app-info-banner>` dans `shared/ui/info-banner/`
+- Inputs : `emoji`, `messageKey`, `messageParams`, `actionLabel`, `variant` (info/warning)
+- Output : `actionClick`
+- SCSS dans `_info-banner.scss` — couleurs info bleu en dur (variables @theme non résolues en inline)
+- 3 bannières inline remplacées dans guild-editor

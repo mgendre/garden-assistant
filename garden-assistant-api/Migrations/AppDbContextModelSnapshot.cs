@@ -222,6 +222,10 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("character varying(256)")
                         .HasColumnName("name");
 
+                    b.Property<Guid?>("ParentPlantId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("parent_plant_id");
+
                     b.Property<int>("PropagationMethod")
                         .HasColumnType("integer")
                         .HasColumnName("propagation_method");
@@ -245,6 +249,9 @@ namespace GardenAssistant.Migrations
 
                     b.HasKey("Id")
                         .HasName("pk_plants");
+
+                    b.HasIndex("ParentPlantId")
+                        .HasDatabaseName("ix_plants_parent_plant_id");
 
                     b.ToTable("plants", (string)null);
                 });
@@ -608,6 +615,17 @@ namespace GardenAssistant.Migrations
                     b.Navigation("HarvestReadiness");
                 });
 
+            modelBuilder.Entity("GardenAssistant.Data.Entities.Plant", b =>
+                {
+                    b.HasOne("GardenAssistant.Data.Entities.Plant", "ParentPlant")
+                        .WithMany("Varieties")
+                        .HasForeignKey("ParentPlantId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("fk_plants_plants_parent_plant_id");
+
+                    b.Navigation("ParentPlant");
+                });
+
             modelBuilder.Entity("GardenAssistant.Data.Entities.PlantAction", b =>
                 {
                     b.HasOne("GardenAssistant.Data.Entities.Plant", "Plant")
@@ -726,6 +744,8 @@ namespace GardenAssistant.Migrations
                     b.Navigation("HarvestReadiness");
 
                     b.Navigation("IntrinsicMechanisms");
+
+                    b.Navigation("Varieties");
                 });
 #pragma warning restore 612, 618
         }

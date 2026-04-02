@@ -1,5 +1,4 @@
 import { Component, inject, OnInit, computed } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart, faSeedling, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
@@ -12,11 +11,12 @@ import { CalendarThisMonth } from './calendar-this-month';
 import { PlantActionType, PlantDto } from '../../api/garden-assistant-api';
 import { CalendarService } from '../../shared/services/calendar.service';
 import { ACTION_TYPE_CONFIGS, FILTER_CONFIGS } from '../../shared/constants/plant-action.constants';
+import { EmptyState } from '../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [TranslateModule, RouterLink, FontAwesomeModule, PlantCalendarGantt, CalendarThisMonth],
+  imports: [TranslateModule, FontAwesomeModule, PlantCalendarGantt, CalendarThisMonth, EmptyState],
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss'
 })

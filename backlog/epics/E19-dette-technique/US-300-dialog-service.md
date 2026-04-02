@@ -22,4 +22,14 @@
 ### Estimation
 - **Priorité :** Indispensable
 - **Points :** 3
-- **Statut :** A faire
+- **Statut :** Terminé
+
+### Livré
+- `DialogService` : `confirm(title, msg, label, danger?)`, `openBadgeInfo(titleKey, descKey)`
+- `PlantDialogService` : `openDetail(plant|id)`, `openHarvestReadiness(id, name)`
+- `GardenDialogService` : `openCreateGarden(data)`, `openCreateBed(data)`
+- Séparation par domaine (shared vs plant vs garden) au lieu d'un service unique
+- `.dialog-header` / `.dialog-body` / `.dialog-footer` standardisés, plus de `mat-dialog-title/content/actions`
+- `btn btn-secondary btn-sm` uniformisé dans tous les footers de dialogs
+- `ConfirmDialogData.danger` pour les actions destructives
+- 17 fichiers refactorés, -73 lignes nettes

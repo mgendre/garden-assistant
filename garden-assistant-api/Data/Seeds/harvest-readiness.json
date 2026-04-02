@@ -74,7 +74,7 @@
     ]
   },
   {
-    "plantKey": "haricot-nain",
+    "plantKey": "haricot-nain-mangetout",
     "description": "Le haricot nain se récolte quand les gousses sont tendres et se cassent net en les pliant.",
     "daysFromSowing": 55,
     "criteria": [
@@ -85,7 +85,7 @@
     ]
   },
   {
-    "plantKey": "haricot-a-rames",
+    "plantKey": "haricot-a-rames-mangetout",
     "description": "Le haricot à rames se récolte quand les gousses sont tendres et se cassent net en les pliant.",
     "daysFromSowing": 65,
     "criteria": [

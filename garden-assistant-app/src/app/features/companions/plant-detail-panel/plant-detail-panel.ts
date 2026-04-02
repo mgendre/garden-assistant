@@ -5,11 +5,12 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { DialogService } from '../../../shared/services/dialog.service';
 import { PlantCard } from '../../../shared/ui/plant-card/plant-card';
+import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-plant-detail-panel',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, PlantCard],
+  imports: [TranslateModule, FontAwesomeModule, PlantCard, EmptyState],
   templateUrl: './plant-detail-panel.html',
   styleUrl: './plant-detail-panel.scss'
 })

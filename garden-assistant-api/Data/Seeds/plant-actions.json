@@ -59,7 +59,7 @@
     ]
   },
   {
-    "plantKey": "haricot-nain",
+    "plantKey": "haricot-nain-mangetout",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
       { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },
@@ -67,7 +67,7 @@
     ]
   },
   {
-    "plantKey": "haricot-a-rames",
+    "plantKey": "haricot-a-rames-mangetout",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
       { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },
@@ -1101,6 +1101,159 @@
       { "actionType": "Transplanting", "halfMonthStart": 11, "halfMonthEnd": 12, "notes": "Sol très chaud, plein soleil, espace important" },
       { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 19, "notes": "Récolter quand la vrille pres du fruit sèche et le dessous jaunit" },
       { "actionType": "Pinching", "halfMonthStart": 12, "halfMonthEnd": 16, "notes": "Pincer les tiges après 3-4 fruits par pied" }
+    ]
+  },
+  {
+    "plantKey": "tomate-cerise",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25°C)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Tuteurer ou laisser retomber en suspension" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Récolte précoce et continue, cueillir les grappes entières quand les fruits sont colorés" }
+    ]
+  },
+  {
+    "plantKey": "tomate-cocktail",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25°C)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Tuteurer immédiatement" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20, "notes": "Récolte légèrement plus précoce que les grosses tomates" },
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Supprimer les gourmands pour concentrer la production" }
+    ]
+  },
+  {
+    "plantKey": "tomate-coeur-de-boeuf",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 4, "notes": "Semer tôt au chaud (20-25°C) car maturation lente (80-95 jours)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Tuteur solide indispensable, fruits très lourds" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 19, "notes": "Récolte tardive, limiter à 4-5 bouquets par pied pour obtenir de gros fruits" },
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Supprimer tous les gourmands et limiter à 4-5 bouquets par pied" }
+    ]
+  },
+  {
+    "plantKey": "tomate-naine",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25°C), maturation rapide (55-65 jours)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Pas de tuteur nécessaire, simple cage ou pot" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 17, "notes": "Récolte concentrée sur 3-4 semaines, la plante arrête de produire ensuite" }
+    ]
+  },
+  {
+    "plantKey": "fraisier-remontant",
+    "actions": [
+      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter au printemps pour une première récolte dès l'été" },
+      { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 21, "notes": "Récolte de juin aux gelées avec une pause en plein été (juillet-août)" },
+      { "actionType": "Pruning", "halfMonthStart": 10, "halfMonthEnd": 20, "notes": "Supprimer les stolons régulièrement pour maintenir la production de fruits" }
+    ]
+  },
+  {
+    "plantKey": "framboisier-d-automne",
+    "actions": [
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter de novembre à mars en racines nues" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 21, "notes": "Récolte d'été sur les cannes de 2 ans puis d'automne sur les cannes de l'année" },
+      { "actionType": "Pruning", "halfMonthStart": 23, "halfMonthEnd": 4, "notes": "Couper toutes les cannes au ras du sol en hiver pour simplifier la gestion" }
+    ]
+  },
+  {
+    "plantKey": "radis-d-hiver",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Semer uniquement en été pour éviter la montaison" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 24, "notes": "Récolter avant les grands gels, se conserve en cave tout l'hiver" }
+    ]
+  },
+  {
+    "plantKey": "chou-chinois",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Semer exclusivement en été, monte en graines systématiquement au printemps" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Récolter avant les premières fortes gelées" }
+    ]
+  },
+  {
+    "plantKey": "haricot",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain-a-ecosser",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Laisser les gousses sécher sur pied, récolter quand elles craquent" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-a-rames-a-ecosser",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Laisser les gousses sécher sur pied, récolter quand elles craquent" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "courge-musquee",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 6, "halfMonthEnd": 8, "notes": "Semer en godets au chaud, 1 graine par godet. Nécessite plus de chaleur que C. pepo" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Après les Saints de Glace, sol bien réchauffé. Espacer d'1,5 mètre" },
+      { "actionType": "Harvest", "halfMonthStart": 18, "halfMonthEnd": 21, "notes": "Récolter quand le pédoncule est sec et liégé, avant les premières gelées" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain-filet",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 19, "notes": "Récolter tous les 2-3 jours impérativement, les gousses deviennent filandreuses très vite" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-a-rames-filet",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 19, "notes": "Récolter tous les 2-3 jours impérativement, les gousses deviennent filandreuses très vite" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain-coco",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Récolter quand les gousses sont gonflées mais les grains encore tendres et crémeux" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-a-rames-coco",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Récolter quand les gousses sont gonflées mais les grains encore tendres, maintenir l'arrosage" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain-flageolet",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Semer en poquets, sol à 15°C minimum. Semis groupé pour récolte simultanée" },
+      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 19, "notes": "Récolter quand les gousses jaunissent et les grains sont vert pâle, fenêtre de récolte étroite (quelques jours)" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-d-espagne",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 12, "notes": "Semer 2-3 semaines avant les haricots communs, tolère mieux le froid au démarrage" },
+      { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 20, "notes": "Récolter les gousses jeunes comme mangetout ou attendre les grains demi-secs" },
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Guider les tiges sur les supports, pincer les sommités à 3-4 m si nécessaire" }
+    ]
+  },
+  {
+    "plantKey": "fenouil-bulbeux",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Semer après le solstice d'été uniquement, sinon montaison assurée" },
+      { "actionType": "Transplanting", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Repiquer les plants issus de semis en godet, sans déranger la racine pivotante" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Récolter le bulbe quand il atteint la taille d'un poing, avant les gelées" },
+      { "actionType": "Hilling", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Butter le bulbe pour le blanchir et l'attendrir" }
     ]
   }
 ]

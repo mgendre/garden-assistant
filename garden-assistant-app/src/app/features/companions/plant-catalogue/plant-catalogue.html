@@ -120,9 +120,7 @@
     }
 
     @if (displayedPlants().length === 0 && !plantStore.loading()) {
-      <div class="empty-state">
-        <p class="empty-state-text" [translate]="'Companions.NoResults'"></p>
-      </div>
+      <app-empty-state messageKey="Companions.NoResults"></app-empty-state>
     }
   </div>
 </div>

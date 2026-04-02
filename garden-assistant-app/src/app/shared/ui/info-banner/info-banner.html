@@ -1,0 +1,9 @@
+<span class="info-banner-message">
+  @if (emoji()) {
+    <span>{{ emoji() }}</span>
+  }
+  <span [translate]="messageKey()" [translateParams]="messageParams()"></span>
+</span>
+@if (actionLabel()) {
+  <button class="btn btn-secondary btn-xs" (click)="actionClick.emit()" [translate]="actionLabel()!"></button>
+}

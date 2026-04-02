@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { WhatsNewEntry } from './whats-new-entry/whats-new-entry';
+import { EmptyState } from '../../shared/ui/empty-state/empty-state';
 
 interface WhatsNewIndexEntry {
   date: string;
@@ -17,7 +18,7 @@ interface WhatsNewItem {
 @Component({
   selector: 'app-whats-new',
   standalone: true,
-  imports: [TranslateModule, WhatsNewEntry],
+  imports: [TranslateModule, WhatsNewEntry, EmptyState],
   templateUrl: './whats-new.html',
   styleUrl: './whats-new.scss'
 })

@@ -5,11 +5,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
+import { InfoBanner } from '../../../shared/ui/info-banner/info-banner';
 
 @Component({
     selector: 'app-root-stratification',
     standalone: true,
-    imports: [TranslateModule, NgClass, FontAwesomeModule],
+    imports: [TranslateModule, NgClass, FontAwesomeModule, InfoBanner],
     templateUrl: './root-stratification.html',
     styleUrl: './root-stratification.scss'
 })

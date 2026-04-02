@@ -16,6 +16,74 @@
     "frostSensitive": true
   },
   {
+    "key": "tomate-cerise",
+    "name": "Tomate cerise",
+    "scientificName": "Solanum lycopersicum var. cerasiforme",
+    "description": "Variété de tomate à petits fruits grappes, très productive et précoce.",
+    "family": "Solanaceae",
+    "genus": "Solanum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 150,
+    "rootDepth": "Deep",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1000,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "tomate"
+  },
+  {
+    "key": "tomate-cocktail",
+    "name": "Tomate cocktail",
+    "scientificName": "Solanum lycopersicum (cocktail)",
+    "description": "Tomate de calibre intermédiaire entre la cerise et la classique, productive en grappes.",
+    "family": "Solanaceae",
+    "genus": "Solanum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 160,
+    "rootDepth": "Deep",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1000,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "tomate"
+  },
+  {
+    "key": "tomate-coeur-de-boeuf",
+    "name": "Tomate cœur de bœuf",
+    "scientificName": "Solanum lycopersicum (beefsteak)",
+    "description": "Variété à très gros fruits côtelés, chair dense et peu de graines, maturité tardive.",
+    "family": "Solanaceae",
+    "genus": "Solanum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 200,
+    "rootDepth": "Deep",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "High",
+    "maxAltitudeM": 1000,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "tomate"
+  },
+  {
+    "key": "tomate-naine",
+    "name": "Tomate naine (déterminée)",
+    "scientificName": "Solanum lycopersicum (determinate)",
+    "description": "Variété déterminée compacte adaptée aux pots et balcons, ne nécessite pas de taille.",
+    "family": "Solanaceae",
+    "genus": "Solanum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 50,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "tomate"
+  },
+  {
     "key": "basilic",
     "name": "Basilic",
     "scientificName": "Ocimum basilicum",
@@ -29,10 +97,62 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 800,
     "intrinsicMechanisms": [
-      "PollinatorAttraction"
+      "PollinatorAttraction",
+      "AerialRepulsion"
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true
+  },
+  {
+    "key": "basilic-pourpre",
+    "name": "Basilic pourpre",
+    "scientificName": "Ocimum basilicum var. purpurascens",
+    "description": "Basilic à feuillage pourpre, croissance plus lente et port plus compact.",
+    "family": "Lamiaceae",
+    "genus": "Ocimum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "basilic"
+  },
+  {
+    "key": "basilic-grec",
+    "name": "Basilic grec",
+    "scientificName": "Ocimum basilicum var. minimum",
+    "description": "Basilic compact en boule, adapté aux pots et bordures, ne nécessite pas de pincement.",
+    "family": "Lamiaceae",
+    "genus": "Ocimum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 20,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "basilic"
+  },
+  {
+    "key": "basilic-thai",
+    "name": "Basilic thaï",
+    "scientificName": "Ocimum basilicum var. thyrsiflora",
+    "description": "Basilic à saveur anisée et tiges pourpres, plus résistant à la chaleur.",
+    "family": "Lamiaceae",
+    "genus": "Ocimum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 45,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "basilic"
   },
   {
     "key": "carotte",
@@ -66,6 +186,9 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
     "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "AerialRepulsion"
+    ],
     "propagationMethod": "Seed",
     "frostSensitive": false
   },
@@ -76,7 +199,7 @@
     "description": "Bulbe aux propriétés antifongiques et insectifuges, protège les rosiers et de nombreux légumes.",
     "family": "Amaryllidaceae",
     "genus": "Allium",
-    "lifeCycle": "Annual",
+    "lifeCycle": "Biennial",
     "heightAtMaturityCm": 50,
     "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
@@ -101,6 +224,9 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "AerialRepulsion"
+    ],
     "propagationMethod": "Bulb",
     "frostSensitive": false
   },
@@ -118,16 +244,17 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 2000,
     "intrinsicMechanisms": [
-      "PollinatorAttraction"
+      "PollinatorAttraction",
+      "AerialRepulsion"
     ],
     "propagationMethod": "Division",
     "frostSensitive": false
   },
   {
-    "key": "haricot-nain",
-    "name": "Haricot nain",
-    "scientificName": "Phaseolus vulgaris var. nanus",
-    "description": "Légumineuse fixatrice d'azote, s'associe bien avec la courge et le maïs dans la «Trois Sœurs».",
+    "key": "haricot",
+    "name": "Haricot",
+    "scientificName": "Phaseolus vulgaris",
+    "description": "Légumineuse fixatrice d'azote, pilier du potager et des Trois Sœurs. Existe en formes naines et grimpantes.",
     "family": "Fabaceae",
     "genus": "Phaseolus",
     "lifeCycle": "Annual",
@@ -136,30 +263,179 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
     "maxAltitudeM": 1200,
-    "intrinsicMechanisms": [
-      "NitrogenFixation"
-    ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "intrinsicMechanisms": ["NitrogenFixation"]
   },
   {
-    "key": "haricot-a-rames",
-    "name": "Haricot à rames",
-    "scientificName": "Phaseolus vulgaris var. vulgaris",
-    "description": "Légumineuse grimpante fixatrice d'azote, pilier de l'association des Trois Sœurs.",
+    "key": "haricot-nain-mangetout",
+    "name": "Haricot nain mangetout",
+    "scientificName": "Phaseolus vulgaris var. nanus (mangetout)",
+    "description": "Haricot nain dont la gousse entière se consomme, récolte précoce et continue.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-nain-a-ecosser",
+    "name": "Haricot nain à écosser",
+    "scientificName": "Phaseolus vulgaris var. nanus (grain)",
+    "description": "Haricot nain cultivé pour le grain sec, laissé sur pied jusqu'à maturité complète.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Low",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-a-rames-mangetout",
+    "name": "Haricot à rames mangetout",
+    "scientificName": "Phaseolus vulgaris var. vulgaris (mangetout)",
+    "description": "Haricot grimpant dont la gousse entière se consomme, production étalée et abondante.",
     "family": "Fabaceae",
     "genus": "Phaseolus",
     "lifeCycle": "Annual",
     "heightAtMaturityCm": 250,
-    "rootDepth": "Medium",
+    "rootDepth": "Shallow",
     "sunRequirement": "FullSun",
     "waterNeeds": "Medium",
-    "maxAltitudeM": 1000,
-    "intrinsicMechanisms": [
-      "NitrogenFixation"
-    ],
+    "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-a-rames-a-ecosser",
+    "name": "Haricot à rames à écosser",
+    "scientificName": "Phaseolus vulgaris var. vulgaris (grain)",
+    "description": "Haricot grimpant pour le grain sec (coco, soisson), récolte tardive en une seule fois.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 250,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Low",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-nain-filet",
+    "name": "Haricot nain filet",
+    "scientificName": "Phaseolus vulgaris var. nanus (filet)",
+    "description": "Haricot nain à gousses fines et cylindriques, récolte très fréquente pour éviter les fils.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-a-rames-filet",
+    "name": "Haricot à rames filet",
+    "scientificName": "Phaseolus vulgaris var. vulgaris (filet)",
+    "description": "Haricot grimpant à gousses fines, récolte tous les 2-3 jours pour des gousses tendres.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 250,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-nain-coco",
+    "name": "Haricot nain coco",
+    "scientificName": "Phaseolus vulgaris var. nanus (coco)",
+    "description": "Haricot nain récolté demi-sec pour ses grains frais et crémeux, pas de séchage nécessaire.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-a-rames-coco",
+    "name": "Haricot à rames coco",
+    "scientificName": "Phaseolus vulgaris var. vulgaris (coco)",
+    "description": "Haricot grimpant récolté demi-sec pour ses grains frais, arrosage maintenu jusqu'à la récolte.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 250,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-nain-flageolet",
+    "name": "Haricot flageolet",
+    "scientificName": "Phaseolus vulgaris (flageolet)",
+    "description": "Haricot nain récolté entre le stade frais et sec, grains vert pâle caractéristiques.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1200,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "haricot"
+  },
+  {
+    "key": "haricot-d-espagne",
+    "name": "Haricot d'Espagne",
+    "scientificName": "Phaseolus coccineus",
+    "description": "Haricot grimpant vivace à fleurs rouges, très vigoureux, tolère la mi-ombre. Attire les pollinisateurs.",
+    "family": "Fabaceae",
+    "genus": "Phaseolus",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 400,
+    "rootDepth": "Medium",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 1500,
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "intrinsicMechanisms": ["NitrogenFixation", "PollinatorAttraction"]
   },
   {
     "key": "mais",
@@ -181,7 +457,7 @@
     "key": "courge",
     "name": "Courge",
     "scientificName": "Cucurbita pepo",
-    "description": "Plante couvre-sol des Trois Sœurs, ses grandes feuilles conservent l'humidité et étouffent les adventices.",
+    "description": "Espèce type de Cucurbita pepo, plante couvre-sol des Trois Sœurs. Ses grandes feuilles conservent l'humidité et étouffent les adventices.",
     "family": "Cucurbitaceae",
     "genus": "Cucurbita",
     "lifeCycle": "Annual",
@@ -197,6 +473,40 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true
+  },
+  {
+    "key": "courge-musquee",
+    "name": "Courge musquée",
+    "scientificName": "Cucurbita moschata",
+    "description": "Espèce de courge à chair orangée et parfumée, très résistante à la chaleur. Bonne couvre-sol dans les Trois Sœurs.",
+    "family": "Cucurbitaceae",
+    "genus": "Cucurbita",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "intrinsicMechanisms": ["WeedSuppression", "SoilCover"]
+  },
+  {
+    "key": "courge-butternut",
+    "name": "Courge butternut",
+    "scientificName": "Cucurbita moschata var. butternut",
+    "description": "Variété de courge musquée en forme de poire, à chair douce et orangée.",
+    "family": "Cucurbitaceae",
+    "genus": "Cucurbita",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 35,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "courge-musquee"
   },
   {
     "key": "potiron",
@@ -217,7 +527,24 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
+  },
+  {
+    "key": "potimarron",
+    "name": "Potimarron",
+    "scientificName": "Cucurbita maxima var. potimarron",
+    "description": "Variété de potiron à chair farineuse au goût de châtaigne, maturation rapide.",
+    "family": "Cucurbitaceae",
+    "genus": "Cucurbita",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 35,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "High",
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "potiron"
   },
   {
     "key": "courgette",
@@ -232,12 +559,26 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "High",
     "maxAltitudeM": 1000,
-    "intrinsicMechanisms": [
-      "PollinatorAttraction",
-      "SoilCover"
-    ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "parentKey": "courge"
+  },
+  {
+    "key": "patisson",
+    "name": "Pâtisson",
+    "scientificName": "Cucurbita pepo var. clypeata",
+    "description": "Variété de courge buissonnante à fruits aplatis festonnés, récoltée jeune.",
+    "family": "Cucurbitaceae",
+    "genus": "Cucurbita",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 60,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "maxAltitudeM": 800,
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "courge"
   },
   {
     "key": "pois",
@@ -257,6 +598,38 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false
+  },
+  {
+    "key": "pois-nain",
+    "name": "Pois nain",
+    "scientificName": "Pisum sativum var. humile",
+    "description": "Variété naine ne nécessitant pas de rames, adaptée aux petits espaces.",
+    "family": "Fabaceae",
+    "genus": "Pisum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 50,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "pois"
+  },
+  {
+    "key": "pois-mange-tout",
+    "name": "Pois mange-tout",
+    "scientificName": "Pisum sativum var. macrocarpon",
+    "description": "Variété dont les gousses entières se consomment avant formation des grains.",
+    "family": "Fabaceae",
+    "genus": "Pisum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 150,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "pois"
   },
   {
     "key": "feve",
@@ -377,7 +750,8 @@
     "maxAltitudeM": 1500,
     "intrinsicMechanisms": [
       "PollinatorAttraction",
-      "DynamicAccumulation"
+      "DynamicAccumulation",
+      "HydraulicLift"
     ],
     "propagationMethod": "Division",
     "frostSensitive": false
@@ -396,7 +770,8 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 2500,
     "intrinsicMechanisms": [
-      "DynamicAccumulation"
+      "DynamicAccumulation",
+      "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false
@@ -439,7 +814,7 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "tagete",
@@ -459,7 +834,7 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "souci",
@@ -561,6 +936,22 @@
     "frostSensitive": false
   },
   {
+    "key": "fenouil-bulbeux",
+    "name": "Fenouil bulbeux",
+    "scientificName": "Foeniculum vulgare var. azoricum",
+    "description": "Variété potagère cultivée pour son bulbe charnu, culture annuelle sensible à la montaison.",
+    "family": "Apiaceae",
+    "genus": "Foeniculum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 60,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "fenouil"
+  },
+  {
     "key": "aneth",
     "name": "Aneth",
     "scientificName": "Anethum graveolens",
@@ -653,7 +1044,7 @@
     "intrinsicMechanisms": [
       "PollinatorAttraction"
     ],
-    "propagationMethod": "Seed",
+    "propagationMethod": "Cutting",
     "frostSensitive": false
   },
   {
@@ -883,11 +1274,26 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 1000,
     "intrinsicMechanisms": [
-      "RootAllelopathy",
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false
+  },
+  {
+    "key": "tournesol-nain",
+    "name": "Tournesol nain",
+    "scientificName": "Helianthus annuus (nain)",
+    "description": "Tournesol compact pour massifs et pots, même attrait pour les pollinisateurs.",
+    "family": "Asteraceae",
+    "genus": "Helianthus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 60,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "tournesol"
   },
   {
     "key": "chou-kale",
@@ -947,6 +1353,22 @@
     "frostSensitive": false
   },
   {
+    "key": "radis-d-hiver",
+    "name": "Radis d'hiver",
+    "scientificName": "Raphanus sativus var. niger",
+    "description": "Gros radis à conservation hivernale, semé en été et récolté en automne.",
+    "family": "Brassicaceae",
+    "genus": "Raphanus",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 35,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "radis"
+  },
+  {
     "key": "navet",
     "name": "Navet",
     "scientificName": "Brassica rapa subsp. rapa",
@@ -983,6 +1405,54 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false
+  },
+  {
+    "key": "laitue-romaine",
+    "name": "Laitue romaine",
+    "scientificName": "Lactuca sativa var. longifolia",
+    "description": "Laitue dressée à feuilles allongées croquantes, plus résistante à la chaleur.",
+    "family": "Asteraceae",
+    "genus": "Lactuca",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 35,
+    "rootDepth": "Shallow",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "laitue"
+  },
+  {
+    "key": "laitue-a-couper",
+    "name": "Laitue à couper",
+    "scientificName": "Lactuca sativa var. crispa",
+    "description": "Laitue ne formant pas de pomme, récoltée feuille par feuille, repousse après coupe.",
+    "family": "Asteraceae",
+    "genus": "Lactuca",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 25,
+    "rootDepth": "Shallow",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "laitue"
+  },
+  {
+    "key": "laitue-batavia",
+    "name": "Laitue batavia",
+    "scientificName": "Lactuca sativa var. capitata (batavia)",
+    "description": "Laitue pommée croquante, bonne résistance à la chaleur et à la montaison.",
+    "family": "Asteraceae",
+    "genus": "Lactuca",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 30,
+    "rootDepth": "Shallow",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "laitue"
   },
   {
     "key": "epinard",
@@ -1090,6 +1560,22 @@
     "frostSensitive": true
   },
   {
+    "key": "poivron-mini",
+    "name": "Poivron mini",
+    "scientificName": "Capsicum annuum (mini)",
+    "description": "Poivron compact à petits fruits nombreux, adapté à la culture en pot.",
+    "family": "Solanaceae",
+    "genus": "Capsicum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "poivron"
+  },
+  {
     "key": "aubergine",
     "name": "Aubergine",
     "scientificName": "Solanum melongena",
@@ -1123,7 +1609,7 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Tuber",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "asperge",
@@ -1222,6 +1708,22 @@
     "frostSensitive": false
   },
   {
+    "key": "fraisier-remontant",
+    "name": "Fraisier remontant",
+    "scientificName": "Fragaria × ananassa (remontant)",
+    "description": "Fraisier produisant des fruits de juin aux gelées, avec une pause en plein été.",
+    "family": "Rosaceae",
+    "genus": "Fragaria",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 20,
+    "rootDepth": "Shallow",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Division",
+    "frostSensitive": false,
+    "parentKey": "fraisier"
+  },
+  {
     "key": "fraisier-des-bois",
     "name": "Fraisier des bois",
     "scientificName": "Fragaria vesca",
@@ -1259,6 +1761,22 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false
+  },
+  {
+    "key": "framboisier-d-automne",
+    "name": "Framboisier d'automne",
+    "scientificName": "Rubus idaeus (remontant)",
+    "description": "Framboisier produisant sur les cannes de l'année, récolte d'été et d'automne.",
+    "family": "Rosaceae",
+    "genus": "Rubus",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 150,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Division",
+    "frostSensitive": false,
+    "parentKey": "framboisier"
   },
   {
     "key": "cassis",
@@ -1759,7 +2277,7 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "plantain-lanceole",
@@ -2014,7 +2532,7 @@
     "description": "Solanacée sauvage à petits fruits comestibles, résistante et utile pour diversifier les strates.",
     "family": "Solanaceae",
     "genus": "Solanum",
-    "lifeCycle": "Perennial",
+    "lifeCycle": "Annual",
     "heightAtMaturityCm": 100,
     "rootDepth": "Medium",
     "sunRequirement": "FullSun",
@@ -2024,7 +2542,7 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "murier-blanc",
@@ -2296,6 +2814,38 @@
     "frostSensitive": false
   },
   {
+    "key": "chou-rouge",
+    "name": "Chou rouge",
+    "scientificName": "Brassica oleracea var. capitata f. rubra",
+    "description": "Chou pommé à feuillage pourpre, même culture que le chou blanc mais maturation plus lente.",
+    "family": "Brassicaceae",
+    "genus": "Brassica",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 50,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "chou"
+  },
+  {
+    "key": "chou-chinois",
+    "name": "Chou chinois",
+    "scientificName": "Brassica rapa subsp. pekinensis",
+    "description": "Chou allongé à croissance rapide, exclusivement semé en été pour éviter la montaison.",
+    "family": "Brassicaceae",
+    "genus": "Brassica",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 40,
+    "rootDepth": "Shallow",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "High",
+    "propagationMethod": "Seed",
+    "frostSensitive": false,
+    "parentKey": "chou"
+  },
+  {
     "key": "chou-fleur",
     "name": "Chou-fleur",
     "scientificName": "Brassica oleracea var. botrytis",
@@ -2331,6 +2881,38 @@
     "frostSensitive": true
   },
   {
+    "key": "concombre-nain",
+    "name": "Concombre nain",
+    "scientificName": "Cucumis sativus (compact)",
+    "description": "Concombre buissonnant compact pour potées et petits espaces, pas de palissage.",
+    "family": "Cucurbitaceae",
+    "genus": "Cucumis",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 50,
+    "rootDepth": "Shallow",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "High",
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "concombre"
+  },
+  {
+    "key": "cornichon",
+    "name": "Cornichon",
+    "scientificName": "Cucumis sativus (cornichon)",
+    "description": "Variété de concombre à petits fruits récoltés jeunes, très productive.",
+    "family": "Cucurbitaceae",
+    "genus": "Cucumis",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 180,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "High",
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "concombre"
+  },
+  {
     "key": "melon",
     "name": "Melon",
     "scientificName": "Cucumis melo",
@@ -2347,7 +2929,7 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "groseillier",
@@ -2479,6 +3061,9 @@
     "sunRequirement": "FullSun",
     "waterNeeds": "Low",
     "maxAltitudeM": 1500,
+    "intrinsicMechanisms": [
+      "AerialRepulsion"
+    ],
     "propagationMethod": "Bulb",
     "frostSensitive": false
   },
@@ -2634,7 +3219,7 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
   },
   {
     "key": "piment",
@@ -2650,7 +3235,23 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
+  },
+  {
+    "key": "piment-doux",
+    "name": "Piment doux",
+    "scientificName": "Capsicum annuum (doux)",
+    "description": "Piment à faible piquant destiné au séchage, longue saison de maturation.",
+    "family": "Solanaceae",
+    "genus": "Capsicum",
+    "lifeCycle": "Annual",
+    "heightAtMaturityCm": 70,
+    "rootDepth": "Medium",
+    "sunRequirement": "FullSun",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Seed",
+    "frostSensitive": true,
+    "parentKey": "piment"
   },
   {
     "key": "pasteque",
@@ -2669,6 +3270,38 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": true
+  },
+  {
+    "key": "goumi",
+    "name": "Goumi",
+    "scientificName": "Elaeagnus umbellata",
+    "description": "Arbuste fixateur d'azote à fruits comestibles, idéal en haie comestible et forêt-jardin. Ses baies rouge-orangé sont riches en lycopène.",
+    "family": "Elaeagnaceae",
+    "genus": "Elaeagnus",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 300,
+    "rootDepth": "Deep",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Low",
+    "propagationMethod": "Cutting",
+    "frostSensitive": false,
+    "intrinsicMechanisms": ["NitrogenFixation", "PollinatorAttraction"]
+  },
+  {
+    "key": "groseillier-a-maquereau",
+    "name": "Groseillier à maquereau",
+    "scientificName": "Ribes uva-crispa",
+    "description": "Arbuste fruitier épineux produisant des baies acidulées, auto-fertile et tolérant l'ombre partielle. Excellent en sous-étage de verger.",
+    "family": "Grossulariaceae",
+    "genus": "Ribes",
+    "lifeCycle": "Perennial",
+    "heightAtMaturityCm": 120,
+    "rootDepth": "Medium",
+    "sunRequirement": "PartialShade",
+    "waterNeeds": "Medium",
+    "propagationMethod": "Cutting",
+    "frostSensitive": false,
+    "intrinsicMechanisms": ["PollinatorAttraction"]
   }
 ]

@@ -60,6 +60,11 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.Property(p => p.Description).HasMaxLength(10000);
             entity.Property(p => p.Family).HasMaxLength(128);
             entity.Property(p => p.Genus).HasMaxLength(128);
+            entity.HasOne(p => p.ParentPlant)
+                  .WithMany(p => p.Varieties)
+                  .HasForeignKey(p => p.ParentPlantId)
+                  .OnDelete(DeleteBehavior.Restrict);
+            entity.HasIndex(p => p.ParentPlantId);
         });
 
         modelBuilder.Entity<PlantAssociation>(entity =>
