@@ -1146,7 +1146,7 @@
     ]
   },
   {
-    "plantKey": "framboisier-remontant",
+    "plantKey": "framboisier-d-automne",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter de novembre à mars en racines nues" },
       { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 21, "notes": "Récolte d'été sur les cannes de 2 ans puis d'automne sur les cannes de l'année" },
