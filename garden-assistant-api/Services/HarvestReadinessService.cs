@@ -15,6 +15,21 @@ public class HarvestReadinessService(AppDbContext dbContext) : IHarvestReadiness
 
         if (harvestReadiness is null)
         {
+            var parentId = await dbContext.Plants
+                .Where(p => p.Id == plantId)
+                .Select(p => p.ParentPlantId)
+                .FirstOrDefaultAsync();
+
+            if (parentId.HasValue)
+            {
+                harvestReadiness = await dbContext.HarvestReadiness
+                    .Include(hr => hr.Criteria)
+                    .FirstOrDefaultAsync(hr => hr.PlantId == parentId.Value);
+            }
+        }
+
+        if (harvestReadiness is null)
+        {
             return null;
         }
 

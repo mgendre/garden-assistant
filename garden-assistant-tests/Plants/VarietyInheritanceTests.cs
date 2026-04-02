@@ -10,10 +10,14 @@ namespace GardenAssistant.Tests.Plants;
 public class VarietyInheritanceTests : DatabaseTestBase
 {
     private readonly PlantService _plantService;
+    private readonly PlantActionService _actionService;
+    private readonly HarvestReadinessService _harvestService;
 
     public VarietyInheritanceTests()
     {
         _plantService = new PlantService(DbContext);
+        _actionService = new PlantActionService(DbContext);
+        _harvestService = new HarvestReadinessService(DbContext);
     }
 
     [Fact]
@@ -140,5 +144,77 @@ public class VarietyInheritanceTests : DatabaseTestBase
         courge.Varieties.Count.ShouldBe(2);
         courge.Varieties.ShouldContain(v => v.Name == "Courgette");
         courge.Varieties.ShouldContain(v => v.Name == "Patisson");
+    }
+
+    [Fact]
+    public async Task GetByPlantIdAsync_WhenVarietyHasNoActions_ShouldInheritFromParent()
+    {
+        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
+        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        DbContext.Plants.AddRange(parent, variety);
+        DbContext.PlantActions.Add(new PlantAction
+        {
+            Id = Guid.NewGuid(),
+            PlantId = parent.Id,
+            ActionType = PlantActionType.DirectSowing,
+            HalfMonthStart = 9,
+            HalfMonthEnd = 12
+        });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _actionService.GetByPlantIdAsync(variety.Id);
+
+        result.Count.ShouldBe(1);
+        result[0].ActionType.ShouldBe(PlantActionType.DirectSowing);
+    }
+
+    [Fact]
+    public async Task GetByPlantIdAsync_WhenVarietyHasOwnActions_ShouldUseVarietyActions()
+    {
+        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
+        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        DbContext.Plants.AddRange(parent, variety);
+        DbContext.PlantActions.Add(new PlantAction
+        {
+            Id = Guid.NewGuid(),
+            PlantId = parent.Id,
+            ActionType = PlantActionType.DirectSowing,
+            HalfMonthStart = 9,
+            HalfMonthEnd = 12
+        });
+        DbContext.PlantActions.Add(new PlantAction
+        {
+            Id = Guid.NewGuid(),
+            PlantId = variety.Id,
+            ActionType = PlantActionType.Transplanting,
+            HalfMonthStart = 10,
+            HalfMonthEnd = 14
+        });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _actionService.GetByPlantIdAsync(variety.Id);
+
+        result.Count.ShouldBe(1);
+        result[0].ActionType.ShouldBe(PlantActionType.Transplanting);
+    }
+
+    [Fact]
+    public async Task GetHarvestReadiness_WhenVarietyHasNone_ShouldInheritFromParent()
+    {
+        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
+        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        DbContext.Plants.AddRange(parent, variety);
+        DbContext.HarvestReadiness.Add(new HarvestReadiness
+        {
+            Id = Guid.NewGuid(),
+            PlantId = parent.Id,
+            Description = "Récolter quand le fruit est ferme"
+        });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _harvestService.GetByPlantIdAsync(variety.Id);
+
+        result.ShouldNotBeNull();
+        result!.Description.ShouldBe("Récolter quand le fruit est ferme");
     }
 }
