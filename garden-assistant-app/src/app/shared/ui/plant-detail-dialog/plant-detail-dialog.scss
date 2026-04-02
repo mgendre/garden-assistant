@@ -1,5 +1,15 @@
 @reference "tailwindcss";
 
+.plant-detail-dialog {
+  .dialog-body {
+    @apply px-0 pb-0;
+  }
+
+  .collapsible-body-padded {
+    @apply px-5;
+  }
+}
+
 .plant-detail-dialog__section {
   @apply mt-2;
   font-size: 0.875rem;
