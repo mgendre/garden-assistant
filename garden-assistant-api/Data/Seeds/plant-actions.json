@@ -1200,6 +1200,54 @@
     ]
   },
   {
+    "plantKey": "haricot-nain-filet",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 19, "notes": "Récolter tous les 2-3 jours impérativement, les gousses deviennent filandreuses très vite" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-a-rames-filet",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 19, "notes": "Récolter tous les 2-3 jours impérativement, les gousses deviennent filandreuses très vite" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain-coco",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Récolter quand les gousses sont gonflées mais les grains encore tendres et crémeux" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-a-rames-coco",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Récolter quand les gousses sont gonflées mais les grains encore tendres, maintenir l'arrosage" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain-flageolet",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Semer en poquets, sol à 15°C minimum. Semis groupé pour récolte simultanée" },
+      { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 19, "notes": "Récolter quand les gousses jaunissent et les grains sont vert pâle, fenêtre de récolte étroite (quelques jours)" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-d-espagne",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 9, "halfMonthEnd": 12, "notes": "Semer 2-3 semaines avant les haricots communs, tolère mieux le froid au démarrage" },
+      { "actionType": "Harvest", "halfMonthStart": 14, "halfMonthEnd": 20, "notes": "Récolter les gousses jeunes comme mangetout ou attendre les grains demi-secs" },
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Guider les tiges sur les supports, pincer les sommités à 3-4 m si nécessaire" }
+    ]
+  },
+  {
     "plantKey": "fenouil-bulbeux",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Semer après le solstice d'été uniquement, sinon montaison assurée" },
