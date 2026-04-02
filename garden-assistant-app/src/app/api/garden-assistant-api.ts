@@ -1243,6 +1243,7 @@ export interface PlantDto {
     sunRequirement?: SunRequirement;
     waterNeeds?: WaterNeeds;
     propagationMethod?: PropagationMethod;
+    maxAltitudeM?: number | undefined;
     frostSensitive?: boolean;
     intrinsicMechanisms?: AssociationMechanism[];
     isVariety?: boolean;
