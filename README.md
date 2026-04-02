@@ -4,7 +4,7 @@ Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL
 
 ## Nouveautes
 
-Choisissez vos varietes preferees ! Le catalogue s'enrichit de plus de 30 varietes (tomates, courges, haricots, basilic, laitues, fraisiers...) avec des calendriers adaptes a chaque variete. Les associations de compagnonnage fonctionnent naturellement grace a l'heritage automatique depuis l'espece parente.
+Plus de 30 varietes rejoignent le catalogue (tomates, courges, haricots, basilic, laitues, fraisiers...) avec des calendriers et associations herites automatiquement. La page "Mes plantes" a ete redessinee avec une liste compacte et un champ de recherche pour retrouver vos plantes en un instant.
 
 - [Nouveautes pour les jardiniers](changelogs/users/2026-04-02.md)
 - [Changelog technique](changelogs/devs/2026-04-02.md)
