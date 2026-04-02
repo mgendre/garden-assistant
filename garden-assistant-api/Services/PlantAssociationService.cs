@@ -116,13 +116,6 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             .Distinct()
             .ToList();
 
-        Guid ResolvedToOriginal(Guid resolvedId)
-        {
-            var original = selectedPlantIds.FirstOrDefault(id =>
-                varietyToParent.TryGetValue(id, out var parentId) ? parentId == resolvedId : id == resolvedId);
-            return original != Guid.Empty ? original : resolvedId;
-        }
-
         var selectedPlantsMechanisms = selectedPlantIds
             .Select(plantId =>
             {
@@ -154,8 +147,8 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
 
         var selectedPlantAssociations = intraGuildAssociations
             .Select(a => new GuildAssociationDto(
-                ResolvedToOriginal(a.SourcePlantId),
-                ResolvedToOriginal(a.TargetPlantId),
+                a.SourcePlantId,
+                a.TargetPlantId,
                 a.Mechanism,
                 a.Effect,
                 a.Notes))

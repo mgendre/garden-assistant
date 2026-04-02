@@ -135,7 +135,7 @@ public class VarietyAssociationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenVarietySelected_ShouldReturnVarietyIdInAssociationDetails()
+    public async Task GetCompanionRecommendationsAsync_WhenVarietySelected_ShouldReturnParentIdInAssociationDetails()
     {
         var courge = CreatePlant("Courge");
         var courgette = CreatePlant("Courgette", courge.Id);
@@ -148,9 +148,8 @@ public class VarietyAssociationTests : DatabaseTestBase
         result.SelectedPlantAssociations.ShouldNotBeEmpty();
         var assoc = result.SelectedPlantAssociations[0];
         var ids = new[] { assoc.SourcePlantId, assoc.TargetPlantId };
-        ids.ShouldContain(courgette.Id);
+        ids.ShouldContain(courge.Id);
         ids.ShouldContain(tomate.Id);
-        ids.ShouldNotContain(courge.Id);
     }
 
     [Fact]
