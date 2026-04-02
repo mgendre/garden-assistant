@@ -133,4 +133,38 @@ public class VarietyAssociationTests : DatabaseTestBase
 
         result.PlantsToAvoid.ShouldNotContain(c => c.PlantId == courgette.Id);
     }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenVarietySelected_ShouldReturnVarietyIdInAssociationDetails()
+    {
+        var courge = CreatePlant("Courge");
+        var courgette = CreatePlant("Courgette", courge.Id);
+        var tomate = CreatePlant("Tomate");
+        CreateAssociation(courge.Id, tomate.Id, AssociationEffect.Beneficial, AssociationMechanism.SoilCover);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([courgette.Id, tomate.Id]);
+
+        result.SelectedPlantAssociations.ShouldNotBeEmpty();
+        var assoc = result.SelectedPlantAssociations[0];
+        var ids = new[] { assoc.SourcePlantId, assoc.TargetPlantId };
+        ids.ShouldContain(courgette.Id);
+        ids.ShouldContain(tomate.Id);
+        ids.ShouldNotContain(courge.Id);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenVarietySelected_ShouldReturnVarietyIdInMechanisms()
+    {
+        var courge = CreatePlant("Courge");
+        var courgette = CreatePlant("Courgette", courge.Id);
+        var tomate = CreatePlant("Tomate");
+        CreateAssociation(courge.Id, tomate.Id, AssociationEffect.Beneficial, AssociationMechanism.SoilCover);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([courgette.Id, tomate.Id]);
+
+        result.SelectedPlantsMechanisms.ShouldContain(m => m.PlantId == courgette.Id);
+        result.SelectedPlantsMechanisms.ShouldNotContain(m => m.PlantId == courge.Id);
+    }
 }

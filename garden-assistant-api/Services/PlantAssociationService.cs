@@ -87,17 +87,25 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             c.Plant,
             c.Score,
             Mechanisms = CollectBeneficialMechanisms(c.ResolvedId, resolvedSelectedIds, associationLookup),
-            LinkedPlantIds = CollectLinkedPlantIds(c.ResolvedId, resolvedSelectedIds, associationLookup)
+            ResolvedLinkedIds = CollectLinkedPlantIds(c.ResolvedId, resolvedSelectedIds, associationLookup)
         })
         .Where(c => !minScore.HasValue || c.Score >= minScore.Value)
         .OrderByDescending(c => c.Score)
         .ThenBy(c => c.Plant.Name, StringComparer.OrdinalIgnoreCase)
-        .Select(c => new CompanionRecommendationDto(c.Plant.Id, c.Mechanisms, c.LinkedPlantIds))
+        .Select(c => new CompanionRecommendationDto(
+            c.Plant.Id,
+            c.Mechanisms,
+            c.ResolvedLinkedIds.Select(rid =>
+            {
+                var original = selectedPlantIds.FirstOrDefault(id =>
+                    (varietyToParent.TryGetValue(id, out var pid) ? pid : id) == rid);
+                return original != Guid.Empty ? original : rid;
+            }).ToList()))
         .ToList();
 
-        var plantsToAvoid = BuildPlantsToAvoid(resolvedSelectedIds, associations);
+        var plantsToAvoid = BuildPlantsToAvoid(selectedPlantIds, resolvedSelectedIds, varietyToParent, associations);
 
-        var conflicts = BuildSelectedPlantConflicts(resolvedSelectedIds, associations);
+        var conflicts = BuildSelectedPlantConflicts(selectedPlantIds, varietyToParent, associations);
 
         var intraGuildAssociations = associations
             .Where(a => resolvedSelectedIds.Contains(a.SourcePlantId) && resolvedSelectedIds.Contains(a.TargetPlantId))
@@ -108,23 +116,35 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             .Distinct()
             .ToList();
 
-        var selectedPlantsMechanisms = resolvedSelectedIds
-            .Select(plantId => new PlantMechanismsDto(
-                plantId,
-                intraGuildAssociations
-                    .Where(a => a.SourcePlantId == plantId || a.TargetPlantId == plantId)
-                    .Select(a => a.Mechanism)
-                    .Distinct()
-                    .ToList()))
+        Guid ResolvedToOriginal(Guid resolvedId)
+        {
+            var original = selectedPlantIds.FirstOrDefault(id =>
+                varietyToParent.TryGetValue(id, out var parentId) ? parentId == resolvedId : id == resolvedId);
+            return original != Guid.Empty ? original : resolvedId;
+        }
+
+        var selectedPlantsMechanisms = selectedPlantIds
+            .Select(plantId =>
+            {
+                var resolvedId = varietyToParent.TryGetValue(plantId, out var pid) ? pid : plantId;
+                return new PlantMechanismsDto(
+                    plantId,
+                    intraGuildAssociations
+                        .Where(a => a.SourcePlantId == resolvedId || a.TargetPlantId == resolvedId)
+                        .Select(a => a.Mechanism)
+                        .Distinct()
+                        .ToList());
+            })
             .Where(p => p.Mechanisms.Count > 0)
             .ToList();
 
         var candidateById = candidates.ToDictionary(c => c.Id);
 
-        var intrinsicMechanismsByPlant = resolvedSelectedIds
+        var intrinsicMechanismsByPlant = selectedPlantIds
             .Select(plantId =>
             {
-                var mechanisms = candidateById.TryGetValue(plantId, out var plant)
+                var resolvedId = varietyToParent.TryGetValue(plantId, out var pid) ? pid : plantId;
+                var mechanisms = candidateById.TryGetValue(resolvedId, out var plant)
                     ? plant.IntrinsicMechanisms.Select(im => im.Mechanism).ToList()
                     : [];
                 return new PlantMechanismsDto(plantId, mechanisms);
@@ -134,8 +154,8 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
 
         var selectedPlantAssociations = intraGuildAssociations
             .Select(a => new GuildAssociationDto(
-                a.SourcePlantId,
-                a.TargetPlantId,
+                ResolvedToOriginal(a.SourcePlantId),
+                ResolvedToOriginal(a.TargetPlantId),
                 a.Mechanism,
                 a.Effect,
                 a.Notes))
@@ -148,6 +168,7 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
 
     private static List<SelectedPlantConflictDto> BuildSelectedPlantConflicts(
         List<Guid> selectedPlantIds,
+        Dictionary<Guid, Guid> varietyToParent,
         List<PlantAssociation> associations)
     {
         var conflicts = new List<SelectedPlantConflictDto>();
@@ -157,10 +178,12 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             {
                 var a = selectedPlantIds[i];
                 var b = selectedPlantIds[j];
+                var resolvedA = varietyToParent.TryGetValue(a, out var pa) ? pa : a;
+                var resolvedB = varietyToParent.TryGetValue(b, out var pb) ? pb : b;
                 var harmful = associations
                     .Where(assoc => assoc.Effect == AssociationEffect.Harmful
-                        && ((assoc.SourcePlantId == a && assoc.TargetPlantId == b)
-                         || (assoc.SourcePlantId == b && assoc.TargetPlantId == a)))
+                        && ((assoc.SourcePlantId == resolvedA && assoc.TargetPlantId == resolvedB)
+                         || (assoc.SourcePlantId == resolvedB && assoc.TargetPlantId == resolvedA)))
                     .Select(assoc => assoc.Mechanism)
                     .Distinct()
                     .ToList();
@@ -175,7 +198,9 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
     }
 
     private static List<CompanionRecommendationDto> BuildPlantsToAvoid(
-        List<Guid> selectedPlantIds,
+        List<Guid> originalSelectedIds,
+        List<Guid> resolvedSelectedIds,
+        Dictionary<Guid, Guid> varietyToParent,
         List<PlantAssociation> associations)
     {
         var harmfulByPlant = new Dictionary<Guid, (HashSet<AssociationMechanism> Mechanisms, HashSet<Guid> LinkedIds)>();
@@ -183,20 +208,27 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         foreach (var a in associations.Where(a => a.Effect == AssociationEffect.Harmful))
         {
             Guid candidateId;
-            Guid linkedId;
-            if (selectedPlantIds.Contains(a.SourcePlantId) && !selectedPlantIds.Contains(a.TargetPlantId))
+            Guid resolvedLinkedId;
+            if (resolvedSelectedIds.Contains(a.SourcePlantId) && !resolvedSelectedIds.Contains(a.TargetPlantId))
             {
                 candidateId = a.TargetPlantId;
-                linkedId = a.SourcePlantId;
+                resolvedLinkedId = a.SourcePlantId;
             }
-            else if (selectedPlantIds.Contains(a.TargetPlantId) && !selectedPlantIds.Contains(a.SourcePlantId))
+            else if (resolvedSelectedIds.Contains(a.TargetPlantId) && !resolvedSelectedIds.Contains(a.SourcePlantId))
             {
                 candidateId = a.SourcePlantId;
-                linkedId = a.TargetPlantId;
+                resolvedLinkedId = a.TargetPlantId;
             }
             else
             {
                 continue;
+            }
+
+            var linkedId = originalSelectedIds.FirstOrDefault(id =>
+                (varietyToParent.TryGetValue(id, out var pid) ? pid : id) == resolvedLinkedId);
+            if (linkedId == Guid.Empty)
+            {
+                linkedId = resolvedLinkedId;
             }
 
             if (!harmfulByPlant.TryGetValue(candidateId, out var entry))
