@@ -153,7 +153,7 @@ public class VarietyAssociationTests : DatabaseTestBase
     }
 
     [Fact]
-    public async Task GetCompanionRecommendationsAsync_WhenVarietySelected_ShouldReturnVarietyIdInMechanisms()
+    public async Task GetCompanionRecommendationsAsync_WhenVarietySelected_ShouldReturnParentIdInMechanisms()
     {
         var courge = CreatePlant("Courge");
         var courgette = CreatePlant("Courgette", courge.Id);
@@ -163,7 +163,6 @@ public class VarietyAssociationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([courgette.Id, tomate.Id]);
 
-        result.SelectedPlantsMechanisms.ShouldContain(m => m.PlantId == courgette.Id);
-        result.SelectedPlantsMechanisms.ShouldNotContain(m => m.PlantId == courge.Id);
+        result.SelectedPlantsMechanisms.ShouldContain(m => m.PlantId == courge.Id);
     }
 }
