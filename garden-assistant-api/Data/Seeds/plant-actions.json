@@ -1168,6 +1168,38 @@
     ]
   },
   {
+    "plantKey": "haricot",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-nain-a-ecosser",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Laisser les gousses sécher sur pied, récolter quand elles craquent" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "haricot-a-rames-a-ecosser",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 13, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Laisser les gousses sécher sur pied, récolter quand elles craquent" },
+      { "actionType": "Hilling", "halfMonthStart": 11, "halfMonthEnd": 13, "notes": "Butter quand les plants atteignent 15 cm" }
+    ]
+  },
+  {
+    "plantKey": "courge-musquee",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 6, "halfMonthEnd": 8, "notes": "Semer en godets au chaud, 1 graine par godet. Nécessite plus de chaleur que C. pepo" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 12, "notes": "Après les Saints de Glace, sol bien réchauffé. Espacer d'1,5 mètre" },
+      { "actionType": "Harvest", "halfMonthStart": 18, "halfMonthEnd": 21, "notes": "Récolter quand le pédoncule est sec et liégé, avant les premières gelées" }
+    ]
+  },
+  {
     "plantKey": "fenouil-bulbeux",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Semer après le solstice d'été uniquement, sinon montaison assurée" },
