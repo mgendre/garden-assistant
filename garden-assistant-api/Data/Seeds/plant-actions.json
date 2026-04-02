@@ -59,7 +59,7 @@
     ]
   },
   {
-    "plantKey": "haricot-nain",
+    "plantKey": "haricot-nain-mangetout",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer en poquets de 4-5 graines, sol à 15°C minimum" },
       { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },
@@ -67,7 +67,7 @@
     ]
   },
   {
-    "plantKey": "haricot-a-rames",
+    "plantKey": "haricot-a-rames-mangetout",
     "actions": [
       { "actionType": "DirectSowing", "halfMonthStart": 10, "halfMonthEnd": 14, "notes": "Semer au pied des tuteurs, sol à 15°C minimum" },
       { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20 },

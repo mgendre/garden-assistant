@@ -4,7 +4,7 @@
     "description": "Trio ancestral amérindien où le maïs sert de tuteur aux haricots grimpants, les haricots fixent l'azote atmosphérique dans le sol au bénéfice de tous, et les larges feuilles des courges couvrent le sol pour conserver l'humidité et supprimer les adventices. La capucine attire les pucerons loin des cultures principales tandis que la bourrache attire les pollinisateurs essentiels à la nouaison des courges.",
     "plants": [
       { "key": "mais", "role": "Central" },
-      { "key": "haricot-a-rames", "role": "Central" },
+      { "key": "haricot-a-rames-mangetout", "role": "Central" },
       { "key": "courge", "role": "Central" },
       "capucine",
       "bourrache"
@@ -115,7 +115,7 @@
       "tournesol",
       "bourrache",
       "menthe-poivree",
-      "haricot-nain"
+      "haricot-nain-mangetout"
     ]
   },
   {
@@ -176,7 +176,7 @@
     "plants": [
       { "key": "feve", "role": "Central" },
       { "key": "pois", "role": "Central" },
-      { "key": "haricot-nain", "role": "Central" },
+      { "key": "haricot-nain-mangetout", "role": "Central" },
       { "key": "trefle-rouge", "role": "Central" },
       { "key": "vesce-commune", "role": "Central" },
       "sarriette"
@@ -327,7 +327,7 @@
     "description": "Cette guilde répond aux besoins de la pomme de terre, plante gourmande vulnérable au doryphore et au mildiou. Le haricot nain fixe l'azote, le tagète assainit le sol contre les nématodes, la coriandre attire les syrphes, la capucine piège les doryphores et la bourrache repousse les ravageurs.",
     "plants": [
       { "key": "pomme-de-terre", "role": "Central" },
-      "haricot-nain",
+      "haricot-nain-mangetout",
       "tagete",
       "coriandre",
       "capucine",
@@ -356,7 +356,7 @@
       "tagete",
       "bourrache",
       "capucine",
-      "haricot-nain"
+      "haricot-nain-mangetout"
     ]
   },
   {
@@ -389,7 +389,7 @@
     "description": "Le topinambour, parent du tournesol, atteint 2-3 mètres et sert de structure vivante. Le haricot à rames grimpe sur ses tiges robustes, reproduisant le principe des Trois Sœurs. La consoude accumule les minéraux à la base, la capucine couvre le sol et piège les pucerons, la bourrache attire les pollinisateurs.",
     "plants": [
       { "key": "topinambour", "role": "Central" },
-      "haricot-a-rames",
+      "haricot-a-rames-mangetout",
       "consoude",
       "capucine",
       "bourrache"
@@ -400,7 +400,7 @@
     "description": "Adaptée aux climats chauds, cette guilde entoure la patate douce de compagnons protecteurs. Le haricot nain fixe l'azote, le tagète supprime les nématodes (auxquels la patate douce est très sensible), le basilic repousse aleurodes et thrips, la bourrache attire les auxiliaires et le maïs sert de brise-vent.",
     "plants": [
       { "key": "patate-douce", "role": "Central" },
-      "haricot-nain",
+      "haricot-nain-mangetout",
       "tagete",
       "basilic",
       "bourrache",
@@ -499,7 +499,7 @@
       { "key": "quinoa", "role": "Central" },
       "tournesol",
       "sarrasin",
-      "haricot-nain",
+      "haricot-nain-mangetout",
       "tagete"
     ]
   },
@@ -578,7 +578,7 @@
     "name": "La Guilde du Potager Vertical",
     "description": "Cette guilde exploite la dimension verticale du jardin. Le haricot à rames grimpe sur le tournesol et le houblon, reproduisant le principe des plantes-tuteurs vivants. Le concombre s'accroche aux mêmes structures par ses vrilles. La bourrache attire les pollinisateurs et la capucine couvre le sol en piégeant les pucerons.",
     "plants": [
-      { "key": "haricot-a-rames", "role": "Central" },
+      { "key": "haricot-a-rames-mangetout", "role": "Central" },
       { "key": "concombre", "role": "Central" },
       "tournesol",
       "houblon",
@@ -595,7 +595,7 @@
       { "key": "epinard", "role": "Central" },
       "oignon",
       "camomille-allemande",
-      "haricot-nain",
+      "haricot-nain-mangetout",
       "souci"
     ]
   },
