@@ -15,6 +15,11 @@ public record PlantDto(
     SunRequirement SunRequirement,
     WaterNeeds WaterNeeds,
     PropagationMethod PropagationMethod,
+    int? MaxAltitudeM,
     bool FrostSensitive,
-    List<AssociationMechanism> IntrinsicMechanisms
+    List<AssociationMechanism> IntrinsicMechanisms,
+    bool IsVariety,
+    Guid? ParentPlantId,
+    string? ParentPlantName,
+    List<PlantSummaryDto> Varieties
 );

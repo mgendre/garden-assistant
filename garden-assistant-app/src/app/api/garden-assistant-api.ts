@@ -1245,6 +1245,10 @@ export interface PlantDto {
     propagationMethod?: PropagationMethod;
     frostSensitive?: boolean;
     intrinsicMechanisms?: AssociationMechanism[];
+    isVariety?: boolean;
+    parentPlantId?: string | undefined;
+    parentPlantName?: string | undefined;
+    varieties?: PlantSummaryDto[];
 }
 
 export enum LifeCycle {
@@ -1277,6 +1281,12 @@ export enum PropagationMethod {
     Tuber = 2,
     Division = 3,
     Cutting = 4,
+}
+
+export interface PlantSummaryDto {
+    id?: string;
+    name?: string;
+    scientificName?: string | undefined;
 }
 
 export interface HarvestReadinessDto {

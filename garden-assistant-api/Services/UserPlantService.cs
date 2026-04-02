@@ -13,17 +13,24 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
         var plants = await dbContext.UserPlants
             .Where(up => up.UserId == userId)
             .OrderByDescending(up => up.AddedAtUtc)
-            .Join(dbContext.Plants.Include(p => p.IntrinsicMechanisms),
+            .Join(dbContext.Plants
+                    .Include(p => p.IntrinsicMechanisms)
+                    .Include(p => p.ParentPlant)
+                        .ThenInclude(pp => pp!.IntrinsicMechanisms)
+                    .Include(p => p.Varieties),
                 up => up.PlantId, p => p.Id, (up, p) => p)
             .ToListAsync();
 
-        return plants.Select(ToDto);
+        return plants.Select(PlantService.ToDto);
     }
 
     public async Task<PlantDto?> AddAsync(Guid plantId, Guid userId)
     {
         var plant = await dbContext.Plants
             .Include(p => p.IntrinsicMechanisms)
+            .Include(p => p.ParentPlant)
+                .ThenInclude(pp => pp!.IntrinsicMechanisms)
+            .Include(p => p.Varieties)
             .FirstOrDefaultAsync(p => p.Id == plantId);
         if (plant is null)
         {
@@ -35,7 +42,7 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
 
         if (existing is not null)
         {
-            return ToDto(plant);
+            return PlantService.ToDto(plant);
         }
 
         dbContext.UserPlants.Add(new UserPlant
@@ -47,7 +54,7 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
 
         await dbContext.SaveChangesAsync();
 
-        return ToDto(plant);
+        return PlantService.ToDto(plant);
     }
 
     public async Task<bool> RemoveAsync(Guid plantId, Guid userId)
@@ -66,20 +73,4 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
         return true;
     }
 
-    private static PlantDto ToDto(Plant p) => new(
-        p.Id,
-        p.Name,
-        p.ScientificName,
-        p.Description,
-        p.Family,
-        p.Genus,
-        p.LifeCycle,
-        p.HeightAtMaturityCm,
-        p.RootDepth,
-        p.SunRequirement,
-        p.WaterNeeds,
-        p.PropagationMethod,
-        p.FrostSensitive,
-        p.IntrinsicMechanisms.Select(im => im.Mechanism).ToList()
-    );
 }
