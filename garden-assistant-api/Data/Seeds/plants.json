@@ -3197,7 +3197,7 @@
     "heightAtMaturityCm": 120,
     "rootDepth": "Medium",
     "sunRequirement": "PartialShade",
-    "waterNeeds": "Moderate",
+    "waterNeeds": "Medium",
     "propagationMethod": "Cutting",
     "frostSensitive": false,
     "intrinsicMechanisms": ["PollinatorAttraction"]
