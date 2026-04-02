@@ -1102,5 +1102,78 @@
       { "actionType": "Harvest", "halfMonthStart": 16, "halfMonthEnd": 19, "notes": "Récolter quand la vrille pres du fruit sèche et le dessous jaunit" },
       { "actionType": "Pinching", "halfMonthStart": 12, "halfMonthEnd": 16, "notes": "Pincer les tiges après 3-4 fruits par pied" }
     ]
+  },
+  {
+    "plantKey": "tomate-cerise",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25°C)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Tuteurer ou laisser retomber en suspension" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 20, "notes": "Récolte précoce et continue, cueillir les grappes entières quand les fruits sont colorés" }
+    ]
+  },
+  {
+    "plantKey": "tomate-cocktail",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25°C)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Tuteurer immédiatement" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 20, "notes": "Récolte légèrement plus précoce que les grosses tomates" },
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Supprimer les gourmands pour concentrer la production" }
+    ]
+  },
+  {
+    "plantKey": "tomate-coeur-de-boeuf",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 4, "notes": "Semer tôt au chaud (20-25°C) car maturation lente (80-95 jours)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Tuteur solide indispensable, fruits très lourds" },
+      { "actionType": "Harvest", "halfMonthStart": 15, "halfMonthEnd": 19, "notes": "Récolte tardive, limiter à 4-5 bouquets par pied pour obtenir de gros fruits" },
+      { "actionType": "Pruning", "halfMonthStart": 12, "halfMonthEnd": 18, "notes": "Supprimer tous les gourmands et limiter à 4-5 bouquets par pied" }
+    ]
+  },
+  {
+    "plantKey": "tomate-naine",
+    "actions": [
+      { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en godets au chaud (20-25°C), maturation rapide (55-65 jours)" },
+      { "actionType": "Transplanting", "halfMonthStart": 10, "halfMonthEnd": 11, "notes": "Après les Saints de Glace. Pas de tuteur nécessaire, simple cage ou pot" },
+      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 17, "notes": "Récolte concentrée sur 3-4 semaines, la plante arrête de produire ensuite" }
+    ]
+  },
+  {
+    "plantKey": "fraisier-remontant",
+    "actions": [
+      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter au printemps pour une première récolte dès l'été" },
+      { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 21, "notes": "Récolte de juin aux gelées avec une pause en plein été (juillet-août)" },
+      { "actionType": "Pruning", "halfMonthStart": 10, "halfMonthEnd": 20, "notes": "Supprimer les stolons régulièrement pour maintenir la production de fruits" }
+    ]
+  },
+  {
+    "plantKey": "framboisier-remontant",
+    "actions": [
+      { "actionType": "Transplanting", "halfMonthStart": 21, "halfMonthEnd": 6, "notes": "Planter de novembre à mars en racines nues" },
+      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 21, "notes": "Récolte d'été sur les cannes de 2 ans puis d'automne sur les cannes de l'année" },
+      { "actionType": "Pruning", "halfMonthStart": 23, "halfMonthEnd": 4, "notes": "Couper toutes les cannes au ras du sol en hiver pour simplifier la gestion" }
+    ]
+  },
+  {
+    "plantKey": "radis-d-hiver",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Semer uniquement en été pour éviter la montaison" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 24, "notes": "Récolter avant les grands gels, se conserve en cave tout l'hiver" }
+    ]
+  },
+  {
+    "plantKey": "chou-chinois",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Semer exclusivement en été, monte en graines systématiquement au printemps" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Récolter avant les premières fortes gelées" }
+    ]
+  },
+  {
+    "plantKey": "fenouil-bulbeux",
+    "actions": [
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Semer après le solstice d'été uniquement, sinon montaison assurée" },
+      { "actionType": "Transplanting", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Repiquer les plants issus de semis en godet, sans déranger la racine pivotante" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Récolter le bulbe quand il atteint la taille d'un poing, avant les gelées" },
+      { "actionType": "Hilling", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Butter le bulbe pour le blanchir et l'attendrir" }
+    ]
   }
 ]
