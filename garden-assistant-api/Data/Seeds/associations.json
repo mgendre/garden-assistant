@@ -3229,5 +3229,95 @@
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
     "notes": "Le groseillier à maquereau forme un sous-étage productif qui couvre le sol et réduit l'évaporation au pied des arbres fruitiers."
+  },
+  {
+    "sourcePlantKey": "mais",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les larges feuilles de courge couvrent le sol, limitant l'évaporation et les adventices sous le maïs."
+  },
+  {
+    "sourcePlantKey": "haricot",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le haricot fixe l'azote atmosphérique qui bénéficie à la courge, gourmande en nutriments (trio des 3 Sœurs)."
+  },
+  {
+    "sourcePlantKey": "courge-musquee",
+    "targetPlantKey": "consoude",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude en bordure de parcelle de courge apporte le potassium nécessaire à la fructification."
+  },
+  {
+    "sourcePlantKey": "melisse",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La mélisse, dont le nom grec signifie 'abeille', attire puissamment les pollinisateurs par son parfum citronné, améliorant la nouaison des courges qui dépendent des insectes pour la pollinisation."
+  },
+  {
+    "sourcePlantKey": "seigle",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "WeedSuppression",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le seigle fauché et laissé en paillis sur place supprime les adventices grâce à ses composés allélopathiques résiduels, offrant un mulch idéal pour la plantation des courges."
+  },
+  {
+    "sourcePlantKey": "fenouil",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Medium",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les Cucurbitacées comme la courge sont sensibles aux exsudats racinaires du fenouil, qui perturbent l'absorption minérale et ralentissent la croissance des tiges volubiles."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les abeilles et bourdons indispensables à la pollinisation des fleurs de courge, dont la fenêtre de réceptivité est très courte."
+  },
+  {
+    "sourcePlantKey": "tagete",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les tagètes assainissent le sol contre les nématodes qui peuvent affecter le système racinaire des courges."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "La capucine en bordure attire les pucerons loin des courges et couvre le sol, complétant la protection de la parcelle."
+  },
+  {
+    "sourcePlantKey": "tournesol",
+    "targetPlantKey": "courge-musquee",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le tournesol sert de brise-vent naturel protégeant les larges feuilles de courge des vents desséchants et des coups de soleil."
   }
 ]
