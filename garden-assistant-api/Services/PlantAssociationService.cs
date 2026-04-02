@@ -21,12 +21,22 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
     {
         var candidates = await dbContext.Plants
             .Include(p => p.IntrinsicMechanisms)
+            .Include(p => p.ParentPlant)
             .ToListAsync();
 
         if (candidates.Count == 0)
         {
             return new CompanionSearchResultDto([], [], [], [], [], [], []);
         }
+
+        var varietyToParent = candidates
+            .Where(c => c.ParentPlantId.HasValue)
+            .ToDictionary(c => c.Id, c => c.ParentPlantId!.Value);
+
+        var resolvedSelectedIds = selectedPlantIds
+            .Select(id => varietyToParent.TryGetValue(id, out var parentId) ? parentId : id)
+            .Distinct()
+            .ToList();
 
         var allPlantIds = candidates.Select(c => c.Id).ToList();
 
@@ -38,13 +48,13 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         var associationLookup = BuildAssociationLookup(associations);
 
         var selectedRootDepths = candidates
-            .Where(c => selectedPlantIds.Contains(c.Id))
+            .Where(c => resolvedSelectedIds.Contains(c.Id))
             .ToDictionary(c => c.Id, c => c.RootDepth);
 
         var scores = new Dictionary<Guid, double>();
         foreach (var candidate in candidates)
         {
-            scores[candidate.Id] = selectedPlantIds.Sum(selectedId =>
+            scores[candidate.Id] = resolvedSelectedIds.Sum(selectedId =>
             {
                 var pairScore = ScorePair(candidate.Id, selectedId, associationLookup);
                 if (pairScore > 0
@@ -66,8 +76,8 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         {
             Plant = p,
             Score = Math.Round(scores[p.Id], 2),
-            Mechanisms = CollectBeneficialMechanisms(p.Id, selectedPlantIds, associationLookup),
-            LinkedPlantIds = CollectLinkedPlantIds(p.Id, selectedPlantIds, associationLookup)
+            Mechanisms = CollectBeneficialMechanisms(p.Id, resolvedSelectedIds, associationLookup),
+            LinkedPlantIds = CollectLinkedPlantIds(p.Id, resolvedSelectedIds, associationLookup)
         })
         .Where(c => !minScore.HasValue || c.Score >= minScore.Value)
         .OrderByDescending(c => c.Score)
@@ -75,12 +85,12 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         .Select(c => new CompanionRecommendationDto(c.Plant.Id, c.Mechanisms, c.LinkedPlantIds))
         .ToList();
 
-        var plantsToAvoid = BuildPlantsToAvoid(selectedPlantIds, associations);
+        var plantsToAvoid = BuildPlantsToAvoid(resolvedSelectedIds, associations);
 
-        var conflicts = BuildSelectedPlantConflicts(selectedPlantIds, associations);
+        var conflicts = BuildSelectedPlantConflicts(resolvedSelectedIds, associations);
 
         var intraGuildAssociations = associations
-            .Where(a => selectedPlantIds.Contains(a.SourcePlantId) && selectedPlantIds.Contains(a.TargetPlantId))
+            .Where(a => resolvedSelectedIds.Contains(a.SourcePlantId) && resolvedSelectedIds.Contains(a.TargetPlantId))
             .ToList();
 
         var selectedPlantMechanisms = intraGuildAssociations
@@ -88,7 +98,7 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             .Distinct()
             .ToList();
 
-        var selectedPlantsMechanisms = selectedPlantIds
+        var selectedPlantsMechanisms = resolvedSelectedIds
             .Select(plantId => new PlantMechanismsDto(
                 plantId,
                 intraGuildAssociations
@@ -101,7 +111,7 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
 
         var candidateById = candidates.ToDictionary(c => c.Id);
 
-        var intrinsicMechanismsByPlant = selectedPlantIds
+        var intrinsicMechanismsByPlant = resolvedSelectedIds
             .Select(plantId =>
             {
                 var mechanisms = candidateById.TryGetValue(plantId, out var plant)
