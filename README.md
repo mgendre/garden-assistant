@@ -4,10 +4,10 @@ Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL
 
 ## Nouveautes
 
-Vos jardins et vos planches prennent vie ! Creez vos espaces de culture, visualisez les plantes et associations de chaque planche en lecture seule, et retrouvez toutes vos cultures dans un calendrier global avec filtrage par source et regroupement par jardin.
+Choisissez vos varietes preferees ! Le catalogue s'enrichit de plus de 30 varietes (tomates, courges, haricots, basilic, laitues, fraisiers...) avec des calendriers adaptes a chaque variete. Les associations de compagnonnage fonctionnent naturellement grace a l'heritage automatique depuis l'espece parente.
 
-- [Nouveautes pour les jardiniers](changelogs/users/2026-03-31.md)
-- [Changelog technique](changelogs/devs/2026-03-31.md)
+- [Nouveautes pour les jardiniers](changelogs/users/2026-04-02.md)
+- [Changelog technique](changelogs/devs/2026-04-02.md)
 
 ## Documentation
 
