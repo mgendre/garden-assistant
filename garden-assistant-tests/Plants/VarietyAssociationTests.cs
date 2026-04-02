@@ -100,4 +100,37 @@ public class VarietyAssociationTests : DatabaseTestBase
 
         result.GoodCompanions.ShouldContain(c => c.PlantId == basilic.Id);
     }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenVarietyIsCandidate_ShouldInheritParentBenefits()
+    {
+        var courge = CreatePlant("Courge");
+        var courgette = CreatePlant("Courgette", courge.Id);
+        var tomate = CreatePlant("Tomate");
+        CreateAssociation(courge.Id, tomate.Id, AssociationEffect.Beneficial, AssociationMechanism.SoilCover);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomate.Id]);
+
+        var courgeRec = result.GoodCompanions.FirstOrDefault(c => c.PlantId == courge.Id);
+        var courgetteRec = result.GoodCompanions.FirstOrDefault(c => c.PlantId == courgette.Id);
+
+        courgeRec.ShouldNotBeNull();
+        courgetteRec.ShouldNotBeNull();
+        courgetteRec!.Mechanisms.ShouldContain(AssociationMechanism.SoilCover);
+    }
+
+    [Fact]
+    public async Task GetCompanionRecommendationsAsync_WhenVarietyIsCandidate_ShouldNotGetUnknownScore()
+    {
+        var courge = CreatePlant("Courge");
+        var courgette = CreatePlant("Courgette", courge.Id);
+        var tomate = CreatePlant("Tomate");
+        CreateAssociation(courge.Id, tomate.Id, AssociationEffect.Beneficial);
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetCompanionRecommendationsAsync([tomate.Id]);
+
+        result.PlantsToAvoid.ShouldNotContain(c => c.PlantId == courgette.Id);
+    }
 }

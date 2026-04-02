@@ -54,9 +54,13 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         var scores = new Dictionary<Guid, double>();
         foreach (var candidate in candidates)
         {
+            var resolvedCandidateId = varietyToParent.TryGetValue(candidate.Id, out var candidateParentId)
+                ? candidateParentId
+                : candidate.Id;
+
             scores[candidate.Id] = resolvedSelectedIds.Sum(selectedId =>
             {
-                var pairScore = ScorePair(candidate.Id, selectedId, associationLookup);
+                var pairScore = ScorePair(resolvedCandidateId, selectedId, associationLookup);
                 if (pairScore > 0
                     && selectedRootDepths.TryGetValue(selectedId, out var selectedDepth)
                     && candidate.RootDepth != selectedDepth)
@@ -76,8 +80,14 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         {
             Plant = p,
             Score = Math.Round(scores[p.Id], 2),
-            Mechanisms = CollectBeneficialMechanisms(p.Id, resolvedSelectedIds, associationLookup),
-            LinkedPlantIds = CollectLinkedPlantIds(p.Id, resolvedSelectedIds, associationLookup)
+            ResolvedId = varietyToParent.TryGetValue(p.Id, out var pId) ? pId : p.Id,
+        })
+        .Select(c => new
+        {
+            c.Plant,
+            c.Score,
+            Mechanisms = CollectBeneficialMechanisms(c.ResolvedId, resolvedSelectedIds, associationLookup),
+            LinkedPlantIds = CollectLinkedPlantIds(c.ResolvedId, resolvedSelectedIds, associationLookup)
         })
         .Where(c => !minScore.HasValue || c.Score >= minScore.Value)
         .OrderByDescending(c => c.Score)
