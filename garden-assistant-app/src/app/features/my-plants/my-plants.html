@@ -7,14 +7,40 @@
   <div class="two-col">
     <app-plant-catalogue mode="collection"></app-plant-catalogue>
 
-    <div class="collection">
-      @if (store.sortedPlants().length > 0) {
-        <div class="plants-list">
-          @for (plant of store.sortedPlants(); track plant.id) {
-            <app-plant-card [plant]="plant"></app-plant-card>
+    <div class="panel collection">
+      <div class="panel-header">
+        <span class="panel-title" [translate]="'MyPlants.Title'"></span>
+        <span class="plant-count">{{ filteredPlants().length }} {{ 'Companions.PlantCountSuffix' | translate }}</span>
+      </div>
+
+      <div class="search-wrap">
+        <app-search-input
+          [placeholder]="'MyPlants.SearchPlaceholder' | translate"
+          (valueChange)="searchQuery.set($event)">
+        </app-search-input>
+      </div>
+
+      @if (filteredPlants().length > 0) {
+        <div class="plant-list">
+          @for (plant of filteredPlants(); track plant.id) {
+            <div class="plant-item" (click)="openPlantDetail(plant)">
+              <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
+              <div class="plant-info">
+                <div class="plant-name-row">
+                  <span class="plant-name">{{ plant.name }}</span>
+                  @if (plant.family) {
+                    <span class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</span>
+                  }
+                </div>
+              </div>
+              <button class="remove-btn" (click)="removePlant(plant, $event)"
+                [attr.aria-label]="'MyPlants.Remove' | translate:{ name: plant.name }">
+                ✕
+              </button>
+            </div>
           }
         </div>
-      } @else if (!store.loading()) {
+      } @else if (!myPlantsStore.loading()) {
         <app-empty-state icon="🌱" titleKey="MyPlants.EmptyTitle" messageKey="MyPlants.EmptyDesc"></app-empty-state>
       }
     </div>

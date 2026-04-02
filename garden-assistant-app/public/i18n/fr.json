@@ -278,7 +278,8 @@
     "Remove": "Retirer {{name}} de ma collection",
     "ConfirmRemoveTitle": "Retirer de ma collection",
     "ConfirmRemoveMessage": "Retirer « {{name}} » de votre collection ?",
-    "ConfirmRemoveAction": "Retirer"
+    "ConfirmRemoveAction": "Retirer",
+    "SearchPlaceholder": "Rechercher dans mes plantes\u2026"
   },
   "Companions": {
     "Title": "Associations de plantes",
