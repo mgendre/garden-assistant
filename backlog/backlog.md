@@ -183,8 +183,10 @@
 | [US-079](epics/E10-calendrier-cultural/US-079-popups-educatives-actions.md) | Popups educatives des types d'actions | Important | 2 | Termine |
 | [US-080](epics/E10-calendrier-cultural/US-080-endpoint-batch-calendrier.md) | Endpoint batch calendrier « Mes plantes » | Indispensable | 2 | Termine |
 | [US-101](epics/E10-calendrier-cultural/US-101-fiches-techniques-actions.md) | Fiches techniques par action culturale et par plante | Important | 8 | A faire |
+| [US-337](epics/E10-calendrier-cultural/US-337-periodes-multiples-actions-seed.md) | Periodes multiples de semis, repiquage et recolte dans le seed | Indispensable | 3 | A faire |
+| [US-338](epics/E10-calendrier-cultural/US-338-clic-barre-gantt-modal-action.md) | Clic sur barre Gantt → modal explicatif de l'action | Important | 3 | A faire |
 
-**Total E10 : 46 points (33 Termine / 13 A faire)**
+**Total E10 : 52 points (33 Termine / 19 A faire)**
 
 > Livre le 2026-03-20. US-063 (semis successifs) reste a faire. Calendrier integre dans la page dediee, la fiche plante (plant-card collapsible), et le panneau associations/guildes. Indicateurs de maturite accessibles via popup depuis la ligne Recolte du Gantt. Widget demi-mois « En ce moment / Prochainement » en 2 colonnes. Filtre single-select par type d'action avec tri par date. Bouton favori deplace en bas du popup detail.
 
@@ -381,16 +383,16 @@
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-312](epics/E21-upsert-seeds-protection/US-312-key-is-customized-plant-entity.md) | Key et IsCustomized sur l'entite Plant + migration EF | Indispensable | 3 | A faire |
-| [US-313](epics/E21-upsert-seeds-protection/US-313-key-dans-fichiers-json-seed.md) | Champ key dans les fichiers JSON de seed | Indispensable | 2 | A faire |
-| [US-314](epics/E21-upsert-seeds-protection/US-314-plant-seeder-upsert.md) | PlantSeeder en mode upsert par Key | Indispensable | 5 | A faire |
-| [US-315](epics/E21-upsert-seeds-protection/US-315-association-seeder-upsert.md) | AssociationSeeder en mode upsert | Indispensable | 3 | A faire |
-| [US-316](epics/E21-upsert-seeds-protection/US-316-plant-action-seeder-upsert.md) | PlantActionSeeder en mode upsert | Indispensable | 3 | A faire |
-| [US-317](epics/E21-upsert-seeds-protection/US-317-harvest-readiness-seeder-upsert.md) | HarvestReadinessSeeder en mode upsert | Indispensable | 3 | A faire |
-| [US-318](epics/E21-upsert-seeds-protection/US-318-guild-seeder-upsert.md) | GuildSeeder en mode upsert | Indispensable | 3 | A faire |
-| [US-319](epics/E21-upsert-seeds-protection/US-319-intrinsic-mechanism-seeder-upsert.md) | PlantIntrinsicMechanismSeeder en mode upsert | Indispensable | 2 | A faire |
+| [US-312](epics/E21-upsert-seeds-protection/US-312-key-is-customized-plant-entity.md) | Key et IsCustomized sur l'entite Plant + migration EF | Indispensable | 3 | Termine |
+| [US-313](epics/E21-upsert-seeds-protection/US-313-key-dans-fichiers-json-seed.md) | Champ key dans les fichiers JSON de seed | Indispensable | 2 | Termine |
+| [US-314](epics/E21-upsert-seeds-protection/US-314-plant-seeder-upsert.md) | PlantSeeder en mode upsert par Key | Indispensable | 5 | Termine |
+| [US-315](epics/E21-upsert-seeds-protection/US-315-association-seeder-upsert.md) | AssociationSeeder en mode upsert | Indispensable | 3 | Termine |
+| [US-316](epics/E21-upsert-seeds-protection/US-316-plant-action-seeder-upsert.md) | PlantActionSeeder en mode upsert | Indispensable | 3 | Termine |
+| [US-317](epics/E21-upsert-seeds-protection/US-317-harvest-readiness-seeder-upsert.md) | HarvestReadinessSeeder en mode upsert | Indispensable | 3 | Termine |
+| [US-318](epics/E21-upsert-seeds-protection/US-318-guild-seeder-upsert.md) | GuildSeeder en mode upsert | Indispensable | 3 | Termine |
+| [US-319](epics/E21-upsert-seeds-protection/US-319-intrinsic-mechanism-seeder-upsert.md) | PlantIntrinsicMechanismSeeder en mode upsert | Indispensable | 2 | Termine |
 
-**Total E21 : 24 points (0 Termine / 24 A faire)**
+**Total E21 : 24 points (24 Termine / 0 A faire)**
 
 > Ordre de livraison : US-312 (entity + migration) et US-313 (JSON keys) en parallele → US-314 (PlantSeeder) en premier (les autres seeders dependent des plantes) → US-315, US-316, US-317, US-318, US-319 en parallele. Pattern commun : charger le set de PlantId verrouilles en un SELECT, puis boucle upsert avec logging Info/Debug.
 
@@ -431,6 +433,26 @@
 
 ---
 
+## E24 — Preferences de sol et pH des plantes
+
+> Enrichir l'entite Plant avec les types de sol compatibles (many-to-many via `PlantSoilType`) et la fourchette de pH optimale (deux decimaux). Afficher ces informations dans la fiche plante, proposer un filtre par type de sol, et alerter sur les incompatibilites pH dans les guildes. Le multi-sol permet de stocker plusieurs types de sol par plante (ex: tomate → Loam, Sandy, Clay), meme pattern que `PlantIntrinsicMechanism`.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-330](epics/E24-preferences-sol-ph/US-330-enum-soiltype-champs-ph-entity.md) | Enum SoilType, table PlantSoilType (many-to-many) et champs pH + migration EF | Indispensable | 3 | A faire |
+| [US-331](epics/E24-preferences-sol-ph/US-331-seed-data-sol-ph.md) | Seed data sol et pH pour les plantes du catalogue | Indispensable | 5 | A faire |
+| [US-332](epics/E24-preferences-sol-ph/US-332-api-dto-sol-ph.md) | Exposer SoilType et pH dans PlantDto | Indispensable | 2 | A faire |
+| [US-333](epics/E24-preferences-sol-ph/US-333-tests-unitaires-sol-ph.md) | Tests unitaires pour les proprietes sol et pH | Indispensable | 3 | A faire |
+| [US-334](epics/E24-preferences-sol-ph/US-334-frontend-affichage-sol-ph-fiche-plante.md) | Afficher le type de sol et le pH sur la fiche plante | Indispensable | 3 | A faire |
+| [US-335](epics/E24-preferences-sol-ph/US-335-frontend-filtre-sol-liste-plantes.md) | Filtrer les plantes par type de sol | Important | 3 | A faire |
+| [US-336](epics/E24-preferences-sol-ph/US-336-alerte-compatibilite-ph-guilde.md) | Alerte de compatibilite pH dans l'editeur de guilde | Important | 5 | A faire |
+
+**Total E24 : 24 points (0 Termine / 24 A faire)**
+
+> Ordre de livraison : US-330 (entity + migration) → US-331 (seed data, necessite validation plant-expert) et US-332 (API/DTO) en parallele → US-333 (tests) → US-334 (affichage fiche) → US-335 (filtre liste) et US-336 (alerte guilde) en parallele. US-331 est la story la plus lourde car elle necessite l'expertise botanique pour chaque plante.
+
+---
+
 ## Recapitulatif
 
 | Epique | Points | Termine | En cours | A faire |
@@ -444,7 +466,7 @@
 | E07 — Mes plantes | 17 | 15 | 0 | 2 |
 | E08 — Finitions UX Associations | 14 | 9 | 0 | 5 |
 | E09 — Conscience de l'enracinement | 9 | 6 | 0 | 3 |
-| E10 — Calendrier cultural | 46 | 33 | 0 | 13 |
+| E10 — Calendrier cultural | 52 | 33 | 0 | 19 |
 | E11 — Guildes, mecanismes et refonte editeur | 44 | 36 | 0 | 8 |
 | E12 — Adaptation climatique | 16 | 0 | 0 | 16 |
 | E13 — Infrastructure i18n (backend) | 38 | 0 | 0 | 38 |
@@ -458,8 +480,9 @@
 | E21 — Upsert des seeds et protection des donnees | 24 | 0 | 0 | 24 |
 | E22 — Administration du catalogue de plantes | 13 | 0 | 0 | 13 |
 | E23 — Variantes utilisateur | 17 | 0 | 0 | 17 |
-| **Total (actif)** | **494** | **167** | **0** | **327** |
+| E24 — Preferences de sol et pH | 24 | 0 | 0 | 24 |
+| **Total (actif)** | **518** | **167** | **0** | **351** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-04-02 (E21, E22, E23 crees — upsert seeds 8 stories 24 pts, admin catalogue 4 stories 13 pts, variantes utilisateur 5 stories 17 pts)*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-04-03 (E24 creee — preferences sol et pH 7 stories 24 pts)*

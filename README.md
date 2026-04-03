@@ -4,10 +4,10 @@ Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL
 
 ## Nouveautes
 
-Plus de 30 varietes rejoignent le catalogue (tomates, courges, haricots, basilic, laitues, fraisiers...) avec des calendriers et associations herites automatiquement. La page "Mes plantes" a ete redessinee avec une liste compacte et un champ de recherche pour retrouver vos plantes en un instant.
+Le catalogue de plantes se met desormais a jour automatiquement a chaque nouvelle version de PermaGarden : nouvelles plantes, associations et calendriers arrivent sans manipulation. Vos modifications personnalisees sont protegees et ne seront jamais ecrasees. Le calendrier cultural beneficie aussi de nouveaux boutons de filtrage plus clairs.
 
-- [Nouveautes pour les jardiniers](changelogs/users/2026-04-02.md)
-- [Changelog technique](changelogs/devs/2026-04-02.md)
+- [Nouveautes pour les jardiniers](changelogs/users/2026-04-03.md)
+- [Changelog technique](changelogs/devs/2026-04-03.md)
 
 ## Documentation
 

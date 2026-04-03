@@ -17,6 +17,7 @@ public class PlantService(AppDbContext dbContext) : IPlantService
             .Include(p => p.ParentPlant)
                 .ThenInclude(pp => pp!.IntrinsicMechanisms)
             .Include(p => p.Varieties)
+            .AsSplitQuery()
             .OrderBy(p => p.Name)
             .ToListAsync();
 

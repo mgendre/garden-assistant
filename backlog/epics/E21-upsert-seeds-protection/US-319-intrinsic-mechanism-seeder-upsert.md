@@ -6,12 +6,12 @@
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : Le seeder identifie les plantes par `Key` (lookup direct en base).
-- [ ] CA2 : Si la plante associee est `IsCustomized == true`, les mecanismes intrinseques de cette plante sont ignores.
-- [ ] CA3 : Si le mecanisme n'existe pas en base pour cette plante, il est insere.
-- [ ] CA4 : Si le mecanisme existe et que la plante n'est pas customisee, les champs sont mis a jour.
-- [ ] CA5 : Les plantes verrouillees sont chargees en un seul `SELECT` avant la boucle.
-- [ ] CA6 : Logging Info pour les mecanismes mis a jour, Debug (avec guard) pour les mecanismes ignores.
+- [x] CA1 : Le seeder identifie les plantes par `Key` (lookup direct en base).
+- [x] CA2 : Si la plante associee est `IsCustomized == true`, les mecanismes intrinseques de cette plante sont ignores.
+- [x] CA3 : Si le mecanisme n'existe pas en base pour cette plante, il est insere.
+- [x] CA4 : Si le mecanisme existe et que la plante n'est pas customisee, les champs sont mis a jour.
+- [x] CA5 : Les plantes verrouillees sont chargees en un seul `SELECT` avant la boucle.
+- [x] CA6 : Logging Info pour les mecanismes mis a jour, Debug (avec guard) pour les mecanismes ignores.
 
 ### Notes & contraintes
 - Depend de US-312 et US-313.
@@ -21,4 +21,4 @@
 ### Estimation
 - **Priorite :** Indispensable
 - **Points :** 2
-- **Statut :** A faire
+- **Statut :** Termine

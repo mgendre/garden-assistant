@@ -18,7 +18,7 @@ public class PlantActionServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetByPlantIdAsync_WhenPlantHasNoActions_ShouldReturnEmpty()
     {
-        var plant = new Plant { Id = Guid.NewGuid(), Name = "Tomato" };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = "tomato", Name = "Tomato" };
         DbContext.Plants.Add(plant);
         await DbContext.SaveChangesAsync();
 
@@ -30,7 +30,7 @@ public class PlantActionServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetByPlantIdAsync_WhenPlantHasActions_ShouldReturnAllActionsOrdered()
     {
-        var plant = new Plant { Id = Guid.NewGuid(), Name = "Tomato" };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = "tomato-2", Name = "Tomato" };
         DbContext.Plants.Add(plant);
 
         DbContext.PlantActions.AddRange(

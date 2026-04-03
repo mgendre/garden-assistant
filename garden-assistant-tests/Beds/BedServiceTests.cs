@@ -34,7 +34,7 @@ public class BedServiceTests : DatabaseTestBase
     public async Task GetByGardenIdAsync_ShouldReturnBedsWithPlantIds()
     {
         var guild = new Guild { Id = Guid.NewGuid(), UserId = _userId, Name = "Bed Guild" };
-        var plant = new Plant { Id = Guid.NewGuid(), Name = "Tomato" };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = "tomato", Name = "Tomato" };
         DbContext.Guilds.Add(guild);
         DbContext.Plants.Add(plant);
         DbContext.GuildPlants.Add(new GuildPlant { GuildId = guild.Id, PlantId = plant.Id });

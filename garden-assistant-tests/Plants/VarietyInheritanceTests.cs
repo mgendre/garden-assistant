@@ -23,8 +23,8 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task Plant_WhenVarietyWithParent_ShouldPersistRelationship()
     {
-        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
-        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        var parent = new Plant { Id = Guid.NewGuid(), Key = "courge", Name = "Courge" };
+        var variety = new Plant { Id = Guid.NewGuid(), Key = "courgette", Name = "Courgette", ParentPlantId = parent.Id };
         DbContext.Plants.AddRange(parent, variety);
         await DbContext.SaveChangesAsync();
 
@@ -40,9 +40,9 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task Plant_WhenSpeciesWithVarieties_ShouldLoadVarietiesCollection()
     {
-        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
-        var v1 = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
-        var v2 = new Plant { Id = Guid.NewGuid(), Name = "Pâtisson", ParentPlantId = parent.Id };
+        var parent = new Plant { Id = Guid.NewGuid(), Key = "courge", Name = "Courge" };
+        var v1 = new Plant { Id = Guid.NewGuid(), Key = "courgette", Name = "Courgette", ParentPlantId = parent.Id };
+        var v2 = new Plant { Id = Guid.NewGuid(), Key = "patisson", Name = "Pâtisson", ParentPlantId = parent.Id };
         DbContext.Plants.AddRange(parent, v1, v2);
         await DbContext.SaveChangesAsync();
 
@@ -56,7 +56,7 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task Plant_WhenNoParent_ShouldHaveNullParentPlantId()
     {
-        var species = new Plant { Id = Guid.NewGuid(), Name = "Tomate" };
+        var species = new Plant { Id = Guid.NewGuid(), Key = "tomate", Name = "Tomate" };
         DbContext.Plants.Add(species);
         await DbContext.SaveChangesAsync();
 
@@ -68,14 +68,14 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_WhenVarietyHasNoOwnMechanisms_ShouldInheritFromParent()
     {
-        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
+        var parent = new Plant { Id = Guid.NewGuid(), Key = "courge", Name = "Courge" };
         DbContext.Plants.Add(parent);
         DbContext.PlantIntrinsicMechanisms.Add(new PlantIntrinsicMechanism
         {
             PlantId = parent.Id,
             Mechanism = AssociationMechanism.WeedSuppression
         });
-        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        var variety = new Plant { Id = Guid.NewGuid(), Key = "courgette", Name = "Courgette", ParentPlantId = parent.Id };
         DbContext.Plants.Add(variety);
         await DbContext.SaveChangesAsync();
 
@@ -94,6 +94,7 @@ public class VarietyInheritanceTests : DatabaseTestBase
         var parent = new Plant
         {
             Id = Guid.NewGuid(),
+            Key = "courge",
             Name = "Courge",
             HeightAtMaturityCm = 30,
             WaterNeeds = WaterNeeds.Medium
@@ -101,6 +102,7 @@ public class VarietyInheritanceTests : DatabaseTestBase
         var variety = new Plant
         {
             Id = Guid.NewGuid(),
+            Key = "courgette",
             Name = "Courgette",
             ParentPlantId = parent.Id,
             HeightAtMaturityCm = 80
@@ -117,7 +119,7 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_WhenPlantHasNoParent_ShouldNotBeVariety()
     {
-        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomate" });
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Key = "tomate", Name = "Tomate" });
         await DbContext.SaveChangesAsync();
 
         var result = await _plantService.GetAllAsync();
@@ -132,9 +134,9 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_WhenSpeciesHasVarieties_ShouldPopulateVarietiesList()
     {
-        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
-        var v1 = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ScientificName = "C. pepo var. cylindrica", ParentPlantId = parent.Id };
-        var v2 = new Plant { Id = Guid.NewGuid(), Name = "Patisson", ScientificName = "C. pepo var. clypeata", ParentPlantId = parent.Id };
+        var parent = new Plant { Id = Guid.NewGuid(), Key = "courge", Name = "Courge" };
+        var v1 = new Plant { Id = Guid.NewGuid(), Key = "courgette", Name = "Courgette", ScientificName = "C. pepo var. cylindrica", ParentPlantId = parent.Id };
+        var v2 = new Plant { Id = Guid.NewGuid(), Key = "patisson", Name = "Patisson", ScientificName = "C. pepo var. clypeata", ParentPlantId = parent.Id };
         DbContext.Plants.AddRange(parent, v1, v2);
         await DbContext.SaveChangesAsync();
 
@@ -149,8 +151,8 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task GetByPlantIdAsync_WhenVarietyHasNoActions_ShouldInheritFromParent()
     {
-        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
-        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        var parent = new Plant { Id = Guid.NewGuid(), Key = "courge", Name = "Courge" };
+        var variety = new Plant { Id = Guid.NewGuid(), Key = "courgette", Name = "Courgette", ParentPlantId = parent.Id };
         DbContext.Plants.AddRange(parent, variety);
         DbContext.PlantActions.Add(new PlantAction
         {
@@ -171,8 +173,8 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task GetByPlantIdAsync_WhenVarietyHasOwnActions_ShouldUseVarietyActions()
     {
-        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
-        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        var parent = new Plant { Id = Guid.NewGuid(), Key = "courge", Name = "Courge" };
+        var variety = new Plant { Id = Guid.NewGuid(), Key = "courgette", Name = "Courgette", ParentPlantId = parent.Id };
         DbContext.Plants.AddRange(parent, variety);
         DbContext.PlantActions.Add(new PlantAction
         {
@@ -201,8 +203,8 @@ public class VarietyInheritanceTests : DatabaseTestBase
     [Fact]
     public async Task GetHarvestReadiness_WhenVarietyHasNone_ShouldInheritFromParent()
     {
-        var parent = new Plant { Id = Guid.NewGuid(), Name = "Courge" };
-        var variety = new Plant { Id = Guid.NewGuid(), Name = "Courgette", ParentPlantId = parent.Id };
+        var parent = new Plant { Id = Guid.NewGuid(), Key = "courge", Name = "Courge" };
+        var variety = new Plant { Id = Guid.NewGuid(), Key = "courgette", Name = "Courgette", ParentPlantId = parent.Id };
         DbContext.Plants.AddRange(parent, variety);
         DbContext.HarvestReadiness.Add(new HarvestReadiness
         {

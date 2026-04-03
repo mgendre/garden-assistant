@@ -6,12 +6,12 @@
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : Le seeder identifie les plantes source et cible par `Key` (lookup direct en base).
-- [ ] CA2 : Si la plante source ou cible est `IsCustomized == true`, l'association est ignoree.
-- [ ] CA3 : Si l'association n'existe pas en base, elle est inseree.
-- [ ] CA4 : Si l'association existe et que les deux plantes ne sont pas customisees, les champs sont mis a jour.
-- [ ] CA5 : Les plantes verrouillees (`IsCustomized == true`) sont chargees en un seul `SELECT` avant la boucle (set de PlantId verrouilles).
-- [ ] CA6 : Logging Info pour les associations mises a jour, Debug (avec guard) pour les associations ignorees.
+- [x] CA1 : Le seeder identifie les plantes source et cible par `Key` (lookup direct en base).
+- [x] CA2 : Si la plante source ou cible est `IsCustomized == true`, l'association est ignoree.
+- [x] CA3 : Si l'association n'existe pas en base, elle est inseree.
+- [x] CA4 : Si l'association existe et que les deux plantes ne sont pas customisees, les champs sont mis a jour.
+- [x] CA5 : Les plantes verrouillees (`IsCustomized == true`) sont chargees en un seul `SELECT` avant la boucle (set de PlantId verrouilles).
+- [x] CA6 : Logging Info pour les associations mises a jour, Debug (avec guard) pour les associations ignorees.
 
 ### Notes & contraintes
 - Depend de US-312 et US-313.
@@ -21,4 +21,4 @@
 ### Estimation
 - **Priorite :** Indispensable
 - **Points :** 3
-- **Statut :** A faire
+- **Statut :** Termine

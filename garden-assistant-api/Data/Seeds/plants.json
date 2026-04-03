@@ -1704,7 +1704,7 @@
       "PollinatorAttraction",
       "SoilCover"
     ],
-    "propagationMethod": "Seed",
+    "propagationMethod": "Division",
     "frostSensitive": false
   },
   {

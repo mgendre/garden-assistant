@@ -18,7 +18,8 @@ interface ActionGroup {
   standalone: true,
   imports: [TranslateModule],
   templateUrl: './calendar-this-month.html',
-  styleUrl: './calendar-this-month.scss'
+  styleUrl: './calendar-this-month.scss',
+  host: { style: 'display:block' }
 })
 export class CalendarThisMonth {
   private readonly store = inject(CalendarStore);

@@ -16,6 +16,19 @@
   }
 }
 
+// ─── Button group (toggle strip) ────────────────────────────────────────────
+.btn-group {
+  @apply inline-flex;
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  overflow: hidden;
+
+  > .btn {
+    border: 0;
+    border-radius: 0;
+  }
+}
+
 // ─── Size modifiers ─────────────────────────────────────────────────────────
 .btn-sm {
   @apply text-xs;

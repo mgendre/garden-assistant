@@ -82,11 +82,19 @@
   }
 }
 
+.calendar-bed-title {
+  @apply text-xs font-medium px-4 py-1.5;
+  color: var(--color-text-muted);
+  background: var(--color-bg-subtle, #f9fafb);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
 .calendar-plant-section {
   @apply px-4;
   border-bottom: 1px solid var(--color-border-subtle);
 
   &--last {
+    @apply pb-3;
     border-bottom: none;
   }
 }

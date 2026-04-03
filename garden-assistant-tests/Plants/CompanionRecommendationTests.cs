@@ -20,7 +20,7 @@ public class CompanionRecommendationTests : DatabaseTestBase
 
     private Plant CreatePlant(string name, string? scientificName = null)
     {
-        var plant = new Plant { Id = Guid.NewGuid(), Name = name, ScientificName = scientificName };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = name.ToLowerInvariant().Replace(' ', '-'), Name = name, ScientificName = scientificName };
         DbContext.Plants.Add(plant);
         return plant;
     }
