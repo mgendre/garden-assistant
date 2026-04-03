@@ -13,7 +13,13 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 6.8
   },
   {
     "key": "tomate-cerise",
@@ -30,6 +36,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "tomate"
   },
   {
@@ -47,6 +54,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "tomate"
   },
   {
@@ -64,6 +72,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "tomate"
   },
   {
@@ -81,6 +90,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "tomate"
   },
   {
@@ -101,7 +111,13 @@
       "AerialRepulsion"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "basilic-pourpre",
@@ -118,6 +134,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "basilic"
   },
   {
@@ -135,6 +152,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "basilic"
   },
   {
@@ -152,6 +170,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "basilic"
   },
   {
@@ -171,7 +190,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 6.8
   },
   {
     "key": "poireau",
@@ -190,7 +215,13 @@
       "AerialRepulsion"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "ail",
@@ -209,7 +240,13 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Bulb",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "oignon",
@@ -228,7 +265,13 @@
       "AerialRepulsion"
     ],
     "propagationMethod": "Bulb",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "ciboulette",
@@ -248,7 +291,13 @@
       "AerialRepulsion"
     ],
     "propagationMethod": "Division",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "haricot",
@@ -265,7 +314,15 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
-    "intrinsicMechanisms": ["NitrogenFixation"]
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0,
+    "intrinsicMechanisms": [
+      "NitrogenFixation"
+    ]
   },
   {
     "key": "haricot-nain-mangetout",
@@ -282,6 +339,12 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0,
     "parentKey": "haricot"
   },
   {
@@ -299,6 +362,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "haricot"
   },
   {
@@ -316,6 +380,12 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0,
     "parentKey": "haricot"
   },
   {
@@ -333,6 +403,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "haricot"
   },
   {
@@ -350,6 +421,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "haricot"
   },
   {
@@ -367,6 +439,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "haricot"
   },
   {
@@ -384,6 +457,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "haricot"
   },
   {
@@ -401,6 +475,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "haricot"
   },
   {
@@ -418,6 +493,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "haricot"
   },
   {
@@ -435,7 +511,16 @@
     "maxAltitudeM": 1500,
     "propagationMethod": "Seed",
     "frostSensitive": false,
-    "intrinsicMechanisms": ["NitrogenFixation", "PollinatorAttraction"]
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "mais",
@@ -451,7 +536,13 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "courge",
@@ -472,7 +563,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "courge-musquee",
@@ -489,7 +586,16 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
-    "intrinsicMechanisms": ["WeedSuppression", "SoilCover"]
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0,
+    "intrinsicMechanisms": [
+      "WeedSuppression",
+      "SoilCover"
+    ]
   },
   {
     "key": "courge-butternut",
@@ -506,6 +612,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "courge-musquee"
   },
   {
@@ -527,7 +634,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "potimarron",
@@ -544,6 +657,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "potiron"
   },
   {
@@ -561,6 +675,12 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0,
     "parentKey": "courge"
   },
   {
@@ -578,6 +698,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "courge"
   },
   {
@@ -597,7 +718,13 @@
       "NitrogenFixation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "pois-nain",
@@ -613,6 +740,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "pois"
   },
   {
@@ -629,6 +757,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "pois"
   },
   {
@@ -649,7 +778,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "trefle-blanc",
@@ -671,7 +806,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "trefle-rouge",
@@ -691,7 +832,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "luzerne",
@@ -713,7 +860,13 @@
       "HydraulicLift"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "lupin",
@@ -733,7 +886,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Sandy",
+      "Loam"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "consoude",
@@ -754,7 +913,14 @@
       "HydraulicLift"
     ],
     "propagationMethod": "Division",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "ortie",
@@ -774,7 +940,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "pissenlit",
@@ -794,7 +967,14 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "capucine",
@@ -814,7 +994,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "tagete",
@@ -834,7 +1020,13 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "souci",
@@ -853,7 +1045,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "bourrache",
@@ -873,7 +1071,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "phacelie",
@@ -893,7 +1097,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "achillee-millefeuille",
@@ -913,7 +1123,14 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Chalky"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "fenouil",
@@ -933,7 +1150,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "fenouil-bulbeux",
@@ -949,6 +1172,13 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0,
     "parentKey": "fenouil"
   },
   {
@@ -968,7 +1198,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "coriandre",
@@ -987,7 +1223,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "persil",
@@ -1006,7 +1248,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "thym",
@@ -1026,7 +1274,14 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Rocky",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "romarin",
@@ -1045,7 +1300,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Cutting",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Rocky",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "lavande",
@@ -1064,7 +1326,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Rocky",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "sauge-officinale",
@@ -1083,7 +1352,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Sandy",
+      "Loam"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "menthe-poivree",
@@ -1103,7 +1379,14 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Division",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty",
+      "Peaty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "melisse",
@@ -1122,7 +1405,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "origan",
@@ -1142,7 +1431,14 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Sandy",
+      "Loam"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 8.0
   },
   {
     "key": "hysope",
@@ -1161,7 +1457,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Rocky",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "valeriane",
@@ -1181,7 +1484,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "grande-camomille",
@@ -1200,7 +1509,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "camomille-allemande",
@@ -1220,7 +1536,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "absinthe",
@@ -1239,7 +1561,14 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Sandy",
+      "Rocky"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 8.0
   },
   {
     "key": "tanaisie",
@@ -1258,7 +1587,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "tournesol",
@@ -1277,7 +1613,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "tournesol-nain",
@@ -1293,6 +1635,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "tournesol"
   },
   {
@@ -1312,7 +1655,13 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "brocoli",
@@ -1331,7 +1680,13 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "radis",
@@ -1350,7 +1705,13 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "radis-d-hiver",
@@ -1366,6 +1727,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "radis"
   },
   {
@@ -1385,7 +1747,14 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "laitue",
@@ -1404,7 +1773,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "laitue-romaine",
@@ -1420,6 +1795,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "laitue"
   },
   {
@@ -1436,6 +1812,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "laitue"
   },
   {
@@ -1452,6 +1829,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "laitue"
   },
   {
@@ -1471,7 +1849,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "roquette",
@@ -1490,7 +1874,13 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "betterave",
@@ -1506,7 +1896,14 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 1500,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "panais",
@@ -1525,7 +1922,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "celeri",
@@ -1541,7 +1944,14 @@
     "waterNeeds": "High",
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty",
+      "Peaty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "poivron",
@@ -1557,7 +1967,13 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 6.8
   },
   {
     "key": "poivron-mini",
@@ -1573,6 +1989,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "poivron"
   },
   {
@@ -1589,7 +2006,13 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 600,
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.8
   },
   {
     "key": "pomme-de-terre",
@@ -1609,7 +2032,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Tuber",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "asperge",
@@ -1625,7 +2054,13 @@
     "waterNeeds": "Low",
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "artichaut",
@@ -1645,7 +2080,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "topinambour",
@@ -1666,7 +2107,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "oseille",
@@ -1685,7 +2132,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "fraisier",
@@ -1705,7 +2158,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Division",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.8
   },
   {
     "key": "fraisier-remontant",
@@ -1721,6 +2180,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Division",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "fraisier"
   },
   {
@@ -1741,7 +2201,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "framboisier",
@@ -1760,7 +2226,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "framboisier-d-automne",
@@ -1776,6 +2248,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Division",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "framboisier"
   },
   {
@@ -1795,7 +2268,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "myrtille",
@@ -1815,7 +2294,12 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Peaty"
+    ],
+    "optimalPhMin": 4.5,
+    "optimalPhMax": 5.5
   },
   {
     "key": "aronia",
@@ -1834,7 +2318,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Peaty"
+    ],
+    "optimalPhMin": 5.0,
+    "optimalPhMax": 6.5
   },
   {
     "key": "argousier",
@@ -1853,7 +2344,14 @@
       "NitrogenFixation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Sandy",
+      "Chalky",
+      "Loam"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "sureau-noir",
@@ -1872,7 +2370,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "cornouiller-male",
@@ -1891,7 +2396,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Chalky",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 8.0
   },
   {
     "key": "noisetier",
@@ -1910,7 +2422,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Chalky"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "prunellier",
@@ -1929,7 +2448,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 8.0
   },
   {
     "key": "viorne-obier",
@@ -1948,7 +2474,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "pommier",
@@ -1967,7 +2500,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "poirier",
@@ -1986,7 +2525,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "prunier",
@@ -2005,7 +2550,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "cerisier",
@@ -2024,7 +2575,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "figuier",
@@ -2040,7 +2597,14 @@
     "waterNeeds": "Low",
     "maxAltitudeM": 600,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 8.0
   },
   {
     "key": "noyer",
@@ -2059,7 +2623,13 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "chataignier",
@@ -2075,7 +2645,13 @@
     "waterNeeds": "Low",
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Sandy",
+      "Loam"
+    ],
+    "optimalPhMin": 4.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "aulne-glutineux",
@@ -2096,7 +2672,15 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Peaty",
+      "Silty",
+      "Clay"
+    ],
+    "optimalPhMin": 5.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "robinier",
@@ -2117,7 +2701,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "tilleul-a-petites-feuilles",
@@ -2137,7 +2727,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "saule-blanc",
@@ -2158,7 +2754,15 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty",
+      "Peaty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "chene-pedoncule",
@@ -2178,7 +2782,14 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty"
+    ],
+    "optimalPhMin": 5.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "vigne",
@@ -2197,7 +2808,14 @@
       "HydraulicLift"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Chalky"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "houblon",
@@ -2213,7 +2831,13 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "lotier-cornicule",
@@ -2234,7 +2858,14 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Chalky",
+      "Rocky"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "vesce-commune",
@@ -2255,7 +2886,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "sarrasin",
@@ -2277,7 +2914,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.0,
+    "optimalPhMax": 6.5
   },
   {
     "key": "plantain-lanceole",
@@ -2296,7 +2939,14 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Chalky"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "prele-des-champs",
@@ -2315,7 +2965,14 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty",
+      "Clay"
+    ],
+    "optimalPhMin": 5.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "millepertuis",
@@ -2335,7 +2992,14 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Chalky"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "estragon",
@@ -2354,7 +3018,13 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "sarriette-des-montagnes",
@@ -2373,7 +3043,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Rocky",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "sainfoin",
@@ -2393,7 +3070,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "mache",
@@ -2412,7 +3095,14 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "seigle",
@@ -2433,7 +3123,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "avoine",
@@ -2453,7 +3149,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "quinoa",
@@ -2469,7 +3171,13 @@
     "waterNeeds": "Low",
     "maxAltitudeM": 2000,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "amarante",
@@ -2488,7 +3196,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "cresson-de-fontaine",
@@ -2507,7 +3221,14 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Peaty",
+      "Silty"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "souchet-comestible",
@@ -2523,7 +3244,13 @@
     "waterNeeds": "High",
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "morelle-de-balbis",
@@ -2542,7 +3269,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.8
   },
   {
     "key": "murier-blanc",
@@ -2558,7 +3291,13 @@
     "waterNeeds": "Low",
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "cognassier",
@@ -2577,7 +3316,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "neflier",
@@ -2596,7 +3341,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "sorbier-des-oiseleurs",
@@ -2615,7 +3366,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "genevrier-commun",
@@ -2634,7 +3391,14 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Rocky",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "pois-chiche",
@@ -2653,7 +3417,14 @@
       "NitrogenFixation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 8.0
   },
   {
     "key": "lentille",
@@ -2673,7 +3444,14 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 8.0
   },
   {
     "key": "thym-rampant",
@@ -2693,7 +3471,8 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": []
   },
   {
     "key": "ajuga-rampant",
@@ -2714,7 +3493,14 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "veronique-petit-chene",
@@ -2734,7 +3520,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "primevere",
@@ -2753,7 +3545,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "violette-odorante",
@@ -2773,7 +3572,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "sarriette",
@@ -2792,7 +3597,14 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Sandy",
+      "Loam"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "chou",
@@ -2811,7 +3623,13 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "chou-rouge",
@@ -2827,6 +3645,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [],
     "parentKey": "chou"
   },
   {
@@ -2843,6 +3662,12 @@
     "waterNeeds": "High",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5,
     "parentKey": "chou"
   },
   {
@@ -2862,7 +3687,13 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "concombre",
@@ -2878,7 +3709,13 @@
     "waterNeeds": "High",
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "concombre-nain",
@@ -2894,6 +3731,7 @@
     "waterNeeds": "High",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "concombre"
   },
   {
@@ -2910,6 +3748,7 @@
     "waterNeeds": "High",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "concombre"
   },
   {
@@ -2929,7 +3768,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "groseillier",
@@ -2948,7 +3793,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "moutarde-blanche",
@@ -2970,7 +3821,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "chrysantheme-des-jardins",
@@ -2989,7 +3846,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "rue-officinale",
@@ -3008,7 +3871,14 @@
       "RootAllelopathy"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Chalky",
+      "Rocky",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "cerfeuil",
@@ -3027,7 +3897,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 7.5
   },
   {
     "key": "ciboulette-ail",
@@ -3046,7 +3922,8 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": []
   },
   {
     "key": "echalote",
@@ -3065,7 +3942,13 @@
       "AerialRepulsion"
     ],
     "propagationMethod": "Bulb",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "celeri-rave",
@@ -3081,7 +3964,14 @@
     "waterNeeds": "High",
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty",
+      "Peaty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "scorsonere",
@@ -3101,7 +3991,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "agastache",
@@ -3120,7 +4016,13 @@
       "PollinatorAttraction"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "melilot",
@@ -3141,7 +4043,13 @@
       "DynamicAccumulation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Chalky"
+    ],
+    "optimalPhMin": 6.5,
+    "optimalPhMax": 8.0
   },
   {
     "key": "rhubarbe",
@@ -3163,7 +4071,14 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0
   },
   {
     "key": "blette",
@@ -3179,7 +4094,13 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 1500,
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Silty"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "chou-de-bruxelles",
@@ -3198,7 +4119,13 @@
       "Biofumigation"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": false
+    "frostSensitive": false,
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.5
   },
   {
     "key": "patate-douce",
@@ -3219,7 +4146,13 @@
       "WeedSuppression"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 6.5
   },
   {
     "key": "piment",
@@ -3235,7 +4168,13 @@
     "waterNeeds": "Medium",
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 6.8
   },
   {
     "key": "piment-doux",
@@ -3251,6 +4190,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "soilTypes": [],
     "parentKey": "piment"
   },
   {
@@ -3270,7 +4210,13 @@
       "SoilCover"
     ],
     "propagationMethod": "Seed",
-    "frostSensitive": true
+    "frostSensitive": true,
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 6.0,
+    "optimalPhMax": 7.0
   },
   {
     "key": "goumi",
@@ -3286,7 +4232,16 @@
     "waterNeeds": "Low",
     "propagationMethod": "Cutting",
     "frostSensitive": false,
-    "intrinsicMechanisms": ["NitrogenFixation", "PollinatorAttraction"]
+    "soilTypes": [
+      "Loam",
+      "Sandy"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.5,
+    "intrinsicMechanisms": [
+      "NitrogenFixation",
+      "PollinatorAttraction"
+    ]
   },
   {
     "key": "groseillier-a-maquereau",
@@ -3302,6 +4257,14 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Cutting",
     "frostSensitive": false,
-    "intrinsicMechanisms": ["PollinatorAttraction"]
+    "soilTypes": [
+      "Loam",
+      "Clay"
+    ],
+    "optimalPhMin": 5.5,
+    "optimalPhMax": 7.0,
+    "intrinsicMechanisms": [
+      "PollinatorAttraction"
+    ]
   }
 ]

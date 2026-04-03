@@ -21,6 +21,9 @@ public class Plant
     public bool FrostSensitive { get; set; }
     public bool IsCustomized { get; set; }
     public Guid? UserId { get; set; }
+    public decimal? OptimalPhMin { get; set; }
+    public decimal? OptimalPhMax { get; set; }
+    public List<PlantSoilType> SoilTypes { get; set; } = [];
     public List<PlantIntrinsicMechanism> IntrinsicMechanisms { get; set; } = [];
     public List<PlantAction> Actions { get; set; } = [];
     public HarvestReadiness? HarvestReadiness { get; set; }

@@ -18,5 +18,8 @@ public record PlantSeedRecord(
     List<AssociationMechanism>? IntrinsicMechanisms,
     PropagationMethod? PropagationMethod,
     bool? FrostSensitive,
+    List<SoilType>? SoilTypes,
+    decimal? OptimalPhMin,
+    decimal? OptimalPhMax,
     string? ParentKey
 );

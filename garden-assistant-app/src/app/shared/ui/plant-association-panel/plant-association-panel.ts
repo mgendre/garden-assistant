@@ -1,4 +1,4 @@
-import { Component, input, output, computed, inject } from '@angular/core';
+import { Component, input, output, computed, inject, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faWarning } from '@fortawesome/free-solid-svg-icons';
@@ -142,6 +142,43 @@ export class PlantAssociationPanel {
   });
 
   readonly hasWaterConflict = computed(() => this.waterConflict() !== null);
+
+  readonly soilCompatibility = computed(() => {
+    const plants = this.plants().filter(p => p.soilTypes && p.soilTypes.length > 0);
+    if (plants.length === 0) { return []; }
+
+    const soilPlants = new Map<string, PlantDto[]>();
+    for (const plant of plants) {
+      for (const soil of plant.soilTypes!) {
+        const list = soilPlants.get(soil) ?? [];
+        list.push(plant);
+        soilPlants.set(soil, list);
+      }
+    }
+
+    return [...soilPlants.entries()]
+      .map(([soil, matchingPlants]) => ({ soil, count: matchingPlants.length, total: plants.length, plants: matchingPlants }))
+      .sort((a, b) => b.count - a.count || a.soil.localeCompare(b.soil));
+  });
+
+  readonly guildPhRange = computed<{ min: number; max: number } | null>(() => {
+    const plants = this.plants().filter(p => p.optimalPhMin != null && p.optimalPhMax != null);
+    if (plants.length === 0) { return null; }
+
+    const min = Math.max(...plants.map(p => p.optimalPhMin!));
+    const max = Math.min(...plants.map(p => p.optimalPhMax!));
+
+    if (min > max) { return null; }
+    return { min, max };
+  });
+
+  getPhLeftPercent(min: number): number {
+    return ((min - 3) / 6) * 100;
+  }
+
+  getPhWidthPercent(min: number, max: number): number {
+    return ((max - min) / 6) * 100;
+  }
 
   plantName(plantId: string | undefined): string {
     if (!plantId) { return ''; }

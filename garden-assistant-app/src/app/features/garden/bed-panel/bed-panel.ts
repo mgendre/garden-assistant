@@ -14,7 +14,6 @@ import {
 import { PlantStore } from '../../../shared/services/plant.store';
 import { GuildService } from '../../../shared/services/guild.service';
 import { CompanionService } from '../../../shared/services/companion.service';
-import { CalendarService } from '../../../shared/services/calendar.service';
 import { DialogService } from '../../../shared/services/dialog.service';
 import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { GardenDialogService } from '../../../shared/services/garden-dialog.service';
@@ -40,7 +39,6 @@ export class BedPanel implements OnInit {
   private readonly plantStore = inject(PlantStore);
   private readonly guildService = inject(GuildService);
   private readonly companionService = inject(CompanionService);
-  private readonly calendarService = inject(CalendarService);
   private readonly router = inject(Router);
   private readonly dialogService = inject(DialogService);
   private readonly plantDialogService = inject(PlantDialogService);
@@ -114,23 +112,19 @@ export class BedPanel implements OnInit {
         return;
       }
 
-      const [recs, ...allActions] = await Promise.all([
-        this.companionService.getRecommendations({ plantIds, minScore: 0 } as CompanionRecommendationRequest),
-        ...plantIds.map(id => this.calendarService.getPlantActions(id)),
-      ]);
-
+      const recs = await this.companionService.getRecommendations({ plantIds, minScore: 0 } as CompanionRecommendationRequest);
       this.recommendations.set(recs);
 
       const entries: PlantCalendarEntry[] = [];
-      for (let i = 0; i < plantIds.length; i++) {
-        const plant = this.plantStore.findById(plantIds[i]);
+      for (const id of plantIds) {
+        const plant = this.plantStore.findById(id);
         if (plant) {
           entries.push({
-            plantId: plantIds[i],
+            plantId: id,
             name: plant.name!,
             propagationMethod: plant.propagationMethod ?? PropagationMethod.Seed,
             frostSensitive: plant.frostSensitive ?? false,
-            actions: allActions[i],
+            actions: plant.actions ?? [],
           });
         }
       }

@@ -2,7 +2,6 @@ import { Component, inject, input, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { BedDto, PropagationMethod } from '../../../api/garden-assistant-api';
 import { PlantStore } from '../../../shared/services/plant.store';
-import { CalendarService } from '../../../shared/services/calendar.service';
 import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plant-calendar-gantt';
@@ -26,7 +25,6 @@ export class GardenCalendar {
   readonly beds = input.required<BedDto[]>();
 
   private readonly plantStore = inject(PlantStore);
-  private readonly calendarService = inject(CalendarService);
   private readonly plantDialogService = inject(PlantDialogService);
 
   openPlantDetail(plantId: string): void {
@@ -54,7 +52,7 @@ export class GardenCalendar {
     });
   }
 
-  private async loadCalendar(beds: BedDto[]): Promise<void> {
+  private loadCalendar(beds: BedDto[]): void {
     this.loading.set(true);
     try {
       const allPlantIds = new Set<string>();
@@ -74,16 +72,6 @@ export class GardenCalendar {
         return;
       }
 
-      const uniqueIds = [...allPlantIds];
-      const allActions = await Promise.all(
-        uniqueIds.map(id => this.calendarService.getPlantActions(id))
-      );
-
-      const actionsByPlant = new Map<string, any[]>();
-      for (let i = 0; i < uniqueIds.length; i++) {
-        actionsByPlant.set(uniqueIds[i], allActions[i]);
-      }
-
       const buildEntry = (plantId: string): PlantCalendarEntry | null => {
         const plant = this.plantStore.findById(plantId);
         if (!plant) {
@@ -94,7 +82,7 @@ export class GardenCalendar {
           name: plant.name!,
           propagationMethod: plant.propagationMethod ?? PropagationMethod.Seed,
           frostSensitive: plant.frostSensitive ?? false,
-          actions: actionsByPlant.get(plantId) ?? [],
+          actions: plant.actions ?? [],
         };
       };
 

@@ -18,8 +18,13 @@ public record PlantDto(
     int? MaxAltitudeM,
     bool FrostSensitive,
     List<AssociationMechanism> IntrinsicMechanisms,
+    List<string> SoilTypes,
+    decimal? OptimalPhMin,
+    decimal? OptimalPhMax,
     bool IsVariety,
     Guid? ParentPlantId,
     string? ParentPlantName,
-    List<PlantSummaryDto> Varieties
+    List<PlantSummaryDto> Varieties,
+    HarvestReadinessDto? HarvestReadiness,
+    List<PlantActionDto> Actions
 );

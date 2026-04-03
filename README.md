@@ -2,12 +2,12 @@
 
 Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL 17.
 
-## Nouveautes
+## Nouveautés
 
-Le catalogue de plantes se met desormais a jour automatiquement a chaque nouvelle version de PermaGarden : nouvelles plantes, associations et calendriers arrivent sans manipulation. Vos modifications personnalisees sont protegees et ne seront jamais ecrasees. Le calendrier cultural beneficie aussi de nouveaux boutons de filtrage plus clairs.
+Chaque fiche plante affiche désormais ses préférences de sol et sa plage de pH optimale grâce à un indicateur visuel coloré. L'assistant de guilde détecte automatiquement les plantes aux besoins de pH incompatibles pour vous aider à composer des associations harmonieuses.
 
-- [Nouveautes pour les jardiniers](changelogs/users/2026-04-03.md)
-- [Changelog technique](changelogs/devs/2026-04-03.md)
+- [Nouveautés pour les jardiniers](changelogs/users/2026-04-03-sol-ph.md)
+- [Changelog technique](changelogs/devs/2026-04-03-sol-ph.md)
 
 ## Documentation
 

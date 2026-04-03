@@ -46,6 +46,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
     {
         return await db.Plants
             .Include(p => p.IntrinsicMechanisms)
+            .Include(p => p.SoilTypes)
             .Where(p => p.UserId == null)
             .ToDictionaryAsync(p => p.Key, p => p);
     }
@@ -99,6 +100,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
 
             var changes = DetectPlantFieldChanges(existing, record, parentPlantId);
             UpsertMechanisms(existing, record.IntrinsicMechanisms);
+            UpsertSoilTypes(existing, record.SoilTypes);
 
             if (changes.Count > 0)
             {
@@ -113,6 +115,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
         plantsByKey[record.Key] = plant;
         db.Plants.Add(plant);
         AddIntrinsicMechanisms(plant.Id, record.IntrinsicMechanisms);
+        AddSoilTypes(plant.Id, record.SoilTypes);
     }
 
     private static List<string> DetectPlantFieldChanges(Plant plant, PlantSeedRecord record, Guid? parentPlantId)
@@ -199,6 +202,18 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
             plant.FrostSensitive = seedFrostSensitive;
         }
 
+        if (plant.OptimalPhMin != record.OptimalPhMin)
+        {
+            changes.Add($"OptimalPhMin: {plant.OptimalPhMin} → {record.OptimalPhMin}");
+            plant.OptimalPhMin = record.OptimalPhMin;
+        }
+
+        if (plant.OptimalPhMax != record.OptimalPhMax)
+        {
+            changes.Add($"OptimalPhMax: {plant.OptimalPhMax} → {record.OptimalPhMax}");
+            plant.OptimalPhMax = record.OptimalPhMax;
+        }
+
         if (plant.ParentPlantId != parentPlantId)
         {
             changes.Add($"ParentPlantId: {plant.ParentPlantId} → {parentPlantId}");
@@ -248,6 +263,8 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
         MaxAltitudeM = record.MaxAltitudeM,
         PropagationMethod = record.PropagationMethod ?? PropagationMethod.Seed,
         FrostSensitive = record.FrostSensitive ?? false,
+        OptimalPhMin = record.OptimalPhMin,
+        OptimalPhMax = record.OptimalPhMax,
         ParentPlantId = parentPlantId
     };
 
@@ -259,6 +276,41 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
             {
                 PlantId = plantId,
                 Mechanism = mechanism
+            });
+        }
+    }
+
+    private void UpsertSoilTypes(Plant plant, List<SoilType>? seedSoilTypes)
+    {
+        var desired = seedSoilTypes ?? [];
+        var current = plant.SoilTypes.Select(st => st.SoilType).ToHashSet();
+        var desiredSet = desired.ToHashSet();
+
+        var toRemove = plant.SoilTypes.Where(st => !desiredSet.Contains(st.SoilType)).ToList();
+        foreach (var soilType in toRemove)
+        {
+            db.PlantSoilTypes.Remove(soilType);
+        }
+
+        var toAdd = desired.Where(st => !current.Contains(st)).ToList();
+        foreach (var soilType in toAdd)
+        {
+            db.PlantSoilTypes.Add(new PlantSoilType
+            {
+                PlantId = plant.Id,
+                SoilType = soilType
+            });
+        }
+    }
+
+    private void AddSoilTypes(Guid plantId, List<SoilType>? soilTypes)
+    {
+        foreach (var soilType in soilTypes ?? [])
+        {
+            db.PlantSoilTypes.Add(new PlantSoilType
+            {
+                PlantId = plantId,
+                SoilType = soilType
             });
         }
     }

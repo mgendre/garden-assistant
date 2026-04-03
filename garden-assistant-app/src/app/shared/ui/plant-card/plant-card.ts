@@ -6,7 +6,6 @@ import { faHeart as faHeartRegular, faStar as faStarRegular } from '@fortawesome
 import { PlantDto, PlantActionDto, HarvestReadinessDto, SunRequirement, WaterNeeds, LifeCycle, RootDepth, PropagationMethod, AssociationMechanism } from '../../../api/garden-assistant-api';
 import { CompanionStore } from '../../services/companion.store';
 import { MyPlantsStore } from '../../services/my-plants.store';
-import { CalendarService } from '../../services/calendar.service';
 import { DialogService } from '../../services/dialog.service';
 import { PlantCalendarGantt } from '../plant-calendar-gantt/plant-calendar-gantt';
 import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../harvest-readiness/harvest-readiness-dialog';
@@ -39,7 +38,6 @@ export class PlantCard implements OnInit {
 
   protected readonly store = inject(CompanionStore);
   protected readonly myPlantsStore = inject(MyPlantsStore);
-  private readonly calendarService = inject(CalendarService);
   private readonly dialogService = inject(DialogService);
   private readonly dialog = inject(MatDialog);
   private readonly translate = inject(TranslateService);
@@ -52,20 +50,13 @@ export class PlantCard implements OnInit {
   protected readonly faStarRegular = faStarRegular;
   protected readonly faLink = faLink;
 
-  async ngOnInit(): Promise<void> {
-    const plantId = this.plant().id;
-    if (!plantId) {
+  ngOnInit(): void {
+    const plant = this.plant();
+    if (!plant.id) {
       return;
     }
-    try {
-      const [actions, readiness] = await Promise.all([
-        this.calendarService.getPlantActions(plantId),
-        this.calendarService.getHarvestReadiness(plantId),
-      ]);
-      this.plantActions.set(actions ?? []);
-      this.harvestReadiness.set(readiness);
-    } catch {
-    }
+    this.harvestReadiness.set(plant.harvestReadiness ?? null);
+    this.plantActions.set(plant.actions ?? []);
   }
 
   get propagationMethod(): PropagationMethod {
@@ -161,6 +152,14 @@ export class PlantCard implements OnInit {
 
   hasAllelopathicRisk(plant: PlantDto): boolean {
     return (plant.intrinsicMechanisms ?? []).includes(AssociationMechanism.RootAllelopathy);
+  }
+
+  getPhLeftPercent(min: number): number {
+    return ((min - 3) / 6) * 100;
+  }
+
+  getPhWidthPercent(min: number, max: number): number {
+    return ((max - min) / 6) * 100;
   }
 
   openBadgeInfo(titleKey: string, descriptionKey: string): void {

@@ -94,7 +94,12 @@
     <!-- Viewing mode: actions below the plant list -->
     @if (store.guildMode() === 'viewing') {
       <div class="guild-form-actions">
-        <span class="guild-plant-count">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
+        <span class="guild-plant-count" style="margin-right: auto">{{ 'Guilds.PlantsCount' | translate:{ count: store.selectedPlants().length } }}</span>
+        @if (!store.editingBedName() && store.editingGuild() && !store.editingGuild()!.isOfficial) {
+          <button class="btn btn-danger btn-sm" (click)="deleteCurrentGuild()">
+            <fa-icon [icon]="faTrash"></fa-icon>
+          </button>
+        }
         <button class="btn btn-secondary btn-sm" (click)="store.startGuildEditing()">
           <fa-icon [icon]="faPen"></fa-icon>
           <span [translate]="'Guilds.Edit'"></span>

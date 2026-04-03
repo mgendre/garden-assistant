@@ -174,6 +174,24 @@
       "WeedSuppression": "Suppression des adventices",
       "Biofumigation": "Biofumigation",
       "NursePlant": "Plante nurse"
+    },
+    "SoilSection": "Sol & pH",
+    "Soil": {
+      "Label": "Type de sol",
+      "Sandy": "Sableux",
+      "Silty": "Limoneux",
+      "Clay": "Argileux",
+      "Loam": "Franc",
+      "Chalky": "Calcaire",
+      "Peaty": "Tourbeux",
+      "Rocky": "Rocailleux"
+    },
+    "Ph": {
+      "Label": "pH optimal",
+      "Acid": "Acide",
+      "Neutral": "Neutre",
+      "Alkaline": "Alcalin",
+      "Aria": "pH optimal : {{ min }} à {{ max }}"
     }
   },
   "PlantDetail": {
@@ -230,7 +248,11 @@
     "ToggleCompanion": "Retirer le statut de plante centrale",
     "Beneficial": "bénéfiques",
     "Harmful": "néfastes",
-    "MechanismGaps": "lacunes"
+    "MechanismGaps": "lacunes",
+    "PhWarning": {
+      "Title": "Incompatibilité pH",
+      "Tip": "Envisagez de séparer ces plantes ou d'amender le sol pour harmoniser le pH."
+    }
   },
   "GuildAssistant": {
     "Title": "Assistant de guilde",
@@ -242,6 +264,9 @@
     "HelpText": "Une bonne guilde combine des plantes aux rôles complémentaires : fixation d'azote, couverture du sol, attraction de pollinisateurs et une diversité de profondeurs racinaires. Chaque plante apporte un rôle : nourrir le sol, le protéger, attirer les auxiliaires ou ramener les minéraux profonds.",
     "SectionMechanisms": "Mécanismes essentiels",
     "SectionRootDepth": "Stratification racinaire",
+    "SectionSoil": "Compatibilité sol",
+    "PhRange": "pH compatible",
+    "PhNoOverlap": "Aucune plage pH commune entre les plantes",
     "Via": "via",
     "HarmfulCount": "{{count}} association(s) néfaste(s) détectée(s)",
     "HarmfulDetails": "voir les détails",
@@ -250,6 +275,7 @@
     "BadgeMechanisms": "mécanismes",
     "BadgeWater": "Arrosage",
     "BadgeRootCompetition": "Compétition",
+    "BadgePh": "pH incompatible",
     "WaterConflictTitle": "Besoins en eau incompatibles",
     "WaterConflictLow": "Faible besoin :",
     "WaterConflictHigh": "Fort besoin :",
@@ -292,7 +318,9 @@
     "SortCompat": "Compatibilit\u00e9",
     "MyPlantsOnly": "Mes plantes",
     "SearchPlaceholder": "Rechercher une plante\u2026",
-    "NoResults": "Aucune plante trouv\u00e9e",
+    "NoResults": "Aucune plante trouvée",
+    "PhCompatible": "pH compatible",
+    "PhIncompatibleEmpty": "Les plantes de votre guilde ont des plages de pH incompatibles — aucune plante ne peut satisfaire toutes les exigences",
     "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
     "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
     "ClearSelection": "Effacer",
