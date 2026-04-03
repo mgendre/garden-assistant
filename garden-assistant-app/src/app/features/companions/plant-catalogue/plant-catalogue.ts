@@ -8,13 +8,14 @@ import { PlantStore } from '../../../shared/services/plant.store';
 import { DialogService } from '../../../shared/services/dialog.service';
 import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { SearchInput } from '../../../shared/ui/search-input/search-input';
+import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-plant-catalogue',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, SearchInput, EmptyState],
+  imports: [TranslateModule, FontAwesomeModule, SearchInput, EmptyState, Collapsible],
   templateUrl: './plant-catalogue.html',
   styleUrl: './plant-catalogue.scss'
 })
@@ -25,16 +26,17 @@ export class PlantCatalogue {
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faInfo = faCircleInfo;
   protected readonly faLink = faLink;
+  private readonly dialogService = inject(DialogService);
+  private readonly plantDialogService = inject(PlantDialogService);
+
+  readonly mode = input<'association' | 'collection'>('association');
+
   protected readonly rootDepths = [
     { value: RootDepth.Shallow, labelKey: 'Plant.RootDepth.Shallow' },
     { value: RootDepth.Medium, labelKey: 'Plant.RootDepth.Medium' },
     { value: RootDepth.Deep, labelKey: 'Plant.RootDepth.Deep' },
   ];
   protected readonly soilTypes = ['Sandy', 'Silty', 'Clay', 'Loam', 'Chalky', 'Peaty', 'Rocky'];
-  private readonly dialogService = inject(DialogService);
-  private readonly plantDialogService = inject(PlantDialogService);
-
-  readonly mode = input<'association' | 'collection'>('association');
 
   readonly collectionSearch = signal('');
 
@@ -115,6 +117,24 @@ export class PlantCatalogue {
         `BadgeInfo.RootDepth.${key}.Title`,
         `BadgeInfo.RootDepth.${key}.Description`
       );
+    }
+  }
+
+  readonly hasActiveFilters = computed(() => {
+    return this.store.mechanismFilter() !== null ||
+      this.store.rootDepthFilter() !== null ||
+      this.store.soilTypeFilter() !== null ||
+      !this.store.phCompatibleFilter() ||
+      this.store.myPlantsOnly();
+  });
+
+  resetFilters(): void {
+    this.store.mechanismFilter.set(null);
+    this.store.rootDepthFilter.set(null);
+    this.store.soilTypeFilter.set(null);
+    this.store.phCompatibleFilter.set(true);
+    if (this.store.myPlantsOnly()) {
+      this.store.toggleMyPlantsOnly();
     }
   }
 }

@@ -12,139 +12,158 @@
   </div>
 
   @if (mode() === 'association') {
-    <div class="sort-wrap">
-      <button
-        class="chip"
-        [class.active]="store.sortMode() === 'compat'"
-        (click)="store.setSort('compat')"
-        [translate]="'Companions.SortCompat'">
-      </button>
-      <button
-        class="chip"
-        [class.active]="store.sortMode() === 'alpha'"
-        (click)="store.setSort('alpha')"
-        [translate]="'Companions.SortAlpha'">
-      </button>
-      <button
-        class="chip"
-        [class.active]="store.sortMode() === 'family'"
-        (click)="store.setSort('family')"
-        [translate]="'Companions.SortFamily'">
-      </button>
+    <div class="sort-bar">
+      <button class="sort-btn" [class.sort-btn--active]="store.sortMode() === 'compat'" (click)="store.setSort('compat')" [translate]="'Companions.SortCompat'"></button>
+      <button class="sort-btn" [class.sort-btn--active]="store.sortMode() === 'alpha'" (click)="store.setSort('alpha')" [translate]="'Companions.SortAlpha'"></button>
+      <button class="sort-btn" [class.sort-btn--active]="store.sortMode() === 'family'" (click)="store.setSort('family')" [translate]="'Companions.SortFamily'"></button>
       <span class="sort-divider"></span>
-      <button
-        class="chip"
-        [class.active]="store.myPlantsOnly()"
-        (click)="store.toggleMyPlantsOnly()">
+      <button class="sort-btn" [class.sort-btn--active]="store.myPlantsOnly()" (click)="store.toggleMyPlantsOnly()">
         <fa-icon [icon]="faHeartSolid"></fa-icon>
         <span [translate]="'Companions.MyPlantsOnly'"></span>
       </button>
-    </div>
-  }
-
-  @if (mode() === 'association') {
-    <div class="filter-wrap">
-      @for (m of store.availableMechanisms(); track m) {
-        <button
-          class="mechanism-chip"
-          [class.filter-active]="store.mechanismFilter() === m"
-          [class.filter-inactive]="store.mechanismFilter() !== m"
-          (click)="store.toggleMechanismFilter(m)">
-          {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-        </button>
+      @if (hasActiveFilters()) {
+        <button class="sort-btn sort-btn--reset" (click)="resetFilters()" [translate]="'Companions.ResetFilters'"></button>
       }
     </div>
 
-    <div class="filter-wrap">
-      @for (rd of rootDepths; track rd.value) {
-        <button
-          class="mechanism-chip"
-          [class.filter-active]="store.rootDepthFilter() === rd.value"
-          [class.filter-inactive]="store.rootDepthFilter() !== rd.value"
-          (click)="store.toggleRootDepthFilter(rd.value)">
-          {{ rd.labelKey | translate }}
-        </button>
-      }
-    </div>
-
-    <div class="filter-wrap">
-      <button
-        class="mechanism-chip"
-        [class.filter-active]="store.phCompatibleFilter()"
-        [class.filter-inactive]="!store.phCompatibleFilter()"
-        (click)="store.togglePhCompatibleFilter()">
-        {{ 'Companions.PhCompatible' | translate }}
-      </button>
-      <span class="sort-divider"></span>
-      @for (st of soilTypes; track st) {
-        <button
-          class="mechanism-chip"
-          [class.filter-active]="store.soilTypeFilter() === st"
-          [class.filter-inactive]="store.soilTypeFilter() !== st"
-          (click)="store.toggleSoilTypeFilter(st)">
-          {{ 'Plant.Soil.' + st | translate }}
-        </button>
-      }
-    </div>
-  }
-
-  <div class="plant-list">
-    @for (plant of displayedPlants(); track plant.id) {
-      <div
-        class="plant-item"
-        [class.selected]="mode() === 'association' && store.isSelected(plant)"
-        [class.compat-central]="mode() === 'association' && store.getCompatibility(plant.id) === 'central-companion'"
-        [class.compat-good]="mode() === 'association' && store.getCompatibility(plant.id) === 'good'"
-        [class.compat-avoid]="mode() === 'association' && store.getCompatibility(plant.id) === 'avoid'"
-        (click)="onPlantClick(plant)">
-        <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
-        <div class="plant-info">
-          <div class="plant-name-row">
-            <span class="plant-name">{{ plant.name }}</span>
-            @if (plant.family) {
-              <span class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</span>
-            }
-          </div>
-          @if (mode() === 'association') {
-            <div class="plant-mechanisms-inline">
-              @if (getRootDepthKey(plant.rootDepth); as rdKey) {
-                <button class="mechanism-chip badge-root" (click)="openRootDepthInfo(plant.rootDepth, $event)">{{ rdKey | translate }}</button>
+    <div class="catalogue-body">
+      <div class="catalogue-filters">
+        <div class="filter-group">
+          <app-collapsible [initialExpanded]="true">
+            <div collapsible-header class="filter-group-header">
+              <span [translate]="'Companions.FilterMechanisms'"></span>
+              @if (store.mechanismFilter() !== null) {
+                <span class="filter-active-dot"></span>
               }
-              @for (m of plant.intrinsicMechanisms ?? []; track m) {
-                <button class="mechanism-chip badge-trait" (click)="openMechanismInfo(m, $event)">
-                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                </button>
-              }
-              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.beneficial ?? []; track m) {
-                <button class="mechanism-chip badge-positive" (click)="openMechanismInfo(m, $event)">
-                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
-                  {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
-                </button>
-              }
-              @for (m of store.catalogAssociationMechanisms().get(plant.id!)?.harmful ?? []; track m) {
-                <button class="mechanism-chip mechanism-red" (click)="openMechanismInfo(m, $event)">
-                  <fa-icon [icon]="faLink" class="mechanism-icon"></fa-icon>
+            </div>
+            <div collapsible-body class="filter-group-body">
+              @for (m of store.availableMechanisms(); track m) {
+                <button class="filter-item" [class.filter-item--active]="store.mechanismFilter() === m" (click)="store.toggleMechanismFilter(m)">
                   {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
                 </button>
               }
             </div>
+          </app-collapsible>
+        </div>
+
+        <div class="filter-group">
+          <app-collapsible [initialExpanded]="false">
+            <div collapsible-header class="filter-group-header">
+              <span [translate]="'Companions.FilterRootDepth'"></span>
+              @if (store.rootDepthFilter() !== null) {
+                <span class="filter-active-dot"></span>
+              }
+            </div>
+            <div collapsible-body class="filter-group-body">
+              @for (rd of rootDepths; track rd.value) {
+                <button class="filter-item" [class.filter-item--active]="store.rootDepthFilter() === rd.value" (click)="store.toggleRootDepthFilter(rd.value)">
+                  {{ rd.labelKey | translate }}
+                </button>
+              }
+            </div>
+          </app-collapsible>
+        </div>
+
+        <div class="filter-group">
+          <app-collapsible [initialExpanded]="false">
+            <div collapsible-header class="filter-group-header">
+              <span [translate]="'Companions.FilterSoilType'"></span>
+              @if (store.soilTypeFilter() !== null) {
+                <span class="filter-active-dot"></span>
+              }
+            </div>
+            <div collapsible-body class="filter-group-body">
+              @for (st of soilTypes; track st) {
+                <button class="filter-item" [class.filter-item--active]="store.soilTypeFilter() === st" (click)="store.toggleSoilTypeFilter(st)">
+                  {{ 'Plant.Soil.' + st | translate }}
+                </button>
+              }
+            </div>
+          </app-collapsible>
+        </div>
+
+        <div class="filter-group">
+          <app-collapsible [initialExpanded]="true">
+            <div collapsible-header class="filter-group-header">
+              <span [translate]="'Companions.FilterPh'"></span>
+              @if (store.phCompatibleFilter()) {
+                <span class="filter-active-dot"></span>
+              }
+            </div>
+            <div collapsible-body class="filter-group-body">
+              <button class="filter-item" [class.filter-item--active]="store.phCompatibleFilter()" (click)="store.togglePhCompatibleFilter()">
+                {{ 'Companions.PhCompatible' | translate }}
+              </button>
+            </div>
+          </app-collapsible>
+        </div>
+      </div>
+
+      <div class="catalogue-plants">
+        <div class="plant-list">
+          @for (plant of displayedPlants(); track plant.id) {
+            <div
+              class="plant-item"
+              [class.selected]="store.isSelected(plant)"
+              [class.compat-central]="store.getCompatibility(plant.id) === 'central-companion'"
+              [class.compat-good]="store.getCompatibility(plant.id) === 'good'"
+              [class.compat-avoid]="store.getCompatibility(plant.id) === 'avoid'"
+              (click)="onPlantClick(plant)">
+              <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
+              <div class="plant-info">
+                <span class="plant-name">
+                  @if (myPlantsStore.isSaved(plant.id)) {
+                    <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
+                  }
+                  {{ plant.name }}
+                </span>
+                @if (plant.family) {
+                  <span class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</span>
+                }
+              </div>
+              <button class="plant-info-btn" (click)="openPlantDetail(plant, $event)" [attr.aria-label]="'Plant.ViewDetails' | translate:{ name: plant.name }">
+                <fa-icon [icon]="faInfo"></fa-icon>
+              </button>
+            </div>
+          }
+
+          @if (displayedPlants().length === 0 && !plantStore.loading()) {
+            @if (store.phFilterIncompatible()) {
+              <app-empty-state messageKey="Companions.PhIncompatibleEmpty"></app-empty-state>
+            } @else {
+              <app-empty-state messageKey="Companions.NoResults"></app-empty-state>
+            }
           }
         </div>
-        @if (myPlantsStore.isSaved(plant.id)) {
-          <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
-        }
-        <button class="plant-info-btn" (click)="openPlantDetail(plant, $event)" [attr.aria-label]="'Plant.ViewDetails' | translate:{ name: plant.name }">
-          <fa-icon [icon]="faInfo"></fa-icon>
-        </button>
       </div>
-    }
+    </div>
+  } @else {
+    <div class="plant-list">
+      @for (plant of displayedPlants(); track plant.id) {
+        <div
+          class="plant-item"
+          (click)="onPlantClick(plant)">
+          <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
+          <div class="plant-info">
+            <span class="plant-name">
+              @if (myPlantsStore.isSaved(plant.id)) {
+                <fa-icon class="my-plant-indicator" [icon]="faHeartSolid"></fa-icon>
+              }
+              {{ plant.name }}
+            </span>
+            @if (plant.family) {
+              <span class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</span>
+            }
+          </div>
+          <button class="plant-info-btn" (click)="openPlantDetail(plant, $event)" [attr.aria-label]="'Plant.ViewDetails' | translate:{ name: plant.name }">
+            <fa-icon [icon]="faInfo"></fa-icon>
+          </button>
+        </div>
+      }
 
-    @if (displayedPlants().length === 0 && !plantStore.loading()) {
-      @if (store.phFilterIncompatible()) {
-        <app-empty-state messageKey="Companions.PhIncompatibleEmpty"></app-empty-state>
-      } @else {
+      @if (displayedPlants().length === 0 && !plantStore.loading()) {
         <app-empty-state messageKey="Companions.NoResults"></app-empty-state>
       }
-    }
-  </div>
+    </div>
+  }
 </div>
