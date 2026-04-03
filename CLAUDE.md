@@ -26,6 +26,23 @@ Garden Assistant · Angular (frontend) · .NET 10 / ASP.NET Core (backend) · Po
 - Name things precisely: variables, methods, and classes should read like prose
 - Delete dead code rather than commenting it out
 - **Always use `{ }` braces** on all control-flow blocks (`if`, `else`, `for`, `foreach`, `while`, `using`, etc.) — even single-line bodies. This applies to both C# and TypeScript
+- **Extract methods to document the code** — long methods must be broken into well-named private methods. Method names serve as documentation. A public method should read like a high-level description:
+  ```csharp
+  public async Task SeedAsync()
+  {
+      var records = await LoadSeedRecords();
+      var lockedPlantIds = await LoadLockedPlantIds();
+      var plantsByKey = await LoadPlantsByKey();
+
+      foreach (var record in records)
+      {
+          UpsertRecord(record, plantsByKey, lockedPlantIds);
+      }
+
+      await db.SaveChangesAsync();
+  }
+  ```
+- **No nested/internal classes** — extract record types, converters, and helper classes to their own files (one public type per file applies to inner types too)
 
 ---
 

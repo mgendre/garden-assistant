@@ -17,7 +17,8 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
                     .Include(p => p.IntrinsicMechanisms)
                     .Include(p => p.ParentPlant)
                         .ThenInclude(pp => pp!.IntrinsicMechanisms)
-                    .Include(p => p.Varieties),
+                    .Include(p => p.Varieties)
+                    .AsSplitQuery(),
                 up => up.PlantId, p => p.Id, (up, p) => p)
             .ToListAsync();
 
@@ -31,6 +32,7 @@ public class UserPlantService(AppDbContext dbContext) : IUserPlantService
             .Include(p => p.ParentPlant)
                 .ThenInclude(pp => pp!.IntrinsicMechanisms)
             .Include(p => p.Varieties)
+            .AsSplitQuery()
             .FirstOrDefaultAsync(p => p.Id == plantId);
         if (plant is null)
         {

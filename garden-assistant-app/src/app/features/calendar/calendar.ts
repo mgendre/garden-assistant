@@ -1,8 +1,7 @@
 import { Component, inject, OnInit, computed } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHeart, faSeedling, faLayerGroup } from '@fortawesome/free-solid-svg-icons';
-import { CalendarStore } from '../../shared/services/calendar.store';
+import { faHeart, faSeedling, faLayerGroup, faTableCellsLarge, faList } from '@fortawesome/free-solid-svg-icons';
+import { CalendarStore, CalendarGrouping, PlantSourceFilter } from '../../shared/services/calendar.store';
 import { PlantStore } from '../../shared/services/plant.store';
 import { DialogService } from '../../shared/services/dialog.service';
 import { PlantDialogService } from '../../shared/services/plant-dialog.service';
@@ -12,11 +11,12 @@ import { PlantActionType, PlantDto } from '../../api/garden-assistant-api';
 import { CalendarService } from '../../shared/services/calendar.service';
 import { ACTION_TYPE_CONFIGS, FILTER_CONFIGS } from '../../shared/constants/plant-action.constants';
 import { EmptyState } from '../../shared/ui/empty-state/empty-state';
+import { ToggleGroup, ToggleOption } from '../../shared/ui/toggle-group/toggle-group';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, PlantCalendarGantt, CalendarThisMonth, EmptyState],
+  imports: [TranslateModule, PlantCalendarGantt, CalendarThisMonth, EmptyState, ToggleGroup],
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss'
 })
@@ -27,10 +27,17 @@ export class Calendar implements OnInit {
   private readonly plantDialogService = inject(PlantDialogService);
   private readonly calendarService = inject(CalendarService);
 
-  protected readonly faHeart = faHeart;
-  protected readonly faSeedling = faSeedling;
-  protected readonly faLayerGroup = faLayerGroup;
   protected readonly filters = FILTER_CONFIGS;
+  protected readonly sourceOptions: ToggleOption[] = [
+    { value: 'all', labelKey: 'Calendar.AllPlants' },
+    { value: 'myPlants', labelKey: 'Calendar.MyPlantsOnly', icon: faHeart },
+    { value: 'gardenPlants', labelKey: 'Calendar.GardenPlantsOnly', icon: faSeedling },
+  ];
+  protected readonly groupingOptions: ToggleOption[] = [
+    { value: 'flat', labelKey: 'Calendar.FlatView', icon: faList },
+    { value: 'byGarden', labelKey: 'Calendar.ByGarden', icon: faLayerGroup },
+    { value: 'byBed', labelKey: 'Calendar.ByBed', icon: faTableCellsLarge },
+  ];
   protected readonly monthLabels = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
   protected readonly currentMonthIndex = new Date().getMonth();
 
@@ -65,6 +72,17 @@ export class Calendar implements OnInit {
 
   isFilterActive(key: string): boolean {
     return this.store.isFilterActive(key);
+  }
+
+  onSourceChange(value: string): void {
+    this.store.sourceFilter.set(value as PlantSourceFilter);
+    if (value !== 'gardenPlants') {
+      this.store.grouping.set('flat');
+    }
+  }
+
+  onGroupingChange(value: string): void {
+    this.store.grouping.set(value as CalendarGrouping);
   }
 
   toggleFilter(key: string): void {

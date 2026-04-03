@@ -11,30 +11,12 @@
     <app-empty-state icon="📅" messageKey="Calendar.EmptyState" actionKey="Calendar.EmptyStateAction" linkRoute="/companions"></app-empty-state>
   } @else {
     <!-- Source filter at page level -->
-    <!-- Source filter at page level -->
     <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem">
-      <div style="display: inline-flex; border-radius: 0.375rem; border: 1px solid var(--color-border)">
-        <button class="btn btn-xs rounded-r-none border-0"
-          [class.btn-primary]="store.sourceFilter() === 'all'"
-          [class.btn-ghost]="store.sourceFilter() !== 'all'"
-          (click)="store.sourceFilter.set('all'); store.grouping.set('flat')"
-          [translate]="'Calendar.AllPlants'">
-        </button>
-        <button class="btn btn-xs border-0" style="border-radius: 0"
-          [class.btn-primary]="store.sourceFilter() === 'myPlants'"
-          [class.btn-ghost]="store.sourceFilter() !== 'myPlants'"
-          (click)="store.sourceFilter.set('myPlants'); store.grouping.set('flat')">
-          <fa-icon [icon]="faHeart" size="xs"></fa-icon>
-          <span [translate]="'Calendar.MyPlantsOnly'"></span>
-        </button>
-        <button class="btn btn-xs rounded-l-none border-0"
-          [class.btn-primary]="store.sourceFilter() === 'gardenPlants'"
-          [class.btn-ghost]="store.sourceFilter() !== 'gardenPlants'"
-          (click)="store.sourceFilter.set('gardenPlants')">
-          <fa-icon [icon]="faSeedling" size="xs"></fa-icon>
-          <span [translate]="'Calendar.GardenPlantsOnly'"></span>
-        </button>
-      </div>
+      <app-toggle-group
+        [options]="sourceOptions"
+        [selectedValue]="store.sourceFilter()"
+        (valueChange)="onSourceChange($event)">
+      </app-toggle-group>
     </div>
 
     <app-calendar-this-month></app-calendar-this-month>
@@ -46,21 +28,11 @@
 
       <div class="calendar-filter-chips" style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem">
         @if (store.sourceFilter() === 'gardenPlants') {
-          <div style="display: inline-flex; border-radius: 0.375rem; border: 1px solid var(--color-border); margin-right: 0.25rem">
-            <button class="btn btn-xs rounded-r-none border-0"
-              [class.btn-primary]="store.grouping() === 'flat'"
-              [class.btn-ghost]="store.grouping() !== 'flat'"
-              (click)="store.grouping.set('flat')"
-              [translate]="'Calendar.FlatView'">
-            </button>
-            <button class="btn btn-xs rounded-l-none border-0"
-              [class.btn-primary]="store.grouping() === 'byGarden'"
-              [class.btn-ghost]="store.grouping() !== 'byGarden'"
-              (click)="store.grouping.set('byGarden')">
-              <fa-icon [icon]="faLayerGroup" size="xs"></fa-icon>
-              <span [translate]="'Calendar.ByGarden'"></span>
-            </button>
-          </div>
+          <app-toggle-group style="margin-right: 0.25rem"
+            [options]="groupingOptions"
+            [selectedValue]="store.grouping()"
+            (valueChange)="onGroupingChange($event)">
+          </app-toggle-group>
         }
         @for (filter of filters; track filter.key) {
           @if (availableFilterKeys().has(filter.key)) {
@@ -76,7 +48,48 @@
         }
       </div>
 
-      @if (store.grouping() === 'byGarden') {
+      @if (store.grouping() === 'byBed') {
+        @for (gardenGroup of store.gardenBedGroups(); track gardenGroup.gardenName; let firstGarden = $first) {
+          <div [style.margin-top]="firstGarden ? '0' : '1.5rem'">
+            <div class="section-divider-title" style="padding: 0 1rem">{{ gardenGroup.gardenName }}</div>
+            @for (bed of gardenGroup.beds; track bed.bedName) {
+              <div style="margin-bottom: 0.75rem">
+                <div class="calendar-bed-title">{{ bed.bedName }}</div>
+                <div class="calendar-month-header-row">
+                  <div class="calendar-name-spacer"></div>
+                  <div class="calendar-label-spacer"></div>
+                  <div class="calendar-month-headers">
+                    @for (label of monthLabels; track $index) {
+                      <div class="calendar-month-header"
+                           [class.calendar-month-header--current]="$index === currentMonthIndex">
+                        {{ label }}
+                      </div>
+                    }
+                  </div>
+                </div>
+                @for (plant of bed.plants; track plant.plantId; let last = $last; let idx = $index) {
+                  @let plantInfo = plantStore.findById(plant.plantId);
+                  @if (plantInfo) {
+                    <div class="calendar-plant-section" [class.calendar-plant-section--last]="last">
+                      <app-plant-calendar-gantt
+                        [actions]="plant.actions ?? []"
+                        [propagationMethod]="plantInfo.propagationMethod!"
+                        [frostSensitive]="plantInfo.frostSensitive ?? false"
+                        [showHeader]="false"
+                        [activeFilters]="ganttFilters()"
+                        [plantName]="plantInfo.name!"
+                        [oddPlant]="idx % 2 === 1"
+                        (plantNameClick)="openPlantDetail(plantInfo)"
+                        (harvestReadinessClick)="openHarvestReadiness(plant.plantId!)">
+                      </app-plant-calendar-gantt>
+                    </div>
+                  }
+                }
+              </div>
+            }
+          </div>
+        }
+      } @else if (store.grouping() === 'byGarden') {
         @for (group of store.gardenGroups(); track group.gardenName; let first = $first) {
           <div style="margin-bottom: 1rem" [style.margin-top]="first ? '0' : '1.5rem'">
             <div class="section-divider-title" style="padding: 0 1rem">{{ group.gardenName }}</div>

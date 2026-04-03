@@ -21,7 +21,7 @@ public class RootDepthBonusTests : DatabaseTestBase
 
     private Plant CreatePlant(string name, RootDepth rootDepth)
     {
-        var plant = new Plant { Id = Guid.NewGuid(), Name = name, RootDepth = rootDepth };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = name.ToLowerInvariant().Replace(' ', '-'), Name = name, RootDepth = rootDepth };
         DbContext.Plants.Add(plant);
         return plant;
     }

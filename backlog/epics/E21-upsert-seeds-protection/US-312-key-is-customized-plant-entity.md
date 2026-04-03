@@ -6,13 +6,13 @@
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : L'entite `Plant` possede une propriete `Key` (string, not null) representant une cle metier stable (ex. `tomate-cerise`).
-- [ ] CA2 : L'entite `Plant` possede une propriete `IsCustomized` (bool, default false).
-- [ ] CA3 : L'entite `Plant` possede une propriete `UserId` (Guid?, nullable) avec une foreign key vers la table `users` et un `DeleteBehavior.Cascade`.
-- [ ] CA4 : Un index unique filtre est cree sur `Key` avec la condition `WHERE user_id IS NULL` (les plantes du catalogue ont une cle unique).
-- [ ] CA5 : Un index est cree sur `UserId` pour optimiser les requetes de variantes utilisateur.
-- [ ] CA6 : Une migration EF Core est generee et applicable sans erreur sur une base vierge.
-- [ ] CA7 : Aucune migration de donnees n'est necessaire — la base est reconstruite from scratch.
+- [x] CA1 : L'entite `Plant` possede une propriete `Key` (string, not null) representant une cle metier stable (ex. `tomate-cerise`).
+- [x] CA2 : L'entite `Plant` possede une propriete `IsCustomized` (bool, default false).
+- [x] CA3 : L'entite `Plant` possede une propriete `UserId` (Guid?, nullable) avec une foreign key vers la table `users` et un `DeleteBehavior.Cascade`.
+- [x] CA4 : Un index unique filtre est cree sur `Key` avec la condition `WHERE user_id IS NULL` (les plantes du catalogue ont une cle unique).
+- [x] CA5 : Un index est cree sur `UserId` pour optimiser les requetes de variantes utilisateur.
+- [x] CA6 : Une migration EF Core est generee et applicable sans erreur sur une base vierge.
+- [x] CA7 : Aucune migration de donnees n'est necessaire — la base est reconstruite from scratch.
 
 ### Notes & contraintes
 - La colonne `key` utilise `snake_case` via la convention existante.
@@ -22,4 +22,4 @@
 ### Estimation
 - **Priorite :** Indispensable
 - **Points :** 3
-- **Statut :** A faire
+- **Statut :** Termine

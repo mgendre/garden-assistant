@@ -22,6 +22,7 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         var candidates = await dbContext.Plants
             .Include(p => p.IntrinsicMechanisms)
             .Include(p => p.ParentPlant)
+            .AsSplitQuery()
             .ToListAsync();
 
         if (candidates.Count == 0)

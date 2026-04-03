@@ -20,6 +20,7 @@ public class UserPlantServiceTests : DatabaseTestBase
     private static Plant CreatePlant(Guid? id = null, string name = "Tomato") => new()
     {
         Id = id ?? Guid.NewGuid(),
+        Key = name.ToLowerInvariant().Replace(' ', '-'),
         Name = name,
         ScientificName = "Solanum lycopersicum",
         Family = "Solanaceae",

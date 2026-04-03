@@ -9,6 +9,7 @@ import { PlantCalendarGantt } from '../../../shared/ui/plant-calendar-gantt/plan
 import { PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
 import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
+import { ToggleGroup, ToggleOption } from '../../../shared/ui/toggle-group/toggle-group';
 
 interface BedCalendarGroup {
   bedName: string;
@@ -18,7 +19,7 @@ interface BedCalendarGroup {
 @Component({
   selector: 'app-garden-calendar',
   standalone: true,
-  imports: [TranslateModule, Collapsible, PlantCalendarGantt, EmptyState],
+  imports: [TranslateModule, Collapsible, PlantCalendarGantt, EmptyState, ToggleGroup],
   templateUrl: './garden-calendar.html',
 })
 export class GardenCalendar {
@@ -36,6 +37,10 @@ export class GardenCalendar {
   readonly allEntries = signal<PlantCalendarEntry[]>([]);
   readonly bedGroups = signal<BedCalendarGroup[]>([]);
   readonly groupByBed = signal(false);
+  readonly viewOptions: ToggleOption[] = [
+    { value: 'flat', labelKey: 'GardenCalendar.FlatView' },
+    { value: 'byBed', labelKey: 'GardenCalendar.GroupedByBed' },
+  ];
 
   constructor() {
     effect(() => {
@@ -47,10 +52,6 @@ export class GardenCalendar {
       }
       this.loadCalendar(beds);
     });
-  }
-
-  toggleGrouping(): void {
-    this.groupByBed.update(v => !v);
   }
 
   private async loadCalendar(beds: BedDto[]): Promise<void> {

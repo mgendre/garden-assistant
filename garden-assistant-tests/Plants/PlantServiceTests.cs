@@ -25,8 +25,8 @@ public class PlantServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_WhenPlantsExist_ShouldReturnAll()
     {
-        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Tomato" });
-        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Basil" });
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Key = "tomato", Name = "Tomato" });
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Key = "basil", Name = "Basil" });
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetAllAsync();
@@ -37,9 +37,9 @@ public class PlantServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetAllAsync_ShouldReturnPlantsOrderedByName()
     {
-        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Zucchini" });
-        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Artichoke" });
-        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Name = "Basil" });
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Key = "zucchini", Name = "Zucchini" });
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Key = "artichoke", Name = "Artichoke" });
+        DbContext.Plants.Add(new Plant { Id = Guid.NewGuid(), Key = "basil", Name = "Basil" });
         await DbContext.SaveChangesAsync();
 
         var result = await _sut.GetAllAsync();

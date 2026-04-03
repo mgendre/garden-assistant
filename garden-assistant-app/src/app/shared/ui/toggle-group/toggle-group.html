@@ -1,0 +1,13 @@
+<div class="btn-group">
+  @for (option of options(); track option.value) {
+    <button class="btn btn-sm"
+      [class.btn-primary]="selectedValue() === option.value"
+      [class.btn-ghost]="selectedValue() !== option.value"
+      (click)="valueChange.emit(option.value)">
+      @if (option.icon) {
+        <fa-icon [icon]="option.icon" size="xs"></fa-icon>
+      }
+      <span [translate]="option.labelKey"></span>
+    </button>
+  }
+</div>

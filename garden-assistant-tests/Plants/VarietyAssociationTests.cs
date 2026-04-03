@@ -20,7 +20,7 @@ public class VarietyAssociationTests : DatabaseTestBase
 
     private Plant CreatePlant(string name, Guid? parentPlantId = null)
     {
-        var plant = new Plant { Id = Guid.NewGuid(), Name = name, ParentPlantId = parentPlantId };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = name.ToLowerInvariant().Replace(' ', '-'), Name = name, ParentPlantId = parentPlantId };
         DbContext.Plants.Add(plant);
         return plant;
     }

@@ -237,7 +237,8 @@
   {
     "plantKey": "coriandre",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 16, "notes": "Semer en place tous les 3 semaines pour une récolte continue" },
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semis de printemps" },
+      { "actionType": "DirectSowing", "halfMonthStart": 17, "halfMonthEnd": 19, "notes": "Semis d'automne pour production de feuilles" },
       { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 20, "notes": "Récolter les feuilles jeunes, les graines à maturité" }
     ]
   },
@@ -245,7 +246,8 @@
     "plantKey": "persil",
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Tremper les graines 24h, germination lente (3-4 semaines)" },
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 16 },
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 12, "notes": "Semis de printemps" },
+      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Semis de fin d'été pour récolte d'hiver et printemps suivant" },
       { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 24 }
     ]
   },
@@ -372,15 +374,19 @@
     "plantKey": "brocoli",
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 8 },
-      { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Espacer de 50 cm, sol riche et frais" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 22, "notes": "Récolter la pomme centrale avant l'ouverture des fleurs, les rejets lateraux suivront" }
+      { "actionType": "Transplanting", "halfMonthStart": 7, "halfMonthEnd": 10, "notes": "Repiquage des variétés précoces d'été" },
+      { "actionType": "Transplanting", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Repiquage des variétés d'automne et hiver" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Récolte d'été" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 6, "notes": "Récolte d'hiver pour les variétés à jets" }
     ]
   },
   {
     "plantKey": "radis",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer toutes les 2 semaines pour une récolte continue" },
-      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 20, "notes": "Récolter dès que les racines sont formées, ne pas laisser monter" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 12, "notes": "Semis de printemps" },
+      { "actionType": "DirectSowing", "halfMonthStart": 17, "halfMonthEnd": 20, "notes": "Semis d'automne après la pause estivale" },
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Récolte de printemps et été" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 22, "notes": "Récolte d'automne" }
     ]
   },
   {
@@ -396,9 +402,12 @@
     "plantKey": "laitue",
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6 },
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer en surface, les graines ont besoin de lumiere" },
-      { "actionType": "Transplanting", "halfMonthStart": 6, "halfMonthEnd": 18 },
-      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Récolter le matin pour plus de croquant" }
+      { "actionType": "DirectSowing", "halfMonthStart": 3, "halfMonthEnd": 12, "notes": "Semis de printemps sous abri puis plein air" },
+      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 19, "notes": "Semis de fin d'été et automne avec variétés adaptées" },
+      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 12, "notes": "Repiquage de printemps" },
+      { "actionType": "Transplanting", "halfMonthStart": 15, "halfMonthEnd": 19, "notes": "Repiquage d'automne" },
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 14, "notes": "Récolte de printemps et été" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 23, "notes": "Récolte d'automne et début hiver" }
     ]
   },
   {
@@ -413,8 +422,10 @@
   {
     "plantKey": "roquette",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer échelonné toutes les 3 semaines" },
-      { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Récolter les feuilles jeunes, les anciennes sont piquantes" }
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semis de printemps" },
+      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Semis de fin d'été et automne" },
+      { "actionType": "Harvest", "halfMonthStart": 7, "halfMonthEnd": 12, "notes": "Récolte de printemps" },
+      { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Récolte d'automne" }
     ]
   },
   {
@@ -500,10 +511,11 @@
   {
     "plantKey": "fraisier",
     "actions": [
-      { "actionType": "Transplanting", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Planter en été-automne pour une récolte l'année suivante" },
-      { "actionType": "Division", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Séparer les stolons enracines" },
-      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 16 },
-      { "actionType": "Pruning", "halfMonthStart": 17, "halfMonthEnd": 18, "notes": "Supprimer les stolons en exces et le vieux feuillage" }
+      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Plantation de printemps en godets, récolte réduite la première année" },
+      { "actionType": "Transplanting", "halfMonthStart": 15, "halfMonthEnd": 20, "notes": "Plantation d'automne idéale pour une pleine récolte l'année suivante" },
+      { "actionType": "Division", "halfMonthStart": 14, "halfMonthEnd": 18, "notes": "Séparer les stolons enracinés" },
+      { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 14 },
+      { "actionType": "Pruning", "halfMonthStart": 14, "halfMonthEnd": 17, "notes": "Supprimer les stolons en excès et le vieux feuillage après la récolte" }
     ]
   },
   {
@@ -938,16 +950,20 @@
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 8, "notes": "Semer en pépinière ou en terrine" },
       { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 12 },
-      { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Repiquer profondément jusqu'aux premières feuilles" },
-      { "actionType": "Harvest", "halfMonthStart": 12, "halfMonthEnd": 24, "notes": "Récolter quand la pomme est bien ferme" }
+      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Repiquage des choux de printemps et été" },
+      { "actionType": "Transplanting", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Repiquage des choux d'automne et hiver" },
+      { "actionType": "Harvest", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Récolte des choux de printemps" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 24, "notes": "Récolte des choux d'automne et hiver" }
     ]
   },
   {
     "plantKey": "chou-fleur",
     "actions": [
       { "actionType": "IndoorSowing", "halfMonthStart": 3, "halfMonthEnd": 6, "notes": "Semer en pépinière, sensible au froid en phase juvenile" },
-      { "actionType": "Transplanting", "halfMonthStart": 9, "halfMonthEnd": 14, "notes": "Espacer de 60 cm, sol riche et frais" },
-      { "actionType": "Harvest", "halfMonthStart": 13, "halfMonthEnd": 22, "notes": "Récolter quand la pomme est blanche et compacte, avant l'ouverture" }
+      { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Repiquage des variétés de printemps et été" },
+      { "actionType": "Transplanting", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Repiquage des variétés d'automne" },
+      { "actionType": "Harvest", "halfMonthStart": 11, "halfMonthEnd": 14, "notes": "Récolte des variétés de printemps" },
+      { "actionType": "Harvest", "halfMonthStart": 19, "halfMonthEnd": 23, "notes": "Récolte d'automne et début hiver" }
     ]
   },
   {
@@ -1004,7 +1020,8 @@
   {
     "plantKey": "cerfeuil",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 18, "notes": "Semer en place à mi-ombre, échelonner les semis" },
+      { "actionType": "DirectSowing", "halfMonthStart": 5, "halfMonthEnd": 10, "notes": "Semis de printemps" },
+      { "actionType": "DirectSowing", "halfMonthStart": 15, "halfMonthEnd": 19, "notes": "Semis de fin d'été et automne" },
       { "actionType": "Harvest", "halfMonthStart": 8, "halfMonthEnd": 22, "notes": "Récolter les feuilles avant la floraison" }
     ]
   },
@@ -1141,6 +1158,7 @@
     "plantKey": "fraisier-remontant",
     "actions": [
       { "actionType": "Transplanting", "halfMonthStart": 5, "halfMonthEnd": 8, "notes": "Planter au printemps pour une première récolte dès l'été" },
+      { "actionType": "Transplanting", "halfMonthStart": 17, "halfMonthEnd": 19, "notes": "Plantation d'automne" },
       { "actionType": "Harvest", "halfMonthStart": 10, "halfMonthEnd": 21, "notes": "Récolte de juin aux gelées avec une pause en plein été (juillet-août)" },
       { "actionType": "Pruning", "halfMonthStart": 10, "halfMonthEnd": 20, "notes": "Supprimer les stolons régulièrement pour maintenir la production de fruits" }
     ]
@@ -1163,7 +1181,8 @@
   {
     "plantKey": "chou-chinois",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Semer exclusivement en été, monte en graines systématiquement au printemps" },
+      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 8, "notes": "Semis précoce sous abri, variétés tolérantes" },
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 17, "notes": "Semis principal d'été" },
       { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 22, "notes": "Récolter avant les premières fortes gelées" }
     ]
   },
@@ -1250,7 +1269,8 @@
   {
     "plantKey": "fenouil-bulbeux",
     "actions": [
-      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Semer après le solstice d'été uniquement, sinon montaison assurée" },
+      { "actionType": "DirectSowing", "halfMonthStart": 7, "halfMonthEnd": 10, "notes": "Semis de printemps, variétés résistantes à la montaison" },
+      { "actionType": "DirectSowing", "halfMonthStart": 13, "halfMonthEnd": 16, "notes": "Semis d'été pour récolte d'automne" },
       { "actionType": "Transplanting", "halfMonthStart": 13, "halfMonthEnd": 15, "notes": "Repiquer les plants issus de semis en godet, sans déranger la racine pivotante" },
       { "actionType": "Harvest", "halfMonthStart": 17, "halfMonthEnd": 21, "notes": "Récolter le bulbe quand il atteint la taille d'un poing, avant les gelées" },
       { "actionType": "Hilling", "halfMonthStart": 15, "halfMonthEnd": 18, "notes": "Butter le bulbe pour le blanchir et l'attendrir" }

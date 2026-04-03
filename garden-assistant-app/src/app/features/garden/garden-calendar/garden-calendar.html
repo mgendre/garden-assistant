@@ -13,20 +13,11 @@
         <app-empty-state messageKey="GardenCalendar.Empty" minHeight="100px"></app-empty-state>
       } @else {
         <div class="flex justify-end mb-4">
-          <div class="inline-flex rounded-md border" style="border-color: var(--color-border)">
-            <button class="btn btn-xs rounded-r-none border-0"
-              [class.btn-primary]="!groupByBed()"
-              [class.btn-ghost]="groupByBed()"
-              (click)="groupByBed.set(false)"
-              [translate]="'GardenCalendar.FlatView'">
-            </button>
-            <button class="btn btn-xs rounded-l-none border-0 -ml-px"
-              [class.btn-primary]="groupByBed()"
-              [class.btn-ghost]="!groupByBed()"
-              (click)="groupByBed.set(true)"
-              [translate]="'GardenCalendar.GroupedByBed'">
-            </button>
-          </div>
+          <app-toggle-group
+            [options]="viewOptions"
+            [selectedValue]="groupByBed() ? 'byBed' : 'flat'"
+            (valueChange)="groupByBed.set($event === 'byBed')">
+          </app-toggle-group>
         </div>
 
         @if (groupByBed()) {

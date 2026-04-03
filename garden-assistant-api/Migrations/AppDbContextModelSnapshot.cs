@@ -208,6 +208,18 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("height_at_maturity_cm");
 
+                    b.Property<bool>("IsCustomized")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false)
+                        .HasColumnName("is_customized");
+
+                    b.Property<string>("Key")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("key");
+
                     b.Property<int>("LifeCycle")
                         .HasColumnType("integer")
                         .HasColumnName("life_cycle");
@@ -243,6 +255,10 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("sun_requirement");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("user_id");
+
                     b.Property<int>("WaterNeeds")
                         .HasColumnType("integer")
                         .HasColumnName("water_needs");
@@ -250,8 +266,16 @@ namespace GardenAssistant.Migrations
                     b.HasKey("Id")
                         .HasName("pk_plants");
 
+                    b.HasIndex("Key")
+                        .IsUnique()
+                        .HasDatabaseName("ix_plants_key")
+                        .HasFilter("user_id IS NULL");
+
                     b.HasIndex("ParentPlantId")
                         .HasDatabaseName("ix_plants_parent_plant_id");
+
+                    b.HasIndex("UserId")
+                        .HasDatabaseName("ix_plants_user_id");
 
                     b.ToTable("plants", (string)null);
                 });
@@ -622,6 +646,12 @@ namespace GardenAssistant.Migrations
                         .HasForeignKey("ParentPlantId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .HasConstraintName("fk_plants_plants_parent_plant_id");
+
+                    b.HasOne("GardenAssistant.Data.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("fk_plants_users_user_id");
 
                     b.Navigation("ParentPlant");
                 });

@@ -5,6 +5,7 @@ namespace GardenAssistant.Data.Entities;
 public class Plant
 {
     public Guid Id { get; set; }
+    public required string Key { get; set; }
     public required string Name { get; set; }
     public string? ScientificName { get; set; }
     public string? Description { get; set; }
@@ -18,6 +19,8 @@ public class Plant
     public int? MaxAltitudeM { get; set; }
     public PropagationMethod PropagationMethod { get; set; }
     public bool FrostSensitive { get; set; }
+    public bool IsCustomized { get; set; }
+    public Guid? UserId { get; set; }
     public List<PlantIntrinsicMechanism> IntrinsicMechanisms { get; set; } = [];
     public List<PlantAction> Actions { get; set; } = [];
     public HarvestReadiness? HarvestReadiness { get; set; }

@@ -6,14 +6,14 @@
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : Le seeder cherche chaque plante en base par `Key` au lieu de verifier si la table est vide.
-- [ ] CA2 : Si la plante n'existe pas en base, elle est inseree.
-- [ ] CA3 : Si la plante existe et `IsCustomized == false`, les champs modifies sont mis a jour.
-- [ ] CA4 : Si la plante existe et `IsCustomized == true`, elle est ignoree (aucune modification).
-- [ ] CA5 : Un log `Info` est emis pour chaque plante mise a jour, listant les champs modifies (ex. `Plant "Tomate" (key: tomate) updated — HeightAtMaturityCm: 150 -> 180`).
-- [ ] CA6 : Un log `Debug` est emis pour chaque plante ignoree, avec un guard `if (logger.IsEnabled(LogLevel.Debug))` pour eviter le cout du formatage.
-- [ ] CA7 : Le seeder fonctionne correctement sur une base vierge (toutes les plantes inserees).
-- [ ] CA8 : Le seeder fonctionne correctement sur une base existante avec des plantes deja presentes.
+- [x] CA1 : Le seeder cherche chaque plante en base par `Key` au lieu de verifier si la table est vide.
+- [x] CA2 : Si la plante n'existe pas en base, elle est inseree.
+- [x] CA3 : Si la plante existe et `IsCustomized == false`, les champs modifies sont mis a jour.
+- [x] CA4 : Si la plante existe et `IsCustomized == true`, elle est ignoree (aucune modification).
+- [x] CA5 : Un log `Info` est emis pour chaque plante mise a jour, listant les champs modifies (ex. `Plant "Tomate" (key: tomate) updated — HeightAtMaturityCm: 150 -> 180`).
+- [x] CA6 : Un log `Debug` est emis pour chaque plante ignoree, avec un guard `if (logger.IsEnabled(LogLevel.Debug))` pour eviter le cout du formatage.
+- [x] CA7 : Le seeder fonctionne correctement sur une base vierge (toutes les plantes inserees).
+- [x] CA8 : Le seeder fonctionne correctement sur une base existante avec des plantes deja presentes.
 
 ### Notes & contraintes
 - Depend de US-312 (champ `Key` sur l'entite) et US-313 (champ `key` dans les JSON).
@@ -23,4 +23,4 @@
 ### Estimation
 - **Priorite :** Indispensable
 - **Points :** 5
-- **Statut :** A faire
+- **Statut :** Termine

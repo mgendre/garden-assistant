@@ -55,15 +55,23 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
         modelBuilder.Entity<Plant>(entity =>
         {
             entity.HasKey(p => p.Id);
+            entity.Property(p => p.Key).IsRequired().HasMaxLength(256);
             entity.Property(p => p.Name).IsRequired().HasMaxLength(256);
             entity.Property(p => p.ScientificName).HasMaxLength(256);
             entity.Property(p => p.Description).HasMaxLength(10000);
             entity.Property(p => p.Family).HasMaxLength(128);
             entity.Property(p => p.Genus).HasMaxLength(128);
+            entity.Property(p => p.IsCustomized).HasDefaultValue(false);
+            entity.HasOne<User>()
+                  .WithMany()
+                  .HasForeignKey(p => p.UserId)
+                  .OnDelete(DeleteBehavior.Cascade);
             entity.HasOne(p => p.ParentPlant)
                   .WithMany(p => p.Varieties)
                   .HasForeignKey(p => p.ParentPlantId)
                   .OnDelete(DeleteBehavior.Restrict);
+            entity.HasIndex(p => p.Key).IsUnique().HasFilter("user_id IS NULL");
+            entity.HasIndex(p => p.UserId);
             entity.HasIndex(p => p.ParentPlantId);
         });
 

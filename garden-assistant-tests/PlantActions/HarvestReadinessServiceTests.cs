@@ -18,7 +18,7 @@ public class HarvestReadinessServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetByPlantIdAsync_WhenPlantHasNoReadiness_ShouldReturnNull()
     {
-        var plant = new Plant { Id = Guid.NewGuid(), Name = "Basil" };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = "basil", Name = "Basil" };
         DbContext.Plants.Add(plant);
         await DbContext.SaveChangesAsync();
 
@@ -30,7 +30,7 @@ public class HarvestReadinessServiceTests : DatabaseTestBase
     [Fact]
     public async Task GetByPlantIdAsync_WhenPlantHasReadiness_ShouldReturnWithCriteriaOrdered()
     {
-        var plant = new Plant { Id = Guid.NewGuid(), Name = "Tomato" };
+        var plant = new Plant { Id = Guid.NewGuid(), Key = "tomato", Name = "Tomato" };
         DbContext.Plants.Add(plant);
 
         var harvestReadiness = new HarvestReadiness

@@ -1,6 +1,7 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using GardenAssistant.Data.Entities.Enums;
+using GardenAssistant.Data.Seeders.Records;
 using Shouldly;
 
 namespace GardenAssistant.Tests.Seeds;
@@ -13,7 +14,7 @@ public class SeedDataValidationTests
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNameCaseInsensitive = true,
-        Converters = { new JsonStringEnumConverter(), new GuildPlantEntryConverter() }
+        Converters = { new JsonStringEnumConverter() }
     };
 
     [Fact]
@@ -131,96 +132,5 @@ public class SeedDataValidationTests
     {
         var json = File.ReadAllText(Path.Combine(SeedsPath, "guilds.json"));
         return JsonSerializer.Deserialize<List<GuildSeedRecord>>(json, JsonOptions)!;
-    }
-
-    private record PlantSeedRecord(
-        string Key,
-        string Name,
-        string? ScientificName,
-        string? Description,
-        string? Family,
-        string? Genus,
-        LifeCycle LifeCycle,
-        int? HeightAtMaturityCm,
-        RootDepth RootDepth,
-        SunRequirement SunRequirement,
-        WaterNeeds WaterNeeds,
-        int? MaxAltitudeM,
-        List<AssociationMechanism>? IntrinsicMechanisms,
-        PropagationMethod? PropagationMethod,
-        bool? FrostSensitive,
-        string? ParentKey
-    );
-
-    private record AssociationSeedRecord(
-        string SourcePlantKey,
-        string TargetPlantKey,
-        AssociationMechanism Mechanism,
-        AssociationEffect Effect,
-        DistanceEffect DistanceEffect,
-        ConfidenceLevel ConfidenceLevel,
-        string? Notes
-    );
-
-    private record GuildSeedRecord(
-        string Name,
-        string? Description,
-        List<GuildPlantEntry> Plants
-    );
-
-    [JsonConverter(typeof(GuildPlantEntryConverter))]
-    private record GuildPlantEntry(string Key, GuildPlantRole? Role);
-
-    private sealed class GuildPlantEntryConverter : JsonConverter<GuildPlantEntry>
-    {
-        public override GuildPlantEntry Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-        {
-            if (reader.TokenType == JsonTokenType.String)
-            {
-                return new GuildPlantEntry(reader.GetString()!, null);
-            }
-
-            if (reader.TokenType == JsonTokenType.StartObject)
-            {
-                string? key = null;
-                GuildPlantRole? role = null;
-
-                while (reader.Read())
-                {
-                    if (reader.TokenType == JsonTokenType.EndObject)
-                    {
-                        break;
-                    }
-
-                    if (reader.TokenType == JsonTokenType.PropertyName)
-                    {
-                        var propertyName = reader.GetString()!;
-                        reader.Read();
-
-                        if (string.Equals(propertyName, "key", StringComparison.OrdinalIgnoreCase))
-                        {
-                            key = reader.GetString();
-                        }
-                        else if (string.Equals(propertyName, "role", StringComparison.OrdinalIgnoreCase))
-                        {
-                            var roleStr = reader.GetString();
-                            if (roleStr is not null && Enum.TryParse<GuildPlantRole>(roleStr, true, out var parsed))
-                            {
-                                role = parsed;
-                            }
-                        }
-                    }
-                }
-
-                return new GuildPlantEntry(key!, role);
-            }
-
-            throw new JsonException($"Unexpected token {reader.TokenType}");
-        }
-
-        public override void Write(Utf8JsonWriter writer, GuildPlantEntry value, JsonSerializerOptions options)
-        {
-            throw new NotSupportedException();
-        }
     }
 }

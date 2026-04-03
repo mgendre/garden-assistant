@@ -15,11 +15,21 @@ import { MyPlantsStore } from './my-plants.store';
 import { FILTER_CONFIGS, SOWING_ACTIONS, getEarliestHalfMonth } from '../constants/plant-action.constants';
 
 export type PlantSourceFilter = 'all' | 'myPlants' | 'gardenPlants';
-export type CalendarGrouping = 'flat' | 'byGarden';
+export type CalendarGrouping = 'flat' | 'byGarden' | 'byBed';
 
 export interface GardenCalendarGroup {
   gardenName: string;
   plants: CalendarPlantDto[];
+}
+
+export interface BedCalendarGroup {
+  bedName: string;
+  plants: CalendarPlantDto[];
+}
+
+export interface GardenBedCalendarGroup {
+  gardenName: string;
+  beds: BedCalendarGroup[];
 }
 
 interface GardenBedData {
@@ -127,6 +137,44 @@ export class CalendarStore {
 
       if (plants.length > 0) {
         groups.push({ gardenName: gbd.garden.name ?? '', plants });
+      }
+    }
+
+    return groups.sort((a, b) => a.gardenName.localeCompare(b.gardenName, 'fr'));
+  });
+
+  readonly gardenBedGroups = computed<GardenBedCalendarGroup[]>(() => {
+    const calendarMap = new Map<string, CalendarPlantDto>();
+    for (const p of this.allCalendarPlants()) {
+      if (p.plantId) {
+        calendarMap.set(p.plantId, p);
+      }
+    }
+
+    const groups: GardenBedCalendarGroup[] = [];
+
+    for (const gbd of this.gardenBedData()) {
+      const beds: BedCalendarGroup[] = [];
+
+      for (const bed of gbd.beds) {
+        let plants: CalendarPlantDto[] = [];
+        for (const id of bed.plantIds ?? []) {
+          const cp = calendarMap.get(String(id));
+          if (cp) {
+            plants.push(cp);
+          }
+        }
+
+        plants = this.sortAndFilterByAction(plants);
+
+        if (plants.length > 0) {
+          beds.push({ bedName: bed.name ?? '', plants });
+        }
+      }
+
+      if (beds.length > 0) {
+        beds.sort((a, b) => a.bedName.localeCompare(b.bedName, 'fr'));
+        groups.push({ gardenName: gbd.garden.name ?? '', beds });
       }
     }
 

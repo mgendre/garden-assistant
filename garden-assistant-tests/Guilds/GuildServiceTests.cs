@@ -34,9 +34,9 @@ public class GuildServiceTests : DatabaseTestBase
         var guildWithPlants = new Guild { Id = Guid.NewGuid(), Name = "Three Sisters" };
         var guildWithoutPlants = new Guild { Id = Guid.NewGuid(), Name = "Herb Spiral" };
 
-        var corn = new Plant { Id = Guid.NewGuid(), Name = "Corn" };
-        var beans = new Plant { Id = Guid.NewGuid(), Name = "Beans" };
-        var squash = new Plant { Id = Guid.NewGuid(), Name = "Squash" };
+        var corn = new Plant { Id = Guid.NewGuid(), Key = "corn", Name = "Corn" };
+        var beans = new Plant { Id = Guid.NewGuid(), Key = "beans", Name = "Beans" };
+        var squash = new Plant { Id = Guid.NewGuid(), Key = "squash", Name = "Squash" };
 
         DbContext.Guilds.AddRange(guildWithPlants, guildWithoutPlants);
         DbContext.Plants.AddRange(corn, beans, squash);
@@ -101,8 +101,8 @@ public class GuildServiceTests : DatabaseTestBase
             Name = "Three Sisters",
             Description = "Classic companion planting guild"
         };
-        var corn = new Plant { Id = Guid.NewGuid(), Name = "Corn", ScientificName = "Zea mays" };
-        var beans = new Plant { Id = Guid.NewGuid(), Name = "Beans", ScientificName = "Phaseolus vulgaris" };
+        var corn = new Plant { Id = Guid.NewGuid(), Key = "corn", Name = "Corn", ScientificName = "Zea mays" };
+        var beans = new Plant { Id = Guid.NewGuid(), Key = "beans", Name = "Beans", ScientificName = "Phaseolus vulgaris" };
 
         DbContext.Guilds.Add(guild);
         DbContext.Plants.AddRange(corn, beans);
@@ -133,9 +133,9 @@ public class GuildServiceTests : DatabaseTestBase
         // Arrange
         var guild = new Guild { Id = Guid.NewGuid(), Name = "Test Guild" };
 
-        var squash = new Plant { Id = Guid.NewGuid(), Name = "Squash" };
-        var beans = new Plant { Id = Guid.NewGuid(), Name = "Beans" };
-        var corn = new Plant { Id = Guid.NewGuid(), Name = "Corn" };
+        var squash = new Plant { Id = Guid.NewGuid(), Key = "squash", Name = "Squash" };
+        var beans = new Plant { Id = Guid.NewGuid(), Key = "beans", Name = "Beans" };
+        var corn = new Plant { Id = Guid.NewGuid(), Key = "corn", Name = "Corn" };
 
         DbContext.Guilds.Add(guild);
         DbContext.Plants.AddRange(squash, beans, corn);
@@ -163,10 +163,10 @@ public class GuildServiceTests : DatabaseTestBase
         // Arrange
         var guild = new Guild { Id = Guid.NewGuid(), Name = "Mixed Role Guild" };
 
-        var apple = new Plant { Id = Guid.NewGuid(), Name = "Apple" };
-        var comfrey = new Plant { Id = Guid.NewGuid(), Name = "Comfrey" };
-        var daffodil = new Plant { Id = Guid.NewGuid(), Name = "Daffodil" };
-        var basil = new Plant { Id = Guid.NewGuid(), Name = "Basil" };
+        var apple = new Plant { Id = Guid.NewGuid(), Key = "apple", Name = "Apple" };
+        var comfrey = new Plant { Id = Guid.NewGuid(), Key = "comfrey", Name = "Comfrey" };
+        var daffodil = new Plant { Id = Guid.NewGuid(), Key = "daffodil", Name = "Daffodil" };
+        var basil = new Plant { Id = Guid.NewGuid(), Key = "basil", Name = "Basil" };
 
         DbContext.Guilds.Add(guild);
         DbContext.Plants.AddRange(apple, comfrey, daffodil, basil);
@@ -202,9 +202,9 @@ public class GuildServiceTests : DatabaseTestBase
     public async Task CreateAsync_ShouldPersistPlantRoles()
     {
         // Arrange
-        var apple = new Plant { Id = Guid.NewGuid(), Name = "Apple" };
-        var comfrey = new Plant { Id = Guid.NewGuid(), Name = "Comfrey" };
-        var clover = new Plant { Id = Guid.NewGuid(), Name = "Clover" };
+        var apple = new Plant { Id = Guid.NewGuid(), Key = "apple", Name = "Apple" };
+        var comfrey = new Plant { Id = Guid.NewGuid(), Key = "comfrey", Name = "Comfrey" };
+        var clover = new Plant { Id = Guid.NewGuid(), Key = "clover", Name = "Clover" };
 
         DbContext.Plants.AddRange(apple, comfrey, clover);
         await DbContext.SaveChangesAsync();
@@ -240,8 +240,8 @@ public class GuildServiceTests : DatabaseTestBase
     public async Task CreateAsync_WhenNoRoleSpecified_ShouldDefaultToCompanion()
     {
         // Arrange
-        var mint = new Plant { Id = Guid.NewGuid(), Name = "Mint" };
-        var basil = new Plant { Id = Guid.NewGuid(), Name = "Basil" };
+        var mint = new Plant { Id = Guid.NewGuid(), Key = "mint", Name = "Mint" };
+        var basil = new Plant { Id = Guid.NewGuid(), Key = "basil", Name = "Basil" };
 
         DbContext.Plants.AddRange(mint, basil);
         await DbContext.SaveChangesAsync();
@@ -267,8 +267,8 @@ public class GuildServiceTests : DatabaseTestBase
     public async Task UpdateAsync_ShouldUpdatePlantRoles()
     {
         // Arrange
-        var apple = new Plant { Id = Guid.NewGuid(), Name = "Apple" };
-        var comfrey = new Plant { Id = Guid.NewGuid(), Name = "Comfrey" };
+        var apple = new Plant { Id = Guid.NewGuid(), Key = "apple", Name = "Apple" };
+        var comfrey = new Plant { Id = Guid.NewGuid(), Key = "comfrey", Name = "Comfrey" };
 
         DbContext.Plants.AddRange(apple, comfrey);
         await DbContext.SaveChangesAsync();
