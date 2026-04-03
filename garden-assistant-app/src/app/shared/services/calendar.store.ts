@@ -194,10 +194,6 @@ export class CalendarStore {
     }
   }
 
-  async loadHarvestReadiness(plantId: string): Promise<HarvestReadinessDto | null> {
-    return this.calendarService.getHarvestReadiness(plantId);
-  }
-
   toggleFilter(filterKey: string): void {
     this.activeFilterKey.update(current => current === filterKey ? null : filterKey);
   }
@@ -269,14 +265,10 @@ export class CalendarStore {
       return;
     }
 
-    const uniqueIds = [...allPlantIds];
-    const allActions = await Promise.all(
-      uniqueIds.map(id => this.calendarService.getPlantActions(id))
-    );
-
     const entries: CalendarPlantDto[] = [];
-    for (let i = 0; i < uniqueIds.length; i++) {
-      entries.push({ plantId: uniqueIds[i], actions: allActions[i] } as CalendarPlantDto);
+    for (const id of allPlantIds) {
+      const plant = this.plantStore.findById(id);
+      entries.push({ plantId: id, actions: plant?.actions ?? [] } as CalendarPlantDto);
     }
 
     this.gardenCalendarPlants.set(entries);

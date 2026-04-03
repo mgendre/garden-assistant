@@ -13,6 +13,23 @@
     </div>
   }
 
+  @if (store.phConflictPairs().length) {
+    <div class="assistant-warning assistant-warning--ph">
+      <div class="assistant-warning-header">
+        <span>⚠️</span>
+        <strong>{{ 'Guild.PhWarning.Title' | translate }}</strong>
+      </div>
+      <div class="assistant-warning-body">
+        @for (pair of store.phConflictPairs(); track $index) {
+          <span class="assistant-conflict-pair">{{ pair.plantA }} (pH {{ pair.phA }}) / {{ pair.plantB }} (pH {{ pair.phB }})</span>
+        }
+      </div>
+      <div class="assistant-warning-tip">
+        {{ 'Guild.PhWarning.Tip' | translate }}
+      </div>
+    </div>
+  }
+
   @for (warning of store.familyDiversityWarnings(); track warning.family) {
     <div class="assistant-warning assistant-warning--family">
       <div class="assistant-warning-header">
@@ -36,7 +53,7 @@
       }
       <span
         class="mechanism-chip"
-        [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
+        [class.filter-active]="store.mechanismFilter() === row.mechanism"
         [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
         (click)="filterMechanism(row.mechanism)">
         {{ 'Plant.Mechanism.' + row.key | translate }}

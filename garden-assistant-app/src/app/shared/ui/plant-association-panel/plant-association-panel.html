@@ -90,6 +90,11 @@
               🌱 {{ 'GuildAssistant.BadgeRootCompetition' | translate }}
             </span>
           }
+          @if (store.phConflictPairs().length > 0) {
+            <span class="health-badge health-badge--ph">
+              ⚠️ {{ 'GuildAssistant.BadgePh' | translate }}
+            </span>
+          }
         </div>
       </div>
       <div collapsible-body class="collapsible-body-padded">
@@ -126,7 +131,7 @@
                 @if (interactive()) {
                   <span class="mechanism-chip"
                     [class.mechanism-chip--inactive]="!row.satisfied"
-                    [class.mechanism-blue]="store.mechanismFilter() === row.mechanism"
+                    [class.filter-active]="store.mechanismFilter() === row.mechanism"
                     [class.filter-inactive]="store.mechanismFilter() !== row.mechanism"
                     (click)="filterMechanism(row.mechanism)">
                     {{ 'Plant.Mechanism.' + row.key | translate }}
@@ -161,6 +166,69 @@
             [filterToggle]="filterRootDepthFn">
           </app-root-stratification>
         </div>
+
+        @if (soilCompatibility().length > 0) {
+          <div class="stratification-divider">
+            <div class="section-divider-title" [translate]="'GuildAssistant.SectionSoil'"></div>
+            <div class="soil-summary">
+              @for (entry of soilCompatibility(); track entry.soil) {
+                <div class="soil-summary-row">
+                  <span class="soil-summary-label" [class.soil-summary-label--active]="store.soilTypeFilter() === entry.soil"
+                    (click)="store.toggleSoilTypeFilter(entry.soil)">{{ 'Plant.Soil.' + entry.soil | translate }}</span>
+                  <div class="soil-summary-bar-track">
+                    <div class="soil-summary-bar-fill" [style.width.%]="(entry.count / entry.total) * 100"></div>
+                  </div>
+                  <span class="soil-summary-count">{{ entry.count }}/{{ entry.total }}</span>
+                  <div class="soil-summary-plants">
+                    @for (plant of entry.plants; track plant.id) {
+                      <app-plant-badge [plant]="plant" [central]="centralPlantIds().has(plant.id!)"></app-plant-badge>
+                    }
+                  </div>
+                </div>
+              }
+            </div>
+            @if (guildPhRange(); as phRange) {
+              <div class="soil-ph-range-row">
+                <span class="info-card-label">{{ 'GuildAssistant.PhRange' | translate }}</span>
+                <div class="ph-display">
+                  <div class="ph-scale" role="img">
+                    <div class="ph-range"
+                      [style.left.%]="getPhLeftPercent(phRange.min)"
+                      [style.width.%]="getPhWidthPercent(phRange.min, phRange.max)">
+                    </div>
+                  </div>
+                  <div class="ph-labels">
+                    <span>{{ 'Plant.Ph.Acid' | translate }}</span>
+                    <span>{{ 'Plant.Ph.Neutral' | translate }}</span>
+                    <span>{{ 'Plant.Ph.Alkaline' | translate }}</span>
+                  </div>
+                  <div class="ph-value">pH {{ phRange.min }} – {{ phRange.max }}</div>
+                </div>
+              </div>
+            } @else if (plants().length > 1) {
+              <div class="soil-summary-ph soil-summary-ph--warning">
+                <span>⚠️</span>
+                <span>{{ 'GuildAssistant.PhNoOverlap' | translate }}</span>
+              </div>
+            }
+            @if (store.phConflictPairs().length > 0) {
+              <div class="assistant-warning assistant-warning--ph">
+                <div class="assistant-warning-header">
+                  <span>⚠️</span>
+                  <strong>{{ 'Guild.PhWarning.Title' | translate }}</strong>
+                </div>
+                <div class="assistant-warning-body">
+                  @for (pair of store.phConflictPairs(); track $index) {
+                    <span>{{ pair.plantA }} (pH {{ pair.phA }}) / {{ pair.plantB }} (pH {{ pair.phB }})</span>
+                  }
+                </div>
+                <div class="assistant-warning-tip">
+                  {{ 'Guild.PhWarning.Tip' | translate }}
+                </div>
+              </div>
+            }
+          </div>
+        }
       </div>
     </app-collapsible>
   </div>

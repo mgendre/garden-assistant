@@ -63,7 +63,13 @@ public class GuildSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Guild
 
     private async Task<Dictionary<string, Guild>> LoadExistingGuilds()
     {
-        return await db.Guilds.ToDictionaryAsync(g => g.Name, g => g);
+        var guilds = await db.Guilds.Where(g => g.UserId == null).ToListAsync();
+        var result = new Dictionary<string, Guild>();
+        foreach (var guild in guilds)
+        {
+            result.TryAdd(guild.Name, guild);
+        }
+        return result;
     }
 
     private async Task<ILookup<Guid, GuildPlant>> LoadExistingGuildPlants()

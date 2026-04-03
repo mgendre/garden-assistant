@@ -95,6 +95,7 @@ These apply across all layers. Agents reference this section rather than restati
 - **Mobile-first**: all pages and components must work on mobile viewports (≥ 320px). Use responsive Tailwind breakpoints (`sm:`, `md:`, `lg:`) to progressively enhance for larger screens
 - **Separate template files**: always use `templateUrl` pointing to a `.html` file — never inline `template` in components
 - **i18n with ngx-translate**: all user-facing text must use `{{ 'Key' | translate }}` or `[translate]="'Key'"`. Translation keys use **PascalCase** (e.g. `Companions.GoodTitle`, `Snackbar.GardenCreated`). Translation files live in `public/i18n/{lang}.json`. Default language is `fr`
+- **French text must have correct accents** — all French strings in translation files (`fr.json`), changelogs, backlog stories, and seed data must use proper accents and diacritics (`é`, `è`, `ê`, `ë`, `à`, `â`, `ù`, `û`, `ô`, `î`, `ï`, `ç`, `œ`, etc.). Never write `e` when `é`/`è`/`ê` is required. This applies to all user-facing text, log messages, and documentation in French
 - **Panel pattern**: use the `.panel` class (defined in `_panels.scss`) for all content sections — white background, rounded corners, subtle shadow and border. Use `.panel-header` + `.panel-title` for section headers. Never create custom card/container styling; always reuse the panel pattern
 - **After every frontend change, run `npm run build --prefix garden-assistant-app` and fix all errors before considering the task done**
 

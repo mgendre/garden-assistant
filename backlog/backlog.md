@@ -439,15 +439,15 @@
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-330](epics/E24-preferences-sol-ph/US-330-enum-soiltype-champs-ph-entity.md) | Enum SoilType, table PlantSoilType (many-to-many) et champs pH + migration EF | Indispensable | 3 | A faire |
-| [US-331](epics/E24-preferences-sol-ph/US-331-seed-data-sol-ph.md) | Seed data sol et pH pour les plantes du catalogue | Indispensable | 5 | A faire |
-| [US-332](epics/E24-preferences-sol-ph/US-332-api-dto-sol-ph.md) | Exposer SoilType et pH dans PlantDto | Indispensable | 2 | A faire |
-| [US-333](epics/E24-preferences-sol-ph/US-333-tests-unitaires-sol-ph.md) | Tests unitaires pour les proprietes sol et pH | Indispensable | 3 | A faire |
-| [US-334](epics/E24-preferences-sol-ph/US-334-frontend-affichage-sol-ph-fiche-plante.md) | Afficher le type de sol et le pH sur la fiche plante | Indispensable | 3 | A faire |
-| [US-335](epics/E24-preferences-sol-ph/US-335-frontend-filtre-sol-liste-plantes.md) | Filtrer les plantes par type de sol | Important | 3 | A faire |
-| [US-336](epics/E24-preferences-sol-ph/US-336-alerte-compatibilite-ph-guilde.md) | Alerte de compatibilite pH dans l'editeur de guilde | Important | 5 | A faire |
+| [US-330](epics/E24-preferences-sol-ph/US-330-enum-soiltype-champs-ph-entity.md) | Enum SoilType, table PlantSoilType (many-to-many) et champs pH + migration EF | Indispensable | 3 | Termine |
+| [US-331](epics/E24-preferences-sol-ph/US-331-seed-data-sol-ph.md) | Seed data sol et pH pour les plantes du catalogue | Indispensable | 5 | Termine |
+| [US-332](epics/E24-preferences-sol-ph/US-332-api-dto-sol-ph.md) | Exposer SoilType et pH dans PlantDto | Indispensable | 2 | Termine |
+| [US-333](epics/E24-preferences-sol-ph/US-333-tests-unitaires-sol-ph.md) | Tests unitaires pour les proprietes sol et pH | Indispensable | 3 | Termine |
+| [US-334](epics/E24-preferences-sol-ph/US-334-frontend-affichage-sol-ph-fiche-plante.md) | Afficher le type de sol et le pH sur la fiche plante | Indispensable | 3 | Termine |
+| [US-335](epics/E24-preferences-sol-ph/US-335-frontend-filtre-sol-liste-plantes.md) | Filtrer les plantes par type de sol | Important | 3 | Termine |
+| [US-336](epics/E24-preferences-sol-ph/US-336-alerte-compatibilite-ph-guilde.md) | Alerte de compatibilite pH dans l'editeur de guilde | Important | 5 | Termine |
 
-**Total E24 : 24 points (0 Termine / 24 A faire)**
+**Total E24 : 24 points (24 Termine / 0 A faire)**
 
 > Ordre de livraison : US-330 (entity + migration) → US-331 (seed data, necessite validation plant-expert) et US-332 (API/DTO) en parallele → US-333 (tests) → US-334 (affichage fiche) → US-335 (filtre liste) et US-336 (alerte guilde) en parallele. US-331 est la story la plus lourde car elle necessite l'expertise botanique pour chaque plante.
 
@@ -480,8 +480,8 @@
 | E21 — Upsert des seeds et protection des donnees | 24 | 0 | 0 | 24 |
 | E22 — Administration du catalogue de plantes | 13 | 0 | 0 | 13 |
 | E23 — Variantes utilisateur | 17 | 0 | 0 | 17 |
-| E24 — Preferences de sol et pH | 24 | 0 | 0 | 24 |
-| **Total (actif)** | **518** | **167** | **0** | **351** |
+| E24 — Preferences de sol et pH | 24 | 24 | 0 | 0 |
+| **Total (actif)** | **524** | **197** | **0** | **327** |
 
 ---
 

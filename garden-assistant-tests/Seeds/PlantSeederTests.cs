@@ -566,6 +566,139 @@ public class PlantSeederTests : DatabaseTestBase
         DbContext.PlantIntrinsicMechanisms.Count().ShouldBe(1);
     }
 
+    [Fact]
+    public async Task SeedAsync_WhenPlantHasSoilTypes_ShouldInsertSoilTypes()
+    {
+        WritePlantsJson("""
+        [
+          {
+            "key": "tomate",
+            "name": "Tomate",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium",
+            "soilTypes": ["Loam", "Sandy"]
+          }
+        ]
+        """);
+
+        await CreateSeeder().SeedAsync();
+
+        var plant = DbContext.Plants.Include(p => p.SoilTypes).Single();
+        plant.SoilTypes.Count.ShouldBe(2);
+        plant.SoilTypes.ShouldContain(st => st.SoilType == SoilType.Loam);
+        plant.SoilTypes.ShouldContain(st => st.SoilType == SoilType.Sandy);
+    }
+
+    [Fact]
+    public async Task SeedAsync_WhenPlantHasPhRange_ShouldSetPhFields()
+    {
+        WritePlantsJson("""
+        [
+          {
+            "key": "tomate",
+            "name": "Tomate",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium",
+            "optimalPhMin": 6.0,
+            "optimalPhMax": 6.8
+          }
+        ]
+        """);
+
+        await CreateSeeder().SeedAsync();
+
+        var plant = DbContext.Plants.Single();
+        plant.OptimalPhMin.ShouldBe(6.0m);
+        plant.OptimalPhMax.ShouldBe(6.8m);
+    }
+
+    [Fact]
+    public async Task SeedAsync_WhenPlantExistsAndNotCustomized_ShouldUpdateSoilTypes()
+    {
+        var plantId = Guid.NewGuid();
+        DbContext.Plants.Add(new Plant
+        {
+            Id = plantId,
+            Key = "tomate",
+            Name = "Tomate",
+            RootDepth = RootDepth.Medium,
+            SunRequirement = SunRequirement.FullSun,
+            WaterNeeds = WaterNeeds.Medium,
+            LifeCycle = LifeCycle.Annual
+        });
+        DbContext.PlantSoilTypes.Add(new PlantSoilType
+        {
+            PlantId = plantId,
+            SoilType = SoilType.Loam
+        });
+        await DbContext.SaveChangesAsync();
+
+        WritePlantsJson("""
+        [
+          {
+            "key": "tomate",
+            "name": "Tomate",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium",
+            "soilTypes": ["Sandy", "Clay"]
+          }
+        ]
+        """);
+
+        await CreateSeeder().SeedAsync();
+
+        var soilTypes = DbContext.PlantSoilTypes.Where(st => st.PlantId == plantId).ToList();
+        soilTypes.Count.ShouldBe(2);
+        soilTypes.ShouldContain(st => st.SoilType == SoilType.Sandy);
+        soilTypes.ShouldContain(st => st.SoilType == SoilType.Clay);
+        soilTypes.ShouldNotContain(st => st.SoilType == SoilType.Loam);
+    }
+
+    [Fact]
+    public async Task SeedAsync_WhenPlantExistsAndNotCustomized_ShouldUpdatePhFields()
+    {
+        DbContext.Plants.Add(new Plant
+        {
+            Id = Guid.NewGuid(),
+            Key = "tomate",
+            Name = "Tomate",
+            RootDepth = RootDepth.Medium,
+            SunRequirement = SunRequirement.FullSun,
+            WaterNeeds = WaterNeeds.Medium,
+            LifeCycle = LifeCycle.Annual,
+            OptimalPhMin = 6.0m,
+            OptimalPhMax = 7.0m
+        });
+        await DbContext.SaveChangesAsync();
+
+        WritePlantsJson("""
+        [
+          {
+            "key": "tomate",
+            "name": "Tomate",
+            "lifeCycle": "Annual",
+            "rootDepth": "Medium",
+            "sunRequirement": "FullSun",
+            "waterNeeds": "Medium",
+            "optimalPhMin": 5.5,
+            "optimalPhMax": 6.5
+          }
+        ]
+        """);
+
+        await CreateSeeder().SeedAsync();
+
+        var plant = DbContext.Plants.Single();
+        plant.OptimalPhMin.ShouldBe(5.5m);
+        plant.OptimalPhMax.ShouldBe(6.5m);
+    }
+
     ~PlantSeederTests()
     {
         if (Directory.Exists(_tempRoot))

@@ -124,6 +124,47 @@
       </div>
     </div>
 
+    @if (plant().soilTypes?.length || (plant().optimalPhMin != null && plant().optimalPhMax != null)) {
+      <div class="detail-section">
+        <div class="detail-section-title">{{ 'Plant.SoilSection' | translate }}</div>
+        <div class="detail-section-content">
+          @if (plant().soilTypes?.length) {
+            <div class="soil-types-row">
+              <div class="info-card-label">{{ 'Plant.Soil.Label' | translate }}</div>
+              <div class="info-card-chips">
+                @for (soil of plant().soilTypes; track soil) {
+                  <span class="soil-chip soil-chip--clickable"
+                    [class.soil-chip--active]="store.soilTypeFilter() === soil"
+                    (click)="store.toggleSoilTypeFilter(soil)">{{ 'Plant.Soil.' + soil | translate }}</span>
+                }
+              </div>
+            </div>
+          }
+          @if (plant().optimalPhMin != null && plant().optimalPhMax != null) {
+            <div class="ph-row">
+              <div class="info-card-label">{{ 'Plant.Ph.Label' | translate }}</div>
+              <div class="ph-display">
+                <div class="ph-scale"
+                  role="img"
+                  [attr.aria-label]="('Plant.Ph.Aria' | translate:{ min: plant().optimalPhMin, max: plant().optimalPhMax })">
+                  <div class="ph-range"
+                    [style.left.%]="getPhLeftPercent(plant().optimalPhMin!)"
+                    [style.width.%]="getPhWidthPercent(plant().optimalPhMin!, plant().optimalPhMax!)">
+                  </div>
+                </div>
+                <div class="ph-labels">
+                  <span>{{ 'Plant.Ph.Acid' | translate }}</span>
+                  <span>{{ 'Plant.Ph.Neutral' | translate }}</span>
+                  <span>{{ 'Plant.Ph.Alkaline' | translate }}</span>
+                </div>
+                <div class="ph-value">pH {{ plant().optimalPhMin }} – {{ plant().optimalPhMax }}</div>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
     @if (plantActions().length > 0) {
       <div class="detail-section">
         <div class="detail-section-title" [translate]="'Calendar.PlantDetail'"></div>

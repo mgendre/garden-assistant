@@ -17,6 +17,7 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<GuildPlant> GuildPlants => Set<GuildPlant>();
     public DbSet<UserPlant> UserPlants => Set<UserPlant>();
     public DbSet<PlantIntrinsicMechanism> PlantIntrinsicMechanisms => Set<PlantIntrinsicMechanism>();
+    public DbSet<PlantSoilType> PlantSoilTypes => Set<PlantSoilType>();
     public DbSet<PlantAction> PlantActions => Set<PlantAction>();
     public DbSet<HarvestReadiness> HarvestReadiness => Set<HarvestReadiness>();
     public DbSet<HarvestReadinessCriterion> HarvestReadinessCriteria => Set<HarvestReadinessCriterion>();
@@ -71,6 +72,8 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
                   .HasForeignKey(p => p.ParentPlantId)
                   .OnDelete(DeleteBehavior.Restrict);
             entity.HasIndex(p => p.Key).IsUnique().HasFilter("user_id IS NULL");
+            entity.Property(p => p.OptimalPhMin).HasColumnType("decimal(3,1)");
+            entity.Property(p => p.OptimalPhMax).HasColumnType("decimal(3,1)");
             entity.HasIndex(p => p.UserId);
             entity.HasIndex(p => p.ParentPlantId);
         });
@@ -129,6 +132,15 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             entity.HasOne<Plant>()
                   .WithMany(p => p.IntrinsicMechanisms)
                   .HasForeignKey(pim => pim.PlantId)
+                  .OnDelete(DeleteBehavior.Cascade);
+        });
+
+        modelBuilder.Entity<PlantSoilType>(entity =>
+        {
+            entity.HasKey(pst => new { pst.PlantId, pst.SoilType });
+            entity.HasOne<Plant>()
+                  .WithMany(p => p.SoilTypes)
+                  .HasForeignKey(pst => pst.PlantId)
                   .OnDelete(DeleteBehavior.Cascade);
         });
 

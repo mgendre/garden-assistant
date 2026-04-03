@@ -26,11 +26,21 @@
   font-size: 0.75rem;
   padding: 0.1rem 0.4rem;
   cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .mechanism-green { background: #e8f5e9; color: #2e7d32; }
 .mechanism-blue  { background: #e3f2fd; color: #1565c0; }
 .mechanism-red   { background: #ffebee; color: #c62828; }
+
+.soil-chip-active { background: #f5efe6; color: #5d4037; border: 1px solid #e0d5c4; }
+.ph-chip-active { background: #fce4ec; color: #880e4f; border: 1px solid #f48fb1; }
+
+.filter-active {
+  background: #2d6a4f;
+  color: #fff;
+  border-color: #2d6a4f;
+}
 
 .filter-inactive {
   background: var(--color-parchment);

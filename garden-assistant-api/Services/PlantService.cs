@@ -14,8 +14,19 @@ public class PlantService(AppDbContext dbContext) : IPlantService
     {
         var plants = await dbContext.Plants
             .Include(p => p.IntrinsicMechanisms)
+            .Include(p => p.SoilTypes)
+            .Include(p => p.HarvestReadiness)
+                .ThenInclude(hr => hr!.Criteria)
+            .Include(p => p.Actions)
             .Include(p => p.ParentPlant)
                 .ThenInclude(pp => pp!.IntrinsicMechanisms)
+            .Include(p => p.ParentPlant)
+                .ThenInclude(pp => pp!.SoilTypes)
+            .Include(p => p.ParentPlant)
+                .ThenInclude(pp => pp!.HarvestReadiness)
+                    .ThenInclude(hr => hr!.Criteria)
+            .Include(p => p.ParentPlant)
+                .ThenInclude(pp => pp!.Actions)
             .Include(p => p.Varieties)
             .AsSplitQuery()
             .OrderBy(p => p.Name)
@@ -47,9 +58,27 @@ public class PlantService(AppDbContext dbContext) : IPlantService
             ? (parent?.IntrinsicMechanisms.Select(im => im.Mechanism).ToList() ?? [])
             : plant.IntrinsicMechanisms.Select(im => im.Mechanism).ToList();
 
+        var soilTypes = isVariety
+            ? (plant.SoilTypes.Count > 0
+                ? plant.SoilTypes.Select(st => st.SoilType.ToString()).ToList()
+                : parent?.SoilTypes.Select(st => st.SoilType.ToString()).ToList() ?? [])
+            : plant.SoilTypes.Select(st => st.SoilType.ToString()).ToList();
+
+        var optimalPhMin = isVariety ? (plant.OptimalPhMin ?? parent?.OptimalPhMin) : plant.OptimalPhMin;
+        var optimalPhMax = isVariety ? (plant.OptimalPhMax ?? parent?.OptimalPhMax) : plant.OptimalPhMax;
+
         var varieties = plant.Varieties
             .Select(v => new PlantSummaryDto(v.Id, v.Name, v.ScientificName))
             .ToList();
+
+        var hr = plant.HarvestReadiness ?? (isVariety ? parent?.HarvestReadiness : null);
+        var harvestReadiness = hr is not null
+            ? new HarvestReadinessDto(
+                hr.Description,
+                hr.DaysFromTransplant,
+                hr.DaysFromSowing,
+                hr.Criteria.Select(c => new HarvestReadinessCriterionDto(c.CriterionType, c.Description)).ToList())
+            : null;
 
         return new PlantDto(
             plant.Id,
@@ -67,11 +96,22 @@ public class PlantService(AppDbContext dbContext) : IPlantService
             maxAltitudeM,
             frostSensitive,
             mechanisms,
+            soilTypes,
+            optimalPhMin,
+            optimalPhMax,
             isVariety,
             isVariety ? plant.ParentPlantId : null,
             isVariety ? parent?.Name : null,
-            varieties
+            varieties,
+            harvestReadiness,
+            MapActions(plant, isVariety, parent)
         );
+    }
+
+    private static List<PlantActionDto> MapActions(Plant plant, bool isVariety, Plant? parent)
+    {
+        var actions = plant.Actions.Count > 0 ? plant.Actions : (isVariety ? parent?.Actions ?? [] : []);
+        return actions.Select(a => new PlantActionDto(a.Id, a.ActionType, a.HalfMonthStart, a.HalfMonthEnd, a.Notes)).ToList();
     }
 
     private static T ResolveEnum<T>(T varietyValue, T? parentValue) where T : struct, Enum

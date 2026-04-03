@@ -93,6 +93,8 @@ export class CompanionStore {
   readonly myPlantsOnly = signal(false);
   readonly mechanismFilter = signal<number | null>(null);
   readonly rootDepthFilter = signal<RootDepth | null>(null);
+  readonly soilTypeFilter = signal<string | null>(null);
+  readonly phCompatibleFilter = signal(true);
   readonly recommendations = signal<CompanionSearchResultDto | null>(null);
   readonly loading = signal(false);
 
@@ -211,6 +213,26 @@ export class CompanionStore {
     const rdFilter = this.rootDepthFilter();
     if (rdFilter !== null) {
       result = result.filter(p => p.rootDepth === rdFilter);
+    }
+
+    const stFilter = this.soilTypeFilter();
+    if (stFilter !== null) {
+      result = result.filter(p => p.soilTypes?.includes(stFilter));
+    }
+
+    if (this.phCompatibleFilter()) {
+      const selectedWithPh = this.selectedPlants().filter(p => p.optimalPhMin != null && p.optimalPhMax != null);
+      if (selectedWithPh.length > 0) {
+        const phRange = this.selectedPhRange();
+        if (phRange) {
+          result = result.filter(p => {
+            if (p.optimalPhMin == null || p.optimalPhMax == null) { return true; }
+            return p.optimalPhMax >= phRange.min && p.optimalPhMin <= phRange.max;
+          });
+        } else {
+          result = [];
+        }
+      }
     }
 
     if (query) {
@@ -372,6 +394,47 @@ export class CompanionStore {
         plantA: this.plantStore.findById(a.sourcePlantId)?.name ?? '',
         plantB: this.plantStore.findById(a.targetPlantId)?.name ?? '',
       });
+    }
+    return pairs;
+  });
+
+  readonly selectedPhRange = computed<{ min: number; max: number } | null>(() => {
+    const plants = this.selectedPlants().filter(p => p.optimalPhMin != null && p.optimalPhMax != null);
+    if (plants.length === 0) { return null; }
+    const min = Math.max(...plants.map(p => p.optimalPhMin!));
+    const max = Math.min(...plants.map(p => p.optimalPhMax!));
+    if (min > max) { return null; }
+    return { min, max };
+  });
+
+  readonly phFilterIncompatible = computed(() => {
+    if (!this.phCompatibleFilter()) { return false; }
+    const selectedWithPh = this.selectedPlants().filter(p => p.optimalPhMin != null && p.optimalPhMax != null);
+    return selectedWithPh.length > 0 && this.selectedPhRange() === null;
+  });
+
+  togglePhCompatibleFilter(): void {
+    this.phCompatibleFilter.update(v => !v);
+  }
+
+  readonly phConflictPairs = computed(() => {
+    const plants = this.selectedPlants();
+    const pairs: { plantA: string; phA: string; plantB: string; phB: string }[] = [];
+    for (let i = 0; i < plants.length; i++) {
+      const a = plants[i];
+      if (a.optimalPhMin == null || a.optimalPhMax == null) { continue; }
+      for (let j = i + 1; j < plants.length; j++) {
+        const b = plants[j];
+        if (b.optimalPhMin == null || b.optimalPhMax == null) { continue; }
+        if (a.optimalPhMax < b.optimalPhMin || b.optimalPhMax < a.optimalPhMin) {
+          pairs.push({
+            plantA: a.name ?? '',
+            phA: `${a.optimalPhMin}-${a.optimalPhMax}`,
+            plantB: b.name ?? '',
+            phB: `${b.optimalPhMin}-${b.optimalPhMax}`,
+          });
+        }
+      }
     }
     return pairs;
   });
@@ -603,6 +666,10 @@ export class CompanionStore {
 
   toggleRootDepthFilter(depth: RootDepth): void {
     this.rootDepthFilter.update(v => v === depth ? null : depth);
+  }
+
+  toggleSoilTypeFilter(soilType: string): void {
+    this.soilTypeFilter.update(v => v === soilType ? null : soilType);
   }
 
   setSort(mode: 'alpha' | 'family' | 'compat'): void {

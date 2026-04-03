@@ -47,7 +47,7 @@
       @for (m of store.availableMechanisms(); track m) {
         <button
           class="mechanism-chip"
-          [class.mechanism-blue]="store.mechanismFilter() === m"
+          [class.filter-active]="store.mechanismFilter() === m"
           [class.filter-inactive]="store.mechanismFilter() !== m"
           (click)="store.toggleMechanismFilter(m)">
           {{ 'Plant.Mechanism.' + store.getMechanismKey(m) | translate }}
@@ -59,10 +59,30 @@
       @for (rd of rootDepths; track rd.value) {
         <button
           class="mechanism-chip"
-          [class.badge-root]="store.rootDepthFilter() === rd.value"
+          [class.filter-active]="store.rootDepthFilter() === rd.value"
           [class.filter-inactive]="store.rootDepthFilter() !== rd.value"
           (click)="store.toggleRootDepthFilter(rd.value)">
           {{ rd.labelKey | translate }}
+        </button>
+      }
+    </div>
+
+    <div class="filter-wrap">
+      <button
+        class="mechanism-chip"
+        [class.filter-active]="store.phCompatibleFilter()"
+        [class.filter-inactive]="!store.phCompatibleFilter()"
+        (click)="store.togglePhCompatibleFilter()">
+        {{ 'Companions.PhCompatible' | translate }}
+      </button>
+      <span class="sort-divider"></span>
+      @for (st of soilTypes; track st) {
+        <button
+          class="mechanism-chip"
+          [class.filter-active]="store.soilTypeFilter() === st"
+          [class.filter-inactive]="store.soilTypeFilter() !== st"
+          (click)="store.toggleSoilTypeFilter(st)">
+          {{ 'Plant.Soil.' + st | translate }}
         </button>
       }
     </div>
@@ -120,7 +140,11 @@
     }
 
     @if (displayedPlants().length === 0 && !plantStore.loading()) {
-      <app-empty-state messageKey="Companions.NoResults"></app-empty-state>
+      @if (store.phFilterIncompatible()) {
+        <app-empty-state messageKey="Companions.PhIncompatibleEmpty"></app-empty-state>
+      } @else {
+        <app-empty-state messageKey="Companions.NoResults"></app-empty-state>
+      }
     }
   </div>
 </div>

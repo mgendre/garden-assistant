@@ -852,78 +852,6 @@ export class PlantsClient {
         }
         return Promise.resolve<PlantDto[]>(null as any);
     }
-
-    getActions(id: string): Promise<PlantActionDto[]> {
-        let url_ = this.baseUrl + "/api/Plants/{id}/actions";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetActions(_response);
-        });
-    }
-
-    protected processGetActions(response: Response): Promise<PlantActionDto[]> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PlantActionDto[];
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<PlantActionDto[]>(null as any);
-    }
-
-    getHarvestReadiness(id: string): Promise<HarvestReadinessDto> {
-        let url_ = this.baseUrl + "/api/Plants/{id}/harvest-readiness";
-        if (id === undefined || id === null)
-            throw new globalThis.Error("The parameter 'id' must be defined.");
-        url_ = url_.replace("{id}", encodeURIComponent("" + id));
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetHarvestReadiness(_response);
-        });
-    }
-
-    protected processGetHarvestReadiness(response: Response): Promise<HarvestReadinessDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as HarvestReadinessDto;
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<HarvestReadinessDto>(null as any);
-    }
 }
 
 export class UserPlantsClient {
@@ -1246,10 +1174,15 @@ export interface PlantDto {
     maxAltitudeM?: number | undefined;
     frostSensitive?: boolean;
     intrinsicMechanisms?: AssociationMechanism[];
+    soilTypes?: string[];
+    optimalPhMin?: number | undefined;
+    optimalPhMax?: number | undefined;
     isVariety?: boolean;
     parentPlantId?: string | undefined;
     parentPlantName?: string | undefined;
     varieties?: PlantSummaryDto[];
+    harvestReadiness?: HarvestReadinessDto | undefined;
+    actions?: PlantActionDto[];
 }
 
 export enum LifeCycle {

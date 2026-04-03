@@ -1,11 +1,12 @@
 import { Component, inject, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPen, faPlus, faXmark, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { GuildStore } from '../../../shared/services/guild.store';
+import { DialogService } from '../../../shared/services/dialog.service';
+import { TranslateService } from '@ngx-translate/core';
 import { PlantStore } from '../../../shared/services/plant.store';
-import { CalendarService } from '../../../shared/services/calendar.service';
 import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { PlantActionType, PropagationMethod } from '../../../api/garden-assistant-api';
 import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
@@ -29,13 +30,15 @@ export class GuildEditor {
   protected readonly faPen = faPen;
   protected readonly faPlus = faPlus;
   protected readonly faClose = faXmark;
-  private readonly calendarService = inject(CalendarService);
+  protected readonly faTrash = faTrash;
   private readonly plantDialogService = inject(PlantDialogService);
+  private readonly dialogService = inject(DialogService);
+  private readonly translate = inject(TranslateService);
 
   readonly plantCalendars = signal<PlantCalendarEntry[]>([]);
 
   constructor() {
-    effect(async () => {
+    effect(() => {
       const plants = this.store.selectedPlants();
       if (plants.length < 2) {
         this.plantCalendars.set([]);
@@ -43,16 +46,15 @@ export class GuildEditor {
       }
       const entries: PlantCalendarEntry[] = [];
       const plantIds = plants.map(p => p.id!).filter(Boolean);
-      const allActions = await Promise.all(plantIds.map(id => this.calendarService.getPlantActions(id)));
-      for (let i = 0; i < plantIds.length; i++) {
-        const plant = this.plantStore.findById(plantIds[i]);
+      for (const id of plantIds) {
+        const plant = this.plantStore.findById(id);
         if (plant) {
           entries.push({
-            plantId: plantIds[i],
+            plantId: id,
             name: plant.name!,
             propagationMethod: plant.propagationMethod ?? PropagationMethod.Seed,
             frostSensitive: plant.frostSensitive ?? false,
-            actions: allActions[i],
+            actions: plant.actions ?? [],
           });
         }
       }
@@ -80,4 +82,18 @@ export class GuildEditor {
     this.plantDialogService.openDetail(plantId);
   }
 
+  async deleteCurrentGuild(): Promise<void> {
+    const guild = this.store.editingGuild();
+    if (!guild?.id) { return; }
+    const confirmed = await this.dialogService.confirm(
+      this.translate.instant('Guilds.ConfirmDeleteTitle'),
+      this.translate.instant('Guilds.ConfirmDeleteMessage', { name: guild.name }),
+      this.translate.instant('Guilds.Delete'),
+      true
+    );
+    if (confirmed) {
+      await this.guildStore.deleteGuild(guild.id);
+      this.store.clearSelection();
+    }
+  }
 }

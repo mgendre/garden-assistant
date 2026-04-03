@@ -30,6 +30,7 @@ export class PlantCatalogue {
     { value: RootDepth.Medium, labelKey: 'Plant.RootDepth.Medium' },
     { value: RootDepth.Deep, labelKey: 'Plant.RootDepth.Deep' },
   ];
+  protected readonly soilTypes = ['Sandy', 'Silty', 'Clay', 'Loam', 'Chalky', 'Peaty', 'Rocky'];
   private readonly dialogService = inject(DialogService);
   private readonly plantDialogService = inject(PlantDialogService);
 
