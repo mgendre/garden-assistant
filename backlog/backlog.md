@@ -505,7 +505,7 @@
 | E07 — Mes plantes | ✅ | 15 | 15 | 0 | 0 |
 | E08 — Finitions UX Associations | ✅ | 14 | 14 | 0 | 0 |
 | E09 — Conscience de l'enracinement | ✅ | 9 | 9 | 0 | 0 |
-| E10 — Calendrier cultural | | 52 | 33 | 0 | 19 |
+| E10 — Calendrier cultural | | 52 | 39 | 0 | 13 |
 | E11 — Guildes, mecanismes et refonte editeur | ✅ | 44 | 44 | 0 | 0 |
 | E12 — Adaptation climatique | | 16 | 0 | 0 | 16 |
 | E13 — Infrastructure i18n (backend) | | 38 | 0 | 0 | 38 |
@@ -522,8 +522,8 @@
 | E24 — Preferences de sol et pH | ✅ | 24 | 24 | 0 | 0 |
 | E25 — Calendrier d'arrosage | | 29 | 0 | 0 | 29 |
 | E26 — Meteo locale et adaptation climatique | | 29 | 0 | 0 | 29 |
-| **Total (actif)** | | **580** | **271** | **0** | **309** |
+| **Total (actif)** | | **580** | **277** | **0** | **303** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-04-03 (E26 creee — meteo locale 7 stories 29 pts)*
+*Backlog géré par l'agent Product Owner — dernière mise à jour : 2026-04-04 (scoring compagnonnage, redesign catalogue, E25 arrosage, E26 météo — 12 épiques terminées, 277/580 pts livrés)*
