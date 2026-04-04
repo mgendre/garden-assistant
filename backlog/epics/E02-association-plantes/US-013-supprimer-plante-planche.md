@@ -6,13 +6,15 @@
 
 ### Critères d'acceptation
 
-- [ ] CA1 : Je peux retirer une plante depuis la liste des cultures de la planche.
-- [ ] CA2 : Une confirmation est demandée avant la suppression.
-- [ ] CA3 : Si la plante fait partie de l'historique de rotation, une option me permet de la marquer comme "récoltée" plutôt que de la supprimer.
+- [x] CA1 : Je peux retirer une plante depuis la liste des cultures de la planche.
+- [x] CA2 : Une confirmation est demandée avant la suppression (via la suppression de la plante dans l'éditeur de guilde).
+- [ ] CA3 : Si la plante fait partie de l'historique de rotation, une option me permet de la marquer comme "récoltée" plutôt que de la supprimer. → Reporté (dépend de E04 — rotations)
 
 ### Notes & contraintes
-- "Marquer comme récoltée" est une action distincte de "supprimer" — elle conserve l'entrée dans l'historique pour le suivi des rotations.
+- Implémenté via l'éditeur de guilde : retirer une plante de la planche = la retirer de la guilde liée.
+- CA3 (marquer comme récoltée / historique rotation) reporté à E04.
 
 ### Estimation
-- **Priorité :** Should
+- **Priorité :** Important
 - **Points :** 3
+- **Statut :** Termine

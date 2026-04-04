@@ -143,6 +143,12 @@
   left: -1px;
   border-radius: 0;
   opacity: 0.8;
+  cursor: pointer;
+  transition: filter 150ms;
+
+  &:hover {
+    filter: brightness(0.85);
+  }
 
   &--first {
     border-top-left-radius: 3px;

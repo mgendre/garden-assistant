@@ -6,16 +6,18 @@
 
 ### Critères d'acceptation
 
-- [ ] CA1 : Je peux rechercher et sélectionner une plante depuis la base de données.
-- [ ] CA2 : Je peux préciser la quantité ou le nombre de pieds (facultatif).
-- [ ] CA3 : La plante apparaît immédiatement dans la liste des cultures de la planche.
-- [ ] CA4 : Je peux ajouter plusieurs plantes différentes à la même planche.
-- [ ] CA5 : Si la plante est incompatible avec une autre déjà présente sur la planche, un avertissement s'affiche (non bloquant).
+- [x] CA1 : Je peux rechercher et sélectionner une plante depuis la base de données.
+- [ ] CA2 : Je peux préciser la quantité ou le nombre de pieds (facultatif). → Reporté
+- [x] CA3 : La plante apparaît immédiatement dans la liste des cultures de la planche.
+- [x] CA4 : Je peux ajouter plusieurs plantes différentes à la même planche.
+- [x] CA5 : Si la plante est incompatible avec une autre déjà présente sur la planche, un avertissement s'affiche (non bloquant).
 
 ### Notes & contraintes
-- L'avertissement d'incompatibilité est informatif, pas bloquant : le jardinier reste libre de ses choix.
-- La date de plantation peut être renseignée mais n'est pas obligatoire.
+- Implémenté via le flow planche → éditeur de guilde : la planche est liée à une guilde, et l'ajout de plantes passe par le catalogue de compagnons.
+- L'avertissement d'incompatibilité est couvert par l'assistant de guilde (associations néfastes, pH incompatible, compétition racinaire).
+- CA2 (quantité) reporté — pas de besoin immédiat.
 
 ### Estimation
-- **Priorité :** Must
+- **Priorité :** Indispensable
 - **Points :** 5
+- **Statut :** Termine

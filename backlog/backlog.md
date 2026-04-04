@@ -5,7 +5,7 @@
 
 ---
 
-## E01 — Gestion des jardins et des planches
+## E01 — Gestion des jardins et des planches ✅
 
 > Permettre au jardinier de creer et d'organiser ses espaces de culture sous forme de jardins et de planches. La vue jardin affiche les planches en collapsibles avec detail complet des associations en lecture seule (Option C hybride). L'edition des plantes se fait via redirection vers la page associations.
 
@@ -31,16 +31,16 @@
 
 ---
 
-## E02 — Associations vegetales (residuel)
+## E02 — Associations vegetales (residuel) ✅
 
 > Stories restantes apres la refonte E05. Les US-008/009/010/012 ont ete supprimees (remplacees par E05).
 
 | ID | Titre | Priorite | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-011](epics/E02-association-plantes/US-011-ajouter-plante-a-planche.md) | Ajouter une plante a une planche | Indispensable | 5 | A faire |
-| [US-013](epics/E02-association-plantes/US-013-supprimer-plante-planche.md) | Retirer une plante d'une planche | Important | 3 | A faire |
+| [US-011](epics/E02-association-plantes/US-011-ajouter-plante-a-planche.md) | Ajouter une plante a une planche | Indispensable | 5 | Termine |
+| [US-013](epics/E02-association-plantes/US-013-supprimer-plante-planche.md) | Retirer une plante d'une planche | Important | 3 | Termine |
 
-**Total E02 : 8 points (0 Termine / 8 A faire)**
+**Total E02 : 8 points (8 Termine / 0 A faire)**
 
 ---
 
@@ -88,7 +88,7 @@
 
 ---
 
-## E06 — Refonte UI permaculture (mise en page initiale)
+## E06 — Refonte UI permaculture (mise en page initiale) ✅
 
 > Reconstruire le frontend avec un catalogue de plantes, une selection multi-plantes, et des recommandations. Layout initial a 3 colonnes, evolue vers 2 colonnes dans E11.
 
@@ -111,7 +111,7 @@
 
 ---
 
-## E07 — Mes plantes (liste personnelle)
+## E07 — Mes plantes (liste personnelle) ✅
 
 > Permettre au jardinier de tenir une liste personnelle des plantes qu'il cultive ou souhaite cultiver, integree au catalogue et aux recommandations de la page Associations.
 
@@ -120,15 +120,15 @@
 | [US-043](epics/E07-mes-plantes/US-043-api-mes-plantes.md) | API et persistance « Mes plantes » | Indispensable | 3 | Termine |
 | [US-044](epics/E07-mes-plantes/US-044-store-mes-plantes.md) | Store de signaux « Mes plantes » | Indispensable | 2 | Termine |
 | [US-045](epics/E07-mes-plantes/US-045-page-mes-plantes.md) | Page « Mes plantes » avec gestion de la liste | Indispensable | 5 | Termine |
-| [US-046](epics/E07-mes-plantes/US-046-info-box-reusable.md) | Composant info-box reutilisable | Important | 2 | A faire |
+| ~~US-046~~ | ~~Composant info-box reutilisable~~ | ~~Important~~ | ~~2~~ | Supprime |
 | [US-047](epics/E07-mes-plantes/US-047-integration-catalogue-tri.md) | Prioriser « Mes plantes » dans le catalogue | Indispensable | 3 | Termine |
 | [US-048](epics/E07-mes-plantes/US-048-bouton-ajouter-depuis-associations.md) | Ajouter a « Mes plantes » depuis Associations | Indispensable | 2 | Termine |
 
-**Total E07 : 17 points (15 Termine / 2 A faire)**
+**Total E07 : 15 points (15 Termine / 0 A faire)**
 
 ---
 
-## E08 — Finitions UX — page Associations
+## E08 — Finitions UX — page Associations ✅
 
 > Ameliorations UX de la page Associations : popups d'information, fiche detail plante, conteneur visuel de guilde, refactoring Sass et optimisation API.
 
@@ -139,9 +139,9 @@
 | [US-051](epics/E08-polish-ux-associations/US-051-guild-container-visual.md) | Conteneur visuel de guilde | Optionnel | 1 | Termine |
 | [US-052](epics/E08-polish-ux-associations/US-052-sass-7-1-refactoring.md) | Refactoring styles Sass 7-1 | Important | 3 | Termine |
 | ~~US-053~~ | ~~Limiter l'API catalogue a 20 resultats~~ | ~~Indispensable~~ | ~~1~~ | Abandonne |
-| [US-065](epics/E08-polish-ux-associations/US-065-associations-manquantes.md) | Indicateur d'associations importantes manquantes | Important | 5 | A faire |
+| [US-065](epics/E08-polish-ux-associations/US-065-associations-manquantes.md) | Indicateur d'associations importantes manquantes | Important | 5 | Termine |
 
-**Total E08 : 14 points (9 Termine / 5 A faire)**
+**Total E08 : 14 points (14 Termine / 0 A faire)**
 
 > Note : US-053 abandonnee — la limite de 20 plantes dans le catalogue a ete supprimee. Le catalogue affiche maintenant toutes les plantes avec une scrollbar (max-height 70vh).
 
@@ -183,10 +183,10 @@
 | [US-079](epics/E10-calendrier-cultural/US-079-popups-educatives-actions.md) | Popups educatives des types d'actions | Important | 2 | Termine |
 | [US-080](epics/E10-calendrier-cultural/US-080-endpoint-batch-calendrier.md) | Endpoint batch calendrier « Mes plantes » | Indispensable | 2 | Termine |
 | [US-101](epics/E10-calendrier-cultural/US-101-fiches-techniques-actions.md) | Fiches techniques par action culturale et par plante | Important | 8 | A faire |
-| [US-337](epics/E10-calendrier-cultural/US-337-periodes-multiples-actions-seed.md) | Periodes multiples de semis, repiquage et recolte dans le seed | Indispensable | 3 | A faire |
-| [US-338](epics/E10-calendrier-cultural/US-338-clic-barre-gantt-modal-action.md) | Clic sur barre Gantt → modal explicatif de l'action | Important | 3 | A faire |
+| [US-337](epics/E10-calendrier-cultural/US-337-periodes-multiples-actions-seed.md) | Periodes multiples de semis, repiquage et recolte dans le seed | Indispensable | 3 | Termine |
+| [US-338](epics/E10-calendrier-cultural/US-338-clic-barre-gantt-modal-action.md) | Clic sur barre Gantt → modal explicatif de l'action | Important | 3 | Termine |
 
-**Total E10 : 52 points (33 Termine / 19 A faire)**
+**Total E10 : 52 points (39 Termine / 13 A faire)**
 
 > Livre le 2026-03-20. US-063 (semis successifs) reste a faire. Calendrier integre dans la page dediee, la fiche plante (plant-card collapsible), et le panneau associations/guildes. Indicateurs de maturite accessibles via popup depuis la ligne Recolte du Gantt. Widget demi-mois « En ce moment / Prochainement » en 2 colonnes. Filtre single-select par type d'action avec tri par date. Bouton favori deplace en bas du popup detail.
 
@@ -377,7 +377,7 @@
 
 ---
 
-## E21 — Upsert des seeds et protection des donnees
+## E21 — Upsert des seeds et protection des donnees ✅
 
 > Transformer les seeders de "insert if empty" en "upsert by Key" avec protection des plantes personnalisees (`IsCustomized`). Ajouter les champs `Key`, `IsCustomized` et `UserId` sur l'entite Plant. Chaque seeder (plantes, associations, actions, maturite, guildes, mecanismes) est converti individuellement. Spec de reference : `docs/superpowers/specs/2026-04-02-import-management-design.md`.
 
@@ -433,7 +433,7 @@
 
 ---
 
-## E24 — Preferences de sol et pH des plantes
+## E24 — Preferences de sol et pH des plantes ✅
 
 > Enrichir l'entite Plant avec les types de sol compatibles (many-to-many via `PlantSoilType`) et la fourchette de pH optimale (deux decimaux). Afficher ces informations dans la fiche plante, proposer un filtre par type de sol, et alerter sur les incompatibilites pH dans les guildes. Le multi-sol permet de stocker plusieurs types de sol par plante (ex: tomate → Loam, Sandy, Clay), meme pattern que `PlantIntrinsicMechanism`.
 
@@ -455,33 +455,33 @@
 
 ## Recapitulatif
 
-| Epique | Points | Termine | En cours | A faire |
-|--------|--------|---------|----------|---------|
-| E01 — Gestion des jardins et planches | 34 | 34 | 0 | 0 |
-| E02 — Associations vegetales (residuel) | 8 | 0 | 0 | 8 |
-| E03 — Editeur graphique du jardin | 39 | 0 | 0 | 39 |
-| E04 — Gestion des rotations de cultures | 30 | 0 | 0 | 30 |
-| ~~E05 — Plantes compagnes (refonte)~~ | ~~19~~ | — | — | — |
-| E06 — Refonte UI permaculture | 27 | 27 | 0 | 0 |
-| E07 — Mes plantes | 17 | 15 | 0 | 2 |
-| E08 — Finitions UX Associations | 14 | 9 | 0 | 5 |
-| E09 — Conscience de l'enracinement | 9 | 6 | 0 | 3 |
-| E10 — Calendrier cultural | 52 | 33 | 0 | 19 |
-| E11 — Guildes, mecanismes et refonte editeur | 44 | 36 | 0 | 8 |
-| E12 — Adaptation climatique | 16 | 0 | 0 | 16 |
-| E13 — Infrastructure i18n (backend) | 38 | 0 | 0 | 38 |
-| E14 — UX i18n (frontend) | 16 | 0 | 0 | 16 |
-| E15 — Assistant de creation de guilde | 19 | 0 | 0 | 19 |
-| E16 — Authentification OAuth | 41 | 0 | 0 | 41 |
-| ~~E17 — Dimensions et formes des planches~~ | ~~10~~ | — | — | — |
-| E18 — Page d'accueil / tableau de bord | 13 | 0 | 0 | 13 |
-| E19 — Dette technique frontend | 12 | 7 | 0 | 5 |
-| E20 — Hierarchie espece-variete | 27 | 0 | 0 | 27 |
-| E21 — Upsert des seeds et protection des donnees | 24 | 0 | 0 | 24 |
-| E22 — Administration du catalogue de plantes | 13 | 0 | 0 | 13 |
-| E23 — Variantes utilisateur | 17 | 0 | 0 | 17 |
-| E24 — Preferences de sol et pH | 24 | 24 | 0 | 0 |
-| **Total (actif)** | **524** | **197** | **0** | **327** |
+| Epique | Statut | Points | Termine | En cours | A faire |
+|--------|--------|--------|---------|----------|---------|
+| E01 — Gestion des jardins et planches | ✅ | 34 | 34 | 0 | 0 |
+| E02 — Associations vegetales (residuel) | ✅ | 8 | 8 | 0 | 0 |
+| E03 — Editeur graphique du jardin | | 39 | 0 | 0 | 39 |
+| E04 — Gestion des rotations de cultures | | 30 | 0 | 0 | 30 |
+| ~~E05 — Plantes compagnes (refonte)~~ | ~~Annulee~~ | ~~19~~ | — | — | — |
+| E06 — Refonte UI permaculture | ✅ | 27 | 27 | 0 | 0 |
+| E07 — Mes plantes | ✅ | 15 | 15 | 0 | 0 |
+| E08 — Finitions UX Associations | ✅ | 14 | 14 | 0 | 0 |
+| E09 — Conscience de l'enracinement | | 9 | 6 | 0 | 3 |
+| E10 — Calendrier cultural | | 52 | 33 | 0 | 19 |
+| E11 — Guildes, mecanismes et refonte editeur | | 44 | 36 | 0 | 8 |
+| E12 — Adaptation climatique | | 16 | 0 | 0 | 16 |
+| E13 — Infrastructure i18n (backend) | | 38 | 0 | 0 | 38 |
+| E14 — UX i18n (frontend) | | 16 | 0 | 0 | 16 |
+| E15 — Assistant de creation de guilde | | 19 | 0 | 0 | 19 |
+| E16 — Authentification OAuth | | 41 | 0 | 0 | 41 |
+| ~~E17 — Dimensions et formes des planches~~ | ~~Annulee~~ | ~~10~~ | — | — | — |
+| E18 — Page d'accueil / tableau de bord | | 13 | 0 | 0 | 13 |
+| E19 — Dette technique frontend | | 12 | 7 | 0 | 5 |
+| E20 — Hierarchie espece-variete | | 27 | 0 | 0 | 27 |
+| E21 — Upsert des seeds et protection des donnees | ✅ | 24 | 24 | 0 | 0 |
+| E22 — Administration du catalogue de plantes | | 13 | 0 | 0 | 13 |
+| E23 — Variantes utilisateur | | 17 | 0 | 0 | 17 |
+| E24 — Preferences de sol et pH | ✅ | 24 | 24 | 0 | 0 |
+| **Total (actif)** | | **522** | **212** | **0** | **310** |
 
 ---
 

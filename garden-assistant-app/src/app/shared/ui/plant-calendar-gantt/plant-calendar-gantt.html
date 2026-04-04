@@ -49,7 +49,9 @@
                   <div class="gantt-bar"
                        [class.gantt-bar--first]="isFirstBar(row, cell.halfMonth)"
                        [class.gantt-bar--last]="isLastBar(row, cell.halfMonth)"
-                       [style.background-color]="row.color">
+                       [style.background-color]="row.color"
+                       [title]="row.labelKey | translate"
+                       (click)="onBarClick(row.actionType, $event)">
                     @if (showFrostIndicator(row, cell.halfMonth)) {
                       <div class="gantt-frost">
                         <fa-icon [icon]="faSnowflake"></fa-icon>

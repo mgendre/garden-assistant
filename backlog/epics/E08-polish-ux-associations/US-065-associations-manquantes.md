@@ -6,11 +6,11 @@
 
 ### Criteres d'acceptation
 
-- [ ] CA1 : Lorsque au moins 2 plantes sont selectionnees, une section "Associations manquantes" apparait dans le panneau de recommandations et liste les plantes non selectionnees ayant des associations positives documentees avec au moins une plante de la selection.
-- [ ] CA2 : Les associations manquantes sont triees par niveau de confiance decroissant (PeerReviewed > FieldObserved > Anecdotal) ; seules les associations de niveau FieldObserved ou superieur sont affichees par defaut.
-- [ ] CA3 : Chaque entree affiche : le nom de la plante suggeree, le benefice apporte (libelle de l'association), et le niveau de confiance sous forme de badge.
-- [ ] CA4 : Un bouton "Ajouter" sur chaque entree ajoute directement la plante suggeree a la selection courante, de la meme maniere que le bouton d'ajout existant dans le panneau de recommandations.
-- [ ] CA5 : Sur mobile, la section est repliee par defaut et peut etre developpee par l'utilisateur.
+- [x] CA1 : Lorsque au moins 2 plantes sont selectionnees, une section "Associations manquantes" apparait dans le panneau de recommandations et liste les plantes non selectionnees ayant des associations positives documentees avec au moins une plante de la selection.
+- [x] CA2 : Les associations manquantes sont triees par niveau de confiance decroissant (PeerReviewed > FieldObserved > Anecdotal) ; seules les associations de niveau FieldObserved ou superieur sont affichees par defaut.
+- [x] CA3 : Chaque entree affiche : le nom de la plante suggeree, le benefice apporte (libelle de l'association), et le niveau de confiance sous forme de badge.
+- [x] CA4 : Un bouton "Ajouter" sur chaque entree ajoute directement la plante suggeree a la selection courante, de la meme maniere que le bouton d'ajout existant dans le panneau de recommandations.
+- [x] CA5 : Sur mobile, la section est repliee par defaut et peut etre developpee par l'utilisateur.
 
 ### Notes & contraintes
 - Les "plantes manquantes" sont calculees cote client a partir des donnees d'associations deja chargees — pas de nouvel endpoint.

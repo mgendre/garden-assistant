@@ -123,6 +123,15 @@ export class PlantCalendarGantt {
     this.plantNameClick.emit();
   }
 
+  onBarClick(actionType: PlantActionType, event: Event): void {
+    event.stopPropagation();
+    if (actionType === PlantActionType.Harvest && this.hasHarvestReadiness()) {
+      this.harvestReadinessClick.emit();
+    } else {
+      this.openActionInfo(actionType);
+    }
+  }
+
   openActionInfo(actionType: PlantActionType): void {
     const key = ACTION_TYPE_CONFIGS.find(c => c.type === actionType)?.badgeKey;
     if (key) {
