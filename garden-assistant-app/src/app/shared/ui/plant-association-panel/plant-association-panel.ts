@@ -143,6 +143,25 @@ export class PlantAssociationPanel {
 
   readonly hasWaterConflict = computed(() => this.waterConflict() !== null);
 
+  readonly familyDiversityWarnings = computed(() => {
+    const plants = this.plants();
+    if (plants.length < 3) { return []; }
+    const familyCounts = new Map<string, string[]>();
+    for (const p of plants) {
+      if (!p.family) { continue; }
+      const names = familyCounts.get(p.family) ?? [];
+      names.push(p.name ?? '');
+      familyCounts.set(p.family, names);
+    }
+    const warnings: { family: string; count: number; total: number; plantNames: string[] }[] = [];
+    for (const [family, names] of familyCounts) {
+      if (names.length >= 3 && names.length / plants.length > 0.4) {
+        warnings.push({ family, count: names.length, total: plants.length, plantNames: names });
+      }
+    }
+    return warnings;
+  });
+
   readonly soilCompatibility = computed(() => {
     const plants = this.plants().filter(p => p.soilTypes && p.soilTypes.length > 0);
     if (plants.length === 0) { return []; }

@@ -1866,19 +1866,10 @@
     "sourcePlantKey": "tournesol",
     "targetPlantKey": "laitue",
     "mechanism": "RootAllelopathy",
-    "effect": "Harmful",
+    "effect": "Neutral",
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
-    "notes": "Les exsudats racinaires du tournesol (héliannuols, acide chlorogénique) inhibent la germination et la croissance de la laitue plantée à proximité."
-  },
-  {
-    "sourcePlantKey": "tournesol",
-    "targetPlantKey": "haricot",
-    "mechanism": "RootAllelopathy",
-    "effect": "Harmful",
-    "distanceEffect": "Short",
-    "confidenceLevel": "FieldObserved",
-    "notes": "Les composés allélopathiques du tournesol perturbent la nodulation du haricot et réduisent la fixation d'azote par les bactéries Rhizobium."
+    "notes": "L'allélopathie du tournesol sur la laitue est négligeable en culture vivante. L'ombrage partiel du tournesol est même bénéfique en été pour retarder la montée en graines."
   },
   {
     "sourcePlantKey": "tournesol",
@@ -1893,10 +1884,10 @@
     "sourcePlantKey": "tournesol",
     "targetPlantKey": "betterave",
     "mechanism": "RootAllelopathy",
-    "effect": "Harmful",
+    "effect": "Neutral",
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
-    "notes": "Les isochlorogénates produits par le tournesol inhibent la germination des graines de betterave et ralentissent le développement des jeunes plants."
+    "notes": "L'effet allélopathique du tournesol sur la betterave est faible en culture vivante. Les études montrant une inhibition significative concernent les résidus incorporés au sol après récolte."
   },
   {
     "sourcePlantKey": "topinambour",
@@ -3319,5 +3310,725 @@
     "distanceEffect": "Short",
     "confidenceLevel": "FieldObserved",
     "notes": "Le tournesol sert de brise-vent naturel protégeant les larges feuilles de courge des vents desséchants et des coups de soleil."
+  },
+  {
+    "sourcePlantKey": "romarin",
+    "targetPlantKey": "thym",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Association méditerranéenne classique : leurs huiles essentielles combinées renforcent mutuellement la répulsion des ravageurs."
+  },
+  {
+    "sourcePlantKey": "romarin",
+    "targetPlantKey": "sauge-officinale",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le romarin et la sauge partagent des terpènes complémentaires qui créent une confusion olfactive renforcée."
+  },
+  {
+    "sourcePlantKey": "lavande",
+    "targetPlantKey": "romarin",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Association classique des garrigues. Le linalol de la lavande et le camphre du romarin forment un duo répulsif."
+  },
+  {
+    "sourcePlantKey": "sauge-officinale",
+    "targetPlantKey": "thym",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les terpènes de la sauge complètent ceux du thym pour une protection élargie."
+  },
+  {
+    "sourcePlantKey": "lavande",
+    "targetPlantKey": "thym",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Floraisons complémentaires assurant une continuité de ressources pour les pollinisateurs."
+  },
+  {
+    "sourcePlantKey": "lavande",
+    "targetPlantKey": "sauge-officinale",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Floraisons légèrement décalées attirant un large spectre de pollinisateurs."
+  },
+  {
+    "sourcePlantKey": "betterave",
+    "targetPlantKey": "poireau",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le poireau repousse la mouche mineuse de la betterave par ses composés soufrés."
+  },
+  {
+    "sourcePlantKey": "aneth",
+    "targetPlantKey": "betterave",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'aneth attire les syrphes qui contrôlent les pucerons noirs de la betterave."
+  },
+  {
+    "sourcePlantKey": "coriandre",
+    "targetPlantKey": "betterave",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La coriandre en fleurs attire les auxiliaires prédateurs des pucerons noirs de la betterave."
+  },
+  {
+    "sourcePlantKey": "navet",
+    "targetPlantKey": "poireau",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les composés soufrés du poireau désorientent les altises du navet."
+  },
+  {
+    "sourcePlantKey": "aneth",
+    "targetPlantKey": "navet",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les ombelles de l'aneth attirent les parasitoïdes des altises du navet."
+  },
+  {
+    "sourcePlantKey": "coriandre",
+    "targetPlantKey": "navet",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La coriandre attire les chrysopes et syrphes contre les pucerons du navet."
+  },
+  {
+    "sourcePlantKey": "aneth",
+    "targetPlantKey": "coriandre",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux Apiacées dont les floraisons en ombelles attirent conjointement des micro-hyménoptères auxiliaires."
+  },
+  {
+    "sourcePlantKey": "aneth",
+    "targetPlantKey": "poireau",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'aneth en fleurs attire les parasitoïdes de la teigne du poireau."
+  },
+  {
+    "sourcePlantKey": "haricot-nain-mangetout",
+    "targetPlantKey": "sarriette",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sarriette repousse le puceron noir du haricot et améliorerait la saveur des haricots."
+  },
+  {
+    "sourcePlantKey": "feve",
+    "targetPlantKey": "sarriette",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La sarriette repousse le puceron noir de la fève par ses huiles essentielles."
+  },
+  {
+    "sourcePlantKey": "feve",
+    "targetPlantKey": "vesce-commune",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Deux légumineuses dont les souches de Rhizobium complémentaires maximisent la fixation d'azote."
+  },
+  {
+    "sourcePlantKey": "feve",
+    "targetPlantKey": "trefle-rouge",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le trèfle rouge en couvre-sol sous la fève complète la fixation d'azote et protège le sol."
+  },
+  {
+    "sourcePlantKey": "trefle-rouge",
+    "targetPlantKey": "vesce-commune",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Mélange classique d'engrais vert : le trèfle couvre le sol pendant que la vesce grimpe."
+  },
+  {
+    "sourcePlantKey": "achillee-millefeuille",
+    "targetPlantKey": "lavande",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Floraisons complémentaires attirant des pollinisateurs à morphologies différentes."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "phacelie",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les deux plus grands producteurs de nectar du jardin avec floraisons chevauchantes."
+  },
+  {
+    "sourcePlantKey": "achillee-millefeuille",
+    "targetPlantKey": "bourrache",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Ensemble, ils établissent un écosystème d'auxiliaires diversifié."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "souci",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le souci attire les syrphes, la bourrache les pollinisateurs. Complémentarité fonctionnelle."
+  },
+  {
+    "sourcePlantKey": "achillee-millefeuille",
+    "targetPlantKey": "souci",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'achillée héberge coccinelles et chrysopes, le souci les syrphes."
+  },
+  {
+    "sourcePlantKey": "vesce-commune",
+    "targetPlantKey": "seigle",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La vesce grimpe sur le seigle comme tuteur vivant. Mélange étudié par l'INRAE."
+  },
+  {
+    "sourcePlantKey": "avoine",
+    "targetPlantKey": "vesce-commune",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "L'avoine sert de tuteur à la vesce grimpante. Mélange courant en agriculture biologique."
+  },
+  {
+    "sourcePlantKey": "trefle-rouge",
+    "targetPlantKey": "seigle",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le trèfle fixe l'azote qui profite directement au seigle."
+  },
+  {
+    "sourcePlantKey": "luzerne",
+    "targetPlantKey": "seigle",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "La luzerne fixe 150-300 kg N/ha/an dont le seigle bénéficie directement."
+  },
+  {
+    "sourcePlantKey": "avoine",
+    "targetPlantKey": "trefle-rouge",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'avoine bénéficie de l'azote fixé par le trèfle rouge en couvre-sol."
+  },
+  {
+    "sourcePlantKey": "moutarde-blanche",
+    "targetPlantKey": "seigle",
+    "mechanism": "Biofumigation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Les glucosinolates biofumigants de la moutarde assainissent le sol bénéficiant au seigle."
+  },
+  {
+    "sourcePlantKey": "luzerne",
+    "targetPlantKey": "trefle-rouge",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Fixation d'azote cumulative à des profondeurs différentes."
+  },
+  {
+    "sourcePlantKey": "sarrasin",
+    "targetPlantKey": "vesce-commune",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le sarrasin solubilise le phosphore du sol, le rendant disponible pour la vesce."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "ortie",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'absinthe libère de l'absinthine qui inhibe la croissance des plantes voisines."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "tanaisie",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux Astéracées allélopathiques. Espacement minimal de 1m nécessaire."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "camomille-allemande",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'absinthine inhibe la croissance de la camomille."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "achillee-millefeuille",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "Anecdotal",
+    "notes": "L'absinthe peut inhiber l'achillée par allélopathie."
+  },
+  {
+    "sourcePlantKey": "achillee-millefeuille",
+    "targetPlantKey": "camomille-allemande",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux Astéracées complémentaires hébergeant un large spectre d'auxiliaires."
+  },
+  {
+    "sourcePlantKey": "achillee-millefeuille",
+    "targetPlantKey": "ortie",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux accumulatrices dynamiques de minéraux complémentaires : azote/fer (ortie) et potassium/soufre (achillée)."
+  },
+  {
+    "sourcePlantKey": "ortie",
+    "targetPlantKey": "prele-des-champs",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Duo classique de purins complémentaires : ortie (azote, fer) et prêle (silice)."
+  },
+  {
+    "sourcePlantKey": "consoude",
+    "targetPlantKey": "sureau-noir",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude accumule potassium et calcium enrichissant le sol au pied du sureau."
+  },
+  {
+    "sourcePlantKey": "sureau-noir",
+    "targetPlantKey": "trefle-blanc",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le trèfle blanc fixe l'azote en couvre-sol permanent sous le sureau."
+  },
+  {
+    "sourcePlantKey": "fraisier-des-bois",
+    "targetPlantKey": "sureau-noir",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le fraisier des bois tapisse le sol sous le sureau, limitant l'évaporation."
+  },
+  {
+    "sourcePlantKey": "consoude",
+    "targetPlantKey": "trefle-blanc",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude remonte les minéraux profonds, le trèfle fixe l'azote. Duo de fertilité en permaculture."
+  },
+  {
+    "sourcePlantKey": "consoude",
+    "targetPlantKey": "fraisier-des-bois",
+    "mechanism": "DynamicAccumulation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La consoude enrichit le sol en potassium dont le fraisier profite pour sa fructification."
+  },
+  {
+    "sourcePlantKey": "fraisier-des-bois",
+    "targetPlantKey": "trefle-blanc",
+    "mechanism": "SoilCover",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux couvre-sols complémentaires formant un tapis dense supprimant les adventices."
+  },
+  {
+    "sourcePlantKey": "haricot-a-rames-mangetout",
+    "targetPlantKey": "mais",
+    "mechanism": "PhysicalSupport",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le maïs sert de tuteur vivant au haricot grimpant. Symbiose millénaire des Trois Sœurs."
+  },
+  {
+    "sourcePlantKey": "mais",
+    "targetPlantKey": "haricot-a-rames-mangetout",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "PeerReviewed",
+    "notes": "Le haricot fixe 40-60 kg N/ha via Rhizobium dont le maïs bénéficie directement."
+  },
+  {
+    "sourcePlantKey": "courge",
+    "targetPlantKey": "haricot-a-rames-mangetout",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La courge bénéficie de l'azote fixé par le haricot."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "mais",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine attire les pucerons loin du maïs."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "haricot-a-rames-mangetout",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine piège les pucerons noirs qui attaquent le haricot."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "haricot-a-rames-mangetout",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache améliore la pollinisation des fleurs de haricot."
+  },
+  {
+    "sourcePlantKey": "basilic",
+    "targetPlantKey": "bourrache",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Attirent conjointement un large spectre de pollinisateurs bénéfiques pour la tomate voisine."
+  },
+  {
+    "sourcePlantKey": "carotte",
+    "targetPlantKey": "persil",
+    "mechanism": "PredatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux Apiacées dont les ombelles attirent conjointement parasitoïdes et syrphes."
+  },
+  {
+    "sourcePlantKey": "carotte",
+    "targetPlantKey": "tagete",
+    "mechanism": "RootAllelopathy",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Les exsudats racinaires du tagète suppriment les nématodes qui attaquent aussi la carotte."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "bourrache",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail repousse les pucerons, la bourrache attire les pollinisateurs. Duo complémentaire."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "ciboulette",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La bourrache attire les pollinisateurs qui visitent aussi les fleurs de ciboulette."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "ciboulette",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux Alliacées dont les composés soufrés cumulés renforcent la protection contre Botrytis."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "thym-rampant",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Contact",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'allicine et le thymol forment un duo antifongique et insectifuge puissant."
+  },
+  {
+    "sourcePlantKey": "ail",
+    "targetPlantKey": "laitue",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'ail repousse les pucerons de la laitue par ses composés soufrés volatils."
+  },
+  {
+    "sourcePlantKey": "ciboulette",
+    "targetPlantKey": "laitue",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La ciboulette repousse les pucerons de la laitue. Association traditionnelle au potager."
+  },
+  {
+    "sourcePlantKey": "chou",
+    "targetPlantKey": "pois",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le pois fixe l'azote dont le chou est très gourmand."
+  },
+  {
+    "sourcePlantKey": "chou",
+    "targetPlantKey": "thym",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le thym repousse la piéride du chou par ses terpènes volatils."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "chou",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine attire les pucerons cendrés du chou. Plante piège classique."
+  },
+  {
+    "sourcePlantKey": "brocoli",
+    "targetPlantKey": "pois",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le pois fixe l'azote bénéficiant au brocoli."
+  },
+  {
+    "sourcePlantKey": "brocoli",
+    "targetPlantKey": "celeri",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'odeur du céleri désorienterait la mouche du chou et la piéride."
+  },
+  {
+    "sourcePlantKey": "brocoli",
+    "targetPlantKey": "capucine",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine piège les pucerons du brocoli."
+  },
+  {
+    "sourcePlantKey": "chou-fleur",
+    "targetPlantKey": "pois",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le pois fournit l'azote nécessaire au chou-fleur."
+  },
+  {
+    "sourcePlantKey": "chou-fleur",
+    "targetPlantKey": "thym",
+    "mechanism": "OlfactoryConfusion",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le thym repousse la piéride du chou-fleur."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "chou-fleur",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine piège les pucerons cendrés du chou-fleur."
+  },
+  {
+    "sourcePlantKey": "capucine",
+    "targetPlantKey": "pois",
+    "mechanism": "TrapCrop",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La capucine attire les pucerons noirs loin des pois."
+  },
+  {
+    "sourcePlantKey": "melon",
+    "targetPlantKey": "tournesol",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le tournesol sert de brise-vent naturel, protégeant les melons du dessèchement."
+  },
+  {
+    "sourcePlantKey": "haricot-nain-mangetout",
+    "targetPlantKey": "melon",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot fixe l'azote dont le melon a grand besoin."
+  },
+  {
+    "sourcePlantKey": "haricot-nain-mangetout",
+    "targetPlantKey": "pasteque",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La pastèque est très exigeante en azote. Le haricot fixe l'azote atmosphérique."
+  },
+  {
+    "sourcePlantKey": "pasteque",
+    "targetPlantKey": "tournesol",
+    "mechanism": "MicroclimateModification",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le tournesol protège la pastèque du vent."
+  },
+  {
+    "sourcePlantKey": "bourrache",
+    "targetPlantKey": "tournesol",
+    "mechanism": "PollinatorAttraction",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Deux attracteurs majeurs de pollinisateurs avec complémentarité des visiteurs."
+  },
+  {
+    "sourcePlantKey": "haricot-nain-mangetout",
+    "targetPlantKey": "tournesol",
+    "mechanism": "NitrogenFixation",
+    "effect": "Beneficial",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le haricot fixe l'azote dont le tournesol profite."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "epinard",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "L'absinthine inhibe la croissance de l'épinard, plante à feuilles tendres très sensible aux composés allélopathiques."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "mache",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La mâche est très sensible à l'absinthine. Ses racines superficielles sont directement exposées aux exsudats allélopathiques de l'absinthe."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "roquette",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "La roquette est inhibée par l'absinthine. Comme toutes les plantes à croissance rapide et feuillage tendre, elle souffre au voisinage de l'absinthe."
+  },
+  {
+    "sourcePlantKey": "absinthe",
+    "targetPlantKey": "cerfeuil",
+    "mechanism": "RootAllelopathy",
+    "effect": "Harmful",
+    "distanceEffect": "Short",
+    "confidenceLevel": "FieldObserved",
+    "notes": "Le cerfeuil est très sensible aux composés allélopathiques de l'absinthe. Éviter toute proximité."
   }
 ]

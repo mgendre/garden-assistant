@@ -14,5 +14,5 @@ public class PlantAssociationsController(IPlantAssociationService plantAssociati
     [ProducesResponseType(typeof(CompanionSearchResultDto), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetCompanionRecommendations(CompanionRecommendationRequest request) =>
-        Ok(await plantAssociationService.GetCompanionRecommendationsAsync(request.PlantIds, request.MinScore));
+        Ok(await plantAssociationService.GetCompanionRecommendationsAsync(request.PlantIds, request.CentralPlantIds, request.MinScore));
 }

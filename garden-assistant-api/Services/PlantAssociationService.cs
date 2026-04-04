@@ -12,12 +12,14 @@ namespace GardenAssistant.Services;
 public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssociationService> logger) : IPlantAssociationService
 {
     private const double BeneficialScore = 1.0;
-    private const double NeutralScore = 0.0;
+    private const double NeutralScore = 0.1;
     private const double HarmfulScore = -1.5;
-    private const double UnknownScore = -0.1;
+    private const double UnknownScore = 0.0;
+    private const double SameFamilyMalus = -0.5;
+    private const double WaterIncompatibilityMalus = -0.5;
 
     public async Task<CompanionSearchResultDto> GetCompanionRecommendationsAsync(
-        List<Guid> selectedPlantIds, double? minScore = null)
+        List<Guid> selectedPlantIds, List<Guid>? centralPlantIds = null, double? minScore = null)
     {
         var candidates = await dbContext.Plants
             .Include(p => p.IntrinsicMechanisms)
@@ -27,7 +29,7 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
 
         if (candidates.Count == 0)
         {
-            return new CompanionSearchResultDto([], [], [], [], [], [], []);
+            return new CompanionSearchResultDto([], [], [], [], [], []);
         }
 
         var varietyToParent = candidates
@@ -39,6 +41,11 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             .Distinct()
             .ToList();
 
+        var resolvedCentralIds = (centralPlantIds ?? [])
+            .Select(id => varietyToParent.TryGetValue(id, out var parentId) ? parentId : id)
+            .Distinct()
+            .ToHashSet();
+
         var allPlantIds = candidates.Select(c => c.Id).ToList();
 
         var associations = await dbContext.PlantAssociations
@@ -48,32 +55,67 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
 
         var associationLookup = BuildAssociationLookup(associations);
 
-        var selectedRootDepths = candidates
+        var selectedPlantLookup = candidates
             .Where(c => resolvedSelectedIds.Contains(c.Id))
-            .ToDictionary(c => c.Id, c => c.RootDepth);
+            .ToDictionary(c => c.Id, c => c);
 
         var scores = new Dictionary<Guid, double>();
+        var scoreFlags = new Dictionary<Guid, (bool HasRootBonus, bool HasSameFamily, bool HasWaterIncompat)>();
         foreach (var candidate in candidates)
         {
             var resolvedCandidateId = varietyToParent.TryGetValue(candidate.Id, out var candidateParentId)
                 ? candidateParentId
                 : candidate.Id;
 
-            scores[candidate.Id] = resolvedSelectedIds.Sum(selectedId =>
+            var hasRootBonus = false;
+
+            var pairScoreSum = resolvedSelectedIds.Sum(selectedId =>
             {
                 var pairScore = ScorePair(resolvedCandidateId, selectedId, associationLookup);
-                if (pairScore > 0
-                    && selectedRootDepths.TryGetValue(selectedId, out var selectedDepth)
-                    && candidate.RootDepth != selectedDepth)
+
+                if (pairScore > 0 && resolvedCentralIds.Contains(selectedId))
                 {
-                    var boosted = pairScore * 1.10;
-                    logger.LogDebug(
-                        "Root depth bonus applied: {CandidateId} ({CandidateDepth}) vs {SelectedId} ({SelectedDepth}): {Before:F4} → {After:F4}",
-                        candidate.Id, candidate.RootDepth, selectedId, selectedDepth, pairScore, boosted);
-                    return boosted;
+                    pairScore += 0.3;
                 }
+
+                if (selectedPlantLookup.TryGetValue(selectedId, out var selectedPlant)
+                    && candidate.RootDepth != selectedPlant.RootDepth)
+                {
+                    pairScore += 0.1;
+                    hasRootBonus = true;
+                }
+
                 return pairScore;
             });
+
+            var malus = 0.0;
+            var hasSameFamily = false;
+            var hasWaterIncompat = false;
+
+            foreach (var selectedId in resolvedSelectedIds)
+            {
+                if (!selectedPlantLookup.TryGetValue(selectedId, out var selectedPlant))
+                {
+                    continue;
+                }
+
+                if (!string.IsNullOrEmpty(candidate.Family)
+                    && candidate.Family == selectedPlant.Family)
+                {
+                    malus += SameFamilyMalus;
+                    hasSameFamily = true;
+                }
+
+                var waterDiff = Math.Abs((int)candidate.WaterNeeds - (int)selectedPlant.WaterNeeds);
+                if (waterDiff >= 2)
+                {
+                    malus += WaterIncompatibilityMalus;
+                    hasWaterIncompat = true;
+                }
+            }
+
+            scores[candidate.Id] = Math.Round(pairScoreSum + malus, 2);
+            scoreFlags[candidate.Id] = (hasRootBonus, hasSameFamily, hasWaterIncompat);
         }
 
         var goodCompanions = candidates
@@ -82,21 +124,26 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             Plant = p,
             Score = Math.Round(scores[p.Id], 2),
             ResolvedId = varietyToParent.TryGetValue(p.Id, out var pId) ? pId : p.Id,
+            Flags = scoreFlags.GetValueOrDefault(p.Id),
         })
         .Select(c => new
         {
             c.Plant,
             c.Score,
+            c.Flags,
             Mechanisms = CollectBeneficialMechanisms(c.ResolvedId, resolvedSelectedIds, associationLookup),
-            ResolvedLinkedIds = CollectLinkedPlantIds(c.ResolvedId, resolvedSelectedIds, associationLookup)
+            HarmfulMechanisms = CollectHarmfulMechanisms(c.ResolvedId, resolvedSelectedIds, associationLookup),
+            ResolvedLinkedIds = CollectLinkedPlantIds(c.ResolvedId, resolvedSelectedIds, associationLookup),
+            Rating = CalculateRating(c.Score),
         })
         .Where(c => !minScore.HasValue || c.Score >= minScore.Value)
-        .OrderByDescending(c => c.Score)
+        .OrderByDescending(c => c.Rating)
+        .ThenByDescending(c => c.Score)
         .ThenBy(c => c.Plant.Name, StringComparer.OrdinalIgnoreCase)
-        .Select(c => new CompanionRecommendationDto(c.Plant.Id, c.Mechanisms, c.ResolvedLinkedIds))
+        .Select(c => new CompanionRecommendationDto(
+            c.Plant.Id, c.Mechanisms, c.HarmfulMechanisms, c.ResolvedLinkedIds,
+            c.Rating, c.Score, c.Flags.HasRootBonus, c.Flags.HasSameFamily, c.Flags.HasWaterIncompat))
         .ToList();
-
-        var plantsToAvoid = BuildPlantsToAvoid(resolvedSelectedIds, associations);
 
         var conflicts = BuildSelectedPlantConflicts(resolvedSelectedIds, associations);
 
@@ -144,7 +191,7 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             .ThenBy(a => a.TargetPlantId)
             .ToList();
 
-        return new CompanionSearchResultDto(goodCompanions, plantsToAvoid, conflicts, selectedPlantMechanisms, selectedPlantsMechanisms, intrinsicMechanismsByPlant, selectedPlantAssociations);
+        return new CompanionSearchResultDto(goodCompanions, conflicts, selectedPlantMechanisms, selectedPlantsMechanisms, intrinsicMechanismsByPlant, selectedPlantAssociations);
     }
 
     private static List<SelectedPlantConflictDto> BuildSelectedPlantConflicts(
@@ -173,46 +220,6 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             }
         }
         return conflicts;
-    }
-
-    private static List<CompanionRecommendationDto> BuildPlantsToAvoid(
-        List<Guid> selectedPlantIds,
-        List<PlantAssociation> associations)
-    {
-        var harmfulByPlant = new Dictionary<Guid, (HashSet<AssociationMechanism> Mechanisms, HashSet<Guid> LinkedIds)>();
-
-        foreach (var a in associations.Where(a => a.Effect == AssociationEffect.Harmful))
-        {
-            Guid candidateId;
-            Guid linkedId;
-            if (selectedPlantIds.Contains(a.SourcePlantId) && !selectedPlantIds.Contains(a.TargetPlantId))
-            {
-                candidateId = a.TargetPlantId;
-                linkedId = a.SourcePlantId;
-            }
-            else if (selectedPlantIds.Contains(a.TargetPlantId) && !selectedPlantIds.Contains(a.SourcePlantId))
-            {
-                candidateId = a.SourcePlantId;
-                linkedId = a.TargetPlantId;
-            }
-            else
-            {
-                continue;
-            }
-
-            if (!harmfulByPlant.TryGetValue(candidateId, out var entry))
-            {
-                entry = ([], []);
-                harmfulByPlant[candidateId] = entry;
-            }
-            entry.Mechanisms.Add(a.Mechanism);
-            entry.LinkedIds.Add(linkedId);
-        }
-
-        return harmfulByPlant
-            .Select(kv => new CompanionRecommendationDto(kv.Key, kv.Value.Mechanisms.ToList(), kv.Value.LinkedIds.ToList()))
-            .OrderBy(p => p.PlantId)
-            .ToList();
     }
 
     private static double ScoreForEffect(AssociationEffect effect) => effect switch
@@ -270,6 +277,25 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
         return mechanisms.ToList();
     }
 
+    private static List<AssociationMechanism> CollectHarmfulMechanisms(Guid candidateId, List<Guid> selectedPlantIds,
+        Dictionary<(Guid, Guid), List<(AssociationEffect Effect, AssociationMechanism Mechanism)>> lookup)
+    {
+        var mechanisms = new HashSet<AssociationMechanism>();
+        foreach (var selectedId in selectedPlantIds)
+        {
+            var key = NormalizeKey(candidateId, selectedId);
+            if (!lookup.TryGetValue(key, out var entries))
+            {
+                continue;
+            }
+            foreach (var e in entries.Where(e => e.Effect == AssociationEffect.Harmful))
+            {
+                mechanisms.Add(e.Mechanism);
+            }
+        }
+        return mechanisms.ToList();
+    }
+
     private static List<Guid> CollectLinkedPlantIds(Guid candidateId, List<Guid> selectedPlantIds,
         Dictionary<(Guid, Guid), List<(AssociationEffect Effect, AssociationMechanism Mechanism)>> lookup)
     {
@@ -283,6 +309,15 @@ public class PlantAssociationService(AppDbContext dbContext, ILogger<PlantAssoci
             }
         }
         return linked.ToList();
+    }
+
+    private static int CalculateRating(double score)
+    {
+        if (score >= 1.5) { return 5; }
+        if (score >= 1.0) { return 4; }
+        if (score > 0) { return 3; }
+        if (score >= 0) { return 2; }
+        return 1;
     }
 
     private static (Guid, Guid) NormalizeKey(Guid a, Guid b) =>

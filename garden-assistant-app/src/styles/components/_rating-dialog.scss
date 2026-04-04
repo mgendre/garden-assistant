@@ -1,0 +1,88 @@
+.rating-dialog {
+  @apply flex flex-col;
+  min-width: 280px;
+}
+
+.rating-dialog-header {
+  @apply flex items-center justify-between px-5 pt-4 pb-3;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.rating-dialog-title {
+  @apply text-base font-semibold;
+  color: var(--color-text);
+}
+
+.rating-dialog-close {
+  @apply cursor-pointer bg-transparent border-0;
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+}
+
+.rating-dialog-body {
+  @apply flex flex-col gap-3 px-5 py-4;
+}
+
+.rating-dialog-stars {
+  @apply flex items-center gap-1;
+  font-size: 1.5rem;
+  color: #d4d4d4;
+
+  .star-filled {
+    color: #f59e0b;
+  }
+}
+
+.rating-dialog-label {
+  @apply text-sm font-semibold ml-2;
+  color: var(--color-text);
+}
+
+.rating-dialog-score {
+  @apply text-sm;
+  color: var(--color-text-muted);
+}
+
+.rating-dialog-section-title {
+  @apply text-xs font-semibold uppercase mb-1;
+  color: var(--color-text-secondary);
+  letter-spacing: 0.06em;
+
+  &--harmful {
+    color: #c62828;
+  }
+}
+
+.rating-dialog-badges {
+  @apply flex flex-col gap-1.5 mt-1;
+
+  .mechanism-chip {
+    @apply w-full text-left;
+  }
+}
+
+.rating-dialog-modifiers {
+  @apply flex flex-col gap-1.5 mt-1;
+}
+
+.rating-dialog-modifier {
+  @apply flex items-center gap-2 text-sm rounded-md;
+  padding: 0.35rem 0.5rem;
+
+  &--bonus {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
+
+  &--malus {
+    background: #fff3e0;
+    color: #e65100;
+  }
+}
+
+.rating-dialog-warning {
+  @apply text-sm rounded-lg;
+  padding: 0.5rem 0.75rem;
+  background: #fce4ec;
+  color: #880e4f;
+}

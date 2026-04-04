@@ -53,39 +53,30 @@
   &:hover { background: var(--color-surface-hover); }
 
   &.compat-good {
-    background: #f0faf4;
     &::before {
       content: '';
       @apply absolute left-0 top-0 bottom-0 rounded-r;
       width: 3px;
       background: #52b788;
     }
-    &:hover { background: var(--color-surface-hover); }
-    .plant-icon { background: var(--color-surface-hover); }
-  }
-
-  &.compat-central {
-    background: var(--color-accent-tint);
-    &::before {
-      content: '';
-      @apply absolute left-0 top-0 bottom-0 rounded-r;
-      width: 3px;
-      background: var(--color-accent);
-    }
-    &:hover { background: var(--color-surface-hover); }
-    .plant-icon { background: var(--color-accent-tint); }
   }
 
   &.compat-avoid {
-    background: #fff5f5;
     &::before {
       content: '';
       @apply absolute left-0 top-0 bottom-0 rounded-r;
       width: 3px;
       background: #ef5350;
     }
-    &:hover { background: #fde8e8; }
-    .plant-icon { background: #fde8e8; }
+  }
+
+  &.compat-central {
+    &::before {
+      content: '';
+      @apply absolute left-0 top-0 bottom-0 rounded-r;
+      width: 3px;
+      background: #3b82f6;
+    }
   }
 
   &.selected {
@@ -96,7 +87,6 @@
       width: 3px;
       background: #2d6a4f;
     }
-    .plant-icon { background: #fff; }
   }
 }
 
@@ -129,6 +119,11 @@
   margin-right: 0.25rem;
 }
 
+.plant-actions-col {
+  @apply flex flex-col items-center shrink-0;
+  gap: 0;
+}
+
 .plant-info-btn {
   @apply flex-shrink-0 cursor-pointer flex items-center justify-center;
   font-size: 0.85rem;
@@ -142,6 +137,26 @@
   &:hover {
     color: #2d6a4f;
     opacity: 1;
+  }
+}
+
+.plant-rating {
+  @apply flex items-center shrink-0 cursor-pointer;
+  font-size: 1rem;
+  line-height: 1;
+  color: #d4d4d4;
+  letter-spacing: 2px;
+
+  .star-filled {
+    color: #9ca3af;
+  }
+
+  &--good .star-filled {
+    color: #2d6a4f;
+  }
+
+  &--avoid .star-filled {
+    color: #ef4444;
   }
 }
 

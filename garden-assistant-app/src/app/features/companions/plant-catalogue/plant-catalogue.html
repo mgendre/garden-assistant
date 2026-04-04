@@ -105,9 +105,9 @@
             <div
               class="plant-item"
               [class.selected]="store.isSelected(plant)"
-              [class.compat-central]="store.getCompatibility(plant.id) === 'central-companion'"
-              [class.compat-good]="store.getCompatibility(plant.id) === 'good'"
-              [class.compat-avoid]="store.getCompatibility(plant.id) === 'avoid'"
+              [class.compat-good]="mode() === 'association' && getRating(plant)! >= 4"
+              [class.compat-avoid]="mode() === 'association' && getRating(plant) === 1"
+              [class.compat-central]="mode() === 'association' && store.centralCompanionIds().has(plant.id!)"
               (click)="onPlantClick(plant)">
               <div class="plant-icon">{{ store.getPlantEmoji(plant) }}</div>
               <div class="plant-info">
@@ -121,9 +121,19 @@
                   <span class="plant-family" [class]="store.getFamilyClass(plant.family)">{{ plant.family }}</span>
                 }
               </div>
-              <button class="plant-info-btn" (click)="openPlantDetail(plant, $event)" [attr.aria-label]="'Plant.ViewDetails' | translate:{ name: plant.name }">
-                <fa-icon [icon]="faInfo"></fa-icon>
-              </button>
+              <div class="plant-actions-col">
+                <button class="plant-info-btn" (click)="openPlantDetail(plant, $event)" [attr.aria-label]="'Plant.ViewDetails' | translate:{ name: plant.name }">
+                  <fa-icon [icon]="faInfo"></fa-icon>
+                </button>
+                @if (mode() === 'association' && getRating(plant); as rating) {
+                  <span class="plant-rating" [class.plant-rating--good]="rating >= 4" [class.plant-rating--avoid]="rating === 1"
+                      (click)="openRatingDetail(plant, $event)">
+                    @for (star of [1,2,3,4,5]; track star) {
+                      <span [class.star-filled]="star <= rating">★</span>
+                    }
+                  </span>
+                }
+              </div>
             </div>
           }
 

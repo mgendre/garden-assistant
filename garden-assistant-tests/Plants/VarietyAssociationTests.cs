@@ -85,7 +85,8 @@ public class VarietyAssociationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([courgette.Id]);
 
-        result.PlantsToAvoid.ShouldContain(c => c.PlantId == pommedeterre.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == pommedeterre.Id);
+        result.GoodCompanions.First(c => c.PlantId == pommedeterre.Id).Rating.ShouldBe(1);
     }
 
     [Fact]
@@ -131,7 +132,8 @@ public class VarietyAssociationTests : DatabaseTestBase
 
         var result = await _sut.GetCompanionRecommendationsAsync([tomate.Id]);
 
-        result.PlantsToAvoid.ShouldNotContain(c => c.PlantId == courgette.Id);
+        result.GoodCompanions.ShouldContain(c => c.PlantId == courgette.Id);
+        result.GoodCompanions.First(c => c.PlantId == courgette.Id).Rating.ShouldNotBe(1);
     }
 
     [Fact]
