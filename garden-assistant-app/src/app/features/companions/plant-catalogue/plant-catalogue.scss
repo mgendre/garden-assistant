@@ -1,17 +1,122 @@
 @reference "tailwindcss";
 
+.sort-bar {
+  @apply flex flex-wrap items-center gap-1.5 px-4 py-2;
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  .sort-btn--reset {
+    @apply ml-auto;
+    color: var(--color-text-muted);
+    border-color: transparent;
+
+    &:hover {
+      color: #c62828;
+      border-color: #c62828;
+    }
+  }
+}
+
+.sort-btn {
+  @apply text-xs font-medium rounded-full cursor-pointer;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid var(--color-border-subtle);
+  background: transparent;
+  color: var(--color-text-muted);
+  transition: all 150ms;
+
+  &:hover {
+    border-color: var(--color-forest);
+    color: var(--color-text);
+  }
+
+  &--active {
+    background: #2d6a4f;
+    color: #fff;
+    border-color: #2d6a4f;
+  }
+}
+
+.catalogue-body {
+  @apply flex flex-col;
+
+  @media (min-width: 1024px) {
+    @apply flex-row;
+  }
+}
+
+.catalogue-filters {
+  @apply flex flex-col;
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  @media (min-width: 1024px) {
+    width: 40%;
+    flex-shrink: 0;
+    border-bottom: none;
+    border-right: 1px solid var(--color-border-subtle);
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+.catalogue-plants {
+  @apply flex-1 min-w-0;
+
+  .plant-list {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+.filter-group {
+  border-bottom: 1px solid var(--color-border-subtle);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+}
+
+.filter-group-header {
+  @apply flex items-center gap-2 text-xs font-semibold uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-secondary);
+}
+
+.filter-active-dot {
+  @apply inline-block rounded-full;
+  width: 6px;
+  height: 6px;
+  background: var(--color-forest, #2d6a4f);
+}
+
+.filter-group-body {
+  @apply flex flex-col px-4 pb-3;
+}
+
+.filter-item {
+  @apply text-sm text-left cursor-pointer rounded-md;
+  padding: 0.35rem 0.5rem;
+  color: var(--color-text);
+  background: transparent;
+  border: none;
+  transition: all 150ms;
+
+  &:hover {
+    background: var(--color-surface-hover, #f0f0f0);
+  }
+
+  &--active {
+    background: var(--color-forest, #2d6a4f);
+    color: white;
+    font-weight: 600;
+
+    &:hover {
+      background: #358a63;
+    }
+  }
+}
+
 .plant-list {
   max-height: 70vh;
   overflow-y: auto;
 }
-
-.plant-mechanisms-inline {
-  @apply flex flex-wrap gap-1;
-  margin-top: 0.25rem;
-}
-
-.filter-wrap {
-  @apply flex flex-wrap gap-1.5 px-4 py-3;
-  border-bottom: 1px solid var(--color-border-subtle);
-}
-

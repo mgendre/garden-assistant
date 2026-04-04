@@ -4,10 +4,10 @@ Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL
 
 ## Nouveautés
 
-Chaque fiche plante affiche désormais ses préférences de sol et sa plage de pH optimale grâce à un indicateur visuel coloré. L'assistant de guilde détecte automatiquement les plantes aux besoins de pH incompatibles pour vous aider à composer des associations harmonieuses.
+Grosse mise a jour du 3 avril : le catalogue de plantes a ete entierement repense avec des filtres en panneau lateral, les 159 plantes affichent desormais leurs preferences de sol et de pH, et les seeders passent en mode upsert pour que votre catalogue se mette a jour automatiquement sans ecraser vos modifications.
 
-- [Nouveautés pour les jardiniers](changelogs/users/2026-04-03-sol-ph.md)
-- [Changelog technique](changelogs/devs/2026-04-03-sol-ph.md)
+- [Nouveautes pour les jardiniers](changelogs/users/2026-04-03-recap.md)
+- [Changelog technique](changelogs/devs/2026-04-03-recap.md)
 
 ## Documentation
 

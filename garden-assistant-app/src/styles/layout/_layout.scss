@@ -10,7 +10,17 @@
 
   @include respond-to('lg') {
     @apply grid items-start;
-    grid-template-columns: 420px 1fr;
+    grid-template-columns: 9fr 11fr;
+  }
+}
+
+.three-col {
+  @apply flex flex-col gap-5;
+
+  @include respond-to('lg') {
+    @apply grid items-start;
+    grid-template-columns: 240px 420px 1fr;
+    gap: 1.25rem;
   }
 }
 

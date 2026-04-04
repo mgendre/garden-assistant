@@ -321,6 +321,7 @@
     "NoResults": "Aucune plante trouvée",
     "PhCompatible": "pH compatible",
     "PhIncompatibleEmpty": "Les plantes de votre guilde ont des plages de pH incompatibles — aucune plante ne peut satisfaire toutes les exigences",
+    "ResetFilters": "Réinitialiser",
     "SelectPlant": "S\u00e9lectionnez une plante dans le catalogue pour d\u00e9couvrir ses associations",
     "SavePlant": "Ajouter {{name}} \u00e0 ma collection",
     "ClearSelection": "Effacer",
@@ -328,7 +329,14 @@
     "BackToBed": "Retour à la planche",
     "CancelChanges": "Annuler",
     "CreatingGuild": "Création d'une nouvelle guilde",
-    "EditingGuild": "Modification de la guilde"
+    "EditingGuild": "Modification de la guilde",
+    "Filters": "Filtres",
+    "SortLabel": "Tri",
+    "FilterMechanisms": "M\u00e9canismes",
+    "FilterRootDepth": "Profondeur racinaire",
+    "FilterSoilPh": "Sol & pH",
+    "FilterSoilType": "Type de sol",
+    "FilterPh": "pH"
   },
   "Stratification": {
     "SectionTitle": "Stratification racinaire",
