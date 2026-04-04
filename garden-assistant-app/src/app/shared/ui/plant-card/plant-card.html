@@ -170,6 +170,7 @@
         <div class="detail-section-title" [translate]="'Calendar.PlantDetail'"></div>
         <app-plant-calendar-gantt
           [actions]="plantActions()"
+          [showFilters]="true"
           [propagationMethod]="propagationMethod"
           [frostSensitive]="frostSensitive"
           [hasHarvestReadiness]="!!harvestReadiness()"

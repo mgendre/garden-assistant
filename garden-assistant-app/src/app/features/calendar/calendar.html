@@ -57,7 +57,6 @@
                 <div class="calendar-bed-title">{{ bed.bedName }}</div>
                 <div class="calendar-month-header-row">
                   <div class="calendar-name-spacer"></div>
-                  <div class="calendar-label-spacer"></div>
                   <div class="calendar-month-headers">
                     @for (label of monthLabels; track $index) {
                       <div class="calendar-month-header"
@@ -95,7 +94,6 @@
             <div class="section-divider-title" style="padding: 0 1rem">{{ group.gardenName }}</div>
             <div class="calendar-month-header-row">
               <div class="calendar-name-spacer"></div>
-              <div class="calendar-label-spacer"></div>
               <div class="calendar-month-headers">
                 @for (label of monthLabels; track $index) {
                   <div class="calendar-month-header"
@@ -150,6 +148,7 @@
                 [activeFilters]="ganttFilters()"
                 [plantName]="plantInfo.name!"
                 [oddPlant]="idx % 2 === 1"
+                [hasHarvestReadiness]="!!plantInfo.harvestReadiness"
                 (plantNameClick)="openPlantDetail(plantInfo)"
                 (harvestReadinessClick)="openHarvestReadiness(plant.plantId!)">
               </app-plant-calendar-gantt>

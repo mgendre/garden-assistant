@@ -91,7 +91,7 @@ export class CalendarStore {
     return FILTER_CONFIGS.find(f => f.key === key)?.actionTypes ?? [];
   });
 
-  readonly filteredPlants = computed<CalendarPlantDto[]>(() => {
+  readonly sourcePlants = computed<CalendarPlantDto[]>(() => {
     let plants = this.allCalendarPlants();
 
     const source = this.sourceFilter();
@@ -103,7 +103,11 @@ export class CalendarStore {
       plants = plants.filter(p => gardenIds.has(p.plantId!));
     }
 
-    return this.sortAndFilterByAction(plants);
+    return plants;
+  });
+
+  readonly filteredPlants = computed<CalendarPlantDto[]>(() => {
+    return this.sortAndFilterByAction(this.sourcePlants());
   });
 
   readonly gardenGroups = computed<GardenCalendarGroup[]>(() => {

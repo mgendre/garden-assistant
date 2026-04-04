@@ -1,10 +1,10 @@
-import { Component, inject, input, computed, output } from '@angular/core';
+import { Component, inject, input, computed, output, signal } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSnowflake, faCircleQuestion } from '@fortawesome/free-solid-svg-icons';
 import { PlantActionDto, PlantActionType, PropagationMethod } from '../../../api/garden-assistant-api';
 import { DialogService } from '../../services/dialog.service';
-import { ACTION_COLORS, ACTION_TYPE_CONFIGS, FROST_SENSITIVE_ACTIONS, FROST_HALF_MONTHS_START, FROST_HALF_MONTHS_END, SOWING_ACTIONS } from '../../constants/plant-action.constants';
+import { ACTION_COLORS, ACTION_TYPE_CONFIGS, FILTER_CONFIGS, FROST_SENSITIVE_ACTIONS, FROST_HALF_MONTHS_START, FROST_HALF_MONTHS_END, SOWING_ACTIONS } from '../../constants/plant-action.constants';
 
 const MONTH_LABELS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
 
@@ -40,6 +40,7 @@ export class PlantCalendarGantt {
   readonly frostSensitive = input(false);
   readonly showHeader = input(true);
   readonly activeFilters = input<PlantActionType[]>([]);
+  readonly showFilters = input(false);
   readonly plantName = input<string>('');
   readonly oddPlant = input(false);
   readonly plantNameClick = output<void>();
@@ -49,6 +50,37 @@ export class PlantCalendarGantt {
   protected readonly faSnowflake = faSnowflake;
   protected readonly faCircleQuestion = faCircleQuestion;
   protected readonly PlantActionType = PlantActionType;
+
+  readonly internalFilterKey = signal<string | null>(null);
+
+  readonly availableFilters = computed(() => {
+    const actions = this.actions() ?? [];
+    const actionTypes = new Set(actions.map(a => a.actionType).filter(Boolean));
+    return FILTER_CONFIGS.filter(f => f.actionTypes.some(t => actionTypes.has(t)));
+  });
+
+  readonly effectiveFilters = computed<PlantActionType[]>(() => {
+    if (this.showFilters()) {
+      const key = this.internalFilterKey();
+      if (key === null) {
+        return [];
+      }
+      return FILTER_CONFIGS.find(f => f.key === key)?.actionTypes ?? [];
+    }
+    return this.activeFilters();
+  });
+
+  toggleFilter(key: string): void {
+    this.internalFilterKey.update(current => current === key ? null : key);
+  }
+
+  isFilterActive(key: string): boolean {
+    return this.internalFilterKey() === key;
+  }
+
+  hasActiveFilter(): boolean {
+    return this.internalFilterKey() !== null;
+  }
   protected readonly monthLabels = MONTH_LABELS;
 
   readonly currentHalfMonth = computed(() => {
@@ -76,7 +108,7 @@ export class PlantCalendarGantt {
     const allActions = this.actions() ?? [];
     const method = this.propagationMethod();
     const usePlantation = BULB_TUBER_METHODS.includes(method);
-    const filters = this.activeFilters();
+    const filters = this.effectiveFilters();
 
     const grouped = new Map<PlantActionType, PlantActionDto[]>();
     for (const action of allActions) {

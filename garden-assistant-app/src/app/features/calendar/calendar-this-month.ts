@@ -58,7 +58,7 @@ export class CalendarThisMonth {
   }
 
   private buildActionGroups(halfMonth: number): ActionGroup[] {
-    const plants = this.store.filteredPlants();
+    const plants = this.store.sourcePlants();
     if (plants.length === 0) {
       return [];
     }

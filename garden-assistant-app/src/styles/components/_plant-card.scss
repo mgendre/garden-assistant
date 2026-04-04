@@ -97,6 +97,40 @@ app-plant-detail-panel .plant-card {
   &:last-child { @apply mb-0; }
 }
 
+.plant-calendar-chips {
+  @apply flex flex-wrap gap-1.5 mb-2;
+}
+
+.calendar-chip {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border-0 cursor-pointer;
+  transition: all var(--transition-fast);
+
+  &--active {
+    background: color-mix(in srgb, var(--chip-color) 15%, transparent);
+    color: var(--color-text);
+  }
+
+  &--inactive {
+    background: #f0f0f0;
+    color: var(--color-text-muted);
+    opacity: 0.6;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+}
+
+.calendar-chip-dot {
+  @apply inline-block w-2 h-2 rounded-full shrink-0;
+  transition: background-color var(--transition-fast);
+}
+
+.calendar-chip-label {
+  @apply whitespace-nowrap;
+}
+
 .detail-section-title {
   @apply flex items-center gap-2 text-xs font-semibold uppercase mb-3;
   letter-spacing: 0.1em;

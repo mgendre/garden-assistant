@@ -1,10 +1,24 @@
 <div class="gantt-container" [class.gantt-container--odd]="oddPlant()">
+  @if (showFilters()) {
+    <div class="gantt-filter-chips">
+      @for (filter of availableFilters(); track filter.key) {
+        <button class="calendar-chip"
+                [class.calendar-chip--active]="!hasActiveFilter() || isFilterActive(filter.key)"
+                [class.calendar-chip--inactive]="hasActiveFilter() && !isFilterActive(filter.key)"
+                [style.--chip-color]="filter.color"
+                (click)="toggleFilter(filter.key)">
+          <span class="calendar-chip-dot" [style.background-color]="(!hasActiveFilter() || isFilterActive(filter.key)) ? filter.color : '#9ca3af'"></span>
+          <span class="calendar-chip-label">{{ filter.labelKey | translate }}</span>
+        </button>
+      }
+    </div>
+  }
+
   @if (showHeader()) {
     <div class="gantt-header-row">
       @if (plantName()) {
         <div class="gantt-name-col"></div>
       }
-      <div class="gantt-label-col"></div>
       <div class="gantt-grid">
         @for (cells of monthHeaders(); track $index) {
           <div class="gantt-month-header"
@@ -16,54 +30,43 @@
     </div>
   }
 
-  @for (row of rows(); track row.actionType; let first = $first) {
-    <div class="gantt-row">
-      @if (plantName()) {
-        <div class="gantt-name-col">
-          @if (first) {
-            <button class="gantt-plant-name" (click)="onPlantNameClick()">{{ plantName() }}</button>
+  <div class="gantt-row">
+    @if (plantName()) {
+      <div class="gantt-name-col">
+        <button class="gantt-plant-name" (click)="onPlantNameClick()">{{ plantName() }}</button>
+      </div>
+    }
+    <div class="gantt-grid">
+      @for (cells of monthHeaders(); track $index) {
+        <div class="gantt-month-group">
+          @for (cell of cells; track cell.halfMonth) {
+            <div class="gantt-cell"
+                 [class.gantt-cell--current]="cell.isCurrent"
+                 [class.gantt-cell--second]="!cell.isFirstHalf">
+              <div class="gantt-cell-slots">
+                @for (row of rows(); track row.actionType) {
+                  @if (isCellActive(row, cell.halfMonth)) {
+                    <div class="gantt-bar"
+                         [class.gantt-bar--first]="isFirstBar(row, cell.halfMonth)"
+                         [class.gantt-bar--last]="isLastBar(row, cell.halfMonth)"
+                         [style.background-color]="row.color"
+                         [title]="row.labelKey | translate"
+                         (click)="onBarClick(row.actionType, $event)">
+                      @if (showFrostIndicator(row, cell.halfMonth)) {
+                        <div class="gantt-frost">
+                          <fa-icon [icon]="faSnowflake"></fa-icon>
+                        </div>
+                      }
+                    </div>
+                  } @else {
+                    <div class="gantt-bar-spacer"></div>
+                  }
+                }
+              </div>
+            </div>
           }
         </div>
       }
-      <div class="gantt-label-col">
-        <span class="gantt-label-dot" [style.background-color]="row.color"></span>
-        @if (row.actionType === PlantActionType.Harvest) {
-          <button class="gantt-label-link" (click)="harvestReadinessClick.emit()">
-            {{ row.labelKey | translate }}
-            @if (hasHarvestReadiness()) {
-              <fa-icon [icon]="faCircleQuestion" class="gantt-label-help-icon"></fa-icon>
-            }
-          </button>
-        } @else {
-          <button class="gantt-label-link" (click)="openActionInfo(row.actionType)">{{ row.labelKey | translate }}</button>
-        }
-      </div>
-      <div class="gantt-grid">
-        @for (cells of monthHeaders(); track $index) {
-          <div class="gantt-month-group">
-            @for (cell of cells; track cell.halfMonth) {
-              <div class="gantt-cell"
-                   [class.gantt-cell--current]="cell.isCurrent"
-                   [class.gantt-cell--second]="!cell.isFirstHalf">
-                @if (isCellActive(row, cell.halfMonth)) {
-                  <div class="gantt-bar"
-                       [class.gantt-bar--first]="isFirstBar(row, cell.halfMonth)"
-                       [class.gantt-bar--last]="isLastBar(row, cell.halfMonth)"
-                       [style.background-color]="row.color"
-                       [title]="row.labelKey | translate"
-                       (click)="onBarClick(row.actionType, $event)">
-                    @if (showFrostIndicator(row, cell.halfMonth)) {
-                      <div class="gantt-frost">
-                        <fa-icon [icon]="faSnowflake"></fa-icon>
-                      </div>
-                    }
-                  </div>
-                }
-              </div>
-            }
-          </div>
-        }
-      </div>
     </div>
-  }
+  </div>
 </div>
