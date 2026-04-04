@@ -459,26 +459,46 @@
 
 | ID | Titre | Priorité | Points | Statut |
 |----|-------|----------|--------|--------|
-| [US-339](epics/E25-calendrier-arrosage/US-339-moteur-calcul-frequence-arrosage.md) | Moteur de calcul de la frequence d'arrosage (WaterNeeds x saison) | Indispensable | 3 | À faire |
-| [US-340](epics/E25-calendrier-arrosage/US-340-endpoint-planning-arrosage-planche.md) | Endpoint API planning d'arrosage par planche | Indispensable | 5 | À faire |
-| [US-341](epics/E25-calendrier-arrosage/US-341-frontend-page-arrosage-jardin.md) | Page calendrier d'arrosage pour un jardin | Indispensable | 5 | À faire |
-| [US-342](epics/E25-calendrier-arrosage/US-342-ajustement-frequence-type-sol.md) | Ajustement de la frequence selon le type de sol | Important | 5 | À faire |
-| [US-343](epics/E25-calendrier-arrosage/US-343-paillage-planche-ajustement-arrosage.md) | Paillage sur planche et ajustement de l'arrosage | Important | 3 | À faire |
-| [US-344](epics/E25-calendrier-arrosage/US-344-détail-hebdo-quantites-indicatives.md) | Vue hebdomadaire détaillee avec quantites indicatives | Optionnel | 8 | À faire |
+| [US-339](epics/E25-calendrier-arrosage/US-339-moteur-calcul-frequence-arrosage.md) | Moteur de calcul de la frequence d'arrosage (WaterNeeds x saison + jours recommandes) | Indispensable | 3 | A faire |
+| [US-340](epics/E25-calendrier-arrosage/US-340-endpoint-planning-arrosage-planche.md) | Composant "Arrosage aujourd'hui" (badges plantes a arroser, au-dessus des tabs) | Indispensable | 5 | A faire |
+| [US-341](epics/E25-calendrier-arrosage/US-341-frontend-page-arrosage-jardin.md) | Tab "Arrosage" avec grille hebdomadaire 7 jours + frequences saisonnieres | Indispensable | 5 | A faire |
+| [US-342](epics/E25-calendrier-arrosage/US-342-ajustement-frequence-type-sol.md) | Ajustement frequence selon type de sol (Sandy x1.3, Clay x0.7) | Important | 5 | A faire |
+| [US-343](epics/E25-calendrier-arrosage/US-343-paillage-planche-ajustement-arrosage.md) | Paillage sur planche (HasMulch x0.6) et ajustement arrosage | Important | 3 | A faire |
+| [US-344](epics/E25-calendrier-arrosage/US-344-detail-hebdo-quantites-indicatives.md) | Quantites d'eau indicatives (WaterAmountMl + seed data) | Optionnel | 8 | A faire |
 
 **Total E25 : 29 points (0 Terminé / 0 En cours / 29 À faire)**
 
-> Ordre de livraison : US-339 (moteur de calcul, prerequis à tout) → US-340 (endpoint API) → US-341 (page frontend). US-342 (sol) et US-343 (paillage) sont independantes entre elles mais enrichissent le calcul de US-339. US-344 (vue hebdo) est optionnelle et peut etre livree dans un sprint ulterieur.
+> Ordre de livraison : US-339 (moteur de calcul, prerequis a tout) -> US-340 (composant "Arrosage aujourd'hui") + US-341 (tab Arrosage + grille hebdo) en parallele. US-342 (sol) et US-343 (paillage) sont independantes entre elles mais enrichissent le calcul de US-339. US-344 (quantites d'eau) depend de US-341 et est optionnelle.
+
+---
+
+## E26 — Meteo locale et adaptation climatique
+
+> Integrer les donnees meteo en temps reel (Open-Meteo, gratuit et sans cle API) pour adapter dynamiquement les recommandations du jardinier. La localisation du jardin permet de recuperer temperature, precipitations et previsions. Ces donnees enrichissent l'arrosage (reduction si pluie, augmentation si canicule) et declenchent des alertes (gel). E26 complete E12 (adaptation climatique statique/manuelle) et E25 (calendrier d'arrosage) avec des donnees meteo temps reel.
+
+| ID | Titre | Priorite | Points | Statut |
+|----|-------|----------|--------|--------|
+| [US-345](epics/E26-meteo-locale/US-345-localisation-jardin.md) | Localisation du jardin (latitude / longitude) | Indispensable | 5 | A faire |
+| [US-346](epics/E26-meteo-locale/US-346-service-meteo-open-meteo.md) | Service meteo backend (Open-Meteo API) | Indispensable | 5 | A faire |
+| [US-347](epics/E26-meteo-locale/US-347-endpoint-meteo-jardin.md) | Endpoint API meteo du jardin | Indispensable | 3 | A faire |
+| [US-348](epics/E26-meteo-locale/US-348-widget-meteo-frontend.md) | Widget meteo sur la page jardin | Indispensable | 5 | A faire |
+| [US-349](epics/E26-meteo-locale/US-349-adaptation-arrosage-precipitations.md) | Adaptation de l'arrosage selon les precipitations recentes | Important | 5 | A faire |
+| [US-350](epics/E26-meteo-locale/US-350-adaptation-arrosage-canicule.md) | Adaptation de l'arrosage en periode de canicule | Important | 3 | A faire |
+| [US-351](epics/E26-meteo-locale/US-351-alerte-gel.md) | Alerte gel sur la page jardin | Important | 3 | A faire |
+
+**Total E26 : 29 points (0 Termine / 0 En cours / 29 A faire)**
+
+> Ordre de livraison : US-345 (localisation, prerequis a tout) -> US-346 (service meteo backend) -> US-347 (endpoint API) -> US-348 (widget frontend). US-349 (precipitations) et US-350 (canicule) dependent de US-346 et de E25/US-339 (moteur arrosage), livrables en parallele. US-351 (alerte gel) depend de US-347 et US-348.
 
 ---
 
 ## Recapitulatif
 
-| Épique | Statut | Points | Terminé | En cours | À faire |
+| Epique | Statut | Points | Termine | En cours | A faire |
 |--------|--------|--------|---------|----------|---------|
 | E01 — Gestion des jardins et planches | ✅ | 34 | 34 | 0 | 0 |
-| E02 — Associations végétales (résiduel) | ✅ | 8 | 8 | 0 | 0 |
-| E03 — Éditeur graphique du jardin | | 39 | 0 | 0 | 39 |
+| E02 — Associations vegetales (residuel) | ✅ | 8 | 8 | 0 | 0 |
+| E03 — Editeur graphique du jardin | | 39 | 0 | 0 | 39 |
 | E04 — Gestion des rotations de cultures | | 30 | 0 | 0 | 30 |
 | ~~E05 — Plantes compagnes (refonte)~~ | ~~Annulee~~ | ~~19~~ | — | — | — |
 | E06 — Refonte UI permaculture | ✅ | 27 | 27 | 0 | 0 |
@@ -486,7 +506,7 @@
 | E08 — Finitions UX Associations | ✅ | 14 | 14 | 0 | 0 |
 | E09 — Conscience de l'enracinement | ✅ | 9 | 9 | 0 | 0 |
 | E10 — Calendrier cultural | | 52 | 33 | 0 | 19 |
-| E11 — Guildes, mecanismes et refonte éditeur | ✅ | 44 | 44 | 0 | 0 |
+| E11 — Guildes, mecanismes et refonte editeur | ✅ | 44 | 44 | 0 | 0 |
 | E12 — Adaptation climatique | | 16 | 0 | 0 | 16 |
 | E13 — Infrastructure i18n (backend) | | 38 | 0 | 0 | 38 |
 | E14 — UX i18n (frontend) | | 16 | 0 | 0 | 16 |
@@ -495,14 +515,15 @@
 | ~~E17 — Dimensions et formes des planches~~ | ~~Annulee~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | | 13 | 0 | 0 | 13 |
 | E19 — Dette technique frontend | ✅ | 12 | 12 | 0 | 0 |
-| E20 — Hierarchie espece-variété | | 27 | 24 | 0 | 3 |
-| E21 — Upsert des seeds et protection des données | ✅ | 24 | 24 | 0 | 0 |
+| E20 — Hierarchie espece-variete | | 27 | 24 | 0 | 3 |
+| E21 — Upsert des seeds et protection des donnees | ✅ | 24 | 24 | 0 | 0 |
 | E22 — Administration du catalogue de plantes | | 13 | 0 | 0 | 13 |
 | E23 — Variantes utilisateur | | 17 | 0 | 0 | 17 |
 | E24 — Preferences de sol et pH | ✅ | 24 | 24 | 0 | 0 |
 | E25 — Calendrier d'arrosage | | 29 | 0 | 0 | 29 |
-| **Total (actif)** | | **551** | **271** | **0** | **280** |
+| E26 — Meteo locale et adaptation climatique | | 29 | 0 | 0 | 29 |
+| **Total (actif)** | | **580** | **271** | **0** | **309** |
 
 ---
 
-*Backlog gere par l'agent Product Owner — derniere mise à jour : 2026-04-03 (E25 creee — calendrier d'arrosage 6 stories 29 pts)*
+*Backlog gere par l'agent Product Owner — derniere mise a jour : 2026-04-03 (E26 creee — meteo locale 7 stories 29 pts)*

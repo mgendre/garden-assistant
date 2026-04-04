@@ -1,0 +1,84 @@
+<div class="rating-dialog">
+  <div class="rating-dialog-header">
+    <h3 class="rating-dialog-title">{{ data.plantName }}</h3>
+  </div>
+
+  <div class="rating-dialog-body">
+    <div class="rating-dialog-stars">
+      @for (star of getStars(); track star) {
+        <span class="rating-dialog-star" [class.star-filled]="star <= data.rating">&#9733;</span>
+      }
+      <span class="rating-dialog-label">
+        @switch (data.rating) {
+          @case (5) { {{ 'Rating.Excellent' | translate }} }
+          @case (4) { {{ 'Rating.Good' | translate }} }
+          @case (3) { {{ 'Rating.Neutral' | translate }} }
+          @case (2) { {{ 'Rating.Unknown' | translate }} }
+          @case (1) { {{ 'Rating.Avoid' | translate }} }
+        }
+      </span>
+    </div>
+
+    <div class="rating-dialog-score">
+      {{ 'Rating.Score' | translate }} : {{ data.score }}
+    </div>
+
+    @if (data.mechanisms.length > 0) {
+      <div class="rating-dialog-section">
+        <div class="rating-dialog-section-title">{{ 'Rating.BeneficialMechanisms' | translate }}</div>
+        <div class="rating-dialog-badges">
+          @for (m of data.mechanisms; track m; let i = $index) {
+            <button class="mechanism-chip badge-trait" (click)="openMechanismInfo(i)">{{ m | translate }}</button>
+          }
+        </div>
+      </div>
+    }
+
+    @if (data.harmfulMechanisms.length > 0) {
+      <div class="rating-dialog-section">
+        <div class="rating-dialog-section-title rating-dialog-section-title--harmful">{{ 'Rating.HarmfulMechanisms' | translate }}</div>
+        <div class="rating-dialog-badges">
+          @for (m of data.harmfulMechanisms; track m; let i = $index) {
+            <button class="mechanism-chip mechanism-red" (click)="openHarmfulMechanismInfo(i)">{{ m | translate }}</button>
+          }
+        </div>
+      </div>
+    }
+
+    @if (data.isCentralCompanion || data.hasRootDepthBonus || data.hasSameFamilyMalus || data.hasWaterIncompatibility) {
+      <div class="rating-dialog-section">
+        <div class="rating-dialog-section-title">{{ 'Rating.Modifiers' | translate }}</div>
+        <div class="rating-dialog-modifiers">
+          @if (data.isCentralCompanion) {
+            <div class="rating-dialog-modifier rating-dialog-modifier--bonus">
+              <span>⭐</span>
+              <span>{{ 'Rating.CentralCompanion' | translate }}</span>
+            </div>
+          }
+          @if (data.hasRootDepthBonus) {
+            <div class="rating-dialog-modifier rating-dialog-modifier--bonus">
+              <span>🌱</span>
+              <span>{{ 'Rating.RootDepthBonus' | translate }}</span>
+            </div>
+          }
+          @if (data.hasSameFamilyMalus) {
+            <div class="rating-dialog-modifier rating-dialog-modifier--malus">
+              <span>⚠️</span>
+              <span>{{ 'Rating.SameFamilyMalus' | translate }}</span>
+            </div>
+          }
+          @if (data.hasWaterIncompatibility) {
+            <div class="rating-dialog-modifier rating-dialog-modifier--malus">
+              <span>💧</span>
+              <span>{{ 'Rating.WaterIncompatibility' | translate }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="dialog-footer">
+    <button class="btn btn-secondary btn-sm" (click)="close()" [translate]="'Guilds.Close'"></button>
+  </div>
+</div>

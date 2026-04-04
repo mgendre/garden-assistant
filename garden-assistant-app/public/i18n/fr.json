@@ -276,6 +276,7 @@
     "BadgeWater": "Arrosage",
     "BadgeRootCompetition": "Compétition",
     "BadgePh": "pH incompatible",
+    "BadgeFamily": "Même famille",
     "WaterConflictTitle": "Besoins en eau incompatibles",
     "WaterConflictLow": "Faible besoin :",
     "WaterConflictHigh": "Fort besoin :",
@@ -635,6 +636,22 @@
   "WhatsNew": {
     "Title": "Nouveautés",
     "EmptyState": "Pas encore de nouveautés publiées. Revenez bientôt !"
+  },
+  "Rating": {
+    "Excellent": "Excellent compagnon",
+    "Good": "Bon compagnon",
+    "Neutral": "Compatible",
+    "Unknown": "Neutre",
+    "Avoid": "Déconseillé",
+    "Score": "Score de compatibilité",
+    "BeneficialMechanisms": "Mécanismes bénéfiques",
+    "HarmfulMechanisms": "Mécanismes néfastes",
+    "HasHarmful": "Cette plante a au moins une association néfaste avec les plantes sélectionnées",
+    "Modifiers": "Modificateurs",
+    "CentralCompanion": "Aide une plante principale de la guilde",
+    "RootDepthBonus": "Bonus stratification racinaire — profondeurs complémentaires",
+    "SameFamilyMalus": "Malus même famille botanique — mêmes ravageurs et épuisement du sol",
+    "WaterIncompatibility": "Malus besoins en eau incompatibles"
   },
   "GardenCalendar": {
     "Title": "Calendrier du jardin",

@@ -1,4 +1,5 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHeart as faHeartSolid, faCircleInfo, faLink } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +12,7 @@ import { SearchInput } from '../../../shared/ui/search-input/search-input';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
+import { RatingDetailDialog, RatingDetailData } from '../../../shared/ui/rating-detail-dialog/rating-detail-dialog';
 
 @Component({
   selector: 'app-plant-catalogue',
@@ -26,6 +28,7 @@ export class PlantCatalogue {
   protected readonly faHeartSolid = faHeartSolid;
   protected readonly faInfo = faCircleInfo;
   protected readonly faLink = faLink;
+  private readonly dialog = inject(MatDialog);
   private readonly dialogService = inject(DialogService);
   private readonly plantDialogService = inject(PlantDialogService);
 
@@ -120,6 +123,14 @@ export class PlantCatalogue {
     }
   }
 
+  getRating(plant: PlantDto): number | null {
+    if (this.store.selectedPlants().length === 0) { return null; }
+    if (this.store.isSelected(plant)) { return null; }
+    const rec = this.store.recommendations()?.goodCompanions?.find(c => c.plantId === plant.id);
+    if (rec) { return rec.rating ?? 3; }
+    return 3;
+  }
+
   readonly hasActiveFilters = computed(() => {
     return this.store.mechanismFilter() !== null ||
       this.store.rootDepthFilter() !== null ||
@@ -127,6 +138,36 @@ export class PlantCatalogue {
       !this.store.phCompatibleFilter() ||
       this.store.myPlantsOnly();
   });
+
+  openRatingDetail(plant: PlantDto, event: Event): void {
+    event.stopPropagation();
+    const rec = this.store.recommendations()?.goodCompanions?.find(c => c.plantId === plant.id);
+    if (!rec) { return; }
+
+    const badgeKeys = (rec.mechanisms ?? []).map(m => this.store.getMechanismKey(m));
+    const mechanismLabels = badgeKeys.map(k => 'Plant.Mechanism.' + k);
+
+    const harmfulBadgeKeys = (rec.harmfulMechanisms ?? []).map(m => this.store.getMechanismKey(m));
+    const harmfulLabels = harmfulBadgeKeys.map(k => 'Plant.Mechanism.' + k);
+
+    this.dialog.open(RatingDetailDialog, {
+      data: {
+        plantName: plant.name ?? '',
+        rating: rec.rating ?? 3,
+        score: rec.score ?? 0,
+        mechanisms: mechanismLabels,
+        mechanismBadgeKeys: badgeKeys,
+        harmfulMechanisms: harmfulLabels,
+        harmfulMechanismBadgeKeys: harmfulBadgeKeys,
+        hasRootDepthBonus: rec.hasRootDepthBonus ?? false,
+        hasSameFamilyMalus: rec.hasSameFamilyMalus ?? false,
+        hasWaterIncompatibility: rec.hasWaterIncompatibility ?? false,
+        isCentralCompanion: this.store.centralCompanionIds().has(plant.id!),
+      } as RatingDetailData,
+      maxWidth: '400px',
+      width: '90vw',
+    });
+  }
 
   resetFilters(): void {
     this.store.mechanismFilter.set(null);

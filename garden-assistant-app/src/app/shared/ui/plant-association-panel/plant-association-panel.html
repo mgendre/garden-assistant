@@ -95,6 +95,11 @@
               ⚠️ {{ 'GuildAssistant.BadgePh' | translate }}
             </span>
           }
+          @if (familyDiversityWarnings().length > 0) {
+            <span class="health-badge health-badge--family">
+              🌿 {{ 'GuildAssistant.BadgeFamily' | translate }}
+            </span>
+          }
         </div>
       </div>
       <div collapsible-body class="collapsible-body-padded">
@@ -109,6 +114,19 @@
               <span>{{ 'GuildAssistant.WaterConflictHigh' | translate }} {{ conflict.highPlants.join(', ') }}</span>
             </div>
             <p class="assistant-warning-tip" [translate]="'GuildAssistant.WaterConflictTip'"></p>
+          </div>
+        }
+
+        @for (warning of familyDiversityWarnings(); track warning.family) {
+          <div class="assistant-warning assistant-warning--family">
+            <div class="assistant-warning-header">
+              <span>🌿</span>
+              <strong>{{ 'GuildAssistant.FamilyDiversityTitle' | translate }}</strong>
+            </div>
+            <div class="assistant-warning-body">
+              <span>{{ 'GuildAssistant.FamilyDiversityMessage' | translate:{ count: warning.count, total: warning.total, family: warning.family } }}</span>
+              <span class="assistant-warning-plants">{{ warning.plantNames.join(', ') }}</span>
+            </div>
           </div>
         }
 

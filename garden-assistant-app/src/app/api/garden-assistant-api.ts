@@ -1094,7 +1094,6 @@ export interface UpdateGuildRequest {
 
 export interface CompanionSearchResultDto {
     goodCompanions?: CompanionRecommendationDto[];
-    plantsToAvoid?: CompanionRecommendationDto[];
     selectedPlantConflicts?: SelectedPlantConflictDto[];
     selectedPlantMechanisms?: AssociationMechanism[];
     selectedPlantsMechanisms?: PlantMechanismsDto[];
@@ -1105,7 +1104,13 @@ export interface CompanionSearchResultDto {
 export interface CompanionRecommendationDto {
     plantId?: string;
     mechanisms?: AssociationMechanism[];
+    harmfulMechanisms?: AssociationMechanism[];
     linkedPlantIds?: string[];
+    rating?: number;
+    score?: number;
+    hasRootDepthBonus?: boolean;
+    hasSameFamilyMalus?: boolean;
+    hasWaterIncompatibility?: boolean;
 }
 
 export enum AssociationMechanism {
@@ -1155,6 +1160,7 @@ export enum AssociationEffect {
 
 export interface CompanionRecommendationRequest {
     plantIds?: string[];
+    centralPlantIds?: string[] | undefined;
     minScore?: number | undefined;
 }
 

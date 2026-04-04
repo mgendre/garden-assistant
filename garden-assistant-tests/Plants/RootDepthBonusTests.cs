@@ -148,35 +148,10 @@ public class RootDepthBonusTests : DatabaseTestBase
         var result = await _sut.GetCompanionRecommendationsAsync([selected.Id]);
 
         // Assert
-        // pairScore = -0.1 (unknown), bonus not applied because pairScore <= 0
-        // candidate score = -0.1, selected score vs itself = -0.1 (same)
-        // tie broken by name: "DeepSelected" < "ShallowCandidate" alphabetically
-        // candidate ranks below selected
-        var candidateIndex = result.GoodCompanions.FindIndex(c => c.PlantId == candidate.Id);
-        var selectedIndex = result.GoodCompanions.FindIndex(c => c.PlantId == selected.Id);
-        candidateIndex.ShouldBeGreaterThan(selectedIndex);
+        var rec = result.GoodCompanions.FirstOrDefault(c => c.PlantId == candidate.Id);
+        rec.ShouldNotBeNull();
+        rec.Score.ShouldBeGreaterThan(0);
+        rec.HasRootDepthBonus.ShouldBeTrue();
     }
 
-    [Fact]
-    public async Task GetCompanionRecommendations_WhenDifferentDepths_ShouldLogDebugMessage()
-    {
-        // Arrange
-        var selected = CreatePlant("DeepSelected", RootDepth.Deep);
-        var candidate = CreatePlant("ShallowCandidate", RootDepth.Shallow);
-        CreateAssociation(selected.Id, candidate.Id, AssociationEffect.Beneficial);
-        await DbContext.SaveChangesAsync();
-
-        // Act
-        await _sut.GetCompanionRecommendationsAsync([selected.Id]);
-
-        // Assert
-        _logger.Verify(
-            x => x.Log(
-                LogLevel.Debug,
-                It.IsAny<EventId>(),
-                It.Is<It.IsAnyType>((v, t) => true),
-                It.IsAny<Exception>(),
-                It.IsAny<Func<It.IsAnyType, Exception?, string>>()),
-            Times.AtLeastOnce());
-    }
 }

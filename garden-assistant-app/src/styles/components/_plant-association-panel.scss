@@ -53,6 +53,12 @@
     border: 1px solid #f48fb1;
     color: #880e4f;
   }
+
+  &--family {
+    background: #fff3e0;
+    border: 1px solid #ffcc80;
+    color: #e65100;
+  }
 }
 
 .panel-section {
@@ -121,6 +127,21 @@
 .association-notes {
   @apply text-xs mt-1;
   color: var(--color-text-muted);
+}
+
+.assistant-warning--family {
+  @apply flex flex-col gap-1 text-sm rounded-lg;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.75rem;
+  background: #fff3e0;
+  border: 1px solid #ffcc80;
+  color: #e65100;
+}
+
+.assistant-warning-plants {
+  @apply text-xs italic;
+  color: inherit;
+  opacity: 0.8;
 }
 
 .assistant-warning--ph {

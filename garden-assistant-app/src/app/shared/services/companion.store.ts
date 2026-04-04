@@ -143,24 +143,25 @@ export class CompanionStore {
     new Set(this.selectedPlants().map(p => p.id))
   );
 
-  readonly avoidPlantIds = computed(() =>
-    new Set(this.recommendations()?.plantsToAvoid?.map(p => p.plantId).filter(Boolean) ?? [])
-  );
+  readonly avoidPlantIds = computed(() => {
+    const ids = (this.recommendations()?.goodCompanions ?? [])
+      .filter(c => c.rating === 1 && c.plantId)
+      .map(c => c.plantId!);
+    return new Set(ids);
+  });
 
   readonly catalogAssociationMechanisms = computed(() => {
     const map = new Map<string, { beneficial: number[]; harmful: number[] }>();
     for (const c of this.recommendations()?.goodCompanions ?? []) {
-      if (c.plantId && c.mechanisms?.length) {
+      if (c.plantId) {
         const entry = map.get(c.plantId) ?? { beneficial: [], harmful: [] };
-        entry.beneficial = this.sortMechanisms(c.mechanisms);
+        if (c.mechanisms?.length) {
+          entry.beneficial = this.sortMechanisms(c.mechanisms);
+        }
+        if (c.harmfulMechanisms?.length) {
+          entry.harmful = this.sortMechanisms(c.harmfulMechanisms);
+        }
         map.set(c.plantId, entry);
-      }
-    }
-    for (const a of this.recommendations()?.plantsToAvoid ?? []) {
-      if (a.plantId && a.mechanisms?.length) {
-        const entry = map.get(a.plantId) ?? { beneficial: [], harmful: [] };
-        entry.harmful = this.sortMechanisms(a.mechanisms);
-        map.set(a.plantId, entry);
       }
     }
     return map;
@@ -258,24 +259,21 @@ export class CompanionStore {
         return famCmp !== 0 ? famCmp : byName(a, b);
       }
       if (sort === 'compat') {
-        const centralCompanions = this.centralCompanionIds();
-        const compatScore = (p: PlantDto) => {
-          if (centralCompanions.has(p.id!)) {
-            return -1;
+        const ratingMap = new Map<string, number>();
+        const scoreMap = new Map<string, number>();
+        for (const c of this.recommendations()?.goodCompanions ?? []) {
+          if (c.plantId) {
+            if (c.rating) { ratingMap.set(c.plantId, c.rating); }
+            if (c.score != null) { scoreMap.set(c.plantId, c.score); }
           }
-          if (this.goodCompanionIds().has(p.id)) {
-            return 0;
-          }
-          if (myPlantIds.has(p.id)) {
-            return 0.5;
-          }
-          if (this.avoidPlantIds().has(p.id)) {
-            return 2;
-          }
-          return 1;
-        };
-        const scoreDiff = compatScore(a) - compatScore(b);
-        return scoreDiff !== 0 ? scoreDiff : byName(a, b);
+        }
+        const getRating = (p: PlantDto) => ratingMap.get(p.id!) ?? 3;
+        const getScore = (p: PlantDto) => scoreMap.get(p.id!) ?? 0;
+        const ratingDiff = getRating(b) - getRating(a);
+        if (ratingDiff !== 0) { return ratingDiff; }
+        const scoreDiff = getScore(b) - getScore(a);
+        if (scoreDiff !== 0) { return scoreDiff; }
+        return byName(a, b);
       }
       const fav = favFirst(a, b);
       return fav !== 0 ? fav : byName(a, b);
@@ -465,6 +463,7 @@ export class CompanionStore {
   constructor() {
     effect(() => {
       const selected = this.selectedPlants();
+      const _centralIds = this.centralPlantIds();
       untracked(() => {
         if (selected.length === 0) {
           this.recommendations.set(null);
@@ -699,6 +698,13 @@ export class CompanionStore {
     if (this.centralCompanionIds().has(plantId)) {
       return 'central-companion';
     }
+    const rec = this.recommendations()?.goodCompanions?.find(c => c.plantId === plantId);
+    if (rec?.rating === 1) {
+      return 'avoid';
+    }
+    if (rec?.rating && rec.rating >= 4) {
+      return 'good';
+    }
     if (this.goodCompanionIds().has(plantId)) {
       return 'good';
     }
@@ -713,7 +719,7 @@ export class CompanionStore {
     try {
       const request: CompanionRecommendationRequest = {
         plantIds: plants.map(p => p.id!).filter(Boolean),
-        minScore: 0,
+        centralPlantIds: [...this.centralPlantIds()],
       };
       const result = await this.service.getRecommendations(request);
       this.recommendations.set(result);

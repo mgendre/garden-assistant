@@ -201,11 +201,11 @@
     "plants": [
       "phacelie",
       "moutarde-blanche",
-      "vesce-commune",
+      { "key": "vesce-commune", "role": "Central" },
       "seigle",
       "sarrasin",
-      "trefle-rouge",
-      "luzerne",
+      { "key": "trefle-rouge", "role": "Central" },
+      { "key": "luzerne", "role": "Central" },
       "avoine"
     ]
   },
@@ -238,9 +238,9 @@
     "name": "La Guilde des Pollinisateurs",
     "description": "Cette guilde maximise l'attraction des pollinisateurs sauvages et domestiques grâce à des floraisons continues de mars à novembre. La phacélie et la bourrache fournissent un nectar abondant au printemps, le thym rampant et la lavande prennent le relais en été, et l'agastache et l'achillée millefeuille prolongent la saison jusqu'à l'automne. La mélisse attire spécifiquement les abeilles par son odeur citronnée, le souci et le sainfoin complètent la palette florale avec des formes et couleurs variées favorisant la biodiversité des visiteurs.",
     "plants": [
-      "phacelie",
-      "bourrache",
-      "lavande",
+      { "key": "phacelie", "role": "Central" },
+      { "key": "bourrache", "role": "Central" },
+      { "key": "lavande", "role": "Central" },
       "melisse",
       "agastache",
       "achillee-millefeuille",
@@ -411,13 +411,13 @@
     "name": "La Guilde des Plantes Utilitaires",
     "description": "Cette guilde fonctionnelle réunit les plantes utilisées pour préparer des purins, décoctions et infusions au jardin. L'ortie fournit le purin d'ortie, la tanaisie et l'absinthe repoussent les ravageurs, l'achillée et la camomille activent le compost, la valériane protège du gel et la prêle fournit une décoction antifongique riche en silice.",
     "plants": [
-      "ortie",
-      "tanaisie",
+      { "key": "ortie", "role": "Central" },
+      { "key": "tanaisie", "role": "Central" },
       "absinthe",
       "achillee-millefeuille",
       "camomille-allemande",
       "valeriane",
-      "prele-des-champs"
+      { "key": "prele-des-champs", "role": "Central" }
     ]
   },
   {
@@ -565,8 +565,8 @@
     "name": "La Guilde de la Prairie Mellifère",
     "description": "Cette guilde compose une prairie fleurie permanente maximisant les ressources pour les pollinisateurs. Le sainfoin et le lotier fixent l'azote avec un nectar abondant, le mélilot prolonge la floraison en été, l'achillée et le plantain accumulent les minéraux, la véronique tapisse les zones basses et la phacélie comble les vides de floraison.",
     "plants": [
-      "sainfoin",
-      "lotier-cornicule",
+      { "key": "sainfoin", "role": "Central" },
+      { "key": "lotier-cornicule", "role": "Central" },
       "melilot",
       "achillee-millefeuille",
       "plantain-lanceole",
