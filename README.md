@@ -4,10 +4,10 @@ Permaculture garden management application — Angular 21 + .NET 10 + PostgreSQL
 
 ## Nouveautés
 
-Grosse mise a jour du 3 avril : le catalogue de plantes a ete entierement repense avec des filtres en panneau lateral, les 159 plantes affichent desormais leurs preferences de sol et de pH, et les seeders passent en mode upsert pour que votre catalogue se mette a jour automatiquement sans ecraser vos modifications.
+Le système de compagnonnage passe aux étoiles : chaque plante compagne reçoit une note de 1 à 5 étoiles basée sur un scoring précis (mécanismes bénéfiques et néfastes, stratification racinaire, compatibilité familiale et hydrique). Les 51 guildes ont toutes leurs plantes centrales et 76 nouvelles associations portent le catalogue à 445 associations documentées.
 
-- [Nouveautes pour les jardiniers](changelogs/users/2026-04-03-recap.md)
-- [Changelog technique](changelogs/devs/2026-04-03-recap.md)
+- [Nouveautes pour les jardiniers](changelogs/users/2026-04-03-scoring.md)
+- [Changelog technique](changelogs/devs/2026-04-03-scoring.md)
 
 ## Documentation
 
