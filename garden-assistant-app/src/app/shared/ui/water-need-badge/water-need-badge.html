@@ -1,3 +1,5 @@
 @if (waterNeeds()) {
-  <span class="detail-badge badge-water">{{ 'Plant.Water.' + waterNeeds() | translate }}</span>
+  <span class="detail-badge badge-water badge-clickable" (click)="openInfo($event)">
+    {{ 'Plant.Water.' + waterNeeds() | translate }}
+  </span>
 }

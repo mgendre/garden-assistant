@@ -86,7 +86,7 @@
                     <tr>
                       <td>{{ plant.plantName }}</td>
                       <td>
-                        <app-water-need-badge [waterNeeds]="plant.waterNeeds"></app-water-need-badge>
+                        <app-water-need-badge [waterNeeds]="plant.waterNeeds" [timesPerWeek]="plant.timesPerWeek"></app-water-need-badge>
                       </td>
                       <td>{{ 'Watering.TimesPerWeek' | translate : { count: plant.timesPerWeek } }}</td>
                     </tr>

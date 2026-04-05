@@ -2,6 +2,9 @@
   <h3 class="dialog-header badge-info-title">{{ data.titleKey | translate }}</h3>
   <div class="dialog-body">
     <p class="badge-info-desc">{{ data.descriptionKey | translate }}</p>
+    @if (data.timesPerWeek) {
+      <p class="badge-info-frequency">{{ 'Watering.TimesPerWeek' | translate : { count: data.timesPerWeek } }}</p>
+    }
   </div>
   <div class="dialog-footer">
     <button mat-dialog-close class="btn btn-secondary btn-sm" [translate]="'BadgeInfo.Close'"></button>

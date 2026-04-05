@@ -23,10 +23,7 @@
             {{ key | translate }}
           </span>
         }
-        <app-water-need-badge
-          [waterNeeds]="plant().waterNeeds"
-          (click)="openBadgeInfo('BadgeInfo.Water.' + getWaterBadgeKey(plant().waterNeeds) + '.Title', 'BadgeInfo.Water.' + getWaterBadgeKey(plant().waterNeeds) + '.Description'); $event.stopPropagation()">
-        </app-water-need-badge>
+        <app-water-need-badge [waterNeeds]="plant().waterNeeds"></app-water-need-badge>
         @if (getRootDepthKey(plant().rootDepth); as key) {
           <span class="detail-badge badge-root"
             (click)="openBadgeInfo('BadgeInfo.RootDepth.' + getRootDepthBadgeKey(plant().rootDepth) + '.Title', 'BadgeInfo.RootDepth.' + getRootDepthBadgeKey(plant().rootDepth) + '.Description'); $event.stopPropagation()">
