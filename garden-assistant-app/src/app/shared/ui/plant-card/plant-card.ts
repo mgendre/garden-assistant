@@ -28,7 +28,7 @@ export class PlantCard implements OnInit {
   readonly removable = input(false);
   readonly hideMechanisms = input(false);
   readonly hideFavButton = input(false);
-  readonly relationalMechanisms = input<number[]>([]);
+  readonly relationalMechanisms = input<AssociationMechanism[]>([]);
   readonly showCentralToggle = input(false);
   readonly isCentral = input(false);
   readonly showCentralIndicator = input(false);

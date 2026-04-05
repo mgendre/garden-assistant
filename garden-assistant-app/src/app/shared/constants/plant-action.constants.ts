@@ -18,7 +18,7 @@ export const ACTION_TYPE_CONFIGS: ActionTypeConfig[] = [
   { type: PlantActionType.Division, color: '#7c3aed', labelKey: 'Calendar.ActionType.Division', badgeKey: 'Division' },
 ];
 
-export const ACTION_COLORS: Record<number, string> = Object.fromEntries(
+export const ACTION_COLORS: Record<string, string> = Object.fromEntries(
   ACTION_TYPE_CONFIGS.map(c => [c.type, c.color])
 );
 

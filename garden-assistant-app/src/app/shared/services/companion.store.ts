@@ -48,7 +48,7 @@ const FAMILY_CLASS_MAP: Record<string, string> = {
   'Boraginaceae': 'fam-boraginaceae',
 };
 
-const MECHANISM_KEY_MAP: Record<number, string> = {
+const MECHANISM_KEY_MAP: Record<AssociationMechanism, string> = {
   [AssociationMechanism.OlfactoryConfusion]: 'OlfactoryConfusion',
   [AssociationMechanism.PollinatorAttraction]: 'PollinatorAttraction',
   [AssociationMechanism.TrapCrop]: 'TrapCrop',
@@ -65,6 +65,7 @@ const MECHANISM_KEY_MAP: Record<number, string> = {
   [AssociationMechanism.WeedSuppression]: 'WeedSuppression',
   [AssociationMechanism.Biofumigation]: 'Biofumigation',
   [AssociationMechanism.NursePlant]: 'NursePlant',
+  [AssociationMechanism.SharedPathogen]: 'SharedPathogen',
 };
 
 export const PRIORITY_MECHANISMS: AssociationMechanism[] = [
@@ -91,7 +92,7 @@ export class CompanionStore {
   readonly searchQuery = signal('');
   readonly sortMode = signal<'compat' | 'alpha' | 'family'>('compat');
   readonly myPlantsOnly = signal(false);
-  readonly mechanismFilter = signal<number | null>(null);
+  readonly mechanismFilter = signal<AssociationMechanism | null>(null);
   readonly rootDepthFilter = signal<RootDepth | null>(null);
   readonly soilTypeFilter = signal<string | null>(null);
   readonly phCompatibleFilter = signal(true);
@@ -151,7 +152,7 @@ export class CompanionStore {
   });
 
   readonly catalogAssociationMechanisms = computed(() => {
-    const map = new Map<string, { beneficial: number[]; harmful: number[] }>();
+    const map = new Map<string, { beneficial: AssociationMechanism[]; harmful: AssociationMechanism[] }>();
     for (const c of this.recommendations()?.goodCompanions ?? []) {
       if (c.plantId) {
         const entry = map.get(c.plantId) ?? { beneficial: [], harmful: [] };
@@ -186,7 +187,7 @@ export class CompanionStore {
   });
 
   readonly availableMechanisms = computed(() =>
-    this.sortMechanisms(Object.keys(MECHANISM_KEY_MAP).map(Number))
+    this.sortMechanisms(Object.keys(MECHANISM_KEY_MAP) as AssociationMechanism[])
   );
 
   readonly filteredPlants = computed(() => {
@@ -283,7 +284,7 @@ export class CompanionStore {
   });
 
   readonly intrinsicMechanismsByPlant = computed(() => {
-    const map = new Map<string, number[]>();
+    const map = new Map<string, AssociationMechanism[]>();
     for (const entry of this.recommendations()?.intrinsicMechanismsByPlant ?? []) {
       if (!entry.plantId) { continue; }
       map.set(entry.plantId, this.sortMechanisms(entry.mechanisms ?? []));
@@ -292,7 +293,7 @@ export class CompanionStore {
   });
 
   readonly relationalMechanismsByPlant = computed(() => {
-    const map = new Map<string, number[]>();
+    const map = new Map<string, AssociationMechanism[]>();
     for (const entry of this.recommendations()?.selectedPlantsMechanisms ?? []) {
       if (!entry.plantId) { continue; }
       map.set(entry.plantId, this.sortMechanisms(entry.mechanisms ?? []));
@@ -452,7 +453,7 @@ export class CompanionStore {
     this.centralPlantIds.set(centralIds);
   }
 
-  private sortMechanisms(mechanisms: number[]): number[] {
+  private sortMechanisms(mechanisms: AssociationMechanism[]): AssociationMechanism[] {
     return [...mechanisms].sort((a, b) => {
       const keyA = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[a] ?? ''}`);
       const keyB = this.translate.instant(`Plant.Mechanism.${MECHANISM_KEY_MAP[b] ?? ''}`);
@@ -659,7 +660,7 @@ export class CompanionStore {
     this.myPlantsOnly.update(v => !v);
   }
 
-  toggleMechanismFilter(mechanism: number): void {
+  toggleMechanismFilter(mechanism: AssociationMechanism): void {
     this.mechanismFilter.update(v => v === mechanism ? null : mechanism);
   }
 

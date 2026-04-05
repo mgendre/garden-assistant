@@ -42,17 +42,17 @@
         }
         <div class="association-list">
           @for (assoc of associations(); track $index) {
-            <div class="association-item" [class.association-item--harmful]="assoc.effect === 1">
+            <div class="association-item" [class.association-item--harmful]="assoc.effect === 'Harmful'">
               <div class="association-header">
                 <span class="association-plants">
-                  @if (assoc.effect === 1) {
+                  @if (assoc.effect === 'Harmful') {
                     <span class="association-harmful-icon">✕</span>
                   }
                   {{ plantName(assoc.sourcePlantId) }}
                   <span class="association-arrow">→</span>
                   {{ plantName(assoc.targetPlantId) }}
                 </span>
-                <span class="mechanism-chip" [class.mechanism-green]="assoc.effect === 0" [class.mechanism-red]="assoc.effect === 1" (click)="openMechanismInfo(assoc.mechanism!)">
+                <span class="mechanism-chip" [class.mechanism-green]="assoc.effect === 'Beneficial'" [class.mechanism-red]="assoc.effect === 'Harmful'" (click)="openMechanismInfo(assoc.mechanism!)">
                   {{ 'Plant.Mechanism.' + store.getMechanismKey(assoc.mechanism!) | translate }}
                 </span>
               </div>

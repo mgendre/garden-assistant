@@ -10,7 +10,7 @@ import { DialogService } from '../../../shared/services/dialog.service';
 import { PlantDialogService } from '../../../shared/services/plant-dialog.service';
 import { SearchInput } from '../../../shared/ui/search-input/search-input';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
-import { PlantDto, RootDepth } from '../../../api/garden-assistant-api';
+import { PlantDto, RootDepth, AssociationMechanism } from '../../../api/garden-assistant-api';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 import { RatingDetailDialog, RatingDetailData } from '../../../shared/ui/rating-detail-dialog/rating-detail-dialog';
 
@@ -101,7 +101,7 @@ export class PlantCatalogue {
     this.plantDialogService.openDetail(plant);
   }
 
-  openMechanismInfo(mechanism: number, event: Event): void {
+  openMechanismInfo(mechanism: AssociationMechanism, event: Event): void {
     event.stopPropagation();
     const key = this.store.getMechanismKey(mechanism);
     if (key) {
