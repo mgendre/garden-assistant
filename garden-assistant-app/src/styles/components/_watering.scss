@@ -196,3 +196,15 @@
   &--medium { background: var(--color-water-bg); color: var(--color-water); }
   &--low    { background: var(--color-parchment); color: var(--color-text-muted); }
 }
+
+.watering-dot-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.watering-amount-label {
+  font-size: 0.625rem;
+  color: var(--color-water-dark);
+}

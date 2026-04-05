@@ -2,7 +2,7 @@
   <div class="calendar-loading"><div class="calendar-loading-spinner"></div></div>
 } @else if (beds().length === 0) {
   <div class="empty-state">
-    <span class="empty-state-icon">💧</span>
+    <fa-icon [icon]="faDroplet" class="empty-state-icon"></fa-icon>
     <p class="empty-state-text" [translate]="'Watering.EmptyState'"></p>
   </div>
 } @else {
@@ -50,10 +50,10 @@
               @for (day of weekDays; track day) {
                 <div class="watering-grid__day-cell" role="gridcell">
                   @if (hasDot(day, plant.recommendedDays)) {
-                    <div style="display:flex; flex-direction:column; align-items:center; gap:2px">
+                    <div class="watering-dot-cell">
                       <div class="watering-dot" [attr.aria-label]="'Watering.DotAriaLabel' | translate"></div>
                       @if (plant.waterAmountMl) {
-                        <span style="font-size:0.625rem; color:var(--color-water-dark)">
+                        <span class="watering-amount-label">
                           {{ plant.waterAmountMl >= 1000
                               ? ('Watering.WaterAmountL' | translate : { amount: (plant.waterAmountMl / 1000).toFixed(1) })
                               : ('Watering.WaterAmountMl' | translate : { amount: plant.waterAmountMl }) }}

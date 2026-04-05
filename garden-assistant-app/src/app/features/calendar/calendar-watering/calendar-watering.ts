@@ -1,7 +1,7 @@
 import { Component, inject, computed, input, effect } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight, faDroplet } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { WateringStore } from '../../../shared/services/watering.store';
 import { WEEK_DAYS, DayOfWeekStr } from '../../../api/watering.api';
@@ -20,6 +20,7 @@ export class CalendarWatering {
   protected readonly store = inject(WateringStore);
   protected readonly faLeft = faChevronLeft;
   protected readonly faRight = faChevronRight;
+  protected readonly faDroplet = faDroplet;
   protected readonly weekDays = WEEK_DAYS;
   protected readonly todayDayOfWeek = this.getTodayDayOfWeek();
 
