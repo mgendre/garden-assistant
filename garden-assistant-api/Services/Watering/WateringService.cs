@@ -1,5 +1,6 @@
 using GardenAssistant.Data;
 using GardenAssistant.Data.Entities;
+using GardenAssistant.Data.Entities.Enums;
 using GardenAssistant.DTOs.Watering;
 using Microsoft.EntityFrameworkCore;
 
@@ -73,7 +74,7 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
         return new BedWateringDto(null, "MyPlants", true, null, false, plantDtos);
     }
 
-    private PlantWateringDto BuildPlantWateringDto(Plant plant, int halfMonth, Data.Entities.Enums.SoilType? soilType, bool hasMulch)
+    private PlantWateringDto BuildPlantWateringDto(Plant plant, int halfMonth, SoilType? soilType, bool hasMulch)
     {
         var freq = calculator.CalculateFrequency(plant.WaterNeeds, halfMonth, soilType, hasMulch);
         return new PlantWateringDto(plant.Id, plant.Name, plant.WaterNeeds, freq.TimesPerWeek, freq.RecommendedDays, null);

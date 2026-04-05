@@ -65,6 +65,27 @@ public class WateringServiceScheduleTests : DatabaseTestBase
     }
 
     [Fact]
+    public async Task GetWateringScheduleAsync_WhenSourceIsAll_ShouldReturnGardenAndPersonalBeds()
+    {
+        var plant1 = new Plant { Id = Guid.NewGuid(), Key = "tomate-all", Name = "Tomate", WaterNeeds = WaterNeeds.High };
+        var guild = new Guild { Id = Guid.NewGuid(), UserId = _userId, Name = "G" };
+        var bed = new Planting { Id = Guid.NewGuid(), GardenId = _gardenId, UserId = _userId, Name = "Planche", GuildId = guild.Id, CreatedAtUtc = DateTime.UtcNow };
+        var plant2 = new Plant { Id = Guid.NewGuid(), Key = "laitue-all", Name = "Laitue", WaterNeeds = WaterNeeds.Low };
+        DbContext.Plants.AddRange(plant1, plant2);
+        DbContext.Guilds.Add(guild);
+        DbContext.Plantings.Add(bed);
+        DbContext.GuildPlants.Add(new GuildPlant { GuildId = guild.Id, PlantId = plant1.Id });
+        DbContext.UserPlants.Add(new UserPlant { UserId = _userId, PlantId = plant2.Id });
+        await DbContext.SaveChangesAsync();
+
+        var result = await _sut.GetWateringScheduleAsync(_userId, halfMonth: 13, source: "all");
+
+        result.Beds.Count.ShouldBe(2);
+        result.Beds.Any(b => !b.IsPersonalPlants).ShouldBeTrue();
+        result.Beds.Any(b => b.IsPersonalPlants).ShouldBeTrue();
+    }
+
+    [Fact]
     public async Task GetWateringScheduleAsync_WhenOtherUser_ShouldReturnEmptyBeds()
     {
         var otherUser = Guid.NewGuid();
