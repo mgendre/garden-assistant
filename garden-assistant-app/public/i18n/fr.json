@@ -673,6 +673,7 @@
   },
   "GardenWatering": {
     "Title": "Calendrier d'arrosage",
+    "WeekTitle": "Semaine en cours",
     "EmptyState": "Aucune planche avec des plantes à arroser.",
     "GridAriaLabel": "Grille d'arrosage"
   },

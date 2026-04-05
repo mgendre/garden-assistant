@@ -25,6 +25,7 @@
   },
   "GardenWatering": {
     "Title": "Watering calendar",
+    "WeekTitle": "Current week",
     "EmptyState": "No beds with plants to water.",
     "GridAriaLabel": "Watering grid"
   },

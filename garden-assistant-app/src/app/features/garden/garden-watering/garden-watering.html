@@ -19,6 +19,9 @@
       } @else {
         <div class="watering-layout">
           <div class="watering-layout__grid">
+            <div class="section-header px-2">
+              <span class="section-header-label" [translate]="'GardenWatering.WeekTitle'"></span>
+            </div>
             @for (bed of beds(); track bed.bedId ?? bed.bedName; let first = $first) {
               <div [class.mt-4]="!first">
                 <div class="section-divider-title">{{ bed.bedName }}</div>
@@ -83,9 +86,7 @@
                     <tr>
                       <td>{{ plant.plantName }}</td>
                       <td>
-                        <span class="detail-badge badge-water">
-                          {{ 'Plant.Water.' + plant.waterNeeds | translate }}
-                        </span>
+                        <app-water-need-badge [waterNeeds]="plant.waterNeeds"></app-water-need-badge>
                       </td>
                       <td>{{ 'Watering.TimesPerWeek' | translate : { count: plant.timesPerWeek } }}</td>
                     </tr>

@@ -5,11 +5,12 @@ import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { WateringService } from '../../../shared/services/watering.service';
 import { WateringScheduleDto, WEEK_DAYS, DayOfWeekStr } from '../../../api/watering.api';
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
+import { WaterNeedBadge } from '../../../shared/ui/water-need-badge/water-need-badge';
 
 @Component({
   selector: 'app-garden-watering',
   standalone: true,
-  imports: [TranslateModule, FaIconComponent, Collapsible],
+  imports: [TranslateModule, FaIconComponent, Collapsible, WaterNeedBadge],
   templateUrl: './garden-watering.html',
   styleUrl: './garden-watering.scss'
 })
