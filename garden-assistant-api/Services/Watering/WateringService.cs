@@ -21,8 +21,63 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
         return new WateringTodayDto(beds);
     }
 
-    public Task<WateringScheduleDto> GetWateringScheduleAsync(Guid userId, int halfMonth, string source)
-        => Task.FromResult(new WateringScheduleDto([]));
+    public async Task<WateringScheduleDto> GetWateringScheduleAsync(Guid userId, int halfMonth, string source)
+    {
+        var beds = new List<BedWateringDto>();
+
+        if (source is "gardenPlants" or "all")
+        {
+            beds.AddRange(await BuildGardenBedsAsync(userId, halfMonth));
+        }
+
+        if (source is "myPlants" or "all")
+        {
+            var personalBed = await BuildPersonalPlantsBedAsync(userId, halfMonth);
+            if (personalBed.Plants.Count > 0) { beds.Add(personalBed); }
+        }
+
+        return new WateringScheduleDto(beds);
+    }
+
+    private async Task<List<BedWateringDto>> BuildGardenBedsAsync(Guid userId, int halfMonth)
+    {
+        var (plantings, plantsByGuild) = await LoadGardenDataAsync(userId);
+
+        return plantings
+            .Where(p => p.GuildId.HasValue)
+            .Select(p =>
+            {
+                var plants = plantsByGuild.GetValueOrDefault(p.GuildId!.Value, [])
+                    .Select(plant => BuildPlantWateringDto(plant, halfMonth, null, false))
+                    .ToList();
+                return new BedWateringDto(p.Id, p.Name, false, null, false, plants);
+            })
+            .ToList();
+    }
+
+    private async Task<BedWateringDto> BuildPersonalPlantsBedAsync(Guid userId, int halfMonth)
+    {
+        var userPlantIds = await dbContext.UserPlants
+            .Where(up => up.UserId == userId)
+            .Select(up => up.PlantId)
+            .ToListAsync();
+
+        var plants = await dbContext.Plants
+            .Where(p => userPlantIds.Contains(p.Id))
+            .ToListAsync();
+
+        var plantDtos = plants
+            .Select(p => BuildPlantWateringDto(p, halfMonth, null, false))
+            .ToList();
+
+        return new BedWateringDto(null, "MyPlants", true, null, false, plantDtos);
+    }
+
+    private PlantWateringDto BuildPlantWateringDto(Plant plant, int halfMonth, Data.Entities.Enums.SoilType? soilType, bool hasMulch)
+    {
+        var freq = calculator.CalculateFrequency(plant.WaterNeeds, halfMonth, soilType, hasMulch);
+        return new PlantWateringDto(plant.Id, plant.Name, plant.WaterNeeds, freq.TimesPerWeek, freq.RecommendedDays, null);
+    }
 
     private BedWateringTodayDto BuildBedTodayDto(
         Planting planting,
