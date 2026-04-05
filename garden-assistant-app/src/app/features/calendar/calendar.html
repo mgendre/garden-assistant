@@ -21,8 +21,6 @@
 
     <app-calendar-this-month></app-calendar-this-month>
 
-    <app-calendar-watering-today></app-calendar-watering-today>
-
     <div class="panel">
       <div class="panel-header" style="border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 0.75rem">
         <app-toggle-group
@@ -31,10 +29,6 @@
           (valueChange)="activeCalendarTab.set($any($event))">
         </app-toggle-group>
       </div>
-
-      @if (activeCalendarTab() === 'watering') {
-        <app-calendar-watering [active]="true"></app-calendar-watering>
-      }
 
       @if (activeCalendarTab() === 'actions') {
       <div class="calendar-filter-chips" style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem">

@@ -12,13 +12,11 @@ import { CalendarService } from '../../shared/services/calendar.service';
 import { ACTION_TYPE_CONFIGS, FILTER_CONFIGS } from '../../shared/constants/plant-action.constants';
 import { EmptyState } from '../../shared/ui/empty-state/empty-state';
 import { ToggleGroup, ToggleOption } from '../../shared/ui/toggle-group/toggle-group';
-import { CalendarWateringToday } from './calendar-watering-today/calendar-watering-today';
-import { CalendarWatering } from './calendar-watering/calendar-watering';
 
 @Component({
   selector: 'app-calendar',
   standalone: true,
-  imports: [TranslateModule, PlantCalendarGantt, CalendarThisMonth, EmptyState, ToggleGroup, CalendarWateringToday, CalendarWatering],
+  imports: [TranslateModule, PlantCalendarGantt, CalendarThisMonth, EmptyState, ToggleGroup],
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss'
 })
