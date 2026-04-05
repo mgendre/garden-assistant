@@ -92,6 +92,7 @@
     "ConfirmDeleteMessage": "Supprimer la planche « {{name}} » ?",
     "ConfirmDeleteMessageWithPlants": "Supprimer la planche « {{name}} » ? Les plantes suivantes seront perdues : {{plants}}",
     "SoilTypeLabel": "Type de sol de la planche",
+    "HasMulchLabel": "Planche paillée",
     "SoilType": {
       "None": "Non renseigné",
       "Sandy": "Sableux",

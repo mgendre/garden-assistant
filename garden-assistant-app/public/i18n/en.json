@@ -38,6 +38,7 @@
   },
   "Bed": {
     "SoilTypeLabel": "Bed soil type",
+    "HasMulchLabel": "Mulched bed",
     "SoilType": {
       "None": "Not specified",
       "Sandy": "Sandy",

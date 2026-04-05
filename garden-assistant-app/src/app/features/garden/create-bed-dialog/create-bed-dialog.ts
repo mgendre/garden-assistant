@@ -7,11 +7,13 @@ export interface CreateBedDialogData {
   mode: 'create' | 'edit';
   name?: string;
   soilType?: string;
+  hasMulch?: boolean;
 }
 
 export interface CreateBedDialogResult {
   name?: string;
   soilType?: string;
+  hasMulch?: boolean;
 }
 
 @Component({
@@ -26,6 +28,7 @@ export class CreateBedDialog {
 
   readonly name = signal(this.data.name ?? '');
   readonly soilType = signal(this.data.soilType ?? '');
+  readonly hasMulch = signal(this.data.hasMulch ?? false);
 
   readonly soilTypeOptions = [
     { value: '', labelKey: 'Bed.SoilType.None' },
@@ -42,6 +45,7 @@ export class CreateBedDialog {
     this.dialogRef.close({
       name: this.name().trim() || undefined,
       soilType: this.soilType() || undefined,
+      hasMulch: this.hasMulch(),
     } as CreateBedDialogResult);
   }
 

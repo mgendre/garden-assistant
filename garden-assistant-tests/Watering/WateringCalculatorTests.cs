@@ -149,4 +149,47 @@ public class WateringCalculatorTests
         var result = _sut.CalculateFrequency(WaterNeeds.Low, halfMonth: 13, soilType: SoilType.Sandy);
         result.RecommendedDays.Length.ShouldBe(result.TimesPerWeek);
     }
+
+    [Fact]
+    public void CalculateFrequency_WhenMulchAndHighSummer_ShouldReduceFrequency()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.High, halfMonth: 13, hasMulch: true);
+        result.TimesPerWeek.ShouldBe(3);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenMulchAndLowWinter_ShouldNotGoBelowZero()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.Low, halfMonth: 2, hasMulch: true);
+        result.TimesPerWeek.ShouldBeGreaterThanOrEqualTo(0);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenMulchAndLowSpring_ShouldKeepMinimum1()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.Low, halfMonth: 7, hasMulch: true);
+        result.TimesPerWeek.ShouldBe(1);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenSandySoilAndMulch_ShouldCombineCoefficients()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.Low, halfMonth: 13, soilType: SoilType.Sandy, hasMulch: true);
+        result.TimesPerWeek.ShouldBe(2);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenMulch_RecommendedDaysLength_ShouldMatchTimesPerWeek()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.High, halfMonth: 13, hasMulch: true);
+        result.RecommendedDays.Length.ShouldBe(result.TimesPerWeek);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenNoMulch_FrequencyHigherThanWithMulch()
+    {
+        var withMulch    = _sut.CalculateFrequency(WaterNeeds.Medium, halfMonth: 13, hasMulch: true);
+        var withoutMulch = _sut.CalculateFrequency(WaterNeeds.Medium, halfMonth: 13, hasMulch: false);
+        withMulch.TimesPerWeek.ShouldBeLessThanOrEqualTo(withoutMulch.TimesPerWeek);
+    }
 }
