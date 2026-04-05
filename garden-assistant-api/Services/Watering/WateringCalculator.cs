@@ -26,7 +26,7 @@ public class WateringCalculator : IWateringCalculator
         var baseFrequency = GetBaseFrequency(waterNeeds, season);
         var adjusted = ApplyCoefficients(baseFrequency, soilType, hasMulch, season);
         var days = RecommendedDaysMap.TryGetValue(adjusted, out var d) ? d : RecommendedDaysMap[7];
-        return new WateringFrequency(adjusted, days, null);
+        return new WateringFrequency(adjusted, days);
     }
 
     private static int GetBaseFrequency(WaterNeeds waterNeeds, Season season) => (waterNeeds, season) switch
@@ -77,5 +77,4 @@ public class WateringCalculator : IWateringCalculator
         _ => 1.0
     };
 
-    private enum Season { Winter, Spring, Summer, Autumn }
 }

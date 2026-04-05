@@ -8,8 +8,6 @@ public class WateringCalculatorTests
 {
     private readonly WateringCalculator _sut = new();
 
-    // --- Matrice de base ---
-
     [Theory]
     [InlineData(1,  1)]
     [InlineData(4,  1)]
@@ -74,8 +72,6 @@ public class WateringCalculatorTests
         var result = _sut.CalculateFrequency(WaterNeeds.High, halfMonth);
         result.TimesPerWeek.ShouldBe(expected);
     }
-
-    // --- RecommendedDays ---
 
     [Fact]
     public void CalculateFrequency_RecommendedDaysLength_ShouldMatchTimesPerWeek()

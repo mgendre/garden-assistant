@@ -1,6 +1,3 @@
 namespace GardenAssistant.Models;
 
-public record WateringFrequency(
-    int TimesPerWeek,
-    DayOfWeek[] RecommendedDays,
-    string? Notes);
+public record WateringFrequency(int TimesPerWeek, DayOfWeek[] RecommendedDays);
