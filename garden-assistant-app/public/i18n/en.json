@@ -1,24 +1,5 @@
 {
   "Watering": {
-    "TodayLabel": "Watering today",
-    "NextWatering": "Next watering: {{day}}",
-    "PlantBadgeAriaLabel": "View details for {{name}}",
-    "Day": {
-      "Monday": "Monday",
-      "Tuesday": "Tuesday",
-      "Wednesday": "Wednesday",
-      "Thursday": "Thursday",
-      "Friday": "Friday",
-      "Saturday": "Saturday",
-      "Sunday": "Sunday"
-    },
-    "TabActions": "Growing calendar",
-    "TabWatering": "Watering",
-    "WeekCurrent": "Current week",
-    "WeekNext": "Next week",
-    "PrevWeek": "Previous week",
-    "NextWeek": "Next week",
-    "GridAriaLabel": "Watering calendar, week of {{date}}",
     "FrequenciesTitle": "Seasonal frequencies",
     "FreqPlantCol": "Plant",
     "FreqNeedCol": "Water needs",
@@ -29,16 +10,14 @@
       "High": "High"
     },
     "TimesPerWeek": "{{count}}×/week",
-    "EmptyState": "No plants with a watering schedule.",
     "WaterAmountMl": "{{amount}} ml",
     "WaterAmountL": "{{amount}} L",
-    "DailyTotalL": "~{{total}} L",
-    "MyPlantsBed": "My plants",
     "DotAriaLabel": "Watering scheduled"
   },
-  "Calendar": {
-    "TabActions": "Growing calendar",
-    "TabWatering": "Watering"
+  "GardenWatering": {
+    "Title": "Watering calendar",
+    "EmptyState": "No beds with plants to water.",
+    "GridAriaLabel": "Watering grid"
   },
   "Bed": {
     "SoilTypeLabel": "Bed soil type",

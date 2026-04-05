@@ -1,6 +1,6 @@
-import { Component, inject, OnInit, computed, signal } from '@angular/core';
+import { Component, inject, OnInit, computed } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { faHeart, faSeedling, faLayerGroup, faTableCellsLarge, faList, faDroplet } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faSeedling, faLayerGroup, faTableCellsLarge, faList } from '@fortawesome/free-solid-svg-icons';
 import { CalendarStore, CalendarGrouping, PlantSourceFilter } from '../../shared/services/calendar.store';
 import { PlantStore } from '../../shared/services/plant.store';
 import { DialogService } from '../../shared/services/dialog.service';
@@ -28,11 +28,6 @@ export class Calendar implements OnInit {
   private readonly calendarService = inject(CalendarService);
 
   protected readonly filters = FILTER_CONFIGS;
-  protected readonly activeCalendarTab = signal<'actions' | 'watering'>('actions');
-  protected readonly calendarTabOptions: ToggleOption[] = [
-    { value: 'actions', labelKey: 'Calendar.TabActions', icon: faSeedling },
-    { value: 'watering', labelKey: 'Calendar.TabWatering', icon: faDroplet },
-  ];
   protected readonly sourceOptions: ToggleOption[] = [
     { value: 'all', labelKey: 'Calendar.AllPlants' },
     { value: 'myPlants', labelKey: 'Calendar.MyPlantsOnly', icon: faHeart },
