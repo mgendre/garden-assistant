@@ -24,10 +24,17 @@
     <app-calendar-watering-today></app-calendar-watering-today>
 
     <div class="panel">
-      <div class="panel-header">
-        <span class="panel-title" [translate]="'Calendar.Title'"></span>
+      <div class="panel-header" style="border-bottom: 1px solid var(--color-border-subtle); padding-bottom: 0.75rem">
+        <app-toggle-group
+          [options]="calendarTabOptions"
+          [selectedValue]="activeCalendarTab()"
+          (valueChange)="activeCalendarTab.set($any($event))">
+        </app-toggle-group>
       </div>
 
+      <app-calendar-watering [active]="activeCalendarTab() === 'watering'"></app-calendar-watering>
+
+      @if (activeCalendarTab() === 'actions') {
       <div class="calendar-filter-chips" style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem">
         @if (store.sourceFilter() === 'gardenPlants') {
           <app-toggle-group style="margin-right: 0.25rem"
@@ -157,6 +164,7 @@
             </div>
           }
         }
+      }
       }
     </div>
   }
