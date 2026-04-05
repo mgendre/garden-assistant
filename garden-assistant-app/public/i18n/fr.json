@@ -658,5 +658,41 @@
     "Empty": "Ajoutez des plantes à vos planches pour voir le calendrier.",
     "GroupedByBed": "Groupé par planche",
     "FlatView": "Vue globale"
+  },
+  "Watering": {
+    "TodayLabel": "Arrosage aujourd'hui",
+    "NextWatering": "Prochain arrosage : {{day}}",
+    "PlantBadgeAriaLabel": "Voir le détail de {{name}}",
+    "Day": {
+      "Monday": "lundi",
+      "Tuesday": "mardi",
+      "Wednesday": "mercredi",
+      "Thursday": "jeudi",
+      "Friday": "vendredi",
+      "Saturday": "samedi",
+      "Sunday": "dimanche"
+    },
+    "TabActions": "Actions culturales",
+    "TabWatering": "Arrosage",
+    "WeekCurrent": "Semaine courante",
+    "WeekNext": "Semaine suivante",
+    "PrevWeek": "Semaine précédente",
+    "NextWeek": "Semaine suivante",
+    "GridAriaLabel": "Calendrier d'arrosage, semaine du {{date}}",
+    "FrequenciesTitle": "Fréquences saisonnières",
+    "FreqPlantCol": "Plante",
+    "FreqNeedCol": "Besoin en eau",
+    "FreqRateCol": "Fréquence",
+    "WaterNeed": {
+      "Low": "Faible",
+      "Medium": "Moyen",
+      "High": "Élevé"
+    },
+    "TimesPerWeek": "{{count}}×/sem.",
+    "EmptyState": "Aucune plante avec un calendrier d'arrosage.",
+    "WaterAmountMl": "{{amount}} ml",
+    "WaterAmountL": "{{amount}} L",
+    "DailyTotalL": "~{{total}} L",
+    "MyPlantsBed": "Mes plantes"
   }
 }

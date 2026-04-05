@@ -1,0 +1,21 @@
+@if (!store.loadingToday() && (store.todayPlants().length > 0 || store.nextWateringDayKey())) {
+  <div class="watering-banner" role="status" aria-live="polite">
+    <fa-icon [icon]="faDroplet" class="watering-banner__icon" aria-hidden="true"></fa-icon>
+    <span class="watering-banner__label" [translate]="'Watering.TodayLabel'"></span>
+
+    @if (store.todayPlants().length > 0) {
+      <div class="watering-banner__badges">
+        @for (plant of store.todayPlants(); track plant.plantId) {
+          <button class="watering-badge"
+                  [attr.aria-label]="'Watering.PlantBadgeAriaLabel' | translate : { name: plant.plantName }">
+            {{ plant.plantName }}
+          </button>
+        }
+      </div>
+    } @else {
+      <span class="watering-banner__next">
+        {{ 'Watering.NextWatering' | translate : { day: store.nextWateringDayKey()! | translate } }}
+      </span>
+    }
+  </div>
+}

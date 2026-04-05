@@ -1,0 +1,38 @@
+{
+  "Watering": {
+    "TodayLabel": "Watering today",
+    "NextWatering": "Next watering: {{day}}",
+    "PlantBadgeAriaLabel": "View details for {{name}}",
+    "Day": {
+      "Monday": "Monday",
+      "Tuesday": "Tuesday",
+      "Wednesday": "Wednesday",
+      "Thursday": "Thursday",
+      "Friday": "Friday",
+      "Saturday": "Saturday",
+      "Sunday": "Sunday"
+    },
+    "TabActions": "Growing calendar",
+    "TabWatering": "Watering",
+    "WeekCurrent": "Current week",
+    "WeekNext": "Next week",
+    "PrevWeek": "Previous week",
+    "NextWeek": "Next week",
+    "GridAriaLabel": "Watering calendar, week of {{date}}",
+    "FrequenciesTitle": "Seasonal frequencies",
+    "FreqPlantCol": "Plant",
+    "FreqNeedCol": "Water needs",
+    "FreqRateCol": "Frequency",
+    "WaterNeed": {
+      "Low": "Low",
+      "Medium": "Medium",
+      "High": "High"
+    },
+    "TimesPerWeek": "{{count}}×/week",
+    "EmptyState": "No plants with a watering schedule.",
+    "WaterAmountMl": "{{amount}} ml",
+    "WaterAmountL": "{{amount}} L",
+    "DailyTotalL": "~{{total}} L",
+    "MyPlantsBed": "My plants"
+  }
+}
