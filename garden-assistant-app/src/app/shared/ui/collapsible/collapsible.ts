@@ -1,4 +1,4 @@
-import { Component, input, output, signal, computed, effect } from '@angular/core';
+import { Component, input, output, signal, computed } from '@angular/core';
 
 @Component({
   selector: 'app-collapsible',
@@ -24,11 +24,7 @@ export class Collapsible {
   });
 
   constructor() {
-    effect(() => {
-      if (this.initialExpanded()) {
-        this.expanded.set(true);
-      }
-    });
+    this.expanded.set(this.initialExpanded());
   }
 
   toggle(): void {
