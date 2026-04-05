@@ -693,6 +693,7 @@
     "WaterAmountMl": "{{amount}} ml",
     "WaterAmountL": "{{amount}} L",
     "DailyTotalL": "~{{total}} L",
-    "MyPlantsBed": "Mes plantes"
+    "MyPlantsBed": "Mes plantes",
+    "DotAriaLabel": "Arrosage prévu"
   }
 }

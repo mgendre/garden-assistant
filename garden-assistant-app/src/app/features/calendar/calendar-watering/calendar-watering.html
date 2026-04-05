@@ -50,7 +50,7 @@
               @for (day of weekDays; track day) {
                 <div class="watering-grid__day-cell" role="gridcell">
                   @if (hasDot(day, plant.recommendedDays)) {
-                    <div class="watering-dot" [attr.aria-label]="'Arrosage prévu'"></div>
+                    <div class="watering-dot" [attr.aria-label]="'Watering.DotAriaLabel' | translate"></div>
                   }
                 </div>
               }
