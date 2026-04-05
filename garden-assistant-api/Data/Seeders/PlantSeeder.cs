@@ -48,6 +48,7 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
             .Include(p => p.IntrinsicMechanisms)
             .Include(p => p.SoilTypes)
             .Where(p => p.UserId == null)
+            .AsSplitQuery()
             .ToDictionaryAsync(p => p.Key, p => p);
     }
 
