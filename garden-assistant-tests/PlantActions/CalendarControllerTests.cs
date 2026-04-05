@@ -5,7 +5,6 @@ using GardenAssistant.Data.Entities.Enums;
 using GardenAssistant.DTOs.Calendar;
 using GardenAssistant.DTOs.Plants;
 using GardenAssistant.Services.Interfaces;
-using GardenAssistant.Services.Watering;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -17,13 +16,12 @@ public class CalendarControllerTests
 {
     private readonly Mock<IUserPlantService> _userPlantServiceMock = new();
     private readonly Mock<IPlantActionService> _plantActionServiceMock = new();
-    private readonly Mock<IWateringService> _wateringServiceMock = new();
     private readonly CalendarController _sut;
     private static readonly Guid DefaultUserId = new("00000000-0000-0000-0000-000000000001");
 
     public CalendarControllerTests()
     {
-        _sut = new CalendarController(_userPlantServiceMock.Object, _plantActionServiceMock.Object, _wateringServiceMock.Object);
+        _sut = new CalendarController(_userPlantServiceMock.Object, _plantActionServiceMock.Object);
         _sut.ControllerContext = new ControllerContext
         {
             HttpContext = new DefaultHttpContext

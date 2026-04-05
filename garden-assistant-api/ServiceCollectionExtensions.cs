@@ -26,7 +26,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IGardenService, GardenService>();
         services.AddScoped<IBedService, BedService>();
         services.AddSingleton<IWateringCalculator, WateringCalculator>();
-        services.AddScoped<IWateringService, WateringService>();
+        services.AddScoped<IGardenWateringService, GardenWateringService>();
 
         return services;
     }

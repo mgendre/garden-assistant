@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using GardenAssistant.DTOs.Gardens;
+using GardenAssistant.DTOs.Watering;
 using GardenAssistant.Services.Interfaces;
+using GardenAssistant.Services.Watering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +13,9 @@ namespace GardenAssistant.Controllers;
 [ApiController]
 [Authorize]
 [Route("api/[controller]")]
-public class GardensController(IGardenService gardenService) : ControllerBase
+public class GardensController(
+    IGardenService gardenService,
+    IGardenWateringService gardenWateringService) : ControllerBase
 {
     private Guid CallerId =>
         Guid.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)!);
@@ -55,5 +60,17 @@ public class GardensController(IGardenService gardenService) : ControllerBase
     {
         var deleted = await gardenService.DeleteAsync(id, CallerId);
         return deleted ? NoContent() : NotFound();
+    }
+
+    [HttpGet("{gardenId:guid}/watering/schedule")]
+    [ProducesResponseType(typeof(WateringScheduleDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetWateringSchedule(
+        Guid gardenId,
+        [FromQuery][Range(1, 24)] int halfMonth)
+    {
+        var result = await gardenWateringService.GetScheduleAsync(CallerId, gardenId, halfMonth);
+        return Ok(result);
     }
 }
