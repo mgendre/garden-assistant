@@ -12,7 +12,16 @@
     "TimesPerWeek": "{{count}}×/week",
     "WaterAmountMl": "{{amount}} ml",
     "WaterAmountL": "{{amount}} L",
-    "DotAriaLabel": "Watering scheduled"
+    "DotAriaLabel": "Watering scheduled",
+    "DayInitial": {
+      "Monday": "M",
+      "Tuesday": "T",
+      "Wednesday": "W",
+      "Thursday": "T",
+      "Friday": "F",
+      "Saturday": "S",
+      "Sunday": "S"
+    }
   },
   "GardenWatering": {
     "Title": "Watering calendar",

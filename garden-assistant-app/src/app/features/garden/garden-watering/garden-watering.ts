@@ -1,5 +1,4 @@
 import { Component, inject, input, output, signal, computed, effect } from '@angular/core';
-import { NgClass } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { faDroplet } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
@@ -10,7 +9,7 @@ import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 @Component({
   selector: 'app-garden-watering',
   standalone: true,
-  imports: [TranslateModule, FaIconComponent, NgClass, Collapsible],
+  imports: [TranslateModule, FaIconComponent, Collapsible],
   templateUrl: './garden-watering.html',
   styleUrl: './garden-watering.scss'
 })
@@ -68,7 +67,4 @@ export class GardenWatering {
     return days.includes(day);
   }
 
-  waterNeedClass(waterNeeds: string): string {
-    return `water-need-badge--${waterNeeds.toLowerCase()}`;
-  }
 }

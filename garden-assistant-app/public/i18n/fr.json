@@ -689,6 +689,15 @@
     "TimesPerWeek": "{{count}}×/sem.",
     "WaterAmountMl": "{{amount}} ml",
     "WaterAmountL": "{{amount}} L",
-    "DotAriaLabel": "Arrosage prévu"
+    "DotAriaLabel": "Arrosage prévu",
+    "DayInitial": {
+      "Monday": "L",
+      "Tuesday": "M",
+      "Wednesday": "M",
+      "Thursday": "J",
+      "Friday": "V",
+      "Saturday": "S",
+      "Sunday": "D"
+    }
   }
 }
