@@ -1335,6 +1335,7 @@ export interface PlantDto {
     varieties?: PlantSummaryDto[];
     harvestReadiness?: HarvestReadinessDto | undefined;
     actions?: PlantActionDto[];
+    waterAmountMl?: number | undefined;
 }
 
 export enum LifeCycle {

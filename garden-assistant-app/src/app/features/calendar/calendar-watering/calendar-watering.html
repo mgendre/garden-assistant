@@ -50,7 +50,16 @@
               @for (day of weekDays; track day) {
                 <div class="watering-grid__day-cell" role="gridcell">
                   @if (hasDot(day, plant.recommendedDays)) {
-                    <div class="watering-dot" [attr.aria-label]="'Watering.DotAriaLabel' | translate"></div>
+                    <div style="display:flex; flex-direction:column; align-items:center; gap:2px">
+                      <div class="watering-dot" [attr.aria-label]="'Watering.DotAriaLabel' | translate"></div>
+                      @if (plant.waterAmountMl) {
+                        <span style="font-size:0.625rem; color:var(--color-water-dark)">
+                          {{ plant.waterAmountMl >= 1000
+                              ? ('Watering.WaterAmountL' | translate : { amount: (plant.waterAmountMl / 1000).toFixed(1) })
+                              : ('Watering.WaterAmountMl' | translate : { amount: plant.waterAmountMl }) }}
+                        </span>
+                      }
+                    </div>
                   }
                 </div>
               }

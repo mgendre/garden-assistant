@@ -14,6 +14,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -112,6 +113,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 400,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -191,6 +193,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -314,6 +317,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 800,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -675,6 +679,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 2000,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -1706,6 +1711,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 300,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -1774,6 +1780,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -1968,6 +1975,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1000,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -3710,6 +3718,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [
       "Loam",
       "Sandy"

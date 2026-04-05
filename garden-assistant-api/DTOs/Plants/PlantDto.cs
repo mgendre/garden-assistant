@@ -26,5 +26,6 @@ public record PlantDto(
     string? ParentPlantName,
     List<PlantSummaryDto> Varieties,
     HarvestReadinessDto? HarvestReadiness,
-    List<PlantActionDto> Actions
+    List<PlantActionDto> Actions,
+    int? WaterAmountMl
 );

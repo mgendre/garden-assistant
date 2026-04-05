@@ -26,6 +26,7 @@ public class Plant
     public List<PlantSoilType> SoilTypes { get; set; } = [];
     public List<PlantIntrinsicMechanism> IntrinsicMechanisms { get; set; } = [];
     public List<PlantAction> Actions { get; set; } = [];
+    public int? WaterAmountMl { get; set; }
     public HarvestReadiness? HarvestReadiness { get; set; }
     public Guid? ParentPlantId { get; set; }
     public Plant? ParentPlant { get; set; }

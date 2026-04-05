@@ -80,6 +80,8 @@ public class PlantService(AppDbContext dbContext) : IPlantService
                 hr.Criteria.Select(c => new HarvestReadinessCriterionDto(c.CriterionType, c.Description)).ToList())
             : null;
 
+        var waterAmountMl = isVariety ? (plant.WaterAmountMl ?? parent?.WaterAmountMl) : plant.WaterAmountMl;
+
         return new PlantDto(
             plant.Id,
             plant.Name,
@@ -104,7 +106,8 @@ public class PlantService(AppDbContext dbContext) : IPlantService
             isVariety ? parent?.Name : null,
             varieties,
             harvestReadiness,
-            MapActions(plant, isVariety, parent)
+            MapActions(plant, isVariety, parent),
+            waterAmountMl
         );
     }
 

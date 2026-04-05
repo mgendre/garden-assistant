@@ -220,6 +220,12 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
             plant.ParentPlantId = parentPlantId;
         }
 
+        if (plant.WaterAmountMl != record.WaterAmountMl)
+        {
+            changes.Add($"WaterAmountMl: {plant.WaterAmountMl} → {record.WaterAmountMl}");
+            plant.WaterAmountMl = record.WaterAmountMl;
+        }
+
         return changes;
     }
 
@@ -265,7 +271,8 @@ public class PlantSeeder(AppDbContext db, IWebHostEnvironment env, ILogger<Plant
         FrostSensitive = record.FrostSensitive ?? false,
         OptimalPhMin = record.OptimalPhMin,
         OptimalPhMax = record.OptimalPhMax,
-        ParentPlantId = parentPlantId
+        ParentPlantId = parentPlantId,
+        WaterAmountMl = record.WaterAmountMl
     };
 
     private void AddIntrinsicMechanisms(Guid plantId, List<AssociationMechanism>? mechanisms)
