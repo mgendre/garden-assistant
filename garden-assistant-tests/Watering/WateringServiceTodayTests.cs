@@ -64,6 +64,22 @@ public class WateringServiceTodayTests : DatabaseTestBase
         result.Beds.ShouldBeEmpty();
     }
 
+    [Fact]
+    public async Task GetWateringTodayAsync_WhenPlantNotTodayAndHasNextDay_ShouldReturnNextWateringDay()
+    {
+        SeedBedWithPlant(WaterNeeds.High);
+        // High/été → 5x/sem → [Lun, Mer, Ven, Sam, Dim]
+        // Mardi n'est pas dans la liste → IsToday=false, NextWateringDay=Mer
+        // On utilise un mardi fixe en juillet pour garantir le halfMonth d'été (13)
+        var summerTuesday = new DateOnly(DateTime.UtcNow.Year, 7, 8);
+        while (summerTuesday.DayOfWeek != DayOfWeek.Tuesday) { summerTuesday = summerTuesday.AddDays(1); }
+
+        var result = await _sut.GetWateringTodayAsync(_userId, summerTuesday);
+
+        result.Beds[0].Plants[0].IsToday.ShouldBeFalse();
+        result.Beds[0].Plants[0].NextWateringDay.ShouldBe(DayOfWeek.Wednesday);
+    }
+
     private (Plant plant, Planting bed) SeedBedWithPlant(WaterNeeds waterNeeds)
     {
         var plant = new Plant { Id = Guid.NewGuid(), Key = $"plant-{Guid.NewGuid()}", Name = "Tomate", WaterNeeds = waterNeeds };

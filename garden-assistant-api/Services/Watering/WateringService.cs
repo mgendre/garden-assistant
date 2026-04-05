@@ -1,4 +1,5 @@
 using GardenAssistant.Data;
+using GardenAssistant.Data.Entities;
 using GardenAssistant.DTOs.Watering;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,12 +9,12 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
 {
     public async Task<WateringTodayDto> GetWateringTodayAsync(Guid userId, DateOnly today)
     {
-        var (plantings, plantsById) = await LoadGardenDataAsync(userId);
+        var (plantings, plantsByGuild) = await LoadGardenDataAsync(userId);
         var halfMonth = GetHalfMonth(today);
 
         var beds = plantings
             .Where(p => p.GuildId.HasValue)
-            .Select(p => BuildBedTodayDto(p, plantsById, halfMonth, today))
+            .Select(p => BuildBedTodayDto(p, plantsByGuild, halfMonth, today))
             .Where(b => b.Plants.Count > 0)
             .ToList();
 
@@ -24,12 +25,13 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
         => Task.FromResult(new WateringScheduleDto([]));
 
     private BedWateringTodayDto BuildBedTodayDto(
-        Data.Entities.Planting planting,
-        Dictionary<Guid, Data.Entities.Plant> plantsById,
+        Planting planting,
+        Dictionary<Guid, List<Plant>> plantsByGuild,
         int halfMonth,
         DateOnly today)
     {
-        var plantStatuses = GetPlantsForGuild(planting.GuildId!.Value, plantsById)
+        var plants = plantsByGuild.GetValueOrDefault(planting.GuildId!.Value, []);
+        var plantStatuses = plants
             .Select(plant =>
             {
                 var freq = calculator.CalculateFrequency(plant.WaterNeeds, halfMonth);
@@ -42,17 +44,7 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
         return new BedWateringTodayDto(planting.Id, planting.Name, false, plantStatuses);
     }
 
-    private IEnumerable<Data.Entities.Plant> GetPlantsForGuild(Guid guildId, Dictionary<Guid, Data.Entities.Plant> plantsById)
-    {
-        return dbContext.GuildPlants
-            .Where(gp => gp.GuildId == guildId)
-            .Select(gp => gp.PlantId)
-            .AsEnumerable()
-            .Where(plantsById.ContainsKey)
-            .Select(id => plantsById[id]);
-    }
-
-    private async Task<(List<Data.Entities.Planting> plantings, Dictionary<Guid, Data.Entities.Plant> plantsById)> LoadGardenDataAsync(Guid userId)
+    private async Task<(List<Planting> plantings, Dictionary<Guid, List<Plant>> plantsByGuild)> LoadGardenDataAsync(Guid userId)
     {
         var plantings = await dbContext.Plantings
             .Where(p => p.UserId == userId && p.GuildId.HasValue)
@@ -60,17 +52,25 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
 
         var guildIds = plantings.Select(p => p.GuildId!.Value).ToList();
 
-        var plantIds = await dbContext.GuildPlants
+        var guildPlantPairs = await dbContext.GuildPlants
             .Where(gp => guildIds.Contains(gp.GuildId))
-            .Select(gp => gp.PlantId)
-            .Distinct()
             .ToListAsync();
+
+        var plantIds = guildPlantPairs.Select(gp => gp.PlantId).Distinct().ToList();
 
         var plantsById = await dbContext.Plants
             .Where(p => plantIds.Contains(p.Id))
             .ToDictionaryAsync(p => p.Id);
 
-        return (plantings, plantsById);
+        var plantsByGuild = guildPlantPairs
+            .GroupBy(gp => gp.GuildId)
+            .ToDictionary(
+                g => g.Key,
+                g => g.Where(gp => plantsById.ContainsKey(gp.PlantId))
+                      .Select(gp => plantsById[gp.PlantId])
+                      .ToList());
+
+        return (plantings, plantsByGuild);
     }
 
     private static int GetHalfMonth(DateOnly date)
