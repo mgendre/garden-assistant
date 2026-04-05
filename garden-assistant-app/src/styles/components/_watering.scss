@@ -83,6 +83,20 @@
   color: var(--color-text-dark);
 }
 
+.watering-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: flex-start;
+
+    &__grid { flex: 3; min-width: 0; }
+    &__freq { flex: 2; min-width: 0; }
+  }
+}
+
 .watering-grid-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

@@ -17,8 +17,8 @@
           <p class="empty-state-text" [translate]="'GardenWatering.EmptyState'"></p>
         </div>
       } @else {
-        <div class="flex flex-col md:flex-row md:gap-6">
-          <div class="md:w-3/5 min-w-0">
+        <div class="watering-layout">
+          <div class="watering-layout__grid">
             @for (bed of beds(); track bed.bedId ?? bed.bedName; let first = $first) {
               <div [class.mt-4]="!first">
                 <div class="section-divider-title">{{ bed.bedName }}</div>
@@ -64,7 +64,7 @@
             }
           </div>
 
-          <div class="md:w-2/5 mt-6 md:mt-0 min-w-0">
+          <div class="watering-layout__freq">
             <div class="section-header px-2">
               <span class="section-header-label" [translate]="'Watering.FrequenciesTitle'"></span>
             </div>
