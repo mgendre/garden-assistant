@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using GardenAssistant.DTOs.Calendar;
@@ -42,6 +43,16 @@ public class CalendarController(
     {
         var today = DateOnly.FromDateTime(DateTime.UtcNow);
         var result = await wateringService.GetWateringTodayAsync(CallerId, today);
+        return Ok(result);
+    }
+
+    [HttpGet("watering/schedule")]
+    [ProducesResponseType(typeof(WateringScheduleDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetWateringSchedule(
+        [FromQuery][Range(1, 24)] int halfMonth,
+        [FromQuery] string source = "all")
+    {
+        var result = await wateringService.GetWateringScheduleAsync(CallerId, halfMonth, source);
         return Ok(result);
     }
 }
