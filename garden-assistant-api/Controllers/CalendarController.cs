@@ -1,7 +1,9 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using GardenAssistant.DTOs.Calendar;
+using GardenAssistant.DTOs.Watering;
 using GardenAssistant.Services.Interfaces;
+using GardenAssistant.Services.Watering;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,7 +14,8 @@ namespace GardenAssistant.Controllers;
 [Route("api/[controller]")]
 public class CalendarController(
     IUserPlantService userPlantService,
-    IPlantActionService plantActionService) : ControllerBase
+    IPlantActionService plantActionService,
+    IWateringService wateringService) : ControllerBase
 {
     private Guid CallerId =>
         Guid.Parse(User.FindFirstValue(JwtRegisteredClaimNames.Sub)!);
@@ -31,5 +34,14 @@ public class CalendarController(
         )).ToList();
 
         return Ok(new CalendarDto(calendarPlants));
+    }
+
+    [HttpGet("watering/today")]
+    [ProducesResponseType(typeof(WateringTodayDto), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetWateringToday()
+    {
+        var today = DateOnly.FromDateTime(DateTime.UtcNow);
+        var result = await wateringService.GetWateringTodayAsync(CallerId, today);
+        return Ok(result);
     }
 }
