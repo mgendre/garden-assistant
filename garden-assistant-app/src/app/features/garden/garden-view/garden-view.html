@@ -46,8 +46,19 @@
       }
     </div>
 
-    <div style="margin-top: 2.5rem; display: block">
-      <app-garden-calendar [beds]="beds()"></app-garden-calendar>
+    <div style="margin-top: 2rem">
+      <app-garden-calendar
+        [beds]="beds()"
+        [open]="activePanel() === 'calendar'"
+        (toggled)="activePanel.set($event ? 'calendar' : null)">
+      </app-garden-calendar>
+    </div>
+    <div style="margin-top: 0.75rem">
+      <app-garden-watering
+        [gardenId]="gardenId()"
+        [open]="activePanel() === 'watering'"
+        (toggled)="activePanel.set($event ? 'watering' : null)">
+      </app-garden-watering>
     </div>
   }
 </div>

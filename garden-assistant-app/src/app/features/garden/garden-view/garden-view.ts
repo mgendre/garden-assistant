@@ -9,12 +9,13 @@ import { DialogService } from '../../../shared/services/dialog.service';
 import { GardenDialogService } from '../../../shared/services/garden-dialog.service';
 import { BedPanel } from '../bed-panel/bed-panel';
 import { GardenCalendar } from '../garden-calendar/garden-calendar';
+import { GardenWatering } from '../garden-watering/garden-watering';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
 @Component({
   selector: 'app-garden-view',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, BedPanel, GardenCalendar, EmptyState],
+  imports: [TranslateModule, FontAwesomeModule, BedPanel, GardenCalendar, GardenWatering, EmptyState],
   templateUrl: './garden-view.html',
 })
 export class GardenView implements OnInit {
@@ -41,6 +42,8 @@ export class GardenView implements OnInit {
     [...this.store.beds()].sort((a, b) => (a.name ?? '').localeCompare(b.name ?? '', 'fr'))
   );
   readonly hasBeds = computed(() => this.beds().length > 0);
+
+  readonly activePanel = signal<'calendar' | 'watering' | null>(null);
 
   async ngOnInit(): Promise<void> {
     const id = this.route.snapshot.paramMap.get('id');
