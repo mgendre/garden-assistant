@@ -6,24 +6,6 @@
     <p class="empty-state-text" [translate]="'Watering.EmptyState'"></p>
   </div>
 } @else {
-  <div class="watering-week-nav">
-    <button class="btn btn-secondary btn-sm"
-            [disabled]="store.weekOffset() === 0"
-            (click)="prevWeek()"
-            [attr.aria-label]="'Watering.PrevWeek' | translate">
-      <fa-icon [icon]="faLeft"></fa-icon>
-    </button>
-    <span class="watering-week-label">
-      {{ store.weekOffset() === 0 ? ('Watering.WeekCurrent' | translate) : ('Watering.WeekNext' | translate) }}
-    </span>
-    <button class="btn btn-secondary btn-sm"
-            [disabled]="store.weekOffset() === 1"
-            (click)="nextWeek()"
-            [attr.aria-label]="'Watering.NextWeek' | translate">
-      <fa-icon [icon]="faRight"></fa-icon>
-    </button>
-  </div>
-
   @for (bed of beds(); track bed.bedId ?? bed.bedName) {
     <div class="mt-4">
       <div class="calendar-bed-title">
@@ -36,7 +18,7 @@
         <div class="watering-grid" role="grid">
           <div class="watering-grid__head-row">
             <div class="watering-grid__name-cell"></div>
-            @for (header of weekDayHeaders(); track header.day) {
+            @for (header of weekDayHeaders; track header.day) {
               <div class="watering-grid__day-header"
                    [class.watering-grid__day-header--today]="header.isToday"
                    role="columnheader">

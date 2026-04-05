@@ -32,7 +32,9 @@
         </app-toggle-group>
       </div>
 
-      <app-calendar-watering [active]="activeCalendarTab() === 'watering'"></app-calendar-watering>
+      @if (activeCalendarTab() === 'watering') {
+        <app-calendar-watering [active]="true"></app-calendar-watering>
+      }
 
       @if (activeCalendarTab() === 'actions') {
       <div class="calendar-filter-chips" style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem">

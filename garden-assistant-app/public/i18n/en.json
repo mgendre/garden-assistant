@@ -36,6 +36,10 @@
     "MyPlantsBed": "My plants",
     "DotAriaLabel": "Watering scheduled"
   },
+  "Calendar": {
+    "TabActions": "Growing calendar",
+    "TabWatering": "Watering"
+  },
   "Bed": {
     "SoilTypeLabel": "Bed soil type",
     "HasMulchLabel": "Mulched bed",

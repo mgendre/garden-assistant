@@ -1,7 +1,7 @@
 import { Component, inject, computed, input, effect } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
-import { faChevronLeft, faChevronRight, faDroplet } from '@fortawesome/free-solid-svg-icons';
+import { faDroplet } from '@fortawesome/free-solid-svg-icons';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { WateringStore } from '../../../shared/services/watering.store';
 import { WEEK_DAYS, DayOfWeekStr } from '../../../api/watering.api';
@@ -18,19 +18,14 @@ import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 export class CalendarWatering {
   readonly active = input(false);
   protected readonly store = inject(WateringStore);
-  protected readonly faLeft = faChevronLeft;
-  protected readonly faRight = faChevronRight;
   protected readonly faDroplet = faDroplet;
   protected readonly weekDays = WEEK_DAYS;
   protected readonly todayDayOfWeek = this.getTodayDayOfWeek();
 
-  protected readonly weekDayHeaders = computed(() => {
-    const offset = this.store.weekOffset();
-    return WEEK_DAYS.map((day, i) => {
-      const date = new Date();
-      date.setDate(date.getDate() - date.getDay() + 1 + i + offset * 7);
-      return { day, number: date.getDate(), isToday: offset === 0 && day === this.todayDayOfWeek };
-    });
+  protected readonly weekDayHeaders = WEEK_DAYS.map((day, i) => {
+    const date = new Date();
+    date.setDate(date.getDate() - date.getDay() + 1 + i);
+    return { day, number: date.getDate(), isToday: day === this.todayDayOfWeek };
   });
 
   protected readonly beds = computed(() => this.store.scheduleData()?.beds ?? []);
@@ -43,20 +38,6 @@ export class CalendarWatering {
       this.store.scheduleTabActive.set(false);
     }
   });
-
-  prevWeek(): void {
-    if (this.store.weekOffset() > 0) {
-      this.store.weekOffset.update(v => v - 1);
-      this.store.loadSchedule();
-    }
-  }
-
-  nextWeek(): void {
-    if (this.store.weekOffset() < 1) {
-      this.store.weekOffset.update(v => v + 1);
-      this.store.loadSchedule();
-    }
-  }
 
   hasDot(day: DayOfWeekStr, days: DayOfWeekStr[]): boolean {
     return days.includes(day);

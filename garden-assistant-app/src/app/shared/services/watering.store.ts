@@ -22,7 +22,6 @@ export class WateringStore {
   readonly scheduleData = signal<WateringScheduleDto | null>(null);
   readonly loadingToday = signal(false);
   readonly loadingSchedule = signal(false);
-  readonly weekOffset = signal(0);
   readonly scheduleTabActive = signal(false);
 
   readonly todayPlants = computed(() =>
@@ -54,7 +53,7 @@ export class WateringStore {
   async loadSchedule(): Promise<void> {
     this.loadingSchedule.set(true);
     try {
-      const halfMonth = this.getHalfMonth(this.weekOffset());
+      const halfMonth = this.getHalfMonth();
       const source = this.calendarStore.sourceFilter();
       this.scheduleData.set(await this.wateringService.getWateringSchedule(halfMonth, source));
     } finally {
@@ -62,9 +61,8 @@ export class WateringStore {
     }
   }
 
-  private getHalfMonth(weekOffset: number): number {
+  private getHalfMonth(): number {
     const date = new Date();
-    date.setDate(date.getDate() + weekOffset * 7);
     return date.getMonth() * 2 + (date.getDate() <= 15 ? 1 : 2);
   }
 }
