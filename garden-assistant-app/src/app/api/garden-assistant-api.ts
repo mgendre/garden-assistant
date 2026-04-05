@@ -314,6 +314,80 @@ export class CalendarClient {
         }
         return Promise.resolve<CalendarDto>(null as any);
     }
+
+    getWateringToday(): Promise<WateringTodayDto> {
+        let url_ = this.baseUrl + "/api/Calendar/watering/today";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetWateringToday(_response);
+        });
+    }
+
+    protected processGetWateringToday(response: Response): Promise<WateringTodayDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as WateringTodayDto;
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<WateringTodayDto>(null as any);
+    }
+
+    getWateringSchedule(halfMonth: number | undefined, source: string | undefined): Promise<WateringScheduleDto> {
+        let url_ = this.baseUrl + "/api/Calendar/watering/schedule?";
+        if (halfMonth === null)
+            throw new globalThis.Error("The parameter 'halfMonth' cannot be null.");
+        else if (halfMonth !== undefined)
+            url_ += "halfMonth=" + encodeURIComponent("" + halfMonth) + "&";
+        if (source === null)
+            throw new globalThis.Error("The parameter 'source' cannot be null.");
+        else if (source !== undefined)
+            url_ += "source=" + encodeURIComponent("" + source) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetWateringSchedule(_response);
+        });
+    }
+
+    protected processGetWateringSchedule(response: Response): Promise<WateringScheduleDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as WateringScheduleDto;
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<WateringScheduleDto>(null as any);
+    }
 }
 
 export class GardensClient {
@@ -998,14 +1072,30 @@ export interface BedDto {
     name?: string;
     guildId?: string | undefined;
     plantIds?: string[];
+    soilType?: SoilType | undefined;
+    hasMulch?: boolean;
+}
+
+export enum SoilType {
+    Sandy = "Sandy",
+    Silty = "Silty",
+    Clay = "Clay",
+    Loam = "Loam",
+    Chalky = "Chalky",
+    Peaty = "Peaty",
+    Rocky = "Rocky",
 }
 
 export interface CreateBedRequest {
     name?: string | undefined;
+    soilType?: SoilType | undefined;
+    hasMulch?: boolean;
 }
 
 export interface UpdateBedRequest {
     name?: string | undefined;
+    soilType?: SoilType | undefined;
+    hasMulch?: boolean;
 }
 
 export interface CalendarDto {
@@ -1026,14 +1116,70 @@ export interface PlantActionDto {
 }
 
 export enum PlantActionType {
-    IndoorSowing = 0,
-    DirectSowing = 1,
-    Transplanting = 2,
-    Harvest = 3,
-    Pruning = 4,
-    Pinching = 5,
-    Hilling = 6,
-    Division = 7,
+    IndoorSowing = "IndoorSowing",
+    DirectSowing = "DirectSowing",
+    Transplanting = "Transplanting",
+    Harvest = "Harvest",
+    Pruning = "Pruning",
+    Pinching = "Pinching",
+    Hilling = "Hilling",
+    Division = "Division",
+}
+
+export interface WateringTodayDto {
+    beds?: BedWateringTodayDto[];
+}
+
+export interface BedWateringTodayDto {
+    bedId?: string | undefined;
+    bedName?: string;
+    isPersonalPlants?: boolean;
+    plants?: PlantWateringStatusDto[];
+}
+
+export interface PlantWateringStatusDto {
+    plantId?: string;
+    plantName?: string;
+    isToday?: boolean;
+    nextWateringDay?: DayOfWeek | undefined;
+}
+
+export enum DayOfWeek {
+    Sunday = "Sunday",
+    Monday = "Monday",
+    Tuesday = "Tuesday",
+    Wednesday = "Wednesday",
+    Thursday = "Thursday",
+    Friday = "Friday",
+    Saturday = "Saturday",
+}
+
+export interface WateringScheduleDto {
+    beds?: BedWateringDto[];
+}
+
+export interface BedWateringDto {
+    bedId?: string | undefined;
+    bedName?: string;
+    isPersonalPlants?: boolean;
+    soilType?: SoilType | undefined;
+    hasMulch?: boolean;
+    plants?: PlantWateringDto[];
+}
+
+export interface PlantWateringDto {
+    plantId?: string;
+    plantName?: string;
+    waterNeeds?: WaterNeeds;
+    timesPerWeek?: number;
+    recommendedDays?: DayOfWeek[];
+    waterAmountMl?: number | undefined;
+}
+
+export enum WaterNeeds {
+    Low = "Low",
+    Medium = "Medium",
+    High = "High",
 }
 
 export interface GardenDto {
@@ -1071,8 +1217,8 @@ export interface GuildPlantMemberDto {
 }
 
 export enum GuildPlantRole {
-    Companion = 0,
-    Central = 1,
+    Companion = "Companion",
+    Central = "Central",
 }
 
 export interface CreateGuildRequest {
@@ -1114,23 +1260,23 @@ export interface CompanionRecommendationDto {
 }
 
 export enum AssociationMechanism {
-    OlfactoryConfusion = 0,
-    PollinatorAttraction = 1,
-    TrapCrop = 2,
-    RootAllelopathy = 3,
-    AerialRepulsion = 4,
-    NitrogenFixation = 5,
-    PredatorAttraction = 6,
-    PhysicalSupport = 7,
-    SoilCover = 8,
-    DynamicAccumulation = 9,
-    MycorrhizalNetwork = 10,
-    HydraulicLift = 11,
-    MicroclimateModification = 12,
-    WeedSuppression = 13,
-    Biofumigation = 14,
-    NursePlant = 15,
-    SharedPathogen = 16,
+    OlfactoryConfusion = "OlfactoryConfusion",
+    PollinatorAttraction = "PollinatorAttraction",
+    TrapCrop = "TrapCrop",
+    RootAllelopathy = "RootAllelopathy",
+    AerialRepulsion = "AerialRepulsion",
+    NitrogenFixation = "NitrogenFixation",
+    PredatorAttraction = "PredatorAttraction",
+    PhysicalSupport = "PhysicalSupport",
+    SoilCover = "SoilCover",
+    DynamicAccumulation = "DynamicAccumulation",
+    MycorrhizalNetwork = "MycorrhizalNetwork",
+    HydraulicLift = "HydraulicLift",
+    MicroclimateModification = "MicroclimateModification",
+    WeedSuppression = "WeedSuppression",
+    Biofumigation = "Biofumigation",
+    NursePlant = "NursePlant",
+    SharedPathogen = "SharedPathogen",
 }
 
 export interface SelectedPlantConflictDto {
@@ -1153,9 +1299,9 @@ export interface GuildAssociationDto {
 }
 
 export enum AssociationEffect {
-    Beneficial = 0,
-    Harmful = 1,
-    Neutral = 2,
+    Beneficial = "Beneficial",
+    Harmful = "Harmful",
+    Neutral = "Neutral",
 }
 
 export interface CompanionRecommendationRequest {
@@ -1192,35 +1338,29 @@ export interface PlantDto {
 }
 
 export enum LifeCycle {
-    Annual = 0,
-    Biennial = 1,
-    Perennial = 2,
+    Annual = "Annual",
+    Biennial = "Biennial",
+    Perennial = "Perennial",
 }
 
 export enum RootDepth {
-    Shallow = 0,
-    Medium = 1,
-    Deep = 2,
+    Shallow = "Shallow",
+    Medium = "Medium",
+    Deep = "Deep",
 }
 
 export enum SunRequirement {
-    FullSun = 0,
-    PartialShade = 1,
-    Shade = 2,
-}
-
-export enum WaterNeeds {
-    Low = 0,
-    Medium = 1,
-    High = 2,
+    FullSun = "FullSun",
+    PartialShade = "PartialShade",
+    Shade = "Shade",
 }
 
 export enum PropagationMethod {
-    Seed = 0,
-    Bulb = 1,
-    Tuber = 2,
-    Division = 3,
-    Cutting = 4,
+    Seed = "Seed",
+    Bulb = "Bulb",
+    Tuber = "Tuber",
+    Division = "Division",
+    Cutting = "Cutting",
 }
 
 export interface PlantSummaryDto {
@@ -1242,10 +1382,10 @@ export interface HarvestReadinessCriterionDto {
 }
 
 export enum HarvestCriterionType {
-    Visual = 0,
-    Touch = 1,
-    Timing = 2,
-    Technique = 3,
+    Visual = "Visual",
+    Touch = "Touch",
+    Timing = "Timing",
+    Technique = "Technique",
 }
 
 export class SwaggerException extends Error {

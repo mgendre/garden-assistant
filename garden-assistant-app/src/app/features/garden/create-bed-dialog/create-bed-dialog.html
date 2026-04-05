@@ -10,6 +10,16 @@
         maxlength="100"
         [attr.placeholder]="'Bed.NamePlaceholder' | translate" />
     </div>
+    <div>
+      <label class="block text-sm font-medium mb-1" [translate]="'Bed.SoilTypeLabel'"></label>
+      <select class="form-input"
+              [value]="soilType()"
+              (change)="soilType.set($any($event.target).value)">
+        @for (opt of soilTypeOptions; track opt.value) {
+          <option [value]="opt.value">{{ opt.labelKey | translate }}</option>
+        }
+      </select>
+    </div>
   </div>
 </div>
 <div class="dialog-footer">

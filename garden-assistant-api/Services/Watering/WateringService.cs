@@ -49,9 +49,9 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
             .Select(p =>
             {
                 var plants = plantsByGuild.GetValueOrDefault(p.GuildId!.Value, [])
-                    .Select(plant => BuildPlantWateringDto(plant, halfMonth, null, false))
+                    .Select(plant => BuildPlantWateringDto(plant, halfMonth, p.SoilType, p.HasMulch))
                     .ToList();
-                return new BedWateringDto(p.Id, p.Name, false, null, false, plants);
+                return new BedWateringDto(p.Id, p.Name, false, p.SoilType, p.HasMulch, plants);
             })
             .ToList();
     }
@@ -90,7 +90,7 @@ public class WateringService(AppDbContext dbContext, IWateringCalculator calcula
         var plantStatuses = plants
             .Select(plant =>
             {
-                var freq = calculator.CalculateFrequency(plant.WaterNeeds, halfMonth);
+                var freq = calculator.CalculateFrequency(plant.WaterNeeds, halfMonth, planting.SoilType, planting.HasMulch);
                 var isToday = freq.RecommendedDays.Contains(today.DayOfWeek);
                 var next = isToday ? (DayOfWeek?)null : FindNextDay(freq.RecommendedDays, today.DayOfWeek);
                 return new PlantWateringStatusDto(plant.Id, plant.Name, isToday, next);

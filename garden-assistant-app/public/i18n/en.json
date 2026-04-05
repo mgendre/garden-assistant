@@ -35,5 +35,18 @@
     "DailyTotalL": "~{{total}} L",
     "MyPlantsBed": "My plants",
     "DotAriaLabel": "Watering scheduled"
+  },
+  "Bed": {
+    "SoilTypeLabel": "Bed soil type",
+    "SoilType": {
+      "None": "Not specified",
+      "Sandy": "Sandy",
+      "Loam": "Loam",
+      "Clay": "Clay",
+      "Silty": "Silty",
+      "Chalky": "Chalky",
+      "Peaty": "Peaty",
+      "Rocky": "Rocky"
+    }
   }
 }

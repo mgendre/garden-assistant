@@ -1,3 +1,5 @@
+using GardenAssistant.Data.Entities.Enums;
+
 namespace GardenAssistant.Data.Entities;
 
 public class Planting
@@ -9,5 +11,7 @@ public class Planting
     public string? Description { get; set; }
     public DateOnly? PlannedDate { get; set; }
     public Guid? GuildId { get; set; }
+    public SoilType? SoilType { get; set; }
+    public bool HasMulch { get; set; }
     public DateTime CreatedAtUtc { get; set; }
 }

@@ -100,4 +100,53 @@ public class WateringCalculatorTests
         var result = _sut.CalculateFrequency(WaterNeeds.Medium, halfMonth: 13);
         result.RecommendedDays.ShouldBe([DayOfWeek.Tuesday, DayOfWeek.Thursday, DayOfWeek.Saturday, DayOfWeek.Sunday]);
     }
+
+    [Fact]
+    public void CalculateFrequency_WhenSandySoilAndLowSummer_ShouldIncreaseFrequency()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.Low, halfMonth: 13, soilType: SoilType.Sandy);
+        result.TimesPerWeek.ShouldBe(3);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenClaySoilAndHighSummer_ShouldDecreaseFrequency()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.High, halfMonth: 13, soilType: SoilType.Clay);
+        result.TimesPerWeek.ShouldBe(4);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenPeatySoilAndMediumSummer_ShouldDecreaseFrequency()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.Medium, halfMonth: 13, soilType: SoilType.Peaty);
+        result.TimesPerWeek.ShouldBe(3);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenLoamSoil_ShouldKeepBaseFrequency()
+    {
+        var withLoam = _sut.CalculateFrequency(WaterNeeds.Medium, halfMonth: 13, soilType: SoilType.Loam);
+        var withNull = _sut.CalculateFrequency(WaterNeeds.Medium, halfMonth: 13);
+        withLoam.TimesPerWeek.ShouldBe(withNull.TimesPerWeek);
+    }
+
+    [Theory]
+    [InlineData(SoilType.Sandy,  3)]
+    [InlineData(SoilType.Rocky,  3)]
+    [InlineData(SoilType.Silty,  2)]
+    [InlineData(SoilType.Chalky, 2)]
+    [InlineData(SoilType.Clay,   1)]
+    [InlineData(SoilType.Peaty,  2)]
+    public void CalculateFrequency_SoilCoefficients_LowSummer(SoilType soil, int expected)
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.Low, halfMonth: 13, soilType: soil);
+        result.TimesPerWeek.ShouldBe(expected);
+    }
+
+    [Fact]
+    public void CalculateFrequency_WhenSoilAdjusted_RecommendedDaysLength_ShouldMatchTimesPerWeek()
+    {
+        var result = _sut.CalculateFrequency(WaterNeeds.Low, halfMonth: 13, soilType: SoilType.Sandy);
+        result.RecommendedDays.Length.ShouldBe(result.TimesPerWeek);
+    }
 }

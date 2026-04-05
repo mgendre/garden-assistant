@@ -41,7 +41,9 @@ public class BedService(AppDbContext dbContext) : IBedService
             b.GuildId,
             b.GuildId.HasValue
                 ? plantIdsByGuild.GetValueOrDefault(b.GuildId.Value, [])
-                : []
+                : [],
+            b.SoilType,
+            b.HasMulch
         ));
     }
 
@@ -72,13 +74,15 @@ public class BedService(AppDbContext dbContext) : IBedService
             UserId = userId,
             Name = bedName,
             GuildId = guild.Id,
+            SoilType = request.SoilType,
+            HasMulch = request.HasMulch,
             CreatedAtUtc = DateTime.UtcNow
         };
         dbContext.Plantings.Add(bed);
 
         await dbContext.SaveChangesAsync();
 
-        return new BedDto(bed.Id, bed.Name, guild.Id, []);
+        return new BedDto(bed.Id, bed.Name, guild.Id, [], bed.SoilType, bed.HasMulch);
     }
 
     public async Task<BedDto?> UpdateAsync(Guid gardenId, Guid bedId, UpdateBedRequest request, Guid userId)
@@ -93,6 +97,8 @@ public class BedService(AppDbContext dbContext) : IBedService
         }
 
         bed.Name = request.Name ?? "";
+        bed.SoilType = request.SoilType;
+        bed.HasMulch = request.HasMulch;
 
         if (bed.GuildId.HasValue)
         {
@@ -112,7 +118,7 @@ public class BedService(AppDbContext dbContext) : IBedService
                 .ToListAsync()
             : [];
 
-        return new BedDto(bed.Id, bed.Name, bed.GuildId, plantIds);
+        return new BedDto(bed.Id, bed.Name, bed.GuildId, plantIds, bed.SoilType, bed.HasMulch);
     }
 
     public async Task<bool> DeleteAsync(Guid gardenId, Guid bedId, Guid userId)

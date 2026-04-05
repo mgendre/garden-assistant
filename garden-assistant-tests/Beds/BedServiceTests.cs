@@ -65,7 +65,7 @@ public class BedServiceTests : DatabaseTestBase
     [Fact]
     public async Task CreateAsync_ShouldCreateBedAndGuild()
     {
-        var result = await _sut.CreateAsync(_gardenId, new CreateBedRequest("Planche tomates"), _userId);
+        var result = await _sut.CreateAsync(_gardenId, new CreateBedRequest("Planche tomates", null), _userId);
 
         result.ShouldNotBeNull();
         result.Name.ShouldBe("Planche tomates");
@@ -81,7 +81,7 @@ public class BedServiceTests : DatabaseTestBase
     [Fact]
     public async Task CreateAsync_WhenNoName_ShouldUseEmptyString()
     {
-        var result = await _sut.CreateAsync(_gardenId, new CreateBedRequest(null), _userId);
+        var result = await _sut.CreateAsync(_gardenId, new CreateBedRequest(null, null), _userId);
         result.ShouldNotBeNull();
         result.Name.ShouldBe("");
     }
@@ -91,7 +91,7 @@ public class BedServiceTests : DatabaseTestBase
     {
         var otherUserId = Guid.NewGuid();
         DbContext.Users.Add(new User { Id = otherUserId, Email = "other@example.com" });
-        var result = await _sut.CreateAsync(_gardenId, new CreateBedRequest("Hacked"), otherUserId);
+        var result = await _sut.CreateAsync(_gardenId, new CreateBedRequest("Hacked", null), otherUserId);
         result.ShouldBeNull();
     }
 
@@ -108,7 +108,7 @@ public class BedServiceTests : DatabaseTestBase
         DbContext.Plantings.Add(bed);
         await DbContext.SaveChangesAsync();
 
-        var result = await _sut.UpdateAsync(_gardenId, bed.Id, new UpdateBedRequest("New"), _userId);
+        var result = await _sut.UpdateAsync(_gardenId, bed.Id, new UpdateBedRequest("New", null), _userId);
         result.ShouldNotBeNull();
         result.Name.ShouldBe("New");
         var updatedGuild = DbContext.Guilds.First();

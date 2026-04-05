@@ -90,7 +90,18 @@
     "NamePlaceholder": "Ex: Planche tomates 2026",
     "ConfirmDeleteTitle": "Supprimer la planche",
     "ConfirmDeleteMessage": "Supprimer la planche « {{name}} » ?",
-    "ConfirmDeleteMessageWithPlants": "Supprimer la planche « {{name}} » ? Les plantes suivantes seront perdues : {{plants}}"
+    "ConfirmDeleteMessageWithPlants": "Supprimer la planche « {{name}} » ? Les plantes suivantes seront perdues : {{plants}}",
+    "SoilTypeLabel": "Type de sol de la planche",
+    "SoilType": {
+      "None": "Non renseigné",
+      "Sandy": "Sableux",
+      "Loam": "Limoneux (loam)",
+      "Clay": "Argileux",
+      "Silty": "Limoneux fin",
+      "Chalky": "Calcaire",
+      "Peaty": "Tourbeux",
+      "Rocky": "Rocailleux"
+    }
   },
   "GardenDialog": {
     "Title": "Cr\u00e9er un jardin",
