@@ -3,7 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faPlus, faPen, faArrowLeft, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { UpdateGardenRequest, CreateBedRequest, UpdateBedRequest } from '../../../api/garden-assistant-api';
+import { UpdateGardenRequest, CreateBedRequest, UpdateBedRequest, SoilType } from '../../../api/garden-assistant-api';
+import { CreateBedDialogResult } from '../create-bed-dialog/create-bed-dialog';
 import { GardenStore } from '../../../shared/services/garden.store';
 import { DialogService } from '../../../shared/services/dialog.service';
 import { GardenDialogService } from '../../../shared/services/garden-dialog.service';
@@ -17,6 +18,7 @@ import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
   standalone: true,
   imports: [TranslateModule, FontAwesomeModule, BedPanel, GardenCalendar, GardenWatering, EmptyState],
   templateUrl: './garden-view.html',
+  styleUrl: './garden-view.scss',
 })
 export class GardenView implements OnInit {
   private readonly route = inject(ActivatedRoute);
@@ -33,6 +35,7 @@ export class GardenView implements OnInit {
 
   readonly gardenId = signal('');
   readonly newBedId = signal<string | null>(null);
+  readonly openBedId = signal<string | null>(null);
 
   readonly garden = computed(() =>
     this.store.gardens().find(g => g.id === this.gardenId())
@@ -90,13 +93,26 @@ export class GardenView implements OnInit {
   async addBed(): Promise<void> {
     const result = await this.gardenDialogService.openCreateBed({ mode: 'create' });
     if (result !== undefined) {
-      const bed = await this.store.createBed(this.gardenId(), { name: result.name } as CreateBedRequest);
+      const bed = await this.store.createBed(this.gardenId(), {
+        name: result.name,
+        soilType: result.soilType as SoilType | undefined,
+        hasMulch: result.hasMulch,
+      } as CreateBedRequest);
       this.newBedId.set(bed.id ?? null);
+      this.openBedId.set(bed.id ?? null);
     }
   }
 
-  async onBedRenamed(bedId: string, newName: string | undefined): Promise<void> {
-    await this.store.updateBed(this.gardenId(), bedId, { name: newName } as UpdateBedRequest);
+  toggleBed(bedId: string, open: boolean): void {
+    this.openBedId.set(open ? bedId : null);
+  }
+
+  async onBedUpdated(bedId: string, result: CreateBedDialogResult): Promise<void> {
+    await this.store.updateBed(this.gardenId(), bedId, {
+      name: result.name,
+      soilType: result.soilType as SoilType | undefined,
+      hasMulch: result.hasMulch,
+    } as UpdateBedRequest);
   }
 
   async onBedDeleted(bedId: string): Promise<void> {

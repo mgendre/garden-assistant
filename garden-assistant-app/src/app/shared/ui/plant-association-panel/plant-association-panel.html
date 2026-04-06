@@ -33,7 +33,7 @@
           }
         </div>
       </div>
-      <div collapsible-body class="collapsible-body-padded">
+      <div collapsible-body>
         @if (hasHarmfulAssociations()) {
           <div class="association-alert">
             <span>⚠️</span>
@@ -102,7 +102,7 @@
           }
         </div>
       </div>
-      <div collapsible-body class="collapsible-body-padded">
+      <div collapsible-body>
         @if (waterConflict(); as conflict) {
           <div class="assistant-warning assistant-warning--water">
             <div class="assistant-warning-header">
@@ -260,7 +260,7 @@
         <span>📅</span>
         <span [translate]="'Calendar.Title'"></span>
       </div>
-      <div collapsible-body class="collapsible-body-padded">
+      <div collapsible-body>
         @for (entry of calendarEntries(); track entry.plantId; let first = $first; let last = $last; let idx = $index) {
           <div class="calendar-plant" [class.calendar-plant--separator]="!last">
             <app-plant-calendar-gantt
@@ -277,5 +277,15 @@
         }
       </div>
     </app-collapsible>
+  </div>
+}
+
+<!-- Watering -->
+@if (gardenId() && bedId()) {
+  <div class="panel-section">
+    <app-bed-watering-section
+      [gardenId]="gardenId()!"
+      [bedId]="bedId()!">
+    </app-bed-watering-section>
   </div>
 }

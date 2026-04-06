@@ -6,7 +6,7 @@
         <span [translate]="'GardenCalendar.Title'"></span>
       </span>
     </div>
-    <div collapsible-body class="collapsible-body-padded">
+    <div collapsible-body>
       @if (loading()) {
         <app-empty-state icon="⏳" minHeight="100px"></app-empty-state>
       } @else if (allEntries().length === 0) {

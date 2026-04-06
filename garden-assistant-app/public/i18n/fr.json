@@ -75,7 +75,7 @@
     "EmptyState": "Aucune plante. Ajoutez des plantes pour voir les associations.",
     "AddPlants": "Ajouter des plantes",
     "ModifyPlants": "Modifier les plantes",
-    "EditName": "Renommer",
+    "EditName": "Modifier la planche",
     "Unnamed": "Planche sans nom",
     "PlantSingular": "plante",
     "PlantPlural": "plantes",
@@ -96,7 +96,7 @@
     "SoilType": {
       "None": "Non renseigné",
       "Sandy": "Sableux",
-      "Loam": "Limoneux (loam)",
+      "Loam": "Terre franche",
       "Clay": "Argileux",
       "Silty": "Limoneux fin",
       "Chalky": "Calcaire",

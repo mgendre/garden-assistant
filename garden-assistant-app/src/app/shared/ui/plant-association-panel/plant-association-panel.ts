@@ -20,6 +20,7 @@ import { PlantCard } from '../plant-card/plant-card';
 import { PlantBadge } from '../plant-badge/plant-badge';
 import { PlantCalendarGantt } from '../plant-calendar-gantt/plant-calendar-gantt';
 import { RootStratification } from '../../../features/companions/root-stratification/root-stratification';
+import { BedWateringSection } from '../bed-watering-section/bed-watering-section';
 
 export interface PlantCalendarEntry {
   plantId: string;
@@ -39,7 +40,7 @@ interface MechanismRow {
 @Component({
   selector: 'app-plant-association-panel',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCard, PlantBadge, PlantCalendarGantt, RootStratification],
+  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCard, PlantBadge, PlantCalendarGantt, RootStratification, BedWateringSection],
   templateUrl: './plant-association-panel.html',
 })
 export class PlantAssociationPanel {
@@ -50,6 +51,8 @@ export class PlantAssociationPanel {
 
   readonly interactive = input(false);
   readonly showPlantCards = input(false);
+  readonly gardenId = input<string | undefined>(undefined);
+  readonly bedId = input<string | undefined>(undefined);
 
   readonly plantNameClick = output<string>();
   readonly harvestReadinessClick = output<{ plantId: string; plantName: string }>();

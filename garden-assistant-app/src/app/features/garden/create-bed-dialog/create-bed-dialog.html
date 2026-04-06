@@ -13,10 +13,9 @@
     <div>
       <label class="block text-sm font-medium mb-1" [translate]="'Bed.SoilTypeLabel'"></label>
       <select class="form-input"
-              [value]="soilType()"
               (change)="soilType.set($any($event.target).value)">
         @for (opt of soilTypeOptions; track opt.value) {
-          <option [value]="opt.value">{{ opt.labelKey | translate }}</option>
+          <option [value]="opt.value" [selected]="opt.value === soilType()">{{ opt.labelKey | translate }}</option>
         }
       </select>
     </div>

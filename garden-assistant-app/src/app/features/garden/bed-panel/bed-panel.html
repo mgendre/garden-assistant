@@ -1,14 +1,24 @@
 <div class="panel">
-  <app-collapsible [initialExpanded]="initialExpanded()">
-    <div collapsible-header class="min-w-0">
-      <div class="flex items-center gap-2">
-        <span class="font-medium truncate">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>
-        <span class="text-xs" style="color: var(--color-text-muted)">
-          ({{ plantCount() }} {{ (plantCount() === 1 ? 'Bed.PlantSingular' : 'Bed.PlantPlural') | translate }})
+  <app-collapsible [open]="open()" (toggled)="toggled.emit($event)">
+    <div collapsible-header class="bed-panel-header">
+      <div class="bed-panel-header__title-row">
+        <span class="bed-panel-header__name">{{ bed().name || ('Bed.Unnamed' | translate) }}</span>
+        <span class="bed-panel-header__count">
+          {{ plantCount() }} {{ (plantCount() === 1 ? 'Bed.PlantSingular' : 'Bed.PlantPlural') | translate }}
         </span>
+        @if (bed().soilType) {
+          <span class="bed-panel-header__chip bed-panel-header__chip--soil">
+            {{ 'Bed.SoilType.' + bed().soilType | translate }}
+          </span>
+        }
+        @if (bed().hasMulch) {
+          <span class="bed-panel-header__chip bed-panel-header__chip--mulch">
+            🌿 {{ 'Bed.HasMulchLabel' | translate }}
+          </span>
+        }
       </div>
       @if (sortedHeaderPlants().length > 0) {
-        <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px">
+        <div class="bed-panel-header__plants">
           @for (plant of sortedHeaderPlants(); track plant.id) {
             <app-plant-badge
               [plant]="plant"
@@ -32,14 +42,16 @@
             [centralPlantIds]="centralPlantIds()"
             [interactive]="false"
             [showPlantCards]="true"
+            [gardenId]="gardenId()"
+            [bedId]="bed().id"
             (plantNameClick)="openPlantDetail($event)"
             (harvestReadinessClick)="openHarvestReadiness($event)">
           </app-plant-association-panel>
         }
 
-        <div style="border-top: 1px solid var(--color-border); padding: 1rem 1.25rem">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.75rem">
-            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap">
+        <div class="bed-panel-actions">
+          <div class="bed-panel-actions__row">
+            <div class="bed-panel-actions__left">
               <button class="btn btn-secondary btn-sm" (click)="editPlants()">
                 <fa-icon [icon]="faPen"></fa-icon>
                 <span [translate]="'Bed.ModifyPlants'"></span>

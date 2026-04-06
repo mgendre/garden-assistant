@@ -6,12 +6,12 @@
         <span [translate]="'GardenWatering.Title'"></span>
       </span>
     </div>
-    <div collapsible-body class="collapsible-body-padded">
-      @if (loading()) {
+    <div collapsible-body>
+      @if (store.loading()) {
         <div class="empty-state">
           <fa-icon [icon]="faDroplet" class="empty-state-icon"></fa-icon>
         </div>
-      } @else if (beds().length === 0) {
+      } @else if (store.beds().length === 0) {
         <div class="empty-state">
           <fa-icon [icon]="faDroplet" class="empty-state-icon"></fa-icon>
           <p class="empty-state-text" [translate]="'GardenWatering.EmptyState'"></p>
@@ -19,10 +19,10 @@
       } @else {
         <div class="watering-layout">
           <div class="watering-layout__grid">
-            <div class="section-header px-2">
+            <div class="section-header">
               <span class="section-header-label" [translate]="'GardenWatering.WeekTitle'"></span>
             </div>
-            @for (bed of beds(); track bed.bedId ?? bed.bedName; let first = $first) {
+            @for (bed of store.beds(); track bed.bedId ?? bed.bedName; let first = $first) {
               <div [class.mt-4]="!first">
                 <div class="section-divider-title">{{ bed.bedName }}</div>
                 <div class="watering-grid-wrapper"
@@ -68,7 +68,7 @@
           </div>
 
           <div class="watering-layout__freq">
-            <div class="section-header px-2">
+            <div class="section-header">
               <span class="section-header-label" [translate]="'Watering.FrequenciesTitle'"></span>
             </div>
             <table class="watering-freq-table"
@@ -81,7 +81,7 @@
                 </tr>
               </thead>
               <tbody>
-                @for (bed of beds(); track bed.bedId ?? bed.bedName) {
+                @for (bed of store.beds(); track bed.bedId ?? bed.bedName) {
                   @for (plant of bed.plants; track plant.plantId) {
                     <tr>
                       <td>{{ plant.plantName }}</td>

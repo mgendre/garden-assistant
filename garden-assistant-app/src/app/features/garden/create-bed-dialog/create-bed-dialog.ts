@@ -32,13 +32,13 @@ export class CreateBedDialog {
 
   readonly soilTypeOptions = [
     { value: '', labelKey: 'Bed.SoilType.None' },
+    { value: SoilType.Clay, labelKey: 'Bed.SoilType.Clay' },
+    { value: SoilType.Chalky, labelKey: 'Bed.SoilType.Chalky' },
+    { value: SoilType.Silty, labelKey: 'Bed.SoilType.Silty' },
+    { value: SoilType.Rocky, labelKey: 'Bed.SoilType.Rocky' },
     { value: SoilType.Sandy, labelKey: 'Bed.SoilType.Sandy' },
     { value: SoilType.Loam, labelKey: 'Bed.SoilType.Loam' },
-    { value: SoilType.Clay, labelKey: 'Bed.SoilType.Clay' },
-    { value: SoilType.Silty, labelKey: 'Bed.SoilType.Silty' },
-    { value: SoilType.Chalky, labelKey: 'Bed.SoilType.Chalky' },
     { value: SoilType.Peaty, labelKey: 'Bed.SoilType.Peaty' },
-    { value: SoilType.Rocky, labelKey: 'Bed.SoilType.Rocky' },
   ];
 
   save(): void {

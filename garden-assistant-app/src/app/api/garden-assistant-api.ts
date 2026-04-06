@@ -314,80 +314,6 @@ export class CalendarClient {
         }
         return Promise.resolve<CalendarDto>(null as any);
     }
-
-    getWateringToday(): Promise<WateringTodayDto> {
-        let url_ = this.baseUrl + "/api/Calendar/watering/today";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetWateringToday(_response);
-        });
-    }
-
-    protected processGetWateringToday(response: Response): Promise<WateringTodayDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as WateringTodayDto;
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<WateringTodayDto>(null as any);
-    }
-
-    getWateringSchedule(halfMonth: number | undefined, source: string | undefined): Promise<WateringScheduleDto> {
-        let url_ = this.baseUrl + "/api/Calendar/watering/schedule?";
-        if (halfMonth === null)
-            throw new globalThis.Error("The parameter 'halfMonth' cannot be null.");
-        else if (halfMonth !== undefined)
-            url_ += "halfMonth=" + encodeURIComponent("" + halfMonth) + "&";
-        if (source === null)
-            throw new globalThis.Error("The parameter 'source' cannot be null.");
-        else if (source !== undefined)
-            url_ += "source=" + encodeURIComponent("" + source) + "&";
-        url_ = url_.replace(/[?&]$/, "");
-
-        let options_: RequestInit = {
-            method: "GET",
-            headers: {
-                "Accept": "application/json"
-            }
-        };
-
-        return this.http.fetch(url_, options_).then((_response: Response) => {
-            return this.processGetWateringSchedule(_response);
-        });
-    }
-
-    protected processGetWateringSchedule(response: Response): Promise<WateringScheduleDto> {
-        const status = response.status;
-        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
-        if (status === 200) {
-            return response.text().then((_responseText) => {
-            let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as WateringScheduleDto;
-            return result200;
-            });
-        } else if (status !== 200 && status !== 204) {
-            return response.text().then((_responseText) => {
-            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
-            });
-        }
-        return Promise.resolve<WateringScheduleDto>(null as any);
-    }
 }
 
 export class GardensClient {
@@ -607,6 +533,58 @@ export class GardensClient {
             });
         }
         return Promise.resolve<void>(null as any);
+    }
+
+    getWateringSchedule(gardenId: string, halfMonth: number | undefined): Promise<WateringScheduleDto> {
+        let url_ = this.baseUrl + "/api/Gardens/{gardenId}/watering/schedule?";
+        if (gardenId === undefined || gardenId === null)
+            throw new globalThis.Error("The parameter 'gardenId' must be defined.");
+        url_ = url_.replace("{gardenId}", encodeURIComponent("" + gardenId));
+        if (halfMonth === null)
+            throw new globalThis.Error("The parameter 'halfMonth' cannot be null.");
+        else if (halfMonth !== undefined)
+            url_ += "halfMonth=" + encodeURIComponent("" + halfMonth) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetWateringSchedule(_response);
+        });
+    }
+
+    protected processGetWateringSchedule(response: Response): Promise<WateringScheduleDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as WateringScheduleDto;
+            return result200;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("A server side error occurred.", status, _responseText, _headers, result400);
+            });
+        } else if (status === 404) {
+            return response.text().then((_responseText) => {
+            let result404: any = null;
+            result404 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("A server side error occurred.", status, _responseText, _headers, result404);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<WateringScheduleDto>(null as any);
     }
 }
 
@@ -1126,32 +1104,22 @@ export enum PlantActionType {
     Division = "Division",
 }
 
-export interface WateringTodayDto {
-    beds?: BedWateringTodayDto[];
+export interface GardenDto {
+    id?: string;
+    name?: string;
+    description?: string | undefined;
+    bedCount?: number;
+    createdAtUtc?: Date;
 }
 
-export interface BedWateringTodayDto {
-    bedId?: string | undefined;
-    bedName?: string;
-    isPersonalPlants?: boolean;
-    plants?: PlantWateringStatusDto[];
+export interface CreateGardenRequest {
+    name?: string;
+    description?: string | undefined;
 }
 
-export interface PlantWateringStatusDto {
-    plantId?: string;
-    plantName?: string;
-    isToday?: boolean;
-    nextWateringDay?: DayOfWeek | undefined;
-}
-
-export enum DayOfWeek {
-    Sunday = "Sunday",
-    Monday = "Monday",
-    Tuesday = "Tuesday",
-    Wednesday = "Wednesday",
-    Thursday = "Thursday",
-    Friday = "Friday",
-    Saturday = "Saturday",
+export interface UpdateGardenRequest {
+    name?: string;
+    description?: string | undefined;
 }
 
 export interface WateringScheduleDto {
@@ -1182,22 +1150,14 @@ export enum WaterNeeds {
     High = "High",
 }
 
-export interface GardenDto {
-    id?: string;
-    name?: string;
-    description?: string | undefined;
-    bedCount?: number;
-    createdAtUtc?: Date;
-}
-
-export interface CreateGardenRequest {
-    name?: string;
-    description?: string | undefined;
-}
-
-export interface UpdateGardenRequest {
-    name?: string;
-    description?: string | undefined;
+export enum DayOfWeek {
+    Sunday = "Sunday",
+    Monday = "Monday",
+    Tuesday = "Tuesday",
+    Wednesday = "Wednesday",
+    Thursday = "Thursday",
+    Friday = "Friday",
+    Saturday = "Saturday",
 }
 
 export interface GuildDto {
