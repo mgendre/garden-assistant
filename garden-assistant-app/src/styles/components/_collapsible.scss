@@ -18,11 +18,7 @@
 }
 
 .collapsible-body {
-  @apply pt-0;
-}
-
-.collapsible-body-padded {
-  @apply px-5 pb-5;
+  @apply pt-0 px-5 pb-5;
 }
 
 .collapsible-header-content {

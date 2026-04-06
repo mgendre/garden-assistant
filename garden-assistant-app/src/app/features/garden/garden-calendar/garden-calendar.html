@@ -1,12 +1,12 @@
 <div class="panel">
-  <app-collapsible [initialExpanded]="true">
+  <app-collapsible [open]="open()" (toggled)="toggled.emit($event)">
     <div collapsible-header class="section-header">
       <span class="section-header-label">
         <span>📅</span>
         <span [translate]="'GardenCalendar.Title'"></span>
       </span>
     </div>
-    <div collapsible-body class="collapsible-body-padded">
+    <div collapsible-body>
       @if (loading()) {
         <app-empty-state icon="⏳" minHeight="100px"></app-empty-state>
       } @else if (allEntries().length === 0) {

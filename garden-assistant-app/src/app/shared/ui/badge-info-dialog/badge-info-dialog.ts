@@ -5,6 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 export interface BadgeInfoDialogData {
   titleKey: string;
   descriptionKey: string;
+  timesPerWeek?: number;
 }
 
 @Component({

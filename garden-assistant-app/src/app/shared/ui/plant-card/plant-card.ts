@@ -10,12 +10,13 @@ import { DialogService } from '../../services/dialog.service';
 import { PlantCalendarGantt } from '../plant-calendar-gantt/plant-calendar-gantt';
 import { HarvestReadinessDialog, HarvestReadinessDialogData } from '../harvest-readiness/harvest-readiness-dialog';
 import { Collapsible } from '../collapsible/collapsible';
+import { WaterNeedBadge } from '../water-need-badge/water-need-badge';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-plant-card',
   standalone: true,
-  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCalendarGantt],
+  imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCalendarGantt, WaterNeedBadge],
   templateUrl: './plant-card.html',
   styleUrl: './plant-card.scss',
   encapsulation: ViewEncapsulation.None,
@@ -28,7 +29,7 @@ export class PlantCard implements OnInit {
   readonly removable = input(false);
   readonly hideMechanisms = input(false);
   readonly hideFavButton = input(false);
-  readonly relationalMechanisms = input<number[]>([]);
+  readonly relationalMechanisms = input<AssociationMechanism[]>([]);
   readonly showCentralToggle = input(false);
   readonly isCentral = input(false);
   readonly showCentralIndicator = input(false);

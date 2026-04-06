@@ -20,7 +20,7 @@ export class GardenDialogService {
     return result ?? undefined;
   }
 
-  async openCreateBed(data?: { mode: 'create' | 'edit'; name?: string }): Promise<CreateBedDialogResult | undefined> {
+  async openCreateBed(data?: { mode: 'create' | 'edit'; name?: string; soilType?: string; hasMulch?: boolean }): Promise<CreateBedDialogResult | undefined> {
     const dialogData: CreateBedDialogData = data ?? { mode: 'create' };
     const result = await firstValueFrom(
       this.dialog.open<CreateBedDialog, CreateBedDialogData, CreateBedDialogResult>(CreateBedDialog, {

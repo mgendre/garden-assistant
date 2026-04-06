@@ -14,6 +14,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -36,6 +37,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1000,
     "soilTypes": [],
     "parentKey": "tomate"
   },
@@ -54,6 +56,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1200,
     "soilTypes": [],
     "parentKey": "tomate"
   },
@@ -72,6 +75,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1800,
     "soilTypes": [],
     "parentKey": "tomate"
   },
@@ -90,6 +94,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1000,
     "soilTypes": [],
     "parentKey": "tomate"
   },
@@ -112,6 +117,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 400,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -191,6 +197,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -216,6 +223,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 700,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -241,6 +249,7 @@
     ],
     "propagationMethod": "Bulb",
     "frostSensitive": false,
+    "waterAmountMl": 250,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -266,6 +275,7 @@
     ],
     "propagationMethod": "Bulb",
     "frostSensitive": false,
+    "waterAmountMl": 300,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -292,6 +302,7 @@
     ],
     "propagationMethod": "Division",
     "frostSensitive": false,
+    "waterAmountMl": 400,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -314,6 +325,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 800,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -339,6 +351,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 700,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -362,6 +375,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 500,
     "soilTypes": [],
     "parentKey": "haricot"
   },
@@ -380,6 +394,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 700,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -421,6 +436,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 700,
     "soilTypes": [],
     "parentKey": "haricot"
   },
@@ -439,6 +455,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 700,
     "soilTypes": [],
     "parentKey": "haricot"
   },
@@ -457,6 +474,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 700,
     "soilTypes": [],
     "parentKey": "haricot"
   },
@@ -475,6 +493,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 700,
     "soilTypes": [],
     "parentKey": "haricot"
   },
@@ -537,6 +556,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1000,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -564,6 +584,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 2000,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -586,6 +607,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -612,6 +634,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [],
     "parentKey": "courge-musquee"
   },
@@ -635,6 +658,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 2000,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -657,6 +681,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 2000,
     "soilTypes": [],
     "parentKey": "potiron"
   },
@@ -675,6 +700,7 @@
     "maxAltitudeM": 1000,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 2000,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -698,6 +724,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [],
     "parentKey": "courge"
   },
@@ -719,6 +746,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -740,6 +768,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [],
     "parentKey": "pois"
   },
@@ -757,6 +786,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [],
     "parentKey": "pois"
   },
@@ -779,6 +809,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 700,
     "soilTypes": [
       "Loam",
       "Clay"
@@ -1172,6 +1203,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 700,
     "soilTypes": [
       "Loam",
       "Sandy",
@@ -1249,6 +1281,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 400,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -1380,6 +1413,7 @@
     ],
     "propagationMethod": "Division",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [
       "Loam",
       "Silty",
@@ -1406,6 +1440,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -1614,6 +1649,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -1656,6 +1692,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [
       "Loam",
       "Clay"
@@ -1681,6 +1718,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 800,
     "soilTypes": [
       "Loam",
       "Clay"
@@ -1706,6 +1744,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 300,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -1727,6 +1766,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 400,
     "soilTypes": [],
     "parentKey": "radis"
   },
@@ -1774,6 +1814,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -1795,6 +1836,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [],
     "parentKey": "laitue"
   },
@@ -1812,6 +1854,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [],
     "parentKey": "laitue"
   },
@@ -1829,6 +1872,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [],
     "parentKey": "laitue"
   },
@@ -1850,6 +1894,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 500,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -1897,6 +1942,7 @@
     "maxAltitudeM": 1500,
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [
       "Loam",
       "Sandy",
@@ -1968,6 +2014,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1000,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -1989,6 +2036,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 700,
     "soilTypes": [],
     "parentKey": "poivron"
   },
@@ -2159,6 +2207,7 @@
     ],
     "propagationMethod": "Division",
     "frostSensitive": false,
+    "waterAmountMl": 400,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -3624,6 +3673,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 800,
     "soilTypes": [
       "Loam",
       "Clay"
@@ -3645,6 +3695,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 800,
     "soilTypes": [],
     "parentKey": "chou"
   },
@@ -3662,6 +3713,7 @@
     "waterNeeds": "High",
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 1000,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -3688,6 +3740,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 900,
     "soilTypes": [
       "Loam",
       "Clay"
@@ -3710,6 +3763,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -3731,6 +3785,7 @@
     "waterNeeds": "High",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [],
     "parentKey": "concombre"
   },
@@ -3748,6 +3803,7 @@
     "waterNeeds": "High",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1500,
     "soilTypes": [],
     "parentKey": "concombre"
   },
@@ -3769,6 +3825,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 1200,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -3794,6 +3851,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [
       "Loam",
       "Clay"
@@ -3965,6 +4023,7 @@
     "maxAltitudeM": 1200,
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 1500,
     "soilTypes": [
       "Loam",
       "Silty",
@@ -4072,6 +4131,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 800,
     "soilTypes": [
       "Loam",
       "Silty",
@@ -4095,6 +4155,7 @@
     "maxAltitudeM": 1500,
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 700,
     "soilTypes": [
       "Loam",
       "Silty"
@@ -4120,6 +4181,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": false,
+    "waterAmountMl": 700,
     "soilTypes": [
       "Loam",
       "Clay"
@@ -4147,6 +4209,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 900,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -4169,6 +4232,7 @@
     "maxAltitudeM": 800,
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 800,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -4190,6 +4254,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 800,
     "soilTypes": [],
     "parentKey": "piment"
   },
@@ -4211,6 +4276,7 @@
     ],
     "propagationMethod": "Seed",
     "frostSensitive": true,
+    "waterAmountMl": 2000,
     "soilTypes": [
       "Loam",
       "Sandy"
@@ -4257,6 +4323,7 @@
     "waterNeeds": "Medium",
     "propagationMethod": "Cutting",
     "frostSensitive": false,
+    "waterAmountMl": 600,
     "soilTypes": [
       "Loam",
       "Clay"

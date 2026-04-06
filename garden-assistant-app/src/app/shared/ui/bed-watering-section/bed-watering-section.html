@@ -1,0 +1,93 @@
+<app-collapsible (toggled)="onToggled($event)">
+  <div collapsible-header class="section-header">
+    <span class="section-header-label">
+      <fa-icon [icon]="faDroplet" style="color: var(--color-water)"></fa-icon>
+      <span [translate]="'GardenWatering.Title'"></span>
+    </span>
+  </div>
+  <div collapsible-body>
+    @if (store.loading()) {
+      <div class="empty-state">
+        <fa-icon [icon]="faDroplet" class="empty-state-icon"></fa-icon>
+      </div>
+    } @else if (plants().length === 0) {
+      <div class="empty-state">
+        <fa-icon [icon]="faDroplet" class="empty-state-icon"></fa-icon>
+        <p class="empty-state-text" [translate]="'GardenWatering.EmptyState'"></p>
+      </div>
+    } @else {
+      <div class="watering-layout">
+        <div class="watering-layout__grid">
+          <div class="section-header">
+            <span class="section-header-label" [translate]="'GardenWatering.WeekTitle'"></span>
+          </div>
+          <div class="watering-grid-wrapper"
+               role="region"
+               [attr.aria-label]="'GardenWatering.GridAriaLabel' | translate">
+            <div class="watering-grid" role="grid">
+              <div class="watering-grid__head-row">
+                <div class="watering-grid__name-cell"></div>
+                @for (header of weekDayHeaders; track header.day) {
+                  <div class="watering-grid__day-header"
+                       [class.watering-grid__day-header--today]="header.isToday"
+                       role="columnheader">
+                    {{ 'Watering.DayInitial.' + header.day | translate }}<br>{{ header.number }}
+                  </div>
+                }
+              </div>
+              @for (plant of plants(); track plant.plantId) {
+                <div class="watering-grid__row" role="row">
+                  <div class="watering-grid__name-cell" role="rowheader">{{ plant.plantName }}</div>
+                  @for (day of weekDays; track day) {
+                    <div class="watering-grid__day-cell" role="gridcell">
+                      @if (hasDot(day, plant.recommendedDays)) {
+                        <div class="watering-dot-cell">
+                          <div class="watering-dot"
+                               [attr.aria-label]="'Watering.DotAriaLabel' | translate"></div>
+                          @if (plant.waterAmountMl) {
+                            <span class="watering-amount-label">
+                              {{ plant.waterAmountMl >= 1000
+                                  ? ('Watering.WaterAmountL' | translate : { amount: (plant.waterAmountMl / 1000).toFixed(1) })
+                                  : ('Watering.WaterAmountMl' | translate : { amount: plant.waterAmountMl }) }}
+                            </span>
+                          }
+                        </div>
+                      }
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="watering-layout__freq">
+          <div class="section-header">
+            <span class="section-header-label" [translate]="'Watering.FrequenciesTitle'"></span>
+          </div>
+          <table class="watering-freq-table"
+                 [attr.aria-label]="'Watering.FrequenciesTitle' | translate">
+            <thead>
+              <tr>
+                <th [translate]="'Watering.FreqPlantCol'"></th>
+                <th [translate]="'Watering.FreqNeedCol'"></th>
+                <th [translate]="'Watering.FreqRateCol'"></th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (plant of plants(); track plant.plantId) {
+                <tr>
+                  <td>{{ plant.plantName }}</td>
+                  <td>
+                    <app-water-need-badge [waterNeeds]="plant.waterNeeds" [timesPerWeek]="plant.timesPerWeek"></app-water-need-badge>
+                  </td>
+                  <td>{{ 'Watering.TimesPerWeek' | translate : { count: plant.timesPerWeek } }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+  </div>
+</app-collapsible>

@@ -45,10 +45,10 @@ public class CalendarControllerTests
         {
             new(tomatoId, "Tomate", "Solanum lycopersicum", null, "Solanaceae", "Solanum",
                 LifeCycle.Annual, 150, RootDepth.Medium, SunRequirement.FullSun,
-                WaterNeeds.Medium, PropagationMethod.Seed, null, true, [], [], null, null, false, null, null, [], null, []),
+                WaterNeeds.Medium, PropagationMethod.Seed, null, true, [], [], null, null, false, null, null, [], null, [], null),
             new(basilId, "Basilic", "Ocimum basilicum", null, "Lamiaceae", "Ocimum",
                 LifeCycle.Annual, 40, RootDepth.Shallow, SunRequirement.FullSun,
-                WaterNeeds.Medium, PropagationMethod.Seed, null, true, [], [], null, null, false, null, null, [], null, [])
+                WaterNeeds.Medium, PropagationMethod.Seed, null, true, [], [], null, null, false, null, null, [], null, [], null)
         };
 
         var tomatoActions = new List<PlantActionDto>

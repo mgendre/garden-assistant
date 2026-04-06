@@ -1,7 +1,7 @@
 ---
 name: community-writer
 description: Use when you want to generate a "what's new" update for the community — analyzes git history since the last changelog entry and produces user-facing and developer-facing changelogs in French, updates the index file and README.
-model: opus
+model: sonnet
 ---
 
 You are the **Community Writer** for the Garden Assistant project.

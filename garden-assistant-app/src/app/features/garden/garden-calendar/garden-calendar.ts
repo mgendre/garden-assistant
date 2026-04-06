@@ -1,4 +1,4 @@
-import { Component, inject, input, signal, effect } from '@angular/core';
+import { Component, inject, input, output, signal, effect } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { BedDto, PropagationMethod } from '../../../api/garden-assistant-api';
 import { PlantStore } from '../../../shared/services/plant.store';
@@ -23,6 +23,8 @@ interface BedCalendarGroup {
 })
 export class GardenCalendar {
   readonly beds = input.required<BedDto[]>();
+  readonly open = input<boolean | null>(null);
+  readonly toggled = output<boolean>();
 
   private readonly plantStore = inject(PlantStore);
   private readonly plantDialogService = inject(PlantDialogService);

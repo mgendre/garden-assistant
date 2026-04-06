@@ -4,6 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { CompanionStore } from '../../../shared/services/companion.store';
 import { DialogService } from '../../../shared/services/dialog.service';
+import { AssociationMechanism } from '../../../api/garden-assistant-api';
 import { PlantCard } from '../../../shared/ui/plant-card/plant-card';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
@@ -19,7 +20,7 @@ export class PlantDetailPanel {
   protected readonly faLink = faLink;
   private readonly dialogService = inject(DialogService);
 
-  openMechanismInfo(mechanism: number): void {
+  openMechanismInfo(mechanism: AssociationMechanism): void {
     const key = this.store.getMechanismKey(mechanism);
     if (key) {
       this.dialogService.openBadgeInfo(

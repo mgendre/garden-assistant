@@ -1,6 +1,7 @@
 using GardenAssistant.Data.Seeders;
 using GardenAssistant.Services;
 using GardenAssistant.Services.Interfaces;
+using GardenAssistant.Services.Watering;
 
 namespace GardenAssistant;
 
@@ -24,6 +25,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IHarvestReadinessService, HarvestReadinessService>();
         services.AddScoped<IGardenService, GardenService>();
         services.AddScoped<IBedService, BedService>();
+        services.AddSingleton<IWateringCalculator, WateringCalculator>();
+        services.AddScoped<IGardenWateringService, GardenWateringService>();
 
         return services;
     }

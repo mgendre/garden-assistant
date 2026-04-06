@@ -1,0 +1,46 @@
+{
+  "Watering": {
+    "FrequenciesTitle": "Seasonal frequencies",
+    "FreqPlantCol": "Plant",
+    "FreqNeedCol": "Water needs",
+    "FreqRateCol": "Frequency",
+    "WaterNeed": {
+      "Low": "Low",
+      "Medium": "Medium",
+      "High": "High"
+    },
+    "TimesPerWeek": "{{count}}×/week",
+    "WaterAmountMl": "{{amount}} ml",
+    "WaterAmountL": "{{amount}} L",
+    "DotAriaLabel": "Watering scheduled",
+    "DayInitial": {
+      "Monday": "M",
+      "Tuesday": "T",
+      "Wednesday": "W",
+      "Thursday": "T",
+      "Friday": "F",
+      "Saturday": "S",
+      "Sunday": "S"
+    }
+  },
+  "GardenWatering": {
+    "Title": "Watering calendar",
+    "WeekTitle": "Current week",
+    "EmptyState": "No beds with plants to water.",
+    "GridAriaLabel": "Watering grid"
+  },
+  "Bed": {
+    "SoilTypeLabel": "Bed soil type",
+    "HasMulchLabel": "Mulched bed",
+    "SoilType": {
+      "None": "Not specified",
+      "Sandy": "Sandy",
+      "Loam": "Loam",
+      "Clay": "Clay",
+      "Silty": "Silty",
+      "Chalky": "Chalky",
+      "Peaty": "Peaty",
+      "Rocky": "Rocky"
+    }
+  }
+}

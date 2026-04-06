@@ -20,6 +20,7 @@ import { GardenDialogService } from '../../../shared/services/garden-dialog.serv
 import { Collapsible } from '../../../shared/ui/collapsible/collapsible';
 import { PlantBadge } from '../../../shared/ui/plant-badge/plant-badge';
 import { PlantAssociationPanel, PlantCalendarEntry } from '../../../shared/ui/plant-association-panel/plant-association-panel';
+import { CreateBedDialogResult } from '../create-bed-dialog/create-bed-dialog';
 import { SOWING_ACTIONS, getEarliestHalfMonth } from '../../../shared/constants/plant-action.constants';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
@@ -28,12 +29,14 @@ import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
   standalone: true,
   imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantBadge, PlantAssociationPanel, EmptyState],
   templateUrl: './bed-panel.html',
+  styleUrl: './bed-panel.scss',
 })
 export class BedPanel implements OnInit {
   readonly bed = input.required<BedDto>();
   readonly gardenId = input.required<string>();
-  readonly initialExpanded = input(false);
-  readonly bedNameChanged = output<string | undefined>();
+  readonly open = input.required<boolean>();
+  readonly toggled = output<boolean>();
+  readonly bedUpdated = output<CreateBedDialogResult>();
   readonly bedDeleted = output<void>();
 
   private readonly plantStore = inject(PlantStore);
@@ -145,9 +148,15 @@ export class BedPanel implements OnInit {
 
   async editBedName(event: Event): Promise<void> {
     event.stopPropagation();
-    const result = await this.gardenDialogService.openCreateBed({ mode: 'edit', name: this.bed().name });
+    const bed = this.bed();
+    const result = await this.gardenDialogService.openCreateBed({
+      mode: 'edit',
+      name: bed.name,
+      soilType: bed.soilType,
+      hasMulch: bed.hasMulch,
+    });
     if (result !== undefined) {
-      this.bedNameChanged.emit(result.name);
+      this.bedUpdated.emit(result);
     }
   }
 

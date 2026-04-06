@@ -5,14 +5,14 @@ import { faEye, faHand, faClock, faScrewdriverWrench } from '@fortawesome/free-s
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { HarvestReadinessDto, HarvestCriterionType } from '../../../api/garden-assistant-api';
 
-const CRITERION_ICONS: Record<number, IconDefinition> = {
+const CRITERION_ICONS: Record<HarvestCriterionType, IconDefinition> = {
   [HarvestCriterionType.Visual]: faEye,
   [HarvestCriterionType.Touch]: faHand,
   [HarvestCriterionType.Timing]: faClock,
   [HarvestCriterionType.Technique]: faScrewdriverWrench,
 };
 
-const CRITERION_LABEL_KEYS: Record<number, string> = {
+const CRITERION_LABEL_KEYS: Record<HarvestCriterionType, string> = {
   [HarvestCriterionType.Visual]: 'HarvestReadiness.CriterionVisual',
   [HarvestCriterionType.Touch]: 'HarvestReadiness.CriterionTouch',
   [HarvestCriterionType.Timing]: 'HarvestReadiness.CriterionTiming',

@@ -6,12 +6,12 @@
     </button>
     <div class="flex items-center gap-3">
       <h1 class="flex-1 min-w-0 truncate">{{ garden()?.name }}</h1>
-      <div style="display: flex; align-items: center; gap: 0.5rem">
-        <button class="btn btn-secondary btn-sm" style="display: flex" (click)="editGarden()">
+      <div class="garden-header-actions">
+        <button class="btn btn-secondary btn-sm" (click)="editGarden()">
           <fa-icon [icon]="faPen"></fa-icon>
           <span [translate]="'Garden.Edit'"></span>
         </button>
-        <button class="btn btn-danger btn-sm" style="display: flex" (click)="deleteGarden()">
+        <button class="btn btn-danger btn-sm" (click)="deleteGarden()">
           <fa-icon [icon]="faTrash"></fa-icon>
         </button>
       </div>
@@ -34,20 +34,31 @@
   } @else if (!hasBeds()) {
     <app-empty-state icon="🌱" messageKey="Bed.EmptyGarden" actionKey="Bed.CreateFirst" (actionClick)="addBed()"></app-empty-state>
   } @else {
-    <div class="content-list">
-      @for (bed of beds(); track bed.id) {
-        <app-bed-panel
-          [bed]="bed"
-          [gardenId]="gardenId()"
-          [initialExpanded]="bed.id === newBedId()"
-          (bedNameChanged)="onBedRenamed(bed.id!, $event)"
-          (bedDeleted)="onBedDeleted(bed.id!)">
-        </app-bed-panel>
-      }
-    </div>
+    <div class="garden-panels">
+      <div class="content-list">
+        @for (bed of beds(); track bed.id) {
+          <app-bed-panel
+            [bed]="bed"
+            [gardenId]="gardenId()"
+            [open]="openBedId() === bed.id"
+            (toggled)="toggleBed(bed.id!, $event)"
+            (bedUpdated)="onBedUpdated(bed.id!, $event)"
+            (bedDeleted)="onBedDeleted(bed.id!)">
+          </app-bed-panel>
+        }
+      </div>
 
-    <div style="margin-top: 2.5rem; display: block">
-      <app-garden-calendar [beds]="beds()"></app-garden-calendar>
+      <app-garden-calendar
+        [beds]="beds()"
+        [open]="activePanel() === 'calendar'"
+        (toggled)="activePanel.set($event ? 'calendar' : null)">
+      </app-garden-calendar>
+
+      <app-garden-watering
+        [gardenId]="gardenId()"
+        [open]="activePanel() === 'watering'"
+        (toggled)="activePanel.set($event ? 'watering' : null)">
+      </app-garden-watering>
     </div>
   }
 </div>

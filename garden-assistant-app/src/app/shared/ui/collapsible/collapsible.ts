@@ -1,4 +1,4 @@
-import { Component, input, signal, computed, effect } from '@angular/core';
+import { Component, input, output, signal, computed } from '@angular/core';
 
 @Component({
   selector: 'app-collapsible',
@@ -10,21 +10,32 @@ import { Component, input, signal, computed, effect } from '@angular/core';
 export class Collapsible {
   readonly initialExpanded = input(false);
   readonly forceExpanded = input(false);
+  readonly open = input<boolean | null>(null);
+  readonly toggled = output<boolean>();
+
   readonly expanded = signal(false);
 
-  readonly isExpanded = computed(() => this.forceExpanded() || this.expanded());
+  readonly isExpanded = computed(() => {
+    const ext = this.open();
+    if (ext !== null) {
+      return ext;
+    }
+    return this.forceExpanded() || this.expanded();
+  });
 
   constructor() {
-    effect(() => {
-      if (this.initialExpanded()) {
-        this.expanded.set(true);
-      }
-    });
+    this.expanded.set(this.initialExpanded());
   }
 
   toggle(): void {
+    const ext = this.open();
+    if (ext !== null) {
+      this.toggled.emit(!ext);
+      return;
+    }
     if (!this.forceExpanded()) {
       this.expanded.update(v => !v);
+      this.toggled.emit(this.expanded());
     }
   }
 }

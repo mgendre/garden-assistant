@@ -8,10 +8,12 @@ import {
   UpdateBedRequest,
 } from '../../api/garden-assistant-api';
 import { GardenService } from './garden.service';
+import { WateringStore } from './watering.store';
 
 @Injectable({ providedIn: 'root' })
 export class GardenStore {
   private readonly service = inject(GardenService);
+  private readonly wateringStore = inject(WateringStore);
 
   readonly gardens = signal<GardenDto[]>([]);
   readonly beds = signal<BedDto[]>([]);
@@ -67,6 +69,7 @@ export class GardenStore {
   async updateBed(gardenId: string, bedId: string, request: UpdateBedRequest): Promise<BedDto> {
     const updated = await this.service.updateBed(gardenId, bedId, request);
     this.beds.update(list => list.map(b => b.id === bedId ? updated : b));
+    await this.wateringStore.invalidate();
     return updated;
   }
 

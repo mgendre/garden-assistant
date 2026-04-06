@@ -10,6 +10,22 @@
         maxlength="100"
         [attr.placeholder]="'Bed.NamePlaceholder' | translate" />
     </div>
+    <div>
+      <label class="block text-sm font-medium mb-1" [translate]="'Bed.SoilTypeLabel'"></label>
+      <select class="form-input"
+              (change)="soilType.set($any($event.target).value)">
+        @for (opt of soilTypeOptions; track opt.value) {
+          <option [value]="opt.value" [selected]="opt.value === soilType()">{{ opt.labelKey | translate }}</option>
+        }
+      </select>
+    </div>
+    <div class="flex items-center gap-2">
+      <input type="checkbox"
+             id="hasMulch"
+             [checked]="hasMulch()"
+             (change)="hasMulch.set($any($event.target).checked)" />
+      <label for="hasMulch" class="text-sm" [translate]="'Bed.HasMulchLabel'"></label>
+    </div>
   </div>
 </div>
 <div class="dialog-footer">

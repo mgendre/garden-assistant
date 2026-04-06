@@ -63,6 +63,8 @@
 
 .panel-section {
   border-top: 1px solid var(--color-border);
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
 }
 
 // Section headers live inside .collapsible-trigger which already has p-4.

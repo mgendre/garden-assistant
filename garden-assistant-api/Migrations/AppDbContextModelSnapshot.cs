@@ -267,6 +267,10 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("user_id");
 
+                    b.Property<int?>("WaterAmountMl")
+                        .HasColumnType("integer")
+                        .HasColumnName("water_amount_ml");
+
                     b.Property<int>("WaterNeeds")
                         .HasColumnType("integer")
                         .HasColumnName("water_needs");
@@ -429,6 +433,10 @@ namespace GardenAssistant.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("guild_id");
 
+                    b.Property<bool>("HasMulch")
+                        .HasColumnType("boolean")
+                        .HasColumnName("has_mulch");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(256)
@@ -438,6 +446,10 @@ namespace GardenAssistant.Migrations
                     b.Property<DateOnly?>("PlannedDate")
                         .HasColumnType("date")
                         .HasColumnName("planned_date");
+
+                    b.Property<int?>("SoilType")
+                        .HasColumnType("integer")
+                        .HasColumnName("soil_type");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid")

@@ -75,7 +75,7 @@
     "EmptyState": "Aucune plante. Ajoutez des plantes pour voir les associations.",
     "AddPlants": "Ajouter des plantes",
     "ModifyPlants": "Modifier les plantes",
-    "EditName": "Renommer",
+    "EditName": "Modifier la planche",
     "Unnamed": "Planche sans nom",
     "PlantSingular": "plante",
     "PlantPlural": "plantes",
@@ -90,7 +90,19 @@
     "NamePlaceholder": "Ex: Planche tomates 2026",
     "ConfirmDeleteTitle": "Supprimer la planche",
     "ConfirmDeleteMessage": "Supprimer la planche « {{name}} » ?",
-    "ConfirmDeleteMessageWithPlants": "Supprimer la planche « {{name}} » ? Les plantes suivantes seront perdues : {{plants}}"
+    "ConfirmDeleteMessageWithPlants": "Supprimer la planche « {{name}} » ? Les plantes suivantes seront perdues : {{plants}}",
+    "SoilTypeLabel": "Type de sol de la planche",
+    "HasMulchLabel": "Planche paillée",
+    "SoilType": {
+      "None": "Non renseigné",
+      "Sandy": "Sableux",
+      "Loam": "Terre franche",
+      "Clay": "Argileux",
+      "Silty": "Limoneux fin",
+      "Chalky": "Calcaire",
+      "Peaty": "Tourbeux",
+      "Rocky": "Rocailleux"
+    }
   },
   "GardenDialog": {
     "Title": "Cr\u00e9er un jardin",
@@ -658,5 +670,35 @@
     "Empty": "Ajoutez des plantes à vos planches pour voir le calendrier.",
     "GroupedByBed": "Groupé par planche",
     "FlatView": "Vue globale"
+  },
+  "GardenWatering": {
+    "Title": "Calendrier d'arrosage",
+    "WeekTitle": "Semaine en cours",
+    "EmptyState": "Aucune planche avec des plantes à arroser.",
+    "GridAriaLabel": "Grille d'arrosage"
+  },
+  "Watering": {
+    "FrequenciesTitle": "Fréquences saisonnières",
+    "FreqPlantCol": "Plante",
+    "FreqNeedCol": "Besoin en eau",
+    "FreqRateCol": "Fréquence",
+    "WaterNeed": {
+      "Low": "Faible",
+      "Medium": "Moyen",
+      "High": "Élevé"
+    },
+    "TimesPerWeek": "{{count}}×/sem.",
+    "WaterAmountMl": "{{amount}} ml",
+    "WaterAmountL": "{{amount}} L",
+    "DotAriaLabel": "Arrosage prévu",
+    "DayInitial": {
+      "Monday": "L",
+      "Tuesday": "M",
+      "Wednesday": "M",
+      "Thursday": "J",
+      "Friday": "V",
+      "Saturday": "S",
+      "Sunday": "D"
+    }
   }
 }

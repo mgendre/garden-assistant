@@ -22,10 +22,6 @@
     <app-calendar-this-month></app-calendar-this-month>
 
     <div class="panel">
-      <div class="panel-header">
-        <span class="panel-title" [translate]="'Calendar.Title'"></span>
-      </div>
-
       <div class="calendar-filter-chips" style="display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem">
         @if (store.sourceFilter() === 'gardenPlants') {
           <app-toggle-group style="margin-right: 0.25rem"

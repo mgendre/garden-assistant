@@ -82,12 +82,6 @@
 
 ---
 
-## ~~E05 — Plantes compagnes (refonte)~~ SUPPRIME
-
-> Épique supprimée. Toutes les stories (US-025 à US-032) ont été livrées puis remplacées par la refonte UI E06. Les fichiers ont été supprimés du backlog.
-
----
-
 ## E06 — Refonte UI permaculture (mise en page initiale) ✅
 
 > Reconstruire le frontend avec un catalogue de plantes, une sélection multi-plantes, et des recommandations. Layout initial à 3 colonnes, évolué vers 2 colonnes dans E11.
@@ -120,7 +114,6 @@
 | [US-043](epics/E07-mes-plantes/US-043-api-mes-plantes.md) | API et persistance « Mes plantes » | Indispensable | 3 | Terminé |
 | [US-044](epics/E07-mes-plantes/US-044-store-mes-plantes.md) | Store de signaux « Mes plantes » | Indispensable | 2 | Terminé |
 | [US-045](epics/E07-mes-plantes/US-045-page-mes-plantes.md) | Page « Mes plantes » avec gestion de la liste | Indispensable | 5 | Terminé |
-| ~~US-046~~ | ~~Composant info-box réutilisable~~ | ~~Important~~ | ~~2~~ | Supprime |
 | [US-047](epics/E07-mes-plantes/US-047-intégration-catalogue-tri.md) | Prioriser « Mes plantes » dans le catalogue | Indispensable | 3 | Terminé |
 | [US-048](epics/E07-mes-plantes/US-048-bouton-ajouter-depuis-associations.md) | Ajouter à « Mes plantes » depuis Associations | Indispensable | 2 | Terminé |
 
@@ -138,12 +131,9 @@
 | [US-050](epics/E08-polish-ux-associations/US-050-plant-détail-dialog.md) | Dialog détail d'une plante | Important | 2 | Terminé |
 | [US-051](epics/E08-polish-ux-associations/US-051-guild-container-visual.md) | Conteneur visuel de guilde | Optionnel | 1 | Terminé |
 | [US-052](epics/E08-polish-ux-associations/US-052-sass-7-1-refactoring.md) | Refactoring styles Sass 7-1 | Important | 3 | Terminé |
-| ~~US-053~~ | ~~Limiter l'API catalogue à 20 resultats~~ | ~~Indispensable~~ | ~~1~~ | Abandonne |
 | [US-065](epics/E08-polish-ux-associations/US-065-associations-manquantes.md) | Indicateur d'associations importantes manquantes | Important | 5 | Terminé |
 
 **Total E08 : 14 points (14 Terminé / 0 À faire)**
-
-> Note : US-053 abandonnee — la limite de 20 plantes dans le catalogue à été supprimée. Le catalogue affiche maintenant toutes les plantes avec une scrollbar (max-height 70vh).
 
 ---
 
@@ -316,12 +306,6 @@
 **Total E16 : 41 points (0 Terminé / 41 À faire)**
 
 > Ordre de livraison : US-110 (migration) → US-111 (middleware) → US-112 (flux backend) → US-113 (profil) et US-114 (dev-token) en parallele → US-115 (login page) → US-116 (callback) → US-117 (guard) → US-118 (profil frontend) → US-119 et US-120 (tests). US-114 peut etre livree à tout moment (aucune dependance). Spec de reference : `docs/superpowers/specs/2026-03-22-oauth-login-design.md`.
-
----
-
-## ~~E17 — Dimensions et formes des planches~~ FUSIONNE DANS E03
-
-> Épique fusionnée dans E03 (éditeur graphique). Les stories US-121/122/123 sont desormais dans E03.
 
 ---
 
@@ -500,7 +484,6 @@
 | E02 — Associations vegetales (residuel) | ✅ | 8 | 8 | 0 | 0 |
 | E03 — Editeur graphique du jardin | | 39 | 0 | 0 | 39 |
 | E04 — Gestion des rotations de cultures | | 30 | 0 | 0 | 30 |
-| ~~E05 — Plantes compagnes (refonte)~~ | ~~Annulee~~ | ~~19~~ | — | — | — |
 | E06 — Refonte UI permaculture | ✅ | 27 | 27 | 0 | 0 |
 | E07 — Mes plantes | ✅ | 15 | 15 | 0 | 0 |
 | E08 — Finitions UX Associations | ✅ | 14 | 14 | 0 | 0 |
@@ -512,7 +495,6 @@
 | E14 — UX i18n (frontend) | | 16 | 0 | 0 | 16 |
 | E15 — Assistant de creation de guilde | ✅ | 19 | 19 | 0 | 0 |
 | E16 — Authentification OAuth | | 41 | 0 | 0 | 41 |
-| ~~E17 — Dimensions et formes des planches~~ | ~~Annulee~~ | ~~10~~ | — | — | — |
 | E18 — Page d'accueil / tableau de bord | | 13 | 0 | 0 | 13 |
 | E19 — Dette technique frontend | ✅ | 12 | 12 | 0 | 0 |
 | E20 — Hierarchie espece-variete | | 27 | 24 | 0 | 3 |

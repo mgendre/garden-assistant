@@ -96,3 +96,14 @@
   color: var(--color-text);
 }
 
+.badge-info-frequency {
+  @apply text-sm font-semibold mt-3 mb-0;
+  color: var(--color-water-dark);
+}
+
+.badge-clickable {
+  transition: opacity 0.15s ease;
+
+  &:hover { opacity: 0.8; }
+}
+
