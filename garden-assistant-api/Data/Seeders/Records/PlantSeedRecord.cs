@@ -21,6 +21,5 @@ public record PlantSeedRecord(
     List<SoilType>? SoilTypes,
     decimal? OptimalPhMin,
     decimal? OptimalPhMax,
-    string? ParentKey,
-    int? WaterAmountMl
+    string? ParentKey
 );

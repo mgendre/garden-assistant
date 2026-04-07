@@ -24,7 +24,7 @@ builder.Services.AddApplicationServices();
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("RestrictedOrigins", policy =>
+    options.AddPolicy("RestrictedOwrigins", policy =>
     {
         var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>()
             ?? [];

@@ -19,9 +19,9 @@ export class DialogService {
     return result === true;
   }
 
-  openBadgeInfo(titleKey: string, descriptionKey: string, timesPerWeek?: number): void {
+  openBadgeInfo(titleKey: string, descriptionKey: string): void {
     this.dialog.open<BadgeInfoDialog, BadgeInfoDialogData>(BadgeInfoDialog, {
-      data: { titleKey, descriptionKey, timesPerWeek },
+      data: { titleKey, descriptionKey },
       maxWidth: '400px',
     });
   }

@@ -3,3 +3,12 @@
 .form-input {
   @include mixins.form-input;
 }
+
+.form-checkbox {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--color-forest, #2d6a4f);
+  border-radius: 4px;
+}

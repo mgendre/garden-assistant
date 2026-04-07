@@ -44,13 +44,6 @@
                         <div class="watering-dot-cell">
                           <div class="watering-dot"
                                [attr.aria-label]="'Watering.DotAriaLabel' | translate"></div>
-                          @if (plant.waterAmountMl) {
-                            <span class="watering-amount-label">
-                              {{ plant.waterAmountMl >= 1000
-                                  ? ('Watering.WaterAmountL' | translate : { amount: (plant.waterAmountMl / 1000).toFixed(1) })
-                                  : ('Watering.WaterAmountMl' | translate : { amount: plant.waterAmountMl }) }}
-                            </span>
-                          }
                         </div>
                       }
                     </div>
@@ -79,7 +72,7 @@
                 <tr>
                   <td>{{ plant.plantName }}</td>
                   <td>
-                    <app-water-need-badge [waterNeeds]="plant.waterNeeds" [timesPerWeek]="plant.timesPerWeek"></app-water-need-badge>
+                    <app-water-need-badge [waterNeeds]="plant.waterNeeds"></app-water-need-badge>
                   </td>
                   <td>{{ 'Watering.TimesPerWeek' | translate : { count: plant.timesPerWeek } }}</td>
                 </tr>

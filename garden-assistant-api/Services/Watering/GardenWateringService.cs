@@ -59,6 +59,6 @@ public class GardenWateringService(AppDbContext dbContext, IWateringCalculator c
     private PlantWateringDto BuildPlantDto(Plant plant, int halfMonth, SoilType? soilType, bool hasMulch)
     {
         var freq = calculator.CalculateFrequency(plant.WaterNeeds, halfMonth, soilType, hasMulch);
-        return new PlantWateringDto(plant.Id, plant.Name, plant.WaterNeeds, freq.TimesPerWeek, freq.RecommendedDays, plant.WaterAmountMl);
+        return new PlantWateringDto(plant.Id, plant.Name, plant.WaterNeeds, freq.TimesPerWeek, freq.RecommendedDays);
     }
 }

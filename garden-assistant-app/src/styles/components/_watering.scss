@@ -87,6 +87,8 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -114,6 +116,10 @@
   display: table-row;
 }
 
+.watering-layout__grid {
+  padding-left: 1.25rem;
+}
+
 .watering-grid__name-cell {
   display: table-cell;
   width: 160px;
@@ -129,6 +135,10 @@
 
   @media (max-width: 767px) {
     width: 100px;
+  }
+
+  &:nth-child(1) {
+    padding-left: 0;
   }
 }
 

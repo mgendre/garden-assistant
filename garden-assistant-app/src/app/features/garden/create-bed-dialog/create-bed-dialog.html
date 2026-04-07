@@ -21,10 +21,11 @@
     </div>
     <div class="flex items-center gap-2">
       <input type="checkbox"
+             class="form-checkbox"
              id="hasMulch"
              [checked]="hasMulch()"
              (change)="hasMulch.set($any($event.target).checked)" />
-      <label for="hasMulch" class="text-sm" [translate]="'Bed.HasMulchLabel'"></label>
+      <label for="hasMulch" class="text-sm cursor-pointer" [translate]="'Bed.HasMulchLabel'"></label>
     </div>
   </div>
 </div>

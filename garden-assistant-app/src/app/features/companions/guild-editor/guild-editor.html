@@ -79,6 +79,7 @@
     <!-- Shared association panel -->
     @if (store.selectedPlants().length >= 2) {
       <app-plant-association-panel
+        class="guild-assoc-wrapper"
         [plants]="store.selectedPlants()"
         [associations]="store.recommendations()?.selectedPlantAssociations ?? []"
         [calendarEntries]="plantCalendars()"

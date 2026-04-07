@@ -6,11 +6,11 @@ import { DialogService } from '../../services/dialog.service';
   selector: 'app-water-need-badge',
   standalone: true,
   imports: [TranslateModule],
-  templateUrl: './water-need-badge.html'
+  templateUrl: './water-need-badge.html',
+  host: { style: 'display: contents' }
 })
 export class WaterNeedBadge {
   readonly waterNeeds = input.required<string | undefined>();
-  readonly timesPerWeek = input<number | undefined>();
 
   private readonly dialogService = inject(DialogService);
 
@@ -20,8 +20,7 @@ export class WaterNeedBadge {
     if (!level) { return; }
     this.dialogService.openBadgeInfo(
       `BadgeInfo.Water.${level}.Title`,
-      `BadgeInfo.Water.${level}.Description`,
-      this.timesPerWeek()
+      `BadgeInfo.Water.${level}.Description`
     );
   }
 }

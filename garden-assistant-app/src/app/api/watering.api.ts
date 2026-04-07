@@ -8,7 +8,6 @@ export interface PlantWateringDto {
   waterNeeds: string;
   timesPerWeek: number;
   recommendedDays: DayOfWeekStr[];
-  waterAmountMl?: number;
 }
 
 export interface BedWateringDto {

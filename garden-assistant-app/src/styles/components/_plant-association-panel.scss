@@ -62,7 +62,12 @@
 }
 
 .panel-section {
+  margin-left: -1.25rem;
+  margin-right: -1.25rem;
   border-top: 1px solid var(--color-border);
+}
+
+app-plant-association-panel .plant-list {
   margin-left: -1.25rem;
   margin-right: -1.25rem;
 }
@@ -303,7 +308,7 @@
 }
 
 .soil-summary-label {
-  @apply font-semibold rounded-md shrink-0;
+  @apply font-semibold rounded-md shrink-0 cursor-pointer;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   padding: 0.15rem 0.5rem;

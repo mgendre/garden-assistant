@@ -1141,7 +1141,6 @@ export interface PlantWateringDto {
     waterNeeds?: WaterNeeds;
     timesPerWeek?: number;
     recommendedDays?: DayOfWeek[];
-    waterAmountMl?: number | undefined;
 }
 
 export enum WaterNeeds {
@@ -1295,7 +1294,6 @@ export interface PlantDto {
     varieties?: PlantSummaryDto[];
     harvestReadiness?: HarvestReadinessDto | undefined;
     actions?: PlantActionDto[];
-    waterAmountMl?: number | undefined;
 }
 
 export enum LifeCycle {

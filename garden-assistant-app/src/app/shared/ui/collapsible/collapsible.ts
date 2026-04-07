@@ -5,7 +5,8 @@ import { Component, input, output, signal, computed } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './collapsible.html',
-  styleUrl: './collapsible.scss'
+  styleUrl: './collapsible.scss',
+  host: { style: 'display: block' },
 })
 export class Collapsible {
   readonly initialExpanded = input(false);

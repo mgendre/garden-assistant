@@ -42,6 +42,7 @@ interface MechanismRow {
   standalone: true,
   imports: [TranslateModule, FontAwesomeModule, Collapsible, PlantCard, PlantBadge, PlantCalendarGantt, RootStratification, BedWateringSection],
   templateUrl: './plant-association-panel.html',
+  host: { style: 'display: block' },
 })
 export class PlantAssociationPanel {
   readonly plants = input.required<PlantDto[]>();
